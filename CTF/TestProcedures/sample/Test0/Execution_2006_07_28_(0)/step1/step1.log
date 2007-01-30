@@ -1,0 +1,4 @@
+Error loading document: WARNING[15]: Unable to find effect for material: lambert1te
+WARNING[5052]: Cannot find base target for morph controller: pSphereShape4-lib-morph
+WARNING[5264]: Unable to find instantiated entity: pSphereShape1-lib.
+ERROR[5264]: Trying to instantiate non-valid geometric entity.

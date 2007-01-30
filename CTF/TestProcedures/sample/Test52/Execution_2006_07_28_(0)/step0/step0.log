@@ -1,0 +1,4 @@
+PASSED: Document is valid
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/MrWiggle_animation/MrWiggle_animation.dae, (291, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:start_time'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/MrWiggle_animation/MrWiggle_animation.dae, (3382, 22).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:end_time'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/MrWiggle_animation/MrWiggle_animation.dae, (3383, 22).

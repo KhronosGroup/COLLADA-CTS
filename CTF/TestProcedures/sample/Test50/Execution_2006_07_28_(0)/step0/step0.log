@@ -1,0 +1,8 @@
+PASSED: Document is valid
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (314, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (1604, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (2894, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (12060, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (13162, 26).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:start_time'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (17080, 22).
+Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:end_time'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/09_FXComposer/Demon/Demon.dae, (17081, 22).
