@@ -11,7 +11,7 @@ exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test83/Execution_2006_05_23_(0)/step0/Constraint_00_linearDriver_00.mb</source_data>
+      <source_data>file:///C:/CTF%20short%20spaced/TestProcedures/MayaExport/Test83/Execution_2006_05_23_(0)/step0/Constraint_00_linearDriver_00.mb</source_data>
     </contributor>
     <created>2006-05-23T17:42:47Z</created>
     <modified>2006-05-23T17:42:47Z</modified>

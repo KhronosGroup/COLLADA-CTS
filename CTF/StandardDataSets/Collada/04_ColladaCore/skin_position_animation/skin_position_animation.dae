@@ -5,7 +5,7 @@
       <author>Guillaume Laforte</author>
       <authoring_tool>SciTE - Handwritten</authoring_tool>
       <comments>Added the animation for the skin's transform</comments>
-	  <source_data>file://C|/Work/Cases/TestC.dae</source_data>
+	  <source_data>file:///C:/Work/Cases/TestC.dae</source_data>
     </contributor>
     <contributor>
       <author>Guillaume Laforte</author>
@@ -17,7 +17,7 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=0;exportVertexColors=0;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file://C|/Work/Cases/TestC.mb</source_data>
+      <source_data>file:///C:/Work/Cases/TestC.mb</source_data>
     </contributor>
     <created>2006-07-13T18:29:00Z</created>
     <modified>2006-07-13T18:29:00Z</modified>

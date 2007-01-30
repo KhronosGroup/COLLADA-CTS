@@ -11,7 +11,7 @@ exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file://C|/Work/Contracts/Khronos/StandardDataSets/Maya/02_Geometry/simple_001_NURBSLineText/simple_001_NURBSLineText.mb</source_data>
+      <source_data>file:///C:/Work/Contracts/Khronos/StandardDataSets/Maya/02_Geometry/simple_001_NURBSLineText/simple_001_NURBSLineText.mb</source_data>
     </contributor>
     <created>2006-07-07T20:33:59Z</created>
     <modified>2006-07-07T20:33:59Z</modified>
@@ -75,7 +75,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape1-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape1-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape1-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape1-lib-knots-0"/>
         </control_vertices>
@@ -114,7 +114,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape2-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape2-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape2-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape2-lib-knots-0"/>
         </control_vertices>
@@ -153,7 +153,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape3-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape3-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape3-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape3-lib-knots-0"/>
         </control_vertices>
@@ -192,7 +192,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape4-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape4-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape4-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape4-lib-knots-0"/>
         </control_vertices>
@@ -231,7 +231,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape5-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape5-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape5-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape5-lib-knots-0"/>
         </control_vertices>
@@ -270,7 +270,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </technique_common>
         </source>
         <control_vertices>
-          <input semantic="CVS" source="#curveShape6-lib-cvs-0"/>
+          <input semantic="POSITION" source="#curveShape6-lib-cvs-0"/>
           <input semantic="WEIGHTS" source="#curveShape6-lib-weights-0"/>
           <input semantic="KNOTS" source="#curveShape6-lib-knots-0"/>
         </control_vertices>

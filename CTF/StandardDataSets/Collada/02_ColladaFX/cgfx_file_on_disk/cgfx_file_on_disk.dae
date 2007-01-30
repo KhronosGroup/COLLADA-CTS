@@ -11,7 +11,7 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file://C|/Work/Cases/Test.ma</source_data>
+      <source_data>file:///C:/Work/Cases/Test.ma</source_data>
     </contributor>
     <created>2006-06-09T15:16:36Z</created>
     <modified>2006-06-09T15:16:37Z</modified>
