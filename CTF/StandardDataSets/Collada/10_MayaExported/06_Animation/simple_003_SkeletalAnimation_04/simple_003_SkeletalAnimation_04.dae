@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.90 May 19 2006 at 18:36:30</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test48/Execution_2006_05_23_(0)/step0/simple_003_SkeletalAnimation_04.mb</source_data>
+    </contributor>
+    <created>2006-05-23T17:42:39Z</created>
+    <modified>2006-05-23T17:42:39Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="blinn1" name="blinn1">
+      <instance_effect url="#blinn1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="blinn1-fx" name="blinn1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <blinn>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">1.000000 0.568000 0.742600 1.000000</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.500000 0.500000 0.500000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">0.300000</float>
+            </shininess>
+            <reflective>
+              <color sid="reflective">0 0 0 1.000000</color>
+            </reflective>
+            <reflectivity>
+              <float sid="reflectivity">0.500000</float>
+            </reflectivity>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape1-lib">
+      <mesh>
+        <source id="pCubeShape1-lib-Position">
+          <float_array count="132" id="pCubeShape1-lib-Position-array">
+-1.500000 -1.500000 1.500000
+1.500000 -1.500000 1.500000
+-1.500000 1.500000 1.500000
+1.500000 1.500000 1.500000
+-1.500000 1.500000 -1.500000
+1.500000 1.500000 -1.500000
+-1.500000 -1.500000 -1.500000
+1.500000 -1.500000 -1.500000
+-0.593919 0.593919 -7.346028
+0.593919 0.593919 -7.346028
+0.593919 -0.593919 -7.346028
+-0.593919 -0.593919 -7.346028
+-0.520835 -0.520835 5.509522
+0.520835 -0.520835 5.509522
+0.520835 0.520835 5.509522
+-0.520835 0.520835 5.509522
+-0.520835 -0.520835 7.053743
+0.520835 -0.520835 7.053743
+0.520835 0.520835 7.053743
+-0.520835 0.520835 7.053743
+3.223176 -1.500000 -1.500000
+3.223176 -1.500000 1.500000
+3.223176 1.500000 -1.500000
+3.223176 1.500000 1.500000
+-3.223176 -1.500000 -1.500000
+-3.223176 -1.500000 1.500000
+-3.223176 1.500000 1.500000
+-3.223176 1.500000 -1.500000
+8.485994 -1.500000 2.420829
+6.302035 -1.500000 4.477605
+8.485994 1.500000 2.420829
+6.302035 1.500000 4.477605
+-8.498441 -1.500000 2.544887
+-6.438523 -1.500000 4.725882
+-6.438523 1.500000 4.725882
+-8.498441 1.500000 2.544887
+9.414592 -1.500000 7.792768
+9.414592 -1.500000 10.792769
+9.414592 1.500000 7.792768
+9.414592 1.500000 10.792769
+-9.414592 -1.500000 7.792768
+-9.414592 -1.500000 10.792769
+-9.414592 1.500000 10.792769
+-9.414592 1.500000 7.792768
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Position-array" count="44" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-Normal">
+          <float_array count="372" id="pCubeShape1-lib-Normal-array">
+0.000000 0 1.000000
+0.000000 0 1.000000
+0.000000 0 1.000000
+0.000000 0 1.000000
+0 0.996828 0.079586
+0 0.996828 0.079586
+0 0.998689 -0.051188
+0 0.998689 -0.051188
+-0.000000 0 -1.000000
+-0.000000 0 -1.000000
+-0.000000 0 -1.000000
+-0.000000 0 -1.000000
+0 -0.998689 -0.051188
+0 -0.998689 -0.051188
+0 -0.996828 0.079586
+0 -0.996828 0.079586
+1.000000 0 0
+0.996340 0 -0.085480
+0.996340 0 -0.085480
+1.000000 0 0
+-0.996268 0 -0.086309
+-1.000000 0 0
+-1.000000 0 0
+-0.996268 0 -0.086309
+0 0.988201 -0.153162
+0 0.988201 -0.153162
+0.988201 0 -0.153162
+0.988201 0 -0.153162
+0.988201 0 -0.153162
+0.988201 0 -0.153162
+0 -0.988201 -0.153162
+0 -0.988201 -0.153162
+-0.988201 0 -0.153162
+-0.988201 0 -0.153162
+-0.988201 0 -0.153162
+-0.988201 0 -0.153162
+0 -0.992837 0.119475
+0 -0.992837 0.119475
+0.971452 0 0.237238
+0.971452 0 0.237238
+0.992837 0 0.119475
+0.992837 0 0.119475
+0 0.992837 0.119475
+0 0.992837 0.119475
+-0.971452 0 0.237238
+-0.971452 0 0.237238
+-0.992837 0 0.119475
+-0.992837 0 0.119475
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0.000000
+1.000000 0 0.000000
+0 1.000000 0
+0 1.000000 0
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 1.000000 0
+0 1.000000 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 1.000000 0
+0 1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0.597434 0 -0.801918
+0.597434 0 -0.801918
+0.597434 0 -0.801918
+0.597434 0 -0.801918
+0 1.000000 0
+0 1.000000 0
+-0.695188 0 0.718828
+-0.695188 0 0.718828
+-0.695188 0 0.718828
+-0.695188 0 0.718828
+0 -1.000000 0
+0 -1.000000 0
+0.708262 0 0.705949
+0.708262 0 0.705949
+0.708262 0 0.705949
+0.708262 0 0.705949
+0 1.000000 0
+0 1.000000 0
+-0.608480 0 -0.793569
+-0.608480 0 -0.793569
+-0.608480 0 -0.793569
+-0.608480 0 -0.793569
+0 -1.000000 0
+0 -1.000000 0
+0.985386 0 -0.170335
+0.985386 0 -0.170335
+0 1.000000 0
+0 1.000000 0
+-0.896971 0 0.442090
+-0.896971 0 0.442090
+-0.896971 0 0.442090
+-0.896971 0 0.442090
+0 -1.000000 0
+0 -1.000000 0
+0.897798 0 0.440408
+0.897798 0 0.440408
+0.897798 0 0.440408
+0.897798 0 0.440408
+0 1.000000 0
+0 1.000000 0
+-0.985101 0 -0.171974
+-0.985101 0 -0.171974
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Normal-array" count="124" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pCubeShape1-lib-map1" name="map1">
+          <float_array count="100" id="pCubeShape1-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+1.000000 3.000000
+0 3.000000
+0 0
+1.000000 0
+1.000000 1.000000
+0 1.000000
+0 0
+1.000000 0
+1.000000 1.000000
+0 1.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+-1.000000 0
+0 0
+0 1.000000
+-1.000000 1.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+-1.000000 0
+0 0
+0 1.000000
+-1.000000 1.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+-1.000000 0
+0 0
+0 1.000000
+-1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-array" count="50" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-tangents">
+          <float_array count="315" id="pCubeShape1-lib-map1-tangents-array">
+1.000000 0 -0.000000
+1.000000 0 0
+1.000000 0 0
+1.000000 0 -0.000000
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+-0.085480 0 -0.996340
+-0.086309 0 0.996268
+0 0 1.000000
+-1.000000 0 0
+0.093966 0.152484 0.983829
+0 -1.000000 0
+-0.148548 0.243610 -0.958430
+0 1.000000 0
+0.152484 -0.093966 0.983829
+1.000000 0 0
+-0.093966 -0.152484 0.983829
+0 1.000000 0
+0.148548 -0.243610 -0.958430
+0 -1.000000 0
+-0.152484 0.093966 0.983829
+-0.341125 0.074812 0.937036
+-1.000000 0 0
+0.111569 -0.118729 -0.986639
+0 1.000000 0
+-0.223329 -0.337369 0.914498
+0 -1.000000 0
+0.118729 0.111569 -0.986639
+1.000000 0 0
+-0.111569 0.118729 -0.986639
+0 -1.000000 0
+0.223329 0.337369 0.914498
+0 1.000000 0
+-0.118729 -0.111569 -0.986639
+-1.000000 0 0
+0.292389 0 -0.956300
+0 -1.000000 0
+0.000000 0.292389 -0.956300
+1.000000 0 0
+-0.292389 0 -0.956300
+0 1.000000 0
+0 -0.292389 -0.956300
+0.865611 -0.025631 0.500060
+0 0 1.000000
+-0.865469 0 -0.500962
+0 1.000000 0
+0.865469 -0.500962 0
+0 -1.000000 0
+-0.865469 0.500962 0
+0 0.051188 0.998689
+0 0 -1.000000
+-0.865469 0 0.500962
+0 -1.000000 0
+0.865469 0.500962 0
+0 1.000000 0
+-0.865469 -0.500962 0
+0 -0.051188 0.998689
+0 0 -1.000000
+0.865469 0 0.500962
+-0.865611 0.025631 0.500060
+0 0 1.000000
+0.865469 0 -0.500962
+-0.957929 0 0.287007
+-0.718828 0 -0.695188
+0 1.000000 0
+0.783561 -0.212742 0.583757
+0 -1.000000 0
+-0.783561 0.212742 -0.583757
+0.727986 0 -0.685592
+-0.918409 0 -0.395632
+0 -1.000000 0
+0.685543 0.300773 0.662998
+0 1.000000 0
+-0.685543 -0.300773 -0.662998
+-0.686639 0 -0.726998
+0.911103 0 -0.412178
+0 1.000000 0
+-0.676224 -0.287123 0.678440
+0 -1.000000 0
+0.676224 0.287123 -0.678440
+0.952578 0 0.304296
+0.705949 0 -0.708262
+0 -1.000000 0
+-0.775808 0.210382 0.594862
+0 1.000000 0
+0.775808 -0.210382 -0.594862
+-0.929794 0 0.368081
+-0.442090 0 -0.896971
+0 1.000000 0
+0.164974 -0.248891 0.954378
+-0.446212 0 -0.894927
+0 -1.000000 0
+0.433154 0.200044 0.878840
+0 1.000000 0
+-0.433154 -0.200044 -0.878840
+0.454314 0 -0.890842
+0 1.000000 0
+-0.430833 -0.207389 0.878278
+0 -1.000000 0
+0.430833 0.207389 -0.878278
+0.926729 0 0.375731
+0.440408 0 -0.897798
+0 -1.000000 0
+-0.166351 0.253637 0.952888
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-tangents-array" count="105" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-binormals">
+          <float_array count="315" id="pCubeShape1-lib-map1-binormals-array">
+0 1.000000 0
+0 0.079586 -0.996828
+0 -0.051188 -0.998689
+0 -1.000000 0
+0 -0.051188 0.998689
+0 0.079586 0.996828
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0.153162 0.988201
+0.995575 -0.014392 -0.092857
+-0.153162 0 -0.988201
+0.037312 0.969873 0.240736
+0.153162 0 0.988201
+-0.014392 -0.995575 -0.092857
+0 -0.153162 0.988201
+-0.995575 0.014392 -0.092857
+0.153162 0 -0.988201
+-0.037312 -0.969873 0.240736
+-0.153162 0 0.988201
+0.014392 0.995575 -0.092857
+-0.940018 -0.027149 -0.340043
+0 -0.119475 -0.992837
+0.993757 0.013330 0.110770
+-0.237238 0 0.971452
+0.080037 -0.941373 -0.327738
+0.119475 0 -0.992837
+-0.013330 0.993757 0.110770
+0 0.119475 -0.992837
+-0.993757 -0.013330 0.110770
+0.237238 0 0.971452
+-0.080037 0.941373 -0.327738
+-0.119475 0 -0.992837
+0.013330 -0.993757 0.110770
+0 0 -1.000000
+0.956300 0 0.292389
+0.000000 0 -1.000000
+0 0.956300 0.292389
+0 0 -1.000000
+-0.956300 0 0.292389
+0 0 -1.000000
+0 -0.956300 0.292389
+-0.500716 -0.044309 0.864477
+-1.000000 0 0
+0.500962 0 -0.865469
+1.000000 0 0
+-0.500962 -0.865469 0
+-1.000000 0 0
+0.500962 0.865469 0
+1.000000 0 0
+-1.000000 0 0
+0.500962 0 0.865469
+1.000000 0 0
+-0.500962 0.865469 0
+-1.000000 0 0
+0.500962 -0.865469 0
+-1.000000 0 0
+1.000000 0 0
+-0.500962 0 0.865469
+0.500716 0.044309 0.864477
+1.000000 0 0
+-0.500962 0 -0.865469
+-0.287007 0 -0.957929
+0.695188 0 -0.718828
+0.801918 0 0.597434
+-0.170602 -0.977108 -0.127099
+-0.801918 0 -0.597434
+0.170602 0.977108 0.127099
+-0.685592 0 -0.727986
+-0.395632 0 0.918409
+0.718828 0 0.695188
+-0.216204 0.953696 -0.209094
+-0.718828 0 -0.695188
+0.216204 -0.953696 0.209094
+0.726998 0 -0.686639
+0.412178 0 0.911103
+-0.705949 0 0.708262
+0.202695 -0.957894 -0.203359
+0.705949 0 -0.708262
+-0.202695 0.957894 0.203359
+0.304296 0 -0.952578
+-0.708262 0 -0.705949
+-0.793569 0 0.608480
+0.166953 0.977619 -0.128013
+0.793569 0 -0.608480
+-0.166953 -0.977619 0.128013
+-0.368081 0 -0.929794
+0.896971 0 -0.442090
+0.170335 0 0.985386
+-0.042395 -0.968531 -0.245254
+-0.894927 0 0.446212
+0.442090 0 0.896971
+-0.088437 0.979787 -0.179433
+-0.442090 0 -0.896971
+0.088437 -0.979787 0.179433
+0.890842 0 0.454314
+-0.440408 0 0.897798
+0.091336 -0.978258 -0.186194
+0.440408 0 -0.897798
+-0.091336 0.978258 0.186194
+0.375731 0 -0.926729
+-0.897798 0 -0.440408
+-0.171974 0 0.985101
+0.043619 0.967299 -0.249858
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-binormals-array" count="105" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-lib-Vertex">
+          <input semantic="POSITION" source="#pCubeShape1-lib-Position"/>
+        </vertices>
+        <polygons material="blinn1" count="42">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape1-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape1-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape1-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape1-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape1-lib-map1-binormals"/>
+          <p>16 0 22 0 17 1 23 0 18 2 24 0 19 3 25 0</p>
+          <p>2 4 2 1 3 5 3 1 5 6 5 2 4 7 4 2</p>
+          <p>8 8 14 3 9 9 15 3 10 10 16 3 11 11 17 3</p>
+          <p>6 12 6 4 7 13 7 4 1 14 9 5 0 15 8 5</p>
+          <p>37 16 42 6 36 17 43 7 38 18 44 7 39 19 45 6</p>
+          <p>40 20 46 8 41 21 47 9 42 22 48 9 43 23 49 8</p>
+          <p>4 7 4 2 5 6 5 2 9 24 15 10 8 25 14 11</p>
+          <p>5 26 5 12 7 27 7 13 10 28 16 14 9 29 15 15</p>
+          <p>7 13 7 4 6 12 6 4 11 30 17 16 10 31 16 17</p>
+          <p>6 32 6 18 4 33 4 19 8 34 14 20 11 35 17 21</p>
+          <p>0 15 0 5 1 14 1 22 13 36 19 23 12 37 18 24</p>
+          <p>1 38 1 25 3 39 3 26 14 40 20 27 13 41 19 28</p>
+          <p>3 5 3 1 2 4 2 1 15 42 21 29 14 43 20 30</p>
+          <p>2 44 2 31 0 45 0 32 12 46 18 33 15 47 21 34</p>
+          <p>12 37 18 24 13 36 19 23 17 48 23 35 16 49 22 36</p>
+          <p>13 41 19 28 14 40 20 27 18 50 24 37 17 51 23 38</p>
+          <p>14 43 20 30 15 42 21 29 19 52 25 39 18 53 24 40</p>
+          <p>15 47 21 34 12 46 18 33 16 54 22 41 19 55 25 42</p>
+          <p>1 14 1 22 7 13 10 43 20 56 27 44 21 57 26 45</p>
+          <p>7 58 10 46 5 59 11 47 22 60 28 48 20 61 27 49</p>
+          <p>5 6 11 50 3 5 3 1 23 62 29 51 22 63 28 52</p>
+          <p>3 64 3 53 1 65 1 54 21 66 26 55 23 67 29 56</p>
+          <p>6 12 12 57 0 15 0 5 25 68 31 58 24 69 30 59</p>
+          <p>0 70 0 55 2 71 2 56 26 72 32 53 25 73 31 54</p>
+          <p>2 4 2 1 4 7 13 60 27 74 33 61 26 75 32 62</p>
+          <p>4 76 13 48 6 77 12 49 24 78 30 46 27 79 33 47</p>
+          <p>21 57 26 45 20 56 27 44 28 80 35 63 29 81 34 64</p>
+          <p>20 82 27 65 22 83 28 66 30 84 36 67 28 85 35 68</p>
+          <p>22 63 28 52 23 62 29 51 31 86 37 69 30 87 36 70</p>
+          <p>23 88 29 71 21 89 26 72 29 90 34 73 31 91 37 74</p>
+          <p>24 69 30 59 25 68 31 58 33 92 39 75 32 93 38 76</p>
+          <p>25 94 31 77 26 95 32 78 34 96 40 79 33 97 39 80</p>
+          <p>26 75 32 62 27 74 33 61 35 98 41 81 34 99 40 82</p>
+          <p>27 100 33 83 24 101 30 84 32 102 38 85 35 103 41 86</p>
+          <p>29 81 34 64 28 80 35 63 36 104 43 87 37 105 42 88</p>
+          <p>28 106 35 89 30 107 36 90 38 18 44 7 36 17 43 7</p>
+          <p>30 87 36 70 31 86 37 69 39 108 45 51 38 109 44 91</p>
+          <p>31 110 37 92 29 111 34 93 37 112 42 94 39 113 45 95</p>
+          <p>32 93 38 76 33 92 39 75 41 114 47 58 40 115 46 96</p>
+          <p>33 116 39 97 34 117 40 98 42 118 48 99 41 119 47 100</p>
+          <p>34 99 40 82 35 98 41 81 43 120 49 101 42 121 48 102</p>
+          <p>35 122 41 103 32 123 38 104 40 20 46 8 43 23 49 8</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="skinCluster1">
+      <skin source="#pCubeShape1-lib">
+        <bind_shape_matrix>0.544512 0 0 0 0 0.544512 0 0 0 0 0.544512 0 0 0 0 1.000000</bind_shape_matrix>
+        <source id="skinCluster1-Joints">
+          <Name_array count="9" id="skinCluster1-Joints-array">
+rootJoint
+backEndJoint
+frontEndJoint
+joint7
+joint8
+joint9
+joint10
+joint11
+joint12
+</Name_array>
+          <technique_common>
+            <accessor count="9" source="#skinCluster1-Joints-array">
+              <param type="IDREF"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="skinCluster1-Matrices">
+          <float_array count="144" id="skinCluster1-Matrices-array">
+1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000
+1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 -3.000000 0 0 0 1.000000
+1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 4.000000 0 0 0 1.000000
+0.707107 0 0.707107 -1.414214 0 1.000000 0 0 -0.707107 0 0.707107 1.414214 0 0 0 1.000000
+0.316228 0 0.948683 -3.162278 0 1.000000 0 0 -0.948683 0 0.316228 3.162278 0 0 0 1.000000
+1.000000 0 0 -5.000000 0 1.000000 0 0 0 0 1.000000 -5.000000 0 0 0 1.000000
+-0.707107 0 0.707107 -1.414214 0 1.000000 0 0 -0.707107 0 -0.707107 -1.414214 0 0 0 1.000000
+-0.316228 0 0.948683 -3.162278 0 1.000000 0 0 -0.948683 0 -0.316228 -3.162278 0 0 0 1.000000
+1.000000 0 0 5.000000 0 1.000000 0 0 0 0 1.000000 -5.000000 0 0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor count="9" stride="16" source="#skinCluster1-Matrices-array">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="skinCluster1-Weights">
+          <float_array count="173" id="skinCluster1-Weights-array">
+1.000000 0.763581 0.036521 0.002258 0.015823 0.181816 0.763581 0.036521 0.002258 0.181816 0.015823 0.763581 0.036521 0.002258 0.015823 0.181816 0.763581 0.036521 0.002258 0.181816 0.015823 0.781611 0.005502 0.010581 0.016197 0.186109 0.781611 0.005502 0.010581 0.186109 0.016197 0.781611 0.005502 0.010581 0.016197 0.186109 0.781611 0.005502 0.010581 0.186109 0.016197 0.499941 0.499941 0.499941 0.499941 0.499941 0.499941 0.499941 0.499941 0.499913 0.499913 0.499913 0.499913 0.499913 0.499913 0.499913 0.499913 0.498642 0.498642 0.001059 0.001559 0.498642 0.498642 0.001559 0.001059 0.498642 0.498642 0.001559 0.001059 0.498642 0.498642 0.001059 0.001559 0.516048 0.002739 0.004768 0.472590 0.003856 0.446983 0.010977 0.525320 0.015754 0.516048 0.002739 0.004768 0.472590 0.003856 0.446983 0.010977 0.525320 0.015754 0.516048 0.002739 0.004768 0.003856 0.472590 0.446983 0.010977 0.525320 0.015754 0.446983 0.010977 0.525320 0.015754 0.516048 0.002739 0.004768 0.003856 0.472590 0.013098 0.001824 0.490414 0.489208 0.005457 0.008635 0.003979 0.470162 0.510327 0.006897 0.013098 0.001824 0.490414 0.489208 0.005457 0.008635 0.003979 0.470162 0.510327 0.006897 0.011272 0.001666 0.490892 0.490892 0.005279 0.007193 0.003805 0.427276 0.553221 0.008506 0.007193 0.003805 0.427276 0.553221 0.008506 0.011272 0.001666 0.490892 0.490892 0.005279 0.009215 0.705939 0.283742 0.003642 0.497334 0.497334 0.009215 0.705939 0.283742 0.003642 0.497334 0.497334 0.009215 0.705939 0.283742 0.003642 0.497334 0.497334 0.003642 0.497334 0.497334 0.009215 0.705939 0.283742 </float_array>
+          <technique_common>
+            <accessor count="173" source="#skinCluster1-Weights-array">
+              <param type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#skinCluster1-Joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#skinCluster1-Matrices"/>
+        </joints>
+        <vertex_weights count="44">
+          <input semantic="JOINT" offset="0" source="#skinCluster1-Joints"/>
+          <input semantic="WEIGHT" offset="1" source="#skinCluster1-Weights"/>
+          <vcount>5 5 5 5 5 5 5 5 2 2 2 2 2 2 2 2 4 4 4 4 5 4 5 4 5 4 4 5 5 5 5 5 5 5 5 5 3 3 3 3 3 3 3 3</vcount>
+          <v>0 1 1 2 2 3 3 4 6 5 0 6 1 7 2 8 3 9 6 10 0 11 1 12 2 13 3 14 6 15 0 16 1 17 2 18 3 19 6 20 0 21 1 22 2 23 3 24 6 25 0 26 1 27 2 28 3 29 6 30 0 31 1 32 2 33 3 34 6 35 0 36 1 37 2 38 3 39 6 40 0 41 2 42 0 43 2 44 0 45 2 46 0 47 2 48 0 49 1 50 0 51 1 52 0 53 1 54 0 55 1 56 0 57 1 58 3 59 6 60 0 61 1 62 3 63 6 64 0 65 1 66 3 67 6 68 0 69 1 70 3 71 6 72 0 73 1 74 2 75 3 76 6 77 0 78 1 79 3 80 4 81 0 82 1 83 2 84 3 85 6 86 0 87 1 88 3 89 4 90 0 91 1 92 2 93 3 94 6 95 0 96 1 97 6 98 7 99 0 100 1 101 6 102 7 103 0 104 1 105 2 106 3 107 6 108 0 109 1 110 3 111 4 112 5 113 0 114 1 115 3 116 4 117 5 118 0 119 1 120 3 121 4 122 5 123 0 124 1 125 3 126 4 127 5 128 0 129 1 130 6 131 7 132 8 133 0 134 1 135 6 136 7 137 8 138 0 139 1 140 6 141 7 142 8 143 0 144 1 145 6 146 7 147 8 148 3 149 4 150 5 151 3 152 4 153 5 154 3 155 4 156 5 157 3 158 4 159 5 160 6 161 7 162 8 163 6 164 7 165 8 166 6 167 7 168 8 169 6 170 7 171 8 172</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_animations>
+    <animation id="rootJoint_rotateX-animANGLE">
+      <source id="rootJoint_rotateX-anim-inputANGLE">
+        <float_array count="3" id="rootJoint_rotateX-anim-inputANGLE-array">
+0.083333 0.625000 1.250000 </float_array>
+        <technique_common>
+          <accessor count="3" source="#rootJoint_rotateX-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="rootJoint_rotateX-anim-outputANGLE">
+        <float_array count="3" id="rootJoint_rotateX-anim-outputANGLE-array">
+0 -28.793524 0 </float_array>
+        <technique_common>
+          <accessor count="3" source="#rootJoint_rotateX-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="rootJoint_rotateX-anim-intanANGLE">
+        <float_array count="3" id="rootJoint_rotateX-anim-intanANGLE-array">
+-22.148844 0 11.997291 </float_array>
+        <technique_common>
+          <accessor count="3" source="#rootJoint_rotateX-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="rootJoint_rotateX-anim-outtanANGLE">
+        <float_array count="3" id="rootJoint_rotateX-anim-outtanANGLE-array">
+-11.997291 0 19.195665 </float_array>
+        <technique_common>
+          <accessor count="3" source="#rootJoint_rotateX-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="rootJoint_rotateX-anim-interpANGLE">
+        <Name_array count="3" id="rootJoint_rotateX-anim-interpANGLE-array">BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="3" source="#rootJoint_rotateX-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="rootJoint_rotateX-anim-samplerANGLE">
+        <input semantic="INPUT" source="#rootJoint_rotateX-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#rootJoint_rotateX-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#rootJoint_rotateX-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#rootJoint_rotateX-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#rootJoint_rotateX-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#rootJoint_rotateX-anim-samplerANGLE" target="rootJoint/rotateX.ANGLE"/>
+    </animation>
+    <animation id="joint7_rotateX-animANGLE">
+      <source id="joint7_rotateX-anim-inputANGLE">
+        <float_array count="3" id="joint7_rotateX-anim-inputANGLE-array">
+0.083333 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateX-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint7_rotateX-anim-outputANGLE">
+        <float_array count="3" id="joint7_rotateX-anim-outputANGLE-array">
+0 34.956928 -5.019104 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateX-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateX-anim-intanANGLE">
+        <float_array count="3" id="joint7_rotateX-anim-intanANGLE-array">
+19.420502 -1.344402 -16.656666 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateX-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateX-anim-outtanANGLE">
+        <float_array count="3" id="joint7_rotateX-anim-outtanANGLE-array">
+14.565374 -0.746890 -39.975998 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateX-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateX-anim-interpANGLE">
+        <Name_array count="3" id="joint7_rotateX-anim-interpANGLE-array">BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateX-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint7_rotateX-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint7_rotateX-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint7_rotateX-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint7_rotateX-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint7_rotateX-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint7_rotateX-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint7_rotateX-anim-samplerANGLE" target="joint7/rotateX.ANGLE"/>
+    </animation>
+    <animation id="joint7_rotateY-animANGLE">
+      <source id="joint7_rotateY-anim-inputANGLE">
+        <float_array count="4" id="joint7_rotateY-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint7_rotateY-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint7_rotateY-anim-outputANGLE">
+        <float_array count="4" id="joint7_rotateY-anim-outputANGLE-array">
+0 51.546383 28.840776 -14.475340 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint7_rotateY-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateY-anim-intanANGLE">
+        <float_array count="4" id="joint7_rotateY-anim-intanANGLE-array">
+64.432922 5.340880 -13.754514 -18.048367 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint7_rotateY-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateY-anim-outtanANGLE">
+        <float_array count="4" id="joint7_rotateY-anim-outtanANGLE-array">
+21.477640 6.676100 -13.754514 -43.316078 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint7_rotateY-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateY-anim-interpANGLE">
+        <Name_array count="4" id="joint7_rotateY-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint7_rotateY-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint7_rotateY-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint7_rotateY-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint7_rotateY-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint7_rotateY-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint7_rotateY-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint7_rotateY-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint7_rotateY-anim-samplerANGLE" target="joint7/rotateY.ANGLE"/>
+    </animation>
+    <animation id="joint7_rotateZ-animANGLE">
+      <source id="joint7_rotateZ-anim-inputANGLE">
+        <float_array count="3" id="joint7_rotateZ-anim-inputANGLE-array">
+0.083333 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateZ-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint7_rotateZ-anim-outputANGLE">
+        <float_array count="3" id="joint7_rotateZ-anim-outputANGLE-array">
+0 60.741615 1.575120 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateZ-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateZ-anim-intanANGLE">
+        <float_array count="3" id="joint7_rotateZ-anim-intanANGLE-array">
+33.745312 0.421907 -24.652685 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateZ-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateZ-anim-outtanANGLE">
+        <float_array count="3" id="joint7_rotateZ-anim-outtanANGLE-array">
+25.308985 0.234393 -59.166447 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateZ-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint7_rotateZ-anim-interpANGLE">
+        <Name_array count="3" id="joint7_rotateZ-anim-interpANGLE-array">BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="3" source="#joint7_rotateZ-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint7_rotateZ-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint7_rotateZ-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint7_rotateZ-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint7_rotateZ-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint7_rotateZ-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint7_rotateZ-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint7_rotateZ-anim-samplerANGLE" target="joint7/rotateZ.ANGLE"/>
+    </animation>
+    <animation id="joint8_rotateX-animANGLE">
+      <source id="joint8_rotateX-anim-inputANGLE">
+        <float_array count="4" id="joint8_rotateX-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateX-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint8_rotateX-anim-outputANGLE">
+        <float_array count="4" id="joint8_rotateX-anim-outputANGLE-array">
+0 2.274429 2.300887 2.983344 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateX-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateX-anim-intanANGLE">
+        <float_array count="4" id="joint8_rotateX-anim-intanANGLE-array">
+0 0 0 0 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateX-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateX-anim-outtanANGLE">
+        <float_array count="4" id="joint8_rotateX-anim-outtanANGLE-array">
+0 0 0 0 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateX-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateX-anim-interpANGLE">
+        <Name_array count="4" id="joint8_rotateX-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateX-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint8_rotateX-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint8_rotateX-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint8_rotateX-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint8_rotateX-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint8_rotateX-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint8_rotateX-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint8_rotateX-anim-samplerANGLE" target="joint8/rotateX.ANGLE"/>
+    </animation>
+    <animation id="joint8_rotateY-animANGLE">
+      <source id="joint8_rotateY-anim-inputANGLE">
+        <float_array count="4" id="joint8_rotateY-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateY-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint8_rotateY-anim-outputANGLE">
+        <float_array count="4" id="joint8_rotateY-anim-outputANGLE-array">
+-53.175526 -15.170799 17.434992 -42.612812 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateY-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateY-anim-intanANGLE">
+        <float_array count="4" id="joint8_rotateY-anim-intanANGLE-array">
+47.505863 13.076011 -5.717081 -25.019897 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateY-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateY-anim-outtanANGLE">
+        <float_array count="4" id="joint8_rotateY-anim-outtanANGLE-array">
+15.835288 16.345013 -5.717081 -60.047752 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateY-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateY-anim-interpANGLE">
+        <Name_array count="4" id="joint8_rotateY-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateY-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint8_rotateY-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint8_rotateY-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint8_rotateY-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint8_rotateY-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint8_rotateY-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint8_rotateY-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint8_rotateY-anim-samplerANGLE" target="joint8/rotateY.ANGLE"/>
+    </animation>
+    <animation id="joint8_rotateZ-animANGLE">
+      <source id="joint8_rotateZ-anim-inputANGLE">
+        <float_array count="4" id="joint8_rotateZ-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateZ-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint8_rotateZ-anim-outputANGLE">
+        <float_array count="4" id="joint8_rotateZ-anim-outputANGLE-array">
+0 0.788889 2.074128 -0.636441 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateZ-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateZ-anim-intanANGLE">
+        <float_array count="4" id="joint8_rotateZ-anim-intanANGLE-array">
+0 0 0 0 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateZ-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateZ-anim-outtanANGLE">
+        <float_array count="4" id="joint8_rotateZ-anim-outtanANGLE-array">
+0 0 0 0 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateZ-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint8_rotateZ-anim-interpANGLE">
+        <Name_array count="4" id="joint8_rotateZ-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint8_rotateZ-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint8_rotateZ-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint8_rotateZ-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint8_rotateZ-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint8_rotateZ-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint8_rotateZ-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint8_rotateZ-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint8_rotateZ-anim-samplerANGLE" target="joint8/rotateZ.ANGLE"/>
+    </animation>
+    <animation id="joint10_rotateX-animANGLE">
+      <source id="joint10_rotateX-anim-inputANGLE">
+        <float_array count="3" id="joint10_rotateX-anim-inputANGLE-array">
+0.083333 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateX-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint10_rotateX-anim-outputANGLE">
+        <float_array count="3" id="joint10_rotateX-anim-outputANGLE-array">
+0 -53.124298 0 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateX-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateX-anim-intanANGLE">
+        <float_array count="3" id="joint10_rotateX-anim-intanANGLE-array">
+-29.513474 0 22.135107 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateX-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateX-anim-outtanANGLE">
+        <float_array count="3" id="joint10_rotateX-anim-outtanANGLE-array">
+-22.135105 0 53.124256 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateX-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateX-anim-interpANGLE">
+        <Name_array count="3" id="joint10_rotateX-anim-interpANGLE-array">BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateX-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint10_rotateX-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint10_rotateX-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint10_rotateX-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint10_rotateX-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint10_rotateX-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint10_rotateX-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint10_rotateX-anim-samplerANGLE" target="joint10/rotateX.ANGLE"/>
+    </animation>
+    <animation id="joint10_rotateY-animANGLE">
+      <source id="joint10_rotateY-anim-inputANGLE">
+        <float_array count="4" id="joint10_rotateY-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint10_rotateY-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint10_rotateY-anim-outputANGLE">
+        <float_array count="4" id="joint10_rotateY-anim-outputANGLE-array">
+0 -77.608330 -50.317802 0 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint10_rotateY-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateY-anim-intanANGLE">
+        <float_array count="4" id="joint10_rotateY-anim-intanANGLE-array">
+-97.010330 -9.318104 16.168388 20.965733 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint10_rotateY-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateY-anim-outtanANGLE">
+        <float_array count="4" id="joint10_rotateY-anim-outtanANGLE-array">
+-32.336777 -11.647630 16.168388 50.317757 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint10_rotateY-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateY-anim-interpANGLE">
+        <Name_array count="4" id="joint10_rotateY-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint10_rotateY-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint10_rotateY-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint10_rotateY-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint10_rotateY-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint10_rotateY-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint10_rotateY-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint10_rotateY-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint10_rotateY-anim-samplerANGLE" target="joint10/rotateY.ANGLE"/>
+    </animation>
+    <animation id="joint10_rotateZ-animANGLE">
+      <source id="joint10_rotateZ-anim-inputANGLE">
+        <float_array count="3" id="joint10_rotateZ-anim-inputANGLE-array">
+0.083333 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateZ-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint10_rotateZ-anim-outputANGLE">
+        <float_array count="3" id="joint10_rotateZ-anim-outputANGLE-array">
+0 77.438263 0 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateZ-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateZ-anim-intanANGLE">
+        <float_array count="3" id="joint10_rotateZ-anim-intanANGLE-array">
+43.021217 0 -32.265915 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateZ-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateZ-anim-outtanANGLE">
+        <float_array count="3" id="joint10_rotateZ-anim-outtanANGLE-array">
+32.265915 0 -77.438194 </float_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateZ-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint10_rotateZ-anim-interpANGLE">
+        <Name_array count="3" id="joint10_rotateZ-anim-interpANGLE-array">BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="3" source="#joint10_rotateZ-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint10_rotateZ-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint10_rotateZ-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint10_rotateZ-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint10_rotateZ-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint10_rotateZ-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint10_rotateZ-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint10_rotateZ-anim-samplerANGLE" target="joint10/rotateZ.ANGLE"/>
+    </animation>
+    <animation id="joint11_rotateY-animANGLE">
+      <source id="joint11_rotateY-anim-inputANGLE">
+        <float_array count="4" id="joint11_rotateY-anim-inputANGLE-array">
+0.083333 0.416667 0.833333 1.250000 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint11_rotateY-anim-inputANGLE-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="joint11_rotateY-anim-outputANGLE">
+        <float_array count="4" id="joint11_rotateY-anim-outputANGLE-array">
+59.207726 56.544842 3.772920 59.207726 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint11_rotateY-anim-outputANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint11_rotateY-anim-intanANGLE">
+        <float_array count="4" id="joint11_rotateY-anim-intanANGLE-array">
+0 0 0.554767 23.097816 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint11_rotateY-anim-intanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint11_rotateY-anim-outtanANGLE">
+        <float_array count="4" id="joint11_rotateY-anim-outtanANGLE-array">
+0 0 0.554767 55.434761 </float_array>
+        <technique_common>
+          <accessor count="4" source="#joint11_rotateY-anim-outtanANGLE-array">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="joint11_rotateY-anim-interpANGLE">
+        <Name_array count="4" id="joint11_rotateY-anim-interpANGLE-array">BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="4" source="#joint11_rotateY-anim-interpANGLE-array">
+            <param name="ANGLE" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="joint11_rotateY-anim-samplerANGLE">
+        <input semantic="INPUT" source="#joint11_rotateY-anim-inputANGLE"/>
+        <input semantic="OUTPUT" source="#joint11_rotateY-anim-outputANGLE"/>
+        <input semantic="IN_TANGENT" source="#joint11_rotateY-anim-intanANGLE"/>
+        <input semantic="OUT_TANGENT" source="#joint11_rotateY-anim-outtanANGLE"/>
+        <input semantic="INTERPOLATION" source="#joint11_rotateY-anim-interpANGLE"/>
+      </sampler>
+      <channel source="#joint11_rotateY-anim-samplerANGLE" target="joint11/rotateY.ANGLE"/>
+    </animation>
+  </library_animations>
+  <library_lights>
+    <light id="LILLI_CAMERA_SETUP_pointLightShape1-lib" name="pointLightShape1">
+      <technique_common>
+        <point>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">0.500000</intensity>
+      </technique>
+    </light>
+    <light id="LILLI_CAMERA_SETUP_pointLightShape2-lib" name="pointLightShape2">
+      <technique_common>
+        <point>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">0.500000</intensity>
+      </technique>
+    </light>
+    <light id="ambientLightShape1-lib" name="ambientLightShape1">
+      <technique_common>
+        <ambient>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+        </ambient>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">1.000000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_cameras>
+    <camera id="testCameraShape-lib" name="testCameraShape">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear sid="znear">0.010000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599993</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="simple_003_SkeletalAnimation_04">
+      <node id="eagle8a_bird2" name="eagle8a_bird2" sid="eagle8a_bird2">
+        <translate sid="translate">0.017985 -1.547644 0</translate>
+        <translate sid="rotatePivot">0.000280 1.722671 -0.315306</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <translate sid="rotatePivotInverse">-0.000280 -1.722671 0.315306</translate>
+        <translate sid="scalePivot">0.000280 1.722671 -0.315306</translate>
+        <scale sid="scale">-1.000000 1.000000 1.000000</scale>
+        <translate sid="scalePivotInverse">-0.000280 -1.722671 0.315306</translate>
+      </node>
+      <node id="eagle8a_bird3" name="eagle8a_bird3" sid="eagle8a_bird3">
+        <translate sid="translate">-0.017988 -1.547644 0</translate>
+        <translate sid="rotatePivot">0.000280 1.722671 -0.315306</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <translate sid="rotatePivotInverse">-0.000280 -1.722671 0.315306</translate>
+        <translate sid="scalePivot">0.000280 1.722671 -0.315306</translate>
+        <translate sid="scalePivotInverse">-0.000280 -1.722671 0.315306</translate>
+      </node>
+      <node id="testCamera" name="testCamera" sid="testCamera">
+        <translate sid="translate">14.048923 21.887582 3.990147</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 76.800064</rotate>
+        <rotate sid="rotateX">1 0 0 -57.000050</rotate>
+        <instance_camera url="#testCameraShape-lib"/>
+      </node>
+      <node id="LILLI_CAMERA_SETUP_pointLight1" name="pointLight1" sid="LILLI_CAMERA_SETUP_pointLight1">
+        <translate sid="translate">0 29.838070 43.339900</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#LILLI_CAMERA_SETUP_pointLightShape1-lib"/>
+      </node>
+      <node id="LILLI_CAMERA_SETUP_pointLight2" name="pointLight2" sid="LILLI_CAMERA_SETUP_pointLight2">
+        <translate sid="translate">-29.607918 22.452023 28.467643</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#LILLI_CAMERA_SETUP_pointLightShape2-lib"/>
+      </node>
+      <node id="rootJoint" name="rootJoint" sid="rootJoint" type="JOINT">
+        <rotate sid="jointOrientZ">0 0 1 0</rotate>
+        <rotate sid="jointOrientY">0 1 0 0</rotate>
+        <rotate sid="jointOrientX">1 0 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 -24.180271</rotate>
+        <node id="backEndJoint" name="backEndJoint" sid="backEndJoint" type="JOINT">
+          <translate sid="translate">0 0 3.000000</translate>
+          <rotate sid="jointOrientZ">0 0 1 0</rotate>
+          <rotate sid="jointOrientY">0 1 0 0</rotate>
+          <rotate sid="jointOrientX">1 0 0 0</rotate>
+        </node>
+        <node id="frontEndJoint" name="frontEndJoint" sid="frontEndJoint" type="JOINT">
+          <translate sid="translate">0 -2.354096 -4.000000</translate>
+          <rotate sid="jointOrientZ">0 0 1 0</rotate>
+          <rotate sid="jointOrientY">0 1 0 0</rotate>
+          <rotate sid="jointOrientX">1 0 0 0</rotate>
+        </node>
+        <node id="joint7" name="joint7" sid="joint7" type="JOINT">
+          <translate sid="translate">2.000000 0 0</translate>
+          <rotate sid="jointOrientZ">0 0 1 0</rotate>
+          <rotate sid="jointOrientY">0 1 0 -45.000038</rotate>
+          <rotate sid="jointOrientX">1 0 0 0</rotate>
+          <rotate sid="rotateZ">0 0 1 37.836937</rotate>
+          <rotate sid="rotateY">0 1 0 52.505558</rotate>
+          <rotate sid="rotateX">1 0 0 22.251400</rotate>
+          <node id="joint8" name="joint8" sid="joint8" type="JOINT">
+            <translate sid="translate">2.828427 0 0</translate>
+            <rotate sid="jointOrientZ">0 0 1 0</rotate>
+            <rotate sid="jointOrientY">0 1 0 -26.565075</rotate>
+            <rotate sid="jointOrientX">1 0 0 0</rotate>
+            <rotate sid="rotateZ">0 0 1 0.824875</rotate>
+            <rotate sid="rotateY">0 1 0 -10.956874</rotate>
+            <rotate sid="rotateX">1 0 0 2.275169</rotate>
+            <node id="joint9" name="joint9" sid="joint9" type="JOINT">
+              <translate sid="translate">3.162278 0 0</translate>
+              <rotate sid="jointOrientZ">0 0 1 0</rotate>
+              <rotate sid="jointOrientY">0 1 0 71.565117</rotate>
+              <rotate sid="jointOrientX">1 0 0 0</rotate>
+            </node>
+          </node>
+        </node>
+        <node id="joint10" name="joint10" sid="joint10" type="JOINT">
+          <translate sid="translate">-2.000000 0 0</translate>
+          <rotate sid="jointOrientZ">0 0 1 0</rotate>
+          <rotate sid="jointOrientY">0 1 0 225.000198</rotate>
+          <rotate sid="jointOrientX">1 0 0 0</rotate>
+          <rotate sid="rotateZ">0 0 1 48.398914</rotate>
+          <rotate sid="rotateY">0 1 0 -79.457733</rotate>
+          <rotate sid="rotateX">1 0 0 -33.202686</rotate>
+          <node id="joint11" name="joint11" sid="joint11" type="JOINT">
+            <translate sid="translate">2.828427 0 0.000000</translate>
+            <rotate sid="jointOrientZ">0 0 1 0</rotate>
+            <rotate sid="jointOrientY">0 1 0 26.565075</rotate>
+            <rotate sid="jointOrientX">1 0 0 0</rotate>
+            <rotate sid="rotateY">0 1 0 55.055248</rotate>
+            <node id="joint12" name="joint12" sid="joint12" type="JOINT">
+              <translate sid="translate">3.162278 0 -0.000000</translate>
+              <rotate sid="jointOrientZ">0 0 1 0</rotate>
+              <rotate sid="jointOrientY">0 1 0 108.435043</rotate>
+              <rotate sid="jointOrientX">1 0 0 0</rotate>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node id="pCube1" name="pCube1" sid="pCube1">
+        <instance_controller url="#skinCluster1">
+          <skeleton>#rootJoint</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="blinn1" target="#blinn1"/>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="ambientLight1" name="ambientLight1" sid="ambientLight1">
+        <translate sid="translate">0 0 -23.976051</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#ambientLightShape1-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0.041667</start_time>
+          <end_time>2.083333</end_time>
+          <layer name="lowpoly">eagle8a_bird2 eagle8a_bird3 </layer>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

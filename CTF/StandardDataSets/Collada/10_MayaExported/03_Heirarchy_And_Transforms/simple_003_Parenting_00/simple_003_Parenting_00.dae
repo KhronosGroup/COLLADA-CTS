@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.90 May 19 2006 at 18:36:30</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test7/Execution_2006_05_23_(0)/step0/simple_003_Parenting_00.mb</source_data>
+    </contributor>
+    <created>2006-05-23T17:42:34Z</created>
+    <modified>2006-05-23T17:42:34Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+    <material id="axis_lambert2" name="lambert2">
+      <instance_effect url="#axis_lambert2-fx"/>
+    </material>
+    <material id="axis_lambert3" name="lambert3">
+      <instance_effect url="#axis_lambert3-fx"/>
+    </material>
+    <material id="axis_lambert4" name="lambert4">
+      <instance_effect url="#axis_lambert4-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx" name="lambert1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.500000 0.500000 0.500000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="axis_lambert2-fx" name="axis_lambert2">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">1.000000 0 0 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="axis_lambert3-fx" name="axis_lambert3">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0 0 1.000000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="axis_lambert4-fx" name="axis_lambert4">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0 1.000000 0 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="axis_pCubeShape2-lib" name="pCubeShape2">
+      <mesh>
+        <source id="axis_pCubeShape2-lib-Position">
+          <float_array count="60" id="axis_pCubeShape2-lib-Position-array">
+-1.500000 -1.500000 1.500000
+1.500000 -1.500000 1.500000
+-1.500000 1.500000 1.500000
+1.500000 1.500000 1.500000
+-1.500000 1.500000 -1.500000
+1.500000 1.500000 -1.500000
+-1.500000 -1.500000 -1.500000
+1.500000 -1.500000 -1.500000
+-1.500000 -1.500000 48.774410
+1.500000 -1.500000 48.774410
+1.500000 1.500000 48.774410
+-1.500000 1.500000 48.774410
+-1.500000 48.774410 1.500001
+1.500000 48.774410 1.500001
+1.500000 48.774410 -1.499999
+-1.500000 48.774410 -1.499999
+48.774410 -1.500000 -1.500000
+48.774410 -1.500000 1.500000
+48.774410 1.500000 -1.500000
+48.774410 1.500000 1.500000
+</float_array>
+          <technique_common>
+            <accessor source="#axis_pCubeShape2-lib-Position-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="axis_pCubeShape2-lib-Normal">
+          <float_array count="180" id="axis_pCubeShape2-lib-Normal-array">
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+-1.000000 0 0
+-1.000000 0 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 -1.000000
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#axis_pCubeShape2-lib-Normal-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="axis_pCubeShape2-lib-map1" name="map1">
+          <float_array count="52" id="axis_pCubeShape2-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+0 0
+1.000000 0
+1.000000 1.000000
+0 1.000000
+0 1.000000
+1.000000 1.000000
+1.000000 2.000000
+0 2.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#axis_pCubeShape2-lib-map1-array" count="26" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="axis_pCubeShape2-lib-map1-tangents">
+          <float_array count="126" id="axis_pCubeShape2-lib-map1-tangents-array">
+1.000000 0 -0.000001
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 1.000000
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+-0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 -0.999498
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+0 0.999498 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+-0.031682 -0.999498 0
+0 0 -1.000000
+0 -0.999498 0.031682
+0.999498 0 0.031682
+0 0 1.000000
+-0.999498 0 -0.031682
+0 1.000000 0
+0.999498 -0.031682 0
+0 -1.000000 0
+-0.999498 0.031682 0
+0 0 1.000000
+0.999498 0 -0.031682
+0 0 -1.000000
+-0.999498 0 0.031682
+0 -1.000000 0
+0.999498 0.031682 0
+0 1.000000 0
+-0.999498 -0.031682 0
+</float_array>
+          <technique_common>
+            <accessor source="#axis_pCubeShape2-lib-map1-tangents-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="axis_pCubeShape2-lib-map1-binormals">
+          <float_array count="126" id="axis_pCubeShape2-lib-map1-binormals-array">
+0 1.000000 0
+0 0.000001 -1.000000
+0 -1.000000 0
+0 0 1.000000
+0.000001 1.000000 0
+0 1.000000 0
+-0.999498 0 -0.031682
+0 0 -1.000000
+0.999498 0 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+0 0 -1.000000
+0 0.999498 0.031682
+0 0 1.000000
+0.999498 0 -0.031682
+-0.999498 0 0.031682
+0 0 -1.000000
+0 -0.999498 0.031682
+-0.999498 -0.031682 0
+0 -1.000000 0
+0.999498 0.031682 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-0.999498 0.031682 0
+0 -1.000000 0
+0 0.031682 0.999498
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+1.000000 0 0
+-0.031682 -0.999498 0
+-1.000000 0 0
+0.031682 0.999498 0
+1.000000 0 0
+-0.031682 0 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+1.000000 0 0
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+</float_array>
+          <technique_common>
+            <accessor source="#axis_pCubeShape2-lib-map1-binormals-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="axis_pCubeShape2-lib-Vertex">
+          <input semantic="POSITION" source="#axis_pCubeShape2-lib-Position"/>
+        </vertices>
+        <polygons material="lambert1" count="3">
+          <input semantic="VERTEX" offset="0" source="#axis_pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#axis_pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#axis_pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-binormals"/>
+          <p>4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2</p>
+          <p>6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3</p>
+          <p>6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polygons>
+        <polygons material="axis_lambert2" count="5">
+          <input semantic="VERTEX" offset="0" source="#axis_pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#axis_pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#axis_pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-binormals"/>
+          <p>17 16 22 4 16 17 23 4 18 18 24 4 19 19 25 4</p>
+          <p>1 14 1 6 7 13 10 27 16 48 23 28 17 49 22 29</p>
+          <p>7 10 10 30 5 9 11 31 18 50 24 32 16 51 23 33</p>
+          <p>5 52 11 34 3 53 3 35 19 54 25 36 18 55 24 37</p>
+          <p>3 56 3 38 1 57 1 39 17 58 22 40 19 59 25 41</p>
+        </polygons>
+        <polygons material="axis_lambert3" count="5">
+          <input semantic="VERTEX" offset="0" source="#axis_pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#axis_pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#axis_pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-binormals"/>
+          <p>8 0 14 0 9 1 15 0 10 2 16 0 11 3 17 0</p>
+          <p>0 15 0 3 1 14 1 6 9 24 15 7 8 25 14 8</p>
+          <p>1 26 1 9 3 27 3 10 10 28 16 11 9 29 15 12</p>
+          <p>3 30 3 13 2 31 2 14 11 32 17 1 10 33 16 15</p>
+          <p>2 22 2 5 0 21 0 5 8 34 14 16 11 35 17 17</p>
+        </polygons>
+        <polygons material="axis_lambert4" count="5">
+          <input semantic="VERTEX" offset="0" source="#axis_pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#axis_pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#axis_pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#axis_pCubeShape2-lib-map1-binormals"/>
+          <p>12 4 18 1 13 5 19 1 14 6 20 1 15 7 21 1</p>
+          <p>2 36 2 0 3 37 3 18 13 38 19 19 12 39 18 20</p>
+          <p>3 40 3 4 5 41 5 21 14 42 20 22 13 43 19 23</p>
+          <p>5 9 5 2 4 8 4 2 15 44 21 2 14 45 20 24</p>
+          <p>4 23 4 5 2 22 2 5 12 46 18 25 15 47 21 26</p>
+        </polygons>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape2-lib" name="pCubeShape2">
+      <mesh>
+        <source id="pCubeShape2-lib-Position">
+          <float_array count="60" id="pCubeShape2-lib-Position-array">
+-1.500000 -1.500000 1.500000
+1.500000 -1.500000 1.500000
+-1.500000 1.500000 1.500000
+1.500000 1.500000 1.500000
+-1.500000 1.500000 -1.500000
+1.500000 1.500000 -1.500000
+-1.500000 -1.500000 -1.500000
+1.500000 -1.500000 -1.500000
+-1.500000 -1.500000 48.774410
+1.500000 -1.500000 48.774410
+1.500000 1.500000 48.774410
+-1.500000 1.500000 48.774410
+-1.500000 48.774410 1.500001
+1.500000 48.774410 1.500001
+1.500000 48.774410 -1.499999
+-1.500000 48.774410 -1.499999
+48.774410 -1.500000 -1.500000
+48.774410 -1.500000 1.500000
+48.774410 1.500000 -1.500000
+48.774410 1.500000 1.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-Position-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-Normal">
+          <float_array count="180" id="pCubeShape2-lib-Normal-array">
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+-1.000000 0 0
+-1.000000 0 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 -1.000000
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-Normal-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pCubeShape2-lib-map1" name="map1">
+          <float_array count="52" id="pCubeShape2-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+0 0
+1.000000 0
+1.000000 1.000000
+0 1.000000
+0 1.000000
+1.000000 1.000000
+1.000000 2.000000
+0 2.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-array" count="26" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-map1-tangents">
+          <float_array count="126" id="pCubeShape2-lib-map1-tangents-array">
+1.000000 0 -0.000001
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 1.000000
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+-0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 -0.999498
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+0 0.999498 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+-0.031682 -0.999498 0
+0 0 -1.000000
+0 -0.999498 0.031682
+0.999498 0 0.031682
+0 0 1.000000
+-0.999498 0 -0.031682
+0 1.000000 0
+0.999498 -0.031682 0
+0 -1.000000 0
+-0.999498 0.031682 0
+0 0 1.000000
+0.999498 0 -0.031682
+0 0 -1.000000
+-0.999498 0 0.031682
+0 -1.000000 0
+0.999498 0.031682 0
+0 1.000000 0
+-0.999498 -0.031682 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-tangents-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-map1-binormals">
+          <float_array count="126" id="pCubeShape2-lib-map1-binormals-array">
+0 1.000000 0
+0 0.000001 -1.000000
+0 -1.000000 0
+0 0 1.000000
+0.000001 1.000000 0
+0 1.000000 0
+-0.999498 0 -0.031682
+0 0 -1.000000
+0.999498 0 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+0 0 -1.000000
+0 0.999498 0.031682
+0 0 1.000000
+0.999498 0 -0.031682
+-0.999498 0 0.031682
+0 0 -1.000000
+0 -0.999498 0.031682
+-0.999498 -0.031682 0
+0 -1.000000 0
+0.999498 0.031682 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-0.999498 0.031682 0
+0 -1.000000 0
+0 0.031682 0.999498
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+1.000000 0 0
+-0.031682 -0.999498 0
+-1.000000 0 0
+0.031682 0.999498 0
+1.000000 0 0
+-0.031682 0 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+1.000000 0 0
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-binormals-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape2-lib-Vertex">
+          <input semantic="POSITION" source="#pCubeShape2-lib-Position"/>
+        </vertices>
+        <polygons material="lambert1" count="3">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape2-lib-map1-binormals"/>
+          <p>4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2</p>
+          <p>6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3</p>
+          <p>6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polygons>
+        <polygons material="axis_lambert2" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape2-lib-map1-binormals"/>
+          <p>17 16 22 4 16 17 23 4 18 18 24 4 19 19 25 4</p>
+          <p>1 14 1 6 7 13 10 27 16 48 23 28 17 49 22 29</p>
+          <p>7 10 10 30 5 9 11 31 18 50 24 32 16 51 23 33</p>
+          <p>5 52 11 34 3 53 3 35 19 54 25 36 18 55 24 37</p>
+          <p>3 56 3 38 1 57 1 39 17 58 22 40 19 59 25 41</p>
+        </polygons>
+        <polygons material="axis_lambert3" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape2-lib-map1-binormals"/>
+          <p>8 0 14 0 9 1 15 0 10 2 16 0 11 3 17 0</p>
+          <p>0 15 0 3 1 14 1 6 9 24 15 7 8 25 14 8</p>
+          <p>1 26 1 9 3 27 3 10 10 28 16 11 9 29 15 12</p>
+          <p>3 30 3 13 2 31 2 14 11 32 17 1 10 33 16 15</p>
+          <p>2 22 2 5 0 21 0 5 8 34 14 16 11 35 17 17</p>
+        </polygons>
+        <polygons material="axis_lambert4" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape2-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape2-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape2-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape2-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape2-lib-map1-binormals"/>
+          <p>12 4 18 1 13 5 19 1 14 6 20 1 15 7 21 1</p>
+          <p>2 36 2 0 3 37 3 18 13 38 19 19 12 39 18 20</p>
+          <p>3 40 3 4 5 41 5 21 14 42 20 22 13 43 19 23</p>
+          <p>5 9 5 2 4 8 4 2 15 44 21 2 14 45 20 24</p>
+          <p>4 23 4 5 2 22 2 5 12 46 18 25 15 47 21 26</p>
+        </polygons>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape3-lib" name="pCubeShape3">
+      <mesh>
+        <source id="pCubeShape3-lib-Position">
+          <float_array count="60" id="pCubeShape3-lib-Position-array">
+-1.500000 -1.500000 1.500000
+1.500000 -1.500000 1.500000
+-1.500000 1.500000 1.500000
+1.500000 1.500000 1.500000
+-1.500000 1.500000 -1.500000
+1.500000 1.500000 -1.500000
+-1.500000 -1.500000 -1.500000
+1.500000 -1.500000 -1.500000
+-1.500000 -1.500000 48.774410
+1.500000 -1.500000 48.774410
+1.500000 1.500000 48.774410
+-1.500000 1.500000 48.774410
+-1.500000 48.774410 1.500001
+1.500000 48.774410 1.500001
+1.500000 48.774410 -1.499999
+-1.500000 48.774410 -1.499999
+48.774410 -1.500000 -1.500000
+48.774410 -1.500000 1.500000
+48.774410 1.500000 -1.500000
+48.774410 1.500000 1.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-Position-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-Normal">
+          <float_array count="180" id="pCubeShape3-lib-Normal-array">
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0.000001 0 1.000000
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 1.000000 0.000001
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+1.000000 -0.000001 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+-1.000000 0 0
+-1.000000 0 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 -1.000000
+-1.000000 0 0
+-1.000000 0 0
+0 -1.000000 0
+0 -1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-Normal-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pCubeShape3-lib-map1" name="map1">
+          <float_array count="52" id="pCubeShape3-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+0 0
+1.000000 0
+1.000000 1.000000
+0 1.000000
+0 1.000000
+1.000000 1.000000
+1.000000 2.000000
+0 2.000000
+1.000000 0
+2.000000 0
+2.000000 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-array" count="26" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-tangents">
+          <float_array count="126" id="pCubeShape3-lib-map1-tangents-array">
+1.000000 0 -0.000001
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 1.000000
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+-0.031682 0 -0.999498
+0 1.000000 0
+0 -0.031682 -0.999498
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+0 0.999498 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+-0.031682 -0.999498 0
+0 0 -1.000000
+0 -0.999498 0.031682
+0.999498 0 0.031682
+0 0 1.000000
+-0.999498 0 -0.031682
+0 1.000000 0
+0.999498 -0.031682 0
+0 -1.000000 0
+-0.999498 0.031682 0
+0 0 1.000000
+0.999498 0 -0.031682
+0 0 -1.000000
+-0.999498 0 0.031682
+0 -1.000000 0
+0.999498 0.031682 0
+0 1.000000 0
+-0.999498 -0.031682 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-tangents-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-binormals">
+          <float_array count="126" id="pCubeShape3-lib-map1-binormals-array">
+0 1.000000 0
+0 0.000001 -1.000000
+0 -1.000000 0
+0 0 1.000000
+0.000001 1.000000 0
+0 1.000000 0
+-0.999498 0 -0.031682
+0 0 -1.000000
+0.999498 0 0.031682
+0 0 1.000000
+0 -0.999498 -0.031682
+0 0 -1.000000
+0 0.999498 0.031682
+0 0 1.000000
+0.999498 0 -0.031682
+-0.999498 0 0.031682
+0 0 -1.000000
+0 -0.999498 0.031682
+-0.999498 -0.031682 0
+0 -1.000000 0
+0.999498 0.031682 0
+0 -0.031682 0.999498
+0 -1.000000 0
+0 0.031682 -0.999498
+-0.999498 0.031682 0
+0 -1.000000 0
+0 0.031682 0.999498
+-0.031682 0 0.999498
+-1.000000 0 0
+0.031682 0 -0.999498
+1.000000 0 0
+-0.031682 -0.999498 0
+-1.000000 0 0
+0.031682 0.999498 0
+1.000000 0 0
+-0.031682 0 -0.999498
+-1.000000 0 0
+0.031682 0 0.999498
+1.000000 0 0
+-0.031682 0.999498 0
+-1.000000 0 0
+0.031682 -0.999498 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-binormals-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape3-lib-Vertex">
+          <input semantic="POSITION" source="#pCubeShape3-lib-Position"/>
+        </vertices>
+        <polygons material="lambert1" count="3">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape3-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape3-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape3-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape3-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape3-lib-map1-binormals"/>
+          <p>4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2</p>
+          <p>6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3</p>
+          <p>6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polygons>
+        <polygons material="axis_lambert2" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape3-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape3-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape3-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape3-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape3-lib-map1-binormals"/>
+          <p>17 16 22 4 16 17 23 4 18 18 24 4 19 19 25 4</p>
+          <p>1 14 1 6 7 13 10 27 16 48 23 28 17 49 22 29</p>
+          <p>7 10 10 30 5 9 11 31 18 50 24 32 16 51 23 33</p>
+          <p>5 52 11 34 3 53 3 35 19 54 25 36 18 55 24 37</p>
+          <p>3 56 3 38 1 57 1 39 17 58 22 40 19 59 25 41</p>
+        </polygons>
+        <polygons material="axis_lambert3" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape3-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape3-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape3-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape3-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape3-lib-map1-binormals"/>
+          <p>8 0 14 0 9 1 15 0 10 2 16 0 11 3 17 0</p>
+          <p>0 15 0 3 1 14 1 6 9 24 15 7 8 25 14 8</p>
+          <p>1 26 1 9 3 27 3 10 10 28 16 11 9 29 15 12</p>
+          <p>3 30 3 13 2 31 2 14 11 32 17 1 10 33 16 15</p>
+          <p>2 22 2 5 0 21 0 5 8 34 14 16 11 35 17 17</p>
+        </polygons>
+        <polygons material="axis_lambert4" count="5">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape3-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape3-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape3-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape3-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape3-lib-map1-binormals"/>
+          <p>12 4 18 1 13 5 19 1 14 6 20 1 15 7 21 1</p>
+          <p>2 36 2 0 3 37 3 18 13 38 19 19 12 39 18 20</p>
+          <p>3 40 3 4 5 41 5 21 14 42 20 22 13 43 19 23</p>
+          <p>5 9 5 2 4 8 4 2 15 44 21 2 14 45 20 24</p>
+          <p>4 23 4 5 2 22 2 5 12 46 18 25 15 47 21 26</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="camera_light_testLightShape-lib" name="testLightShape">
+      <technique_common>
+        <ambient>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+        </ambient>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">0.500000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_cameras>
+    <camera id="testCameraShape-lib" name="testCameraShape">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear sid="znear">0.010000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599993</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="simple_003_Parenting_00">
+      <node id="axis_pCube2" name="pCube2" sid="axis_pCube2">
+        <translate sid="translate">0 0.217195 0</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <scale sid="scale">0.164018 0.164018 0.164018</scale>
+        <instance_geometry url="#axis_pCubeShape2-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert1" target="#lambert1"/>
+              <instance_material symbol="axis_lambert2" target="#axis_lambert2"/>
+              <instance_material symbol="axis_lambert3" target="#axis_lambert3"/>
+              <instance_material symbol="axis_lambert4" target="#axis_lambert4"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="pCube2" name="pCube2" sid="pCube2">
+        <translate sid="translate">4.065186 4.338316 4.937434</translate>
+        <rotate sid="rotateZ">0 0 1 90.000076</rotate>
+        <rotate sid="rotateY">0 1 0 90.000076</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <scale sid="scale">0.065061 0.065061 0.065061</scale>
+        <instance_geometry url="#pCubeShape2-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert1" target="#lambert1"/>
+              <instance_material symbol="axis_lambert2" target="#axis_lambert2"/>
+              <instance_material symbol="axis_lambert3" target="#axis_lambert3"/>
+              <instance_material symbol="axis_lambert4" target="#axis_lambert4"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <node id="pCube3" name="pCube3" sid="pCube3">
+          <translate sid="translate">47.836174 25.050948 0.366979</translate>
+          <rotate sid="rotateZ">0 0 1 -90.000076</rotate>
+          <rotate sid="rotateY">0 1 0 0</rotate>
+          <rotate sid="rotateX">1 0 0 90.000076</rotate>
+          <scale sid="scale">0.498735 0.498735 0.498735</scale>
+          <instance_geometry url="#pCubeShape3-lib">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="lambert1" target="#lambert1"/>
+                <instance_material symbol="axis_lambert2" target="#axis_lambert2"/>
+                <instance_material symbol="axis_lambert3" target="#axis_lambert3"/>
+                <instance_material symbol="axis_lambert4" target="#axis_lambert4"/>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+      </node>
+      <node id="testCamera" name="testCamera" sid="testCamera">
+        <translate sid="translate">6.542836 13.683402 22.137920</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 12.800012</rotate>
+        <rotate sid="rotateX">1 0 0 -27.000023</rotate>
+        <instance_camera url="#testCameraShape-lib"/>
+      </node>
+      <node id="camera_light_testLight" name="testLight" sid="camera_light_testLight">
+        <translate sid="translate">7.580418 12.205762 10.780133</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#camera_light_testLightShape-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0</start_time>
+          <end_time>2.500000</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

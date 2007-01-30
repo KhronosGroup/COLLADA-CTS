@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.90 May 19 2006 at 18:36:30</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test1/Execution_2006_05_23_(0)/step0/simple_001_PolyList_00.mb</source_data>
+    </contributor>
+    <created>2006-05-23T17:42:33Z</created>
+    <modified>2006-05-23T17:42:33Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx" name="lambert1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.500000 0.500000 0.500000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pPlaneShape1-lib" name="pPlaneShape1">
+      <mesh>
+        <source id="pPlaneShape1-lib-Position">
+          <float_array count="15" id="pPlaneShape1-lib-Position-array">
+-0.500000 0 0.500000
+0.500000 0 0.500000
+-0.500000 0 -0.500000
+0.500000 0 -0.500000
+0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-Position-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-Normal">
+          <float_array count="15" id="pPlaneShape1-lib-Normal-array">
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-Normal-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pPlaneShape1-lib-map1" name="map1">
+          <float_array count="10" id="pPlaneShape1-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0.500000 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-array" count="5" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-map1-tangents">
+          <float_array count="6" id="pPlaneShape1-lib-map1-tangents-array">
+1.000000 0 0
+0 0 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-tangents-array" count="2" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-map1-binormals">
+          <float_array count="6" id="pPlaneShape1-lib-map1-binormals-array">
+0 0 -1.000000
+0 0 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-binormals-array" count="2" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pPlaneShape1-lib-Vertex">
+          <input semantic="POSITION" source="#pPlaneShape1-lib-Position"/>
+          <input semantic="NORMAL" source="#pPlaneShape1-lib-Normal"/>
+        </vertices>
+        <polygons material="lambert1" count="1">
+          <input semantic="VERTEX" offset="0" source="#pPlaneShape1-lib-Vertex"/>
+          <input semantic="TEXCOORD" offset="1" set="0" source="#pPlaneShape1-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="2" set="0" source="#pPlaneShape1-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="2" set="0" source="#pPlaneShape1-lib-map1-binormals"/>
+          <p>0 0 0 4 4 1 1 1 0 3 3 0 2 2 0</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="camera_light_testLightShape-lib" name="testLightShape">
+      <technique_common>
+        <ambient>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+        </ambient>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">0.500000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_cameras>
+    <camera id="testCameraShape-lib" name="testCameraShape">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear sid="znear">0.010000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599993</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="simple_001_PolyList_00">
+      <node id="pPlane1" name="pPlane1" sid="pPlane1">
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_geometry url="#pPlaneShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert1" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" sid="testCamera">
+        <translate sid="translate">0.051949 1.467482 2.029366</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 1.600001</rotate>
+        <rotate sid="rotateX">1 0 0 -42.600037</rotate>
+        <instance_camera url="#testCameraShape-lib"/>
+      </node>
+      <node id="camera_light_testLight" name="testLight" sid="camera_light_testLight">
+        <translate sid="translate">7.580418 12.205762 10.780133</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#camera_light_testLightShape-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0</start_time>
+          <end_time>2.500000</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

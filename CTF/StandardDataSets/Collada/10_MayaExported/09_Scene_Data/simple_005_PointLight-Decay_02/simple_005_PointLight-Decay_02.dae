@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.90 May 19 2006 at 18:36:30</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test103/Execution_2006_05_23_(0)/step0/simple_005_PointLight-Decay_02.mb</source_data>
+    </contributor>
+    <created>2006-05-23T17:42:49Z</created>
+    <modified>2006-05-23T17:42:49Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert2" name="lambert2">
+      <instance_effect url="#lambert2-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert2-fx" name="lambert2">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">1.000000 1.000000 1.000000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pPlaneShape1-lib" name="pPlaneShape1">
+      <mesh>
+        <source id="pPlaneShape1-lib-Position">
+          <float_array count="48" id="pPlaneShape1-lib-Position-array">
+-0.500000 0 0.500000
+-0.166667 0 0.500000
+0.166667 0 0.500000
+0.500000 0 0.500000
+-0.500000 0 0.166667
+-0.166667 0 0.166667
+0.166667 0 0.166667
+0.500000 0 0.166667
+-0.500000 0 -0.166667
+-0.166667 0 -0.166667
+0.166667 0 -0.166667
+0.500000 0 -0.166667
+-0.500000 0 -0.500000
+-0.166667 0 -0.500000
+0.166667 0 -0.500000
+0.500000 0 -0.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-Position-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-Normal">
+          <float_array count="48" id="pPlaneShape1-lib-Normal-array">
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-Normal-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pPlaneShape1-lib-map1" name="map1">
+          <float_array count="32" id="pPlaneShape1-lib-map1-array">
+0 0
+0.333333 0
+0.666667 0
+1.000000 0
+0 0.333333
+0.333333 0.333333
+0.666667 0.333333
+1.000000 0.333333
+0 0.666667
+0.333333 0.666667
+0.666667 0.666667
+1.000000 0.666667
+0 1.000000
+0.333333 1.000000
+0.666667 1.000000
+1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-array" count="16" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-map1-tangents">
+          <float_array count="3" id="pPlaneShape1-lib-map1-tangents-array">
+1.000000 0 0
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-tangents-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlaneShape1-lib-map1-binormals">
+          <float_array count="3" id="pPlaneShape1-lib-map1-binormals-array">
+0 0 -1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pPlaneShape1-lib-map1-binormals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pPlaneShape1-lib-Vertex">
+          <input semantic="POSITION" source="#pPlaneShape1-lib-Position"/>
+          <input semantic="NORMAL" source="#pPlaneShape1-lib-Normal"/>
+        </vertices>
+        <polygons material="lambert2" count="9">
+          <input semantic="VERTEX" offset="0" source="#pPlaneShape1-lib-Vertex"/>
+          <input semantic="TEXCOORD" offset="1" set="0" source="#pPlaneShape1-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="2" set="0" source="#pPlaneShape1-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="2" set="0" source="#pPlaneShape1-lib-map1-binormals"/>
+          <p>0 0 0 1 1 0 5 5 0 4 4 0</p>
+          <p>1 1 0 2 2 0 6 6 0 5 5 0</p>
+          <p>2 2 0 3 3 0 7 7 0 6 6 0</p>
+          <p>4 4 0 5 5 0 9 9 0 8 8 0</p>
+          <p>5 5 0 6 6 0 10 10 0 9 9 0</p>
+          <p>6 6 0 7 7 0 11 11 0 10 10 0</p>
+          <p>8 8 0 9 9 0 13 13 0 12 12 0</p>
+          <p>9 9 0 10 10 0 14 14 0 13 13 0</p>
+          <p>10 10 0 11 11 0 15 15 0 14 14 0</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="pointLightShape1-lib" name="pointLightShape1">
+      <technique_common>
+        <point>
+          <color sid="color">1.000000 1.000000 0</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">0.500000</intensity>
+      </technique>
+    </light>
+    <light id="pointLightShape2-lib" name="pointLightShape2">
+      <technique_common>
+        <point>
+          <color sid="color">1.000000 0 0</color>
+          <constant_attenuation>0</constant_attenuation>
+          <linear_attenuation>1.000000</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">2.000000</intensity>
+      </technique>
+    </light>
+    <light id="pointLightShape3-lib" name="pointLightShape3">
+      <technique_common>
+        <point>
+          <color sid="color">0 0 1.000000</color>
+          <constant_attenuation>0</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>1.000000</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">5.000000</intensity>
+      </technique>
+    </light>
+    <light id="pointLightShape4-lib" name="pointLightShape4">
+      <technique_common>
+        <point>
+          <color sid="color">0 1.000000 0</color>
+          <constant_attenuation>0</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>1.000000</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">10.000000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_cameras>
+    <camera id="testCameraShape-lib" name="testCameraShape">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849995</yfov>
+            <aspect_ratio>1.499947</aspect_ratio>
+            <znear sid="znear">0.010000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.400046</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599942</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="simple_005_PointLight-Decay_02">
+      <node id="pPlane1" name="pPlane1" sid="pPlane1">
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <scale sid="scale">29.616656 29.616656 76.899994</scale>
+        <instance_geometry url="#pPlaneShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2" target="#lambert2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" sid="testCamera">
+        <translate sid="translate">5.692206 29.805225 1.675237</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 89.600082</rotate>
+        <rotate sid="rotateX">1 0 0 -79.197273</rotate>
+        <instance_camera url="#testCameraShape-lib"/>
+      </node>
+      <node id="pointLight1" name="pointLight1" sid="pointLight1">
+        <translate sid="translate">-0.489567 3.810281 12.457392</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#pointLightShape1-lib"/>
+      </node>
+      <node id="pointLight2" name="pointLight2" sid="pointLight2">
+        <translate sid="translate">-0.489567 3.810281 6.134553</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#pointLightShape2-lib"/>
+      </node>
+      <node id="pointLight3" name="pointLight3" sid="pointLight3">
+        <translate sid="translate">-0.489567 3.810281 -0.724519</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#pointLightShape3-lib"/>
+      </node>
+      <node id="pointLight4" name="pointLight4" sid="pointLight4">
+        <translate sid="translate">-0.489567 3.810281 -7.961273</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#pointLightShape4-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0</start_time>
+          <end_time>4.166667</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.90 May 19 2006 at 18:36:30</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/CTF short spaced/TestProcedures/MayaExport/Test58/Execution_2006_05_23_(0)/step0/simple_007_VertexColorAnimation_00.mb</source_data>
+    </contributor>
+    <created>2006-05-23T17:42:44Z</created>
+    <modified>2006-05-23T17:42:44Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx" name="lambert1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.500000 0.500000 0.500000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape1-lib" name="pCubeShape1">
+      <mesh>
+        <source id="pCubeShape1-lib-Position">
+          <float_array count="24" id="pCubeShape1-lib-Position-array">
+-0.500000 -0.500000 0.500000
+0.500000 -0.500000 0.500000
+-0.500000 0.500000 0.500000
+0.500000 0.500000 0.500000
+-0.500000 0.500000 -0.500000
+0.500000 0.500000 -0.500000
+-0.500000 -0.500000 -0.500000
+0.500000 -0.500000 -0.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Position-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-Normal">
+          <float_array count="72" id="pCubeShape1-lib-Normal-array">
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Normal-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pCubeShape1-lib-map1" name="map1">
+          <float_array count="28" id="pCubeShape1-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-tangents">
+          <float_array count="18" id="pCubeShape1-lib-map1-tangents-array">
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+0 0 -1.000000
+0 0 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-binormals">
+          <float_array count="18" id="pCubeShape1-lib-map1-binormals-array">
+0 1.000000 0
+0 0 -1.000000
+0 -1.000000 0
+0 0 1.000000
+0 1.000000 0
+0 1.000000 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-Color">
+          <float_array count="88" id="pCubeShape1-lib-Color-array">
+1.000000 1.000000 0 1.000000
+1.000000 1.000000 0 1.000000
+1.000000 1.000000 0 1.000000
+1.000000 0 0 1.000000
+1.000000 0 0 1.000000
+1.000000 0 0 1.000000
+0 1.000000 0 1.000000
+0 1.000000 0 1.000000
+0 1.000000 0 1.000000
+0 1.000000 1.000000 1.000000
+0 1.000000 1.000000 1.000000
+0 1.000000 1.000000 1.000000
+1.000000 1.000000 0 1.000000
+1.000000 1.000000 0 1.000000
+1.000000 1.000000 0 1.000000
+0 0 1.000000 1.000000
+0 0 1.000000 1.000000
+0 0 1.000000 1.000000
+1.000000 0 0 1.000000
+1.000000 0 0 1.000000
+1.000000 0 0 1.000000
+1.000000 1.000000 1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Color-array" count="22" stride="4">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+              <param name="A" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-lib-Vertex">
+          <input semantic="POSITION" source="#pCubeShape1-lib-Position"/>
+        </vertices>
+        <polygons material="lambert1" count="6">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape1-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape1-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape1-lib-map1"/>
+          <input semantic="TEXTANGENT" offset="3" set="0" source="#pCubeShape1-lib-map1-tangents"/>
+          <input semantic="TEXBINORMAL" offset="3" set="0" source="#pCubeShape1-lib-map1-binormals"/>
+          <input semantic="COLOR" offset="4" source="#pCubeShape1-lib-Color"/>
+          <p>0 0 0 0 21 1 1 1 0 0 3 2 3 0 6 2 3 2 0 3</p>
+          <p>2 4 2 1 4 3 5 3 1 7 5 6 5 1 12 4 7 4 1 9</p>
+          <p>4 8 4 2 10 5 9 5 2 13 7 10 7 2 18 6 11 6 2 15</p>
+          <p>6 12 6 3 16 7 13 7 3 19 1 14 9 3 1 0 15 8 3 21</p>
+          <p>1 16 1 4 2 7 17 10 4 20 5 18 11 4 14 3 19 3 4 8</p>
+          <p>6 20 12 5 17 0 21 0 5 21 2 22 2 5 5 4 23 13 5 11</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="pCubeShape1-lib-Color_3_-anim">
+      <source id="pCubeShape1-lib-Color_3_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_3_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_3_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_3_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_3_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_3_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_3_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_3_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_3_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_3_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_3_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_3_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_3_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_3_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_3_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_3_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_3_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_3_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_3_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_3_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_3_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_3_-anim-sampler" target="pCubeShape1-lib-Color(3)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_4_-anim">
+      <source id="pCubeShape1-lib-Color_4_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_4_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_4_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_4_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_4_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_4_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_4_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_4_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_4_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_4_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_4_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_4_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_4_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_4_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_4_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_4_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_4_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_4_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_4_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_4_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_4_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_4_-anim-sampler" target="pCubeShape1-lib-Color(4)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_5_-anim">
+      <source id="pCubeShape1-lib-Color_5_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_5_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_5_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_5_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_5_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_5_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_5_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_5_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_5_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_5_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_5_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_5_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_5_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_5_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_5_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_5_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_5_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_5_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_5_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_5_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_5_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_5_-anim-sampler" target="pCubeShape1-lib-Color(5)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_6_-animR">
+      <source id="pCubeShape1-lib-Color_6_-anim-inputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_6_-anim-inputR-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_6_-anim-inputR-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_6_-anim-outputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_6_-anim-outputR-array">
+0 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_6_-anim-outputR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_6_-anim-intanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_6_-anim-intanR-array">
+0.200000 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_6_-anim-intanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_6_-anim-outtanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_6_-anim-outtanR-array">
+0.333333 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_6_-anim-outtanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_6_-anim-interpR">
+        <Name_array count="2" id="pCubeShape1-lib-Color_6_-anim-interpR-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_6_-anim-interpR-array">
+            <param name="R" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_6_-anim-samplerR">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_6_-anim-inputR"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_6_-anim-outputR"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_6_-anim-intanR"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_6_-anim-outtanR"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_6_-anim-interpR"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_6_-anim-samplerR" target="pCubeShape1-lib-Color(6).R"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_7_-animR">
+      <source id="pCubeShape1-lib-Color_7_-anim-inputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_7_-anim-inputR-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_7_-anim-inputR-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_7_-anim-outputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_7_-anim-outputR-array">
+0 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_7_-anim-outputR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_7_-anim-intanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_7_-anim-intanR-array">
+0.200000 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_7_-anim-intanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_7_-anim-outtanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_7_-anim-outtanR-array">
+0.333333 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_7_-anim-outtanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_7_-anim-interpR">
+        <Name_array count="2" id="pCubeShape1-lib-Color_7_-anim-interpR-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_7_-anim-interpR-array">
+            <param name="R" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_7_-anim-samplerR">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_7_-anim-inputR"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_7_-anim-outputR"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_7_-anim-intanR"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_7_-anim-outtanR"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_7_-anim-interpR"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_7_-anim-samplerR" target="pCubeShape1-lib-Color(7).R"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_8_-animR">
+      <source id="pCubeShape1-lib-Color_8_-anim-inputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_8_-anim-inputR-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_8_-anim-inputR-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_8_-anim-outputR">
+        <float_array count="2" id="pCubeShape1-lib-Color_8_-anim-outputR-array">
+0 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_8_-anim-outputR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_8_-anim-intanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_8_-anim-intanR-array">
+0.200000 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_8_-anim-intanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_8_-anim-outtanR">
+        <float_array count="2" id="pCubeShape1-lib-Color_8_-anim-outtanR-array">
+0.333333 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_8_-anim-outtanR-array">
+            <param name="R" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_8_-anim-interpR">
+        <Name_array count="2" id="pCubeShape1-lib-Color_8_-anim-interpR-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_8_-anim-interpR-array">
+            <param name="R" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_8_-anim-samplerR">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_8_-anim-inputR"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_8_-anim-outputR"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_8_-anim-intanR"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_8_-anim-outtanR"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_8_-anim-interpR"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_8_-anim-samplerR" target="pCubeShape1-lib-Color(8).R"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_9_-animB">
+      <source id="pCubeShape1-lib-Color_9_-anim-inputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_9_-anim-inputB-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_9_-anim-inputB-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_9_-anim-outputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_9_-anim-outputB-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_9_-anim-outputB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_9_-anim-intanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_9_-anim-intanB-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_9_-anim-intanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_9_-anim-outtanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_9_-anim-outtanB-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_9_-anim-outtanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_9_-anim-interpB">
+        <Name_array count="2" id="pCubeShape1-lib-Color_9_-anim-interpB-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_9_-anim-interpB-array">
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_9_-anim-samplerB">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_9_-anim-inputB"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_9_-anim-outputB"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_9_-anim-intanB"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_9_-anim-outtanB"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_9_-anim-interpB"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_9_-anim-samplerB" target="pCubeShape1-lib-Color(9).B"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_10_-animB">
+      <source id="pCubeShape1-lib-Color_10_-anim-inputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_10_-anim-inputB-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_10_-anim-inputB-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_10_-anim-outputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_10_-anim-outputB-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_10_-anim-outputB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_10_-anim-intanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_10_-anim-intanB-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_10_-anim-intanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_10_-anim-outtanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_10_-anim-outtanB-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_10_-anim-outtanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_10_-anim-interpB">
+        <Name_array count="2" id="pCubeShape1-lib-Color_10_-anim-interpB-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_10_-anim-interpB-array">
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_10_-anim-samplerB">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_10_-anim-inputB"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_10_-anim-outputB"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_10_-anim-intanB"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_10_-anim-outtanB"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_10_-anim-interpB"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_10_-anim-samplerB" target="pCubeShape1-lib-Color(10).B"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_11_-animB">
+      <source id="pCubeShape1-lib-Color_11_-anim-inputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_11_-anim-inputB-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_11_-anim-inputB-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_11_-anim-outputB">
+        <float_array count="2" id="pCubeShape1-lib-Color_11_-anim-outputB-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_11_-anim-outputB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_11_-anim-intanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_11_-anim-intanB-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_11_-anim-intanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_11_-anim-outtanB">
+        <float_array count="2" id="pCubeShape1-lib-Color_11_-anim-outtanB-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_11_-anim-outtanB-array">
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_11_-anim-interpB">
+        <Name_array count="2" id="pCubeShape1-lib-Color_11_-anim-interpB-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_11_-anim-interpB-array">
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_11_-anim-samplerB">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_11_-anim-inputB"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_11_-anim-outputB"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_11_-anim-intanB"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_11_-anim-outtanB"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_11_-anim-interpB"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_11_-anim-samplerB" target="pCubeShape1-lib-Color(11).B"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_12_-animG">
+      <source id="pCubeShape1-lib-Color_12_-anim-inputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_12_-anim-inputG-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_12_-anim-inputG-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_12_-anim-outputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_12_-anim-outputG-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_12_-anim-outputG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_12_-anim-intanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_12_-anim-intanG-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_12_-anim-intanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_12_-anim-outtanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_12_-anim-outtanG-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_12_-anim-outtanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_12_-anim-interpG">
+        <Name_array count="2" id="pCubeShape1-lib-Color_12_-anim-interpG-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_12_-anim-interpG-array">
+            <param name="G" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_12_-anim-samplerG">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_12_-anim-inputG"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_12_-anim-outputG"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_12_-anim-intanG"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_12_-anim-outtanG"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_12_-anim-interpG"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_12_-anim-samplerG" target="pCubeShape1-lib-Color(12).G"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_13_-animG">
+      <source id="pCubeShape1-lib-Color_13_-anim-inputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_13_-anim-inputG-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_13_-anim-inputG-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_13_-anim-outputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_13_-anim-outputG-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_13_-anim-outputG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_13_-anim-intanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_13_-anim-intanG-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_13_-anim-intanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_13_-anim-outtanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_13_-anim-outtanG-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_13_-anim-outtanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_13_-anim-interpG">
+        <Name_array count="2" id="pCubeShape1-lib-Color_13_-anim-interpG-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_13_-anim-interpG-array">
+            <param name="G" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_13_-anim-samplerG">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_13_-anim-inputG"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_13_-anim-outputG"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_13_-anim-intanG"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_13_-anim-outtanG"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_13_-anim-interpG"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_13_-anim-samplerG" target="pCubeShape1-lib-Color(13).G"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_14_-animG">
+      <source id="pCubeShape1-lib-Color_14_-anim-inputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_14_-anim-inputG-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_14_-anim-inputG-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_14_-anim-outputG">
+        <float_array count="2" id="pCubeShape1-lib-Color_14_-anim-outputG-array">
+1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_14_-anim-outputG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_14_-anim-intanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_14_-anim-intanG-array">
+-0.200000 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_14_-anim-intanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_14_-anim-outtanG">
+        <float_array count="2" id="pCubeShape1-lib-Color_14_-anim-outtanG-array">
+-0.333333 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_14_-anim-outtanG-array">
+            <param name="G" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_14_-anim-interpG">
+        <Name_array count="2" id="pCubeShape1-lib-Color_14_-anim-interpG-array">BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_14_-anim-interpG-array">
+            <param name="G" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_14_-anim-samplerG">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_14_-anim-inputG"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_14_-anim-outputG"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_14_-anim-intanG"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_14_-anim-outtanG"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_14_-anim-interpG"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_14_-anim-samplerG" target="pCubeShape1-lib-Color(14).G"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_15_-anim">
+      <source id="pCubeShape1-lib-Color_15_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_15_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_15_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_15_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_15_-anim-output-array">
+0 0 1.000000 1.000000 1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_15_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_15_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_15_-anim-intan-array">
+0.200000 0.200000 -0.200000 0.333333 0.333333 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_15_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_15_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_15_-anim-outtan-array">
+0.333333 0.333333 -0.333333 0.200000 0.200000 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_15_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_15_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_15_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_15_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_15_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_15_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_15_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_15_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_15_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_15_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_15_-anim-sampler" target="pCubeShape1-lib-Color(15)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_16_-anim">
+      <source id="pCubeShape1-lib-Color_16_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_16_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_16_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_16_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_16_-anim-output-array">
+0 0 1.000000 1.000000 1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_16_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_16_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_16_-anim-intan-array">
+0.200000 0.200000 -0.200000 0.333333 0.333333 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_16_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_16_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_16_-anim-outtan-array">
+0.333333 0.333333 -0.333333 0.200000 0.200000 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_16_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_16_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_16_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_16_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_16_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_16_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_16_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_16_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_16_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_16_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_16_-anim-sampler" target="pCubeShape1-lib-Color(16)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_17_-anim">
+      <source id="pCubeShape1-lib-Color_17_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_17_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_17_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_17_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_17_-anim-output-array">
+0 0 1.000000 1.000000 1.000000 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_17_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_17_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_17_-anim-intan-array">
+0.200000 0.200000 -0.200000 0.333333 0.333333 -0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_17_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_17_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_17_-anim-outtan-array">
+0.333333 0.333333 -0.333333 0.200000 0.200000 -0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_17_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_17_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_17_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_17_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_17_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_17_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_17_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_17_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_17_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_17_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_17_-anim-sampler" target="pCubeShape1-lib-Color(17)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_18_-anim">
+      <source id="pCubeShape1-lib-Color_18_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_18_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_18_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_18_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_18_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_18_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_18_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_18_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_18_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_18_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_18_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_18_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_18_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_18_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_18_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_18_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_18_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_18_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_18_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_18_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_18_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_18_-anim-sampler" target="pCubeShape1-lib-Color(18)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_19_-anim">
+      <source id="pCubeShape1-lib-Color_19_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_19_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_19_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_19_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_19_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_19_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_19_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_19_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_19_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_19_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_19_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_19_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_19_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_19_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_19_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_19_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_19_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_19_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_19_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_19_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_19_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_19_-anim-sampler" target="pCubeShape1-lib-Color(19)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Color_20_-anim">
+      <source id="pCubeShape1-lib-Color_20_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Color_20_-anim-input-array">
+0 1.666667 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Color_20_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Color_20_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Color_20_-anim-output-array">
+1.000000 0 0 0 1.000000 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_20_-anim-output-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_20_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Color_20_-anim-intan-array">
+-0.200000 0.200000 0.200000 -0.333333 0.333333 0.333333 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_20_-anim-intan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_20_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Color_20_-anim-outtan-array">
+-0.333333 0.333333 0.333333 -0.200000 0.200000 0.200000 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_20_-anim-outtan-array">
+            <param name="R" type="float"/>
+            <param name="G" type="float"/>
+            <param name="B" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Color_20_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Color_20_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Color_20_-anim-interp-array">
+            <param name="R" type="Name"/>
+            <param name="G" type="Name"/>
+            <param name="B" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Color_20_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Color_20_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Color_20_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Color_20_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Color_20_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Color_20_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Color_20_-anim-sampler" target="pCubeShape1-lib-Color(20)"/>
+    </animation>
+  </library_animations>
+  <library_lights>
+    <light id="pointLightShape1-lib" name="pointLightShape1">
+      <technique_common>
+        <point>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">1.000000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_cameras>
+    <camera id="Testcamera-lib" name="Testcamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear sid="znear">0.100000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599993</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="simple_007_VertexColorAnimation_00">
+      <node id="testCamera" name="testCamera" sid="testCamera">
+        <translate sid="translate">-1.032214 2.337102 2.190747</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 -28.681557</rotate>
+        <rotate sid="rotateX">1 0 0 -45.801624</rotate>
+        <instance_camera url="#Testcamera-lib"/>
+      </node>
+      <node id="pCube1" name="pCube1" sid="pCube1">
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_geometry url="#pCubeShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert1" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="pointLight1" name="pointLight1" sid="pointLight1">
+        <translate sid="translate">17.950492 20.676727 -18.641258</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#pointLightShape1-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0</start_time>
+          <end_time>3.333333</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>
