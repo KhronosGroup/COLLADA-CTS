@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessKiller", "ProcessKiller\ProcessKiller.csproj", "{32653BE2-B376-4751-B264-4F8EAC9A177E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{32653BE2-B376-4751-B264-4F8EAC9A177E}.Debug.ActiveCfg = Debug|.NET
+		{32653BE2-B376-4751-B264-4F8EAC9A177E}.Debug.Build.0 = Debug|.NET
+		{32653BE2-B376-4751-B264-4F8EAC9A177E}.Release.ActiveCfg = Release|.NET
+		{32653BE2-B376-4751-B264-4F8EAC9A177E}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

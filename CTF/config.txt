@@ -1,0 +1,9 @@
+feelingViewerGUI		C:\work\package\CTF_1.3\Feeling_Viewer_1.1.1\FeelingViewer.exe
+feelingViewerCLI		C:\work\package\CTF_1.3\Feeling_Viewer_1.1.1\FViewerCLIR.exe
+mayaPath			C:\Program Files\Alias\Maya7.0\bin\maya.exe
+maxPath				C:\3dsmax7\3dsmax.exe
+maxColladaExporterFilename	C:\3dsmax7\plugcfg\ColladaExporter.ini
+xsiPath				C:\Softimage\XSI_5.1\Application\bin\XSIBATCH.bat
+pythonExecutable		C:\Python24\python.exe
+ioTimeoutMilli			60000
+detectCrash			True

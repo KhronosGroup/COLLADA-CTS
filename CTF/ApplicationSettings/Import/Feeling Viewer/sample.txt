@@ -1,0 +1,11 @@
+Background Color	-backColor	0x00000000
+Rendering Camera	-cam	testCamera
+X resolution	-width	300
+Y resolution	-height	300
+Output Format		png
+Animation Start Time	-startFrame	0.0
+Animation End Time	-endFrame	2.0
+Animation Frames	-numFrame	15
+Non-Animation Start Time	-startFrame	0.0
+Non-Animation End Time	-endFrame	0.0
+Non-Animation Frames	-numFrame	1
