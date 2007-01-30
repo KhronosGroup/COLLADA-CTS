@@ -1,0 +1,5 @@
+Error loading document: WARNING[15]: Unable to find effect for material: lambert1te
+WARNING[5052]: Cannot find base target for morph controller: pSphereShape4-lib-morph
+WARNING[5305]: Invalid material binding in geometry instantiation.
+COLLADA document loaded successfully.
+ERROR[0]: ERROR: couldn't create render scene

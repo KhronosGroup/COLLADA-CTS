@@ -1,0 +1,165 @@
+/*********************************************************************NVMH3****
+Path:  NVSDK\Common\media\cgfx1.4
+File:  bumpreflect.cgfx
+
+Copyright NVIDIA Corporation 2002
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+	$Id: //sw/devrel/SDK/MEDIA/CgFX1.4/BumpReflect.cgfx#9 $
+
+******************************************************************************/
+
+string Category = "Effects/Cg/Bump";
+string keywords = "bumpmap,texture";
+string description = "Bumpy-shiny";
+
+// un-tweakables
+
+float4x4 worldMatrix : World;	// World or Model matrix
+float4x4 wvpMatrix : WorldViewProjection;	// Model*View*Projection
+float4x4 worldViewMatrix : WorldView;
+float4x4 worldViewMatrixI : WorldViewInverse;
+float4x4 viewInverseMatrix : ViewInverseTranspose;
+float4x4 viewMatrix : View;
+
+// tweakables
+
+float bumpHeight
+<
+	string UIWidget = "slider";
+	float UIMin = 0.01;
+	float UIMax = 2.0;
+	float UIStep = 0.1;
+> = 0.5;
+
+texture normalMap : Normal
+<
+	string ResourceName = "Default_bump_normal.dds";
+	string ResourceType = "2D";
+>;
+
+texture envMap : Environment
+<
+	string ResourceName = "Default_reflection.dds";
+	string ResourceType = "Cube";
+>;
+
+sampler2D normalMapSampler = sampler_state
+{
+	Texture = <normalMap>;
+	MinFilter = LinearMipMapLinear;
+	MagFilter = Linear;
+};
+
+samplerCUBE envMapSampler = sampler_state
+{
+	Texture = <envMap>;
+	MinFilter = LinearMipMapLinear;
+	MagFilter = Linear;
+};
+
+// structures and shaders /////////////////////
+
+struct a2v 
+{
+	float4 Position : POSITION; //in object space
+	float2 TexCoord : TEXCOORD0;
+	float3 Tangent : TEXCOORD1; //in object space
+	float3 Binormal : TEXCOORD2; //in object space
+	float3 Normal : NORMAL; //in object space
+};
+
+struct v2f 
+{
+	float4 Position : POSITION; //in projection space
+	float2 TexCoord : TEXCOORD0;
+	float4 TexCoord1 : TEXCOORD1; //first row of the 3x3 transform from tangent to cube space
+	float4 TexCoord2 : TEXCOORD2; //second row of the 3x3 transform from tangent to cube space
+	float4 TexCoord3 : TEXCOORD3; //third row of the 3x3 transform from tangent to cube space
+};
+
+v2f BumpReflectVS(a2v IN)
+{
+	v2f OUT;
+
+	// Position in screen space.
+	OUT.Position = mul(wvpMatrix, IN.Position);
+	
+	// pass texture coordinates for fetching the normal map
+	OUT.TexCoord.xy = IN.TexCoord;
+	// compute the 4x4 tranform from tangent space to object space
+	float3x3 TangentToObjSpace;
+	// first rows are the tangent and binormal scaled by the bump scale
+	float3 vtan = IN.Tangent;
+	float3 vbinorm = IN.Binormal;
+	float3 vnorm = IN.Normal;
+	TangentToObjSpace[0] = float3(vtan.x, vbinorm.x, vnorm.x);
+	TangentToObjSpace[1] = float3(vtan.y, vbinorm.y, vnorm.y);
+	TangentToObjSpace[2] = float3(vtan.z, vbinorm.z, vnorm.z);
+
+	float3 v;
+	v.x = dot(worldMatrix[0].xyz, TangentToObjSpace[0]);
+	v.y = dot(worldMatrix[1].xyz, TangentToObjSpace[0]);
+	v.z = dot(worldMatrix[2].xyz, TangentToObjSpace[0]);
+	OUT.TexCoord1.xyz = v;//normalize(v);
+
+	v.x = dot(worldMatrix[0].xyz, TangentToObjSpace[1]);
+	v.y = dot(worldMatrix[1].xyz, TangentToObjSpace[1]);
+	v.z = dot(worldMatrix[2].xyz, TangentToObjSpace[1]);
+	OUT.TexCoord2.xyz = v;//normalize(v);
+
+	v.x = dot(worldMatrix[0].xyz, TangentToObjSpace[2]);
+	v.y = dot(worldMatrix[1].xyz, TangentToObjSpace[2]);
+	v.z = dot(worldMatrix[2].xyz, TangentToObjSpace[2]);
+	OUT.TexCoord3.xyz = v;//normalize(v);
+
+	float4 worldPos = mul(worldMatrix,IN.Position);
+	// compute the eye vector (going from shaded point to eye) in cube space
+	float4 eyeVector = worldPos - viewInverseMatrix[3]; // view inv. transpose contains eye position in world space in last row.
+	OUT.TexCoord1.w = eyeVector.x;
+	OUT.TexCoord2.w = eyeVector.y;
+	OUT.TexCoord3.w = eyeVector.z;
+	return OUT;
+}
+
+float4 BumpReflectPS(v2f IN) : COLOR
+{
+	float3 normal = tex2D(normalMapSampler, IN.TexCoord.xy).xyz * 2.0 - 1.0;
+    normal = normalize(float3(normal.x * bumpHeight, normal.y * bumpHeight, normal.z)); 
+	// transform the bump normal into cube space
+	// then use the transformed normal and eye vector to compute a reflection vector
+	// used to fetch the cube map
+	// (we multiply by 2 only to increase brightness)
+    float3 eyevec = float3(IN.TexCoord1.w, IN.TexCoord2.w, IN.TexCoord3.w);
+    float3 worldNorm;
+    worldNorm.x = dot(IN.TexCoord1.xyz,normal);
+    worldNorm.y = dot(IN.TexCoord2.xyz,normal);
+    worldNorm.z = dot(IN.TexCoord3.xyz,normal);
+    float3 lookup = reflect(eyevec, worldNorm);
+    return texCUBE(envMapSampler, lookup);
+}
+
+
+//////// techniques ////////////////////////////
+
+technique BumpReflect0
+{
+	pass
+	{
+		DepthTestEnable=true;
+		DepthMask = true;
+		DepthFunc = LEqual;
+		VertexProgram = compile arbvp1 BumpReflectVS();
+		FragmentProgram = compile arbfp1 BumpReflectPS();
+	}
+}

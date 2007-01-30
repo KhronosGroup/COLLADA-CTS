@@ -1,0 +1,11 @@
+struct vertout
+{
+	float4 HPosition : POSITION;
+	float2 UV : TEXCOORD0;
+};
+
+float4 main( vertout IN,
+uniform sampler2D colorMap ) : COLOR
+{
+	return tex2D(colorMap, IN.UV);
+}

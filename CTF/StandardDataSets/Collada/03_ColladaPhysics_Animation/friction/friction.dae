@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Antoine Azar</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v2.01 Jul 17 2006 at 18:27:58 | FCollada v1.12</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=1;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/Work/COLLADA%20Samples/Conformance%20Tests/Maya/friction.mb</source_data>
+    </contributor>
+    <created>2006-07-19T14:43:25Z</created>
+    <modified>2006-07-19T14:43:25Z</modified>
+    <unit meter="0.010000" name="centimeter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_physics_materials>
+    <physics_material id="nxRigidBody1-material" name="nxRigidBody1-material">
+      <technique_common>
+        <dynamic_friction>0.050000</dynamic_friction>
+        <restitution>0</restitution>
+        <static_friction>0.200000</static_friction>
+      </technique_common>
+    </physics_material>
+    <physics_material id="nxRigidBody2-material" name="nxRigidBody2-material">
+      <technique_common>
+        <dynamic_friction>0.010000</dynamic_friction>
+        <restitution>0</restitution>
+        <static_friction>0.200000</static_friction>
+      </technique_common>
+    </physics_material>
+    <physics_material id="nxRigidBody3-material" name="nxRigidBody3-material">
+      <technique_common>
+        <dynamic_friction>0.300000</dynamic_friction>
+        <restitution>0</restitution>
+        <static_friction>0.200000</static_friction>
+      </technique_common>
+    </physics_material>
+    <physics_material id="nxRigidBody4-material" name="nxRigidBody4-material">
+      <technique_common>
+        <dynamic_friction>0.500000</dynamic_friction>
+        <restitution>0</restitution>
+        <static_friction>0.200000</static_friction>
+      </technique_common>
+    </physics_material>
+    <physics_material id="nxRigidBody5-material" name="nxRigidBody5-material">
+      <technique_common>
+        <dynamic_friction>0.700000</dynamic_friction>
+        <restitution>0</restitution>
+        <static_friction>0.200000</static_friction>
+      </technique_common>
+    </physics_material>
+  </library_physics_materials>
+  <library_physics_models>
+    <physics_model id="AgeiaPhysicsModel">
+      <rigid_body name="nxRigidBody1" sid="nxRigidBody1">
+        <technique_common>
+          <dynamic>1</dynamic>
+          <instance_physics_material url="#nxRigidBody1-material"/>
+          <shape>
+            <hollow>true</hollow>
+            <instance_geometry url="#pCubeShape2-lib-convex"/>
+          </shape>
+        </technique_common>
+      </rigid_body>
+      <rigid_body name="nxRigidBody2" sid="nxRigidBody2">
+        <technique_common>
+          <dynamic>0</dynamic>
+          <instance_physics_material url="#nxRigidBody2-material"/>
+          <shape>
+            <hollow>true</hollow>
+            <instance_geometry url="#pCubeShape1-lib-convex"/>
+          </shape>
+        </technique_common>
+      </rigid_body>
+      <rigid_body name="nxRigidBody3" sid="nxRigidBody3">
+        <technique_common>
+          <dynamic>1</dynamic>
+          <instance_physics_material url="#nxRigidBody3-material"/>
+          <shape>
+            <hollow>true</hollow>
+            <instance_geometry url="#pCubeShape3-lib-convex"/>
+          </shape>
+        </technique_common>
+      </rigid_body>
+      <rigid_body name="nxRigidBody4" sid="nxRigidBody4">
+        <technique_common>
+          <dynamic>1</dynamic>
+          <instance_physics_material url="#nxRigidBody4-material"/>
+          <shape>
+            <hollow>true</hollow>
+            <instance_geometry url="#pCubeShape4-lib-convex"/>
+          </shape>
+        </technique_common>
+      </rigid_body>
+      <rigid_body name="nxRigidBody5" sid="nxRigidBody5">
+        <technique_common>
+          <dynamic>1</dynamic>
+          <instance_physics_material url="#nxRigidBody5-material"/>
+          <shape>
+            <hollow>true</hollow>
+            <instance_geometry url="#pCubeShape5-lib-convex"/>
+          </shape>
+        </technique_common>
+      </rigid_body>
+    </physics_model>
+  </library_physics_models>
+  <library_physics_scenes>
+    <physics_scene id="MayaNativePhysicsScene">
+      <instance_physics_model url="#AgeiaPhysicsModel">
+        <instance_rigid_body target="#nxRigidBody12" body="nxRigidBody1">
+          <technique_common>
+          </technique_common>
+        </instance_rigid_body>
+        <instance_rigid_body target="#nxRigidBody22" body="nxRigidBody2">
+          <technique_common>
+          </technique_common>
+        </instance_rigid_body>
+        <instance_rigid_body target="#nxRigidBody32" body="nxRigidBody3">
+          <technique_common>
+          </technique_common>
+        </instance_rigid_body>
+        <instance_rigid_body target="#nxRigidBody42" body="nxRigidBody4">
+          <technique_common>
+          </technique_common>
+        </instance_rigid_body>
+        <instance_rigid_body target="#nxRigidBody52" body="nxRigidBody5">
+          <technique_common>
+          </technique_common>
+        </instance_rigid_body>
+      </instance_physics_model>
+      <technique_common>
+        <gravity>0 0 -9.810000</gravity>
+        <time_step>0.030000</time_step>
+      </technique_common>
+    </physics_scene>
+  </library_physics_scenes>
+  <library_cameras>
+    <camera id="testCamera-lib" name="testCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear>0.010000</znear>
+            <zfar>1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture>3.599993</horizontal_aperture>
+          <lens_squeeze>1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="pointLightShape1-lib" name="pointLightShape1">
+      <technique_common>
+        <point>
+          <color>1.000000 1.000000 1.000000</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity>1.000000</intensity>
+      </technique>
+      <technique profile="MAX3D">
+        <intensity>1.000000</intensity>
+        <target_default_dist>240.000000</target_default_dist>
+      </technique>
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1.0</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1.0</color>
+            </ambient>
+            <diffuse>
+              <color>0.500000 0.500000 0.500000 1.0</color>
+            </diffuse>
+            <reflective>
+              <color>1.000000 1.000000 1.000000 1.0</color>
+            </reflective>
+            <reflectivity>
+              <float>1.000000</float>
+            </reflectivity>
+            <transparent>
+              <color>0 0 0 1.0</color>
+            </transparent>
+            <transparency>
+              <float>1.000000</float>
+            </transparency>
+            <index_of_refraction>
+              <float>0</float>
+            </index_of_refraction>
+          </lambert>
+          <extra>
+            <technique profile="MAYA"/>
+          </extra>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape2-lib" name="pCubeShape2">
+      <mesh>
+        <source id="pCubeShape2-lib-positions" name="position">
+          <float_array id="pCubeShape2-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-normals" name="normal">
+          <float_array id="pCubeShape2-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape2-lib-map1" name="map1">
+          <float_array id="pCubeShape2-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape2-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape2-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape2-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape2-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape2-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape2-lib-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="12">
+          <input semantic="VERTEX" source="#pCubeShape2-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape2-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape2-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape2-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape2-lib-map1-binormals" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 0 2 3 2 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 4 7 4 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 6 11 6 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 0 15 8 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 3 19 3 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 4 23 13 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape1-lib" name="pCubeShape1">
+      <mesh>
+        <source id="pCubeShape1-lib-positions" name="position">
+          <float_array id="pCubeShape1-lib-positions-array" count="24">-6.742477 -8.054072 -2.855694 7.344162 -8.089248 -2.868993 -6.742477 10.411195 3.959418 7.344162 10.376021 3.946120 -6.742477 10.764823 3.024032 7.344162 10.729650 3.010733 -6.742477 -7.700447 -3.791081 7.344162 -7.735622 -3.804379</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-normals" name="normal">
+          <float_array id="pCubeShape1-lib-normals-array" count="72">0.000021 -0.346247 0.938143 0.000021 -0.346247 0.938143 0.000021 -0.346247 0.938143 0.000021 -0.346247 0.938143 0.002669 0.935383 0.353627 0.002669 0.935383 0.353627 0.002669 0.935383 0.353627 0.002669 0.935383 0.353627 -0.000021 0.346247 -0.938143 -0.000021 0.346247 -0.938143 -0.000021 0.346247 -0.938143 -0.000021 0.346247 -0.938143 -0.002670 -0.935384 -0.353624 -0.002670 -0.935384 -0.353624 -0.002670 -0.935384 -0.353624 -0.002670 -0.935384 -0.353624 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape1-lib-map1" name="map1">
+          <float_array id="pCubeShape1-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape1-lib-map1-tangents-array" count="18">0.999996 -0.002497 -0.000944 0.999996 -0.002497 -0.000944 0.999996 -0.002497 -0.000944 0.999996 -0.002497 -0.000944 0 0.353626 -0.935387 0 -0.353627 0.935387</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape1-lib-map1-binormals-array" count="18">0.002669 0.938140 0.346246 0 0.353628 -0.935386 -0.002669 -0.938140 -0.346246 0 -0.353626 0.935387 0 0.935387 0.353626 0 0.935387 0.353627</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape1-lib-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="12">
+          <input semantic="VERTEX" source="#pCubeShape1-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape1-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape1-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape1-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape1-lib-map1-binormals" offset="3" set="0"/>
+          <p>1 1 1 0 3 2 3 0 0 0 0 0 0 0 0 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 4 7 4 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 6 11 6 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 0 15 8 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 3 19 3 4 7 17 10 4 5 18 11 4 3 19 3 4 0 21 0 5 2 22 2 5 6 20 12 5 6 20 12 5 2 22 2 5 4 23 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape3-lib" name="pCubeShape3">
+      <mesh>
+        <source id="pCubeShape3-lib-positions" name="position">
+          <float_array id="pCubeShape3-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-normals" name="normal">
+          <float_array id="pCubeShape3-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape3-lib-map1" name="map1">
+          <float_array id="pCubeShape3-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape3-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape3-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape3-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape3-lib-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="12">
+          <input semantic="VERTEX" source="#pCubeShape3-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape3-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape3-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape3-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape3-lib-map1-binormals" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 0 2 3 2 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 4 7 4 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 6 11 6 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 0 15 8 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 3 19 3 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 4 23 13 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape4-lib" name="pCubeShape4">
+      <mesh>
+        <source id="pCubeShape4-lib-positions" name="position">
+          <float_array id="pCubeShape4-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-normals" name="normal">
+          <float_array id="pCubeShape4-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape4-lib-map1" name="map1">
+          <float_array id="pCubeShape4-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape4-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape4-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape4-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape4-lib-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="12">
+          <input semantic="VERTEX" source="#pCubeShape4-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape4-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape4-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape4-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape4-lib-map1-binormals" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 0 2 3 2 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 4 7 4 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 6 11 6 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 0 15 8 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 3 19 3 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 4 23 13 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape5-lib" name="pCubeShape5">
+      <mesh>
+        <source id="pCubeShape5-lib-positions" name="position">
+          <float_array id="pCubeShape5-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-normals" name="normal">
+          <float_array id="pCubeShape5-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape5-lib-map1" name="map1">
+          <float_array id="pCubeShape5-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape5-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape5-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape5-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape5-lib-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="12">
+          <input semantic="VERTEX" source="#pCubeShape5-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape5-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape5-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape5-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape5-lib-map1-binormals" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 0 2 3 2 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 4 7 4 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 6 11 6 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 0 15 8 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 3 19 3 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 4 23 13 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape2-lib-convex" name="pCubeShape2-lib-convex">
+      <convex_mesh convex_hull_of="pCubeShape2-lib">
+		<source id="pCubeShape2-lib-convex-dumb-source"/>
+		<vertices id="pCubeShape2-lib-convex-dumb-vertices">
+			<input semantic="POSITION" source="#pCubeShape2-lib-convex-dumb-source"/>
+		</vertices>
+      </convex_mesh>
+    </geometry>
+    <geometry id="pCubeShape1-lib-convex" name="pCubeShape1-lib-convex">
+      <convex_mesh convex_hull_of="pCubeShape1-lib">
+		<source id="pCubeShape1-lib-convex-dumb-source"/>
+		<vertices id="pCubeShape1-lib-convex-dumb-vertices">
+			<input semantic="POSITION" source="#pCubeShape1-lib-convex-dumb-source"/>
+		</vertices>
+      </convex_mesh>
+    </geometry>
+    <geometry id="pCubeShape3-lib-convex" name="pCubeShape3-lib-convex">
+      <convex_mesh convex_hull_of="pCubeShape3-lib">
+		<source id="pCubeShape3-lib-convex-dumb-source"/>
+		<vertices id="pCubeShape3-lib-convex-dumb-vertices">
+			<input semantic="POSITION" source="#pCubeShape3-lib-convex-dumb-source"/>
+		</vertices>
+      </convex_mesh>
+    </geometry>
+    <geometry id="pCubeShape4-lib-convex" name="pCubeShape4-lib-convex">
+      <convex_mesh convex_hull_of="pCubeShape4-lib">
+		<source id="pCubeShape4-lib-convex-dumb-source"/>
+		<vertices id="pCubeShape4-lib-convex-dumb-vertices">
+			<input semantic="POSITION" source="#pCubeShape4-lib-convex-dumb-source"/>
+		</vertices>
+      </convex_mesh>
+    </geometry>
+    <geometry id="pCubeShape5-lib-convex" name="pCubeShape5-lib-convex">
+      <convex_mesh convex_hull_of="pCubeShape5-lib">
+		<source id="pCubeShape5-lib-convex-dumb-source"/>
+		<vertices id="pCubeShape5-lib-convex-dumb-vertices">
+			<input semantic="POSITION" source="#pCubeShape5-lib-convex-dumb-source"/>
+		</vertices>
+      </convex_mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="friction">
+      <node id="nxRigidBody12" name="nxRigidBody1" type="NODE">
+        <matrix sid="transform">1.000000 0 0 -4.836272 0 0.950670 -0.310204 8.747728 0 0.310204 0.950670 4.572990 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape2-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="nxRigidBody22" name="nxRigidBody2" type="NODE">
+        <matrix sid="transform">1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="nxRigidBody32" name="nxRigidBody3" type="NODE">
+        <matrix sid="transform">1.000000 0 0 -2.141033 0 0.936228 -0.351392 8.809406 0 0.351392 0.936228 4.577598 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape3-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="nxRigidBody42" name="nxRigidBody4" type="NODE">
+        <matrix sid="transform">1.000000 0 0 1.522022 0 0.948714 -0.316135 8.888530 0 0.316135 0.948714 4.609572 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape4-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="nxRigidBody52" name="nxRigidBody5" type="NODE">
+        <matrix sid="transform">1.000000 0 0 5.092684 0 0.938321 -0.345765 8.953410 0 0.345765 0.938321 4.685139 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape5-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" type="NODE">
+        <matrix sid="transform">0.430954 -0.044424 0.901280 23.907574 0.898042 0.118865 -0.423547 -9.625268 -0.088315 0.991916 0.091120 3.590547 0 0 0 1.000000</matrix>
+        <instance_camera url="#testCamera-lib"/>
+      </node>
+      <node id="pointLight1" name="pointLight1" type="NODE">
+        <matrix sid="transform">1.000000 0 0 -2.676661 0 1.000000 0 -5.198893 0 0 1.000000 7.722598 0 0 0 1.000000</matrix>
+        <instance_light url="#pointLightShape1-lib"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_physics_scene url="#MayaNativePhysicsScene"/>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

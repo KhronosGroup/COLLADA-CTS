@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Etienne</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v2.01 Jul  6 2006 at 16:31:59 | FCollada v1.12</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/Work/Contracts/Khronos/StandardDataSets/Maya/02_Geometry/simple_001_NURBSLineText/simple_001_NURBSLineText.mb</source_data>
+    </contributor>
+    <created>2006-07-07T20:33:59Z</created>
+    <modified>2006-07-07T20:33:59Z</modified>
+    <unit meter="0.010000" name="centimeter"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_physics_scenes>
+    <physics_scene id="MayaNativePhysicsScene">
+      <technique_common>
+        <gravity>0 -980.000000 0</gravity>
+        <time_step>0.083000</time_step>
+      </technique_common>
+    </physics_scene>
+  </library_physics_scenes>
+  <library_cameras>
+    <camera id="testCamera" name="testCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>37.849247</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear>0.010000</znear>
+            <zfar>1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture>3.599993</horizontal_aperture>
+          <lens_squeeze>1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_geometries>
+    <geometry id="curveShape1-lib" name="curveShape1">
+      <spline closed="1">
+        <source id="curveShape1-lib-cvs-0">
+          <float_array id="curveShape1-lib-cvs-0-array" count="222">1.700000 0 0 1.150000 1.093751 0 0.600000 2.187501 0 0.600000 1.343751 0 0.600000 0.500000 0 0.600000 0.246876 0 0.656251 0.184376 0 0.732813 0.100000 0 0.900000 0.100000 0 0.950000 0.100000 0 1.000000 0.100000 0 1.000000 0.050000 0 1.000000 0 0 0.500000 0 0 0 0 0 0 0.050000 0 0 0.100000 0 0.050000 0.100000 0 0.100000 0.100000 0 0.279689 0.100000 0 0.354688 0.204688 0 0.400000 0.270314 0 0.400000 0.500000 0 0.400000 1.300000 0 0.400000 2.100000 0 0.400000 2.281251 0 0.357813 2.362501 0 0.329688 2.421875 0 0.173439 2.500000 0 0 2.500000 0 0 2.550000 0 0 2.600000 0 0.359375 2.600000 0 0.718750 2.600000 0 1.260938 1.522657 0 1.803125 0.445313 0 2.294532 1.522657 0 2.785939 2.600000 0 3.142969 2.600000 0 3.500000 2.600000 0 3.500000 2.550000 0 3.500000 2.500000 0 3.450781 2.500000 0 3.401562 2.500000 0 3.220313 2.500000 0 3.145313 2.395314 0 3.100000 2.329688 0 3.100000 2.100000 0 3.100000 1.300000 0 3.100000 0.500000 0 3.100000 0.246876 0 3.157813 0.184376 0 3.235938 0.100000 0 3.401562 0.100000 0 3.450781 0.100000 0 3.500000 0.100000 0 3.500000 0.050000 0 3.500000 0 0 2.950000 0 0 2.400000 0 0 2.400000 0.050000 0 2.400000 0.100000 0 2.450000 0.100000 0 2.500000 0.100000 0 2.681251 0.100000 0 2.754688 0.204688 0 2.800000 0.270314 0 2.800000 0.500000 0 2.800000 1.343751 0 2.800000 2.187501 0 2.300000 1.093751 0 1.800000 0 0 1.750000 0 0 1.700000 0 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape1-lib-cvs-0-array" count="74" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape1-lib-weights-0">
+          <float_array id="curveShape1-lib-weights-0-array" count="74">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape1-lib-weights-0-array" count="74" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape1-lib-knots-0">
+          <float_array id="curveShape1-lib-knots-0-array" count="77">0 0 0 2.448502 2.448502 4.136003 4.136003 5.136003 5.136003 6.136003 6.136003 6.236003 6.236003 6.336003 6.336003 7.336003 7.336003 7.436003 7.436003 7.536003 7.536003 8.536003 8.536003 9.536003 9.536003 11.136003 11.136003 12.136003 12.136003 13.136003 14.136003 14.136003 14.236003 14.236003 14.954754 14.954754 17.366919 17.366919 19.735167 19.735167 20.449228 20.449228 20.549229 20.549229 20.647667 20.647667 21.647667 21.647667 22.647667 22.647667 24.247665 24.247665 25.247665 25.247665 26.247665 26.247665 26.346104 26.346104 26.446104 26.446104 27.546104 27.546104 27.646103 27.646103 27.746103 27.746103 28.746103 28.746103 29.746103 29.746103 31.433605 31.433605 33.838840 33.838840 33.938843 33.938843 33.938843</float_array>
+          <technique_common>
+            <accessor source="#curveShape1-lib-knots-0-array" count="77" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape1-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape1-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape1-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+    <geometry id="curveShape2-lib" name="curveShape2">
+      <spline closed="1">
+        <source id="curveShape2-lib-cvs-0">
+          <float_array id="curveShape2-lib-cvs-0-array" count="168">1.100000 0.270314 0 0.823438 0.075001 0 0.753126 0.045313 0 0.646876 0 0 0.528125 0 0 0.340626 0 0 0.100000 0.248438 0 0.100000 0.453126 0 0.100000 0.581251 0 0.159376 0.675001 0 0.239063 0.804688 0 0.637501 1.034376 0 1.100000 1.200000 0 1.100000 1.232813 0 1.100000 1.265626 0 1.100000 1.514063 0 0.929688 1.700000 0 0.767189 1.700000 0 0.643751 1.700000 0 0.570314 1.635938 0 0.495314 1.571876 0 0.495314 1.489064 0 0.497657 1.434376 0 0.500000 1.379689 0 0.500000 1.293751 0 0.417188 1.200000 0 0.348438 1.200000 0 0.282814 1.200000 0 0.200000 1.295314 0 0.200000 1.378126 0 0.200000 1.535938 0 0.529688 1.800000 0 0.828125 1.800000 0 1.056251 1.800000 0 1.203125 1.721875 0 1.314063 1.662501 0 1.365626 1.535938 0 1.400000 1.453126 0 1.400000 1.198439 0 1.400000 0.900782 0 1.400000 0.603125 0 1.400000 0.351563 0 1.418750 0.239063 0 1.462501 0.200000 0 1.492189 0.200000 0 1.521875 0.200000 0 1.545313 0.209375 0 1.585939 0.225000 0 1.700000 0.300000 0 1.700000 0.264844 0 1.700000 0.229688 0 1.490626 0 0 1.301563 0 0 1.209375 0 0 1.101563 0.121875 0 1.100000 0.270314 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape2-lib-cvs-0-array" count="56" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape2-lib-weights-0">
+          <float_array id="curveShape2-lib-weights-0-array" count="56">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape2-lib-weights-0-array" count="56" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape2-lib-knots-0">
+          <float_array id="curveShape2-lib-knots-0-array" count="59">0 0 0 1.000000 1.000000 2.000000 2.000000 3.000000 4.000000 4.000000 5.000000 5.000000 6.000000 7.000000 7.000000 7.065626 7.065626 8.065626 9.065626 9.065626 10.065626 10.065626 11.065626 11.065626 11.175101 11.175101 12.175101 13.175101 13.175101 14.175101 15.175101 15.175101 16.175102 17.175102 17.175102 18.175102 18.175102 19.175102 19.175102 20.175102 20.175102 20.770416 20.770416 21.770416 22.770416 23.770416 23.770416 24.770416 24.770416 25.770416 25.770416 25.840727 25.840727 26.840727 26.840727 27.840727 28.840727 28.840727 28.840727</float_array>
+          <technique_common>
+            <accessor source="#curveShape2-lib-knots-0-array" count="59" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape2-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape2-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape2-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+    <geometry id="curveShape3-lib" name="curveShape3">
+      <spline closed="1">
+        <source id="curveShape3-lib-cvs-0">
+          <float_array id="curveShape3-lib-cvs-0-array" count="39">1.100000 0.400000 0 1.100000 0.750000 0 1.100000 1.100000 0 0.790626 0.979689 0 0.701563 0.929688 0 0.539063 0.842188 0 0.400000 0.648438 0 0.400000 0.534376 0 0.400000 0.390626 0 0.576564 0.200000 0 0.690626 0.200000 0 0.846876 0.200000 0 1.100000 0.400000 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape3-lib-cvs-0-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape3-lib-weights-0">
+          <float_array id="curveShape3-lib-weights-0-array" count="13">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape3-lib-weights-0-array" count="13" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape3-lib-knots-0">
+          <float_array id="curveShape3-lib-knots-0-array" count="16">0 0 0 0.700000 0.700000 1.700000 1.700000 2.700000 3.700000 3.700000 4.700000 5.700000 5.700000 6.700000 6.700000 6.700000</float_array>
+          <technique_common>
+            <accessor source="#curveShape3-lib-knots-0-array" count="16" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape3-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape3-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape3-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+    <geometry id="curveShape4-lib" name="curveShape4">
+      <spline closed="1">
+        <source id="curveShape4-lib-cvs-0">
+          <float_array id="curveShape4-lib-cvs-0-array" count="192">-0.048437 1.800000 0 0.350001 1.800000 0 0.748438 1.800000 0 0.748438 1.750000 0 0.748438 1.700000 0 0.728125 1.700000 0 0.707813 1.700000 0 0.623438 1.700000 0 0.537501 1.628125 0 0.537501 1.575001 0 0.537501 1.503125 0 0.600000 1.375001 0 0.809375 0.913282 0 1.018750 0.451563 0 1.209375 0.957032 0 1.400000 1.462501 0 1.431250 1.535938 0 1.431250 1.607813 0 1.431250 1.640626 0 1.418750 1.656251 0 1.403125 1.676564 0 1.339063 1.700000 0 1.257813 1.700000 0 1.257813 1.750000 0 1.257813 1.800000 0 1.504688 1.800000 0 1.751563 1.800000 0 1.751563 1.750000 0 1.751563 1.700000 0 1.681251 1.692189 0 1.604688 1.650001 0 1.559376 1.590626 0 1.542188 1.565626 0 1.493751 1.453126 0 1.153126 0.550782 0 0.812500 -0.351562 0 0.726563 -0.573437 0 0.445313 -0.800000 0 0.315625 -0.800000 0 0.221875 -0.800000 0 0.100000 -0.700000 0 0.100000 -0.635936 0 0.100000 -0.575000 0 0.190626 -0.500000 0 0.270314 -0.500000 0 0.325000 -0.500000 0 0.420313 -0.559374 0 0.485939 -0.600000 0 0.503125 -0.600000 0 0.556251 -0.600000 0 0.681251 -0.465624 0 0.745313 -0.271875 0 0.808595 -0.103906 0 0.871876 0.064063 0 0.567189 0.735157 0 0.262501 1.406250 0 0.234376 1.465626 0 0.170314 1.554688 0 0.123438 1.623438 0 0.092189 1.645313 0 0.048438 1.676564 0 -0.048437 1.700000 0 -0.048437 1.750000 0 -0.048437 1.800000 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape4-lib-cvs-0-array" count="64" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape4-lib-weights-0">
+          <float_array id="curveShape4-lib-weights-0-array" count="64">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape4-lib-weights-0-array" count="64" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape4-lib-knots-0">
+          <float_array id="curveShape4-lib-knots-0-array" count="67">0 0 0 0.796875 0.796875 0.896875 0.896875 0.937501 0.937501 1.937501 2.937500 2.937500 3.937500 3.937500 4.951448 4.951448 6.031886 6.031886 7.031886 7.031886 8.031886 8.031886 9.031886 10.031886 10.031886 10.131886 10.131886 10.625636 10.625636 10.725636 10.725636 11.725636 12.725636 12.725636 13.725636 13.725636 15.654625 15.654625 16.654625 17.654625 17.654625 18.654625 19.654625 19.654625 20.654625 21.654625 21.654625 22.654625 22.654625 23.654625 23.654625 24.654625 25.654625 25.654625 26.013613 26.013613 27.487658 27.487658 28.487658 28.487658 29.487658 29.487658 30.487658 30.487658 30.587656 30.587656 30.587656</float_array>
+          <technique_common>
+            <accessor source="#curveShape4-lib-knots-0-array" count="67" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape4-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape4-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape4-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+    <geometry id="curveShape5-lib" name="curveShape5">
+      <spline closed="1">
+        <source id="curveShape5-lib-cvs-0">
+          <float_array id="curveShape5-lib-cvs-0-array" count="168">1.100000 0.270314 0 0.823438 0.075001 0 0.753126 0.045313 0 0.646876 0 0 0.528125 0 0 0.340626 0 0 0.100000 0.248438 0 0.100000 0.453126 0 0.100000 0.581251 0 0.159376 0.675001 0 0.239063 0.804688 0 0.637501 1.034376 0 1.100000 1.200000 0 1.100000 1.232813 0 1.100000 1.265626 0 1.100000 1.514063 0 0.929688 1.700000 0 0.767189 1.700000 0 0.643751 1.700000 0 0.570314 1.635938 0 0.495314 1.571876 0 0.495314 1.489064 0 0.497657 1.434376 0 0.500000 1.379689 0 0.500000 1.293751 0 0.417188 1.200000 0 0.348438 1.200000 0 0.282814 1.200000 0 0.200000 1.295314 0 0.200000 1.378126 0 0.200000 1.535938 0 0.529688 1.800000 0 0.828125 1.800000 0 1.056251 1.800000 0 1.203125 1.721875 0 1.314063 1.662501 0 1.365626 1.535938 0 1.400000 1.453126 0 1.400000 1.198439 0 1.400000 0.900782 0 1.400000 0.603125 0 1.400000 0.351563 0 1.418750 0.239063 0 1.462501 0.200000 0 1.492189 0.200000 0 1.521875 0.200000 0 1.545313 0.209375 0 1.585939 0.225000 0 1.700000 0.300000 0 1.700000 0.264844 0 1.700000 0.229688 0 1.490626 0 0 1.301563 0 0 1.209375 0 0 1.101563 0.121875 0 1.100000 0.270314 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape5-lib-cvs-0-array" count="56" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape5-lib-weights-0">
+          <float_array id="curveShape5-lib-weights-0-array" count="56">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape5-lib-weights-0-array" count="56" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape5-lib-knots-0">
+          <float_array id="curveShape5-lib-knots-0-array" count="59">0 0 0 1.000000 1.000000 2.000000 2.000000 3.000000 4.000000 4.000000 5.000000 5.000000 6.000000 7.000000 7.000000 7.065626 7.065626 8.065626 9.065626 9.065626 10.065626 10.065626 11.065626 11.065626 11.175101 11.175101 12.175101 13.175101 13.175101 14.175101 15.175101 15.175101 16.175102 17.175102 17.175102 18.175102 18.175102 19.175102 19.175102 20.175102 20.175102 20.770416 20.770416 21.770416 22.770416 23.770416 23.770416 24.770416 24.770416 25.770416 25.770416 25.840727 25.840727 26.840727 26.840727 27.840727 28.840727 28.840727 28.840727</float_array>
+          <technique_common>
+            <accessor source="#curveShape5-lib-knots-0-array" count="59" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape5-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape5-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape5-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+    <geometry id="curveShape6-lib" name="curveShape6">
+      <spline closed="1">
+        <source id="curveShape6-lib-cvs-0">
+          <float_array id="curveShape6-lib-cvs-0-array" count="39">1.100000 0.400000 0 1.100000 0.750000 0 1.100000 1.100000 0 0.790626 0.979689 0 0.701563 0.929688 0 0.539063 0.842188 0 0.400000 0.648438 0 0.400000 0.534376 0 0.400000 0.390626 0 0.576564 0.200000 0 0.690626 0.200000 0 0.846876 0.200000 0 1.100000 0.400000 0</float_array>
+          <technique_common>
+            <accessor source="#curveShape6-lib-cvs-0-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape6-lib-weights-0">
+          <float_array id="curveShape6-lib-weights-0-array" count="13">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#curveShape6-lib-weights-0-array" count="13" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="curveShape6-lib-knots-0">
+          <float_array id="curveShape6-lib-knots-0-array" count="16">0 0 0 0.700000 0.700000 1.700000 1.700000 2.700000 3.700000 3.700000 4.700000 5.700000 5.700000 6.700000 6.700000 6.700000</float_array>
+          <technique_common>
+            <accessor source="#curveShape6-lib-knots-0-array" count="16" stride="1">
+              <param name="KNOT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <control_vertices>
+          <input semantic="CVS" source="#curveShape6-lib-cvs-0"/>
+          <input semantic="WEIGHTS" source="#curveShape6-lib-weights-0"/>
+          <input semantic="KNOTS" source="#curveShape6-lib-knots-0"/>
+        </control_vertices>
+		<extra><technique profile="FCOLLADA">
+			<type>NURBS</type>
+			<degree>2</degree>
+		</technique></extra>
+      </spline>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="simple_001_NURBSLineText">
+      <node id="Text_Maya_1" name="Text_Maya_1" type="NODE">
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <node id="Char_M_1" name="Char_M_1" type="NODE">
+          <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+          <rotate sid="rotateY">0 1.000000 0 0</rotate>
+          <rotate sid="rotateX">1.000000 0 0 0</rotate>
+          <node id="curve1" name="curve1" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape1-lib"/>
+          </node>
+        </node>
+        <node id="Char_a_1" name="Char_a_1" type="NODE">
+          <translate sid="translate">3.500000 0 0</translate>
+          <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+          <rotate sid="rotateY">0 1.000000 0 0</rotate>
+          <rotate sid="rotateX">1.000000 0 0 0</rotate>
+          <node id="curve2" name="curve2" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape2-lib"/>
+          </node>
+          <node id="curve3" name="curve3" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape3-lib"/>
+          </node>
+        </node>
+        <node id="Char_y_1" name="Char_y_1" type="NODE">
+          <translate sid="translate">5.200000 0 0</translate>
+          <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+          <rotate sid="rotateY">0 1.000000 0 0</rotate>
+          <rotate sid="rotateX">1.000000 0 0 0</rotate>
+          <node id="curve4" name="curve4" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape4-lib"/>
+          </node>
+        </node>
+        <node id="Char_a_2" name="Char_a_2" type="NODE">
+          <translate sid="translate">7.000000 0 0</translate>
+          <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+          <rotate sid="rotateY">0 1.000000 0 0</rotate>
+          <rotate sid="rotateX">1.000000 0 0 0</rotate>
+          <node id="curve5" name="curve5" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape5-lib"/>
+          </node>
+          <node id="curve6" name="curve6" type="NODE">
+            <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+            <rotate sid="rotateY">0 1.000000 0 0</rotate>
+            <rotate sid="rotateX">1.000000 0 0 0</rotate>
+            <instance_geometry url="#curveShape6-lib"/>
+          </node>
+        </node>
+      </node>
+      <node id="_testCamera" name="testCamera" type="NODE">
+        <translate sid="translate">4.270386 0.666786 13.058686</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <instance_camera url="#testCamera"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_physics_scene url="#MayaNativePhysicsScene"/>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

@@ -1,0 +1,168 @@
+/*********************************************************************NVMH3****
+Path:  NVSDK\Common\media\cgfx1.4
+File:  simpleOGL.cgfx
+
+Copyright NVIDIA Corporation 2002
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+	$Id: //sw/devrel/SDK/MEDIA/CgFX1.4/simpleOGL.cgfx#9 $
+
+******************************************************************************/
+
+float4x4 WorldIT : WorldInverseTranspose;
+float4x4 WorldViewProj : WorldViewProjection;
+float4x4 World : World;
+
+texture DiffuseTexture : Diffuse
+<
+	string ResourceName = "nvidia.dds";
+	string ResourceType = "2D";
+>;
+
+texture DiffuseTexture2 : Diffuse
+<
+	string ResourceName = "checker.dds";
+	string ResourceType = "2D";
+>;
+
+sampler2D DiffuseSampler = sampler_state
+{
+	Texture = <DiffuseTexture>;
+  	minFilter = LinearMipMapLinear;
+  	magFilter = Linear;
+};
+
+float intensity 
+<
+	string UIName = "Intensity";
+	string UIWidget = "Slider";
+	float UIMin = 0;
+	float UIMax = 1;
+> = 1.0f;
+
+float4 LightPos : LightPos0
+<
+	string Object = "PointLight";
+	string UIName = "Lamp Position";
+	string Space = "World";
+> = {100.0f, 100.0f, 100.0f, 0.0f};
+                                 
+float4 LiteColor : Diffuse
+<
+  string UIName =  "Bright Surface Color";
+  string UIWidget = "Color";
+> = {0.8f, 0.5f, 0.1f, 1.0f};
+
+struct appdata 
+{
+	float3 Position	: POSITION;
+	float4 Normal	: NORMAL;
+	float2 texcoord0: TEXCOORD0;
+	float3 Tangent  : TEXCOORD1;
+	float3 Binormal : TEXCOORD2;
+	float4 color0 : COLOR0;
+};
+
+struct vertexOutput 
+{
+	float4 HPosition	: POSITION;
+	float2 texcoord0	: TEXCOORD0;
+	float3 tangent		: TEXCOORD1;
+	float4 diffCol		: COLOR0;
+};
+
+
+vertexOutput VShader(appdata IN)
+{
+	vertexOutput OUT;
+	float3 Nn = normalize(mul(World, IN.Normal).xyz);
+	float4 Po = float4(IN.Position.xyz,1);
+
+	float3 Pw = mul(World, Po).xyz;
+	float3 Ln = normalize(LightPos.xyz - Pw).xyz;
+	float4 mixColor;
+	mixColor = LiteColor * max(0, dot(Ln, Nn));
+	mixColor.w = 1.0;
+	OUT.diffCol = mixColor;
+	OUT.HPosition = mul(WorldViewProj, Po);
+	OUT.texcoord0 = IN.texcoord0;
+	OUT.tangent = IN.Tangent;
+	return OUT;
+}
+
+vertexOutput VShader2(appdata IN)
+{
+	vertexOutput OUT;
+	float3 Nn = normalize(mul(World, IN.Normal).xyz);
+	float4 Po = float4(IN.Position.xyz,1);
+
+	float3 Pw = mul(World, Po).xyz;
+	float3 Ln = normalize(LightPos.xyz - Pw).xyz;
+	float4 mixColor;
+	mixColor = intensity * max(0, dot(Ln, Nn));
+	mixColor.w = 1.0;
+	OUT.diffCol = mixColor;
+	OUT.diffCol = IN.color0;
+	OUT.texcoord0 = IN.texcoord0;
+	OUT.HPosition = mul(WorldViewProj, Po);
+	OUT.tangent = normalize(mul(World, float4(IN.Tangent.xyz,0)).xyz);
+	return OUT;
+}
+
+float4 fragment(vertexOutput IN) : COLOR
+{
+	float4 tex = tex2D(DiffuseSampler, IN.texcoord0.xy);
+	return tex;
+}
+
+float4 fragment1(vertexOutput IN) : COLOR
+{
+	return float4(IN.tangent.xyz,1);
+}
+
+float4 fragment2(vertexOutput IN) : COLOR
+{
+	float4 tex = tex2D(DiffuseSampler, IN.texcoord0.xy);
+	return tex*IN.diffCol;
+}
+
+technique Color
+{
+	pass 
+	{
+		DepthFunc = LEqual;
+		DepthTestEnable = true;
+		VertexProgram = compile arbvp1 VShader();
+		FragmentProgram = compile arbfp1 fragment();
+	}
+}
+technique Tangent 
+{
+	pass 
+	{
+		DepthFunc = LEqual;
+		DepthTestEnable = true;
+		VertexProgram = compile arbvp1 VShader2();
+		FragmentProgram = compile arbfp1 fragment1();
+	}
+}
+technique VertexColor 
+{
+	pass 
+	{
+		DepthFunc = LEqual;
+		DepthTestEnable = true;
+		VertexProgram = compile arbvp1 VShader2();
+		FragmentProgram = compile arbfp1 fragment2();
+	}
+}

@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Antoine Azar</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v0.89 GDC Alpha on Apr  5 2006 at 11:13:43</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=1;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=1;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/Work/COLLADA Samples/untitled</source_data>
+    </contributor>
+    <created>2006-04-13T20:26:31Z</created>
+    <modified>2006-04-13T20:26:31Z</modified>
+    <unit name="centimeter" meter="0.010000"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_cameras>
+    <camera id="cameraShape1-lib" name="testCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov sid="yfov">37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear sid="znear">0.010000</znear>
+            <zfar sid="zfar">1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture sid="haperture">3.599993</horizontal_aperture>
+          <lens_squeeze sid="lenssqueeze">1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_effects>
+    <effect id="lambert1-fx" name="lambert1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.500000 0.500000 0.500000 1.000000</color>
+            </diffuse>
+            <transparent>
+              <color sid="transparent">0 0 0 1.000000</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape1-lib" name="pCubeShape1">
+      <mesh>
+        <source id="pCubeShape1-lib-Position">
+          <float_array count="24" id="pCubeShape1-lib-Position-array">
+-0.500000 -0.500000 0.500000
+0.500000 -0.500000 0.500000
+-0.500000 0.500000 0.500000
+0.500000 0.500000 0.500000
+-0.500000 0.500000 -0.500000
+0.500000 0.500000 -0.500000
+-0.500000 -0.500000 -0.500000
+0.500000 -0.500000 -0.500000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Position-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-Normal">
+          <float_array count="72" id="pCubeShape1-lib-Normal-array">
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 0 1.000000
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 1.000000 0
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 0 -1.000000
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+0 -1.000000 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+-1.000000 0 0
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-Normal-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <DOUBLE_SIDED>true</DOUBLE_SIDED>
+          </technique>
+        </source>
+        <source id="pCubeShape1-lib-map1" name="map1">
+          <float_array count="28" id="pCubeShape1-lib-map1-array">
+0 0
+1.000000 0
+0 1.000000
+1.000000 1.000000
+0 2.000000
+1.000000 2.000000
+0 3.000000
+1.000000 3.000000
+0 4.000000
+1.000000 4.000000
+2.000000 0
+2.000000 1.000000
+-1.000000 0
+-1.000000 1.000000
+</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-lib-Vertex">
+          <input semantic="POSITION" source="#pCubeShape1-lib-Position"/>
+        </vertices>
+        <polygons material="lambert1" count="6">
+          <input semantic="VERTEX" offset="0" source="#pCubeShape1-lib-Vertex"/>
+          <input semantic="NORMAL" offset="1" source="#pCubeShape1-lib-Normal"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#pCubeShape1-lib-map1"/>
+          <p>0 0 0 1 1 1 3 2 3 2 3 2</p>
+          <p>2 4 2 3 5 3 5 6 5 4 7 4</p>
+          <p>4 8 4 5 9 5 7 10 7 6 11 6</p>
+          <p>6 12 6 7 13 7 1 14 9 0 15 8</p>
+          <p>1 16 1 7 17 10 5 18 11 3 19 3</p>
+          <p>6 20 12 0 21 0 2 22 2 4 23 13</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="pCubeShape1-lib-Position_0_-anim">
+      <source id="pCubeShape1-lib-Position_0_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_0_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_0_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_0_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_0_-anim-output-array">
+0 0 0 -0.037433 1.222837 0.004015 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_0_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_0_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_0_-anim-intan-array">
+0 0.017722 0 0 0.407613 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_0_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_0_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_0_-anim-outtan-array">
+0 0.407613 0 0 0.017722 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_0_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_0_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_0_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_0_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_0_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_0_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_0_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_0_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_0_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_0_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_0_-anim-sampler" target="pCubeShape1-lib-Position(0)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_1_-anim">
+      <source id="pCubeShape1-lib-Position_1_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_1_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_1_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_1_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_1_-anim-output-array">
+0 0 0 -0.016426 1.101396 0.058676 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_1_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_1_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_1_-anim-intan-array">
+0 0.015962 0.000850 0 0.367132 0.019559 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_1_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_1_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_1_-anim-outtan-array">
+0 0.367132 0.019559 0 0.015962 0.000850 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_1_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_1_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_1_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_1_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_1_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_1_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_1_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_1_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_1_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_1_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_1_-anim-sampler" target="pCubeShape1-lib-Position(1)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_2_-anim">
+      <source id="pCubeShape1-lib-Position_2_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_2_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_2_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_2_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_2_-anim-output-array">
+0 0 0 -0.002387 -1.123519 0.039944 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_2_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_2_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_2_-anim-intan-array">
+0 -0.016283 0 0 -0.374506 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_2_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_2_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_2_-anim-outtan-array">
+0 -0.374506 0 0 -0.016283 0 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_2_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_2_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_2_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_2_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_2_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_2_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_2_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_2_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_2_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_2_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_2_-anim-sampler" target="pCubeShape1-lib-Position(2)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_3_-anim">
+      <source id="pCubeShape1-lib-Position_3_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_3_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_3_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_3_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_3_-anim-output-array">
+0 0 0 0.012347 -0.984680 0.067436 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_3_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_3_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_3_-anim-intan-array">
+0 -0.014271 0.000977 0 -0.328227 0.022479 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_3_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_3_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_3_-anim-outtan-array">
+0 -0.328227 0.022479 0 -0.014271 0.000977 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_3_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_3_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_3_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_3_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_3_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_3_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_3_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_3_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_3_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_3_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_3_-anim-sampler" target="pCubeShape1-lib-Position(3)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_4_-anim">
+      <source id="pCubeShape1-lib-Position_4_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_4_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_4_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_4_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_4_-anim-output-array">
+0 0 0 -0.055090 -1.103197 0.101798 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_4_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_4_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_4_-anim-intan-array">
+-0.000798 -0.015988 0.001475 -0.018363 -0.367732 0.033933 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_4_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_4_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_4_-anim-outtan-array">
+-0.018363 -0.367732 0.033933 -0.000798 -0.015988 0.001475 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_4_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_4_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_4_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_4_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_4_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_4_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_4_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_4_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_4_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_4_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_4_-anim-sampler" target="pCubeShape1-lib-Position(4)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_5_-anim">
+      <source id="pCubeShape1-lib-Position_5_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_5_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_5_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_5_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_5_-anim-output-array">
+0 0 0 0.012467 -0.981118 0.058770 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_5_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_5_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_5_-anim-intan-array">
+0 -0.014219 0.000852 0 -0.327039 0.019590 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_5_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_5_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_5_-anim-outtan-array">
+0 -0.327039 0.019590 0 -0.014219 0.000852 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_5_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_5_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_5_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_5_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_5_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_5_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_5_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_5_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_5_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_5_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_5_-anim-sampler" target="pCubeShape1-lib-Position(5)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_6_-anim">
+      <source id="pCubeShape1-lib-Position_6_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_6_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_6_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_6_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_6_-anim-output-array">
+0 0 0 -0.100073 1.061291 0.083666 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_6_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_6_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_6_-anim-intan-array">
+-0.001450 0.015381 0.001213 -0.033358 0.353764 0.027889 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_6_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_6_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_6_-anim-outtan-array">
+-0.033358 0.353764 0.027889 -0.001450 0.015381 0.001213 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_6_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_6_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_6_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_6_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_6_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_6_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_6_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_6_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_6_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_6_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_6_-anim-sampler" target="pCubeShape1-lib-Position(6)"/>
+    </animation>
+    <animation id="pCubeShape1-lib-Position_7_-anim">
+      <source id="pCubeShape1-lib-Position_7_-anim-input">
+        <float_array count="2" id="pCubeShape1-lib-Position_7_-anim-input-array">
+0.041667 1.000000 </float_array>
+        <technique_common>
+          <accessor count="2" source="#pCubeShape1-lib-Position_7_-anim-input-array">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCubeShape1-lib-Position_7_-anim-output">
+        <float_array count="6" id="pCubeShape1-lib-Position_7_-anim-output-array">
+0 0 0 -0.016719 1.102961 0.072617 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_7_-anim-output-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_7_-anim-intan">
+        <float_array count="6" id="pCubeShape1-lib-Position_7_-anim-intan-array">
+0 0.015985 0.001052 0 0.367654 0.024206 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_7_-anim-intan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_7_-anim-outtan">
+        <float_array count="6" id="pCubeShape1-lib-Position_7_-anim-outtan-array">
+0 0.367654 0.024206 0 0.015985 0.001052 </float_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_7_-anim-outtan-array">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCubeShape1-lib-Position_7_-anim-interp">
+        <Name_array count="6" id="pCubeShape1-lib-Position_7_-anim-interp-array">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER </Name_array>
+        <technique_common>
+          <accessor count="2" stride="3" source="#pCubeShape1-lib-Position_7_-anim-interp-array">
+            <param name="X" type="Name"/>
+            <param name="Y" type="Name"/>
+            <param name="Z" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCubeShape1-lib-Position_7_-anim-sampler">
+        <input semantic="INPUT" source="#pCubeShape1-lib-Position_7_-anim-input"/>
+        <input semantic="OUTPUT" source="#pCubeShape1-lib-Position_7_-anim-output"/>
+        <input semantic="IN_TANGENT" source="#pCubeShape1-lib-Position_7_-anim-intan"/>
+        <input semantic="OUT_TANGENT" source="#pCubeShape1-lib-Position_7_-anim-outtan"/>
+        <input semantic="INTERPOLATION" source="#pCubeShape1-lib-Position_7_-anim-interp"/>
+      </sampler>
+      <channel source="#pCubeShape1-lib-Position_7_-anim-sampler" target="pCubeShape1-lib-Position(7)"/>
+    </animation>
+  </library_animations>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color sid="color">1.000000 1.000000 1.000000</color>
+        </directional>
+      </technique_common>
+      <technique profile="MAYA">
+        <intensity sid="intensity">1.000000</intensity>
+      </technique>
+    </light>
+  </library_lights>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="untitled">
+      <node id="pCube1" name="pCube1" sid="pCube1">
+        <matrix sid="transform">11.311644 0 0 0 0 11.311644 0 0 0 0 11.311644 0 0 0 0 1.000000</matrix>
+        <instance_geometry url="#pCubeShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert1" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" sid="directionalLight1">
+        <matrix sid="transform">-0.114698 -0.959569 0.257042 5.420198 0.292968 0.214567 0.931735 13.078449 -0.949218 0.182174 0.256513 8.335354 0 0 0 1.000000</matrix>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>
+      <node id="camera1" name="testCamera" sid="camera1">
+        <matrix sid="transform">0.998441 0.043381 0.035130 3.512927 -0.055822 0.775934 0.628339 24.943484 0 -0.629320 0.777146 34.242742 0 0 0 1.000000</matrix>
+        <instance_camera url="#cameraShape1-lib"/>
+      </node>
+      <extra>
+        <technique profile="MAYA">
+          <start_time>0.041667</start_time>
+          <end_time>2.000000</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

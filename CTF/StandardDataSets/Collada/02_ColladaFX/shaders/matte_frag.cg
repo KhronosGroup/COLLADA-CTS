@@ -1,0 +1,20 @@
+struct vertout
+{
+	float4 HPosition : POSITION;
+	float4 Color : COLOR;
+	float2 UV : TEXCOORD0;
+	float3 N : TEXCOORD1;
+	float3 L : TEXCOORD3;
+};
+
+float4 main( vertout IN,
+uniform float Kd,
+uniform float3 SurfaceColor,
+uniform float3 Ambient) : COLOR
+{
+	float4 Cs = float4(SurfaceColor.xyz,1)*Kd*dot(IN.L,IN.N) + float4(Ambient.xyz,1);
+	
+	Cs.a = 1;
+	
+	return Cs;
+}

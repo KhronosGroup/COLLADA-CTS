@@ -1,0 +1,3251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Alfred Leung</author>
+      <authoring_tool>Maya 7.0 | ColladaMaya v2.00 Jun  6 2006 at 11:03:25 | FCollada v1.10</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;relativePaths=1;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file://C|/Documents and Settings/Alfred Leung/Desktop/multiple_animation_clip.mb</source_data>
+    </contributor>
+    <created>2006-06-06T18:19:00Z</created>
+    <modified>2006-06-06T18:19:00Z</modified>
+    <unit meter="0.010000" name="centimeter"/>
+    <up_axis/>
+  </asset>
+  <library_animations>
+    <animation id="pCube1_translate">
+      <animation id="pCube1_translate-clip1Source">
+        <source id="pCube1_translate-clip1Source_pCube1_translate_X-input">
+          <float_array id="pCube1_translate-clip1Source_pCube1_translate_X-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source_pCube1_translate_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_translate-clip1Source_pCube1_translate_X-output">
+          <float_array id="pCube1_translate-clip1Source_pCube1_translate_X-output-array" count="2">2.002958 1.936356</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source_pCube1_translate_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source_pCube1_translate_X-intangents">
+          <float_array id="pCube1_translate-clip1Source_pCube1_translate_X-intangents-array" count="2">-0.066602 -0.027751</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source_pCube1_translate_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source_pCube1_translate_X-outtangents">
+          <float_array id="pCube1_translate-clip1Source_pCube1_translate_X-outtangents-array" count="2">-0.027751 -0.066602</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source_pCube1_translate_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source_pCube1_translate_X-interpolations">
+          <Name_array id="pCube1_translate-clip1Source_pCube1_translate_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source_pCube1_translate_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_translate-clip1Source_pCube1_translate_X-sampler">
+          <input semantic="INPUT" source="#pCube1_translate-clip1Source_pCube1_translate_X-input"/>
+          <input semantic="OUTPUT" source="#pCube1_translate-clip1Source_pCube1_translate_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_translate-clip1Source_pCube1_translate_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_translate-clip1Source_pCube1_translate_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_translate-clip1Source_pCube1_translate_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_translate-clip1Source_pCube1_translate_X-sampler" target="pCube1/translate.X"/>
+      </animation>
+      <animation id="pCube1_translate-clip1Source2">
+        <source id="pCube1_translate-clip1Source2_pCube1_translate_Y-input">
+          <float_array id="pCube1_translate-clip1Source2_pCube1_translate_Y-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source2_pCube1_translate_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_translate-clip1Source2_pCube1_translate_Y-output">
+          <float_array id="pCube1_translate-clip1Source2_pCube1_translate_Y-output-array" count="2">0.927480 3.194653</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source2_pCube1_translate_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source2_pCube1_translate_Y-intangents">
+          <float_array id="pCube1_translate-clip1Source2_pCube1_translate_Y-intangents-array" count="2">2.267174 0.944656</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source2_pCube1_translate_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source2_pCube1_translate_Y-outtangents">
+          <float_array id="pCube1_translate-clip1Source2_pCube1_translate_Y-outtangents-array" count="2">0.944656 2.267174</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source2_pCube1_translate_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source2_pCube1_translate_Y-interpolations">
+          <Name_array id="pCube1_translate-clip1Source2_pCube1_translate_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source2_pCube1_translate_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_translate-clip1Source2_pCube1_translate_Y-sampler">
+          <input semantic="INPUT" source="#pCube1_translate-clip1Source2_pCube1_translate_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube1_translate-clip1Source2_pCube1_translate_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_translate-clip1Source2_pCube1_translate_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_translate-clip1Source2_pCube1_translate_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_translate-clip1Source2_pCube1_translate_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_translate-clip1Source2_pCube1_translate_Y-sampler" target="pCube1/translate.Y"/>
+      </animation>
+      <animation id="pCube1_translate-clip1Source23">
+        <source id="pCube1_translate-clip1Source23_pCube1_translate_Z-input">
+          <float_array id="pCube1_translate-clip1Source23_pCube1_translate_Z-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source23_pCube1_translate_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_translate-clip1Source23_pCube1_translate_Z-output">
+          <float_array id="pCube1_translate-clip1Source23_pCube1_translate_Z-output-array" count="2">-2.698568 -4.332345</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source23_pCube1_translate_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source23_pCube1_translate_Z-intangents">
+          <float_array id="pCube1_translate-clip1Source23_pCube1_translate_Z-intangents-array" count="2">-1.633777 -0.680741</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source23_pCube1_translate_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source23_pCube1_translate_Z-outtangents">
+          <float_array id="pCube1_translate-clip1Source23_pCube1_translate_Z-outtangents-array" count="2">-0.680741 -1.633777</float_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source23_pCube1_translate_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_translate-clip1Source23_pCube1_translate_Z-interpolations">
+          <Name_array id="pCube1_translate-clip1Source23_pCube1_translate_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_translate-clip1Source23_pCube1_translate_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_translate-clip1Source23_pCube1_translate_Z-sampler">
+          <input semantic="INPUT" source="#pCube1_translate-clip1Source23_pCube1_translate_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube1_translate-clip1Source23_pCube1_translate_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_translate-clip1Source23_pCube1_translate_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_translate-clip1Source23_pCube1_translate_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_translate-clip1Source23_pCube1_translate_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_translate-clip1Source23_pCube1_translate_Z-sampler" target="pCube1/translate.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube1_rotateX">
+      <animation id="pCube1_rotateX-clip1Source">
+        <source id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-input">
+          <float_array id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-output">
+          <float_array id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-intangents">
+          <float_array id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-outtangents">
+          <float_array id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-interpolations">
+          <Name_array id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_rotateX-clip1Source_pCube1_rotateX_ANGLE-sampler" target="pCube1/rotateX.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube1_rotateY">
+      <animation id="pCube1_rotateY-clip1Source">
+        <source id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-input">
+          <float_array id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-output">
+          <float_array id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-intangents">
+          <float_array id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-outtangents">
+          <float_array id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-interpolations">
+          <Name_array id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_rotateY-clip1Source_pCube1_rotateY_ANGLE-sampler" target="pCube1/rotateY.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube1_rotateZ">
+      <animation id="pCube1_rotateZ-clip1Source">
+        <source id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-input">
+          <float_array id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-output">
+          <float_array id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-intangents">
+          <float_array id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-outtangents">
+          <float_array id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-interpolations">
+          <Name_array id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_rotateZ-clip1Source_pCube1_rotateZ_ANGLE-sampler" target="pCube1/rotateZ.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube1_scale">
+      <animation id="pCube1_scale-clip1Source">
+        <source id="pCube1_scale-clip1Source_pCube1_scale_X-input">
+          <float_array id="pCube1_scale-clip1Source_pCube1_scale_X-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source_pCube1_scale_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_scale-clip1Source_pCube1_scale_X-output">
+          <float_array id="pCube1_scale-clip1Source_pCube1_scale_X-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source_pCube1_scale_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source_pCube1_scale_X-intangents">
+          <float_array id="pCube1_scale-clip1Source_pCube1_scale_X-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source_pCube1_scale_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source_pCube1_scale_X-outtangents">
+          <float_array id="pCube1_scale-clip1Source_pCube1_scale_X-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source_pCube1_scale_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source_pCube1_scale_X-interpolations">
+          <Name_array id="pCube1_scale-clip1Source_pCube1_scale_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source_pCube1_scale_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_scale-clip1Source_pCube1_scale_X-sampler">
+          <input semantic="INPUT" source="#pCube1_scale-clip1Source_pCube1_scale_X-input"/>
+          <input semantic="OUTPUT" source="#pCube1_scale-clip1Source_pCube1_scale_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_scale-clip1Source_pCube1_scale_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_scale-clip1Source_pCube1_scale_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_scale-clip1Source_pCube1_scale_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_scale-clip1Source_pCube1_scale_X-sampler" target="pCube1/scale.X"/>
+      </animation>
+      <animation id="pCube1_scale-clip1Source2">
+        <source id="pCube1_scale-clip1Source2_pCube1_scale_Y-input">
+          <float_array id="pCube1_scale-clip1Source2_pCube1_scale_Y-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source2_pCube1_scale_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_scale-clip1Source2_pCube1_scale_Y-output">
+          <float_array id="pCube1_scale-clip1Source2_pCube1_scale_Y-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source2_pCube1_scale_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source2_pCube1_scale_Y-intangents">
+          <float_array id="pCube1_scale-clip1Source2_pCube1_scale_Y-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source2_pCube1_scale_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source2_pCube1_scale_Y-outtangents">
+          <float_array id="pCube1_scale-clip1Source2_pCube1_scale_Y-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source2_pCube1_scale_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source2_pCube1_scale_Y-interpolations">
+          <Name_array id="pCube1_scale-clip1Source2_pCube1_scale_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source2_pCube1_scale_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_scale-clip1Source2_pCube1_scale_Y-sampler">
+          <input semantic="INPUT" source="#pCube1_scale-clip1Source2_pCube1_scale_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube1_scale-clip1Source2_pCube1_scale_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_scale-clip1Source2_pCube1_scale_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_scale-clip1Source2_pCube1_scale_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_scale-clip1Source2_pCube1_scale_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_scale-clip1Source2_pCube1_scale_Y-sampler" target="pCube1/scale.Y"/>
+      </animation>
+      <animation id="pCube1_scale-clip1Source23">
+        <source id="pCube1_scale-clip1Source23_pCube1_scale_Z-input">
+          <float_array id="pCube1_scale-clip1Source23_pCube1_scale_Z-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source23_pCube1_scale_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_scale-clip1Source23_pCube1_scale_Z-output">
+          <float_array id="pCube1_scale-clip1Source23_pCube1_scale_Z-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source23_pCube1_scale_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source23_pCube1_scale_Z-intangents">
+          <float_array id="pCube1_scale-clip1Source23_pCube1_scale_Z-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source23_pCube1_scale_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source23_pCube1_scale_Z-outtangents">
+          <float_array id="pCube1_scale-clip1Source23_pCube1_scale_Z-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source23_pCube1_scale_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube1_scale-clip1Source23_pCube1_scale_Z-interpolations">
+          <Name_array id="pCube1_scale-clip1Source23_pCube1_scale_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube1_scale-clip1Source23_pCube1_scale_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_scale-clip1Source23_pCube1_scale_Z-sampler">
+          <input semantic="INPUT" source="#pCube1_scale-clip1Source23_pCube1_scale_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube1_scale-clip1Source23_pCube1_scale_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube1_scale-clip1Source23_pCube1_scale_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube1_scale-clip1Source23_pCube1_scale_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube1_scale-clip1Source23_pCube1_scale_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube1_scale-clip1Source23_pCube1_scale_Z-sampler" target="pCube1/scale.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube1_visibility">
+      <animation id="pCube1_visibility-clip1Source">
+        <source id="pCube1_visibility-clip1Source_-input">
+          <float_array id="pCube1_visibility-clip1Source_-input-array" count="2">0.041667 0.458333</float_array>
+          <technique_common>
+            <accessor source="#pCube1_visibility-clip1Source_-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube1_visibility-clip1Source_-output">
+          <float_array id="pCube1_visibility-clip1Source_-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube1_visibility-clip1Source_-output-array" count="2" stride="1">
+              <param name="VISIBILITY" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube1_visibility-clip1Source_-sampler">
+          <input semantic="INPUT" source="#pCube1_visibility-clip1Source_-input"/>
+          <input semantic="OUTPUT" source="#pCube1_visibility-clip1Source_-output"/>
+        </sampler>
+        <channel source="#pCube1_visibility-clip1Source_-sampler" target=""/>
+      </animation>
+    </animation>
+    <animation id="pCube3_translate">
+      <animation id="pCube3_translate-clip1Source">
+        <source id="pCube3_translate-clip1Source_pCube3_translate_X-input">
+          <float_array id="pCube3_translate-clip1Source_pCube3_translate_X-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source_pCube3_translate_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip1Source_pCube3_translate_X-output">
+          <float_array id="pCube3_translate-clip1Source_pCube3_translate_X-output-array" count="2">2.164301 3.204395</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source_pCube3_translate_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source_pCube3_translate_X-intangents">
+          <float_array id="pCube3_translate-clip1Source_pCube3_translate_X-intangents-array" count="2">2.600235 0.433372</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source_pCube3_translate_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source_pCube3_translate_X-outtangents">
+          <float_array id="pCube3_translate-clip1Source_pCube3_translate_X-outtangents-array" count="2">0.433372 2.600235</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source_pCube3_translate_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source_pCube3_translate_X-interpolations">
+          <Name_array id="pCube3_translate-clip1Source_pCube3_translate_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source_pCube3_translate_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip1Source_pCube3_translate_X-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip1Source_pCube3_translate_X-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip1Source_pCube3_translate_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip1Source_pCube3_translate_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip1Source_pCube3_translate_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip1Source_pCube3_translate_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip1Source_pCube3_translate_X-sampler" target="pCube3/translate.X"/>
+      </animation>
+      <animation id="pCube3_translate-clip3Source">
+        <source id="pCube3_translate-clip3Source_pCube3_translate_X-input">
+          <float_array id="pCube3_translate-clip3Source_pCube3_translate_X-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source_pCube3_translate_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip3Source_pCube3_translate_X-output">
+          <float_array id="pCube3_translate-clip3Source_pCube3_translate_X-output-array" count="2">2.164301 -0.245005</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source_pCube3_translate_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source_pCube3_translate_X-intangents">
+          <float_array id="pCube3_translate-clip3Source_pCube3_translate_X-intangents-array" count="2">-4.015510 -1.003878</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source_pCube3_translate_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source_pCube3_translate_X-outtangents">
+          <float_array id="pCube3_translate-clip3Source_pCube3_translate_X-outtangents-array" count="2">-1.003878 -4.015510</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source_pCube3_translate_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source_pCube3_translate_X-interpolations">
+          <Name_array id="pCube3_translate-clip3Source_pCube3_translate_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source_pCube3_translate_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip3Source_pCube3_translate_X-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip3Source_pCube3_translate_X-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip3Source_pCube3_translate_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip3Source_pCube3_translate_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip3Source_pCube3_translate_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip3Source_pCube3_translate_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip3Source_pCube3_translate_X-sampler" target="pCube3/translate.X"/>
+      </animation>
+      <animation id="pCube3_translate-clip1Source2">
+        <source id="pCube3_translate-clip1Source2_pCube3_translate_Y-input">
+          <float_array id="pCube3_translate-clip1Source2_pCube3_translate_Y-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source2_pCube3_translate_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip1Source2_pCube3_translate_Y-output">
+          <float_array id="pCube3_translate-clip1Source2_pCube3_translate_Y-output-array" count="2">-1.262403 -4.585873</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source2_pCube3_translate_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source2_pCube3_translate_Y-intangents">
+          <float_array id="pCube3_translate-clip1Source2_pCube3_translate_Y-intangents-array" count="2">-8.308675 -1.384779</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source2_pCube3_translate_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source2_pCube3_translate_Y-outtangents">
+          <float_array id="pCube3_translate-clip1Source2_pCube3_translate_Y-outtangents-array" count="2">-1.384779 -8.308675</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source2_pCube3_translate_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source2_pCube3_translate_Y-interpolations">
+          <Name_array id="pCube3_translate-clip1Source2_pCube3_translate_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source2_pCube3_translate_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip1Source2_pCube3_translate_Y-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip1Source2_pCube3_translate_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip1Source2_pCube3_translate_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip1Source2_pCube3_translate_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip1Source2_pCube3_translate_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip1Source2_pCube3_translate_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip1Source2_pCube3_translate_Y-sampler" target="pCube3/translate.Y"/>
+      </animation>
+      <animation id="pCube3_translate-clip3Source2">
+        <source id="pCube3_translate-clip3Source2_pCube3_translate_Y-input">
+          <float_array id="pCube3_translate-clip3Source2_pCube3_translate_Y-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source2_pCube3_translate_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip3Source2_pCube3_translate_Y-output">
+          <float_array id="pCube3_translate-clip3Source2_pCube3_translate_Y-output-array" count="2">-1.262403 3.744081</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source2_pCube3_translate_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source2_pCube3_translate_Y-intangents">
+          <float_array id="pCube3_translate-clip3Source2_pCube3_translate_Y-intangents-array" count="2">8.344140 2.086035</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source2_pCube3_translate_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source2_pCube3_translate_Y-outtangents">
+          <float_array id="pCube3_translate-clip3Source2_pCube3_translate_Y-outtangents-array" count="2">2.086035 8.344140</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source2_pCube3_translate_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source2_pCube3_translate_Y-interpolations">
+          <Name_array id="pCube3_translate-clip3Source2_pCube3_translate_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source2_pCube3_translate_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip3Source2_pCube3_translate_Y-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip3Source2_pCube3_translate_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip3Source2_pCube3_translate_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip3Source2_pCube3_translate_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip3Source2_pCube3_translate_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip3Source2_pCube3_translate_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip3Source2_pCube3_translate_Y-sampler" target="pCube3/translate.Y"/>
+      </animation>
+      <animation id="pCube3_translate-clip1Source23">
+        <source id="pCube3_translate-clip1Source23_pCube3_translate_Z-input">
+          <float_array id="pCube3_translate-clip1Source23_pCube3_translate_Z-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source23_pCube3_translate_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip1Source23_pCube3_translate_Z-output">
+          <float_array id="pCube3_translate-clip1Source23_pCube3_translate_Z-output-array" count="2">-1.217498 0.235010</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source23_pCube3_translate_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source23_pCube3_translate_Z-intangents">
+          <float_array id="pCube3_translate-clip1Source23_pCube3_translate_Z-intangents-array" count="2">3.631271 0.605212</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source23_pCube3_translate_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source23_pCube3_translate_Z-outtangents">
+          <float_array id="pCube3_translate-clip1Source23_pCube3_translate_Z-outtangents-array" count="2">0.605212 3.631271</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source23_pCube3_translate_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip1Source23_pCube3_translate_Z-interpolations">
+          <Name_array id="pCube3_translate-clip1Source23_pCube3_translate_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip1Source23_pCube3_translate_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip1Source23_pCube3_translate_Z-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip1Source23_pCube3_translate_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip1Source23_pCube3_translate_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip1Source23_pCube3_translate_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip1Source23_pCube3_translate_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip1Source23_pCube3_translate_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip1Source23_pCube3_translate_Z-sampler" target="pCube3/translate.Z"/>
+      </animation>
+      <animation id="pCube3_translate-clip3Source23">
+        <source id="pCube3_translate-clip3Source23_pCube3_translate_Z-input">
+          <float_array id="pCube3_translate-clip3Source23_pCube3_translate_Z-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source23_pCube3_translate_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_translate-clip3Source23_pCube3_translate_Z-output">
+          <float_array id="pCube3_translate-clip3Source23_pCube3_translate_Z-output-array" count="2">-1.217498 -2.563055</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source23_pCube3_translate_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source23_pCube3_translate_Z-intangents">
+          <float_array id="pCube3_translate-clip3Source23_pCube3_translate_Z-intangents-array" count="2">-2.242595 -0.560649</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source23_pCube3_translate_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source23_pCube3_translate_Z-outtangents">
+          <float_array id="pCube3_translate-clip3Source23_pCube3_translate_Z-outtangents-array" count="2">-0.560649 -2.242595</float_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source23_pCube3_translate_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_translate-clip3Source23_pCube3_translate_Z-interpolations">
+          <Name_array id="pCube3_translate-clip3Source23_pCube3_translate_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_translate-clip3Source23_pCube3_translate_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_translate-clip3Source23_pCube3_translate_Z-sampler">
+          <input semantic="INPUT" source="#pCube3_translate-clip3Source23_pCube3_translate_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube3_translate-clip3Source23_pCube3_translate_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_translate-clip3Source23_pCube3_translate_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_translate-clip3Source23_pCube3_translate_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_translate-clip3Source23_pCube3_translate_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_translate-clip3Source23_pCube3_translate_Z-sampler" target="pCube3/translate.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube3_rotateX">
+      <animation id="pCube3_rotateX-clip1Source">
+        <source id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-input">
+          <float_array id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-output">
+          <float_array id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-intangents">
+          <float_array id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-outtangents">
+          <float_array id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateX-clip1Source_pCube3_rotateX_ANGLE-sampler" target="pCube3/rotateX.ANGLE"/>
+      </animation>
+      <animation id="pCube3_rotateX-clip3Source">
+        <source id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-input">
+          <float_array id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-output">
+          <float_array id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-intangents">
+          <float_array id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-outtangents">
+          <float_array id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateX-clip3Source_pCube3_rotateX_ANGLE-sampler" target="pCube3/rotateX.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube3_rotateY">
+      <animation id="pCube3_rotateY-clip1Source">
+        <source id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-input">
+          <float_array id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-output">
+          <float_array id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-intangents">
+          <float_array id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-outtangents">
+          <float_array id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateY-clip1Source_pCube3_rotateY_ANGLE-sampler" target="pCube3/rotateY.ANGLE"/>
+      </animation>
+      <animation id="pCube3_rotateY-clip3Source">
+        <source id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-input">
+          <float_array id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-output">
+          <float_array id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-intangents">
+          <float_array id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-outtangents">
+          <float_array id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateY-clip3Source_pCube3_rotateY_ANGLE-sampler" target="pCube3/rotateY.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube3_rotateZ">
+      <animation id="pCube3_rotateZ-clip1Source">
+        <source id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-input">
+          <float_array id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-output">
+          <float_array id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-intangents">
+          <float_array id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-outtangents">
+          <float_array id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateZ-clip1Source_pCube3_rotateZ_ANGLE-sampler" target="pCube3/rotateZ.ANGLE"/>
+      </animation>
+      <animation id="pCube3_rotateZ-clip3Source">
+        <source id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-input">
+          <float_array id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-output">
+          <float_array id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-intangents">
+          <float_array id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-outtangents">
+          <float_array id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-interpolations">
+          <Name_array id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_rotateZ-clip3Source_pCube3_rotateZ_ANGLE-sampler" target="pCube3/rotateZ.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube3_scale">
+      <animation id="pCube3_scale-clip1Source">
+        <source id="pCube3_scale-clip1Source_pCube3_scale_X-input">
+          <float_array id="pCube3_scale-clip1Source_pCube3_scale_X-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source_pCube3_scale_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip1Source_pCube3_scale_X-output">
+          <float_array id="pCube3_scale-clip1Source_pCube3_scale_X-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source_pCube3_scale_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source_pCube3_scale_X-intangents">
+          <float_array id="pCube3_scale-clip1Source_pCube3_scale_X-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source_pCube3_scale_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source_pCube3_scale_X-outtangents">
+          <float_array id="pCube3_scale-clip1Source_pCube3_scale_X-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source_pCube3_scale_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source_pCube3_scale_X-interpolations">
+          <Name_array id="pCube3_scale-clip1Source_pCube3_scale_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source_pCube3_scale_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip1Source_pCube3_scale_X-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip1Source_pCube3_scale_X-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip1Source_pCube3_scale_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip1Source_pCube3_scale_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip1Source_pCube3_scale_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip1Source_pCube3_scale_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip1Source_pCube3_scale_X-sampler" target="pCube3/scale.X"/>
+      </animation>
+      <animation id="pCube3_scale-clip3Source">
+        <source id="pCube3_scale-clip3Source_pCube3_scale_X-input">
+          <float_array id="pCube3_scale-clip3Source_pCube3_scale_X-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source_pCube3_scale_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip3Source_pCube3_scale_X-output">
+          <float_array id="pCube3_scale-clip3Source_pCube3_scale_X-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source_pCube3_scale_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source_pCube3_scale_X-intangents">
+          <float_array id="pCube3_scale-clip3Source_pCube3_scale_X-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source_pCube3_scale_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source_pCube3_scale_X-outtangents">
+          <float_array id="pCube3_scale-clip3Source_pCube3_scale_X-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source_pCube3_scale_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source_pCube3_scale_X-interpolations">
+          <Name_array id="pCube3_scale-clip3Source_pCube3_scale_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source_pCube3_scale_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip3Source_pCube3_scale_X-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip3Source_pCube3_scale_X-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip3Source_pCube3_scale_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip3Source_pCube3_scale_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip3Source_pCube3_scale_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip3Source_pCube3_scale_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip3Source_pCube3_scale_X-sampler" target="pCube3/scale.X"/>
+      </animation>
+      <animation id="pCube3_scale-clip1Source2">
+        <source id="pCube3_scale-clip1Source2_pCube3_scale_Y-input">
+          <float_array id="pCube3_scale-clip1Source2_pCube3_scale_Y-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source2_pCube3_scale_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip1Source2_pCube3_scale_Y-output">
+          <float_array id="pCube3_scale-clip1Source2_pCube3_scale_Y-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source2_pCube3_scale_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source2_pCube3_scale_Y-intangents">
+          <float_array id="pCube3_scale-clip1Source2_pCube3_scale_Y-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source2_pCube3_scale_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source2_pCube3_scale_Y-outtangents">
+          <float_array id="pCube3_scale-clip1Source2_pCube3_scale_Y-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source2_pCube3_scale_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source2_pCube3_scale_Y-interpolations">
+          <Name_array id="pCube3_scale-clip1Source2_pCube3_scale_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source2_pCube3_scale_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip1Source2_pCube3_scale_Y-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip1Source2_pCube3_scale_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip1Source2_pCube3_scale_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip1Source2_pCube3_scale_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip1Source2_pCube3_scale_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip1Source2_pCube3_scale_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip1Source2_pCube3_scale_Y-sampler" target="pCube3/scale.Y"/>
+      </animation>
+      <animation id="pCube3_scale-clip3Source2">
+        <source id="pCube3_scale-clip3Source2_pCube3_scale_Y-input">
+          <float_array id="pCube3_scale-clip3Source2_pCube3_scale_Y-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source2_pCube3_scale_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip3Source2_pCube3_scale_Y-output">
+          <float_array id="pCube3_scale-clip3Source2_pCube3_scale_Y-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source2_pCube3_scale_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source2_pCube3_scale_Y-intangents">
+          <float_array id="pCube3_scale-clip3Source2_pCube3_scale_Y-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source2_pCube3_scale_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source2_pCube3_scale_Y-outtangents">
+          <float_array id="pCube3_scale-clip3Source2_pCube3_scale_Y-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source2_pCube3_scale_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source2_pCube3_scale_Y-interpolations">
+          <Name_array id="pCube3_scale-clip3Source2_pCube3_scale_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source2_pCube3_scale_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip3Source2_pCube3_scale_Y-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip3Source2_pCube3_scale_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip3Source2_pCube3_scale_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip3Source2_pCube3_scale_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip3Source2_pCube3_scale_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip3Source2_pCube3_scale_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip3Source2_pCube3_scale_Y-sampler" target="pCube3/scale.Y"/>
+      </animation>
+      <animation id="pCube3_scale-clip1Source23">
+        <source id="pCube3_scale-clip1Source23_pCube3_scale_Z-input">
+          <float_array id="pCube3_scale-clip1Source23_pCube3_scale_Z-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source23_pCube3_scale_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip1Source23_pCube3_scale_Z-output">
+          <float_array id="pCube3_scale-clip1Source23_pCube3_scale_Z-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source23_pCube3_scale_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source23_pCube3_scale_Z-intangents">
+          <float_array id="pCube3_scale-clip1Source23_pCube3_scale_Z-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source23_pCube3_scale_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source23_pCube3_scale_Z-outtangents">
+          <float_array id="pCube3_scale-clip1Source23_pCube3_scale_Z-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source23_pCube3_scale_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip1Source23_pCube3_scale_Z-interpolations">
+          <Name_array id="pCube3_scale-clip1Source23_pCube3_scale_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip1Source23_pCube3_scale_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip1Source23_pCube3_scale_Z-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip1Source23_pCube3_scale_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip1Source23_pCube3_scale_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip1Source23_pCube3_scale_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip1Source23_pCube3_scale_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip1Source23_pCube3_scale_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip1Source23_pCube3_scale_Z-sampler" target="pCube3/scale.Z"/>
+      </animation>
+      <animation id="pCube3_scale-clip3Source23">
+        <source id="pCube3_scale-clip3Source23_pCube3_scale_Z-input">
+          <float_array id="pCube3_scale-clip3Source23_pCube3_scale_Z-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source23_pCube3_scale_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_scale-clip3Source23_pCube3_scale_Z-output">
+          <float_array id="pCube3_scale-clip3Source23_pCube3_scale_Z-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source23_pCube3_scale_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source23_pCube3_scale_Z-intangents">
+          <float_array id="pCube3_scale-clip3Source23_pCube3_scale_Z-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source23_pCube3_scale_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source23_pCube3_scale_Z-outtangents">
+          <float_array id="pCube3_scale-clip3Source23_pCube3_scale_Z-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source23_pCube3_scale_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube3_scale-clip3Source23_pCube3_scale_Z-interpolations">
+          <Name_array id="pCube3_scale-clip3Source23_pCube3_scale_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube3_scale-clip3Source23_pCube3_scale_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_scale-clip3Source23_pCube3_scale_Z-sampler">
+          <input semantic="INPUT" source="#pCube3_scale-clip3Source23_pCube3_scale_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube3_scale-clip3Source23_pCube3_scale_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube3_scale-clip3Source23_pCube3_scale_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube3_scale-clip3Source23_pCube3_scale_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube3_scale-clip3Source23_pCube3_scale_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube3_scale-clip3Source23_pCube3_scale_Z-sampler" target="pCube3/scale.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube3_visibility">
+      <animation id="pCube3_visibility-clip1Source">
+        <source id="pCube3_visibility-clip1Source_-input">
+          <float_array id="pCube3_visibility-clip1Source_-input-array" count="2">0.041667 0.208333</float_array>
+          <technique_common>
+            <accessor source="#pCube3_visibility-clip1Source_-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_visibility-clip1Source_-output">
+          <float_array id="pCube3_visibility-clip1Source_-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_visibility-clip1Source_-output-array" count="2" stride="1">
+              <param name="VISIBILITY" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_visibility-clip1Source_-sampler">
+          <input semantic="INPUT" source="#pCube3_visibility-clip1Source_-input"/>
+          <input semantic="OUTPUT" source="#pCube3_visibility-clip1Source_-output"/>
+        </sampler>
+        <channel source="#pCube3_visibility-clip1Source_-sampler" target=""/>
+      </animation>
+      <animation id="pCube3_visibility-clip3Source">
+        <source id="pCube3_visibility-clip3Source_-input">
+          <float_array id="pCube3_visibility-clip3Source_-input-array" count="2">0.041667 0.291667</float_array>
+          <technique_common>
+            <accessor source="#pCube3_visibility-clip3Source_-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube3_visibility-clip3Source_-output">
+          <float_array id="pCube3_visibility-clip3Source_-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube3_visibility-clip3Source_-output-array" count="2" stride="1">
+              <param name="VISIBILITY" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube3_visibility-clip3Source_-sampler">
+          <input semantic="INPUT" source="#pCube3_visibility-clip3Source_-input"/>
+          <input semantic="OUTPUT" source="#pCube3_visibility-clip3Source_-output"/>
+        </sampler>
+        <channel source="#pCube3_visibility-clip3Source_-sampler" target=""/>
+      </animation>
+    </animation>
+    <animation id="pCube4_translate">
+      <animation id="pCube4_translate-clip2Source">
+        <source id="pCube4_translate-clip2Source_pCube4_translate_X-input">
+          <float_array id="pCube4_translate-clip2Source_pCube4_translate_X-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source_pCube4_translate_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_translate-clip2Source_pCube4_translate_X-output">
+          <float_array id="pCube4_translate-clip2Source_pCube4_translate_X-output-array" count="2">-2.242617 2.245063</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source_pCube4_translate_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source_pCube4_translate_X-intangents">
+          <float_array id="pCube4_translate-clip2Source_pCube4_translate_X-intangents-array" count="2">4.487680 1.869867</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source_pCube4_translate_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source_pCube4_translate_X-outtangents">
+          <float_array id="pCube4_translate-clip2Source_pCube4_translate_X-outtangents-array" count="2">1.869867 4.487680</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source_pCube4_translate_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source_pCube4_translate_X-interpolations">
+          <Name_array id="pCube4_translate-clip2Source_pCube4_translate_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source_pCube4_translate_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_translate-clip2Source_pCube4_translate_X-sampler">
+          <input semantic="INPUT" source="#pCube4_translate-clip2Source_pCube4_translate_X-input"/>
+          <input semantic="OUTPUT" source="#pCube4_translate-clip2Source_pCube4_translate_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_translate-clip2Source_pCube4_translate_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_translate-clip2Source_pCube4_translate_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_translate-clip2Source_pCube4_translate_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_translate-clip2Source_pCube4_translate_X-sampler" target="pCube4/translate.X"/>
+      </animation>
+      <animation id="pCube4_translate-clip2Source2">
+        <source id="pCube4_translate-clip2Source2_pCube4_translate_Y-input">
+          <float_array id="pCube4_translate-clip2Source2_pCube4_translate_Y-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source2_pCube4_translate_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_translate-clip2Source2_pCube4_translate_Y-output">
+          <float_array id="pCube4_translate-clip2Source2_pCube4_translate_Y-output-array" count="2">-0.618320 -0.103053</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source2_pCube4_translate_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source2_pCube4_translate_Y-intangents">
+          <float_array id="pCube4_translate-clip2Source2_pCube4_translate_Y-intangents-array" count="2">0.515267 0.214694</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source2_pCube4_translate_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source2_pCube4_translate_Y-outtangents">
+          <float_array id="pCube4_translate-clip2Source2_pCube4_translate_Y-outtangents-array" count="2">0.214694 0.515267</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source2_pCube4_translate_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source2_pCube4_translate_Y-interpolations">
+          <Name_array id="pCube4_translate-clip2Source2_pCube4_translate_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source2_pCube4_translate_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_translate-clip2Source2_pCube4_translate_Y-sampler">
+          <input semantic="INPUT" source="#pCube4_translate-clip2Source2_pCube4_translate_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube4_translate-clip2Source2_pCube4_translate_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_translate-clip2Source2_pCube4_translate_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_translate-clip2Source2_pCube4_translate_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_translate-clip2Source2_pCube4_translate_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_translate-clip2Source2_pCube4_translate_Y-sampler" target="pCube4/translate.Y"/>
+      </animation>
+      <animation id="pCube4_translate-clip2Source23">
+        <source id="pCube4_translate-clip2Source23_pCube4_translate_Z-input">
+          <float_array id="pCube4_translate-clip2Source23_pCube4_translate_Z-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source23_pCube4_translate_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_translate-clip2Source23_pCube4_translate_Z-output">
+          <float_array id="pCube4_translate-clip2Source23_pCube4_translate_Z-output-array" count="2">2.706357 -2.167773</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source23_pCube4_translate_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source23_pCube4_translate_Z-intangents">
+          <float_array id="pCube4_translate-clip2Source23_pCube4_translate_Z-intangents-array" count="2">-4.874130 -2.030887</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source23_pCube4_translate_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source23_pCube4_translate_Z-outtangents">
+          <float_array id="pCube4_translate-clip2Source23_pCube4_translate_Z-outtangents-array" count="2">-2.030887 -4.874130</float_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source23_pCube4_translate_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_translate-clip2Source23_pCube4_translate_Z-interpolations">
+          <Name_array id="pCube4_translate-clip2Source23_pCube4_translate_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_translate-clip2Source23_pCube4_translate_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_translate-clip2Source23_pCube4_translate_Z-sampler">
+          <input semantic="INPUT" source="#pCube4_translate-clip2Source23_pCube4_translate_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube4_translate-clip2Source23_pCube4_translate_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_translate-clip2Source23_pCube4_translate_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_translate-clip2Source23_pCube4_translate_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_translate-clip2Source23_pCube4_translate_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_translate-clip2Source23_pCube4_translate_Z-sampler" target="pCube4/translate.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube4_rotateX">
+      <animation id="pCube4_rotateX-clip2Source">
+        <source id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-input">
+          <float_array id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-output">
+          <float_array id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-intangents">
+          <float_array id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-outtangents">
+          <float_array id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-interpolations">
+          <Name_array id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_rotateX-clip2Source_pCube4_rotateX_ANGLE-sampler" target="pCube4/rotateX.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube4_rotateY">
+      <animation id="pCube4_rotateY-clip2Source">
+        <source id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-input">
+          <float_array id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-output">
+          <float_array id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-intangents">
+          <float_array id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-outtangents">
+          <float_array id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-interpolations">
+          <Name_array id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_rotateY-clip2Source_pCube4_rotateY_ANGLE-sampler" target="pCube4/rotateY.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube4_rotateZ">
+      <animation id="pCube4_rotateZ-clip2Source">
+        <source id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-input">
+          <float_array id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-output">
+          <float_array id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-intangents">
+          <float_array id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-outtangents">
+          <float_array id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-interpolations">
+          <Name_array id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_rotateZ-clip2Source_pCube4_rotateZ_ANGLE-sampler" target="pCube4/rotateZ.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube4_scale">
+      <animation id="pCube4_scale-clip2Source">
+        <source id="pCube4_scale-clip2Source_pCube4_scale_X-input">
+          <float_array id="pCube4_scale-clip2Source_pCube4_scale_X-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source_pCube4_scale_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_scale-clip2Source_pCube4_scale_X-output">
+          <float_array id="pCube4_scale-clip2Source_pCube4_scale_X-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source_pCube4_scale_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source_pCube4_scale_X-intangents">
+          <float_array id="pCube4_scale-clip2Source_pCube4_scale_X-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source_pCube4_scale_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source_pCube4_scale_X-outtangents">
+          <float_array id="pCube4_scale-clip2Source_pCube4_scale_X-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source_pCube4_scale_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source_pCube4_scale_X-interpolations">
+          <Name_array id="pCube4_scale-clip2Source_pCube4_scale_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source_pCube4_scale_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_scale-clip2Source_pCube4_scale_X-sampler">
+          <input semantic="INPUT" source="#pCube4_scale-clip2Source_pCube4_scale_X-input"/>
+          <input semantic="OUTPUT" source="#pCube4_scale-clip2Source_pCube4_scale_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_scale-clip2Source_pCube4_scale_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_scale-clip2Source_pCube4_scale_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_scale-clip2Source_pCube4_scale_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_scale-clip2Source_pCube4_scale_X-sampler" target="pCube4/scale.X"/>
+      </animation>
+      <animation id="pCube4_scale-clip2Source2">
+        <source id="pCube4_scale-clip2Source2_pCube4_scale_Y-input">
+          <float_array id="pCube4_scale-clip2Source2_pCube4_scale_Y-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source2_pCube4_scale_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_scale-clip2Source2_pCube4_scale_Y-output">
+          <float_array id="pCube4_scale-clip2Source2_pCube4_scale_Y-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source2_pCube4_scale_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source2_pCube4_scale_Y-intangents">
+          <float_array id="pCube4_scale-clip2Source2_pCube4_scale_Y-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source2_pCube4_scale_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source2_pCube4_scale_Y-outtangents">
+          <float_array id="pCube4_scale-clip2Source2_pCube4_scale_Y-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source2_pCube4_scale_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source2_pCube4_scale_Y-interpolations">
+          <Name_array id="pCube4_scale-clip2Source2_pCube4_scale_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source2_pCube4_scale_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_scale-clip2Source2_pCube4_scale_Y-sampler">
+          <input semantic="INPUT" source="#pCube4_scale-clip2Source2_pCube4_scale_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube4_scale-clip2Source2_pCube4_scale_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_scale-clip2Source2_pCube4_scale_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_scale-clip2Source2_pCube4_scale_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_scale-clip2Source2_pCube4_scale_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_scale-clip2Source2_pCube4_scale_Y-sampler" target="pCube4/scale.Y"/>
+      </animation>
+      <animation id="pCube4_scale-clip2Source23">
+        <source id="pCube4_scale-clip2Source23_pCube4_scale_Z-input">
+          <float_array id="pCube4_scale-clip2Source23_pCube4_scale_Z-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source23_pCube4_scale_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_scale-clip2Source23_pCube4_scale_Z-output">
+          <float_array id="pCube4_scale-clip2Source23_pCube4_scale_Z-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source23_pCube4_scale_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source23_pCube4_scale_Z-intangents">
+          <float_array id="pCube4_scale-clip2Source23_pCube4_scale_Z-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source23_pCube4_scale_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source23_pCube4_scale_Z-outtangents">
+          <float_array id="pCube4_scale-clip2Source23_pCube4_scale_Z-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source23_pCube4_scale_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube4_scale-clip2Source23_pCube4_scale_Z-interpolations">
+          <Name_array id="pCube4_scale-clip2Source23_pCube4_scale_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube4_scale-clip2Source23_pCube4_scale_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_scale-clip2Source23_pCube4_scale_Z-sampler">
+          <input semantic="INPUT" source="#pCube4_scale-clip2Source23_pCube4_scale_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube4_scale-clip2Source23_pCube4_scale_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube4_scale-clip2Source23_pCube4_scale_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube4_scale-clip2Source23_pCube4_scale_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube4_scale-clip2Source23_pCube4_scale_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube4_scale-clip2Source23_pCube4_scale_Z-sampler" target="pCube4/scale.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube4_visibility">
+      <animation id="pCube4_visibility-clip2Source">
+        <source id="pCube4_visibility-clip2Source_-input">
+          <float_array id="pCube4_visibility-clip2Source_-input-array" count="2">0.208333 0.625000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_visibility-clip2Source_-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube4_visibility-clip2Source_-output">
+          <float_array id="pCube4_visibility-clip2Source_-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube4_visibility-clip2Source_-output-array" count="2" stride="1">
+              <param name="VISIBILITY" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube4_visibility-clip2Source_-sampler">
+          <input semantic="INPUT" source="#pCube4_visibility-clip2Source_-input"/>
+          <input semantic="OUTPUT" source="#pCube4_visibility-clip2Source_-output"/>
+        </sampler>
+        <channel source="#pCube4_visibility-clip2Source_-sampler" target=""/>
+      </animation>
+    </animation>
+    <animation id="pCube5_translate">
+      <animation id="pCube5_translate-clip2Source">
+        <source id="pCube5_translate-clip2Source_pCube5_translate_X-input">
+          <float_array id="pCube5_translate-clip2Source_pCube5_translate_X-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source_pCube5_translate_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_translate-clip2Source_pCube5_translate_X-output">
+          <float_array id="pCube5_translate-clip2Source_pCube5_translate_X-output-array" count="2">-0.987621 -3.459814</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source_pCube5_translate_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source_pCube5_translate_X-intangents">
+          <float_array id="pCube5_translate-clip2Source_pCube5_translate_X-intangents-array" count="2">-4.944385 -1.030080</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source_pCube5_translate_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source_pCube5_translate_X-outtangents">
+          <float_array id="pCube5_translate-clip2Source_pCube5_translate_X-outtangents-array" count="2">-1.030080 -4.944385</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source_pCube5_translate_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source_pCube5_translate_X-interpolations">
+          <Name_array id="pCube5_translate-clip2Source_pCube5_translate_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source_pCube5_translate_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_translate-clip2Source_pCube5_translate_X-sampler">
+          <input semantic="INPUT" source="#pCube5_translate-clip2Source_pCube5_translate_X-input"/>
+          <input semantic="OUTPUT" source="#pCube5_translate-clip2Source_pCube5_translate_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_translate-clip2Source_pCube5_translate_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_translate-clip2Source_pCube5_translate_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_translate-clip2Source_pCube5_translate_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_translate-clip2Source_pCube5_translate_X-sampler" target="pCube5/translate.X"/>
+      </animation>
+      <animation id="pCube5_translate-clip2Source2">
+        <source id="pCube5_translate-clip2Source2_pCube5_translate_Y-input">
+          <float_array id="pCube5_translate-clip2Source2_pCube5_translate_Y-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source2_pCube5_translate_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_translate-clip2Source2_pCube5_translate_Y-output">
+          <float_array id="pCube5_translate-clip2Source2_pCube5_translate_Y-output-array" count="2">1.313930 -0.231870</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source2_pCube5_translate_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source2_pCube5_translate_Y-intangents">
+          <float_array id="pCube5_translate-clip2Source2_pCube5_translate_Y-intangents-array" count="2">-3.091600 -0.644083</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source2_pCube5_translate_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source2_pCube5_translate_Y-outtangents">
+          <float_array id="pCube5_translate-clip2Source2_pCube5_translate_Y-outtangents-array" count="2">-0.644083 -3.091600</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source2_pCube5_translate_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source2_pCube5_translate_Y-interpolations">
+          <Name_array id="pCube5_translate-clip2Source2_pCube5_translate_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source2_pCube5_translate_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_translate-clip2Source2_pCube5_translate_Y-sampler">
+          <input semantic="INPUT" source="#pCube5_translate-clip2Source2_pCube5_translate_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube5_translate-clip2Source2_pCube5_translate_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_translate-clip2Source2_pCube5_translate_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_translate-clip2Source2_pCube5_translate_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_translate-clip2Source2_pCube5_translate_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_translate-clip2Source2_pCube5_translate_Y-sampler" target="pCube5/translate.Y"/>
+      </animation>
+      <animation id="pCube5_translate-clip2Source23">
+        <source id="pCube5_translate-clip2Source23_pCube5_translate_Z-input">
+          <float_array id="pCube5_translate-clip2Source23_pCube5_translate_Z-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source23_pCube5_translate_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_translate-clip2Source23_pCube5_translate_Z-output">
+          <float_array id="pCube5_translate-clip2Source23_pCube5_translate_Z-output-array" count="2">0.002174 3.633716</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source23_pCube5_translate_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source23_pCube5_translate_Z-intangents">
+          <float_array id="pCube5_translate-clip2Source23_pCube5_translate_Z-intangents-array" count="2">7.263085 1.513143</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source23_pCube5_translate_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source23_pCube5_translate_Z-outtangents">
+          <float_array id="pCube5_translate-clip2Source23_pCube5_translate_Z-outtangents-array" count="2">1.513143 7.263085</float_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source23_pCube5_translate_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_translate-clip2Source23_pCube5_translate_Z-interpolations">
+          <Name_array id="pCube5_translate-clip2Source23_pCube5_translate_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_translate-clip2Source23_pCube5_translate_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_translate-clip2Source23_pCube5_translate_Z-sampler">
+          <input semantic="INPUT" source="#pCube5_translate-clip2Source23_pCube5_translate_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube5_translate-clip2Source23_pCube5_translate_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_translate-clip2Source23_pCube5_translate_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_translate-clip2Source23_pCube5_translate_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_translate-clip2Source23_pCube5_translate_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_translate-clip2Source23_pCube5_translate_Z-sampler" target="pCube5/translate.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube5_rotateX">
+      <animation id="pCube5_rotateX-clip2Source">
+        <source id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-input">
+          <float_array id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-output">
+          <float_array id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-intangents">
+          <float_array id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-outtangents">
+          <float_array id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-interpolations">
+          <Name_array id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_rotateX-clip2Source_pCube5_rotateX_ANGLE-sampler" target="pCube5/rotateX.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube5_rotateY">
+      <animation id="pCube5_rotateY-clip2Source">
+        <source id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-input">
+          <float_array id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-output">
+          <float_array id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-intangents">
+          <float_array id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-outtangents">
+          <float_array id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-interpolations">
+          <Name_array id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_rotateY-clip2Source_pCube5_rotateY_ANGLE-sampler" target="pCube5/rotateY.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube5_rotateZ">
+      <animation id="pCube5_rotateZ-clip2Source">
+        <source id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-input">
+          <float_array id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-output">
+          <float_array id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-output-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-output-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-intangents">
+          <float_array id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-intangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-outtangents">
+          <float_array id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-outtangents-array" count="2" stride="1">
+              <param name="ANGLE" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-interpolations">
+          <Name_array id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-sampler">
+          <input semantic="INPUT" source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-input"/>
+          <input semantic="OUTPUT" source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_rotateZ-clip2Source_pCube5_rotateZ_ANGLE-sampler" target="pCube5/rotateZ.ANGLE"/>
+      </animation>
+    </animation>
+    <animation id="pCube5_scale">
+      <animation id="pCube5_scale-clip2Source">
+        <source id="pCube5_scale-clip2Source_pCube5_scale_X-input">
+          <float_array id="pCube5_scale-clip2Source_pCube5_scale_X-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source_pCube5_scale_X-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_scale-clip2Source_pCube5_scale_X-output">
+          <float_array id="pCube5_scale-clip2Source_pCube5_scale_X-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source_pCube5_scale_X-output-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source_pCube5_scale_X-intangents">
+          <float_array id="pCube5_scale-clip2Source_pCube5_scale_X-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source_pCube5_scale_X-intangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source_pCube5_scale_X-outtangents">
+          <float_array id="pCube5_scale-clip2Source_pCube5_scale_X-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source_pCube5_scale_X-outtangents-array" count="2" stride="1">
+              <param name="X" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source_pCube5_scale_X-interpolations">
+          <Name_array id="pCube5_scale-clip2Source_pCube5_scale_X-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source_pCube5_scale_X-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_scale-clip2Source_pCube5_scale_X-sampler">
+          <input semantic="INPUT" source="#pCube5_scale-clip2Source_pCube5_scale_X-input"/>
+          <input semantic="OUTPUT" source="#pCube5_scale-clip2Source_pCube5_scale_X-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_scale-clip2Source_pCube5_scale_X-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_scale-clip2Source_pCube5_scale_X-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_scale-clip2Source_pCube5_scale_X-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_scale-clip2Source_pCube5_scale_X-sampler" target="pCube5/scale.X"/>
+      </animation>
+      <animation id="pCube5_scale-clip2Source2">
+        <source id="pCube5_scale-clip2Source2_pCube5_scale_Y-input">
+          <float_array id="pCube5_scale-clip2Source2_pCube5_scale_Y-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source2_pCube5_scale_Y-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_scale-clip2Source2_pCube5_scale_Y-output">
+          <float_array id="pCube5_scale-clip2Source2_pCube5_scale_Y-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source2_pCube5_scale_Y-output-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source2_pCube5_scale_Y-intangents">
+          <float_array id="pCube5_scale-clip2Source2_pCube5_scale_Y-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source2_pCube5_scale_Y-intangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source2_pCube5_scale_Y-outtangents">
+          <float_array id="pCube5_scale-clip2Source2_pCube5_scale_Y-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source2_pCube5_scale_Y-outtangents-array" count="2" stride="1">
+              <param name="Y" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source2_pCube5_scale_Y-interpolations">
+          <Name_array id="pCube5_scale-clip2Source2_pCube5_scale_Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source2_pCube5_scale_Y-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_scale-clip2Source2_pCube5_scale_Y-sampler">
+          <input semantic="INPUT" source="#pCube5_scale-clip2Source2_pCube5_scale_Y-input"/>
+          <input semantic="OUTPUT" source="#pCube5_scale-clip2Source2_pCube5_scale_Y-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_scale-clip2Source2_pCube5_scale_Y-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_scale-clip2Source2_pCube5_scale_Y-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_scale-clip2Source2_pCube5_scale_Y-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_scale-clip2Source2_pCube5_scale_Y-sampler" target="pCube5/scale.Y"/>
+      </animation>
+      <animation id="pCube5_scale-clip2Source23">
+        <source id="pCube5_scale-clip2Source23_pCube5_scale_Z-input">
+          <float_array id="pCube5_scale-clip2Source23_pCube5_scale_Z-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source23_pCube5_scale_Z-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_scale-clip2Source23_pCube5_scale_Z-output">
+          <float_array id="pCube5_scale-clip2Source23_pCube5_scale_Z-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source23_pCube5_scale_Z-output-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source23_pCube5_scale_Z-intangents">
+          <float_array id="pCube5_scale-clip2Source23_pCube5_scale_Z-intangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source23_pCube5_scale_Z-intangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source23_pCube5_scale_Z-outtangents">
+          <float_array id="pCube5_scale-clip2Source23_pCube5_scale_Z-outtangents-array" count="2">0 0</float_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source23_pCube5_scale_Z-outtangents-array" count="2" stride="1">
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCube5_scale-clip2Source23_pCube5_scale_Z-interpolations">
+          <Name_array id="pCube5_scale-clip2Source23_pCube5_scale_Z-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+          <technique_common>
+            <accessor source="#pCube5_scale-clip2Source23_pCube5_scale_Z-interpolations-array" count="2" stride="1">
+              <param name="INTERPOLATION" type="Name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_scale-clip2Source23_pCube5_scale_Z-sampler">
+          <input semantic="INPUT" source="#pCube5_scale-clip2Source23_pCube5_scale_Z-input"/>
+          <input semantic="OUTPUT" source="#pCube5_scale-clip2Source23_pCube5_scale_Z-output"/>
+          <input semantic="IN_TANGENT" source="#pCube5_scale-clip2Source23_pCube5_scale_Z-intangents"/>
+          <input semantic="OUT_TANGENT" source="#pCube5_scale-clip2Source23_pCube5_scale_Z-outtangents"/>
+          <input semantic="INTERPOLATION" source="#pCube5_scale-clip2Source23_pCube5_scale_Z-interpolations"/>
+        </sampler>
+        <channel source="#pCube5_scale-clip2Source23_pCube5_scale_Z-sampler" target="pCube5/scale.Z"/>
+      </animation>
+    </animation>
+    <animation id="pCube5_visibility">
+      <animation id="pCube5_visibility-clip2Source">
+        <source id="pCube5_visibility-clip2Source_-input">
+          <float_array id="pCube5_visibility-clip2Source_-input-array" count="2">0.333333 0.541667</float_array>
+          <technique_common>
+            <accessor source="#pCube5_visibility-clip2Source_-input-array" count="2" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <pre_infinity>CONSTANT</pre_infinity>
+            <post_infinity>CONSTANT</post_infinity>
+          </technique>
+        </source>
+        <source id="pCube5_visibility-clip2Source_-output">
+          <float_array id="pCube5_visibility-clip2Source_-output-array" count="2">1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCube5_visibility-clip2Source_-output-array" count="2" stride="1">
+              <param name="VISIBILITY" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="pCube5_visibility-clip2Source_-sampler">
+          <input semantic="INPUT" source="#pCube5_visibility-clip2Source_-input"/>
+          <input semantic="OUTPUT" source="#pCube5_visibility-clip2Source_-output"/>
+        </sampler>
+        <channel source="#pCube5_visibility-clip2Source_-sampler" target=""/>
+      </animation>
+    </animation>
+    <animation id="pCube6_translate">
+      <source id="pCube6_translate_pCube6_translate-input">
+        <float_array id="pCube6_translate_pCube6_translate-input-array" count="2">0.125000 0.833333</float_array>
+        <technique_common>
+          <accessor source="#pCube6_translate_pCube6_translate-input-array" count="2" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube6_translate_pCube6_translate-output">
+        <float_array id="pCube6_translate_pCube6_translate-output-array" count="6">4.865637 -1.809556 -3.508470 -4.742798 3.026894 2.472627</float_array>
+        <technique_common>
+          <accessor source="#pCube6_translate_pCube6_translate-output-array" count="2" stride="3">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube6_translate_pCube6_translate-intangents">
+        <float_array id="pCube6_translate_pCube6_translate-intangents-array" count="6">-5.652021 2.844971 3.518293 -4.003515 2.015188 2.492124</float_array>
+        <technique_common>
+          <accessor source="#pCube6_translate_pCube6_translate-intangents-array" count="2" stride="3">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube6_translate_pCube6_translate-outtangents">
+        <float_array id="pCube6_translate_pCube6_translate-outtangents-array" count="6">-4.003515 2.015188 2.492124 -5.652021 2.844971 3.518293</float_array>
+        <technique_common>
+          <accessor source="#pCube6_translate_pCube6_translate-outtangents-array" count="2" stride="3">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+            <param name="Z" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube6_translate_pCube6_translate-interpolations">
+        <Name_array id="pCube6_translate_pCube6_translate-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+        <technique_common>
+          <accessor source="#pCube6_translate_pCube6_translate-interpolations-array" count="2" stride="1">
+            <param name="INTERPOLATION" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCube6_translate_pCube6_translate-sampler">
+        <input semantic="INPUT" source="#pCube6_translate_pCube6_translate-input"/>
+        <input semantic="OUTPUT" source="#pCube6_translate_pCube6_translate-output"/>
+        <input semantic="IN_TANGENT" source="#pCube6_translate_pCube6_translate-intangents"/>
+        <input semantic="OUT_TANGENT" source="#pCube6_translate_pCube6_translate-outtangents"/>
+        <input semantic="INTERPOLATION" source="#pCube6_translate_pCube6_translate-interpolations"/>
+      </sampler>
+      <channel source="#pCube6_translate_pCube6_translate-sampler" target="pCube6/translate"/>
+    </animation>
+  </library_animations>
+  <library_animation_clips>
+    <animation_clip id="clip1Source" name="clip1Source" start="0.041667" end="0.458333">
+      <instance_animation url="#pCube1_translate-clip1Source"/>
+      <instance_animation url="#pCube1_translate-clip1Source2"/>
+      <instance_animation url="#pCube1_translate-clip1Source23"/>
+      <instance_animation url="#pCube1_rotateX-clip1Source"/>
+      <instance_animation url="#pCube1_rotateY-clip1Source"/>
+      <instance_animation url="#pCube1_rotateZ-clip1Source"/>
+      <instance_animation url="#pCube1_scale-clip1Source"/>
+      <instance_animation url="#pCube1_scale-clip1Source2"/>
+      <instance_animation url="#pCube1_scale-clip1Source23"/>
+      <instance_animation url="#pCube1_visibility-clip1Source"/>
+      <instance_animation url="#pCube3_translate-clip1Source"/>
+      <instance_animation url="#pCube3_translate-clip1Source2"/>
+      <instance_animation url="#pCube3_translate-clip1Source23"/>
+      <instance_animation url="#pCube3_rotateX-clip1Source"/>
+      <instance_animation url="#pCube3_rotateY-clip1Source"/>
+      <instance_animation url="#pCube3_rotateZ-clip1Source"/>
+      <instance_animation url="#pCube3_scale-clip1Source"/>
+      <instance_animation url="#pCube3_scale-clip1Source2"/>
+      <instance_animation url="#pCube3_scale-clip1Source23"/>
+      <instance_animation url="#pCube3_visibility-clip1Source"/>
+    </animation_clip>
+    <animation_clip id="clip3Source" name="clip3Source" start="0.041667" end="0.291667">
+      <instance_animation url="#pCube3_translate-clip3Source"/>
+      <instance_animation url="#pCube3_translate-clip3Source2"/>
+      <instance_animation url="#pCube3_translate-clip3Source23"/>
+      <instance_animation url="#pCube3_rotateX-clip3Source"/>
+      <instance_animation url="#pCube3_rotateY-clip3Source"/>
+      <instance_animation url="#pCube3_rotateZ-clip3Source"/>
+      <instance_animation url="#pCube3_scale-clip3Source"/>
+      <instance_animation url="#pCube3_scale-clip3Source2"/>
+      <instance_animation url="#pCube3_scale-clip3Source23"/>
+      <instance_animation url="#pCube3_visibility-clip3Source"/>
+    </animation_clip>
+    <animation_clip id="clip2Source" name="clip2Source" start="0.208333" end="0.625000">
+      <instance_animation url="#pCube4_translate-clip2Source"/>
+      <instance_animation url="#pCube4_translate-clip2Source2"/>
+      <instance_animation url="#pCube4_translate-clip2Source23"/>
+      <instance_animation url="#pCube4_rotateX-clip2Source"/>
+      <instance_animation url="#pCube4_rotateY-clip2Source"/>
+      <instance_animation url="#pCube4_rotateZ-clip2Source"/>
+      <instance_animation url="#pCube4_scale-clip2Source"/>
+      <instance_animation url="#pCube4_scale-clip2Source2"/>
+      <instance_animation url="#pCube4_scale-clip2Source23"/>
+      <instance_animation url="#pCube4_visibility-clip2Source"/>
+      <instance_animation url="#pCube5_translate-clip2Source"/>
+      <instance_animation url="#pCube5_translate-clip2Source2"/>
+      <instance_animation url="#pCube5_translate-clip2Source23"/>
+      <instance_animation url="#pCube5_rotateX-clip2Source"/>
+      <instance_animation url="#pCube5_rotateY-clip2Source"/>
+      <instance_animation url="#pCube5_rotateZ-clip2Source"/>
+      <instance_animation url="#pCube5_scale-clip2Source"/>
+      <instance_animation url="#pCube5_scale-clip2Source2"/>
+      <instance_animation url="#pCube5_scale-clip2Source23"/>
+      <instance_animation url="#pCube5_visibility-clip2Source"/>
+    </animation_clip>
+  </library_animation_clips>
+  <library_physics_scenes>
+    <physics_scene id="MayaNativePhysicsScene">
+      <technique_common>
+        <gravity>0 -980.000000 0</gravity>
+        <time_step>0.083000</time_step>
+      </technique_common>
+    </physics_scene>
+  </library_physics_scenes>
+  <library_cameras>
+    <camera id="cameraShape1" name="testCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>37.849251</yfov>
+            <aspect_ratio>1.500000</aspect_ratio>
+            <znear>0.010000</znear>
+            <zfar>1000.000000</zfar>
+          </perspective>
+        </technique_common>
+        <technique profile="MAYA">
+          <vertical_aperture>2.399995</vertical_aperture>
+          <horizontal_aperture>3.599993</horizontal_aperture>
+          <lens_squeeze>1.000000</lens_squeeze>
+        </technique>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_materials>
+    <material id="phong2" name="phong2">
+      <instance_effect url="#phong2-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="phong2-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1.0</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1.0</color>
+            </ambient>
+            <diffuse>
+              <color>0.104429 0.500000 0.091000 1.0</color>
+            </diffuse>
+            <specular>
+              <color>0.500000 0.500000 0.500000 1.0</color>
+            </specular>
+            <shininess>
+              <float>20.000000</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1.0</color>
+            </reflective>
+            <reflectivity>
+              <float>0.500000</float>
+            </reflectivity>
+            <transparent>
+              <color>0 0 0 1.0</color>
+            </transparent>
+            <transparency>
+              <float>1.000000</float>
+            </transparency>
+            <index_of_refraction>
+              <float>0</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="MAYA"/>
+          </extra>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape1-lib" name="pCubeShape1">
+      <mesh>
+        <source id="pCubeShape1-lib-positions" name="position">
+          <float_array id="pCubeShape1-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-normals" name="normal">
+          <float_array id="pCubeShape1-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape1-lib-map1" name="map1">
+          <float_array id="pCubeShape1-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape1-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape1-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape1-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape1-lib-positions"/>
+        </vertices>
+        <polylist material="phong2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape1-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape1-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape1-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape1-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape1-lib-map1-binormals" offset="3" set="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape3-lib" name="pCubeShape3">
+      <mesh>
+        <source id="pCubeShape3-lib-positions" name="position">
+          <float_array id="pCubeShape3-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-normals" name="normal">
+          <float_array id="pCubeShape3-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape3-lib-map1" name="map1">
+          <float_array id="pCubeShape3-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape3-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape3-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape3-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape3-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape3-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape3-lib-positions"/>
+        </vertices>
+        <polylist material="phong2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape3-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape3-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape3-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape3-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape3-lib-map1-binormals" offset="3" set="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape4-lib" name="pCubeShape4">
+      <mesh>
+        <source id="pCubeShape4-lib-positions" name="position">
+          <float_array id="pCubeShape4-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-normals" name="normal">
+          <float_array id="pCubeShape4-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape4-lib-map1" name="map1">
+          <float_array id="pCubeShape4-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape4-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape4-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape4-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape4-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape4-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape4-lib-positions"/>
+        </vertices>
+        <polylist material="phong2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape4-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape4-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape4-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape4-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape4-lib-map1-binormals" offset="3" set="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape5-lib" name="pCubeShape5">
+      <mesh>
+        <source id="pCubeShape5-lib-positions" name="position">
+          <float_array id="pCubeShape5-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-normals" name="normal">
+          <float_array id="pCubeShape5-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape5-lib-map1" name="map1">
+          <float_array id="pCubeShape5-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape5-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape5-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape5-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape5-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape5-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape5-lib-positions"/>
+        </vertices>
+        <polylist material="phong2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape5-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape5-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape5-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape5-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape5-lib-map1-binormals" offset="3" set="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="pCubeShape6-lib" name="pCubeShape6">
+      <mesh>
+        <source id="pCubeShape6-lib-positions" name="position">
+          <float_array id="pCubeShape6-lib-positions-array" count="24">-0.500000 -0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 0.500000 0.500000 0.500000 -0.500000 0.500000 -0.500000 0.500000 0.500000 -0.500000 -0.500000 -0.500000 -0.500000 0.500000 -0.500000 -0.500000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape6-lib-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape6-lib-normals" name="normal">
+          <float_array id="pCubeShape6-lib-normals-array" count="72">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape6-lib-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+          <technique profile="MAYA">
+            <double_sided>1</double_sided>
+          </technique>
+        </source>
+        <source id="pCubeShape6-lib-map1" name="map1">
+          <float_array id="pCubeShape6-lib-map1-array" count="28">0 0 1.000000 0 0 1.000000 1.000000 1.000000 0 2.000000 1.000000 2.000000 0 3.000000 1.000000 3.000000 0 4.000000 1.000000 4.000000 2.000000 0 2.000000 1.000000 -1.000000 0 -1.000000 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape6-lib-map1-array" count="14" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape6-lib-map1-tangents" name="map1-tangent">
+          <float_array id="pCubeShape6-lib-map1-tangents-array" count="18">1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 0 -1.000000 0 0 1.000000</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape6-lib-map1-tangents-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pCubeShape6-lib-map1-binormals" name="map1-binormal">
+          <float_array id="pCubeShape6-lib-map1-binormals-array" count="18">0 1.000000 0 0 0 -1.000000 0 -1.000000 0 0 0 1.000000 0 1.000000 0 0 1.000000 0</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape6-lib-map1-binormals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape6-lib-vertices">
+          <input semantic="POSITION" source="#pCubeShape6-lib-positions"/>
+        </vertices>
+        <polylist material="phong2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape6-lib-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pCubeShape6-lib-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pCubeShape6-lib-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pCubeShape6-lib-map1-tangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pCubeShape6-lib-map1-binormals" offset="3" set="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 0 0 1 1 1 0 3 2 3 0 2 3 2 0 2 4 2 1 3 5 3 1 5 6 5 1 4 7 4 1 4 8 4 2 5 9 5 2 7 10 7 2 6 11 6 2 6 12 6 3 7 13 7 3 1 14 9 3 0 15 8 3 1 16 1 4 7 17 10 4 5 18 11 4 3 19 3 4 6 20 12 5 0 21 0 5 2 22 2 5 4 23 13 5</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="multiple_animation_clip">
+      <node id="pCube1" name="pCube1" type="NODE">
+        <translate sid="translate">1.949676 2.741219 -4.005590</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <scale sid="scale">1.000000 1.000000 1.000000</scale>
+        <instance_geometry url="#pCubeShape1-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong2SG" target="#phong2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="pCube3" name="pCube3" type="NODE">
+        <translate sid="translate">0.795089 0.420611 -1.110547</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <scale sid="scale">1.000000 1.000000 1.000000</scale>
+        <instance_geometry url="#pCubeShape3-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong2SG" target="#phong2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="pCube4" name="pCube4" type="NODE">
+        <translate sid="translate">-1.793849 -0.566793 2.218944</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <scale sid="scale">1.000000 1.000000 1.000000</scale>
+        <instance_geometry url="#pCubeShape4-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong2SG" target="#phong2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="pCube5" name="pCube5" type="NODE">
+        <translate sid="translate">-0.987621 1.313930 0.002174</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <scale sid="scale">1.000000 1.000000 1.000000</scale>
+        <instance_geometry url="#pCubeShape5-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong2SG" target="#phong2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="camera1" name="testCamera" type="NODE">
+        <translate sid="translate">9.221477 7.119980 12.334399</translate>
+        <rotate sid="rotateZ">0 0 1.000000 2.360939</rotate>
+        <rotate sid="rotateY">0 1.000000 0 31.726000</rotate>
+        <rotate sid="rotateX">1.000000 0 0 -28.869986</rotate>
+        <instance_camera url="#cameraShape1"/>
+      </node>
+      <node id="pCube6" name="pCube6" type="NODE">
+        <translate sid="translate">-1.351586 1.319912 0.361652</translate>
+        <rotate sid="rotateZ">0 0 1.000000 0</rotate>
+        <rotate sid="rotateY">0 1.000000 0 0</rotate>
+        <rotate sid="rotateX">1.000000 0 0 0</rotate>
+        <instance_geometry url="#pCubeShape6-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong2SG" target="#phong2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_physics_scene url="#MayaNativePhysicsScene"/>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

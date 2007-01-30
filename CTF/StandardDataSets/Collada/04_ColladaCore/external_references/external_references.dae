@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+  <asset>
+    <contributor>
+      <author>Guillaume Laforte - By Hand</author>
+    </contributor>
+    <created>2006-04-17T15:03:05Z</created>
+    <modified>2006-04-17T15:03:05Z</modified>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  
+  <!-- Preambule necessaire -->
+  <library_cameras>
+    <camera id="testCamera" name="testCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>37.849247</yfov>
+            <aspect_ratio>1.000000</aspect_ratio>
+            <znear>2.540000</znear>
+            <zfar>2540.000000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="spotLightShape1-lib" name="spotLightShape1">
+      <technique_common>
+        <spot>
+          <color>1.000000 1.000000 1.000000</color>
+          <constant_attenuation>1.000000</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+          <falloff_angle>60.000053</falloff_angle>
+          <falloff_exponent>1.000000</falloff_exponent>
+        </spot>
+      </technique_common>
+    </light>
+  </library_lights>
+
+  <!-- The interesting part: two nodes are created and
+       they reference other files/objects in the CTF. -->
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene" name="untitled">
+      <node id="NodeReference1"> <!-- Maya supports this! -->
+        <instance_node url="../node_instancing/node_instancing.dae#group1"/>
+      </node>
+      <node id="NodeReference2">
+        <matrix sid="transform">-1.000000 -0.000000 0 11.470187 0.000000 -1.000000 0 0.082519 0 0 1.000000 0 0 0 0 1.000000</matrix>
+        <instance_node url="../node_instancing/node_instancing.dae#group1"/>
+      </node>
+      <node id="MeshReference1">
+        <matrix sid="transform">0.000000 -1.000000 0 5.776353 1.000000 0.000000 0 -5.693834 0 0 1.000000 0 0 0 0 1.000000</matrix>
+        <instance_geometry url="../node_instancing/node_instancing.dae#group1_pCone1_pConeShape1-lib"/>
+      </node>
+      <node id="MeshReference2">
+        <matrix sid="transform">-0.000000 1.000000 0 5.693834 -1.000000 -0.000000 0 5.776353 0 0 1.000000 0 0 0 0 1.000000</matrix>
+        <instance_geometry url="../node_instancing/node_instancing.dae#group1_pCone1_pConeShape1-lib"/>
+      </node>
+      <node id="camera1" name="testCamera" type="NODE">
+        <translate sid="translate">20 15 20</translate>
+        <rotate sid="rotateZ">0 0 1.000000 2.360939</rotate>
+        <rotate sid="rotateY">0 1.000000 0 31.726000</rotate>
+        <rotate sid="rotateX">1.000000 0 0 -28.869986</rotate>
+        <instance_camera url="#testCamera"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+
+  <!-- Other necessary elements -->
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>

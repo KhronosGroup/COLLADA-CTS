@@ -1,0 +1,171 @@
+/*********************************************************************NVMH3****
+Path:  NVSDK\Common\media\cgfx1.4
+File:  bumpreflect.cgfx
+
+Copyright NVIDIA Corporation 2002
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Comments:
+	$Id: //sw/devtools/FXComposer2/Alpha4+/SDK/MEDIA/CgFX1.4/BumpReflect.cgfx#1 $
+
+******************************************************************************/
+
+string Category = "Effects/Cg/Bump";
+string keywords = "bumpmap,texture";
+string description = "Bumpy-shiny";
+
+// un-tweakables
+
+float4x4 WorldXf : World;	// World or Model matrix
+float4x4 WVPXf : WorldViewProjection;	// Model*View*Projection
+float4x4 ViewIXf : ViewInverse;
+
+///////////////////////////////////////////////////////////////
+// tweakables /////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+float BumpHeight <
+	string UIWidget = "slider";
+	float UIMin = 0.0;
+	float UIMax = 2.0;
+	float UIStep = 0.1;
+> = 0.5;
+
+texture normalMap : Normal <
+	string ResourceName = "Default_bump_normal.dds";
+	string ResourceType = "2D";
+>;
+
+sampler2D NormalSampler = sampler_state {
+	Texture = <normalMap>;
+	MinFilter = LinearMipMapLinear;
+	MagFilter = Linear;
+};
+
+/////
+
+texture envMap : Environment <
+	string ResourceName = "Default_reflection.dds";
+	string ResourceType = "Cube";
+>;
+
+samplerCUBE EnvSampler = sampler_state {
+	Texture = <envMap>;
+	MinFilter = LinearMipMapLinear;
+	MagFilter = Linear;
+	WrapS = ClampToEdge;
+	WrapT = ClampToEdge;
+};
+
+///////////////////////////////////////////////////////////////
+// structures and shaders /////////////////////
+///////////////////////////////////////////////////////////////
+
+struct a2v 
+{
+	float4 Position : POSITION; //in object space
+	float2 TexCoord : TEXCOORD0;
+	float3 Tangent : TEXCOORD6; // TANGENT; // ATTR14; // in object space
+	float3 Binormal : TEXCOORD7; // BINORMAL; // ATTR15; // in object space
+	float3 Normal : NORMAL; //in object space
+};
+
+struct v2f 
+{
+	float4 Position : POSITION; //in projection space
+	float2 TexCoord : TEXCOORD0;
+	float4 TexCoord1 : TEXCOORD1; //first row of the 3x3 transform from tangent to cube space
+	float4 TexCoord2 : TEXCOORD2; //second row of the 3x3 transform from tangent to cube space
+	float4 TexCoord3 : TEXCOORD3; //third row of the 3x3 transform from tangent to cube space
+};
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+v2f BumpReflectVS(a2v IN)
+{
+	v2f OUT;
+
+	// Position in screen space.
+	OUT.Position = mul(WVPXf, IN.Position);
+	
+	// pass texture coordinates for fetching the normal map
+	OUT.TexCoord.xy = IN.TexCoord;
+	// compute the 4x4 tranform from tangent space to object space
+	float3x3 TangentToObjSpace;
+	// first rows are the tangent and binormal scaled by the bump scale
+	float3 vtan = IN.Tangent;
+	float3 vbinorm = IN.Binormal;
+	float3 vnorm = IN.Normal;
+	TangentToObjSpace[0] = float3(vtan.x, vbinorm.x, vnorm.x);
+	TangentToObjSpace[1] = float3(vtan.y, vbinorm.y, vnorm.y);
+	TangentToObjSpace[2] = float3(vtan.z, vbinorm.z, vnorm.z);
+
+	float3 v;
+	v.x = dot(WorldXf[0].xyz, TangentToObjSpace[0]);
+	v.y = dot(WorldXf[1].xyz, TangentToObjSpace[0]);
+	v.z = dot(WorldXf[2].xyz, TangentToObjSpace[0]);
+	OUT.TexCoord1.xyz = v;//normalize(v);
+
+	v.x = dot(WorldXf[0].xyz, TangentToObjSpace[1]);
+	v.y = dot(WorldXf[1].xyz, TangentToObjSpace[1]);
+	v.z = dot(WorldXf[2].xyz, TangentToObjSpace[1]);
+	OUT.TexCoord2.xyz = v;//normalize(v);
+
+	v.x = dot(WorldXf[0].xyz, TangentToObjSpace[2]);
+	v.y = dot(WorldXf[1].xyz, TangentToObjSpace[2]);
+	v.z = dot(WorldXf[2].xyz, TangentToObjSpace[2]);
+	OUT.TexCoord3.xyz = v;//normalize(v);
+
+	float4 worldPos = mul(WorldXf,IN.Position);
+	// compute the eye vector (going from shaded point to eye) in cube space
+	float4 eyeVector = worldPos - float4(ViewIXf[0].w, ViewIXf[1].w, ViewIXf[2].w, ViewIXf[3].w); // view inv. transpose contains eye position in world space in last row.
+	OUT.TexCoord1.w = eyeVector.x;
+	OUT.TexCoord2.w = eyeVector.y;
+	OUT.TexCoord3.w = eyeVector.z;
+	return OUT;
+}
+
+float4 BumpReflectPS(v2f IN) : COLOR {
+	float3 bumpNormal = tex2D(NormalSampler, IN.TexCoord.xy).xyz * 2.0 - 1.0;
+    bumpNormal = normalize(float3(bumpNormal.x * BumpHeight, bumpNormal.y * BumpHeight, bumpNormal.z)); 
+	// transform the bump normal into cube space
+	// then use the transformed normal and eye vector to compute a reflection vector
+	// used to fetch the cube map
+	// (we multiply by 2 only to increase brightness)
+    float3 eyevec = float3(IN.TexCoord1.w, IN.TexCoord2.w, IN.TexCoord3.w);
+    float3 worldNorm;
+    worldNorm.x = dot(IN.TexCoord1.xyz,bumpNormal);
+    worldNorm.y = dot(IN.TexCoord2.xyz,bumpNormal);
+    worldNorm.z = dot(IN.TexCoord3.xyz,bumpNormal);
+    float3 lookup = reflect(eyevec, worldNorm);
+    return texCUBE(EnvSampler, lookup);
+}
+
+//////// techniques ////////////////////////////
+
+technique BumpReflect0
+{
+	pass
+	{
+		DepthTestEnable=true;
+		DepthMask = true;
+		DepthFunc = LEqual;
+		VertexProgram = compile arbvp1 BumpReflectVS();
+		FragmentProgram = compile arbfp1 BumpReflectPS();
+	}
+}
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////

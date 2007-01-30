@@ -1,0 +1,53 @@
+struct appin
+{
+	float4 Pos : POSITION;
+	float4 N : NORMAL;
+	float2 Texcoord : TEXCOORD0;
+	float3 T : TEXCOORD2;
+};
+
+struct vertout
+{
+	float4 HPosition : POSITION;
+	float4 Color : COLOR;
+	float2 UV : TEXCOORD0;
+	float3 N : TEXCOORD1;
+	float3 V : TEXCOORD2;
+	float3 L : TEXCOORD3;
+	float3 T : TEXCOORD4;
+	float3 B : TEXCOORD5;
+};
+
+vertout main( appin IN,
+uniform float4 eyePoint : LIGHTPOS0,
+uniform float4 lightPoint : LIGHTPOS1,
+uniform float4x4 modelViewMatrix : VIEWPROJ,
+uniform float4x4 object : OBJECT
+ )
+{
+	vertout OUT;
+
+	OUT.UV = IN.Texcoord;
+	
+	OUT.HPosition = mul(modelViewMatrix, IN.Pos);
+	
+	float4 P = mul(object, IN.Pos);
+	
+	float4 L = lightPoint - P;
+	
+	OUT.L = normalize(L.xyz);
+	OUT.V = normalize(eyePoint.xyz - P.xyz);
+	
+	OUT.Color.rgb = float3(1.0f, 0.5f, 0.8f);
+	
+	float4 N = float4(IN.N.xyz,0);
+	float4 T = float4(IN.T.xyz,0);
+	
+	OUT.N = normalize(mul( object, N ).xyz);
+	OUT.T = normalize(mul( object, T ).xyz);
+	OUT.B = normalize(cross(OUT.N, OUT.T));
+
+
+
+	return OUT;
+}

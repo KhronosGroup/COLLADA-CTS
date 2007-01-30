@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Placemark>
+	<name>LondonHouse</name>
+	<LookAt>
+		<longitude>-0.1173142876739282</longitude>
+		<latitude>51.51723888011538</latitude>
+		<altitude>0</altitude>
+		<range>75.53931571457817</range>
+		<tilt>69.34624215864089</tilt>
+		<heading>-40.94406774165791</heading>
+	</LookAt>
+	<Style>
+	</Style>
+	<Model>
+		<altitudeMode>absolute</altitudeMode>
+		<Location>
+			<longitude>-0.114086084916</longitude>
+			<latitude>51.515803220526</latitude>
+			<altitude>20.039941014546</altitude>
+		</Location>
+		<Orientation>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<roll>0</roll>
+		</Orientation>
+		<Scale>
+			<x>1</x>
+			<y>1</y>
+			<z>1</z>
+		</Scale>
+		<Link>
+			<href>models/LondonHouse.dae</href>
+		</Link>
+	</Model>
+</Placemark>
+</kml>
