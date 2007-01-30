@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test92/Execution_2006_05_23_(0)/step0/simple_004_AreaLight_00.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:22:39Z</created>
+      <modified>2006-05-23T19:22:39Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_materials>
+      <material id="ColorMaterial_5658198">
+         <instance_effect url="#ColorMaterial_5658198-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_5658198-fx" name="ColorMaterial_5658198">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>54.4323</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="Sky02-obj" name="Sky02-obj">
+         <technique_common>
+            <point>
+               <color>0.95 0.95 1</color>
+               <constant_attenuation>0</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+      <light id="Sun02-obj" name="Sun02-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+			</point>
+         </technique_common>
+         <technique profile="MAX3D"></technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pCube1-obj" name="pCube1">
+         <mesh>
+            <source id="pCube1-obj-position">
+               <float_array id="pCube1-obj-position-array" count="24">-5.000000 -5.000000 0 5.000000 -5.000000 0 -5.000000 5.000000 0 5.000000 5.000000 0 -5.000000 -5.000000 10.000000 5.000000 -5.000000 10.000000 -5.000000 5.000000 10.000000 5.000000 5.000000 10.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-normal">
+               <float_array id="pCube1-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube1-obj-vertex">
+               <input semantic="POSITION" source="#pCube1-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5658198" count="12">
+               <input semantic="VERTEX" source="#pCube1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube1-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+      <geometry id="pPlane1-obj" name="pPlane1">
+         <mesh>
+            <source id="pPlane1-obj-position">
+               <float_array id="pPlane1-obj-position-array" count="75">-50.000000 -50.000000 0 -25.000000 -50.000000 0 0 -50.000000 0 25.000000 -50.000000 0 50.000000 -50.000000 0 -50.000000 -25.000000 0 -25.000000 -25.000000 0 0 -25.000000 0 25.000000 -25.000000 0 50.000000 -25.000000 0 -50.000000 0 0 -25.000000 0 0 0 0 0 25.000000 0 0 50.000000 0 0 -50.000000 25.000000 0 -25.000000 25.000000 0 0 25.000000 0 25.000000 25.000000 0 50.000000 25.000000 0 -50.000000 50.000000 0 -25.000000 50.000000 0 0 50.000000 0 25.000000 50.000000 0 50.000000 50.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#pPlane1-obj-position-array" count="25" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pPlane1-obj-normal">
+               <float_array id="pPlane1-obj-normal-array" count="75">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#pPlane1-obj-normal-array" count="25" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pPlane1-obj-vertex">
+               <input semantic="POSITION" source="#pPlane1-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5658198" count="32">
+               <input semantic="VERTEX" source="#pPlane1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pPlane1-obj-normal" offset="1"></input>
+               <p>5 0 0 1 6 2 1 3 6 2 0 1 6 2 1 3 7 4 2 5 7 4 1 3 7 4 2 5 8 6 3 7 8 6 2 5 8 6 3 7 9 8 4 9 9 8 3 7 10 10 5 0 11 11 6 2 11 11 5 0 11 11 6 2 12 12 7 4 12 12 6 2 12 12 7 4 13 13 8 6 13 13 7 4 13 13 8 6 14 14 9 8 14 14 8 6 15 15 10 10 16 16 11 11 16 16 10 10 16 16 11 11 17 17 12 12 17 17 11 11 17 17 12 12 18 18 13 13 18 18 12 12 18 18 13 13 19 19 14 14 19 19 13 13 20 20 15 15 21 21 16 16 21 21 15 15 21 21 16 16 22 22 17 17 22 22 16 16 22 22 17 17 23 23 18 18 23 23 17 17 23 23 18 18 24 24 19 19 24 24 18 18 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_004_AreaLight_00_max" name="simple_004_AreaLight_00_max">
+         <node id="pPlane1" sid="pPlane1" name="pPlane1">
+            <translate>0 0 0 </translate>
+            <instance_geometry url="#pPlane1-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="pCube1" sid="pCube1" name="pCube1">
+            <translate>0 -25 0 </translate>
+            <instance_geometry url="#pCube1-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>-76.445 9.97703 53.9637 </translate>
+            <rotate>-0.328137 0.508487 0.796095 -118.956</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="Compass01" sid="Compass01" name="Compass01">
+            <translate>0.923788 -15.148 0 </translate>
+            <node id="Daylight01" sid="Daylight01" name="Daylight01">
+               <translate>-0.894498 -0.76392 37.0848 </translate>
+               <rotate>-0.649307 0.760486 -0.00782962 -1.81684</rotate>
+               <node id="Sun02" sid="Sun02" name="Sun02">
+                  <translate>9.91863e-009 -2.57788e-007 1.02331e-006 </translate>
+                  <instance_light url="#Sun02-obj"></instance_light>
+               </node>
+               <node id="Sky02" sid="Sky02" name="Sky02">
+                  <translate>9.91863e-009 -2.57788e-007 1.02331e-006 </translate>
+                  <instance_light url="#Sky02-obj"></instance_light>
+               </node>
+            </node>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_004_AreaLight_00_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

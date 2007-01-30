@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test87/Execution_2006_05_23_(0)/step0/simple_002_Spotlight_Penumbra_02.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:22:15Z</created>
+      <modified>2006-05-23T19:22:15Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_materials>
+      <material id="ColorMaterial_5658198">
+         <instance_effect url="#ColorMaterial_5658198-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_5658198-fx" name="ColorMaterial_5658198">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>6.36119</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>6000</znear>
+                  <zfar>250000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="pSpot6-obj" name="pSpot6-obj">
+         <technique_common>
+            <spot>
+               <color>0.984314 0.964706 0.980392</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>10</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+      <light id="pSpot5-obj" name="pSpot5-obj">
+         <technique_common>
+            <spot>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>0.5</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+      <light id="pSpot4-obj" name="pSpot4-obj">
+         <technique_common>
+            <spot>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>5</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+      <light id="pSpot3-obj" name="pSpot3-obj">
+         <technique_common>
+            <spot>
+               <color>0.992157 0.980392 0.988235</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>20</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+      <light id="pSpot2-obj" name="pSpot2-obj">
+         <technique_common>
+            <spot>
+               <color>0.992157 0.980392 0.988235</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>30</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+      <light id="pSpot1-obj" name="pSpot1-obj">
+         <technique_common>
+            <spot>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+               <falloff_angle>38</falloff_angle>
+               <falloff_exponent>0</falloff_exponent>
+            </spot>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>2</intensity>
+            <aspect_ratio>1</aspect_ratio>
+            <outer_cone>40</outer_cone>
+         </technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pPlane1-obj" name="pPlane1">
+         <mesh>
+            <source id="pPlane1-obj-position">
+               <float_array id="pPlane1-obj-position-array" count="75">-600.000000 -600.000000 0 -300.000000 -600.000000 0 0 -600.000000 0 300.000000 -600.000000 0 600.000000 -600.000000 0 -600.000000 -300.000000 0 -300.000000 -300.000000 0 0 -300.000000 0 300.000000 -300.000000 0 600.000000 -300.000000 0 -600.000000 0 0 -300.000000 0 0 0 0 0 300.000000 0 0 600.000000 0 0 -600.000000 300.000000 0 -300.000000 300.000000 0 0 300.000000 0 300.000000 300.000000 0 600.000000 300.000000 0 -600.000000 600.000000 0 -300.000000 600.000000 0 0 600.000000 0 300.000000 600.000000 0 600.000000 600.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#pPlane1-obj-position-array" count="25" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pPlane1-obj-normal">
+               <float_array id="pPlane1-obj-normal-array" count="75">0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#pPlane1-obj-normal-array" count="25" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pPlane1-obj-vertex">
+               <input semantic="POSITION" source="#pPlane1-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5658198" count="32">
+               <input semantic="VERTEX" source="#pPlane1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pPlane1-obj-normal" offset="1"></input>
+               <p>5 0 0 1 6 2 1 3 6 2 0 1 6 2 1 3 7 4 2 5 7 4 1 3 7 4 2 5 8 6 3 7 8 6 2 5 8 6 3 7 9 8 4 9 9 8 3 7 10 10 5 0 11 11 6 2 11 11 5 0 11 11 6 2 12 12 7 4 12 12 6 2 12 12 7 4 13 13 8 6 13 13 7 4 13 13 8 6 14 14 9 8 14 14 8 6 15 15 10 10 16 16 11 11 16 16 10 10 16 16 11 11 17 17 12 12 17 17 11 11 17 17 12 12 18 18 13 13 18 18 12 12 18 18 13 13 19 19 14 14 19 19 13 13 20 20 15 15 21 21 16 16 21 21 15 15 21 21 16 16 22 22 17 17 22 22 16 16 22 22 17 17 23 23 18 18 23 23 17 17 23 23 18 18 24 24 19 19 24 24 18 18 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_002_Spotlight_Penumbra_02_max" name="simple_002_Spotlight_Penumbra_02_max">
+         <node id="pPlane1" sid="pPlane1" name="pPlane1">
+            <translate>1.79285 0 0 </translate>
+            <instance_geometry url="#pPlane1-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>-7.42266 -3984.49 9665.48 </translate>
+            <rotate>-1 -3.26532e-007 2.8986e-007 -23.0508</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="pSpot1" sid="pSpot1" name="pSpot1">
+            <translate>-412.628 266.597 455.047 </translate>
+            <instance_light url="#pSpot1-obj"></instance_light>
+         </node>
+         <node id="pSpot2" sid="pSpot2" name="pSpot2">
+            <translate>-15.6062 267.336 455.047 </translate>
+            <instance_light url="#pSpot2-obj"></instance_light>
+         </node>
+         <node id="pSpot3" sid="pSpot3" name="pSpot3">
+            <translate>374.513 273.057 455.047 </translate>
+            <instance_light url="#pSpot3-obj"></instance_light>
+         </node>
+         <node id="pSpot4" sid="pSpot4" name="pSpot4">
+            <translate>-2.84454 -285.53 455.047 </translate>
+            <instance_light url="#pSpot4-obj"></instance_light>
+         </node>
+         <node id="pSpot5" sid="pSpot5" name="pSpot5">
+            <translate>374.513 -313.856 455.047 </translate>
+            <instance_light url="#pSpot5-obj"></instance_light>
+         </node>
+         <node id="pSpot6" sid="pSpot6" name="pSpot6">
+            <translate>-419.078 -246.271 455.047 </translate>
+            <instance_light url="#pSpot6-obj"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_002_Spotlight_Penumbra_02_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

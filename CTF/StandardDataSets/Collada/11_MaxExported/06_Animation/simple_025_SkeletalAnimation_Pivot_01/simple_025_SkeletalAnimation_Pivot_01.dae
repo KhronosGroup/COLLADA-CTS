@@ -1,0 +1,1768 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test71/Execution_2006_05_23_(0)/step0/simple_025_SkeletalAnimation_Pivot_01.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:21:47Z</created>
+      <modified>2006-05-23T19:21:47Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_animations>
+      <animation id="simple_025_SkeletalAnimation_Pivot_01.max_animation">
+         <animation id="Bone01-Rotate">
+            <source id="Bone01-Rotate-X-time">
+               <float_array id="Bone01-Rotate-X-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-X-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-X-value">
+               <float_array id="Bone01-Rotate-X-value-array" count="11">89.999977 0.000096 2.256983 4.527873 6.819786 9.139921 11.495642 22.469128 31.426956 40.702400 41.936413</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-X-value-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-X-interp">
+               <Name_array id="Bone01-Rotate-X-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-X-interp-array" count="11">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-X-intgt">
+               <float_array id="Bone01-Rotate-X-intgt-array" count="11">0 0 -0.424479 -0.427763 -0.432380 -0.438361 -1.249613 -1.868561 -1.709369 -0.663592 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-X-intgt-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-X-outtgt">
+               <float_array id="Bone01-Rotate-X-outtgt-array" count="11">0 0 0.424479 0.427763 0.432380 0.438361 1.249613 1.868561 1.709369 0.663592 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-X-outtgt-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Y-time">
+               <float_array id="Bone01-Rotate-Y-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Y-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Y-value">
+               <float_array id="Bone01-Rotate-Y-value-array" count="11">-90.000084 -94.500092 -98.993156 -103.472237 -107.930168 -112.359520 -116.752594 -119.956474 -119.048744 -118.410034 -122.866112</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Y-value-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Y-interp">
+               <Name_array id="Bone01-Rotate-Y-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Y-interp-array" count="11">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Y-intgt">
+               <float_array id="Bone01-Rotate-Y-intgt-array" count="11">0 0.843101 0.841138 0.837845 0.833183 0.827102 0.712214 0 -0.144979 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Y-intgt-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Y-outtgt">
+               <float_array id="Bone01-Rotate-Y-outtgt-array" count="11">0 -0.843101 -0.841138 -0.837845 -0.833183 -0.827102 -0.712214 0 0.144979 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Y-outtgt-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Z-time">
+               <float_array id="Bone01-Rotate-Z-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Z-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Z-value">
+               <float_array id="Bone01-Rotate-Z-value-array" count="11">0.000109 94.499992 96.756989 99.027924 101.319862 103.639999 105.995735 105.504723 102.204346 98.566475 102.003922</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Z-value-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Z-interp">
+               <Name_array id="Bone01-Rotate-Z-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Z-interp-array" count="11">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Z-intgt">
+               <float_array id="Bone01-Rotate-Z-intgt-array" count="11">0 -1.096776 -0.424493 -0.427769 -0.432382 -0.438363 0 0.267707 0.650461 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Z-intgt-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone01-Rotate-Z-outtgt">
+               <float_array id="Bone01-Rotate-Z-outtgt-array" count="11">0 1.096776 0.424493 0.427769 0.432382 0.438363 0 -0.267707 -0.650461 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone01-Rotate-Z-outtgt-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone01-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Bone01-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone01-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone01-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone01-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone01-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone01-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Bone01-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone01-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone01-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone01-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone01-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone01-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Bone01-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone01-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone01-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone01-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone01-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone01-Rotate-X-sampler" target="Bone01/RotX.ANGLE"></channel>
+            <channel source="#Bone01-Rotate-Y-sampler" target="Bone01/RotY.ANGLE"></channel>
+            <channel source="#Bone01-Rotate-Z-sampler" target="Bone01/RotZ.ANGLE"></channel>
+         </animation>
+         <animation id="Bone02-Rotate">
+            <source id="Bone02-Rotate-X-time">
+               <float_array id="Bone02-Rotate-X-time-array" count="7">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-time-array" count="7">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-value">
+               <float_array id="Bone02-Rotate-X-value-array" count="7">-0.000005 4.513856 9.097205 13.806753 18.701311 23.842319 29.293554</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-value-array" count="7">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-interp">
+               <Name_array id="Bone02-Rotate-X-interp-array" count="7">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-interp-array" count="7">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-intgt">
+               <float_array id="Bone02-Rotate-X-intgt-array" count="7">0 -0.852863 -0.871209 -0.900385 -0.940834 -0.993023 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-intgt-array" count="7">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-outtgt">
+               <float_array id="Bone02-Rotate-X-outtgt-array" count="7">0 0.852863 0.871209 0.900385 0.940834 0.993023 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-outtgt-array" count="7">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-time">
+               <float_array id="Bone02-Rotate-Y-time-array" count="7">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-time-array" count="7">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-value">
+               <float_array id="Bone02-Rotate-Y-value-array" count="7">0 -4.486099 -8.930070 -13.302133 -17.569748 -21.696251 -25.639542</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-value-array" count="7">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-interp">
+               <Name_array id="Bone02-Rotate-Y-interp-array" count="7">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-interp-array" count="7">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-intgt">
+               <float_array id="Bone02-Rotate-Y-intgt-array" count="7">0 0.837194 0.826503 0.809970 0.786949 0.756543 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-intgt-array" count="7">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-outtgt">
+               <float_array id="Bone02-Rotate-Y-outtgt-array" count="7">0 -0.837194 -0.826503 -0.809970 -0.786949 -0.756543 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-outtgt-array" count="7">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-time">
+               <float_array id="Bone02-Rotate-Z-time-array" count="7">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-time-array" count="7">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-value">
+               <float_array id="Bone02-Rotate-Z-value-array" count="7">-0.000004 -0.353777 -1.066740 -2.152796 -3.634073 -5.540463 -7.908355</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-value-array" count="7">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-interp">
+               <Name_array id="Bone02-Rotate-Z-interp-array" count="7">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-interp-array" count="7">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-intgt">
+               <float_array id="Bone02-Rotate-Z-intgt-array" count="7">0 0.100006 0.168658 0.240688 0.317594 0.400714 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-intgt-array" count="7">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-outtgt">
+               <float_array id="Bone02-Rotate-Z-outtgt-array" count="7">0 -0.100006 -0.168658 -0.240688 -0.317594 -0.400714 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-outtgt-array" count="7">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone02-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone02-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone02-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone02-Rotate-X-sampler" target="Bone02/RotX.ANGLE"></channel>
+            <channel source="#Bone02-Rotate-Y-sampler" target="Bone02/RotY.ANGLE"></channel>
+            <channel source="#Bone02-Rotate-Z-sampler" target="Bone02/RotZ.ANGLE"></channel>
+         </animation>
+         <animation id="Bone03-Rotate">
+            <source id="Bone03-Rotate-X-time">
+               <float_array id="Bone03-Rotate-X-time-array" count="8">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-X-time-array" count="8">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-X-value">
+               <float_array id="Bone03-Rotate-X-value-array" count="8">0 4.513861 9.097209 13.806757 18.701313 23.842323 29.293566 29.274298</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-X-value-array" count="8">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-X-interp">
+               <Name_array id="Bone03-Rotate-X-interp-array" count="8">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-X-interp-array" count="8">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-X-intgt">
+               <float_array id="Bone03-Rotate-X-intgt-array" count="8">0 -0.852863 -0.871209 -0.900385 -0.940834 -0.993024 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-X-intgt-array" count="8">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-X-outtgt">
+               <float_array id="Bone03-Rotate-X-outtgt-array" count="8">0 0.852863 0.871209 0.900385 0.940834 0.993024 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-X-outtgt-array" count="8">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Y-time">
+               <float_array id="Bone03-Rotate-Y-time-array" count="8">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Y-time-array" count="8">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Y-value">
+               <float_array id="Bone03-Rotate-Y-value-array" count="8">0 -4.486127 -8.930098 -13.302160 -17.569775 -21.696278 -25.639595 -30.052612</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Y-value-array" count="8">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Y-interp">
+               <Name_array id="Bone03-Rotate-Y-interp-array" count="8">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Y-interp-array" count="8">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Y-intgt">
+               <float_array id="Bone03-Rotate-Y-intgt-array" count="8">0 0.837197 0.826503 0.809970 0.786949 0.756546 0.313363 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Y-intgt-array" count="8">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Y-outtgt">
+               <float_array id="Bone03-Rotate-Y-outtgt-array" count="8">0 -0.837197 -0.826503 -0.809970 -0.786949 -0.756546 -0.313363 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Y-outtgt-array" count="8">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Z-time">
+               <float_array id="Bone03-Rotate-Z-time-array" count="8">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Z-time-array" count="8">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Z-value">
+               <float_array id="Bone03-Rotate-Z-value-array" count="8">-0.000005 -0.353804 -1.066767 -2.152796 -3.634073 -5.540463 -7.908382 -3.314065</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Z-value-array" count="8">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Z-interp">
+               <Name_array id="Bone03-Rotate-Z-interp-array" count="8">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Z-interp-array" count="8">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Z-intgt">
+               <float_array id="Bone03-Rotate-Z-intgt-array" count="8">0 0.100009 0.168655 0.240685 0.317594 0.400716 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Z-intgt-array" count="8">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone03-Rotate-Z-outtgt">
+               <float_array id="Bone03-Rotate-Z-outtgt-array" count="8">0 -0.100009 -0.168655 -0.240685 -0.317594 -0.400716 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone03-Rotate-Z-outtgt-array" count="8">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone03-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Bone03-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone03-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone03-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone03-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone03-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone03-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Bone03-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone03-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone03-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone03-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone03-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone03-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Bone03-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone03-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone03-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone03-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone03-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone03-Rotate-X-sampler" target="Bone03/RotX.ANGLE"></channel>
+            <channel source="#Bone03-Rotate-Y-sampler" target="Bone03/RotY.ANGLE"></channel>
+            <channel source="#Bone03-Rotate-Z-sampler" target="Bone03/RotZ.ANGLE"></channel>
+         </animation>
+         <animation id="Bone04-Translate">
+            <source id="Bone04-Translate-X-time">
+               <float_array id="Bone04-Translate-X-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-X-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-X-value">
+               <float_array id="Bone04-Translate-X-value-array" count="9">6.000000 6.000000 6.000000 6.000000 6.000000 6.000000 6.000000 6.000000 6.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-X-value-array" count="9">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-X-interp">
+               <Name_array id="Bone04-Translate-X-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-X-interp-array" count="9">
+                     <param name="TRANS.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-X-intgt">
+               <float_array id="Bone04-Translate-X-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-X-intgt-array" count="9">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-X-outtgt">
+               <float_array id="Bone04-Translate-X-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-X-outtgt-array" count="9">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Y-time">
+               <float_array id="Bone04-Translate-Y-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Y-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Y-value">
+               <float_array id="Bone04-Translate-Y-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Y-value-array" count="9">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Y-interp">
+               <Name_array id="Bone04-Translate-Y-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Y-interp-array" count="9">
+                     <param name="TRANS.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Y-intgt">
+               <float_array id="Bone04-Translate-Y-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Y-intgt-array" count="9">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Y-outtgt">
+               <float_array id="Bone04-Translate-Y-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Y-outtgt-array" count="9">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Z-time">
+               <float_array id="Bone04-Translate-Z-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Z-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Z-value">
+               <float_array id="Bone04-Translate-Z-value-array" count="9">0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Z-value-array" count="9">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Z-interp">
+               <Name_array id="Bone04-Translate-Z-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Z-interp-array" count="9">
+                     <param name="TRANS.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Z-intgt">
+               <float_array id="Bone04-Translate-Z-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Z-intgt-array" count="9">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Translate-Z-outtgt">
+               <float_array id="Bone04-Translate-Z-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Translate-Z-outtgt-array" count="9">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone04-Translate-X-sampler">
+               <input semantic="INPUT" source="#Bone04-Translate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Translate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Translate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Translate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Translate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Translate-Y-sampler">
+               <input semantic="INPUT" source="#Bone04-Translate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Translate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Translate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Translate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Translate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Translate-Z-sampler">
+               <input semantic="INPUT" source="#Bone04-Translate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Translate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Translate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Translate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Translate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone04-Translate-X-sampler" target="Bone04/Trans.X"></channel>
+            <channel source="#Bone04-Translate-Y-sampler" target="Bone04/Trans.Y"></channel>
+            <channel source="#Bone04-Translate-Z-sampler" target="Bone04/Trans.Z"></channel>
+         </animation>
+         <animation id="Bone04-Rotate">
+            <source id="Bone04-Rotate-X-time">
+               <float_array id="Bone04-Rotate-X-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-X-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-X-value">
+               <float_array id="Bone04-Rotate-X-value-array" count="11">-0.000010 4.513850 9.097198 13.806745 18.701303 23.842306 29.293541 22.160666 22.187328 24.633137 31.486397</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-X-value-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-X-interp">
+               <Name_array id="Bone04-Rotate-X-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-X-interp-array" count="11">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-X-intgt">
+               <float_array id="Bone04-Rotate-X-intgt-array" count="11">0 -0.852863 -0.871209 -0.900385 -0.940834 -0.993022 0 0 -0.012793 -0.871788 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-X-intgt-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-X-outtgt">
+               <float_array id="Bone04-Rotate-X-outtgt-array" count="11">0 0.852863 0.871209 0.900385 0.940834 0.993022 0 0 0.012793 0.871788 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-X-outtgt-array" count="11">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Y-time">
+               <float_array id="Bone04-Rotate-Y-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Y-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Y-value">
+               <float_array id="Bone04-Rotate-Y-value-array" count="11">0 -4.486099 -8.930070 -13.302160 -17.569748 -21.696224 -25.639542 -0.773315 19.306284 38.804928 48.318760</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Y-value-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Y-interp">
+               <Name_array id="Bone04-Rotate-Y-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Y-interp-array" count="11">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Y-intgt">
+               <float_array id="Bone04-Rotate-Y-intgt-array" count="11">0 0.837194 0.826506 0.809970 0.786943 0.756543 0 -4.213671 -3.710460 -2.719920 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Y-intgt-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Y-outtgt">
+               <float_array id="Bone04-Rotate-Y-outtgt-array" count="11">0 -0.837194 -0.826506 -0.809970 -0.786943 -0.756543 0 4.213671 3.710460 2.719920 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Y-outtgt-array" count="11">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Z-time">
+               <float_array id="Bone04-Rotate-Z-time-array" count="11">0 0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.266667 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Z-time-array" count="11">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Z-value">
+               <float_array id="Bone04-Rotate-Z-value-array" count="11">0.000002 -0.353777 -1.066740 -2.152796 -3.634073 -5.540463 -7.908355 14.687366 29.519741 42.002453 51.747578</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Z-value-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Z-interp">
+               <Name_array id="Bone04-Rotate-Z-interp-array" count="11">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Z-interp-array" count="11">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Z-intgt">
+               <float_array id="Bone04-Rotate-Z-intgt-array" count="11">0 0.100007 0.168658 0.240688 0.317594 0.400714 0 -3.508884 -2.560790 -2.083860 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Z-intgt-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Rotate-Z-outtgt">
+               <float_array id="Bone04-Rotate-Z-outtgt-array" count="11">0 -0.100007 -0.168658 -0.240688 -0.317594 -0.400714 0 3.508884 2.560790 2.083860 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Rotate-Z-outtgt-array" count="11">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone04-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Bone04-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Bone04-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Bone04-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone04-Rotate-X-sampler" target="Bone04/RotX.ANGLE"></channel>
+            <channel source="#Bone04-Rotate-Y-sampler" target="Bone04/RotY.ANGLE"></channel>
+            <channel source="#Bone04-Rotate-Z-sampler" target="Bone04/RotZ.ANGLE"></channel>
+         </animation>
+         <animation id="Bone04-ScaleAxisR">
+            <source id="Bone04-ScaleAxisR-X-time">
+               <float_array id="Bone04-ScaleAxisR-X-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-X-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-X-value">
+               <float_array id="Bone04-ScaleAxisR-X-value-array" count="9">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-X-value-array" count="9">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-X-interp">
+               <Name_array id="Bone04-ScaleAxisR-X-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-X-interp-array" count="9">
+                     <param name="SCALEAXISR.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-X-intgt">
+               <float_array id="Bone04-ScaleAxisR-X-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-X-intgt-array" count="9">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-X-outtgt">
+               <float_array id="Bone04-ScaleAxisR-X-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-X-outtgt-array" count="9">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Y-time">
+               <float_array id="Bone04-ScaleAxisR-Y-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Y-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Y-value">
+               <float_array id="Bone04-ScaleAxisR-Y-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Y-value-array" count="9">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Y-interp">
+               <Name_array id="Bone04-ScaleAxisR-Y-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Y-interp-array" count="9">
+                     <param name="SCALEAXISR.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Y-intgt">
+               <float_array id="Bone04-ScaleAxisR-Y-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Y-intgt-array" count="9">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Y-outtgt">
+               <float_array id="Bone04-ScaleAxisR-Y-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Y-outtgt-array" count="9">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Z-time">
+               <float_array id="Bone04-ScaleAxisR-Z-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Z-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Z-value">
+               <float_array id="Bone04-ScaleAxisR-Z-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Z-value-array" count="9">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Z-interp">
+               <Name_array id="Bone04-ScaleAxisR-Z-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Z-interp-array" count="9">
+                     <param name="SCALEAXISR.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Z-intgt">
+               <float_array id="Bone04-ScaleAxisR-Z-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Z-intgt-array" count="9">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-Z-outtgt">
+               <float_array id="Bone04-ScaleAxisR-Z-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-Z-outtgt-array" count="9">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-ANGLE-time">
+               <float_array id="Bone04-ScaleAxisR-ANGLE-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-ANGLE-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-ANGLE-value">
+               <float_array id="Bone04-ScaleAxisR-ANGLE-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-ANGLE-value-array" count="9">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-ANGLE-interp">
+               <Name_array id="Bone04-ScaleAxisR-ANGLE-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-ANGLE-interp-array" count="9">
+                     <param name="SCALEAXISR.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-ANGLE-intgt">
+               <float_array id="Bone04-ScaleAxisR-ANGLE-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-ANGLE-intgt-array" count="9">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxisR-ANGLE-outtgt">
+               <float_array id="Bone04-ScaleAxisR-ANGLE-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxisR-ANGLE-outtgt-array" count="9">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone04-ScaleAxisR-X-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxisR-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxisR-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxisR-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxisR-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxisR-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxisR-Y-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxisR-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxisR-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxisR-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxisR-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxisR-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxisR-Z-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxisR-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxisR-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxisR-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxisR-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxisR-Z-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxisR-ANGLE-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxisR-ANGLE-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxisR-ANGLE-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxisR-ANGLE-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxisR-ANGLE-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxisR-ANGLE-outtgt"></input>
+            </sampler>
+            <channel source="#Bone04-ScaleAxisR-X-sampler" target="Bone04/ScaleAxisR.X"></channel>
+            <channel source="#Bone04-ScaleAxisR-Y-sampler" target="Bone04/ScaleAxisR.Y"></channel>
+            <channel source="#Bone04-ScaleAxisR-Z-sampler" target="Bone04/ScaleAxisR.Z"></channel>
+            <channel source="#Bone04-ScaleAxisR-ANGLE-sampler" target="Bone04/ScaleAxisR.ANGLE"></channel>
+         </animation>
+         <animation id="Bone04-Scale">
+            <source id="Bone04-Scale-X-time">
+               <float_array id="Bone04-Scale-X-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-X-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-X-value">
+               <float_array id="Bone04-Scale-X-value-array" count="9">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-X-value-array" count="9">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-X-interp">
+               <Name_array id="Bone04-Scale-X-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-X-interp-array" count="9">
+                     <param name="SCALE.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-X-intgt">
+               <float_array id="Bone04-Scale-X-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-X-intgt-array" count="9">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-X-outtgt">
+               <float_array id="Bone04-Scale-X-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-X-outtgt-array" count="9">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Y-time">
+               <float_array id="Bone04-Scale-Y-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Y-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Y-value">
+               <float_array id="Bone04-Scale-Y-value-array" count="9">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Y-value-array" count="9">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Y-interp">
+               <Name_array id="Bone04-Scale-Y-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Y-interp-array" count="9">
+                     <param name="SCALE.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Y-intgt">
+               <float_array id="Bone04-Scale-Y-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Y-intgt-array" count="9">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Y-outtgt">
+               <float_array id="Bone04-Scale-Y-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Y-outtgt-array" count="9">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Z-time">
+               <float_array id="Bone04-Scale-Z-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Z-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Z-value">
+               <float_array id="Bone04-Scale-Z-value-array" count="9">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Z-value-array" count="9">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Z-interp">
+               <Name_array id="Bone04-Scale-Z-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Z-interp-array" count="9">
+                     <param name="SCALE.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Z-intgt">
+               <float_array id="Bone04-Scale-Z-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Z-intgt-array" count="9">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-Scale-Z-outtgt">
+               <float_array id="Bone04-Scale-Z-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-Scale-Z-outtgt-array" count="9">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone04-Scale-X-sampler">
+               <input semantic="INPUT" source="#Bone04-Scale-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Scale-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Scale-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Scale-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Scale-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Scale-Y-sampler">
+               <input semantic="INPUT" source="#Bone04-Scale-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Scale-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Scale-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Scale-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Scale-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-Scale-Z-sampler">
+               <input semantic="INPUT" source="#Bone04-Scale-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-Scale-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-Scale-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-Scale-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-Scale-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone04-Scale-X-sampler" target="Bone04/Scale.X"></channel>
+            <channel source="#Bone04-Scale-Y-sampler" target="Bone04/Scale.Y"></channel>
+            <channel source="#Bone04-Scale-Z-sampler" target="Bone04/Scale.Z"></channel>
+         </animation>
+         <animation id="Bone04-ScaleAxis">
+            <source id="Bone04-ScaleAxis-X-time">
+               <float_array id="Bone04-ScaleAxis-X-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-X-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-X-value">
+               <float_array id="Bone04-ScaleAxis-X-value-array" count="9">1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-X-value-array" count="9">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-X-interp">
+               <Name_array id="Bone04-ScaleAxis-X-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-X-interp-array" count="9">
+                     <param name="SCALEAXIS.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-X-intgt">
+               <float_array id="Bone04-ScaleAxis-X-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-X-intgt-array" count="9">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-X-outtgt">
+               <float_array id="Bone04-ScaleAxis-X-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-X-outtgt-array" count="9">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Y-time">
+               <float_array id="Bone04-ScaleAxis-Y-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Y-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Y-value">
+               <float_array id="Bone04-ScaleAxis-Y-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Y-value-array" count="9">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Y-interp">
+               <Name_array id="Bone04-ScaleAxis-Y-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Y-interp-array" count="9">
+                     <param name="SCALEAXIS.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Y-intgt">
+               <float_array id="Bone04-ScaleAxis-Y-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Y-intgt-array" count="9">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Y-outtgt">
+               <float_array id="Bone04-ScaleAxis-Y-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Y-outtgt-array" count="9">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Z-time">
+               <float_array id="Bone04-ScaleAxis-Z-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Z-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Z-value">
+               <float_array id="Bone04-ScaleAxis-Z-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Z-value-array" count="9">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Z-interp">
+               <Name_array id="Bone04-ScaleAxis-Z-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Z-interp-array" count="9">
+                     <param name="SCALEAXIS.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Z-intgt">
+               <float_array id="Bone04-ScaleAxis-Z-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Z-intgt-array" count="9">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-Z-outtgt">
+               <float_array id="Bone04-ScaleAxis-Z-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-Z-outtgt-array" count="9">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-ANGLE-time">
+               <float_array id="Bone04-ScaleAxis-ANGLE-time-array" count="9">0.033333 0.066667 0.100000 0.133333 0.166667 0.200000 0.233333 0.300000 0.333333</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-ANGLE-time-array" count="9">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-ANGLE-value">
+               <float_array id="Bone04-ScaleAxis-ANGLE-value-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-ANGLE-value-array" count="9">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-ANGLE-interp">
+               <Name_array id="Bone04-ScaleAxis-ANGLE-interp-array" count="9">BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-ANGLE-interp-array" count="9">
+                     <param name="SCALEAXIS.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-ANGLE-intgt">
+               <float_array id="Bone04-ScaleAxis-ANGLE-intgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-ANGLE-intgt-array" count="9">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone04-ScaleAxis-ANGLE-outtgt">
+               <float_array id="Bone04-ScaleAxis-ANGLE-outtgt-array" count="9">0 0 0 0 0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone04-ScaleAxis-ANGLE-outtgt-array" count="9">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone04-ScaleAxis-X-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxis-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxis-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxis-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxis-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxis-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxis-Y-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxis-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxis-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxis-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxis-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxis-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxis-Z-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxis-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxis-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxis-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxis-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxis-Z-outtgt"></input>
+            </sampler>
+            <sampler id="Bone04-ScaleAxis-ANGLE-sampler">
+               <input semantic="INPUT" source="#Bone04-ScaleAxis-ANGLE-time"></input>
+               <input semantic="OUTPUT" source="#Bone04-ScaleAxis-ANGLE-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone04-ScaleAxis-ANGLE-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone04-ScaleAxis-ANGLE-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone04-ScaleAxis-ANGLE-outtgt"></input>
+            </sampler>
+            <channel source="#Bone04-ScaleAxis-X-sampler" target="Bone04/ScaleAxis.X"></channel>
+            <channel source="#Bone04-ScaleAxis-Y-sampler" target="Bone04/ScaleAxis.Y"></channel>
+            <channel source="#Bone04-ScaleAxis-Z-sampler" target="Bone04/ScaleAxis.Z"></channel>
+            <channel source="#Bone04-ScaleAxis-ANGLE-sampler" target="Bone04/ScaleAxis.ANGLE"></channel>
+         </animation>
+      </animation>
+   </library_animations>
+   <library_materials>
+      <material id="ColorMaterial_5759174">
+         <instance_effect url="#ColorMaterial_5759174-fx"></instance_effect>
+      </material>
+      <material id="ColorMaterial_5738464">
+         <instance_effect url="#ColorMaterial_5738464-fx"></instance_effect>
+      </material>
+      <material id="ColorMaterial_1726641">
+         <instance_effect url="#ColorMaterial_1726641-fx"></instance_effect>
+      </material>
+      <material id="ColorMaterial_1710768">
+         <instance_effect url="#ColorMaterial_1710768-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_5759174-fx" name="ColorMaterial_5759174">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.776471 0.878431 0.341176 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.776471 0.878431 0.341176 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+      <effect id="ColorMaterial_5738464-fx" name="ColorMaterial_5738464">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.878431 0.560784 0.341176 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.878431 0.560784 0.341176 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+      <effect id="ColorMaterial_1726641-fx" name="ColorMaterial_1726641">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.694118 0.345098 0.101961 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.694118 0.345098 0.101961 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+      <effect id="ColorMaterial_1710768-fx" name="ColorMaterial_1710768">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.690196 0.101961 0.101961 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.690196 0.101961 0.101961 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>45</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="pointLight1-obj" name="pointLight1-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+      <light id="global-ambient-light">
+         <technique_common>
+            <ambient>
+               <color>1 1 1</color>
+            </ambient>
+         </technique_common>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pCube4-obj" name="pCube4">
+         <mesh>
+            <source id="pCube4-obj-position">
+               <float_array id="pCube4-obj-position-array" count="24">-0.500000 -0.500000 0 0.500000 -0.500000 0 -0.500000 0.500000 0 0.500000 0.500000 0 -0.500000 -0.500000 6.000000 0.500000 -0.500000 6.000000 -0.500000 0.500000 6.000000 0.500000 0.500000 6.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube4-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube4-obj-normal">
+               <float_array id="pCube4-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube4-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube4-obj-vertex">
+               <input semantic="POSITION" source="#pCube4-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5759174" count="12">
+               <input semantic="VERTEX" source="#pCube4-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube4-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+      <geometry id="pCube3-obj" name="pCube3">
+         <mesh>
+            <source id="pCube3-obj-position">
+               <float_array id="pCube3-obj-position-array" count="24">-0.500000 -0.500000 0 0.500000 -0.500000 0 -0.500000 0.500000 0 0.500000 0.500000 0 -0.500000 -0.500000 6.000000 0.500000 -0.500000 6.000000 -0.500000 0.500000 6.000000 0.500000 0.500000 6.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube3-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube3-obj-normal">
+               <float_array id="pCube3-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube3-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube3-obj-vertex">
+               <input semantic="POSITION" source="#pCube3-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5738464" count="12">
+               <input semantic="VERTEX" source="#pCube3-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube3-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+      <geometry id="pCube2-obj" name="pCube2">
+         <mesh>
+            <source id="pCube2-obj-position">
+               <float_array id="pCube2-obj-position-array" count="24">-0.500000 -0.500000 0 0.500000 -0.500000 0 -0.500000 0.500000 0 0.500000 0.500000 0 -0.500000 -0.500000 6.000000 0.500000 -0.500000 6.000000 -0.500000 0.500000 6.000000 0.500000 0.500000 6.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-obj-normal">
+               <float_array id="pCube2-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube2-obj-vertex">
+               <input semantic="POSITION" source="#pCube2-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_1726641" count="12">
+               <input semantic="VERTEX" source="#pCube2-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube2-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+      <geometry id="pCube1-obj" name="pCube1">
+         <mesh>
+            <source id="pCube1-obj-position">
+               <float_array id="pCube1-obj-position-array" count="24">-0.500000 -0.500000 0 0.500000 -0.500000 0 -0.500000 0.500000 0 0.500000 0.500000 0 -0.500000 -0.500000 6.000000 0.500000 -0.500000 6.000000 -0.500000 0.500000 6.000000 0.500000 0.500000 6.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-normal">
+               <float_array id="pCube1-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube1-obj-vertex">
+               <input semantic="POSITION" source="#pCube1-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_1710768" count="12">
+               <input semantic="VERTEX" source="#pCube1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube1-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_controllers>
+      <controller id="skin-pCube4-obj">
+         <skin source="pCube4-obj">
+            <bind_shape_matrix>1 0 0 0 0 1 0 -5.64008e-007 0 0 1 18 0 0 0 1</bind_shape_matrix>
+            <source id="skin-joints-pCube4-obj">
+               <Name_array id="skin-bones-table-pCube4-obj" count="1">Bone04</Name_array>
+               <technique_common>
+                  <accessor source="#skin-bones-table-pCube4-obj" count="1">
+                     <param name="JOINT" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-binding-pCube4-obj">
+               <float_array id="skin-binding-table-pCube4-obj" count="16">0 0 1.000088 -18.001585 -1.000000 0 0 0.000001 0 -1.000000 0 -0.000001 0 0 0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-binding-table-pCube4-obj" count="1">
+                     <param name="INV_BIND_MATRIX" type="float4x4"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-weights-pCube4-obj">
+               <float_array id="skin-weights-table-pCube4-obj" count="2">0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-weights-table-pCube4-obj" count="2">
+                     <param name="WEIGHT" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <joints>
+               <input semantic="JOINT" source="#skin-joints-pCube4-obj"></input>
+               <input semantic="INV_BIND_MATRIX" source="#skin-binding-pCube4-obj"></input>
+            </joints>
+            <vertex_weights count="8">
+               <input semantic="JOINT" source="#skin-joints-pCube4-obj" offset="0"></input>
+               <input semantic="WEIGHT" source="#skin-weights-pCube4-obj" offset="1"></input>
+               <vcount>1 1 1 1 1 1 1 1</vcount>
+               <v>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</v>
+            </vertex_weights>
+         </skin>
+      </controller>
+      <controller id="skin-pCube3-obj">
+         <skin source="pCube3-obj">
+            <bind_shape_matrix>1 0 0 0 0 1 0 -2.71867e-007 0 0 1 12 0 0 0 1</bind_shape_matrix>
+            <source id="skin-joints-pCube3-obj">
+               <Name_array id="skin-bones-table-pCube3-obj" count="1">Bone03</Name_array>
+               <technique_common>
+                  <accessor source="#skin-bones-table-pCube3-obj" count="1">
+                     <param name="JOINT" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-binding-pCube3-obj">
+               <float_array id="skin-binding-table-pCube3-obj" count="16">0 0 0.991504 -11.898042 -1.000000 0 0 0 0 -1.000000 0 -0.000001 0 0 0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-binding-table-pCube3-obj" count="1">
+                     <param name="INV_BIND_MATRIX" type="float4x4"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-weights-pCube3-obj">
+               <float_array id="skin-weights-table-pCube3-obj" count="2">0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-weights-table-pCube3-obj" count="2">
+                     <param name="WEIGHT" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <joints>
+               <input semantic="JOINT" source="#skin-joints-pCube3-obj"></input>
+               <input semantic="INV_BIND_MATRIX" source="#skin-binding-pCube3-obj"></input>
+            </joints>
+            <vertex_weights count="8">
+               <input semantic="JOINT" source="#skin-joints-pCube3-obj" offset="0"></input>
+               <input semantic="WEIGHT" source="#skin-weights-pCube3-obj" offset="1"></input>
+               <vcount>1 1 1 1 1 1 1 1</vcount>
+               <v>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</v>
+            </vertex_weights>
+         </skin>
+      </controller>
+      <controller id="skin-pCube2-obj">
+         <skin source="pCube2-obj">
+            <bind_shape_matrix>1 0 0 0 0 1 0 1.03245e-008 0 0 1 6 0 0 0 1</bind_shape_matrix>
+            <source id="skin-joints-pCube2-obj">
+               <Name_array id="skin-bones-table-pCube2-obj" count="1">Bone02</Name_array>
+               <technique_common>
+                  <accessor source="#skin-bones-table-pCube2-obj" count="1">
+                     <param name="JOINT" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-binding-pCube2-obj">
+               <float_array id="skin-binding-table-pCube2-obj" count="16">0 0 1.000088 -6.000527 -1.000000 0 0 0.000001 0 -1.000000 0 -0.000000 0 0 0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-binding-table-pCube2-obj" count="1">
+                     <param name="INV_BIND_MATRIX" type="float4x4"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-weights-pCube2-obj">
+               <float_array id="skin-weights-table-pCube2-obj" count="2">0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-weights-table-pCube2-obj" count="2">
+                     <param name="WEIGHT" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <joints>
+               <input semantic="JOINT" source="#skin-joints-pCube2-obj"></input>
+               <input semantic="INV_BIND_MATRIX" source="#skin-binding-pCube2-obj"></input>
+            </joints>
+            <vertex_weights count="8">
+               <input semantic="JOINT" source="#skin-joints-pCube2-obj" offset="0"></input>
+               <input semantic="WEIGHT" source="#skin-weights-pCube2-obj" offset="1"></input>
+               <vcount>1 1 1 1 1 1 1 1</vcount>
+               <v>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</v>
+            </vertex_weights>
+         </skin>
+      </controller>
+      <controller id="skin-pCube1-obj">
+         <skin source="pCube1-obj">
+            <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+            <source id="skin-joints-pCube1-obj">
+               <Name_array id="skin-bones-table-pCube1-obj" count="1">Bone01</Name_array>
+               <technique_common>
+                  <accessor source="#skin-bones-table-pCube1-obj" count="1">
+                     <param name="JOINT" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-binding-pCube1-obj">
+               <float_array id="skin-binding-table-pCube1-obj" count="16">-0.000000 0 0.991504 0 -1.000000 -0.000000 -0.000000 0 0.000000 -1.000000 0 0 0 0 0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-binding-table-pCube1-obj" count="1">
+                     <param name="INV_BIND_MATRIX" type="float4x4"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-weights-pCube1-obj">
+               <float_array id="skin-weights-table-pCube1-obj" count="2">0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-weights-table-pCube1-obj" count="2">
+                     <param name="WEIGHT" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <joints>
+               <input semantic="JOINT" source="#skin-joints-pCube1-obj"></input>
+               <input semantic="INV_BIND_MATRIX" source="#skin-binding-pCube1-obj"></input>
+            </joints>
+            <vertex_weights count="8">
+               <input semantic="JOINT" source="#skin-joints-pCube1-obj" offset="0"></input>
+               <input semantic="WEIGHT" source="#skin-weights-pCube1-obj" offset="1"></input>
+               <vcount>1 1 1 1 1 1 1 1</vcount>
+               <v>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</v>
+            </vertex_weights>
+         </skin>
+      </controller>
+   </library_controllers>
+   <library_visual_scenes>
+      <visual_scene id="simple_025_SkeletalAnimation_Pivot_01_max" name="simple_025_SkeletalAnimation_Pivot_01_max">
+         <node id="pCube1" sid="pCube1" name="pCube1">
+            <instance_controller url="#skin-pCube1-obj">
+               <skeleton>#Bone01</skeleton>
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_1710768" target="#ColorMaterial_1710768"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_controller>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>10.9784 -54.6278 29.1904 </translate>
+            <rotate>-0.995701 -0.0880255 -0.0288375 -73.5146</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="pCube2" sid="pCube2" name="pCube2">
+            <instance_controller url="#skin-pCube2-obj">
+               <skeleton>#Bone02</skeleton>
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_1726641" target="#ColorMaterial_1726641"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_controller>
+         </node>
+         <node id="pCube3" sid="pCube3" name="pCube3">
+            <instance_controller url="#skin-pCube3-obj">
+               <skeleton>#Bone03</skeleton>
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5738464" target="#ColorMaterial_5738464"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_controller>
+         </node>
+         <node id="pCube4" sid="pCube4" name="pCube4">
+            <instance_controller url="#skin-pCube4-obj">
+               <skeleton>#Bone04</skeleton>
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5759174" target="#ColorMaterial_5759174"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_controller>
+         </node>
+         <node id="pointLight1" sid="pointLight1" name="pointLight1">
+            <translate>20.875 -43.986 22.0471 </translate>
+            <instance_light url="#pointLight1-obj"></instance_light>
+         </node>
+         <node id="Bone01" sid="Bone01" name="Bone01" type="JOINT">
+            <translate>0 0 0 </translate>
+            <rotate sid="RotZ">0 0 1 0</rotate>
+            <rotate sid="RotY">0 1 0 -90.0001</rotate>
+            <rotate sid="RotX">1 0 0 90.0001</rotate>
+            <node id="Bone02" sid="Bone02" name="Bone02" type="JOINT">
+               <translate>6 -9.78294e-007 2.62267e-007 </translate>
+               <rotate sid="RotZ">0 0 1 -4.00207e-006</rotate>
+               <rotate sid="RotY">0 1 0 1.79504e-015</rotate>
+               <rotate sid="RotX">1 0 0 -4.82968e-006</rotate>
+               <node id="Bone03" sid="Bone03" name="Bone03" type="JOINT">
+                  <translate>6 -5.6369e-007 2.69083e-007 </translate>
+                  <rotate sid="RotZ">0 0 1 -5.22937e-006</rotate>
+                  <rotate sid="RotY">0 1 0 1.48497e-019</rotate>
+                  <rotate sid="RotX">1 0 0 -9.10499e-015</rotate>
+                  <node id="Bone04" sid="Bone04" name="Bone04" type="JOINT">
+                     <translate sid="Trans">6 -6.80314e-009 2.62267e-007 </translate>
+                     <rotate sid="RotZ">0 0 1 2.02771e-006</rotate>
+                     <rotate sid="RotY">0 1 0 -1.28608e-018</rotate>
+                     <rotate sid="RotX">1 0 0 -1.02453e-005</rotate>
+                     <rotate sid="ScaleAxisR">1 0 0 0</rotate>
+                     <scale sid="Scale">1 1 1 </scale>
+                     <rotate sid="ScaleAxis">1 0 0 0</rotate>
+                     <node id="Bone05" sid="Bone05" name="Bone05" type="JOINT">
+                        <translate>6 -2.25449e-007 2.55431e-007 </translate>
+                     </node>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node id="global-ambient-light_scene-node" name="global-ambient-light_scene-node">
+            <instance_light url="#global-ambient-light"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_025_SkeletalAnimation_Pivot_01_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

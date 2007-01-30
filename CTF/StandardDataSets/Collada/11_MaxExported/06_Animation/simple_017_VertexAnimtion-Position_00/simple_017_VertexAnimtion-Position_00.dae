@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test60/Execution_2006_05_23_(0)/step0/simple_017_VertexAnimtion-Position_00.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:21:11Z</created>
+      <modified>2006-05-23T19:21:11Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_animations>
+      <animation id="simple_017_VertexAnimtion-Position_00.max_animation">
+         <animation id="pCube1-obj-position-position_2">
+            <source id="pCube1-obj-position-position-2-X-time">
+               <float_array id="pCube1-obj-position-position-2-X-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-X-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-X-value">
+               <float_array id="pCube1-obj-position-position-2-X-value-array" count="5">0 4.823330 0.825433 -1.986773 -8.558527</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-X-value-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-X-interp">
+               <Name_array id="pCube1-obj-position-position-2-X-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-X-interp-array" count="5">
+                     <param name="X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-X-intgt">
+               <float_array id="pCube1-obj-position-position-2-X-intgt-array" count="5">0 0 0.025538 0.035190 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-X-intgt-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-X-outtgt">
+               <float_array id="pCube1-obj-position-position-2-X-outtgt-array" count="5">0 0 -0.025538 -0.035190 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-X-outtgt-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Y-time">
+               <float_array id="pCube1-obj-position-position-2-Y-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Y-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Y-value">
+               <float_array id="pCube1-obj-position-position-2-Y-value-array" count="5">0 0 0 0.312939 3.391832</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Y-value-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Y-interp">
+               <Name_array id="pCube1-obj-position-position-2-Y-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Y-interp-array" count="5">
+                     <param name="Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Y-intgt">
+               <float_array id="pCube1-obj-position-position-2-Y-intgt-array" count="5">0 0 0 -0.006545 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Y-intgt-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Y-outtgt">
+               <float_array id="pCube1-obj-position-position-2-Y-outtgt-array" count="5">0 0 0 0.006545 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Y-outtgt-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Z-time">
+               <float_array id="pCube1-obj-position-position-2-Z-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Z-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Z-value">
+               <float_array id="pCube1-obj-position-position-2-Z-value-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Z-value-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Z-interp">
+               <Name_array id="pCube1-obj-position-position-2-Z-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Z-interp-array" count="5">
+                     <param name="Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Z-intgt">
+               <float_array id="pCube1-obj-position-position-2-Z-intgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Z-intgt-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-2-Z-outtgt">
+               <float_array id="pCube1-obj-position-position-2-Z-outtgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-2-Z-outtgt-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube1-obj-position-position-2-X-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-2-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-2-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-2-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-2-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-2-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-2-Y-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-2-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-2-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-2-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-2-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-2-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-2-Z-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-2-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-2-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-2-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-2-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-2-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube1-obj-position-position-2-X-sampler" target="pCube1-obj-position[2].X"></channel>
+            <channel source="#pCube1-obj-position-position-2-Y-sampler" target="pCube1-obj-position[2].Y"></channel>
+            <channel source="#pCube1-obj-position-position-2-Z-sampler" target="pCube1-obj-position[2].Z"></channel>
+         </animation>
+         <animation id="pCube1-obj-position-position_4">
+            <source id="pCube1-obj-position-position-4-X-time">
+               <float_array id="pCube1-obj-position-position-4-X-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-X-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-X-value">
+               <float_array id="pCube1-obj-position-position-4-X-value-array" count="4">0 -3.123676 -0.756512 -0.578034</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-X-value-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-X-interp">
+               <Name_array id="pCube1-obj-position-position-4-X-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-X-interp-array" count="4">
+                     <param name="X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-X-intgt">
+               <float_array id="pCube1-obj-position-position-4-X-intgt-array" count="4">0 0 -0.003702 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-X-intgt-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-X-outtgt">
+               <float_array id="pCube1-obj-position-position-4-X-outtgt-array" count="4">0 0 0.003702 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-X-outtgt-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Y-time">
+               <float_array id="pCube1-obj-position-position-4-Y-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Y-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Y-value">
+               <float_array id="pCube1-obj-position-position-4-Y-value-array" count="4">0 -14.237825 -14.064543 -13.954670</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Y-value-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Y-interp">
+               <Name_array id="pCube1-obj-position-position-4-Y-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Y-interp-array" count="4">
+                     <param name="Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Y-intgt">
+               <float_array id="pCube1-obj-position-position-4-Y-intgt-array" count="4">0 0 -0.000708 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Y-intgt-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Y-outtgt">
+               <float_array id="pCube1-obj-position-position-4-Y-outtgt-array" count="4">0 0 0.000708 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Y-outtgt-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Z-time">
+               <float_array id="pCube1-obj-position-position-4-Z-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Z-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Z-value">
+               <float_array id="pCube1-obj-position-position-4-Z-value-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Z-value-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Z-interp">
+               <Name_array id="pCube1-obj-position-position-4-Z-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Z-interp-array" count="4">
+                     <param name="Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Z-intgt">
+               <float_array id="pCube1-obj-position-position-4-Z-intgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Z-intgt-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-4-Z-outtgt">
+               <float_array id="pCube1-obj-position-position-4-Z-outtgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-4-Z-outtgt-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube1-obj-position-position-4-X-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-4-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-4-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-4-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-4-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-4-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-4-Y-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-4-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-4-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-4-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-4-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-4-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-4-Z-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-4-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-4-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-4-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-4-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-4-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube1-obj-position-position-4-X-sampler" target="pCube1-obj-position[4].X"></channel>
+            <channel source="#pCube1-obj-position-position-4-Y-sampler" target="pCube1-obj-position[4].Y"></channel>
+            <channel source="#pCube1-obj-position-position-4-Z-sampler" target="pCube1-obj-position[4].Z"></channel>
+         </animation>
+         <animation id="pCube1-obj-position-position_5">
+            <source id="pCube1-obj-position-position-5-X-time">
+               <float_array id="pCube1-obj-position-position-5-X-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-X-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-X-value">
+               <float_array id="pCube1-obj-position-position-5-X-value-array" count="5">0 0 -2.661506 28.016155 52.048744</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-X-value-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-X-interp">
+               <Name_array id="pCube1-obj-position-position-5-X-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-X-interp-array" count="5">
+                     <param name="X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-X-intgt">
+               <float_array id="pCube1-obj-position-position-5-X-intgt-array" count="5">0 0 0 -0.205163 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-X-intgt-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-X-outtgt">
+               <float_array id="pCube1-obj-position-position-5-X-outtgt-array" count="5">0 0 0 0.205163 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-X-outtgt-array" count="5">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Y-time">
+               <float_array id="pCube1-obj-position-position-5-Y-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Y-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Y-value">
+               <float_array id="pCube1-obj-position-position-5-Y-value-array" count="5">0 0 -0.126945 33.649837 71.040642</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Y-value-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Y-interp">
+               <Name_array id="pCube1-obj-position-position-5-Y-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Y-interp-array" count="5">
+                     <param name="Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Y-intgt">
+               <float_array id="pCube1-obj-position-position-5-Y-intgt-array" count="5">0 0 0 -0.266878 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Y-intgt-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Y-outtgt">
+               <float_array id="pCube1-obj-position-position-5-Y-outtgt-array" count="5">0 0 0 0.266878 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Y-outtgt-array" count="5">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Z-time">
+               <float_array id="pCube1-obj-position-position-5-Z-time-array" count="5">0 0.833333 1.666667 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Z-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Z-value">
+               <float_array id="pCube1-obj-position-position-5-Z-value-array" count="5">0 -5.146399 -5.146399 -5.146399 -5.146399</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Z-value-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Z-interp">
+               <Name_array id="pCube1-obj-position-position-5-Z-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Z-interp-array" count="5">
+                     <param name="Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Z-intgt">
+               <float_array id="pCube1-obj-position-position-5-Z-intgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Z-intgt-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-5-Z-outtgt">
+               <float_array id="pCube1-obj-position-position-5-Z-outtgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-5-Z-outtgt-array" count="5">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube1-obj-position-position-5-X-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-5-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-5-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-5-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-5-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-5-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-5-Y-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-5-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-5-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-5-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-5-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-5-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-5-Z-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-5-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-5-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-5-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-5-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-5-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube1-obj-position-position-5-X-sampler" target="pCube1-obj-position[5].X"></channel>
+            <channel source="#pCube1-obj-position-position-5-Y-sampler" target="pCube1-obj-position[5].Y"></channel>
+            <channel source="#pCube1-obj-position-position-5-Z-sampler" target="pCube1-obj-position[5].Z"></channel>
+         </animation>
+         <animation id="pCube1-obj-position-position_6">
+            <source id="pCube1-obj-position-position-6-X-time">
+               <float_array id="pCube1-obj-position-position-6-X-time-array" count="3">0 0.833333 1.666667</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-X-value">
+               <float_array id="pCube1-obj-position-position-6-X-value-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-X-value-array" count="3">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-X-interp">
+               <Name_array id="pCube1-obj-position-position-6-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-X-interp-array" count="3">
+                     <param name="X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-X-intgt">
+               <float_array id="pCube1-obj-position-position-6-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-X-intgt-array" count="3">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-X-outtgt">
+               <float_array id="pCube1-obj-position-position-6-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-X-outtgt-array" count="3">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Y-time">
+               <float_array id="pCube1-obj-position-position-6-Y-time-array" count="3">0 0.833333 1.666667</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Y-value">
+               <float_array id="pCube1-obj-position-position-6-Y-value-array" count="3">0 0 3.215771</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Y-value-array" count="3">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Y-interp">
+               <Name_array id="pCube1-obj-position-position-6-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Y-interp-array" count="3">
+                     <param name="Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Y-intgt">
+               <float_array id="pCube1-obj-position-position-6-Y-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Y-intgt-array" count="3">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Y-outtgt">
+               <float_array id="pCube1-obj-position-position-6-Y-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Y-outtgt-array" count="3">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Z-time">
+               <float_array id="pCube1-obj-position-position-6-Z-time-array" count="3">0 0.833333 1.666667</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Z-value">
+               <float_array id="pCube1-obj-position-position-6-Z-value-array" count="3">0 -6.414341 -9.694288</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Z-value-array" count="3">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Z-interp">
+               <Name_array id="pCube1-obj-position-position-6-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Z-interp-array" count="3">
+                     <param name="Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Z-intgt">
+               <float_array id="pCube1-obj-position-position-6-Z-intgt-array" count="3">0 0.036354 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Z-intgt-array" count="3">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-6-Z-outtgt">
+               <float_array id="pCube1-obj-position-position-6-Z-outtgt-array" count="3">0 -0.036354 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-6-Z-outtgt-array" count="3">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube1-obj-position-position-6-X-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-6-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-6-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-6-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-6-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-6-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-6-Y-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-6-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-6-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-6-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-6-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-6-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-6-Z-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-6-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-6-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-6-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-6-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-6-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube1-obj-position-position-6-X-sampler" target="pCube1-obj-position[6].X"></channel>
+            <channel source="#pCube1-obj-position-position-6-Y-sampler" target="pCube1-obj-position[6].Y"></channel>
+            <channel source="#pCube1-obj-position-position-6-Z-sampler" target="pCube1-obj-position[6].Z"></channel>
+         </animation>
+         <animation id="pCube1-obj-position-position_7">
+            <source id="pCube1-obj-position-position-7-X-time">
+               <float_array id="pCube1-obj-position-position-7-X-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-X-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-X-value">
+               <float_array id="pCube1-obj-position-position-7-X-value-array" count="4">0 -8.350746 -27.118656 -27.118656</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-X-value-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-X-interp">
+               <Name_array id="pCube1-obj-position-position-7-X-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-X-interp-array" count="4">
+                     <param name="X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-X-intgt">
+               <float_array id="pCube1-obj-position-position-7-X-intgt-array" count="4">0 0.067797 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-X-intgt-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-X-outtgt">
+               <float_array id="pCube1-obj-position-position-7-X-outtgt-array" count="4">0 -0.067797 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-X-outtgt-array" count="4">
+                     <param name="X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Y-time">
+               <float_array id="pCube1-obj-position-position-7-Y-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Y-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Y-value">
+               <float_array id="pCube1-obj-position-position-7-Y-value-array" count="4">0 5.483679 -15.217436 0.550354</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Y-value-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Y-interp">
+               <Name_array id="pCube1-obj-position-position-7-Y-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Y-interp-array" count="4">
+                     <param name="Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Y-intgt">
+               <float_array id="pCube1-obj-position-position-7-Y-intgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Y-intgt-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Y-outtgt">
+               <float_array id="pCube1-obj-position-position-7-Y-outtgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Y-outtgt-array" count="4">
+                     <param name="Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Z-time">
+               <float_array id="pCube1-obj-position-position-7-Z-time-array" count="4">0 0.833333 2.500000 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Z-time-array" count="4">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Z-value">
+               <float_array id="pCube1-obj-position-position-7-Z-value-array" count="4">0 -0.520546 0.896545 0.896545</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Z-value-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Z-interp">
+               <Name_array id="pCube1-obj-position-position-7-Z-interp-array" count="4">BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Z-interp-array" count="4">
+                     <param name="Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Z-intgt">
+               <float_array id="pCube1-obj-position-position-7-Z-intgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Z-intgt-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-position-position-7-Z-outtgt">
+               <float_array id="pCube1-obj-position-position-7-Z-outtgt-array" count="4">0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-position-7-Z-outtgt-array" count="4">
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube1-obj-position-position-7-X-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-7-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-7-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-7-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-7-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-7-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-7-Y-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-7-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-7-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-7-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-7-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-7-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube1-obj-position-position-7-Z-sampler">
+               <input semantic="INPUT" source="#pCube1-obj-position-position-7-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube1-obj-position-position-7-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube1-obj-position-position-7-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube1-obj-position-position-7-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube1-obj-position-position-7-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube1-obj-position-position-7-X-sampler" target="pCube1-obj-position[7].X"></channel>
+            <channel source="#pCube1-obj-position-position-7-Y-sampler" target="pCube1-obj-position[7].Y"></channel>
+            <channel source="#pCube1-obj-position-position-7-Z-sampler" target="pCube1-obj-position[7].Z"></channel>
+         </animation>
+      </animation>
+   </library_animations>
+   <library_materials>
+      <material id="ColorMaterial_5658198">
+         <instance_effect url="#ColorMaterial_5658198-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_5658198-fx" name="ColorMaterial_5658198">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>54.4323</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="pointLight1-obj" name="pointLight1-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pCube1-obj" name="pCube1">
+         <mesh>
+            <source id="pCube1-obj-position">
+               <float_array id="pCube1-obj-position-array" count="24">-10.000000 -10.000000 0 10.000000 -10.000000 0 -10.000000 10.000000 0 10.000000 10.000000 0 -10.000000 -10.000000 20.000000 10.000000 -10.000000 20.000000 -10.000000 10.000000 20.000000 10.000000 10.000000 20.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-normal">
+               <float_array id="pCube1-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube1-obj-vertex">
+               <input semantic="POSITION" source="#pCube1-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5658198" count="12">
+               <input semantic="VERTEX" source="#pCube1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube1-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_017_VertexAnimtion-Position_00_max" name="simple_017_VertexAnimtion-Position_00_max">
+         <node id="pCube1" sid="pCube1" name="pCube1">
+            <translate>0 4.22486e-007 -10 </translate>
+            <instance_geometry url="#pCube1-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>-31.2874 -43.9358 19.2257 </translate>
+            <rotate>-0.880862 0.276597 0.384158 -77.4299</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="pointLight1" sid="pointLight1" name="pointLight1">
+            <translate>-19.0367 -14.6339 19.1793 </translate>
+            <instance_light url="#pointLight1-obj"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_017_VertexAnimtion-Position_00_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

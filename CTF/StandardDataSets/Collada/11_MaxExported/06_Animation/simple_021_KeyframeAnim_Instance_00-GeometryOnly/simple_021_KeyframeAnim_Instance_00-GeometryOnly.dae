@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test67/Execution_2006_05_23_(0)/step0/simple_021_KeyframeAnim_Instance_00-GeometryOnly.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:21:37Z</created>
+      <modified>2006-05-23T19:21:37Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_animations>
+      <animation id="simple_021_KeyframeAnim_Instance_00-GeometryOnly.max_animation">
+         <animation id="pCube2-Translate">
+            <source id="pCube2-Translate-X-time">
+               <float_array id="pCube2-Translate-X-time-array" count="3">0 1.666667 3.300000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-X-value">
+               <float_array id="pCube2-Translate-X-value-array" count="3">0 65.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-X-value-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-X-interp">
+               <Name_array id="pCube2-Translate-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-X-interp-array" count="3">
+                     <param name="TRANS.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-X-intgt">
+               <float_array id="pCube2-Translate-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-X-intgt-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-X-outtgt">
+               <float_array id="pCube2-Translate-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-X-outtgt-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Y-time">
+               <float_array id="pCube2-Translate-Y-time-array" count="101"></float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Y-time-array" count="101">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Y-value">
+               <float_array id="pCube2-Translate-Y-value-array" count="101"></float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Y-value-array" count="101">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Y-interp">
+               <Name_array id="pCube2-Translate-Y-interp-array" count="101"></Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Y-interp-array" count="101">
+                     <param name="TRANS.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Z-time">
+               <float_array id="pCube2-Translate-Z-time-array" count="5">0 0.833333 1.666667 2.500000 3.300000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Z-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Z-value">
+               <float_array id="pCube2-Translate-Z-value-array" count="5">-2.500000 20.000000 -2.500000 20.000000 -2.500000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Z-value-array" count="5">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Z-interp">
+               <Name_array id="pCube2-Translate-Z-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Z-interp-array" count="5">
+                     <param name="TRANS.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Z-intgt">
+               <float_array id="pCube2-Translate-Z-intgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Z-intgt-array" count="5">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Translate-Z-outtgt">
+               <float_array id="pCube2-Translate-Z-outtgt-array" count="5">0 0 0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Translate-Z-outtgt-array" count="5">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube2-Translate-X-sampler">
+               <input semantic="INPUT" source="#pCube2-Translate-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Translate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Translate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube2-Translate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube2-Translate-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube2-Translate-Y-sampler">
+               <input semantic="INPUT" source="#pCube2-Translate-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Translate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Translate-Y-interp"></input>
+            </sampler>
+            <sampler id="pCube2-Translate-Z-sampler">
+               <input semantic="INPUT" source="#pCube2-Translate-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Translate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Translate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube2-Translate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube2-Translate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#pCube2-Translate-X-sampler" target="pCube2/Trans.X"></channel>
+            <channel source="#pCube2-Translate-Y-sampler" target="pCube2/Trans.Y"></channel>
+            <channel source="#pCube2-Translate-Z-sampler" target="pCube2/Trans.Z"></channel>
+         </animation>
+         <animation id="pCube2-Rotate">
+            <source id="pCube2-Rotate-X-time">
+               <float_array id="pCube2-Rotate-X-time-array" count="5">0 0.833333 1.666667 2.500000 3.300000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-X-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-X-value">
+               <float_array id="pCube2-Rotate-X-value-array" count="5">0 90.000076 180.000153 270.000214 360.000305</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-X-value-array" count="5">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-X-interp">
+               <Name_array id="pCube2-Rotate-X-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-X-interp-array" count="5">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-X-intgt">
+               <float_array id="pCube2-Rotate-X-intgt-array" count="5">0 -0.675001 -0.675001 -0.688776 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-X-intgt-array" count="5">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-X-outtgt">
+               <float_array id="pCube2-Rotate-X-outtgt-array" count="5">0 0.675001 0.675001 0.688776 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-X-outtgt-array" count="5">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Y-time">
+               <float_array id="pCube2-Rotate-Y-time-array" count="5">0 0.833333 1.666667 2.500000 3.300000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Y-time-array" count="5">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Y-value">
+               <float_array id="pCube2-Rotate-Y-value-array" count="5">0 90.000076 180.000153 270.000214 360.000305</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Y-value-array" count="5">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Y-interp">
+               <Name_array id="pCube2-Rotate-Y-interp-array" count="5">BEZIER BEZIER BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Y-interp-array" count="5">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Y-intgt">
+               <float_array id="pCube2-Rotate-Y-intgt-array" count="5">0 -0.675001 -0.675001 -0.688776 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Y-intgt-array" count="5">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Y-outtgt">
+               <float_array id="pCube2-Rotate-Y-outtgt-array" count="5">0 0.675001 0.675001 0.688776 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Y-outtgt-array" count="5">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Z-time">
+               <float_array id="pCube2-Rotate-Z-time-array" count="101"></float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Z-time-array" count="101">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Z-value">
+               <float_array id="pCube2-Rotate-Z-value-array" count="101"></float_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Z-value-array" count="101">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-Rotate-Z-interp">
+               <Name_array id="pCube2-Rotate-Z-interp-array" count="101"></Name_array>
+               <technique_common>
+                  <accessor source="#pCube2-Rotate-Z-interp-array" count="101">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="pCube2-Rotate-X-sampler">
+               <input semantic="INPUT" source="#pCube2-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube2-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube2-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="pCube2-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#pCube2-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#pCube2-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#pCube2-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="pCube2-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#pCube2-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#pCube2-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#pCube2-Rotate-Z-interp"></input>
+            </sampler>
+            <channel source="#pCube2-Rotate-X-sampler" target="pCube2/RotX.ANGLE"></channel>
+            <channel source="#pCube2-Rotate-Y-sampler" target="pCube2/RotY.ANGLE"></channel>
+            <channel source="#pCube2-Rotate-Z-sampler" target="pCube2/RotZ.ANGLE"></channel>
+         </animation>
+      </animation>
+   </library_animations>
+   <library_materials>
+      <material id="ColorMaterial_5658198">
+         <instance_effect url="#ColorMaterial_5658198-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_5658198-fx" name="ColorMaterial_5658198">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.337255 0.337255 0.337255 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>45</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="camera_light_testLight-obj" name="camera_light_testLight-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pCube2-obj" name="pCube2">
+         <mesh>
+            <source id="pCube2-obj-position">
+               <float_array id="pCube2-obj-position-array" count="24">-2.500000 -2.500000 0 2.500000 -2.500000 0 -2.500000 2.500000 0 2.500000 2.500000 0 -2.500000 -2.500000 5.000000 2.500000 -2.500000 5.000000 -2.500000 2.500000 5.000000 2.500000 2.500000 5.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube2-obj-normal">
+               <float_array id="pCube2-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube2-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube2-obj-vertex">
+               <input semantic="POSITION" source="#pCube2-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_5658198" count="12">
+               <input semantic="VERTEX" source="#pCube2-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube2-obj-normal" offset="1"></input>
+               <p>0 0 2 1 3 2 3 2 1 3 0 0 4 4 5 5 7 6 7 6 6 7 4 4 0 8 1 9 5 10 5 10 4 11 0 8 1 12 3 13 7 14 7 14 5 15 1 12 3 16 2 17 6 18 6 18 7 19 3 16 2 20 0 21 4 22 4 22 6 23 2 20 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_021_KeyframeAnim_Instance_00-GeometryOnly_max" name="simple_021_KeyframeAnim_Instance_00-GeometryOnly_max">
+         <node id="pCube1" sid="pCube1" name="pCube1">
+            <translate>-2.7706e-024 -20 -2.5 </translate>
+            <instance_geometry url="#pCube2-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>26.1481 -112.351 58.3378 </translate>
+            <rotate>-1 0 0 -63.0353</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="camera_light_testLight" sid="camera_light_testLight" name="camera_light_testLight">
+            <translate>-9.95613 -76.7579 79.9857 </translate>
+            <rotate>0.57735 0.57735 0.57735 -240</rotate>
+            <instance_light url="#camera_light_testLight-obj"></instance_light>
+         </node>
+         <node id="pCube2" sid="pCube2" name="pCube2">
+            <translate sid="Trans">0 -2.5 -2.5 </translate>
+            <rotate sid="RotZ">0 0 1 0</rotate>
+            <rotate sid="RotY">0 1 0 0</rotate>
+            <rotate sid="RotX">1 0 0 0</rotate>
+            <instance_geometry url="#pCube2-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_5658198" target="#ColorMaterial_5658198"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_021_KeyframeAnim_Instance_00-GeometryOnly_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

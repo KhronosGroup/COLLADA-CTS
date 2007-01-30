@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test42/Execution_2006_05_23_(0)/step0/simple_003_SkeletalAnimation_02.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:20:06Z</created>
+      <modified>2006-05-23T19:20:06Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_animations>
+      <animation id="simple_003_SkeletalAnimation_02.max_animation">
+         <animation id="Bone02-Rotate">
+            <source id="Bone02-Rotate-X-time">
+               <float_array id="Bone02-Rotate-X-time-array" count="2">0 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-time-array" count="2">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-value">
+               <float_array id="Bone02-Rotate-X-value-array" count="2">0.000004 0.000004</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-value-array" count="2">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-interp">
+               <Name_array id="Bone02-Rotate-X-interp-array" count="2">BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-interp-array" count="2">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-intgt">
+               <float_array id="Bone02-Rotate-X-intgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-intgt-array" count="2">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-X-outtgt">
+               <float_array id="Bone02-Rotate-X-outtgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-X-outtgt-array" count="2">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-time">
+               <float_array id="Bone02-Rotate-Y-time-array" count="2">0 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-time-array" count="2">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-value">
+               <float_array id="Bone02-Rotate-Y-value-array" count="2">0 -91.107864</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-value-array" count="2">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-interp">
+               <Name_array id="Bone02-Rotate-Y-interp-array" count="2">BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-interp-array" count="2">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-intgt">
+               <float_array id="Bone02-Rotate-Y-intgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-intgt-array" count="2">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Y-outtgt">
+               <float_array id="Bone02-Rotate-Y-outtgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Y-outtgt-array" count="2">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-time">
+               <float_array id="Bone02-Rotate-Z-time-array" count="2">0 1.000000</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-time-array" count="2">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-value">
+               <float_array id="Bone02-Rotate-Z-value-array" count="2">0.842530 0.842530</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-value-array" count="2">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-interp">
+               <Name_array id="Bone02-Rotate-Z-interp-array" count="2">BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-interp-array" count="2">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-intgt">
+               <float_array id="Bone02-Rotate-Z-intgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-intgt-array" count="2">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Bone02-Rotate-Z-outtgt">
+               <float_array id="Bone02-Rotate-Z-outtgt-array" count="2">0 0</float_array>
+               <technique_common>
+                  <accessor source="#Bone02-Rotate-Z-outtgt-array" count="2">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Bone02-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Bone02-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Bone02-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Bone02-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Bone02-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Bone02-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Bone02-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Bone02-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Bone02-Rotate-X-sampler" target="Bone02/RotX.ANGLE"></channel>
+            <channel source="#Bone02-Rotate-Y-sampler" target="Bone02/RotY.ANGLE"></channel>
+            <channel source="#Bone02-Rotate-Z-sampler" target="Bone02/RotZ.ANGLE"></channel>
+         </animation>
+      </animation>
+   </library_animations>
+   <library_materials>
+      <material id="_10_-_Default" name="_10_-_Default">
+         <instance_effect url="#_10_-_Default-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="_10_-_Default-fx" name="_10_-_Default">
+         <profile_COMMON>
+            <technique id="_10_-_Default-fx-COMMON" sid="COMMON">
+               <phong>
+                  <ambient>
+                     <color>0.996078 0.854902 0.294118 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.996078 0.854902 0.294118 1</color>
+                  </diffuse>
+                  <specular>
+                     <color>0.9 0.9 0.9 1</color>
+                  </specular>
+                  <shininess>
+                     <float>10</float>
+                  </shininess>
+                  <reflective>
+                     <color>0 0 0 1</color>
+                  </reflective>
+                  <transparent>
+                     <color>1 1 1 1</color>
+                  </transparent>
+                  <transparency>
+                     <float>0</float>
+                  </transparency>
+               </phong>
+               <extra>
+                  <technique profile="MAX3D">
+                     <spec_level>
+                        <float>0</float>
+                     </spec_level>
+                     <emission_level>
+                        <float>0</float>
+                     </emission_level>
+                     <faceted>false</faceted>
+                     <double_sided>false</double_sided>
+                     <wireframe>false</wireframe>
+                     <face_map>false</face_map>
+                  </technique>
+               </extra>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>45</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="pointLight1-obj" name="pointLight1-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+      <light id="global-ambient-light">
+         <technique_common>
+            <ambient>
+               <color>0.427451 0.427451 0.427451</color>
+            </ambient>
+         </technique_common>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="Box01-obj" name="Box01">
+         <mesh>
+            <source id="Box01-obj-position">
+               <float_array id="Box01-obj-position-array" count="36">-2.500000 -2.500000 0 2.500000 -2.500000 0 -2.500000 2.500000 0 2.500000 2.500000 0 -2.500000 -2.500000 25.000000 2.500000 -2.500000 25.000000 -2.500000 2.500000 25.000000 2.500000 2.500000 25.000000 -2.500000 -2.500000 12.500000 2.500000 -2.500000 12.500000 2.500000 2.500000 12.500000 -2.500000 2.500000 12.500000</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-position-array" count="12" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-obj-normal">
+               <float_array id="Box01-obj-normal-array" count="96">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-normal-array" count="32" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-obj-mapchan-1">
+               <float_array id="Box01-obj-mapchan-1-array" count="48">0 0 0 1.000000 0 0 0 0.500000 0 1.000000 0.500000 0 0 1.000000 0 1.000000 1.000000 0 0 0 0 1.000000 0 0 0 0.500000 0 1.000000 0.500000 0 0 1.000000 0 1.000000 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0 1.000000 1.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-mapchan-1-array" count="16" stride="3">
+                     <param name="S" type="float"></param>
+                     <param name="T" type="float"></param>
+                     <param name="R" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="Box01-obj-vertex">
+               <input semantic="POSITION" source="#Box01-obj-position"></input>
+            </vertices>
+            <triangles material="_10_-_Default" count="20">
+               <input semantic="VERTEX" source="#Box01-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#Box01-obj-normal" offset="1"></input>
+               <input semantic="TEXCOORD" source="#Box01-obj-mapchan-1" offset="2" set="1"></input>
+               <p>0 0 13 2 1 15 3 2 14 3 2 14 1 3 12 0 0 13 4 4 12 5 5 13 7 6 15 7 6 15 6 7 14 4 4 12 0 8 6 1 9 7 9 10 9 9 10 9 8 11 8 0 8 6 8 11 8 9 10 9 5 12 11 5 12 11 4 13 10 8 11 8 1 14 0 3 15 1 10 16 3 10 16 3 9 17 2 1 14 0 9 17 2 10 16 3 7 18 5 7 18 5 5 19 4 9 17 2 3 20 6 2 21 7 11 22 9 11 22 9 10 23 8 3 20 6 10 23 8 11 22 9 6 24 11 6 24 11 7 25 10 10 23 8 2 26 0 0 27 1 8 28 3 8 28 3 11 29 2 2 26 0 11 29 2 8 28 3 4 30 5 4 30 5 6 31 4 11 29 2 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_controllers>
+      <controller id="skin-Box01-obj">
+         <skin source="Box01-obj">
+            <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 -4.98971e-007 0 0 0 1</bind_shape_matrix>
+            <source id="skin-joints-Box01-obj">
+               <Name_array id="skin-bones-table-Box01-obj" count="3">Bone01 Bone02 Bone03</Name_array>
+               <technique_common>
+                  <accessor source="#skin-bones-table-Box01-obj" count="3">
+                     <param name="JOINT" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-binding-Box01-obj">
+               <float_array id="skin-binding-table-Box01-obj" count="48">0 -0.014705 0.999895 -0.928453 0 0.999892 0.014704 -0.184700 -1.000000 0.000000 0 0 0 0 0 1 0 0 1.000000 -13.853893 0 1.000000 0 0.019013 -1.000000 0 0 0 0 0 0 1 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1</float_array>
+               <technique_common>
+                  <accessor source="#skin-binding-table-Box01-obj" count="3">
+                     <param name="INV_BIND_MATRIX" type="float4x4"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="skin-weights-Box01-obj">
+               <float_array id="skin-weights-table-Box01-obj" count="6">0 1 0.629660 0.370340 0.644603 0.355397</float_array>
+               <technique_common>
+                  <accessor source="#skin-weights-table-Box01-obj" count="6">
+                     <param name="WEIGHT" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <joints>
+               <input semantic="JOINT" source="#skin-joints-Box01-obj"></input>
+               <input semantic="INV_BIND_MATRIX" source="#skin-binding-Box01-obj"></input>
+            </joints>
+            <vertex_weights count="12">
+               <input semantic="JOINT" source="#skin-joints-Box01-obj" offset="0"></input>
+               <input semantic="WEIGHT" source="#skin-weights-Box01-obj" offset="1"></input>
+               <vcount>1 1 1 1 1 1 1 1 2 2 2 2</vcount>
+               <v>0 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 2 1 3 0 2 1 3 0 4 1 5 0 4 1 5</v>
+            </vertex_weights>
+         </skin>
+      </controller>
+   </library_controllers>
+   <library_visual_scenes>
+      <visual_scene id="simple_003_SkeletalAnimation_02_max" name="simple_003_SkeletalAnimation_02_max">
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>0.0561981 -56.824 30.2292 </translate>
+            <rotate>-0.999749 0.0105735 0.019776 -74.612</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="pointLight1" sid="pointLight1" name="pointLight1">
+            <translate>23.3916 -37.5753 110.03 </translate>
+            <instance_light url="#pointLight1-obj"></instance_light>
+         </node>
+         <node id="Box01" sid="Box01" name="Box01">
+            <instance_controller url="#skin-Box01-obj">
+               <skeleton>#Bone01</skeleton>
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="_10_-_Default" target="#_10_-_Default"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_controller>
+         </node>
+         <node id="Bone01" sid="Bone01" name="Bone01" type="JOINT">
+            <translate>7.47587e-009 0.171028 0.931066 </translate>
+            <rotate>-0.00735218 0.999946 0.0073523 -90.0032</rotate>
+            <node id="Bone02" sid="Bone02" name="Bone02" type="JOINT">
+               <translate>12.9242 1.73059e-006 -2.2655e-008 </translate>
+               <rotate sid="RotZ">0 0 1 0.84253</rotate>
+               <rotate sid="RotY">0 1 0 3.68273e-008</rotate>
+               <rotate sid="RotX">1 0 0 4.32599e-006</rotate>
+               <node id="Bone03" sid="Bone03" name="Bone03" type="JOINT">
+                  <translate>10.4524 -4.02419e-008 2.38544e-015 </translate>
+               </node>
+            </node>
+         </node>
+         <node id="global-ambient-light_scene-node" name="global-ambient-light_scene-node">
+            <instance_light url="#global-ambient-light"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_003_SkeletalAnimation_02_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

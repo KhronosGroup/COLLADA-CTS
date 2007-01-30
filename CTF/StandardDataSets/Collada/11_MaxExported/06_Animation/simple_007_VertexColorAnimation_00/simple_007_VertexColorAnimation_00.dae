@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test51/Execution_2006_05_23_(0)/step0/simple_007_VertexColorAnimation_00.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:20:41Z</created>
+      <modified>2006-05-23T19:20:41Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_materials>
+      <material id="Material__3" name="Material__3">
+         <instance_effect url="#Material__3-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="Material__3-fx" name="Material__3">
+         <profile_COMMON>
+            <technique id="Material__3-fx-COMMON" sid="COMMON">
+               <phong>
+                  <ambient>
+                     <color>0.588 0.588 0.588 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.588 0.588 0.588 1</color>
+                  </diffuse>
+                  <specular>
+                     <color>0.9 0.9 0.9 1</color>
+                  </specular>
+                  <shininess>
+                     <float>10</float>
+                  </shininess>
+                  <reflective>
+                     <color>0 0 0 1</color>
+                  </reflective>
+                  <transparent>
+                     <color>1 1 1 1</color>
+                  </transparent>
+                  <transparency>
+                     <float>0</float>
+                  </transparency>
+               </phong>
+               <extra>
+                  <technique profile="MAX3D">
+                     <spec_level>
+                        <float>0</float>
+                     </spec_level>
+                     <emission_level>
+                        <float>0</float>
+                     </emission_level>
+                     <faceted>false</faceted>
+                     <double_sided>false</double_sided>
+                     <wireframe>false</wireframe>
+                     <face_map>false</face_map>
+                  </technique>
+               </extra>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>54.4323</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>1</znear>
+                  <zfar>1000</zfar>
+               </perspective>
+            </technique_common>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="pointLight1-obj" name="pointLight1-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.025</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="pCube1-obj" name="pCube1">
+         <mesh>
+            <source id="pCube1-obj-position">
+               <float_array id="pCube1-obj-position-array" count="24">-15.000000 -15.000000 0 15.000000 -15.000000 0 -15.000000 15.000000 0 15.000000 15.000000 0 -15.000000 -15.000000 30.000000 15.000000 -15.000000 30.000000 -15.000000 15.000000 30.000000 15.000000 15.000000 30.000000</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-normal">
+               <float_array id="pCube1-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="pCube1-obj-mapchan-0">
+               <float_array id="pCube1-obj-mapchan-0-array" count="24">1.000000 1.000000 1.000000 1.000000 1.000000 0 0 0 1.000000 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 1.000000 1.000000 1.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#pCube1-obj-mapchan-0-array" count="8" stride="3">
+                     <param name="S" type="float"></param>
+                     <param name="T" type="float"></param>
+                     <param name="R" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="pCube1-obj-vertex">
+               <input semantic="POSITION" source="#pCube1-obj-position"></input>
+            </vertices>
+            <triangles material="Material__3" count="12">
+               <input semantic="VERTEX" source="#pCube1-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#pCube1-obj-normal" offset="1"></input>
+               <input semantic="COLOR" source="#pCube1-obj-mapchan-0" offset="2" set="0"></input>
+               <p>0 0 0 2 1 2 3 2 3 3 2 3 1 3 1 0 0 0 4 4 4 5 5 5 7 6 7 7 6 7 6 7 6 4 4 4 0 8 0 1 9 1 5 10 5 5 10 5 4 11 4 0 8 0 1 12 1 3 13 3 7 14 7 7 14 7 5 15 5 1 12 1 3 16 3 2 17 2 6 18 6 6 18 6 7 19 7 3 16 3 2 20 2 0 21 0 4 22 4 4 22 4 6 23 6 2 20 2 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_007_VertexColorAnimation_00_max" name="simple_007_VertexColorAnimation_00_max">
+         <node id="pCube1" sid="pCube1" name="pCube1">
+            <translate>0 0 -15 </translate>
+            <instance_geometry url="#pCube1-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="Material__3" target="#Material__3">
+                        <bind semantic="CHANNEL1" target="#pCube1-obj-mapchan-0"></bind>
+                     </instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>-30.8918 -82.913 56.4363 </translate>
+            <rotate>-0.892372 0.199347 0.404887 -58.677</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="pointLight1" sid="pointLight1" name="pointLight1">
+            <translate>98.419 76.6798 94.8814 </translate>
+            <instance_light url="#pointLight1-obj"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_007_VertexColorAnimation_00_max"></instance_visual_scene>
+   </scene>
+</COLLADA>

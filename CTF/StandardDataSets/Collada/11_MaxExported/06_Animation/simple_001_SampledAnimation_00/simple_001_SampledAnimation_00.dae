@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.0">
+   <asset>
+      <contributor>
+         <author>Alfred Leung</author>
+         <authoring_tool>Feeling ColladaMax v0.01 with FCollada v0.04.</authoring_tool>
+         <source_data>file://C:/CTF short spaced/TestProcedures/MaxExport/Test38/Execution_2006_05_23_(0)/step0/simple_001_SampledAnimation_00.max</source_data>
+      </contributor>
+      <created>2006-05-23T19:19:56Z</created>
+      <modified>2006-05-23T19:19:56Z</modified>
+      <revision>1.0</revision>
+      <unit name="inch" meter="0.0254"></unit>
+      <up_axis>Z_UP</up_axis>
+   </asset>
+   <library_animations>
+      <animation id="simple_001_SampledAnimation_00.max_animation">
+         <animation id="Box01-Translate">
+            <source id="Box01-Translate-X-time">
+               <float_array id="Box01-Translate-X-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-X-value">
+               <float_array id="Box01-Translate-X-value-array" count="3">-465.221191 -465.221191 -465.221191</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-X-value-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-X-interp">
+               <Name_array id="Box01-Translate-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-X-interp-array" count="3">
+                     <param name="TRANS.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-X-intgt">
+               <float_array id="Box01-Translate-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-X-intgt-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-X-outtgt">
+               <float_array id="Box01-Translate-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-X-outtgt-array" count="3">
+                     <param name="TRANS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Y-time">
+               <float_array id="Box01-Translate-Y-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Y-value">
+               <float_array id="Box01-Translate-Y-value-array" count="3">169.088669 1638.194580 3047.280518</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Y-value-array" count="3">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Y-interp">
+               <Name_array id="Box01-Translate-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Y-interp-array" count="3">
+                     <param name="TRANS.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Y-intgt">
+               <float_array id="Box01-Translate-Y-intgt-array" count="3">0 -5.396610 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Y-intgt-array" count="3">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Y-outtgt">
+               <float_array id="Box01-Translate-Y-outtgt-array" count="3">0 5.396610 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Y-outtgt-array" count="3">
+                     <param name="TRANS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Z-time">
+               <float_array id="Box01-Translate-Z-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Z-value">
+               <float_array id="Box01-Translate-Z-value-array" count="3">0 647.697388 159.370926</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Z-value-array" count="3">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Z-interp">
+               <Name_array id="Box01-Translate-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Z-interp-array" count="3">
+                     <param name="TRANS.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Z-intgt">
+               <float_array id="Box01-Translate-Z-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Z-intgt-array" count="3">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Translate-Z-outtgt">
+               <float_array id="Box01-Translate-Z-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Translate-Z-outtgt-array" count="3">
+                     <param name="TRANS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Box01-Translate-X-sampler">
+               <input semantic="INPUT" source="#Box01-Translate-X-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Translate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Translate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Translate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Translate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Translate-Y-sampler">
+               <input semantic="INPUT" source="#Box01-Translate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Translate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Translate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Translate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Translate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Translate-Z-sampler">
+               <input semantic="INPUT" source="#Box01-Translate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Translate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Translate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Translate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Translate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Box01-Translate-X-sampler" target="Box01/Trans.X"></channel>
+            <channel source="#Box01-Translate-Y-sampler" target="Box01/Trans.Y"></channel>
+            <channel source="#Box01-Translate-Z-sampler" target="Box01/Trans.Z"></channel>
+         </animation>
+         <animation id="Box01-Rotate">
+            <source id="Box01-Rotate-X-time">
+               <float_array id="Box01-Rotate-X-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-X-value">
+               <float_array id="Box01-Rotate-X-value-array" count="3">0 -125.200806 -171.767410</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-X-value-array" count="3">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-X-interp">
+               <Name_array id="Box01-Rotate-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-X-interp-array" count="3">
+                     <param name="ROTX.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-X-intgt">
+               <float_array id="Box01-Rotate-X-intgt-array" count="3">0 0.322064 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-X-intgt-array" count="3">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-X-outtgt">
+               <float_array id="Box01-Rotate-X-outtgt-array" count="3">0 -0.322064 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-X-outtgt-array" count="3">
+                     <param name="ROTX.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Y-time">
+               <float_array id="Box01-Rotate-Y-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Y-value">
+               <float_array id="Box01-Rotate-Y-value-array" count="3">0 -9.995605 -6.908988</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Y-value-array" count="3">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Y-interp">
+               <Name_array id="Box01-Rotate-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Y-interp-array" count="3">
+                     <param name="ROTY.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Y-intgt">
+               <float_array id="Box01-Rotate-Y-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Y-intgt-array" count="3">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Y-outtgt">
+               <float_array id="Box01-Rotate-Y-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Y-outtgt-array" count="3">
+                     <param name="ROTY.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Z-time">
+               <float_array id="Box01-Rotate-Z-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Z-value">
+               <float_array id="Box01-Rotate-Z-value-array" count="3">0 0 7.241042</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Z-value-array" count="3">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Z-interp">
+               <Name_array id="Box01-Rotate-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Z-interp-array" count="3">
+                     <param name="ROTZ.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Z-intgt">
+               <float_array id="Box01-Rotate-Z-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Z-intgt-array" count="3">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Rotate-Z-outtgt">
+               <float_array id="Box01-Rotate-Z-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Rotate-Z-outtgt-array" count="3">
+                     <param name="ROTZ.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Box01-Rotate-X-sampler">
+               <input semantic="INPUT" source="#Box01-Rotate-X-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Rotate-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Rotate-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Rotate-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Rotate-X-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Rotate-Y-sampler">
+               <input semantic="INPUT" source="#Box01-Rotate-Y-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Rotate-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Rotate-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Rotate-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Rotate-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Rotate-Z-sampler">
+               <input semantic="INPUT" source="#Box01-Rotate-Z-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Rotate-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Rotate-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Rotate-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Rotate-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Box01-Rotate-X-sampler" target="Box01/RotX.ANGLE"></channel>
+            <channel source="#Box01-Rotate-Y-sampler" target="Box01/RotY.ANGLE"></channel>
+            <channel source="#Box01-Rotate-Z-sampler" target="Box01/RotZ.ANGLE"></channel>
+         </animation>
+         <animation id="Box01-ScaleAxisR">
+            <source id="Box01-ScaleAxisR-X-time">
+               <float_array id="Box01-ScaleAxisR-X-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-X-value">
+               <float_array id="Box01-ScaleAxisR-X-value-array" count="3">1.000000 0.532568 -0.912909</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-X-value-array" count="3">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-X-interp">
+               <Name_array id="Box01-ScaleAxisR-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-X-interp-array" count="3">
+                     <param name="SCALEAXISR.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-X-intgt">
+               <float_array id="Box01-ScaleAxisR-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-X-intgt-array" count="3">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-X-outtgt">
+               <float_array id="Box01-ScaleAxisR-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-X-outtgt-array" count="3">
+                     <param name="SCALEAXISR.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Y-time">
+               <float_array id="Box01-ScaleAxisR-Y-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Y-value">
+               <float_array id="Box01-ScaleAxisR-Y-value-array" count="3">0 0.275723 -0.043894</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Y-value-array" count="3">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Y-interp">
+               <Name_array id="Box01-ScaleAxisR-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Y-interp-array" count="3">
+                     <param name="SCALEAXISR.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Y-intgt">
+               <float_array id="Box01-ScaleAxisR-Y-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Y-intgt-array" count="3">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Y-outtgt">
+               <float_array id="Box01-ScaleAxisR-Y-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Y-outtgt-array" count="3">
+                     <param name="SCALEAXISR.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Z-time">
+               <float_array id="Box01-ScaleAxisR-Z-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Z-value">
+               <float_array id="Box01-ScaleAxisR-Z-value-array" count="3">0 0.800218 -0.405795</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Z-value-array" count="3">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Z-interp">
+               <Name_array id="Box01-ScaleAxisR-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Z-interp-array" count="3">
+                     <param name="SCALEAXISR.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Z-intgt">
+               <float_array id="Box01-ScaleAxisR-Z-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Z-intgt-array" count="3">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-Z-outtgt">
+               <float_array id="Box01-ScaleAxisR-Z-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-Z-outtgt-array" count="3">
+                     <param name="SCALEAXISR.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-ANGLE-time">
+               <float_array id="Box01-ScaleAxisR-ANGLE-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-ANGLE-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-ANGLE-value">
+               <float_array id="Box01-ScaleAxisR-ANGLE-value-array" count="3">0 -82.568260 -32.703251</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-ANGLE-value-array" count="3">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-ANGLE-interp">
+               <Name_array id="Box01-ScaleAxisR-ANGLE-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-ANGLE-interp-array" count="3">
+                     <param name="SCALEAXISR.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-ANGLE-intgt">
+               <float_array id="Box01-ScaleAxisR-ANGLE-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-ANGLE-intgt-array" count="3">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxisR-ANGLE-outtgt">
+               <float_array id="Box01-ScaleAxisR-ANGLE-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxisR-ANGLE-outtgt-array" count="3">
+                     <param name="SCALEAXISR.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Box01-ScaleAxisR-X-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxisR-X-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxisR-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxisR-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxisR-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxisR-X-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxisR-Y-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxisR-Y-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxisR-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxisR-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxisR-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxisR-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxisR-Z-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxisR-Z-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxisR-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxisR-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxisR-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxisR-Z-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxisR-ANGLE-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxisR-ANGLE-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxisR-ANGLE-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxisR-ANGLE-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxisR-ANGLE-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxisR-ANGLE-outtgt"></input>
+            </sampler>
+            <channel source="#Box01-ScaleAxisR-X-sampler" target="Box01/ScaleAxisR.X"></channel>
+            <channel source="#Box01-ScaleAxisR-Y-sampler" target="Box01/ScaleAxisR.Y"></channel>
+            <channel source="#Box01-ScaleAxisR-Z-sampler" target="Box01/ScaleAxisR.Z"></channel>
+            <channel source="#Box01-ScaleAxisR-ANGLE-sampler" target="Box01/ScaleAxisR.ANGLE"></channel>
+         </animation>
+         <animation id="Box01-Scale">
+            <source id="Box01-Scale-X-time">
+               <float_array id="Box01-Scale-X-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-X-value">
+               <float_array id="Box01-Scale-X-value-array" count="3">1.000000 1.812700 0.894917</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-X-value-array" count="3">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-X-interp">
+               <Name_array id="Box01-Scale-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-X-interp-array" count="3">
+                     <param name="SCALE.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-X-intgt">
+               <float_array id="Box01-Scale-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-X-intgt-array" count="3">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-X-outtgt">
+               <float_array id="Box01-Scale-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-X-outtgt-array" count="3">
+                     <param name="SCALE.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Y-time">
+               <float_array id="Box01-Scale-Y-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Y-value">
+               <float_array id="Box01-Scale-Y-value-array" count="3">1.000000 1.812700 0.894917</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Y-value-array" count="3">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Y-interp">
+               <Name_array id="Box01-Scale-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Y-interp-array" count="3">
+                     <param name="SCALE.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Y-intgt">
+               <float_array id="Box01-Scale-Y-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Y-intgt-array" count="3">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Y-outtgt">
+               <float_array id="Box01-Scale-Y-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Y-outtgt-array" count="3">
+                     <param name="SCALE.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Z-time">
+               <float_array id="Box01-Scale-Z-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Z-value">
+               <float_array id="Box01-Scale-Z-value-array" count="3">1.000000 1.812700 0.894917</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Z-value-array" count="3">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Z-interp">
+               <Name_array id="Box01-Scale-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Z-interp-array" count="3">
+                     <param name="SCALE.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Z-intgt">
+               <float_array id="Box01-Scale-Z-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Z-intgt-array" count="3">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-Scale-Z-outtgt">
+               <float_array id="Box01-Scale-Z-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-Scale-Z-outtgt-array" count="3">
+                     <param name="SCALE.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Box01-Scale-X-sampler">
+               <input semantic="INPUT" source="#Box01-Scale-X-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Scale-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Scale-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Scale-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Scale-X-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Scale-Y-sampler">
+               <input semantic="INPUT" source="#Box01-Scale-Y-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Scale-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Scale-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Scale-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Scale-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-Scale-Z-sampler">
+               <input semantic="INPUT" source="#Box01-Scale-Z-time"></input>
+               <input semantic="OUTPUT" source="#Box01-Scale-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-Scale-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-Scale-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-Scale-Z-outtgt"></input>
+            </sampler>
+            <channel source="#Box01-Scale-X-sampler" target="Box01/Scale.X"></channel>
+            <channel source="#Box01-Scale-Y-sampler" target="Box01/Scale.Y"></channel>
+            <channel source="#Box01-Scale-Z-sampler" target="Box01/Scale.Z"></channel>
+         </animation>
+         <animation id="Box01-ScaleAxis">
+            <source id="Box01-ScaleAxis-X-time">
+               <float_array id="Box01-ScaleAxis-X-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-X-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-X-value">
+               <float_array id="Box01-ScaleAxis-X-value-array" count="3">1.000000 0.532568 -0.912909</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-X-value-array" count="3">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-X-interp">
+               <Name_array id="Box01-ScaleAxis-X-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-X-interp-array" count="3">
+                     <param name="SCALEAXIS.X" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-X-intgt">
+               <float_array id="Box01-ScaleAxis-X-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-X-intgt-array" count="3">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-X-outtgt">
+               <float_array id="Box01-ScaleAxis-X-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-X-outtgt-array" count="3">
+                     <param name="SCALEAXIS.X" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Y-time">
+               <float_array id="Box01-ScaleAxis-Y-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Y-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Y-value">
+               <float_array id="Box01-ScaleAxis-Y-value-array" count="3">0 0.275723 -0.043894</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Y-value-array" count="3">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Y-interp">
+               <Name_array id="Box01-ScaleAxis-Y-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Y-interp-array" count="3">
+                     <param name="SCALEAXIS.Y" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Y-intgt">
+               <float_array id="Box01-ScaleAxis-Y-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Y-intgt-array" count="3">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Y-outtgt">
+               <float_array id="Box01-ScaleAxis-Y-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Y-outtgt-array" count="3">
+                     <param name="SCALEAXIS.Y" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Z-time">
+               <float_array id="Box01-ScaleAxis-Z-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Z-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Z-value">
+               <float_array id="Box01-ScaleAxis-Z-value-array" count="3">0 0.800218 -0.405795</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Z-value-array" count="3">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Z-interp">
+               <Name_array id="Box01-ScaleAxis-Z-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Z-interp-array" count="3">
+                     <param name="SCALEAXIS.Z" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Z-intgt">
+               <float_array id="Box01-ScaleAxis-Z-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Z-intgt-array" count="3">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-Z-outtgt">
+               <float_array id="Box01-ScaleAxis-Z-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-Z-outtgt-array" count="3">
+                     <param name="SCALEAXIS.Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-ANGLE-time">
+               <float_array id="Box01-ScaleAxis-ANGLE-time-array" count="3">0 1.533333 3.333333</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-ANGLE-time-array" count="3">
+                     <param name="TIME" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-ANGLE-value">
+               <float_array id="Box01-ScaleAxis-ANGLE-value-array" count="3">0 82.568260 32.703251</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-ANGLE-value-array" count="3">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-ANGLE-interp">
+               <Name_array id="Box01-ScaleAxis-ANGLE-interp-array" count="3">BEZIER BEZIER BEZIER</Name_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-ANGLE-interp-array" count="3">
+                     <param name="SCALEAXIS.ANGLE" type="Name"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-ANGLE-intgt">
+               <float_array id="Box01-ScaleAxis-ANGLE-intgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-ANGLE-intgt-array" count="3">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-ScaleAxis-ANGLE-outtgt">
+               <float_array id="Box01-ScaleAxis-ANGLE-outtgt-array" count="3">0 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-ScaleAxis-ANGLE-outtgt-array" count="3">
+                     <param name="SCALEAXIS.ANGLE" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <sampler id="Box01-ScaleAxis-X-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxis-X-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxis-X-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxis-X-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxis-X-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxis-X-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxis-Y-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxis-Y-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxis-Y-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxis-Y-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxis-Y-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxis-Y-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxis-Z-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxis-Z-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxis-Z-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxis-Z-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxis-Z-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxis-Z-outtgt"></input>
+            </sampler>
+            <sampler id="Box01-ScaleAxis-ANGLE-sampler">
+               <input semantic="INPUT" source="#Box01-ScaleAxis-ANGLE-time"></input>
+               <input semantic="OUTPUT" source="#Box01-ScaleAxis-ANGLE-value"></input>
+               <input semantic="INTERPOLATION" source="#Box01-ScaleAxis-ANGLE-interp"></input>
+               <input semantic="IN_TANGENT" source="#Box01-ScaleAxis-ANGLE-intgt"></input>
+               <input semantic="OUT_TANGENT" source="#Box01-ScaleAxis-ANGLE-outtgt"></input>
+            </sampler>
+            <channel source="#Box01-ScaleAxis-X-sampler" target="Box01/ScaleAxis.X"></channel>
+            <channel source="#Box01-ScaleAxis-Y-sampler" target="Box01/ScaleAxis.Y"></channel>
+            <channel source="#Box01-ScaleAxis-Z-sampler" target="Box01/ScaleAxis.Z"></channel>
+            <channel source="#Box01-ScaleAxis-ANGLE-sampler" target="Box01/ScaleAxis.ANGLE"></channel>
+         </animation>
+      </animation>
+   </library_animations>
+   <library_materials>
+      <material id="ColorMaterial_1742001">
+         <instance_effect url="#ColorMaterial_1742001-fx"></instance_effect>
+      </material>
+   </library_materials>
+   <library_effects>
+      <effect id="ColorMaterial_1742001-fx" name="ColorMaterial_1742001">
+         <profile_COMMON>
+            <technique sid="COMMON">
+               <lambert>
+                  <ambient>
+                     <color>0.694118 0.580392 0.101961 1</color>
+                  </ambient>
+                  <diffuse>
+                     <color>0.694118 0.580392 0.101961 1</color>
+                  </diffuse>
+               </lambert>
+            </technique>
+         </profile_COMMON>
+      </effect>
+   </library_effects>
+   <library_cameras>
+      <camera id="testCamera-obj" name="testCamera">
+         <optics>
+            <technique_common>
+               <perspective>
+                  <xfov>45</xfov>
+                  <aspect_ratio>1</aspect_ratio>
+                  <znear>39.3701</znear>
+                  <zfar>39370.1</zfar>
+               </perspective>
+            </technique_common>
+            <technique profile="MAX3D">
+               <target>testCamera_Target</target>
+            </technique>
+         </optics>
+      </camera>
+   </library_cameras>
+   <library_lights>
+      <light id="Omni01-obj" name="Omni01-obj">
+         <technique_common>
+            <point>
+               <color>1 1 1</color>
+               <constant_attenuation>0.000635</constant_attenuation>
+               <linear_attenuation>0</linear_attenuation>
+               <quadratic_attenuation>0</quadratic_attenuation>
+            </point>
+         </technique_common>
+         <technique profile="MAX3D">
+            <intensity>1</intensity>
+         </technique>
+      </light>
+   </library_lights>
+   <library_geometries>
+      <geometry id="Box01-obj" name="Box01">
+         <mesh>
+            <source id="Box01-obj-position">
+               <float_array id="Box01-obj-position-array" count="24">-196.850403 -196.850403 0 196.850403 -196.850403 0 -196.850403 196.850403 0 196.850403 196.850403 0 -196.850403 -196.850403 393.700806 196.850403 -196.850403 393.700806 -196.850403 196.850403 393.700806 196.850403 196.850403 393.700806</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-position-array" count="8" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-obj-normal">
+               <float_array id="Box01-obj-normal-array" count="72">0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 0 1.000000 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0 -1.000000 0 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-normal-array" count="24" stride="3">
+                     <param name="X" type="float"></param>
+                     <param name="Y" type="float"></param>
+                     <param name="Z" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <source id="Box01-obj-mapchan-1">
+               <float_array id="Box01-obj-mapchan-1-array" count="36">0 0 0 1.000000 0 0 0 1.000000 0 1.000000 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0 1.000000 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0 1.000000 1.000000 0</float_array>
+               <technique_common>
+                  <accessor source="#Box01-obj-mapchan-1-array" count="12" stride="3">
+                     <param name="S" type="float"></param>
+                     <param name="T" type="float"></param>
+                     <param name="R" type="float"></param>
+                  </accessor>
+               </technique_common>
+            </source>
+            <vertices id="Box01-obj-vertex">
+               <input semantic="POSITION" source="#Box01-obj-position"></input>
+            </vertices>
+            <triangles material="ColorMaterial_1742001" count="12">
+               <input semantic="VERTEX" source="#Box01-obj-vertex" offset="0"></input>
+               <input semantic="NORMAL" source="#Box01-obj-normal" offset="1"></input>
+               <input semantic="TEXCOORD" source="#Box01-obj-mapchan-1" offset="2" set="1"></input>
+               <p>0 0 9 2 1 11 3 2 10 3 2 10 1 3 8 0 0 9 4 4 8 5 5 9 7 6 11 7 6 11 6 7 10 4 4 8 0 8 4 1 9 5 5 10 7 5 10 7 4 11 6 0 8 4 1 12 0 3 13 1 7 14 3 7 14 3 5 15 2 1 12 0 3 16 4 2 17 5 6 18 7 6 18 7 7 19 6 3 16 4 2 20 0 0 21 1 4 22 3 4 22 3 6 23 2 2 20 0 </p>
+            </triangles>
+         </mesh>
+      </geometry>
+   </library_geometries>
+   <library_visual_scenes>
+      <visual_scene id="simple_001_SampledAnimation_00_max" name="simple_001_SampledAnimation_00_max">
+         <node id="Box01" sid="Box01" name="Box01">
+            <translate sid="Trans">-465.221 169.089 0 </translate>
+            <rotate sid="RotZ">0 0 1 0</rotate>
+            <rotate sid="RotY">0 1 0 0</rotate>
+            <rotate sid="RotX">1 0 0 0</rotate>
+            <rotate sid="ScaleAxisR">1 0 0 0</rotate>
+            <scale sid="Scale">1 1 1 </scale>
+            <rotate sid="ScaleAxis">1 0 0 0</rotate>
+            <instance_geometry url="#Box01-obj">
+               <bind_material>
+                  <technique_common>
+                     <instance_material symbol="ColorMaterial_1742001" target="#ColorMaterial_1742001"></instance_material>
+                  </technique_common>
+               </bind_material>
+            </instance_geometry>
+         </node>
+         <node id="testCamera" sid="testCamera" name="testCamera">
+            <translate>4563.64 1413.97 670.534 </translate>
+            <rotate>-0.545429 -0.560837 -0.622872 -117.589</rotate>
+            <instance_camera url="#testCamera-obj"></instance_camera>
+         </node>
+         <node id="testCamera_Target" sid="testCamera_Target" name="testCamera_Target">
+            <translate>-10.812 1286.52 189.554 </translate>
+         </node>
+         <node id="Omni01" sid="Omni01" name="Omni01">
+            <translate>4302.87 -3244.93 3402.27 </translate>
+            <instance_light url="#Omni01-obj"></instance_light>
+         </node>
+      </visual_scene>
+   </library_visual_scenes>
+   <scene>
+      <instance_visual_scene url="#simple_001_SampledAnimation_00_max"></instance_visual_scene>
+   </scene>
+</COLLADA>
