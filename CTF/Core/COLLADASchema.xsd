@@ -18,6 +18,8 @@
 			 PURPOSE, AND NON-INFRINGEMENT.
 		</xs:documentation>
 	</xs:annotation>
+	<!-- import needed for xml:base attribute-->
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
 	<!-- Root Element -->
 	<xs:element name="COLLADA">
 		<xs:annotation>
@@ -193,6 +195,14 @@
 					<xs:documentation>
 						The version attribute is the COLLADA schema revision with which the instance document 
 						conforms. Required Attribute.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute ref="xml:base">
+				<xs:annotation>
+					<xs:documentation>
+					The xml:base attribute allows you to define the base URI for this COLLADA document. See
+					http://www.w3.org/TR/xmlbase/ for more information.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
