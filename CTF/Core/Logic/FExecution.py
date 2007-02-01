@@ -12,6 +12,7 @@ import time
 import types
 
 import Core.Common.FUtils as FUtils
+import Core.Common.FGlobals as FGlobals
 from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
@@ -108,8 +109,10 @@ class FExecution(FSerializable, FSerializer):
                 #todo what happens if file not there
                 ext = FUtils.GetExtension(self.__outputLocations[i][j])
                 if (FUtils.IsImageFile(ext)):
-                    if (not FUtils.ByteEquality(self.__outputLocations[i][j], 
-                            other.__outputLocations[i][j])): return False
+                    compareResult = FGlobals.imageComparator.CompareImages(
+                            self.__outputLocations[i][j], 
+                            other.__outputLocations[i][j])
+                    if (not compareResult.GetResult()): return False
         
         return True
     
@@ -143,6 +146,10 @@ class FExecution(FSerializable, FSerializer):
             step = step + 1
     
     def InitializeFromLoad(self, filename):
+        # FResult was updated to contain messages post 1.4
+        if (self.__result.BackwardCompatibility()):
+            self.Save(self, filename)
+        
         if (self.__executionDir == os.path.dirname(filename)): return
         
         self.__executionDir = os.path.dirname(filename)

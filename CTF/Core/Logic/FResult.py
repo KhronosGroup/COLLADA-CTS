@@ -22,6 +22,15 @@ class FResult:
         self.__passExecution = False
         self.__passOutput = False
         self.__outputs = []
+        self.__messages = []
+    
+    def BackwardCompatibility(self):
+        if (not "_FResult__messages" in self.__dict__.keys()):
+            self.__messages = []
+            for output in self.__outputs:
+                self.__messages.append("")
+            return True
+        return False
     
     def IsOverriden(self):
         return self.__passOverride or self.__failOverride
@@ -43,29 +52,31 @@ class FResult:
             i = 0
             for output in self.__outputs:
                 text = "    - step <" + str(i) + ">: "
-                if (output == FResult.PASSED_IMAGE):
+                if (self.__messages[i] != ""):
+                    text = text + self.__messages[i]
+                elif (output == FResult.PASSED_IMAGE):
                     text = text + "Passed (Matched Image)"
-                if (output == FResult.PASSED_ANIMATION):
+                elif (output == FResult.PASSED_ANIMATION):
                     text = text + "Passed (Matched Animation)"
-                if (output == FResult.PASSED_VALIDATION):
+                elif (output == FResult.PASSED_VALIDATION):
                     text = text + "Passed (Passed Validation)"
-                if (output == FResult.FAILED_IMAGE):
+                elif (output == FResult.FAILED_IMAGE):
                     text = text + "Failed (No Matched Image)"
-                if (output == FResult.FAILED_ANIMATION):
+                elif (output == FResult.FAILED_ANIMATION):
                     text = text + "Failed (No Matched Animation)"
-                if (output == FResult.FAILED_VALIDATION):
+                elif (output == FResult.FAILED_VALIDATION):
                     text = text + "Failed (Failed Validation)"
-                if (output == FResult.FAILED_MISSING):
+                elif (output == FResult.FAILED_MISSING):
                     text = text + "Failed (Missing)"
-                if (output == FResult.IGNORED_TYPE):
+                elif (output == FResult.IGNORED_TYPE):
                     text = text + "Ignored (Not Image Type)"
-                if (output == FResult.IGNORED_NO_BLESS_IMAGE):
+                elif (output == FResult.IGNORED_NO_BLESS_IMAGE):
                     text = text + "Ignored (No Blessed Images)"
-                if (output == FResult.IGNORED_NO_BLESS_ANIMATION):
+                elif (output == FResult.IGNORED_NO_BLESS_ANIMATION):
                     text = text + "Ignored (No Blessed Animations)"
-                if (output == FResult.IGNORED_NONE):
+                elif (output == FResult.IGNORED_NONE):
                     text = text + "Ignored (Got None From Application)"
-                if (output == FResult.CRASH):
+                elif(output == FResult.CRASH):
                     text = text + "Crashed"
                 textArray.append(text)
                 i = i + 1
@@ -82,8 +93,8 @@ class FResult:
     def GetPassFromOutput(self):
         return self.__passOutput
     
-    def GetOutputs(self):
-        return self.__outputs
+##    def GetOutputs(self):
+##        return self.__outputs
     
     def Override(self, value):
         if (value == True):
@@ -102,9 +113,11 @@ class FResult:
     def SetPassFromOutput(self, value):
         self.__passOutput = value
     
-    def AppendOutput(self, value):
+    def AppendOutput(self, value, message = ""):
         self.__outputs.append(value)
+        self.__messages.append(message)
     
-    def ReplaceOutput(self, index, value):
+    def ReplaceOutput(self, index, value, message = ""):
         self.__outputs[index] = value
+        self.__messages[index] = message
     

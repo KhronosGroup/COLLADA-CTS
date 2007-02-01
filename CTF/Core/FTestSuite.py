@@ -6,6 +6,7 @@ import os
 import os.path
 
 import Core.Common.FUtils as FUtils
+import Core.Common.FGlobals as FGlobals
 from Core.Common.FConstants import *
 from Core.Common.FSerializer import *
 from Core.Logic.FTestProcedure import *
@@ -30,6 +31,7 @@ class FTestSuite(FSerializer):
                 line = f.readline()
             f.close
         
+        # import the application specific scripts
         self.applicationMap = {}
         if (os.path.isdir(SCRIPTS_DIR)):
             for entry in os.listdir(SCRIPTS_DIR):
@@ -50,6 +52,11 @@ class FTestSuite(FSerializer):
                     continue
                 
                 self.applicationMap[prettyName] = application
+        
+        # import the image comparator
+        comparatorName = configDict[IMAGE_COMPARATORS_LABEL]
+        exec("from ImageComparators." + comparatorName + " import *")
+        exec("FGlobals.imageComparator = " + comparatorName + "()")
         
         self.configDict = configDict
     

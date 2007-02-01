@@ -9,6 +9,7 @@ import time
 import types
 
 import Core.Common.FUtils as FUtils
+import Core.Common.FGlobals as FGlobals
 from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
@@ -286,7 +287,7 @@ class FTest(FSerializable, FSerializer):
         if (not os.path.isdir(blessedDir)):
             os.mkdir(blessedDir)
         
-        blessedFilename = self.__HasBlessed(filename)
+        blessedFilename, compareResults = self.__HasBlessed(filename)
         if ((blessedFilename != None) and (blessedFilename != "")):
             f.write(os.path.join(ext, os.path.basename(blessedFilename)) + 
                     "\n")
@@ -309,7 +310,7 @@ class FTest(FSerializable, FSerializer):
             if (not os.path.isdir(blessedDir)):
                 os.mkdir(blessedDir)
             
-            blessed = self.__HasBlessed(filename)
+            blessed, compareResults = self.__HasBlessed(filename)
             if ((blessed != None) and (blessed != "")): return
             
             copiedFilename = FUtils.GetAvailableFilename(
@@ -329,7 +330,7 @@ class FTest(FSerializable, FSerializer):
             if (not os.path.isdir(blessedDir)):
                 os.mkdir(blessedDir)
             
-            blessed = self.__HasBlessedAnimation(filenames)
+            blessed, compareResults = self.__HasBlessedAnimation(filenames)
             if ((blessed != None) and (blessed != "")): return
             
             directory = FUtils.GetAvailableDirectory(
@@ -363,7 +364,7 @@ class FTest(FSerializable, FSerializer):
         if (not os.path.isdir(blessedAnimationDir)):
             os.mkdir(blessedAnimationDir)
         
-        blessed = self.__HasBlessedAnimation(filenames)
+        blessed, compareResults = self.__HasBlessedAnimation(filenames)
         if ((blessed != None) and (blessed != "")):
             for blessedFilename in blessed:
                 f.write(FUtils.GetRelativePath(blessedFilename, blessedDir) + 
@@ -487,9 +488,13 @@ class FTest(FSerializable, FSerializer):
                   os.path.join(executionDir, EXECUTION_FILENAME))
     
     def __HasBlessedAnimation(self, filenames):
+        # returns (None, None) for no blessed
+        # returns ("", [[FCompareResult,...],...]) for no match
+        # returns ([str, ...], [[FCompareResult,...],]) for match
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, 
                                   BLESSED_ANIMATIONS)
         if (os.path.isdir(blessedDir)):
+            allCompareResults = []
             for directory in os.listdir(blessedDir):
                 blessedArray = []
                 fullDirectory = os.path.join(blessedDir, directory)
@@ -502,30 +507,41 @@ class FTest(FSerializable, FSerializer):
                 
                 if (len(filenames) != len(storedFilenames)): continue
                 
+                compareResults = []
                 foundFalse = False
                 for i in range(len(filenames)):
-                    if (not FUtils.ByteEquality(filenames[i], 
-                                                storedFilenames[i])):
+                    compareResult = FGlobals.imageComparator.CompareImages(
+                            filenames[i], storedFilenames[i])
+                    compareResults.append(compareResult)
+                    if (not compareResult.GetResult()):
                         foundFalse = True
-                        break
                     else:
                         blessedArray.append(storedFilenames[i])
-                if (foundFalse): continue
+                if (foundFalse): 
+                    allCompareResults.append(compareResults)
+                    continue
                 
-                return blessedArray
-            return ""
-        return None
+                return (blessedArray, [compareResults])
+            return ("", allCompareResults)
+        return (None, None)
     
     def __HasBlessed(self, filename):
+        # returns (None, None) for no blessed
+        # returns ("", [FCompareResult,...]) for no match
+        # returns (str, [FCompareResult,]) for match
         ext = FUtils.GetExtension(filename)
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, ext)
         if (os.path.isdir(blessedDir)):
+            compareResults = []
             for filename1 in os.listdir(blessedDir):
-                if (FUtils.ByteEquality(filename, 
-                                        os.path.join(blessedDir, filename1))):
-                    return os.path.join(blessedDir, filename1)
-            return ""
-        return None
+                compareResult = FGlobals.imageComparator.CompareImages(
+                        filename, os.path.join(blessedDir, filename1))
+                if (compareResult.GetResult()):
+                    return (os.path.join(blessedDir, filename1), 
+                            [compareResult,])
+                compareResults.append(compareResult)
+            return ("", compareResults)
+        return (None, None)
         # TODO: probably be able to do something with image comparison here
 ##            print filename
 ##            if (ext == "jpg"):
@@ -614,27 +630,39 @@ class FTest(FSerializable, FSerializer):
                     if (len(outputs) == 1): # still
                         ext = FUtils.GetExtension(outputs[0])
                         if (FUtils.IsImageFile(ext)):
-                            blessed = self.__HasBlessed(outputs[0])
-                            if (blessed == ""):
-                                result.AppendOutput(FResult.FAILED_IMAGE)
-                                passed = False
-                            elif (blessed == None):
+                            blessed, compareResults = self.__HasBlessed(
+                                    outputs[0])
+                            if (blessed == None):
                                 result.AppendOutput(
                                         FResult.IGNORED_NO_BLESS_IMAGE)
                             else:
-                                result.AppendOutput(FResult.PASSED_IMAGE)
+                                message = FGlobals.imageComparator.GetMessage(
+                                        compareResults)
+                                if (blessed == ""):
+                                    result.AppendOutput(FResult.FAILED_IMAGE,
+                                            message)
+                                    passed = False
+                                else:
+                                    result.AppendOutput(FResult.PASSED_IMAGE,
+                                            message)
                         else:
                             result.AppendOutput(FResult.IGNORED_TYPE)
                     else: # animation
-                        blessed = self.__HasBlessedAnimation(outputs)
-                        if (blessed == ""):
-                            result.AppendOutput(FResult.FAILED_ANIMATION)
-                            passed = False
-                        elif (blessed == None):
+                        blessed, compareResults = self.__HasBlessedAnimation(
+                                outputs)
+                        if (blessed == None):
                             result.AppendOutput(
                                     FResult.IGNORED_NO_BLESS_ANIMATION)
                         else:
-                            result.AppendOutput(FResult.PASSED_ANIMATION)
+                            message = FGlobals.imageComparator.GetMessage(
+                                    compareResults)
+                            if (blessed == ""):
+                                result.AppendOutput(FResult.FAILED_ANIMATION,
+                                        message)
+                                passed = False  
+                            else:
+                                result.AppendOutput(FResult.PASSED_ANIMATION,
+                                        message)
             else: # validation
                 if (execution.GetErrorCount(step) == 0):
                     result.AppendOutput(FResult.PASSED_VALIDATION)
