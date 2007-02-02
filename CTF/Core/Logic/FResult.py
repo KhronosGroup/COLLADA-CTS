@@ -24,6 +24,18 @@ class FResult:
         self.__outputs = []
         self.__messages = []
     
+    def __cmp__(self, other):
+        if (other == None): return 1
+        
+        myResult = self.GetResult()
+        otherResult = other.GetResult()
+        if (myResult and not otherResult):
+            return 1
+        elif (myResult == otherResult):
+            return 0
+        else:
+            return -1
+    
     def BackwardCompatibility(self):
         if (not "_FResult__messages" in self.__dict__.keys()):
             self.__messages = []

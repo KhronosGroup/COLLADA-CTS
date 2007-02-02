@@ -269,50 +269,6 @@ def GetCollapsePath(filename):
     
     return string.join(filenameList, os.sep)
 
-def ByteEquality(filename1, filename2):
-    """ByteEquality(filename1, filename2) -> bool
-    
-    Determines whether two file are byte by byte equal.
-    
-    arguments:
-        filename1
-            string corresponding to absolute filename of one of the files to
-            compare.
-        filename2
-            string corresponding to absolute filename of the other file to
-            compare.
-    
-    returns:
-        bool indicating whether the two files are byte by byte equal. True if
-        they are (or if both files do not exist), False otherwise.
-    
-    """
-    filename1 = os.path.normpath(os.path.abspath(filename1))
-    filename2 = os.path.normpath(os.path.abspath(filename2))
-    if (os.path.isfile(filename1)):
-        if (not os.path.isfile(filename2)):
-            return False
-    else:
-        return not os.path.isfile(filename2)
-    
-    f1 = open(filename1, "rb")
-    f2 = open(filename2, "rb")
-    
-    block1 = f1.read(10240) # 10 KB
-    block2 = f2.read(10240) # 10 KB
-    
-    while (block1 == block2):
-        if ((len(block1) == 0) and (len(block2) == 0)):
-            f1.close()
-            f2.close()
-            return True
-        block1 = f1.read(10240) # 10 KB
-        block2 = f2.read(10240) # 10 KB
-    
-    f1.close()
-    f2.close()
-    return False
-
 def ShowWarning(parent, message):
     """ShowWarning(parent, message) -> None
     
