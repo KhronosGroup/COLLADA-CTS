@@ -95,10 +95,14 @@ class FImageComparator:
                 list of FCompareResult that this FImageComparator generated for
                 a given image/animation. If it is an image it will be in the
                 form [FCompareResult1, FCompareResult2, ...] for each blessed
-                image there is. If it is an animation, it will be in the form
+                image there is if none matched, or simply [FCompareResult,] if
+                there is a match. If it is an animation, it will be in the form
                 [[FCompareResult1, FCompraeResult2,...],...] where the inner 
                 list is for each blessed animation there is and the elements of
-                that list are for each image in the animation.
+                that list are for each image in the animation. Similarily to 
+                the single image, it will be simply 
+                [[FCompareResult1, FCompraeResult2,...],] if there is an 
+                animation match.
         
         returns:
             str representing what will be shown in the result column of the
