@@ -21,9 +21,14 @@ class FByteComparator (FImageComparator):
     def CompareImages(self, filename1, filename2):
         """CompareImages(filename1, filename2) -> FCompareResult
         
-        Implements FImageComparator.CompareImages(filename1, filename2). The 
-        result is positive only if both files are byte by byte similar, or if
-        both files do not exist.
+        Implements FImageComparator.CompareImages(filename1, filename2). 
+        
+        The result is positive only if both files are byte by byte similar, or 
+        if both files do not exist.
+        
+        returns:
+            FCompareResult indicating the images are the same or different. 
+            Only the result of FComapreResult is set; the extra is not set.
         
         """
         compareResult = FCompareResult()
@@ -64,8 +69,13 @@ class FByteComparator (FImageComparator):
     def GetMessage(self, compareResultList):
         """GetMessage(compareResultList)->str
         
-        Implements FImageComparator.GetMessage(compareResultList). For the
-        FByteComparator, it uses the default message.
+        Implements FImageComparator.GetMessage(compareResultList). 
+        
+        The FByteComparator uses the default message.
+        
+        returns:
+            str representing the empty string so that the CTF uses the default
+            message.
         
         """
         return ""

@@ -146,7 +146,7 @@ class FExecution(FSerializable, FSerializer):
             step = step + 1
     
     def InitializeFromLoad(self, filename):
-        # FResult was updated to contain messages post 1.4
+        # FResult was updated to contain messages in Khronos svn r15.
         if (self.__result.BackwardCompatibility()):
             self.Save(self, filename)
         

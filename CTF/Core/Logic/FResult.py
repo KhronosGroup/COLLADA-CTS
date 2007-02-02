@@ -25,6 +25,16 @@ class FResult:
         self.__messages = []
     
     def __cmp__(self, other):
+        """__cmp__(other)-> -1, 0, 1
+        
+        Compares two FResult. Results are ordered by pass/fail criterial where
+        passing results are ordered before failing.
+        
+        returns:
+            int representing ordering. 1 means before, 0 means equivalent, -1 
+            means after.
+        
+        """
         if (other == None): return 1
         
         myResult = self.GetResult()
@@ -37,6 +47,14 @@ class FResult:
             return -1
     
     def BackwardCompatibility(self):
+        """BackwardCompatibility() -> bool
+        
+        Fixes backward compatibility issues due to loading a FResult from disk.
+        
+        returns
+            bool indicating if a change occurred. True if a change occurred.
+        
+        """
         if (not "_FResult__messages" in self.__dict__.keys()):
             self.__messages = []
             for output in self.__outputs:
@@ -104,9 +122,6 @@ class FResult:
     
     def GetPassFromOutput(self):
         return self.__passOutput
-    
-##    def GetOutputs(self):
-##        return self.__outputs
     
     def Override(self, value):
         if (value == True):

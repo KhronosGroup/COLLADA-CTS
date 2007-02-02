@@ -488,9 +488,35 @@ class FTest(FSerializable, FSerializer):
                   os.path.join(executionDir, EXECUTION_FILENAME))
     
     def __HasBlessedAnimation(self, filenames):
-        # returns (None, None) for no blessed
-        # returns ("", [[FCompareResult,...],...]) for no match
-        # returns ([str, ...], [[FCompareResult,...],]) for match
+        """__HasBlessedAnimation(filename) -> bool
+        
+        Determines if there is a blessed animation matching the filenames 
+        given.
+        
+        arguments:
+            filenames
+                list of str representing filenames of the images in an 
+                animation to test agains the blessed animations.
+        
+        returns:
+            pair representing if there was a matching blessed animation. The 
+            pair has the following forms depending on if there is a blessed 
+            animation, if there is a matching blessed animations, and if there 
+            are no matching blessed animations:
+                (None, None) if there are no blessed animations available
+                ("", [[FCompareResult,...],...]) if there are blessed 
+                    animations but none of them match the given files. The
+                    inner lists represent the different blessed animations and
+                    the FCompareResult within these lists is the result given 
+                    by the FImageComparator on a single image of the animation.
+                ([str,...], [[FCompareResult,...],]) if there are blessed 
+                    animations and at least one of them matches the given 
+                    files. The single inner list represents the blessed 
+                    animation that is the first match and the FCompareResult 
+                    within this list is the result given by the 
+                    FImageComparator on a single image of the animation.
+        
+        """
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, 
                                   BLESSED_ANIMATIONS)
         if (os.path.isdir(blessedDir)):
@@ -526,9 +552,29 @@ class FTest(FSerializable, FSerializer):
         return (None, None)
     
     def __HasBlessed(self, filename):
-        # returns (None, None) for no blessed
-        # returns ("", [FCompareResult,...]) for no match
-        # returns (str, [FCompareResult,]) for match
+        """__HasBlessed(filename) -> bool
+        
+        Determines if there is a blessed image matching the filename given.
+        
+        arguments:
+            filename
+                str representing filename of image to test against the blessed.
+        
+        returns:
+            pair representing if there was a matching blessed image. The pair
+            has the following forms depending on if there is a blessed image,
+            if there is a matching blessed image, and if there are no matching 
+            blessed images:
+                (None, None) if there are no blessed images available
+                ("", [FCompareResult,...]) if there are blessed images but none
+                    of them match the given file. The FCompareResult is the 
+                    result given by the FImageComparator.
+                (str, [FCompareResult,]) if there are blessed images and at 
+                    least one of them matches the given file.The FCompareResult
+                    returned is the one for the matching blessed image. It
+                    takes the first matching blessed image it finds.
+        
+        """
         ext = FUtils.GetExtension(filename)
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, ext)
         if (os.path.isdir(blessedDir)):
@@ -542,19 +588,6 @@ class FTest(FSerializable, FSerializer):
                 compareResults.append(compareResult)
             return ("", compareResults)
         return (None, None)
-        # TODO: probably be able to do something with image comparison here
-##            print filename
-##            if (ext == "jpg"):
-##                print "jpg"
-##            elif (ext == "bmp"):
-##                print "bmp"
-##            else:
-##                print "byte by byte"
-##                if (FUtils.ByteEquality(filename, filename1)):
-##                    print "match!"
-##                    return filename1
-        
-        return None
     
     def HasCurrentExecution(self):
         return (self.__currentExecution != None)
