@@ -29,38 +29,14 @@
 #include <stdio.h>
 #include <math.h>
 
+#include "main.h"
+#include "hybrid.h"
+#include "libpng/png.h"
+
 #define PYRAMID_DEPTH       3
 #define TARGA_HEADER_SIZE   18
-#define CT_INVALID_SCORE        9999
 
 #define REINTERPRET_CAST(X,Y) (X)(Y)
-
-/*----------------------------------------------------------------------*
- * ChannelInfo
- *----------------------------------------------------------------------*/
-
-typedef struct _CT_AppRec {
-    char         title[80];
-    char         name[80];
-    char         version[40];
-    char         date[40];
-    long         verboseLevel;   
-    long         configID;
-} CT_AppRec;
-
-typedef struct _CT_ChannelRec {
-    int id;
-    int conformant;
-    int rDepth;
-    int gDepth;
-    int bDepth;
-    int aDepth;
-    int lDepth;
-    int maskSize;
-    int cSpace;
-} CT_ChannelRec;
-
-CT_ChannelRec channelInfo;
 
 
 /*----------------------------------------------------------------------*
@@ -784,6 +760,121 @@ static float compareImages(ImageData* img, ImageData* ref, ImageData* mask, floa
 
 
 /*-------------------------------------------------------------------*//*!
+ * \brief   Imports .png files
+ * \param   filename    The filename of the imported image
+ * \param	isPyramid	Is function used by pyramidDiff? PyramidDiff
+ *						packing does certain operations for input data
+ * \return  return a struct containing all necessary information for the
+ *          pyramid diff function.
+ *//*-------------------------------------------------------------------*/
+
+static ImageData* createImageFromPNG(FILE* f, int isPyramid)
+{
+	png_structp png_ptr;
+	png_infop info_ptr;
+	png_uint_32 width;
+	png_uint_32 height;
+	png_byte signature[8];
+
+	int bit_depth;
+	int color_type;
+	int interlace_type;
+	int compression_type;
+	int filter_type;
+
+	ImageData*  result = NULL;
+
+	if (f == NULL) return result;
+
+	// let libpng check the file to make sure it is a PNG file
+	fread(signature, 1, 8, f);
+	if (png_sig_cmp(signature, 0, 8) != 0) return result; // not a png
+
+	// let libpng read in the PNG file
+	png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, png_voidp_NULL,
+			png_error_ptr_NULL, png_error_ptr_NULL);
+	if (png_ptr == NULL) return result; // out of memory
+
+	info_ptr = png_create_info_struct(png_ptr);
+	if (info_ptr == NULL) 
+	{
+		png_destroy_read_struct(&png_ptr, png_voidp_NULL, png_voidp_NULL);
+		return result; // out of memory
+	}
+
+	png_init_io(png_ptr, f);
+	png_set_read_status_fn(png_ptr, png_read_status_ptr_NULL);
+	png_set_sig_bytes(png_ptr, 8);
+	png_read_info(png_ptr, info_ptr);
+
+	// parse the libpng structure into the ImageData structure.
+	png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, 
+			&color_type, &interlace_type, &compression_type, &filter_type);
+	result = createBlankImage(width, height, COLORFORMAT_BYTE_RGBA);
+	if (result == NULL) 
+	{
+		png_destroy_read_struct(&png_ptr, &info_ptr, png_voidp_NULL);
+		return result;
+	}
+
+	{
+		png_uint_32 i;
+		png_uint_32 j;
+		png_uint_32 rowbytes;
+		png_bytep image;
+		png_bytepp row_pointers;
+		unsigned int depthMask = 0x1;
+		
+		rowbytes = png_get_rowbytes(png_ptr, info_ptr);
+		image = png_malloc(png_ptr, rowbytes*height);
+		row_pointers = png_malloc(png_ptr, height*sizeof(png_bytep));
+
+		for (i = 0; i < height; i++)
+		{
+			row_pointers[i] = image + i * rowbytes;
+		}
+
+		png_read_image(png_ptr, row_pointers);
+		png_read_end(png_ptr, png_voidp_NULL);
+
+		depthMask <<= bit_depth*4 - 1;
+		
+		if (isPyramid)
+		{
+			for (i = 0; i < height; i++)
+			{
+				for (j = 0; j < width; j++)
+				{
+					setPixelARGB(result, j, i, packForPyramid(
+							row_pointers[i][j+3], row_pointers[i][j+2], 
+							row_pointers[i][j+1], row_pointers[i][j], 
+							0));
+				}
+			}
+		}
+		else
+		{
+			for (i = 0; i < height; i++)
+			{
+				for (j = 0; j < width; j++)
+				{
+					setPixelARGB(result, j, i, pack(row_pointers[i][j+3], 
+							row_pointers[i][j+2], row_pointers[i][j+1], 
+							row_pointers[i][j], 0));
+				}
+			}
+		}
+
+		png_free(png_ptr, row_pointers);
+		png_free(png_ptr, image);
+	}
+	
+	png_destroy_read_struct(&png_ptr, &info_ptr, png_voidp_NULL);
+	return result;
+}
+
+
+/*-------------------------------------------------------------------*//*!
  * \brief   Imports .tga files
  * \param   filename    The filename of the imported image
  * \param	isPyramid	Is function used by pyramidDiff? PyramidDiff
@@ -1023,7 +1114,7 @@ static ImageData* createImageFromTGA(FILE* f, int isPyramid)
  * \brief   Main function.
  *//*-------------------------------------------------------------------*/
 
-static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB)
+static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB, ImageType imageType)
 {
     ImageData*  pyramid[PYRAMID_DEPTH];
     ImageData*  maskPyramid[PYRAMID_DEPTH];
@@ -1033,9 +1124,24 @@ static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB)
      * Import data from the image that is in the given format
      *-------------------------------------------------------------------*/
 
-    ImageData* src = createImageFromTGA(srcFile, ((fixLSB)?1:0));
-    ImageData* ref = createImageFromTGA(refFile, ((fixLSB)?1:0));
-    ImageData* mask = createMaskImage(ref);
+	ImageData* src;
+	ImageData* ref;
+	ImageData* mask;
+
+	switch (imageType)
+	{
+	case TGA:
+		{
+			src = createImageFromTGA(srcFile, ((fixLSB)?1:0));
+			ref = createImageFromTGA(refFile, ((fixLSB)?1:0));
+		}
+	case PNG:
+		{
+			src = createImageFromPNG(srcFile, ((fixLSB)?1:0));
+			ref = createImageFromPNG(refFile, ((fixLSB)?1:0));
+		}
+	}
+    mask = createMaskImage(ref);
 
     if (!src || !ref || !mask)
     {
@@ -1088,14 +1194,14 @@ static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB)
 	}
 }
 
-float PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile)
+float PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType)
 {
-	return pyramidDiff(srcFile, refFile, 1);
+	return pyramidDiff(srcFile, refFile, 1, imageType);
 }
 
-float PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile)
+float PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType)
 {
-	return pyramidDiff(srcFile, refFile, 0);
+	return pyramidDiff(srcFile, refFile, 0, imageType);
 }
 
 /*-------------------------------------------------------------------*//*!

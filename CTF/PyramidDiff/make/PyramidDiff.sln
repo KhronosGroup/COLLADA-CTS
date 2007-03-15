@@ -2,6 +2,16 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyramidDiff", "PyramidDiff.vcproj", "{42E0E27B-767E-4C15-82D3-C6213A9FAE36}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6BDBA351-F67E-41BC-A2FB-56754480017C} = {6BDBA351-F67E-41BC-A2FB-56754480017C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "..\source\libpng\projects\visualc71\libpng.vcproj", "{6BDBA351-F67E-41BC-A2FB-56754480017C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E} = {18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "..\source\libpng\projects\visualc71\zlib.vcproj", "{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +23,14 @@ Global
 		{42E0E27B-767E-4C15-82D3-C6213A9FAE36}.Debug|Win32.Build.0 = Debug|Win32
 		{42E0E27B-767E-4C15-82D3-C6213A9FAE36}.Release|Win32.ActiveCfg = Release|Win32
 		{42E0E27B-767E-4C15-82D3-C6213A9FAE36}.Release|Win32.Build.0 = Release|Win32
+		{6BDBA351-F67E-41BC-A2FB-56754480017C}.Debug|Win32.ActiveCfg = LIB Debug|Win32
+		{6BDBA351-F67E-41BC-A2FB-56754480017C}.Debug|Win32.Build.0 = LIB Debug|Win32
+		{6BDBA351-F67E-41BC-A2FB-56754480017C}.Release|Win32.ActiveCfg = LIB Release|Win32
+		{6BDBA351-F67E-41BC-A2FB-56754480017C}.Release|Win32.Build.0 = LIB Release|Win32
+		{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}.Debug|Win32.ActiveCfg = LIB Debug|Win32
+		{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}.Debug|Win32.Build.0 = LIB Debug|Win32
+		{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}.Release|Win32.ActiveCfg = LIB Release|Win32
+		{18B1566C-C7D1-4D84-A4D9-FAD617BBD96E}.Release|Win32.Build.0 = LIB Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
