@@ -10,7 +10,7 @@ int main(int argc, const char* argv[])
 	FILE* src;
 	FILE* dst;
 
-	if (argc < 3) return 0;
+	if (argc < 3) return CT_INVALID_SCORE;
 
 	channelInfo.rDepth = 8;
 	channelInfo.gDepth = 8;

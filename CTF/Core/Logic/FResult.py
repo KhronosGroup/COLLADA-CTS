@@ -82,18 +82,8 @@ class FResult:
             i = 0
             for output in self.__outputs:
                 text = "    - step <" + str(i) + ">: "
-                if (self.__messages[i] != ""):
-                    text = text + self.__messages[i]
-                elif (output == FResult.PASSED_IMAGE):
-                    text = text + "Passed (Matched Image)"
-                elif (output == FResult.PASSED_ANIMATION):
-                    text = text + "Passed (Matched Animation)"
-                elif (output == FResult.PASSED_VALIDATION):
+                if (output == FResult.PASSED_VALIDATION):
                     text = text + "Passed (Passed Validation)"
-                elif (output == FResult.FAILED_IMAGE):
-                    text = text + "Failed (No Matched Image)"
-                elif (output == FResult.FAILED_ANIMATION):
-                    text = text + "Failed (No Matched Animation)"
                 elif (output == FResult.FAILED_VALIDATION):
                     text = text + "Failed (Failed Validation)"
                 elif (output == FResult.FAILED_MISSING):
@@ -108,6 +98,18 @@ class FResult:
                     text = text + "Ignored (Got None From Application)"
                 elif(output == FResult.CRASH):
                     text = text + "Crashed"
+                elif (self.__messages[i] != ""): # must be before default ones
+                    text = text + self.__messages[i]
+                elif (output == FResult.PASSED_IMAGE):
+                    text = text + "Passed (Matched Image)"
+                elif (output == FResult.PASSED_ANIMATION):
+                    text = text + "Passed (Matched Animation)"
+                elif (output == FResult.FAILED_IMAGE):
+                    text = text + "Failed (No Matched Image)"
+                elif (output == FResult.FAILED_ANIMATION):
+                    text = text + "Failed (No Matched Animation)"
+                
+                
                 textArray.append(text)
                 i = i + 1
         return textArray

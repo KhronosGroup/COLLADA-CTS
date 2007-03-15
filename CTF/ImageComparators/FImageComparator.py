@@ -61,9 +61,16 @@ class FCompareResult:
 class FImageComparator:
     """Abstract class for image comparators for testing framework."""
 
-    def __init__(self):
-        """__init___() -> FImageComparator"""
-        pass
+    def __init__(self, configDict):
+        """__init___(configDict) -> FImageComparator
+        
+        arguments:
+            configDict
+                dict of values taken from the config.txt file with  user
+                specified values.
+        
+        """
+        self.configDict = configDict
     
     def CompareImages(self, filename1, filename2):
         """CompareImages(filename1, filename2) -> FCompareResult
@@ -76,6 +83,7 @@ class FImageComparator:
                 str corresponding to a file to compare.
             filename2
                 str corresponding to another file to compare.
+        
         returns:
             FCompareResult representing the result of the comparison.
         

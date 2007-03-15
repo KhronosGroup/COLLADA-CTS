@@ -56,7 +56,7 @@ class FTestSuite(FSerializer):
         # import the image comparator
         comparatorName = configDict[IMAGE_COMPARATORS_LABEL]
         exec("from ImageComparators." + comparatorName + " import *")
-        exec("FGlobals.imageComparator = " + comparatorName + "()")
+        exec("FGlobals.imageComparator = " + comparatorName + "(configDict)")
         
         self.configDict = configDict
     

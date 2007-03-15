@@ -13,9 +13,16 @@ class FByteComparator (FImageComparator):
     
     """
     
-    def __init__(self):
-        """__init__() -> FByteComparator"""
-        FImageComparator.__init__(self)
+    def __init__(self, configDict):
+        """__init__() -> FByteComparator
+        
+        arguments:
+            configDict
+                dict of values taken from the config.txt file with  user
+                specified values.
+        
+        """
+        FImageComparator.__init__(self, confiDict)
     
     
     def CompareImages(self, filename1, filename2):
@@ -25,6 +32,12 @@ class FByteComparator (FImageComparator):
         
         The result is positive only if both files are byte by byte similar, or 
         if both files do not exist.
+        
+        arguments:
+            filename1
+                str corresponding to a file to compare.
+            filename2
+                str corresponding to another file to compare.
         
         returns:
             FCompareResult indicating the images are the same or different. 
@@ -72,6 +85,20 @@ class FByteComparator (FImageComparator):
         Implements FImageComparator.GetMessage(compareResultList). 
         
         The FByteComparator uses the default message.
+        
+        arguments:
+            compareResultList
+                list of FCompareResult that this FImageComparator generated for
+                a given image/animation. If it is an image it will be in the
+                form [FCompareResult1, FCompareResult2, ...] for each blessed
+                image there is if none matched, or simply [FCompareResult,] if
+                there is a match. If it is an animation, it will be in the form
+                [[FCompareResult1, FCompraeResult2,...],...] where the inner 
+                list is for each blessed animation there is and the elements of
+                that list are for each image in the animation. Similarily to 
+                the single image, it will be simply 
+                [[FCompareResult1, FCompraeResult2,...],] if there is an 
+                animation match.
         
         returns:
             str representing the empty string so that the CTF uses the default

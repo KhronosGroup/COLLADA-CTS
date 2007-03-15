@@ -8,3 +8,4 @@ pythonExecutable		C:\Python24\python.exe
 ioTimeoutMilli			60000
 detectCrash			True
 imageComparator			FByteComparator
+pyramidDiffPath			C:\work\collada\trunk\conform\ctf\CTF\PyramidDiff\Output\PyramidDiff.exe

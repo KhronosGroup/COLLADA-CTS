@@ -580,8 +580,11 @@ class FTest(FSerializable, FSerializer):
         if (os.path.isdir(blessedDir)):
             compareResults = []
             for filename1 in os.listdir(blessedDir):
+                fullFilename = os.path.join(blessedDir, filename1)
+                if (not os.path.isfile(fullFilename)): 
+                    continue
                 compareResult = FGlobals.imageComparator.CompareImages(
-                        filename, os.path.join(blessedDir, filename1))
+                        filename, fullFilename)
                 if (compareResult.GetResult()):
                     return (os.path.join(blessedDir, filename1), 
                             [compareResult,])
