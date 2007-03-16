@@ -22,7 +22,7 @@ class FByteComparator (FImageComparator):
                 specified values.
         
         """
-        FImageComparator.__init__(self, confiDict)
+        FImageComparator.__init__(self, configDict)
     
     
     def CompareImages(self, filename1, filename2):
