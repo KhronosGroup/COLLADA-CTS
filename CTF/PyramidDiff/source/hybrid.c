@@ -33,7 +33,6 @@
 #include "hybrid.h"
 #include "libpng/png.h"
 
-#define PYRAMID_DEPTH       3
 #define TARGA_HEADER_SIZE   18
 
 #define REINTERPRET_CAST(X,Y) (X)(Y)
@@ -686,9 +685,8 @@ static ImageData* createMaskImage(ImageData* src)
  * \param   src     Source data
  *//*-------------------------------------------------------------------*/
 
-static void computePyramid(ImageData** dst, ImageData* src)
+static void computePyramid(ImageData** dst, ImageData* src, int numLevels)
 {
-    int numLevels = PYRAMID_DEPTH;  
     int level = 0;
     int y;
 
@@ -781,6 +779,7 @@ static ImageData* createImageFromPNG(FILE* f, int isPyramid)
 	int interlace_type;
 	int compression_type;
 	int filter_type;
+	double  gamma;
 
 	ImageData*  result = NULL;
 
@@ -802,28 +801,67 @@ static ImageData* createImageFromPNG(FILE* f, int isPyramid)
 		return result; // out of memory
 	}
 
+	// libpng's error handling code
+	if (setjmp(png_ptr->jmpbuf)) {
+		png_destroy_read_struct(&png_ptr, &info_ptr, png_voidp_NULL);
+		return NULL;
+	}
+
 	png_init_io(png_ptr, f);
 	png_set_read_status_fn(png_ptr, png_read_status_ptr_NULL);
 	png_set_sig_bytes(png_ptr, 8);
 	png_read_info(png_ptr, info_ptr);
 
-	// parse the libpng structure into the ImageData structure.
 	png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, 
 			&color_type, &interlace_type, &compression_type, &filter_type);
+
+	// expand to RGBA of 8 bit channels
+	if (color_type == PNG_COLOR_TYPE_PALETTE)
+	{
+		png_set_palette_to_rgb(png_ptr);
+	} else if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+	{
+		png_set_expand_gray_1_2_4_to_8(png_ptr);
+	}
+	if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
+	{
+		png_set_tRNS_to_alpha(png_ptr);
+	}
+	if (bit_depth == 16)
+	{
+		png_set_strip_16(png_ptr);
+	}
+	if (color_type == PNG_COLOR_TYPE_GRAY || 
+			color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+	{
+		png_set_gray_to_rgb(png_ptr);
+	}
+
+#ifdef WIN32
+	if (png_get_gAMA(png_ptr, info_ptr, &gamma))
+	{
+		png_set_gamma(png_ptr, 2.2, gamma); // 2.2 is exponent for windows
+	}
+#endif
+
+	// update info
+	png_read_update_info(png_ptr, info_ptr);
+	png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, 
+			&color_type, &interlace_type, &compression_type, &filter_type);
+
+	// parse the libpng structure into the ImageData structure.
 	result = createBlankImage(width, height, COLORFORMAT_BYTE_RGBA);
 	if (result == NULL) 
 	{
 		png_destroy_read_struct(&png_ptr, &info_ptr, png_voidp_NULL);
 		return result;
 	}
-
 	{
 		png_uint_32 i;
 		png_uint_32 j;
 		png_uint_32 rowbytes;
 		png_bytep image;
 		png_bytepp row_pointers;
-		unsigned int depthMask = 0x1;
 		
 		rowbytes = png_get_rowbytes(png_ptr, info_ptr);
 		image = png_malloc(png_ptr, rowbytes*height);
@@ -836,8 +874,6 @@ static ImageData* createImageFromPNG(FILE* f, int isPyramid)
 
 		png_read_image(png_ptr, row_pointers);
 		png_read_end(png_ptr, png_voidp_NULL);
-
-		depthMask <<= bit_depth*4 - 1;
 		
 		if (isPyramid)
 		{
@@ -847,8 +883,7 @@ static ImageData* createImageFromPNG(FILE* f, int isPyramid)
 				{
 					setPixelARGB(result, j, i, packForPyramid(
 							row_pointers[i][j+3], row_pointers[i][j+2], 
-							row_pointers[i][j+1], row_pointers[i][j], 
-							0));
+							row_pointers[i][j+1], row_pointers[i][j], 0));
 				}
 			}
 		}
@@ -1114,11 +1149,11 @@ static ImageData* createImageFromTGA(FILE* f, int isPyramid)
  * \brief   Main function.
  *//*-------------------------------------------------------------------*/
 
-static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB, ImageType imageType)
+static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB, ImageType imageType, const int pyramidDepth)
 {
-    ImageData*  pyramid[PYRAMID_DEPTH];
-    ImageData*  maskPyramid[PYRAMID_DEPTH];
-    ImageData*  refPyramid[PYRAMID_DEPTH];
+    ImageData**  pyramid;
+    ImageData**  maskPyramid;
+    ImageData**  refPyramid;
 
     /*---------------------------------------------------------------------
      * Import data from the image that is in the given format
@@ -1165,43 +1200,54 @@ static float pyramidDiff(FILE* srcFile, FILE* refFile, int fixLSB, ImageType ima
 			return CT_INVALID_SCORE;
 		}
 	}
-	memset(pyramid, 0, PYRAMID_DEPTH*sizeof(ImageData*));
-	memset(maskPyramid, 0, PYRAMID_DEPTH*sizeof(ImageData*));
-	memset(refPyramid, 0, PYRAMID_DEPTH*sizeof(ImageData*));
 
-    computePyramid(pyramid, src);    
-    computePyramid(maskPyramid, mask);
-    computePyramid(refPyramid, ref);
+	pyramid = malloc(pyramidDepth*sizeof(ImageData*));
+    maskPyramid = malloc(pyramidDepth*sizeof(ImageData*));
+    refPyramid = malloc(pyramidDepth*sizeof(ImageData*));
+	memset(pyramid, 0, pyramidDepth*sizeof(ImageData*));
+	memset(maskPyramid, 0, pyramidDepth*sizeof(ImageData*));
+	memset(refPyramid, 0, pyramidDepth*sizeof(ImageData*));
+
+    computePyramid(pyramid, src, pyramidDepth);    
+    computePyramid(maskPyramid, mask, pyramidDepth);
+    computePyramid(refPyramid, ref, pyramidDepth);
 
 	destroyImage(src);
 	destroyImage(ref);
 	destroyImage(mask);
 
 	{
-		float result = compareImages(pyramid[2], refPyramid[2], maskPyramid[2], 1.5f);
+		float result = compareImages(
+				pyramid[pyramidDepth-1], refPyramid[pyramidDepth-1], 
+				maskPyramid[pyramidDepth-1], 1.5f);
 		int i;
 
-		for (i=0; i<PYRAMID_DEPTH && pyramid[i]; i++)
+		for (i=0; i<pyramidDepth && pyramid[i]; i++)
 			destroyImage(pyramid[i]);
 
-		for (i=0; i<PYRAMID_DEPTH && maskPyramid[i]; i++)
+		for (i=0; i<pyramidDepth && maskPyramid[i]; i++)
 			destroyImage(maskPyramid[i]);
 
-		for (i=0; i<PYRAMID_DEPTH && refPyramid[i]; i++)
+		for (i=0; i<pyramidDepth && refPyramid[i]; i++)
 			destroyImage(refPyramid[i]);
 
+		free(pyramid);
+		free(maskPyramid);
+		free(refPyramid);
 		return result;
 	}
 }
 
-float PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType)
+float PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType, 
+							int pyramidDepth)
 {
-	return pyramidDiff(srcFile, refFile, 1, imageType);
+	return pyramidDiff(srcFile, refFile, 1, imageType, pyramidDepth);
 }
 
-float PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType)
+float PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile, 
+									 ImageType imageType, int pyramidDepth)
 {
-	return pyramidDiff(srcFile, refFile, 0, imageType);
+	return pyramidDiff(srcFile, refFile, 0, imageType, pyramidDepth);
 }
 
 /*-------------------------------------------------------------------*//*!

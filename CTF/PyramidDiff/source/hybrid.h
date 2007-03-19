@@ -41,8 +41,10 @@ typedef enum
 	PNG = 1
 } ImageType;
 
-extern float	PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType);
-extern float	PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile, ImageType imageType);
+extern float	PyramidDiff_by_HYBRID(FILE* srcFile, FILE* refFile, 
+						ImageType imageType, int pyramidDepth);
+extern float	PyramidDiff_NOLSBFIX_by_HYBRID(FILE* srcFile, FILE* refFile, 
+						ImageType imageType, int pyramidDepth);
 extern int		RegionComparison_by_NVIDIA(FILE* srcFile, FILE* refFile);
 extern int		H10317Comparison_by_NVIDIA(FILE* srcFile, FILE* refFile);
 extern int      BoundaryTest_by_ATI(FILE *AnsTGA, float radius, float limit);
