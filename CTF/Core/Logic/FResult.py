@@ -40,11 +40,17 @@ class FResult:
         myResult = self.GetResult()
         otherResult = other.GetResult()
         if (myResult and not otherResult):
-            return 1
+            return -1
         elif (myResult == otherResult):
+            myText = self.GetTextArray()
+            otherText = other.GetTextArray()
+            if (myText > otherText):
+                return 1
+            if (myText < otherText):
+                return -1
             return 0
         else:
-            return -1
+            return 1
     
     def BackwardCompatibility(self):
         """BackwardCompatibility() -> bool

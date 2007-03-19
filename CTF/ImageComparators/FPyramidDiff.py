@@ -15,7 +15,7 @@ class FPyramidDiff (FImageComparator):
     
     """
     
-    TOLERANCE = 0
+    TOLERANCE = 5
     DEFAULT_EXTRA = 10000
     
     def __init__(self, configDict):
@@ -54,9 +54,7 @@ class FPyramidDiff (FImageComparator):
         compareResult = FCompareResult()
         compareResult.SetResult(False)
         compareResult.SetExtra(FPyramidDiff.DEFAULT_EXTRA)
-        print "----start----"
-        print filename1
-        print filename2
+        
         filename1 = os.path.normpath(os.path.abspath(filename1))
         filename2 = os.path.normpath(os.path.abspath(filename2))
         if (os.path.isfile(filename1)):
@@ -77,8 +75,6 @@ class FPyramidDiff (FImageComparator):
         
         compareResult.SetResult(retcode <= FPyramidDiff.TOLERANCE)
         compareResult.SetExtra(retcode)
-        print retcode
-        print "got to end"
         return compareResult
     
     def GetMessage(self, compareResultList):
@@ -107,43 +103,49 @@ class FPyramidDiff (FImageComparator):
             message.
         
         """
-        print compareResultList
         if (len(compareResultList) == 0): return ""
         
         if (type(compareResultList[0]) == types.ListType):
             # message for animation
-            bestValue = self.__GetTotalValue(compareResultList[0])
+            bestValue, highValue, lowValue = self.__GetTotalValue(
+                    compareResultList[0])
             if (self.__GetTotalResult(compareResultList[0])):
-                return ("Passed (best animation result: " + 
-                        str(bestValue) + ")")
+                return ("Passed (best result: [" + str(lowValue).zfill(4) + 
+                        "-" + str(highValue).zfill(4) + "]{" + str(bestValue) +
+                        "})")
             
             for resultList in compareResultList:
-                bestValue = min(bestValue, self.__GetTotalValue(resultList))
-            return ("Failed (best animation result: " + 
-                    str(bestValue) + ")")
+                curBestValue, curHighValue, curLowValue = self.__GetTotalValue(
+                        resultList)
+                if (curBestValue < bestValue):
+                    bestValue = curBestValue
+                    highValue = curHighValue
+                    lowValue = curLowValue
+            return ("Failed (best result: [" + str(lowValue).zfill(4) + "-" + 
+                    str(highValue).zfill(4) + "]{" + str(bestValue) + "})")
         
         # message for image
         bestValue = compareResultList[0].GetExtra()
         if (compareResultList[0].GetResult()):
-            return "Passed (best image result: " + str(bestValue) + ")"
+            return ("Passed (best image result: " + 
+                    str(bestValue).zfill(4) + ")")
         
         for result in compareResultList:
             bestValue = min(bestValue, result.GetExtra())
-        return "Failed (best image result: " + str(bestValue) + ")"
+        return "Failed (best image result: " + str(bestValue).zfill(4) + ")"
     
     def __GetTotalValue(self, resultList):
         curResult = 0
+        highestResult = 0
+        lowestResult = 10000 # 9999 is invalid comparisons
         for result in resultList:
             curResult = curResult + result.GetExtra()
-        return curResult
+            highestResult = max(highestResult, result.GetExtra())
+            lowestResult = min(lowestResult, result.GetExtra())
+        return (curResult, highestResult, lowestResult)
     
     def __GetTotalResult(self, resultList):
         for result in resultList:
             if (not result.GetResult()):
                 return False
         return True
-    
-##        elif (output == FResult.PASSED_ANIMATION):
-##            text = text + "Passed (Matched Animation)"
-##        elif (output == FResult.FAILED_ANIMATION):
-##            text = text + "Failed (No Matched Animation)"

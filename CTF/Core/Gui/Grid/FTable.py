@@ -3,6 +3,7 @@
 # Distribution of this file or its content is strictly prohibited.
 
 import wx.grid
+import types
 
 class FTable(wx.grid.PyGridTableBase):
     __NAME = 0
@@ -173,14 +174,22 @@ class FTable(wx.grid.PyGridTableBase):
         for rKey in self.__data.keys():
             tempList.append((self.__data[rKey][cKey], rKey))
         
-        if (ascending):
-            tempList.sort()
-        else:
-            tempList.sort(reverse = True)
+        if (len(self.__data) == 0): return
         
-        for entry in tempList:
+        if (type(self.__data[0][cKey]) == types.TupleType):
+            # compare only the first element
+            cmpFunction = lambda x, y: cmp(x[0][0], y[0][0])
+        else:
+            cmpFunction = lambda x, y: cmp(x[0], y[0])
+        
+        if (ascending):
+            tempList.sort(cmpFunction)
+        else:
+            tempList.sort(cmpFunction, reverse = True)
+        
+        for row in range(len(tempList)):
+            entry = tempList[row]
             rKey = entry[1]
-            row = tempList.index(entry)
             
             self.__rows[rKey] = row
             self.__rowsKey[row] = rKey

@@ -1,5 +1,5 @@
-feelingViewerGUI		C:\work\collada\trunk\conform\ctf\CTF\Feeling_Viewer_1.1.1\FeelingViewer.exe
-feelingViewerCLI		C:\work\collada\trunk\conform\ctf\CTF\Feeling_Viewer_1.1.1\FViewerCLIR.exe
+feelingViewerGUI		C:\work\new collada\trunk\conform\ctf\FeelingViewer\FViewerApplications\Output\FeelingViewer.exe
+feelingViewerCLI		C:\work\new collada\trunk\conform\ctf\FeelingViewer\FViewerApplications\Output\FViewerCLIR.exe
 mayaPath			C:\Program Files\Alias\Maya7.0\bin\maya.exe
 maxPath				C:\3dsmax7\3dsmax.exe
 maxColladaExporterFilename	C:\3dsmax7\plugcfg\ColladaExporter.ini
@@ -7,5 +7,5 @@ xsiPath				C:\Softimage\XSI_5.1\Application\bin\XSIBATCH.bat
 pythonExecutable		C:\Python24\python.exe
 ioTimeoutMilli			60000
 detectCrash			True
-imageComparator			FByteComparator
-pyramidDiffPath			C:\work\collada\trunk\conform\ctf\CTF\PyramidDiff\Output\PyramidDiff.exe
+imageComparator			FPyramidDiff
+pyramidDiffPath			C:\work\new collada\trunk\conform\ctf\CTF\PyramidDiff\Output\PyramidDiff.exe

@@ -147,7 +147,7 @@ class FExecution(FSerializable, FSerializer):
     
     def InitializeFromLoad(self, filename):
         # FResult was updated to contain messages in Khronos svn r15.
-        if (self.__result.BackwardCompatibility()):
+        if ((self.__result != None) and self.__result.BackwardCompatibility()):
             self.Save(self, filename)
         
         if (self.__executionDir == os.path.dirname(filename)): return
