@@ -18,6 +18,31 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <unit meter="0.010000" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
+  <library_animations>
+    <animation id="hand_anim">
+        <source id="times">
+            <float_array id="times-array" count="2">0 3</float_array>
+            <technique_common>
+                <accessor source="#times-array" stride="1" count="2">
+                    <param name="TIME" type="float"/>
+                </accessor>
+            </technique_common>
+        </source>
+        <source id="output">
+            <float_array id="output-array" count="2">1 0</float_array>
+            <technique_common>
+                <accessor source="#output-array" stride="1" count="2">
+                    <param name="constrain" type="float"/>
+                </accessor>
+            </technique_common>
+        </source>
+        <sampler id="hand_sampler">
+            <input semantic="INPUT" source="#times"/>
+            <input semantic="OUTPUT" source="#output"/>
+        </sampler>
+        <channel source="#hand_sampler" target="AgeiaPhysicsModel/ponytail12/constrain"/>
+    </animation>
+  </library_animations>
   <library_physics_materials>
     <physics_material id="nxRigidBody1-material" name="nxRigidBody1-material">
       <technique_common>
@@ -115,7 +140,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
           <translate>0 -1.494664 0</translate>
         </attachment>
         <technique_common>
-          <enabled>0</enabled>
+          <enabled sid="constrain">0</enabled>
           <interpenetrate>0</interpenetrate>
           <limits>
             <swing_cone_and_twist>
