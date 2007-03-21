@@ -54,7 +54,15 @@ class FTestSuite(FSerializer):
                 self.applicationMap[prettyName] = application
         
         # import the image comparator
-        comparatorName = configDict[IMAGE_COMPARATORS_LABEL]
+        comparatorFile = os.path.abspath(os.path.normpath(
+                os.path.join(IMAGE_COMPARATORS_DIR, 
+                        configDict[IMAGE_COMPARATORS_LABEL] + ".py")))
+        if (os.path.isfile(comparatorFile)):
+            comparatorName = configDict[IMAGE_COMPARATORS_LABEL]
+        else:
+            print comparatorFile + " not found. Defaulting to byte comparator."
+            comparatorName = "FByteComparator" # default comparator
+        
         exec("from ImageComparators." + comparatorName + " import *")
         exec("FGlobals.imageComparator = " + comparatorName + "(configDict)")
         
