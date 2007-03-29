@@ -60,7 +60,6 @@
                <input semantic="OUTPUT" source="#spotLight1-obj-multiplier-value"></input>
                <input semantic="INTERPOLATION" source="#spotLight1-obj-multiplier-interp"></input>
                <input semantic="IN_TANGENT" source="#spotLight1-obj-multiplier-intgt"></input>
-               <input semantic="OUT_TANGENT" source="#spotLight1-obj-multiplier-outtgt"></input>
             </sampler>
             <channel source="#spotLight1-obj-multiplier-sampler" target="spotLight1-obj/multiplier"></channel>
          </animation>
@@ -110,7 +109,6 @@
                <input semantic="OUTPUT" source="#spotLight1-obj-hotspot-value"></input>
                <input semantic="INTERPOLATION" source="#spotLight1-obj-hotspot-interp"></input>
                <input semantic="IN_TANGENT" source="#spotLight1-obj-hotspot-intgt"></input>
-               <input semantic="OUT_TANGENT" source="#spotLight1-obj-hotspot-outtgt"></input>
             </sampler>
             <channel source="#spotLight1-obj-hotspot-sampler" target="spotLight1-obj/hotspot"></channel>
          </animation>
@@ -160,7 +158,6 @@
                <input semantic="OUTPUT" source="#spotLight1-obj-falloff-value"></input>
                <input semantic="INTERPOLATION" source="#spotLight1-obj-falloff-interp"></input>
                <input semantic="IN_TANGENT" source="#spotLight1-obj-falloff-intgt"></input>
-               <input semantic="OUT_TANGENT" source="#spotLight1-obj-falloff-outtgt"></input>
             </sampler>
             <channel source="#spotLight1-obj-falloff-sampler" target="spotLight1-obj/falloff"></channel>
          </animation>
@@ -210,7 +207,6 @@
                <input semantic="OUTPUT" source="#pointLight1-obj-multiplier-value"></input>
                <input semantic="INTERPOLATION" source="#pointLight1-obj-multiplier-interp"></input>
                <input semantic="IN_TANGENT" source="#pointLight1-obj-multiplier-intgt"></input>
-               <input semantic="OUT_TANGENT" source="#pointLight1-obj-multiplier-outtgt"></input>
             </sampler>
             <channel source="#pointLight1-obj-multiplier-sampler" target="pointLight1-obj/multiplier"></channel>
          </animation>
