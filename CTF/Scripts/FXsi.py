@@ -20,13 +20,13 @@ class FXsi (FApplication):
     __REPLACE_PATH = "C:\\CTFReplaceWithFilepath"
     
     __IMPORT_OPTIONS = [
-            ("Import Implicit Normal", "ImportImplicitNormal", "False"),]
+            ("Optimize For XSI", "OptimizeForXSI", "False"),]
     
     __EXPORT_OPTIONS = [
-            ("Convert to Triangles", "Triangulate", "True"),
+            ("Convert to Triangles", "Triangulate", "False"),
             ("Apply Subdivision", "ApplySubdivisionToGeometry", "False"),
             ("Tangents as Vertex Colors", "ExportTangentsAsVtxColor", "False"),
-            ("XSI Extra in COLLADA", "ExportXSIExtra", "True")]
+            ("XSI Extra in COLLADA", "ExportXSIExtra", "False")]
     
     __RENDER_ANIMATION_START = "Animation Start Time"
     __RENDER_ANIMATION_END = "Animation End Time"
@@ -34,18 +34,15 @@ class FXsi (FApplication):
     __RENDER_STILL_START = "Non-Animation Start Time"
     __RENDER_STILL_END = "Non-Animation End Time"
     __RENDER_STILL_FRAMES = "Non-Animation Frames"
-    __RENDER_TYPE = "Image Format"
     __RENDER_OPTIONS = [
-            ("Camera", "PassCamera", "\"testCamera\""),
-            (__RENDER_TYPE, "ImageFormat", "\"png\""),
-            ("X Resolution", "CameraXRes", "300"),
-            ("Y Resolution", "CameraYRes", "300"),
-            (__RENDER_ANIMATION_START, "StartFrame", "0"),
-            (__RENDER_ANIMATION_END, "EndFrame", "45"),
-            (__RENDER_ANIMATION_FRAMES, "Step", "3"),
-            (__RENDER_STILL_START, "StartFrame", "0"),
-            (__RENDER_STILL_END, "EndFrame", "0"),
-            (__RENDER_STILL_FRAMES, "Step", "1")]
+            ("X Resolution", "ImageWidth", "300"),
+            ("Y Resolution", "ImageHeight", "300"),
+            (__RENDER_ANIMATION_START, "FrameStart", "0"),
+            (__RENDER_ANIMATION_END, "FrameEnd", "45"),
+            (__RENDER_ANIMATION_FRAMES, "FrameStep", "3"),
+            (__RENDER_STILL_START, "FrameStart", "0"),
+            (__RENDER_STILL_END, "FrameEnd", "0"),
+            (__RENDER_STILL_FRAMES, "FrameStep", "1")]
     
     def __init__(self, configDict):
         """__init__() -> FXsi"""
@@ -66,7 +63,7 @@ class FXsi (FApplication):
         Implements FApplication.GetPrettyName()
         
         """
-        return "XSI 5.1"
+        return "XSI 6.0"
     
     def GetSettingsForOperation(self, operation):
         """GetSettingsForOperation(operation) -> list_of_FSettingEntry
@@ -302,20 +299,16 @@ class FXsi (FApplication):
                     continue
                 step = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                               int)
-            elif (prettyName == FXsi.__RENDER_TYPE):
-                type = setting.GetValue().strip()
-                if (type == ""):
-                    type = self.FindDefault(FXsi.__RENDER_OPTIONS, 
-                                            FXsi.__RENDER_TYPE)
-                type = setting.GetValue()[1:-1] # remove the quotes around type
-            
+
+
+            type = "png"        
             value = setting.GetValue().strip()
             if (value == ""):
                 value = self.FindDefault(FXsi.__RENDER_OPTIONS, 
                                          setting.GetPrettyName())
             
             command = (command + "SetValue " +
-                    "\"Passes.Default_Pass.RenderOptions." +
+                    "\"Passes.RenderOptions." +
                     setting.GetCommand() + "\", " + value + "\n")
         
         basename = self.__currentImportProperName + "#." + type
@@ -325,17 +318,21 @@ class FXsi (FApplication):
                 "SetValue \"preferences.scripting.cmdlogfilename\", \"" +  
                         self.__logFiles[-1].replace("\\", "\\\\") + 
                         "\"\n" +
-                "SetValue \"Passes.Default_Pass.RenderOptions." +
-                        "PictureStandard\", 0\n" +
-                "SetValue \"Passes.Default_Pass.RenderOptions." +
-                        "InverseRatio\", False\n" +
-                "SetValue \"Passes.Default_Pass.RenderOptions." +
-                        "PixelRatio\", 1.000\n" +
-                "SetValue \"Passes.Default_Pass.RenderOptions." +
-                        "ImageFileName\", \"" + 
-                        os.path.join(path, basename).replace("\\", "\\\\") +
+                "SetValue \"Passes.RenderOptions." +
+                        "ImageFormatPreset\", 0\n" +
+                "SetValue \"Passes.RenderOptions." +
+                        "ImagePixelRatio\", 1\n" +
+                "SetValue \"Passes.RenderOptions." +
+                        "OutputDir\", \"" + 
+                        os.path.join(path).replace("\\", "\\\\") +
                         "\"\n" +
+                "SetValue \"Passes.Default_Pass.Main.Filename\", \"" + basename + "\"\n" +
+                "SetValue \"Passes.Default_Pass.Main.Format\", \"" + type + "\"\n" +                      
+                "DeleteObj \"B:Camera_Root\"\n" +
+                "DeleteObj \"light\"\n" +
                 command +
+                "SIUpdateCamerasFromGlobalPref\n" +
+                "SIUpdateRenderOptionsFromGlobalPref\n" +
                 "Set pass = GetValue( \"Passes.Default_Pass\" )\n" +
                 "RenderPass pass\n")
         
