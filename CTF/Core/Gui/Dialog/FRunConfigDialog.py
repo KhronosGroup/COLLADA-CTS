@@ -31,7 +31,7 @@ class FRunConfigDialog(wx.Dialog):
         self.__opList -- ListCtrl for the operations in add section.
         self.__appList -- ListCtrl for the applications in add section.
         self.__curList -- ListCtrl for the current list in current section.
-        
+        self.__displayedApps -- Dictionary of {"operation with app": [apps using operation]} entries
     """
     
     __DIALOG_TITLE = "New Test Procedure"
@@ -46,6 +46,9 @@ class FRunConfigDialog(wx.Dialog):
         wx.Dialog.__init__(self, parent, wx.ID_ANY, 
                            FRunConfigDialog.__DIALOG_TITLE)
         self.__applicationMap = applicationMap
+        
+        self.__displayedApps = self.__GetDisplayedApps()
+        
         self.__InitializeIds()
         self.selectedRun = []
         
@@ -173,7 +176,7 @@ class FRunConfigDialog(wx.Dialog):
         
         opString = self.__opList.GetString(opSelection)
         
-        if (opString == VALIDATE):
+        if (opString == VALIDATE and opString not in OPS_NEEDING_APP):
             opTuple = (opString, None)
             
             if (len(self.selectedRun) < 1):
@@ -185,7 +188,7 @@ class FRunConfigDialog(wx.Dialog):
         else:
             settingName = self.__settingSizer.GetSettingName()
             
-            # for now this is only IMPORT, may break if anything else is added
+            # Should work for IMPORT and VALIDATE, no guarantees otherwise
             if (opString in OPS_NEEDING_APP):
                 appSelection = self.__appList.GetSelection()
                 if (appSelection < 0): 
@@ -269,6 +272,7 @@ class FRunConfigDialog(wx.Dialog):
         """
         selectedString = self.__opList.GetString(self.__opList.GetSelection()) 
         if (selectedString in OPS_NEEDING_APP):
+            self.__appList.Set(self.__displayedApps[selectedString])
             self.__appList.Show()
         else:
             self.__appList.Hide()
@@ -313,6 +317,25 @@ class FRunConfigDialog(wx.Dialog):
         self.__ID_OPLIST = wx.NewId()
         self.__ID_APPLIST = wx.NewId()
 
+    def __GetDisplayedApps(self):
+        """Returns a dictionary with entries of the form {"operation":[list of apps using operation]}"""
+        
+        displayedApps = self.__applicationMap.keys()
+        displayedApps.sort()
+        
+        opsList = []
+        
+        for ops in OPS_NEEDING_APP:
+            thisOpsList = []
+            
+            [thisOpsList.append(x) for x in displayedApps if ops in self.__applicationMap[x].GetOperationsList()]
+            [displayedApps.remove(x) for x in thisOpsList]
+            
+            opsList.append(thisOpsList)
+            
+        return dict(zip(OPS_NEEDING_APP,opsList))
+        
+
     def __GetTitleSizer(self):
         """Returns the Sizer used to get the title of the run."""
         titleSizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -335,11 +358,9 @@ class FRunConfigDialog(wx.Dialog):
         addSizer.Add(self.__opList, 1, wx.GROW | wx.ALL, 5)
         wx.EVT_LISTBOX(self, self.__ID_OPLIST, self.__OnOpListClick)
         
-        displayedApps = self.__applicationMap.keys()
-        displayedApps.sort()
         
         self.__appList = wx.ListBox(self, self.__ID_APPLIST, 
-                wx.DefaultPosition, wx.DefaultSize, displayedApps, 
+                wx.DefaultPosition, wx.DefaultSize, [], 
                 wx.LB_SINGLE)
         addSizer.Add(self.__appList, 1, wx.GROW | wx.ALL, 5)
         self.Bind(wx.EVT_LISTBOX, self.__OnUpdateSetting, self.__appList, 

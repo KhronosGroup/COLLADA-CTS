@@ -164,6 +164,22 @@ class FTable(wx.grid.PyGridTableBase):
     def SetValue(self, row, col, value):
         self.__data[self.__rowsKey[row]][self.__colsKey[col]] = value
     
+    # SafeCmp -- a safe cmp function for sort
+    #     Fixes issue in SortColumn when data[0][rKey] is initialized 
+    #     with a test run and data[0][0] is not.
+    def SafeCmp(self,a, b):
+        c_a = a[0]
+        c_b = b[0]
+        
+        if hasattr(a[0],"__getitem__"):
+            c_a = a[0][0]
+            
+        if hasattr(b[0],"__getitem__"):
+            c_b = b[0][0]
+            
+        return cmp(c_a,c_b)
+    
+    
     def SortColumn(self, col, ascending):
         cKey = self.__colsKey[col]
         
@@ -178,7 +194,7 @@ class FTable(wx.grid.PyGridTableBase):
         
         if (type(self.__data[0][cKey]) == types.TupleType):
             # compare only the first element
-            cmpFunction = lambda x, y: cmp(x[0][0], y[0][0])
+            cmpFunction = lambda x, y: self.SafeCmp(x, y)
         else:
             cmpFunction = lambda x, y: cmp(x[0], y[0])
         

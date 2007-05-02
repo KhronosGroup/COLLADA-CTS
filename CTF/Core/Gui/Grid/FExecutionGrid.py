@@ -300,7 +300,9 @@ class FExecutionGrid(FGrid):
         
         for step, app, op, setting in self.__testProcedure.GetStepGenerator():
             if (op == VALIDATE):
-                title = ">>" + op
+                title = "<" + str(step) + "> " + op
+                if op in OPS_NEEDING_APP:
+                    title = title + " (" + app + ")"
                 outputRenderer = FValidationRenderer()
                 self.__outputsValidationRenderers.append(outputRenderer)
             else:

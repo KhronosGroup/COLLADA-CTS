@@ -653,7 +653,7 @@ class FTest(FSerializable, FSerializer):
             outputs = execution.GetOutputLocation(step)
             if (outputs == None):
                 result.AppendOutput(FResult.IGNORED_NONE)
-            elif (type(outputs) is types.ListType):
+            elif (type(outputs) is types.ListType and op != VALIDATE):
                 failed = False
                 for entry in outputs:
                     if (not os.path.isfile(entry)):

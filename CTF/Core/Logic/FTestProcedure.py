@@ -158,7 +158,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
     def GetAppOpString(self):
         string = ""
         for step, app, op, setting in self.GetStepGenerator():
-            if (op == VALIDATE):
+            if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 string = string + "[" + op + "]"
             else:
                 string = string + "[" + app + "," + op + "]"
@@ -359,7 +359,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         
         steps = []
         for step, op in self.__GetOpGenerator(appIndex):
-            if (op != VALIDATE):
+            if (op != VALIDATE or op in OPS_NEEDING_APP):
                 steps.append(step)
         
         if (callBack != None):
@@ -369,7 +369,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         
         for testId in testIds:
             for step, op in self.__GetOpGenerator(appIndex):
-                if (op == VALIDATE):
+                if (op == VALIDATE and op not in OPS_NEEDING_APP):
                     self.__testList[testId].Validate(step)
                 else:
                     self.__testList[testId].Run(appPython, step, op, 
@@ -458,7 +458,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 if (i < len(testIds)):
                     print "test" + str(testIds[i]) + " crashed!!!"
                     for step, op in self.__GetOpGenerator(appIndex):
-                        if (op != VALIDATE):
+                        if (op != VALIDATE or op in OPS_NEEDING_APP):
                             self.__testList[testIds[i]].Crash(step)
                 
                 i = i + 1 # skip the broken one

@@ -31,7 +31,7 @@ class FSettingsScrolledSizer(wx.BoxSizer):
             else:
                 default = settings[step]
             
-            if (op == VALIDATE):
+            if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 sizer.SetOperation(">>", op, ">>" + op)
                 sizer.Enable(False)
             else:

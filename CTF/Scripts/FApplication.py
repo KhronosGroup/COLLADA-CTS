@@ -140,6 +140,41 @@ class FApplication:
         """
         raise NotImplementedError, "Application.RunScript()"
     
+    def WriteValidate(self, filename, logname, outputDir, settings, isAnimated):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+        
+        Writes the script for the execution of a validator application. 
+		(It must be overriden by any implementations of application specific scripts.)
+        
+        arguments:
+            filename
+                string corresponding to the absolute filename for the file to 
+                validate.
+            logname
+                string corresponding to the absolute filename for the log file
+                for this operation. The file has been created already.
+            outputDir
+                string corresponding to the absolute path for where the outputs
+                should be placed. This directory has been created already.
+            settings
+                list of FSettingEntry what the user has specified for the
+                running of these tests. They will be the same as those given
+                in GetSettingsForOperation but with the possbility that the
+                values are changed.
+            isAnimated
+                boolean representing whether the given filename is considered
+                an animated scene. It is animated if "Animation" or "animation"
+                appears in the data set name, subcategory, or category of the 
+                data set.
+        
+        returns:
+            list of string representing the locations of all the output files.
+            These should be relative to outputDir. It should not include the
+            log files.
+        
+        """
+        raise NotImplementedError, "Application.WriteValidate()"
+    
     def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
         """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
         
@@ -287,6 +322,8 @@ class FApplication:
             return self.WriteRender(logname, outputDir, settings, isAnimated)
         elif (operation == EXPORT):
             return self.WriteExport(logname, outputDir, settings, isAnimated)
+        elif (operation == VALIDATE):
+            return self.WriteValidate(filename, logname, outputDir, settings, isAnimated)
     
     def RunApplication(self, command, workingDir):
         """RunApplication(command, workingDir) -> int

@@ -92,7 +92,7 @@ class FHtmlExporter:
         
         
         for step, app, op, settings in testProcedure.GetStepGenerator():
-            if (op == VALIDATE):
+            if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 file.write(
                     "            <th>\n" +
                     "                <" + str(step) + "> " + op + "\n" +

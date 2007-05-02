@@ -6,6 +6,7 @@ import os
 
 from Core.Gui.Grid.FTextRenderer import *
 from Core.Gui.Grid.FImageRenderArea import *
+from Core.Common.FConstants import *
 
 class FValidationRenderer(FTextRenderer):
     def __init__(self):
@@ -53,9 +54,15 @@ class FValidationRenderer(FTextRenderer):
                 extraArray, wx.Color(0, 0, 0))
     
     def __GetOpenFunc(self, file):
+        # FApplications return a list, which doesn't work for a single log       
+        if VALIDATE in OPS_NEEDING_APP:
+            file2 = file[0]
+        else:
+            file2 = file
+        
         def Open(e):
             # XXX: this is windows only
-            os.startfile("\"" + file  + "\"")
+            os.startfile("\"" + file2  + "\"")
         return Open
     
     def __GetRenderedArea(self, grid, row, col, position):

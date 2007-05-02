@@ -43,7 +43,7 @@ class FCsvExporter:
                 "# of tests errors:," + FCsvExporter.__REPLACE_ERRORS_COUNT + "\n\n")
         file.write("Category,Subcategory,Test Filename,Blessed,")    
         for step, app, op, settings in testProcedure.GetStepGenerator():
-            if (op == VALIDATE):
+            if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 file.write("<" + str(step) + ">" + " " + op + ",")
             else:
                 file.write("<" + str(step) + ">" + " " + op + " (" + app + "),")
