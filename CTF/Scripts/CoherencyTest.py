@@ -152,7 +152,7 @@ class CoherencyTest (FApplication):
             for setting in settings:
                 command = (command + " " + setting.GetCommand())
                 
-        command = (command + " -log \"" + logname + "\" -q")
+        command = (command + " -ctf \"" + logname + "\" -q")
         
         # Write the above command, along with crash detection
         self.WriteCrashDetect(self.__script, command, logname)
