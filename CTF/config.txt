@@ -1,13 +1,13 @@
-feelingViewerGUI		C:\work\new collada\trunk\conform\ctf\FeelingViewer\FViewerApplications\Output\FeelingViewer.exe
-feelingViewerCLI		C:\work\new collada\trunk\conform\ctf\FeelingViewer\FViewerApplications\Output\FViewerCLI.exe
-mayaPath			C:\Program Files\Alias\Maya7.0\bin\maya.exe
-maxPath				C:\3dsmax7\3dsmax.exe
-maxColladaExporterFilename	C:\3dsmax7\plugcfg\ColladaExporter.ini
-xsiPath				C:\Softimage\XSI_5.1\Application\bin\XSIBATCH.bat
+feelingViewerGUI		C:\vs2005\khronos\conform\ctf\FeelingViewer\FViewerApplications\Output\FeelingViewer.exe
+feelingViewerCLI		C:\vs2005\khronos\conform\ctf\FeelingViewer\FViewerApplications\Output\FViewerCLI.exe
+mayaPath			C:\Program Files\Autodesk\Maya8.5\bin\maya.exe
+maxPath				C:\Program Files\Autodesk\3dsMax8\3dsmax.exe
+maxColladaExporterFilename	C:\Program Files\Autodesk\3dsMax8\plugcfg\ColladaExporter.ini
+xsiPath				C:\Softimage\XSI_6.0\Application\bin\XSIBATCH.bat
 pythonExecutable		C:\Python24\python.exe
 ioTimeoutMilli			60000
 detectCrash			True
-imageComparator			FByteComparator
-pyramidDiffPath			C:\work\new collada\trunk\conform\ctf\CTF\PyramidDiff\Output\PyramidDiff.exe
-coherencyPath			C:\Documents and Settings\brehon\workspace\CTF_Development\CoherencyTest\coherencytest.exe
-schemaValidatePath		C:\Documents and Settings\brehon\workspace\CTF_Development\Core\SchemaValidate.exe
+imageComparator			FPyramidDiff
+pyramidDiffPath			C:\vs2005\khronos\conform\ctf\CTF\PyramidDiff\Output\PyramidDiff.exe
+coherencyPath			C:\vs2005\khronos\conform\ctf\CTF\Core\CoherencyTest\coherencytest.exe
+schemaValidatePath		C:\vs2005\khronos\conform\ctf\CTF\Core\SchemaValidate\SchemaValidate\bin\Release\SchemaValidate.exe
