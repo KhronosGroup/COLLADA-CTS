@@ -1,0 +1,1 @@
+png\sphere_triangles1.png
