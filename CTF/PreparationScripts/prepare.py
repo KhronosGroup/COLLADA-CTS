@@ -50,25 +50,18 @@ exceptions = cts.defaultExceptions()
 copyright_txt = os.path.normcase(r"copyright.txt")
 
 # Conditioner calls used by this prepare script
-conditioners = [r"copyrighter -overwrite true -file " + copyright_txt,
-                r"daestripper -element extra"]
+# NOTE: We will add more to the copyrighter call later in the script!
+copyrighter_cmd = r"copyrighter -file %s" % copyright_txt
+daestrip_cmd = r"daestripper -element extra"
+
+conditioners = []
 
 # Define command line command for the COLLADA refinery
-refinery_cmd = os.path.normcase(r"refinery -i ") + cts.CMD_INPUT + " -o " + cts.CMD_OUTPUT + " -x "
+refinery_path = os.path.normpath(r"refinery")
+refinery_cmd = "%s -i %s -o %s -x " % ( refinery_path, cts.CMD_INPUT , cts.CMD_OUTPUT )
 
-"""
-
-Start prepare routine...
-
-"""
-
-print "----------------------------------------------------------"
-print "Searching for Copyright file...",
-
-Yes = 1
-No = 0
-Invalid = -1
-
+# Define a utility for Yes/No interactive questions (may eventually get moved to cts module)
+Yes, No, Invalid = 1, 0, -1
 def YesOrNo(question):
     inp = cts.safeRawInput(question)
     inp = inp.lower().strip()
@@ -79,11 +72,19 @@ def YesOrNo(question):
             return Yes
     return Invalid
 
+"""
+
+Start prepare routine...
+
+"""
+
+print "----------------------------------------------------------"
+print "Searching for Copyright file...",
 if os.path.exists(copyright_txt):
     print "found", copyright_txt
 else:
     print "Cannot find",copyright_txt,'\n'
-    # 
+    
     while 1: # Create the copyright.txt if it isn't available
         val = YesOrNo("Do you wish to create " + copyright_txt + "? (y/n): ")
         if val == Yes:
@@ -125,6 +126,17 @@ else:
     cf = open(copyright_txt,'w')
     cf.write(copyright_str)
     cf.close()
+
+print "----------------------------------------------------------"
+while 1:
+    
+    val = YesOrNo("Overwrite pre-existing copyrights? (y/n): ")
+    if val == Yes:
+        copyrighter_cmd = copyrighter_cmd + " -overwrite true"
+        break
+    if val == No:
+        copyrighter_cmd = copyrighter_cmd + " -overwrite false"
+        break
     
 print "----------------------------------------------------------"
 print "Searching for COLLADA files...",
@@ -145,6 +157,9 @@ progress = cts.ProgressCounter(len(c_files))
 print "----------------------------------------------------------"
 print "Running script with the following conditioner commands:"
 print "----------------------------------------------------------"
+conditioners.append(daestrip_cmd)
+conditioners.append(copyrighter_cmd)
+
 for x in conditioners:
     print x
 print "----------------------------------------------------------"

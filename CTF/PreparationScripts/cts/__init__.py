@@ -53,9 +53,9 @@ def defaultDirectories():
     directories = []
     
     # Change these directories if you want to search other directories
-    directories.append("basic_badge")
-    directories.append("intermediate_badge")
-    directories.append("advanced_badge")
+    directories.append("collada")
+    directories.append("xml")
+    directories.append("aggregate")
     
     # Add the root directories (where the test files are supposed to be)
     root_dir = DATA_SET_DIRS[0] # Using the non-deprecated data set path in FConstants
