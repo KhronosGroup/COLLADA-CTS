@@ -82,4 +82,3 @@ class FTextRenderer(FGridCellRenderer):
         dc.DestroyClippingRegion()
         
         return minY
-    

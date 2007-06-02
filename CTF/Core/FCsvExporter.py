@@ -192,11 +192,10 @@ class FCsvExporter:
     def __AddTest(self, file, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
 
-        file.write( test.GetCategory() + "," + test.GetSubcategory() + "," + test.GetBaseFilename() + ",")  
+        file.write( test.GetCOLLADAKeyword() + "," + test.GetCOLLADAComment() + "," + test.GetSeparatedFilename() + ",")  
 
-        exportedDir = os.path.join(self.__filesDir, test.GetCategory(), 
-                        test.GetSubcategory(), 
-                        FUtils.GetProperFilename(test.GetBaseFilename()))
+        exportedDir = os.path.join(self.__filesDir, "Test" + str(test.GetTestId()),
+            FUtils.GetProperFilename(test.GetBaseFilename()))
         exportedDir = self.__GetAvailableDir(exportedDir)
       #  os.makedirs(exportedDir)
         

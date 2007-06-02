@@ -10,6 +10,7 @@ import types
 
 import Core.Common.FUtils as FUtils
 import Core.Common.FGlobals as FGlobals
+import Core.Common.FCOLLADAParser as FCOLLADAParser
 from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
@@ -33,7 +34,6 @@ class FTest(FSerializable, FSerializer):
         FSerializable.__init__(self)
         FSerializer.__init__(self)
         
-        self.__dataSetComments = ""
         self.__filename = None
         for entry in os.listdir(dataSetPath):
             fullEntry = os.path.join(dataSetPath, entry)
@@ -44,13 +44,6 @@ class FTest(FSerializable, FSerializer):
                 if (FUtils.GetExtension(fullEntry).upper() != "PY" and
                         FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
                     self.__filename = fullEntry
-                elif (entry == DATA_SET_COMMENTS):
-                    f = open(os.path.join(dataSetPath, entry))
-                    line = f.readline()
-                    while (line):
-                        self.__dataSetComments = self.__dataSetComments + line
-                        line = f.readline()
-                    f.close()
                     
         if (self.__filename == None):
             raise ValueError, "Invalid Data Set: " + dataSetPath
@@ -64,8 +57,13 @@ class FTest(FSerializable, FSerializer):
         self.__settings = settings
         self.__dataSetPath = dataSetPath
         filePath = os.path.dirname(os.path.abspath(dataSetPath))
-        self.__subCategory = os.path.basename(filePath)
-        self.__category = os.path.basename(os.path.dirname(filePath))
+
+        # If the given file is a COLLADA document, parse in the keywords and comments.
+        if FCOLLADAParser.IsCOLLADADocument(self.__filename):
+            (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
+        else:
+            (self.__colladaKeyword, self.__colladaComment) = ("", "")
+
         # valid while running, otherwise None
         self.__beforePreviousExecution = None 
         self.__crashIndices = None
@@ -91,6 +89,14 @@ class FTest(FSerializable, FSerializer):
         self.__testDir = os.path.dirname(filename)
         self.__isRecovered = False
         self.__UpdateExecution()
+        
+        # Backward compatibility: if they are missing, read in the keyword/comment from the DAE document.
+        if (not self.__dict__.has_key("__colladaKeyword")
+            or not self.__dict__.has_key("__colladaComment")):
+            if FCOLLADAParser.IsCOLLADADocument(self.__filename):
+                (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
+            else:
+                (self.__colladaKeyword, self.__colladaComment) = ("", "")
     
     def __UpdateExecution(self):
         self.__previousExecution = None
@@ -719,34 +725,26 @@ class FTest(FSerializable, FSerializer):
     
     def GetBaseFilename(self):
         return os.path.basename(self.__filename)
-    
+       
     def GetAbsFilename(self):
         return os.path.abspath(self.__filename)
+        
+    def GetSeparatedFilename(self):
+        out = self.__filename.lstrip('\\/.')
+        out = out.replace("\\", " ")
+        return out.replace("/", " ")
 
-    def GetCategory(self):
-        return self.__category
-    
-    def GetSubcategory(self):
-        return self.__subCategory
-    
     def GetSettings(self):
         return self.__settings
     
     def IsAnimated(self):
-        return ((self.__subCategory.find("Animation") != -1) or
-                (self.__category.find("Animation") != -1) or
-                (self.GetBaseFilename().find("Animation") != -1) or
-                (self.__subCategory.find("animation") != -1) or
-                (self.__category.find("animation") != -1) or
-                (self.GetBaseFilename().find("animation") != -1))
+        return ((self.__filename.find("Animation") != -1) or
+                (self.__filename.find("animation") != -1))
     
     def GetPreviousOutputLocation(self, opNumber):
         if (self.__previousExecution == None): return None
         
         return self.__previousExecution.GetOutputLocation(opNumber)
-    
-    def GetDataSetComments(self):
-        return self.__dataSetComments
     
     def GetCurrentComments(self):
         if (self.__currentExecution == None): return self.__defaultComments
@@ -802,6 +800,12 @@ class FTest(FSerializable, FSerializer):
         if (self.__currentExecution == None): return {}
         
         return self.__currentExecution.GetEnvironment()
+        
+    def GetCOLLADAKeyword(self):
+        return self.__colladaKeyword
+
+    def GetCOLLADAComment(self):
+        return self.__colladaComment
 
     def Prepare(self):
         self.__beforePreviousExecution = self.__previousExecution

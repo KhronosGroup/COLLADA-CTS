@@ -4,13 +4,7 @@
         <contributor>
             <author>alorino</author>
             <authoring_tool>Maya 7.0 | ColladaMaya v2.01 Jun  9 2006 at 16:08:19 | FCollada v1.11</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
-exportTexTangents=0;exportConstraints=0;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+            <comments>Tests the support for the 'polylist' element.</comments>
             <copyright>Copyright 2007 Sony Computer Entertainment Inc.&#13;
 Licensed under the SCEA Shared Source License, Version 1.0 (the&#13;
 &quot;License&quot;); you may not use this file except in compliance with the&#13;
@@ -23,6 +17,7 @@ See the License for the specific language governing permissions and&#13;
 limitations under the License.</copyright>
         </contributor>
         <created>2006-06-21T21:23:22Z</created>
+        <keywords>basic_badge geometry mesh polylist</keywords>
         <modified>2006-06-21T21:23:22Z</modified>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>

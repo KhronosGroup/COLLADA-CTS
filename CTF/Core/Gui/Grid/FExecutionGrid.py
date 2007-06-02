@@ -29,13 +29,12 @@ class FExecutionGrid(FGrid):
     __DIFFERENT = 6
     __LOGS = 7
     __TIME = 8
-    __CATEGORY = 9
-    __SUBCATEGORY = 10
     __ENVIRONMENT = 11
-    __DATA_SET_COMMENTS = 12
     __TEST_ID = 13
-    __NEXT_KEY = 14
-    __BADGE_START = 200
+    __NEXT_KEY = 14 # WARNING: this is an increasing key: [15-199] is reserved for steps.
+    __BADGE_START = 200 # WARNING: this is an increasing key: [200-299] is reserved for badge levels.
+    __COLLADA_ASSET_KEYWORD = 300
+    __COLLADA_ASSET_COMMENT = 301
     
     __COLUMNS = { __FILENAME : ("Test Filename", 100),
                 __ANNOTATIONS : ("Comments", 100),
@@ -45,10 +44,9 @@ class FExecutionGrid(FGrid):
                 __DIFFERENT : ("Different from Previous", 100),
                 __LOGS : ("Logs", 100),
                 __TIME : ("Time", 100),
-                __CATEGORY : ("Category", 100),
-                __SUBCATEGORY : ("Subcategory", 100),
                 __ENVIRONMENT : ("Environment", 100),
-                __DATA_SET_COMMENTS : ("Description", 100),
+                __COLLADA_ASSET_KEYWORD : ("Categories", 100),
+                __COLLADA_ASSET_COMMENT : ("Description", 100),
                 __TEST_ID : ("Test ID", 50)}
     
     def __init__(self, parent, testProcedure, simplified, feelingViewerPath,
@@ -82,7 +80,7 @@ class FExecutionGrid(FGrid):
         self.__environmentRenderer = None
         self.__commentsRenderer = None
         self.__commentsEditor = None
-        self.__dataSetCommentsRenderer = None
+        self.__wrappedTextRenderer = None
         self.__timeRenderer = None
         
         self.__Initialize()
@@ -285,17 +283,20 @@ class FExecutionGrid(FGrid):
         self.__environmentRenderer = FEnvironmentRenderer()
         self.__commentsRenderer = FEditableCommentsRenderer()
         self.__commentsEditor = FCommentsEditor()
-        self.__dataSetCommentsRenderer = FCommentsRenderer()
+        self.__wrappedTextRenderer = FCommentsRenderer()
         self.__timeRenderer = FTimeRenderer()
         
         self.__AddColumn(FExecutionGrid.__TEST_ID,
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__TEST_ID])
-        self.__AddColumn(FExecutionGrid.__CATEGORY, 
-                FExecutionGrid.__COLUMNS[FExecutionGrid.__CATEGORY])
-        self.__AddColumn(FExecutionGrid.__SUBCATEGORY, 
-                FExecutionGrid.__COLUMNS[FExecutionGrid.__SUBCATEGORY])
+        self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_KEYWORD,
+                FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_KEYWORD],
+                self.__wrappedTextRenderer)
+        self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_COMMENT,
+                FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_COMMENT],
+                self.__wrappedTextRenderer)
         self.__AddColumn(FExecutionGrid.__FILENAME, 
-                FExecutionGrid.__COLUMNS[FExecutionGrid.__FILENAME])
+                FExecutionGrid.__COLUMNS[FExecutionGrid.__FILENAME],
+                self.__wrappedTextRenderer)
         self.__AddColumn(FExecutionGrid.__BLESSED, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__BLESSED], 
                 self.__blessedRenderer)
@@ -337,9 +338,6 @@ class FExecutionGrid(FGrid):
         self.__AddColumn(FExecutionGrid.__ANNOTATIONS, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__ANNOTATIONS], 
                 self.__commentsRenderer, self.__commentsEditor)
-        self.__AddColumn(FExecutionGrid.__DATA_SET_COMMENTS,
-                FExecutionGrid.__COLUMNS[FExecutionGrid.__DATA_SET_COMMENTS],
-                self.__dataSetCommentsRenderer)
         self.__AddColumn(FExecutionGrid.__TIME, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__TIME],
                 self.__timeRenderer)
@@ -397,18 +395,12 @@ class FExecutionGrid(FGrid):
                 executionDir = execution.GetExecutionDir()
             
             self.InsertData(id, FExecutionGrid.__TEST_ID, test.GetTestId())
-            self.InsertData(id, FExecutionGrid.__FILENAME, 
-                            test.GetBaseFilename())
-            self.InsertData(id, FExecutionGrid.__CATEGORY, test.GetCategory())
-            self.InsertData(id, FExecutionGrid.__SUBCATEGORY, 
-                            test.GetSubcategory())
-            self.InsertData(id, FExecutionGrid.__ANNOTATIONS, 
-                            (comments, test, execution))
-            self.InsertData(id, FExecutionGrid.__DATA_SET_COMMENTS, 
-                            (test.GetDataSetComments(),))
+            self.InsertData(id, FExecutionGrid.__FILENAME, (test.GetSeparatedFilename(),))
+            self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_KEYWORD, (test.GetCOLLADAKeyword(),))
+            self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_COMMENT, (test.GetCOLLADAComment(),))
+            self.InsertData(id, FExecutionGrid.__ANNOTATIONS, (comments, test, execution))
             self.InsertData(id, FExecutionGrid.__INPUT, 
-                    FImageData([test.GetAbsFilename(),], test = test, 
-                    executionDir = executionDir))
+                    FImageData([test.GetAbsFilename(),], test = test, executionDir = executionDir))
             
             blessed = test.GetBlessed()
             if ((blessed != None) and (len(blessed) != 0)):
@@ -417,13 +409,11 @@ class FExecutionGrid(FGrid):
                         executionDir = executionDir))
             
             if (execution == None): 
-                self.InsertData(id, FExecutionGrid.__DIFFERENT, 
-                                test.GetCurrentDiffFromPrevious())
+                self.InsertData(id, FExecutionGrid.__DIFFERENT, test.GetCurrentDiffFromPrevious())
                 continue
             
             logs = [] # probably want to put this in a class
-            for step, app, op, setting in (self.__testProcedure.
-                                                        GetStepGenerator()):
+            for step, app, op, setting in (self.__testProcedure.GetStepGenerator()):
                 if (op == VALIDATE):
                     self.InsertData(id, FExecutionGrid.__NEXT_KEY + step, 
                             [execution.GetErrorCount(step), 

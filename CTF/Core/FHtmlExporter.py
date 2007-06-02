@@ -431,24 +431,23 @@ class FHtmlExporter:
         file.write(
                 "        <tr>\n" +
                 "            <td>\n" +
-                "                " + test.GetCategory() + "\n" +
+                "                " + test.GetCOLLADAKeyword() + "\n" +
                 "            </td>\n" +
                 "            <td>\n" +
-                "                " + test.GetSubcategory() + "\n" +
+                "                " + test.GetCOLLADAComment() + "\n" +
                 "            </td>\n")
         
-        exportedDir = os.path.join(self.__filesDir, test.GetCategory(), 
-                        test.GetSubcategory(), 
-                        FUtils.GetProperFilename(test.GetBaseFilename()))
+        exportedDir = os.path.join(self.__filesDir, "Test" + str(test.GetTestId()),
+            FUtils.GetProperFilename(test.GetBaseFilename()))
         exportedDir = self.__GetAvailableDir(exportedDir)
         os.makedirs(exportedDir)
         
         origTag = "            <td>\n"
-        origFile = os.path.join(test.GetDataSetPath(), test.GetBaseFilename())
+        origFile = test.GetAbsFilename()
         exportedOrig = self.__ExportImageList(exportedDir, [origFile], "orig_")
         if ((exportedOrig == None) or (exportedOrig[0] == None)):
             origTag = (origTag + 
-                    "                " + test.GetBaseFilename() + "\n")
+                    "                " + test.GetSeparatedFilename() + "\n")
         else:
             origTag = (origTag + 
                     "                <a href=\"" + 
