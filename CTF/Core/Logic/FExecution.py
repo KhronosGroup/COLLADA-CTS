@@ -16,6 +16,7 @@ import Core.Common.FGlobals as FGlobals
 from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
+from Core.Logic.FJudgement import *
 from Core.Logic.FResult import *
 
 class FExecution(FSerializable, FSerializer):
@@ -39,6 +40,8 @@ class FExecution(FSerializable, FSerializer):
         self.__result = None
         self.__initializedSteps = []
         self.__crashIndices = []
+        self.__judgingResults = {}
+        self.__judgingLogs = {}
 
     # executionDir must be absolute path and it should be empty!
     def Clone(self, executionDir):
@@ -51,6 +54,8 @@ class FExecution(FSerializable, FSerializer):
         newExecution.__environment = self.__environment
         newExecution.__comments = self.__comments
         newExecution.__crashIndices = self.__crashIndices
+        newExecution.__judgingResults = self.__judgingResults
+        newExecution.__judgingLogs = self.__judgingLogs
         newExecution.__ResetOutputLocations()
         newExecution.__ResetLogLocations()
         
@@ -70,8 +75,10 @@ class FExecution(FSerializable, FSerializer):
         if (self.__comments != other.__comments): return False
         if (self.__environment != other.__environment): return False
         if (self.__crashIndices != other.__crashIndices): return False
+        if (self.__judgingResults != other.__judgingResults): return False
         
-      #  if (self.__timeRan != other.__timeRan): return False
+        # Do not compare judging logs.
+        # Do not compare time ran.
         
         if (len(self.__errorCounts) != len(other.__errorCounts)): return False
         for i in range(len(self.__errorCounts)):
@@ -82,13 +89,8 @@ class FExecution(FSerializable, FSerializer):
         for i in range(len(self.__warningCounts)):
             if (self.__warningCounts[i] != other.__warningCounts[i]): 
                 return False
-        
-      #  if (len(self.__logLocations) != len(other.__logLocations)): 
-      #      return False
-      #  for i in range(len(self.__logLocations)):
-      #      #todo what happens if file not there
-      #      if (not FUtils.ByteEquality(self.__logLocations[i], 
-      #              other.__logLocations[i])): return False
+
+        # Do not compare log locations.
         
         if (len(self.__outputLocations) != len(other.__outputLocations)): 
             return False
@@ -149,6 +151,11 @@ class FExecution(FSerializable, FSerializer):
         # FResult was updated to contain messages in Khronos svn r15.
         if ((self.__result != None) and self.__result.BackwardCompatibility()):
             self.Save(self, filename)
+
+        # For backward compatibility: if the judging information is missing, create
+        # empty dictionaries.
+        if (not self.__dict__.has_key("__judgingResults")): self.__judgingResults = {}
+        if (not self.__dict__.has_key("__judgingLogs")): self.__judgingLogs = {}
         
         if (self.__executionDir == os.path.dirname(filename)): return
         
@@ -233,6 +240,20 @@ class FExecution(FSerializable, FSerializer):
     
     def GetEnvironment(self):
         return self.__environment
+        
+    def GetJudgementResult(self, badge):
+        if (self.__judgingResults.has_key(badge)):
+            return self.__judgingResults[badge]
+        else:
+			# This is negative in order to force the adopter to
+			# run the appropriate test all at once.
+            return FJudgement.MISSING_DATA
+            
+    def GetJudgementLog(self, badge):
+        if (self.__judgingLogs.has_key(badge)):
+            return self.__judgingLogs[badge]
+        else:
+            return ""
     
     def Validate(self, step):
         if (self.__validationList.count(step) == 0):
@@ -298,25 +319,20 @@ class FExecution(FSerializable, FSerializer):
             appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, 
                     settings, isAnimated)
 
-    def Conclude(self, filename, crashIndices):
-        self.__crashIndices = crashIndices
+    def Judge(self, filename, testProcedure, testId):
         
-        for logLocation in self.__logLocations:
-            errors, warnings = self.__ParseLog(logLocation)
-            self.__errorCounts.append(errors)
-            self.__warningCounts.append(warnings)
-        
+        # Execute the validation steps first.
         for step in self.__validationList:
             if (step != 0):
                 lastOutputs = self.GetOutputLocation(step - 1)
                 if (lastOutputs != None):
                     # only validates the last one
-                    filename = lastOutputs[-1]
+                    documentFilename = lastOutputs[-1]
                 else:
-                    filename = None
+                    documentFilename = None
             
-            if (filename != None):
-                filename = os.path.abspath(filename)
+            if (documentFilename != None):
+                documentFilename = os.path.abspath(documentFilename)
             
             stepName = STEP_PREFIX + str(step)
             outDir = os.path.abspath(
@@ -330,9 +346,9 @@ class FExecution(FSerializable, FSerializer):
                 print "<FExecution> could not make the step directory"
                 print e
             
-            if ((filename != None) and 
-                    (FUtils.GetExtension(filename).lower() == "dae")):
-                os.system("SchemaValidate.exe \"" + filename + "\" \"" + 
+            if ((documentFilename != None) and 
+                    (FUtils.GetExtension(documentFilename).lower() == "dae")):
+                os.system("SchemaValidate.exe \"" + documentFilename + "\" \"" + 
                         SCHEMA_LOCATION + "\" \"" + SCHEMA_NAMESPACE + 
                         "\" \"" + logAbsFilename + "\"")
             else:
@@ -345,6 +361,70 @@ class FExecution(FSerializable, FSerializer):
             errors, warnings = self.__ParseValidation(logAbsFilename)
             self.__errorCounts[step] = errors
             self.__warningCounts[step] = warnings
+        
+        # Look for a judging script
+        scriptFilename = FUtils.ChangeExtension(filename, "py")
+        try:
+            # Set-up the judging script context.
+            context = { 'testId':testId, 'testProcedure':testProcedure, 'log':"" }
+
+            if (os.path.exists(scriptFilename)):
+                
+                # Parse, compile and execute the judging script.
+                judgingDictionary = { 'testProducedure' : testProcedure, 'judgingObject' : None };
+                execfile(scriptFilename, judgingDictionary, judgingDictionary);
+                if (judgingDictionary['judgingObject'] != None):
+                    
+                    # We have a juding object.
+                    # Look for and process all the wanted badge levels.
+                    for i in range(len(FGlobals.badgeLevels)):
+                        badgeLevel = FGlobals.badgeLevels[i]
+                        judgingLevel = "Judge" + badgeLevel
+                        if (judgingDictionary['judgingObject'].__class__.__dict__.has_key(judgingLevel)):
+                            if (callable(judgingDictionary['judgingObject'].__class__.__dict__[judgingLevel])):
+
+                                context['log'] = "" # Restart the log...
+
+                                # Run this judging function.
+                                judgement = judgingDictionary['judgingObject'].__class__.__dict__[judgingLevel](judgingDictionary['judgingObject'], context)
+
+                                # Process the judgement
+                                if judgement: self.__judgingResults[badgeLevel] = FJudgement.PASSED
+                                else: self.__judgingResults[badgeLevel] = FJudgement.FAILED
+                                if len(context['log']) > 0: self.__judgingLogs[badgeLevel] = context['log']
+                                elif judgement: self.__judgingLogs[badgeLevel] = "Judgement passed."
+                                else: self.__judgingLogs[badgeLevel] = "Judgement failed."
+                                
+                            else:
+                                self.__judgingResults[badgeLevel] = FJudgement.MISSING_DATA
+                                self.__judgingLogs[badgeLevel] = "Invalid judging script. '" + judgingLevel + "' is not a function."
+                        else:
+                            self.__judgingResults[badgeLevel] = FJudgement.NO_SCRIPT
+                            self.__judgingLogs[badgeLevel] = "Judging script does not include the '" + badgeLevel + "' badge."
+                else:
+                    for i in range(len(FGlobals.badgeLevels)):
+                        badgeLevel = FGlobals.badgeLevels[i]
+                        self.__judgingResults[badgeLevel] = FJudgement.MISSING_DATA
+                        self.__judgingLogs[badgeLevel] = "Invalid judging script. Did not create the judging object."
+            else:
+                for i in range(len(FGlobals.badgeLevels)):
+                    badgeLevel = FGlobals.badgeLevels[i]
+                    self.__judgingResults[badgeLevel] = FJudgement.NO_SCRIPT
+                    self.__judgingLogs[badgeLevel] = "No judging script provided."
+            
+        except Exception, e:
+            print "------------------------------------------------------------"
+            print "<FExecution> could not run judging script: '" + os.path.basename(scriptFilename) + "'."
+            print "Error message: '", e, "'."
+        
+
+    def Conclude(self, filename, crashIndices):
+        self.__crashIndices = crashIndices
+        
+        for logLocation in self.__logLocations:
+            errors, warnings = self.__ParseLog(logLocation)
+            self.__errorCounts.append(errors)
+            self.__warningCounts.append(warnings)
     
     def __ParseValidation(self, logLocation):
         if (logLocation == None): return (0, 0)

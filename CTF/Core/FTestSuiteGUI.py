@@ -128,7 +128,7 @@ class FSFrame(FTestSuite):
     
     def __OnAbout(self, e):
         message = ("Conformance Testing Framework v" + str(VERSION) +"\n\n" +
-                   "Copyright (C) 2006 Khronos Group\n" +
+                   "Copyright (C) 2006-2007 Khronos Group\n" +
                    "Available only to Khronos members.\n")
         wx.MessageDialog(self, message, "About Conformance Testing Framework", 
                          style = wx.OK).ShowModal()
@@ -176,6 +176,9 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         self.menu.SetTotal(total)
         self.menu.SetPassed(passed)
         self.menu.SetFailed(failed)
+        
+    def SetBadgesEarned(self, badgesEarned):
+        self.menu.SetBadgesEarned(badgesEarned)
     
     def __OnAnimate(self, e):
         e.Skip()

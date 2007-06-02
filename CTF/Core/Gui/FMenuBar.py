@@ -37,6 +37,7 @@ class FMenuBar(wx.MenuBar):
         self.__passedCtrl = None
         self.__failedCtrl = None
         self.__totalCtrl = None
+        self.__badgesEarnedLabel = None
         
         self.Append(self.__CreateFileMenu(), "&File")
         self.Append(self.__CreateTestMenu(), "&Test")
@@ -79,6 +80,17 @@ class FMenuBar(wx.MenuBar):
     
     def SetTotal(self, value):
         self.__totalCtrl.SetValue(str(value))
+        
+    def SetBadgesEarned(self, badgesEarned):
+        badgesEarnedCount = len(badgesEarned)
+        if (badgesEarnedCount == 0):
+            self.__badgesEarnedLabel.SetLabel("  No badges earned.")
+        else:
+            text = "  Badges earned: "
+            for i in range(badgesEarnedCount):
+                text += badgesEarned[i]
+                if (i < badgesEarnedCount - 1): text += ", "
+            self.__badgesEarnedLabel.SetLabel(text)
     
     def __DisableAll(self):
         self.Enable(FMenuBar.ID_NEW, False)
@@ -181,6 +193,9 @@ class FMenuBar(wx.MenuBar):
                 size = (40, -1), style = wx.TE_READONLY)
         self.__failedCtrl.SetBackgroundColour(wx.Color(255, 0, 0))
         toolbar.AddControl(self.__failedCtrl)
+        
+        self.__badgesEarnedLabel = wx.StaticText(toolbar, wx.ID_ANY, "  Badges earned - ")
+        toolbar.AddControl(self.__badgesEarnedLabel)
         
         toolbar.Realize()
         

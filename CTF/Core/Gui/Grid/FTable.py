@@ -110,15 +110,43 @@ class FTable(wx.grid.PyGridTableBase):
         
         Sets the visible columns and their ordering. columns is a list of keys
         to be shown in that order. The keys correspond to those added using 
-        AppendColumn. A KeyError is raised if invalid key.
+        AppendColumn.
+        
+        Since badge levels may be added/removed in the configuration file
+        and this information comes from the serializer, we remove any unknown
+        column key when opening the test procedure. This may result in added
+        hidden columns.
         
         """
-        for key in columns:
-            if (not (key in self.__columns.keys())):
-                raise KeyError, "No such key: " + str(key)
+
+        # Validate the columns list.
+        # 
+        # Since this information comes from a serialization
+        # and the badge levels may have changed
+        # We need to compensate for deleted/new columns.
+        columnsCount = len(columns)
+        columnsToRemove = [];
+        hasWhinedOnce = False;
+        for i in range(columnsCount):
+            if (not (columns[i] in self.__columns.keys())):
+                if (not hasWhinedOnce):
+                    print "WARNING: Grid columns have changed. Attempting to compensate."
+                    print "         File->Preferences may contain hidden columns."
+                    hasWhinedOnce = True
+                columnsToRemove.append(i)
+        for i in range(len(columnsToRemove)):
+            removing = columnsToRemove[i] - i;
+            if (removing == 0 and columnsCount > 1):
+                columns = columns[1:columnsCount]
+            elif (removing == 0):
+                columns = []
+            elif (removing == columnsCount - 1):
+                columns = columns[0:columnsCount-1]
+            else:
+                columns = columns[0:removing] + columns[removing+1:columnsCount]
         
+        # Use this (serialized) column order.
         self.__colsKey = columns
-        
         for cKey in self.__columns.keys():
             column = self.__columns[cKey]
             if (column[FTable.__POSITION] != None):

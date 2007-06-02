@@ -364,7 +364,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         
         if (callBack != None):
             callBack(appIndex, maxAppIndex, 
-                    "Creating script for steps: " + str(steps))
+                    "Creating script for steps: " + str(steps) + ".")
         appPython.BeginScript(os.path.abspath(self.__dccWorkingDir))
         
         for testId in testIds:
@@ -381,7 +381,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         
         if (callBack != None):
             callBack(appIndex, maxAppIndex, 
-                    "Running script for steps: " + str(steps))
+                    "Running script for steps: " + str(steps) + ".")
         
         return appPython.RunScript()
     
@@ -390,6 +390,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         maxAppIndex = 0
         for appIndex, stepIndex, app in self.__GetAppGenerator():
             maxAppIndex = maxAppIndex + 1
+        maxAppIndex = maxAppIndex + 1 # 1 step for the judgement
         
         if (callBack != None):
             callBack(0, maxAppIndex, "Preparing " + str(len(testIds)) + 
@@ -442,7 +443,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 
                 if (callBack != None):
                     callBack(appIndex, maxAppIndex, 
-                            "There was a crash. Checking for which case")
+                            "There was a crash. Checking for which case.")
                 
                 if (len(testIds) > 1):
                     while (True):
@@ -466,7 +467,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 
                 if (callBack != None):
                     callBack(appIndex, maxAppIndex, 
-                            "There was a crash. Rerunning")
+                            "There was a crash. Rerunning.")
                 
                 testIds = testIds[i:]
             
@@ -476,14 +477,21 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
             callBack(None, None, "Cancelling...")
             for testId in testIds:
                 self.__testList[testId].CancelRun()
-                callBack(None, None, "Reverted test" + str(testId))
+                callBack(None, None, "Reverted test" + str(testId) + ".")
             return
         
         self.__cancelRun = True
         
         if (callBack != None):
             callBack(appIndex + 1, maxAppIndex, 
-                    "Finalizing executions and performing validation steps")
+                    "Performing validation steps and judging scripts.")
+
+        for testId in testIds:
+            self.__testList[testId].Judge(self)
+
+        if (callBack != None):
+            callBack(appIndex + 2, maxAppIndex, 
+                    "Finalizing executions.")
         
         for testId in testIds:
             self.__testList[testId].Conclude(self)
@@ -491,7 +499,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
     def CancelRun(self, callBack = None):
         if (callBack != None):
             if (self.__cancelRun):
-                callBack(None, None, "Cannot canel anymore")
+                callBack(None, None, "Cannot canel anymore.")
             else:
                 callBack(None, None, "Cancelling at next available moment.")
         self.__cancelRun = True

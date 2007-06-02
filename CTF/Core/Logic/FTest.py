@@ -38,8 +38,11 @@ class FTest(FSerializable, FSerializer):
         for entry in os.listdir(dataSetPath):
             fullEntry = os.path.join(dataSetPath, entry)
             if (os.path.isfile(fullEntry)):
-                if (FUtils.GetProperFilename(fullEntry) == 
-                        os.path.basename(dataSetPath)):
+
+                # Don't grab the python post-processing script,
+                # but any other file with the same name as the last folder.
+                if (FUtils.GetExtension(fullEntry).upper() != "PY" and
+                        FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
                     self.__filename = fullEntry
                 elif (entry == DATA_SET_COMMENTS):
                     f = open(os.path.join(dataSetPath, entry))
@@ -48,6 +51,7 @@ class FTest(FSerializable, FSerializer):
                         self.__dataSetComments = self.__dataSetComments + line
                         line = f.readline()
                     f.close()
+                    
         if (self.__filename == None):
             raise ValueError, "Invalid Data Set: " + dataSetPath
         
@@ -853,6 +857,9 @@ class FTest(FSerializable, FSerializer):
     def Crash(self, step):
         self.__crashIndices.append(step)
     
+    def Judge(self, testProcedure):
+        self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
+
     def Conclude(self, testProcedure):
         self.__beforePreviousExecution = None
         self.__currentExecution.Conclude(self.__filename, self.__crashIndices)

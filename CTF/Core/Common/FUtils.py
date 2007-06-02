@@ -27,6 +27,41 @@ def GetExtension(filename):
     except IndexError, e:
         return ""
 
+def ChangeExtension(filename, newExtension):
+    """ChangeExtension(filename, newExtension) -> str
+    
+    Replaces the extension of the filename with the given one.
+    If the given filename has no extension, the new extension is
+    simply appended.
+    
+    arguments:
+        filename
+            string corresponding to the filename whose extension to change.
+        newExtension
+            string corresponding to the new extension to append. Do not
+                prepend with a period ('.').
+    
+    returns:
+        string corresponding to the new filename.
+    
+    """
+    try:
+        # Isolate the filename
+        slashIndex = filename.rfind('/')
+        backslashIndex = filename.rfind('\\')
+        if (backslashIndex > slashIndex):
+            slashIndex = backslashIndex;
+
+        # Look for an existing extension
+        periodIndex = filename.rfind('.')
+        if (periodIndex > slashIndex):
+            return filename[0 : periodIndex] + "." + newExtension
+        else:
+            return filename + "." + newExtension
+        
+    except IndexError, e:
+        return ""
+
 def GetProperFilename(filename):
     """GetProperFilename(filename) -> str
     

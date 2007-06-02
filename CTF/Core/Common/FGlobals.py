@@ -4,3 +4,6 @@
 
 # FImageComparator used by CTF; should be set to a value when CTF is loaded.
 imageComparator = None
+
+# The list of badge levels to judge and consider
+badgeLevels = []

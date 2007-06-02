@@ -15,6 +15,7 @@ class FTestSuite(FSerializer):
     def __init__(self):
         FSerializer.__init__(self)
         
+        # Read in and parse the configuration file.
         configDict = {}
         if (os.path.isfile(CONFIGURATION_FILE)):
             f = open(CONFIGURATION_FILE)
@@ -30,6 +31,15 @@ class FTestSuite(FSerializer):
                 configDict[key] = value[:-1] # remove \n
                 line = f.readline()
             f.close
+            
+        # Further parse the badge levels configuration.
+        if (not configDict.has_key("badgeLevels")):
+            configDict["badgeLevels"] = "Basic"
+        
+        FGlobals.badgeLevels = configDict["badgeLevels"].split(",")
+        for level in range(len(FGlobals.badgeLevels)):
+            # Strip extra whitespaces and enforce title-case.
+            FGlobals.badgeLevels[level] = FGlobals.badgeLevels[level].strip().title()
         
         # import the application specific scripts
         self.applicationMap = {}

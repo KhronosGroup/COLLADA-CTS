@@ -4,6 +4,7 @@
 
 import os.path
 import cPickle
+import Core.Common.FGlobals as FGlobals
 
 from Core.Gui.Dialog.FPreferenceDialog import *
 from Core.Gui.Grid.FCommentsEditor import *
@@ -15,6 +16,7 @@ from Core.Gui.Grid.FImageData import *
 from Core.Gui.Grid.FImageRenderer import *
 from Core.Gui.Grid.FLogRenderer import *
 from Core.Gui.Grid.FResultRenderer import *
+from Core.Gui.Grid.FJudgementRenderer import *
 from Core.Gui.Grid.FTimeRenderer import *
 from Core.Gui.Grid.FValidationRenderer import *
 
@@ -33,6 +35,7 @@ class FExecutionGrid(FGrid):
     __DATA_SET_COMMENTS = 12
     __TEST_ID = 13
     __NEXT_KEY = 14
+    __BADGE_START = 200
     
     __COLUMNS = { __FILENAME : ("Test Filename", 100),
                 __ANNOTATIONS : ("Comments", 100),
@@ -74,6 +77,7 @@ class FExecutionGrid(FGrid):
         self.__outputsImageRenderers = []
         self.__outputsValidationRenderers = []
         self.__resultRenderer = None
+        self.__judgementRenderer = None
         self.__logRenderer = None
         self.__environmentRenderer = None
         self.__commentsRenderer = None
@@ -276,6 +280,7 @@ class FExecutionGrid(FGrid):
         self.__outputsImageRenderers = []
         self.__outputsValidationRenderers = []
         self.__resultRenderer = FResultRenderer()
+        self.__judgementRenderer = FJudgementRenderer()
         self.__logRenderer = FLogRenderer()
         self.__environmentRenderer = FEnvironmentRenderer()
         self.__commentsRenderer = FEditableCommentsRenderer()
@@ -301,7 +306,7 @@ class FExecutionGrid(FGrid):
         for step, app, op, setting in self.__testProcedure.GetStepGenerator():
             if (op == VALIDATE):
                 title = "<" + str(step) + "> " + op
-                if op in OPS_NEEDING_APP:
+                if (app != None) and (op in OPS_NEEDING_APP):
                     title = title + " (" + app + ")"
                 outputRenderer = FValidationRenderer()
                 self.__outputsValidationRenderers.append(outputRenderer)
@@ -313,11 +318,17 @@ class FExecutionGrid(FGrid):
                 self.__outputsImageRenderers.append(outputRenderer)
                 self.__outputKeys.append(FExecutionGrid.__NEXT_KEY + step)
             self.__AddColumn(FExecutionGrid.__NEXT_KEY + step, (title, 150), 
-                             outputRenderer)
-        
+                    outputRenderer)
+            
         self.__AddColumn(FExecutionGrid.__RESULT, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__RESULT], 
                 self.__resultRenderer)
+
+        for i in range(len(FGlobals.badgeLevels)):
+            self.__AddColumn(FExecutionGrid.__BADGE_START + i,
+                (FGlobals.badgeLevels[i] + " badge", 20),
+                self.__judgementRenderer)
+
         self.__AddColumn(FExecutionGrid.__DIFFERENT, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__DIFFERENT])
         self.__AddColumn(FExecutionGrid.__LOGS, 
@@ -364,6 +375,17 @@ class FExecutionGrid(FGrid):
         passed = 0
         failed = 0
         
+        # Start with "no_script" for all the badges.
+        # "no_script" is considered positive and may be overwritten
+        # by a "passed" status if one is found in the list.
+        # For any "missing_data" or "failed", the badge earning
+        # is canceled.
+        badgesStatus = []
+        for i in range(len(FGlobals.badgeLevels)):
+            badgesStatus.append(FJudgement.NO_SCRIPT)
+        
+        # Iterate over the tests, filling in the table
+        # and processing the results.
         for id, test, execution in self.__executions:
             total = total + 1
             
@@ -432,6 +454,26 @@ class FExecutionGrid(FGrid):
                                        execution.GetLog(step),
                                        test,
                                        execution.GetExecutionDir()))
+                                       
+            # Judgement for badge levels
+            for i in range(len(FGlobals.badgeLevels)):
+                badgeName = FGlobals.badgeLevels[i]
+                badgeResult = execution.GetJudgementResult(badgeName)
+                oldResult = badgesStatus[i]
+                badgeExecutionLog = execution.GetJudgementLog(badgeName)
+                
+                # Render the judgement information
+                self.InsertData(id, FExecutionGrid.__BADGE_START + i, FJudgement(badgeResult, badgeExecutionLog))
+                
+                # Process the judgement information to find badges earned.
+                if (oldResult == FJudgement.NO_SCRIPT):
+                    # No script is overwritten by everything else
+                    badgesStatus[i] = badgeResult 
+                elif (oldResult == FJudgement.PASSED and
+                        (badgeResult == FJudgement.MISSING_DATA or badgeResult == FJudgement.FAILED)):
+                    # "Passed" can be overwritten by one of the negative judgements.
+                    badgesStatus[i] = badgeResult
+                
             
             self.InsertData(id, FExecutionGrid.__DIFFERENT, 
                             execution.GetDiffFromPrevious())
@@ -448,7 +490,19 @@ class FExecutionGrid(FGrid):
                     passed = passed + 1
                 else:
                     failed = failed + 1
-        
+
         if (not self.__simplified):
             self.GetParent().SetStatistics(total, passed, failed)
+        
+        # Process the badges status, looking for earned badges.
+        badgesEarned = []
+        for i in range(len(FGlobals.badgeLevels)):
+            badgeStatus = badgesStatus[i]
+            if (badgeStatus == FJudgement.PASSED):
+                # To get here, the execution grid must contain at
+                # least one PASSED and zero or more NO_SCRIPTs.
+                badgesEarned.append(FGlobals.badgeLevels[i])
+
+        if (not self.__simplified):
+            self.GetParent().SetBadgesEarned(badgesEarned)
     
