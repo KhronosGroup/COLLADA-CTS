@@ -369,9 +369,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
             testObject = os.path.join(relProcedureDir, entry, TEST_FILENAME)
             if (os.path.isfile(testObject)):
                 test = self.Load(testObject)
-                testList.append(
-                        (test.GetCategory() + "/" + test.GetSubcategory() + "/"
-                                + test.GetBaseFilename(), entry))
+                testList.append((test.GetSeparatedFilename(),entry))
         testList.sort()
         self.__curTest = None
         self.__testCombo.Clear()

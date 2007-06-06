@@ -396,9 +396,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
     def __DisplayDeleteTestMessage(self, keys, message):
         for key in keys:
             test = self.__testProcedure.GetTest(key)
-            message = (message + "    " + test.GetCategory() + "/" +
-                    test.GetSubcategory() + "/" + test.GetBaseFilename() + 
-                    "\n")
+            message = (message + "    " + test.GetSeparatedFilename() + "\n")
         return FUtils.ShowConfirmation(self, message, True)
     
     def __OnReload(self, e):
@@ -416,9 +414,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                    "following tests?\n")
         for key in keys:
             test = self.__testProcedure.GetTest(key)
-            message = (message + "    " + test.GetCategory() + "/" +
-                       test.GetSubcategory() + "/" + test.GetBaseFilename() + 
-                       "\n")
+            message = (message + "    " + test.GetSeparatedFilename() + "\n")
         if (FUtils.ShowConfirmation(self, message, True)):
             changed = False
             for key in keys:
