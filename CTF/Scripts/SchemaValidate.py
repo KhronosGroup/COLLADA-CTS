@@ -77,8 +77,8 @@ class SchemaValidate (FApplication):
         Implements FApplication.RunScript()
         
         """
-        if (not os.path.isfile(self.configDict["coherencyPath"])):
-            print "Coherency Checker does not exist"
+        if (not os.path.isfile(self.configDict["schemaValidatePath"])):
+            print "MSXML 6.0 does not exist"
             return True
         
         print ("start running " + os.path.basename(self.__script.name))

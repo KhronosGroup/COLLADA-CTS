@@ -127,7 +127,7 @@ class CoherencyTest (FApplication):
         self.__script.write(change_dir_string)
 
         # Write the executing command: >>CoherencyTestPath file
-        command = ("\"" + self.configDict["coherencyPath"]+ "\" ")
+        command = ("\"" + os.path.abspath(self.configDict["coherencyPath"])+ "\" ")
         command = (command + "\"" + os.path.basename(filename) + "\"")
         
         ignore_all = True
