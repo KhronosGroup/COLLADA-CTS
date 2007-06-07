@@ -17,7 +17,10 @@ class FMax (FApplication):
     on other versions.
     
     """
-
+    
+    __IMPORT_OPTIONS = [("Import Units", "importUnits","1"),
+                        ("Import Up-axis", "importUpAxis", "1")]
+    
     __RENDER_ANIMATION_START = "Animation Start Frame"
     __RENDER_ANIMATION_END = "Animation End Frame"
     __RENDER_ANIMATION_STEP = "Animation Step Interval"
@@ -40,21 +43,19 @@ class FMax (FApplication):
             ("Progress Bar", "progressbar", "false"),
             ("Anti-Aliasing", "antiAliasing", "false"),
             ("Enable Pixel Sampler", "enablePixelSampler", "false"),
-            ("Quite", "quiet", "true"),
+            ("Quiet", "quiet", "true"),
             ("Radiosity", "useRadiosity", "false"),
             ("Dither True Color", "ditherTrueColor", "false"),
             ("Dither Paletted", "ditherPaletted", "false")]
     
     __EXPORT_OPTIONS = [("Normals", "normals","1"),
                         ("Triangles", "triangles", "1"),
-                        ("XRefs", "xrefs", "1"),
-                        ("Tangents", "tangents", "0"),
-                        ("Sample animation", "sampleAnim", "0"),
-                        ("Single <animation>", "singleAnim", "1"),
+                        ("XRefs", "xrefs", "0"),
+                        ("Tangents", "tangents", "1"),
+                        ("Enable Animations", "animations", "1"),
+                        ("Sample Animation", "sampleAnim", "0"),
+                        ("Create Animation Clip", "createClip", "0"),
                         ("Bake Matrices", "bakeMatrices", "0"),
-                        ("Y Up", "convertYUp", "0"),
-                        ("Object Space", "objectSpace", "1"),
-                        ("Fixed FX", "mixedFX", "0"),
                         ("Relative Paths", "relativePaths", "1"),
                         ("Animation Start", "animStart", "0"),
                         ("Animation End", "animEnd", "100")]
@@ -84,7 +85,10 @@ class FMax (FApplication):
         
         """
         if (operation == IMPORT):
-            return []
+            options = []
+#            for entry in FMax.__IMPORT_OPTIONS:
+#                options.append(FSettingEntry(*entry))
+            return options
         elif (operation == EXPORT):
             options = []
             for entry in FMax.__EXPORT_OPTIONS:
