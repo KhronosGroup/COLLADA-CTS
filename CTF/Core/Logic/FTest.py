@@ -91,8 +91,8 @@ class FTest(FSerializable, FSerializer):
         self.__UpdateExecution()
         
         # Backward compatibility: if they are missing, read in the keyword/comment from the DAE document.
-        if (not self.__dict__.has_key("__colladaKeyword")
-            or not self.__dict__.has_key("__colladaComment")):
+        if (not self.__dict__.has_key("_FTest__colladaKeyword")
+            or not self.__dict__.has_key("_FTest__colladaComment")):
             if FCOLLADAParser.IsCOLLADADocument(self.__filename):
                 (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
             else:

@@ -82,15 +82,10 @@ class FMenuBar(wx.MenuBar):
         self.__totalCtrl.SetValue(str(value))
         
     def SetBadgesEarned(self, badgesEarned):
-        badgesEarnedCount = len(badgesEarned)
-        if (badgesEarnedCount == 0):
-            self.__badgesEarnedLabel.SetLabel("  No badges earned.")
+        if (len(badgesEarned) > 0):
+            self.__badgesEarnedLabel.SetLabel("   Badges earned: " + badgesEarned + ".")
         else:
-            text = "  Badges earned: "
-            for i in range(badgesEarnedCount):
-                text += badgesEarned[i]
-                if (i < badgesEarnedCount - 1): text += ", "
-            self.__badgesEarnedLabel.SetLabel(text)
+            self.__badgesEarnedLabel.SetLabel("   No badges earned.")
     
     def __DisableAll(self):
         self.Enable(FMenuBar.ID_NEW, False)

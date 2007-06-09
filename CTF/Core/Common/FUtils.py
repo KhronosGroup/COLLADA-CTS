@@ -5,7 +5,10 @@
 import os.path
 import wx
 import string
+import sha as SHA1
+import sys
 
+from stat import *
 from Core.Gui.Dialog.FConfirmationDialog import *
 from Core.Gui.Dialog.FWarningDialog import *
 
@@ -373,6 +376,57 @@ def NormalizeRegEx(regEx):
     regEx = regEx.replace("(", "\\(")
     regEx = regEx.replace(")", "\\)")
     return regEx
+    
+def CalculateChecksum(filename):
+    """ CalculateChecksum(filename) -> str
+    
+    Calculates the SHA checksum of a file.
+    This is used to authenticate the adopter's test suite.
+    
+    returns:
+        string of the checksum for the given file.
+        
+    """
+    file = open(filename, "rb")
+    checksumCalculator = SHA1.new()
+    for line in file:
+        checksumCalculator.update(line)
+    file.close()
+    return checksumCalculator.hexdigest()
+    
+def CalculateSuiteChecksum():
+    """ CalculateSuiteChecksum() -> str
+    
+    Calculates a checksum for every core python script file
+    in the test framework.
+    
+    return:
+        string of the checksums for the test framework script files.
+
+    """
+    
+    checksum = ""
+    queue = ["."]
+    while (len(queue) > 0):
+        path = queue[-1]
+        queue.pop()
+        
+        for dirEntry in os.listdir(path):
+            pathname = os.path.join(path, dirEntry)
+            mode = os.stat(pathname)[ST_MODE]
+            if S_ISDIR(mode):
+                if (pathname.find(".svn") == -1):
+                    # Add this path to our queue.
+                    # Avoid useless iterations by avoiding the .svn folder.
+                    queue.append(pathname)
+            elif S_ISREG(mode):
+                    # Process all python script files, except for the __init__.py ones.
+                if (GetExtension(pathname).lower() == "py" and
+                        pathname.find("__init__") == -1):
+                    checksum += CalculateChecksum(pathname) + "\n"
+
+    return checksum + "----\n"
+
 
 # NOTE: might be useful in future
 #def UniqueList(list):

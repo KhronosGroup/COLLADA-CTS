@@ -19,6 +19,7 @@ from Core.Gui.Grid.FResultRenderer import *
 from Core.Gui.Grid.FJudgementRenderer import *
 from Core.Gui.Grid.FTimeRenderer import *
 from Core.Gui.Grid.FValidationRenderer import *
+from Core.Logic.FJudgementCompiler import *
 
 class FExecutionGrid(FGrid):
     __FILENAME = 1
@@ -373,14 +374,7 @@ class FExecutionGrid(FGrid):
         passed = 0
         failed = 0
         
-        # Start with "no_script" for all the badges.
-        # "no_script" is considered positive and may be overwritten
-        # by a "passed" status if one is found in the list.
-        # For any "missing_data" or "failed", the badge earning
-        # is canceled.
-        badgesStatus = []
-        for i in range(len(FGlobals.badgeLevels)):
-            badgesStatus.append(FJudgement.NO_SCRIPT)
+        judgementCompiler = FJudgementCompiler()
         
         # Iterate over the tests, filling in the table
         # and processing the results.
@@ -449,30 +443,18 @@ class FExecutionGrid(FGrid):
             for i in range(len(FGlobals.badgeLevels)):
                 badgeName = FGlobals.badgeLevels[i]
                 badgeResult = execution.GetJudgementResult(badgeName)
-                oldResult = badgesStatus[i]
                 badgeExecutionLog = execution.GetJudgementLog(badgeName)
                 
-                # Render the judgement information
+                # Process and render the judgement information
                 self.InsertData(id, FExecutionGrid.__BADGE_START + i, FJudgement(badgeResult, badgeExecutionLog))
-                
-                # Process the judgement information to find badges earned.
-                if (oldResult == FJudgement.NO_SCRIPT):
-                    # No script is overwritten by everything else
-                    badgesStatus[i] = badgeResult 
-                elif (oldResult == FJudgement.PASSED and
-                        (badgeResult == FJudgement.MISSING_DATA or badgeResult == FJudgement.FAILED)):
-                    # "Passed" can be overwritten by one of the negative judgements.
-                    badgesStatus[i] = badgeResult
-                
+                judgementCompiler.ProcessJudgement(i, badgeResult)
             
-            self.InsertData(id, FExecutionGrid.__DIFFERENT, 
-                            execution.GetDiffFromPrevious())
-            self.InsertData(id, FExecutionGrid.__RESULT, 
-                            (execution.GetResult(), execution))
+            # Display the environment columns
+            self.InsertData(id, FExecutionGrid.__DIFFERENT, execution.GetDiffFromPrevious())
+            self.InsertData(id, FExecutionGrid.__RESULT, (execution.GetResult(), execution))
             self.InsertData(id, FExecutionGrid.__LOGS, logs)
             self.InsertData(id, FExecutionGrid.__TIME, execution.GetTimeRan())
-            self.InsertData(id, FExecutionGrid.__ENVIRONMENT, 
-                            execution.GetEnvironment())
+            self.InsertData(id, FExecutionGrid.__ENVIRONMENT, execution.GetEnvironment())
             
             result = execution.GetResult()
             if (result != None):
@@ -483,16 +465,5 @@ class FExecutionGrid(FGrid):
 
         if (not self.__simplified):
             self.GetParent().SetStatistics(total, passed, failed)
-        
-        # Process the badges status, looking for earned badges.
-        badgesEarned = []
-        for i in range(len(FGlobals.badgeLevels)):
-            badgeStatus = badgesStatus[i]
-            if (badgeStatus == FJudgement.PASSED):
-                # To get here, the execution grid must contain at
-                # least one PASSED and zero or more NO_SCRIPTs.
-                badgesEarned.append(FGlobals.badgeLevels[i])
-
-        if (not self.__simplified):
-            self.GetParent().SetBadgesEarned(badgesEarned)
+            self.GetParent().SetBadgesEarned(judgementCompiler.GenerateStatement())
     

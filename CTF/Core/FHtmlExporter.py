@@ -9,7 +9,10 @@ import types
 import time
 
 import Core.Common.FUtils as FUtils
+import Core.Common.FGlobals as FGlobals
 from Core.Common.FConstants import *
+from Core.Logic.FJudgement import *
+from Core.Logic.FJudgementCompiler import *
 
 class FHtmlExporter:
     __REPLACE_TEST_PROCEDURE_COUNT = "???Replace with test procedure count???"
@@ -18,6 +21,7 @@ class FHtmlExporter:
     __REPLACE_FAILED_COUNT = "???Replace with failed count???"
     __REPLACE_WARNINGS_COUNT = "???Replace with warnings count???"
     __REPLACE_ERRORS_COUNT = "???Replace with errors count???"
+    __REPLACE_BADGES_EARNED = "???Replace with badges earned statement???"
     
     def __init__(self):
         self.__mainDir = None
@@ -26,11 +30,15 @@ class FHtmlExporter:
         self.__failedTestsCount = 0
         self.__warningCount = 0
         self.__errorCount = 0
+        self.__judgementCompiler = FJudgementCompiler()
     
-    #path should be absolute
+    # path should be absolute
     def ToHtml(self, path, testProcedure, showBlessed, showPrevious, width,
                height, keys = None):
         file = open(path, "w")
+        checksumFilename = FUtils.ChangeExtension(path, "sha")
+        checksumFile = open(checksumFilename, "w")
+        checksumFile.write(FUtils.CalculateSuiteChecksum())
         
         file.write(
                 "<html>\n" +
@@ -71,7 +79,11 @@ class FHtmlExporter:
                 "            <td>" + FHtmlExporter.__REPLACE_ERRORS_COUNT + 
                         "</td>\n" +
                 "        </tr>\n" +
-                "    </table>\n" +
+                "        </tr>\n" +
+                "            <td>Badges earned:</td>\n" +
+                "            <td>" + FHtmlExporter.__REPLACE_BADGES_EARNED + 
+                        "</td>\n" +
+                "        </tr>\n" +                "    </table>\n" +
                 "    <br><br>\n" +
                 # TODO:take with respect to how user positions the columns
                 "    <center><table border=\"1\" cellspacing=\"0\" " +
@@ -103,11 +115,17 @@ class FHtmlExporter:
                     "                <" + str(step) + "> " + op + "(" + app + 
                             ")\n" +
                     "            </th>\n")
-        
+                    
         file.write(
                 "            <th><div style=\"width: 300\">\n" +
                 "                Result\n" +
-                "            </div></th>\n" +
+                "            </div></th>\n");
+                
+        for i in range(len(FGlobals.badgeLevels)):
+            file.write(
+                "            <th>" + FGlobals.badgeLevels[i] + "</td>")
+        
+        file.write(
                 "            <th>\n" +
                 "                Different From Previous\n" +
                 "            </th>\n" +
@@ -133,16 +151,19 @@ class FHtmlExporter:
         self.__failedTestsCount = 0
         self.__warningCount = 0
         self.__errorCount = 0
+
+        # Prepare the badges earned results.
         
+
         testCount = 0
         if (keys == None):
             for test in testProcedure.GetTestGenerator():
-                self.__AddTest(file, testProcedure, test, showBlessed, 
+                self.__AddTest(file, checksumFile, testProcedure, test, showBlessed, 
                               showPrevious, width, height)
                 testCount = testCount + 1
         else:
             for key in keys:
-                self.__AddTest(file, testProcedure, testProcedure.GetTest(key), 
+                self.__AddTest(file, checksumFile, testProcedure, testProcedure.GetTest(key), 
                                showBlessed, showPrevious, width, height)
                 testCount = testCount + 1
         
@@ -151,21 +172,19 @@ class FHtmlExporter:
                 "</body>\n" +
                 "</html>\n")
         file.close()
+        checksumFile.close()
         
-        
-        
+        # Replace the statement tokens by their real values.
+        badgesEarnedStatement = self.__judgementCompiler.GenerateStatement()
+        if (len(badgesEarnedStatement) == 0): badgesEarnedStatement = "None"
         replaceDict = {
-                FHtmlExporter.__REPLACE_TEST_PROCEDURE_COUNT : 
-                        str(testProcedure.GetTestCount()),
+                FHtmlExporter.__REPLACE_TEST_PROCEDURE_COUNT : str(testProcedure.GetTestCount()),
                 FHtmlExporter.__REPLACE_HTML_COUNT : str(testCount),
-                FHtmlExporter.__REPLACE_PASSED_COUNT : 
-                        str(self.__passedTestsCount),
-                FHtmlExporter.__REPLACE_FAILED_COUNT : 
-                        str(self.__failedTestsCount),
-                FHtmlExporter.__REPLACE_WARNINGS_COUNT : 
-                        str(self.__warningCount),
-                FHtmlExporter.__REPLACE_ERRORS_COUNT : 
-                        str(self.__errorCount)}
+                FHtmlExporter.__REPLACE_PASSED_COUNT : str(self.__passedTestsCount),
+                FHtmlExporter.__REPLACE_FAILED_COUNT : str(self.__failedTestsCount),
+                FHtmlExporter.__REPLACE_WARNINGS_COUNT : str(self.__warningCount),
+                FHtmlExporter.__REPLACE_ERRORS_COUNT : str(self.__errorCount),
+                FHtmlExporter.__REPLACE_BADGES_EARNED : badgesEarnedStatement }
         
         tempFilename = FUtils.GetAvailableFilename(path + ".temp")
         f = open(tempFilename, "w")
@@ -426,7 +445,7 @@ class FHtmlExporter:
                     exportedList.append(None)
         return exportedList
     
-    def __AddTest(self, file, testProcedure, test, 
+    def __AddTest(self, file, checksumFile, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
         file.write(
                 "        <tr>\n" +
@@ -477,6 +496,7 @@ class FHtmlExporter:
             file.write(self.__GetOutputTag(exportedDir, test, step,
                     exportedBlessed, showBlessed, showPrevious, width, height))
         
+        # Write out the local results.
         result = test.GetCurrentResult()
         if (result == None):
             resultTag = "            <td>\n"
@@ -492,8 +512,27 @@ class FHtmlExporter:
             for entry in result.GetTextArray():
                 resultTag = (resultTag + "                &nbsp;" + entry + 
                              "<br>\n")
-        resultTag = resultTag + "            </td>\n"
+        file.write(resultTag + "            </td>\n")
+
+        # Write out the judging results
+        execution = test.GetCurrentExecution()
+        for i in range(len(FGlobals.badgeLevels)):
+            if (execution == None):
+                file.write("            <td>NO EXECUTION</td>")
+            else:
+                badgeLevel = FGlobals.badgeLevels[i]
+                badgeResult = execution.GetJudgementResult(badgeLevel)
+                self.__judgementCompiler.ProcessJudgement(i, badgeResult)
+                if (badgeResult == FJudgement.PASSED):
+                    file.write("            <td>PASSED</td>")
+                elif (badgeResult == FJudgement.FAILED):
+                    file.write("            <td>FAILED</td>")
+                elif (badgeResult == FJudgement.MISSING_DATA):
+                    file.write("            <td>MISSING DATA</td>")
+                elif (badgeResult == FJudgement.NO_SCRIPT):
+                    file.write("            <td>NO SCRIPT</td>")
         
+        # Write out the environment information
         if (test.GetCurrentTimeRan() == None):
             timeString = "&nbsp;"
         else:
@@ -516,7 +555,6 @@ class FHtmlExporter:
             comments = "&nbsp;"
         
         file.write(
-                resultTag +
                 "            <td>\n" +
                 "                " + diff + "\n" +
                 "            </td>\n" +
@@ -530,3 +568,9 @@ class FHtmlExporter:
                 "                " + comments + "\n" +
                 "            </td>\n" +
                 "        </tr>\n")
+                
+        # Append checksum.
+        if (execution != None):
+            checksum = execution.GetChecksum()
+            checksumFile.write(checksum + "\n")
+

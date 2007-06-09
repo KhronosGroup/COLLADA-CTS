@@ -42,6 +42,7 @@ class FExecution(FSerializable, FSerializer):
         self.__crashIndices = []
         self.__judgingResults = {}
         self.__judgingLogs = {}
+        self.__checksum = ""
 
     # executionDir must be absolute path and it should be empty!
     def Clone(self, executionDir):
@@ -56,6 +57,7 @@ class FExecution(FSerializable, FSerializer):
         newExecution.__crashIndices = self.__crashIndices
         newExecution.__judgingResults = self.__judgingResults
         newExecution.__judgingLogs = self.__judgingLogs
+        newExecution.__checksum = self.__checksum
         newExecution.__ResetOutputLocations()
         newExecution.__ResetLogLocations()
         
@@ -76,6 +78,7 @@ class FExecution(FSerializable, FSerializer):
         if (self.__environment != other.__environment): return False
         if (self.__crashIndices != other.__crashIndices): return False
         if (self.__judgingResults != other.__judgingResults): return False
+        if (self.__checksum != other.__checksum): return False
         
         # Do not compare judging logs.
         # Do not compare time ran.
@@ -154,8 +157,9 @@ class FExecution(FSerializable, FSerializer):
 
         # For backward compatibility: if the judging information is missing, create
         # empty dictionaries.
-        if (not self.__dict__.has_key("__judgingResults")): self.__judgingResults = {}
-        if (not self.__dict__.has_key("__judgingLogs")): self.__judgingLogs = {}
+        if not self.__dict__.has_key("_FExecution__judgingResults"): self.__judgingResults = {}
+        if not self.__dict__.has_key("_FExecution__judgingLogs"): self.__judgingLogs = {}
+        if not self.__dict__.has_key("_FExecution__checksum"): self.__checksum = ""
         
         if (self.__executionDir == os.path.dirname(filename)): return
         
@@ -231,6 +235,9 @@ class FExecution(FSerializable, FSerializer):
     
     def GetComments(self):
         return self.__comments
+        
+    def GetChecksum(self):
+        return self.__checksum
     
     def SetComments(self, comments):
         self.__comments = comments
@@ -245,8 +252,8 @@ class FExecution(FSerializable, FSerializer):
         if (self.__judgingResults.has_key(badge)):
             return self.__judgingResults[badge]
         else:
-			# This is negative in order to force the adopter to
-			# run the appropriate test all at once.
+            # This is negative in order to force the adopter to
+            # run the appropriate test all at once.
             return FJudgement.MISSING_DATA
             
     def GetJudgementLog(self, badge):
@@ -259,7 +266,7 @@ class FExecution(FSerializable, FSerializer):
         if (self.__validationList.count(step) == 0):
             self.__validationList.append(step)
             self.__AddOutputLocation(step, None, None)
-    
+                
     def __InitializeRun(self, appPython, step, op, inStep, filename, settings, 
                         isAnimated):
         stepName = STEP_PREFIX + str(step)
@@ -299,9 +306,13 @@ class FExecution(FSerializable, FSerializer):
         self.__AddOutputLocation(step, output, logFilename)
     
     def Run(self, appPython, step, op, inStep, filename, settings, isAnimated):
+        # First run: calculate the check-sum.
+        if (len(self.__checksum) == 0):
+            self.__checksum = FUtils.CalculateChecksum(filename)
+        
+        # Run the test steps.
         if (self.__initializedSteps.count(step) == 0):
-            self.__InitializeRun(appPython, step, op, inStep, filename,
-                    settings, isAnimated)
+            self.__InitializeRun(appPython, step, op, inStep, filename, settings, isAnimated)
             self.__initializedSteps.append(step)
         else:
             stepName = STEP_PREFIX + str(step)
@@ -401,6 +412,10 @@ class FExecution(FSerializable, FSerializer):
                         else:
                             self.__judgingResults[badgeLevel] = FJudgement.NO_SCRIPT
                             self.__judgingLogs[badgeLevel] = "Judging script does not include the '" + badgeLevel + "' badge."
+                        
+                    # We need that checksum too!
+                    self.__checksum += "\n" + FUtils.CalculateChecksum(scriptFilename)
+                    
                 else:
                     for i in range(len(FGlobals.badgeLevels)):
                         badgeLevel = FGlobals.badgeLevels[i]

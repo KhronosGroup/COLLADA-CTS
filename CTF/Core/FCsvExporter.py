@@ -11,6 +11,8 @@ import time
 
 import Core.Common.FUtils as FUtils
 from Core.Common.FConstants import *
+from Core.Logic.FJudgement import *
+from Core.Logic.FJudgementCompiler import *
 
 class FCsvExporter:
     __REPLACE_TEST_PROCEDURE_COUNT = "???Replace with test procedure count???"
@@ -19,6 +21,7 @@ class FCsvExporter:
     __REPLACE_FAILED_COUNT = "???Replace with failed count???"
     __REPLACE_WARNINGS_COUNT = "???Replace with warnings count???"
     __REPLACE_ERRORS_COUNT = "???Replace with errors count???"
+    __REPLACE_BADGES_EARNED = "???Replace with badges earned statement???"
     
     def __init__(self):
         self.__mainDir = None
@@ -27,11 +30,14 @@ class FCsvExporter:
         self.__failedTestsCount = 0
         self.__warningCount = 0
         self.__errorCount = 0
-    
+        self.__judgementCompiler = FJudgementCompiler()
+
     #path should be absolute
     def ToCsv(self, path, testProcedure, showBlessed, showPrevious, width,
                height, keys = None):
         file = open(path, "w")
+        checksumFile = open(FUtils.ChangeExtension(path, "sha"), "w")
+        checksumFile.write(FUtils.CalculateSuiteChecksum())
         
         file.write("\nTest Procedure:,%s\n\n" % (testProcedure.GetName()))    
         file.write("Statistics: \n" +
@@ -40,14 +46,18 @@ class FCsvExporter:
                 "# of tests passed:," + FCsvExporter.__REPLACE_PASSED_COUNT + "\n" + 
                 "# of tests failed:," + FCsvExporter.__REPLACE_FAILED_COUNT + "\n" + 
                 "# of tests warning:," + FCsvExporter.__REPLACE_WARNINGS_COUNT + "\n" + 
-                "# of tests errors:," + FCsvExporter.__REPLACE_ERRORS_COUNT + "\n\n")
+                "# of tests errors:," + FCsvExporter.__REPLACE_ERRORS_COUNT + "\n" +
+                "Badges earned:," + FCsvExporter.__REPLACE_BADGES_EARNED + "\n\n")
         file.write("Category,Subcategory,Test Filename,Blessed,")    
         for step, app, op, settings in testProcedure.GetStepGenerator():
             if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 file.write("<" + str(step) + ">" + " " + op + ",")
             else:
                 file.write("<" + str(step) + ">" + " " + op + " (" + app + "),")
-        file.write("Results,Different From Previous,Time,Environment,Comments\n")    
+        file.write("Results,")
+        for i in range(len(FGlobals.badgeLevels)):
+            file.write(FGlobals.badgeLevels[i] + ",")
+        file.write("Different From Previous,Time,Environment,Comments\n")    
 
         self.__filesDir = FUtils.GetProperFilename(path) + CSV_POSTFIX
         self.__filesDir = os.path.join(os.path.dirname(path), self.__filesDir)
@@ -64,31 +74,28 @@ class FCsvExporter:
         testCount = 0
         if (keys == None):
             for test in testProcedure.GetTestGenerator():
-                self.__AddTest(file, testProcedure, test, showBlessed, 
+                self.__AddTest(file, checksumFile, testProcedure, test, showBlessed, 
                               showPrevious, width, height)
                 testCount = testCount + 1
         else:
             for key in keys:
-                self.__AddTest(file, testProcedure, testProcedure.GetTest(key), 
+                self.__AddTest(file, checksumFile, testProcedure, testProcedure.GetTest(key), 
                                showBlessed, showPrevious, width, height)
                 testCount = testCount + 1
         
         file.close()
         
-        
-        
+        # Replace the statement tokens by their real values.
+        badgesEarnedStatement = self.__judgementCompiler.GenerateStatement()
+        if (len(badgesEarnedStatement) == 0): badgesEarnedStatement = "None"
         replaceDict = {
-                FCsvExporter.__REPLACE_TEST_PROCEDURE_COUNT : 
-                        str(testProcedure.GetTestCount()),
+                FCsvExporter.__REPLACE_TEST_PROCEDURE_COUNT : str(testProcedure.GetTestCount()),
                 FCsvExporter.__REPLACE_HTML_COUNT : str(testCount),
-                FCsvExporter.__REPLACE_PASSED_COUNT : 
-                        str(self.__passedTestsCount),
-                FCsvExporter.__REPLACE_FAILED_COUNT : 
-                        str(self.__failedTestsCount),
-                FCsvExporter.__REPLACE_WARNINGS_COUNT : 
-                        str(self.__warningCount),
-                FCsvExporter.__REPLACE_ERRORS_COUNT : 
-                        str(self.__errorCount)}
+                FCsvExporter.__REPLACE_PASSED_COUNT : str(self.__passedTestsCount),
+                FCsvExporter.__REPLACE_FAILED_COUNT : str(self.__failedTestsCount),
+                FCsvExporter.__REPLACE_WARNINGS_COUNT : str(self.__warningCount),
+                FCsvExporter.__REPLACE_ERRORS_COUNT : str(self.__errorCount),
+                FCsvExporter.__REPLACE_BADGES_EARNED : badgesEarnedStatement }
         
         tempFilename = FUtils.GetAvailableFilename(path + ".temp")
         f = open(tempFilename, "w")
@@ -189,15 +196,15 @@ class FCsvExporter:
                     exportedList.append(None)
         return exportedList
     
-    def __AddTest(self, file, testProcedure, test, 
+    def __AddTest(self, file, checksumFile, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
 
         file.write( test.GetCOLLADAKeyword() + "," + test.GetCOLLADAComment() + "," + test.GetSeparatedFilename() + ",")  
 
+        execution = test.GetCurrentExecution()
         exportedDir = os.path.join(self.__filesDir, "Test" + str(test.GetTestId()),
             FUtils.GetProperFilename(test.GetBaseFilename()))
         exportedDir = self.__GetAvailableDir(exportedDir)
-      #  os.makedirs(exportedDir)
         
         exportedBlessed = self.__ExportImageList(exportedDir, 
                 test.GetBlessed(), "blessed_")
@@ -211,6 +218,7 @@ class FCsvExporter:
             file.write(self.__GetOutputTag(exportedDir, test, step,
                     exportedBlessed, showBlessed, showPrevious, width, height) + ",")
         
+        # Write out the local results
         result = test.GetCurrentResult()
         if (result == None):
             resultTag = ""
@@ -224,8 +232,25 @@ class FCsvExporter:
             
             for entry in result.GetTextArray():
                 resultTag = resultTag + " " + entry + " "
-        resultTag = resultTag
+        file.write(resultTag + ",");
 
+        # Write out the judging results
+        for i in range(len(FGlobals.badgeLevels)):
+            if (execution == None):
+                file.write("NO EXECUTION,")
+            else:
+                badgeLevel = FGlobals.badgeLevels[i]
+                badgeResult = execution.GetJudgementResult(badgeLevel)
+                self.__judgementCompiler.ProcessJudgement(i, badgeResult)
+                if (badgeResult == FJudgement.PASSED):
+                    file.write("PASSED,")
+                elif (badgeResult == FJudgement.FAILED):
+                    file.write("FAILED,")
+                elif (badgeResult == FJudgement.MISSING_DATA):
+                    file.write("MISSING DATA,")
+                elif (badgeResult == FJudgement.NO_SCRIPT):
+                    file.write("NO SCRIPT,")        
+        
         if (test.GetCurrentTimeRan() == None):
             timeString = ""
         else:
@@ -247,6 +272,11 @@ class FCsvExporter:
         if (comments == ""):
             comments = ""
         
-        file.write(resultTag + "," + diff + "," + timeString + "," + environment + "," + comments)
-
+        file.write(diff + "," + timeString + "," + environment + "," + comments)
         file.write("\n")
+        
+        # Append checksum.
+        if (execution != None):
+            checksum = execution.GetChecksum()
+            checksumFile.write(checksum + "\n")
+
