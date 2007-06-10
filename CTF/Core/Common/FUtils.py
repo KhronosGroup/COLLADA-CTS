@@ -406,7 +406,7 @@ def CalculateSuiteChecksum():
     """
     
     checksum = ""
-    queue = ["."]
+    queue = ["../ImageComparators", "."]
     while (len(queue) > 0):
         path = queue[-1]
         queue.pop()
