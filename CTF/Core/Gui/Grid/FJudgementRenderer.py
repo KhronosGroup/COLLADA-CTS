@@ -27,8 +27,7 @@ class FJudgementRenderer(FTextRenderer):
         FTextRenderer.ColorDraw(self, dc, rect, color)
 
         # Render the judgement log.
-        textArray = []
-        textArray.append(judgement.GetMessage())
+        textArray = judgement.GetMessage().split("\n")
         self.RenderText(grid, attr, dc, rect, row, col, isSelected, 
                         len(textArray), textArray, None, None, None, 
                         wx.Color(0, 0, 0))

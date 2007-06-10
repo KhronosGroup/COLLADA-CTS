@@ -336,7 +336,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
     def GetTestGenerator(self):
         for key in self.__testList.keys():
             yield self.__testList[key]
-    
+                
     def GetStepGenerator(self):
         """Get the generator for the test procedure.
         
@@ -390,7 +390,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         maxAppIndex = 0
         for appIndex, stepIndex, app in self.__GetAppGenerator():
             maxAppIndex = maxAppIndex + 1
-        maxAppIndex = maxAppIndex + 1 # 1 step for the judgement
+        maxAppIndex = maxAppIndex + 3 # validation, compiling, judging..
         
         if (callBack != None):
             callBack(0, maxAppIndex, "Preparing " + str(len(testIds)) + 
@@ -483,19 +483,29 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         self.__cancelRun = True
         
         if (callBack != None):
-            callBack(appIndex + 1, maxAppIndex, 
-                    "Performing validation steps and judging scripts.")
+            callBack(appIndex + 1, maxAppIndex, "Performing validation steps.")
 
+        for testId in testIds:
+            self.__testList[testId].Validate(self)
+
+        if (callBack != None):
+            callBack(appIndex + 2, maxAppIndex, "Compiling executions.")
+        
+        for testId in testIds:
+            self.__testList[testId].Compile(self)
+            
+        if (callBack != None):
+            callBack(appIndex + 2, maxAppIndex, "Performing badge judging.")
+ 
         for testId in testIds:
             self.__testList[testId].Judge(self)
 
         if (callBack != None):
-            callBack(appIndex + 2, maxAppIndex, 
-                    "Finalizing executions.")
-        
+            callBack(appIndex + 2, maxAppIndex, "Finalizing executions.")
+
         for testId in testIds:
             self.__testList[testId].Conclude(self)
-    
+
     def CancelRun(self, callBack = None):
         if (callBack != None):
             if (self.__cancelRun):

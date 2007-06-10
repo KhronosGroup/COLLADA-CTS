@@ -620,7 +620,7 @@ class FTest(FSerializable, FSerializer):
         
         return self.__currentExecution.GetResult()
     
-    def UpdateResult(self, testProcedure, execution):
+    def __CompileResult(self, testProcedure, execution):
         if (execution == None): return
         
         result = FResult()
@@ -649,16 +649,19 @@ class FTest(FSerializable, FSerializer):
             if ((folder != None) and 
                     (self.__HasBlessedExecution(folder, execution))):
                 result.SetPassFromExecution(True)
-            else:
-                self.__UpdateResultImages(result, testProcedure, execution)
         
         execution.SetResult(result)
+        
+    def UpdateResult(self, testProcedure, execution):
+        self.__CompileResult(self, testProcedure, execution)
+        self.__UpdateResultImages(testProcedure, execution)
         self.Save(execution, os.path.abspath(
                 os.path.join(execution.GetExecutionDir(), EXECUTION_FILENAME)))
     
-    def __UpdateResultImages(self, result, testProcedure, execution):
+    def __UpdateResultImages(self, testProcedure, execution):
         # checks the individual outputs
         passed = True
+        result = execution.GetResult()
         for step, app, op, setting in testProcedure.GetStepGenerator():
             outputs = execution.GetOutputLocation(step)
             if (outputs == None):
@@ -722,6 +725,9 @@ class FTest(FSerializable, FSerializer):
     
     def GetTestId(self):
         return self.__testId
+        
+    def GetFilename(self):
+        return self.__filename # Added for performance reasons.
     
     def GetBaseFilename(self):
         return os.path.basename(self.__filename)
@@ -861,12 +867,12 @@ class FTest(FSerializable, FSerializer):
     def Crash(self, step):
         self.__crashIndices.append(step)
     
-    def Judge(self, testProcedure):
-        self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
+    def Validate(self, testProcedure):
+        self.__currentExecution.Validate(self.__filename, testProcedure, self.__testId)
 
-    def Conclude(self, testProcedure):
+    def Compile(self, testProcedure):
         self.__beforePreviousExecution = None
-        self.__currentExecution.Conclude(self.__filename, self.__crashIndices)
+        self.__currentExecution.Compile(self.__filename, self.__crashIndices)
         self.__crashIndices = None
         executionDir = os.path.abspath(
                 os.path.join(self.__currentExecutionDir, EXECUTION_FILENAME))
@@ -887,6 +893,13 @@ class FTest(FSerializable, FSerializer):
             
             self.__currentExecution.SetComments(prevComments)
         
+        self.__CompileResult(testProcedure, self.__currentExecution)
+        self.__UpdateResultImages(testProcedure, self.__currentExecution)
+        
+    def Judge(self, testProcedure):
+        self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
+
+    def Conclude(self, testProcedure):        
         # update requires DiffFromPrevious to be set; update saves also
-        self.UpdateResult(testProcedure, self.__currentExecution)
-    
+        self.Save(self.__currentExecution, os.path.abspath(
+                os.path.join(self.__currentExecution.GetExecutionDir(), EXECUTION_FILENAME)))

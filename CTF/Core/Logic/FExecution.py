@@ -17,6 +17,7 @@ from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
 from Core.Logic.FJudgement import *
+from Core.Logic.FJudgementContext import *
 from Core.Logic.FResult import *
 
 class FExecution(FSerializable, FSerializer):
@@ -330,9 +331,9 @@ class FExecution(FSerializable, FSerializer):
             appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, 
                     settings, isAnimated)
 
-    def Judge(self, filename, testProcedure, testId):
+    def Validate(self, filename, testProcedure, testId):
         
-        # Execute the validation steps first.
+        # Execute the validation steps.
         for step in self.__validationList:
             if (step != 0):
                 lastOutputs = self.GetOutputLocation(step - 1)
@@ -372,40 +373,51 @@ class FExecution(FSerializable, FSerializer):
             errors, warnings = self.__ParseValidation(logAbsFilename)
             self.__errorCounts[step] = errors
             self.__warningCounts[step] = warnings
+
+    def Compile(self, filename, crashIndices):
+        self.__crashIndices = crashIndices
         
+        for logLocation in self.__logLocations:
+            errors, warnings = self.__ParseLog(logLocation)
+            self.__errorCounts.append(errors)
+            self.__warningCounts.append(warnings)
+    
+    def Judge(self, filename, testProcedure, testId):
         # Look for a judging script
         scriptFilename = FUtils.ChangeExtension(filename, "py")
         try:
             # Set-up the judging script context.
-            context = { 'testId':testId, 'testProcedure':testProcedure, 'log':"" }
+            context = FJudgementContext(testProcedure, testId)
 
             if (os.path.exists(scriptFilename)):
                 
                 # Parse, compile and execute the judging script.
                 judgingDictionary = { 'testProducedure' : testProcedure, 'judgingObject' : None };
                 execfile(scriptFilename, judgingDictionary, judgingDictionary);
-                if (judgingDictionary['judgingObject'] != None):
+                if (judgingDictionary.has_key('judgingObject')):
+                    judgingObject = judgingDictionary['judgingObject']
                     
                     # We have a juding object.
                     # Look for and process all the wanted badge levels.
                     for i in range(len(FGlobals.badgeLevels)):
                         badgeLevel = FGlobals.badgeLevels[i]
                         judgingLevel = "Judge" + badgeLevel
-                        if (judgingDictionary['judgingObject'].__class__.__dict__.has_key(judgingLevel)):
-                            if (callable(judgingDictionary['judgingObject'].__class__.__dict__[judgingLevel])):
-
-                                context['log'] = "" # Restart the log...
+                        if (judgingObject.__class__.__dict__.has_key(judgingLevel)):
+                            judgingFunction = judgingObject.__class__.__dict__[judgingLevel]
+                            if (callable(judgingFunction)):
 
                                 # Run this judging function.
-                                judgement = judgingDictionary['judgingObject'].__class__.__dict__[judgingLevel](judgingDictionary['judgingObject'], context)
+                                judgement = judgingFunction(judgingObject, context)
 
                                 # Process the judgement
                                 if judgement: self.__judgingResults[badgeLevel] = FJudgement.PASSED
                                 else: self.__judgingResults[badgeLevel] = FJudgement.FAILED
-                                if len(context['log']) > 0: self.__judgingLogs[badgeLevel] = context['log']
+                                judgingLog = context.GetLog()
+                                if len(judgingLog) > 0: self.__judgingLogs[badgeLevel] = judgingLog
                                 elif judgement: self.__judgingLogs[badgeLevel] = "Judgement passed."
                                 else: self.__judgingLogs[badgeLevel] = "Judgement failed."
-                                
+                                context.ResetLog()
+
                             else:
                                 self.__judgingResults[badgeLevel] = FJudgement.MISSING_DATA
                                 self.__judgingLogs[badgeLevel] = "Invalid judging script. '" + judgingLevel + "' is not a function."
@@ -433,14 +445,6 @@ class FExecution(FSerializable, FSerializer):
             print "Error message: '", e, "'."
         
 
-    def Conclude(self, filename, crashIndices):
-        self.__crashIndices = crashIndices
-        
-        for logLocation in self.__logLocations:
-            errors, warnings = self.__ParseLog(logLocation)
-            self.__errorCounts.append(errors)
-            self.__warningCounts.append(warnings)
-    
     def __ParseValidation(self, logLocation):
         if (logLocation == None): return (0, 0)
         

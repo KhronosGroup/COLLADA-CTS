@@ -102,7 +102,7 @@ class FResult:
                     text = text + "Ignored (No Blessed Animations)"
                 elif (output == FResult.IGNORED_NONE):
                     text = text + "Ignored (Got None From Application)"
-                elif(output == FResult.CRASH):
+                elif (output == FResult.CRASH):
                     text = text + "Crashed"
                 elif (self.__messages[i] != ""): # must be before default ones
                     text = text + self.__messages[i]
@@ -130,6 +130,13 @@ class FResult:
     
     def GetPassFromOutput(self):
         return self.__passOutput
+        
+    def GetOutputGenerator(self):
+        for i in range(len(self.__outputs)):
+            yield i, self.__outputs[i]
+            
+    def GetOutput(self, index):
+        return self.__outputs[index]
     
     def Override(self, value):
         if (value == True):
