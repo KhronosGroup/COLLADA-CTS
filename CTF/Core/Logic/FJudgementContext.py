@@ -76,14 +76,15 @@ class FJudgementContext:
             @param message The message to display to the user. """
         self.__log += message + "\n"
 
-    def CompareImages(self, filename1, filename2):
+    def CompareImages(self, filename1, filename2, tolerance=5):
         """ Compares the two images referenced by their filenames.
             This function uses the default comparator.
             @param filename1 The filename of the first image.
             @param filename2 The filename of the second image.
             @return A boolean indicating whether the two images are
                 considered equal. """
-        return FGlobals.imageComparator.CompareImages(filename1, filename2)
+        compareResult = FGlobals.imageComparator.CompareImages(filename1, filename2, tolerance)
+        return compareResult.GetResult()
         
     def GetStepResults(self, filterType=None, testId=None):
         """ This function retrieves the standard steps results.

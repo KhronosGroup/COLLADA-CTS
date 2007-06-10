@@ -15,7 +15,7 @@ class FPyramidDiff (FImageComparator):
     
     """
     
-    TOLERANCE = 5
+    DEFAULT_TOLERANCE = 5
     DEFAULT_EXTRA = 10000
     
     def __init__(self, configDict):
@@ -30,20 +30,23 @@ class FPyramidDiff (FImageComparator):
         FImageComparator.__init__(self, configDict)
     
     
-    def CompareImages(self, filename1, filename2):
-        """CompareImages(filename1, filename2) -> FCompareResult
+    def CompareImages(self, filename1, filename2, tolerance = DEFAULT_TOLERANCE):
+        """CompareImages(filename1, filename2, tolerance = DEFAULT_TOLERANCE) -> FCompareResult
         
-        Implements FImageComparator.CompareImages(filename1, filename2). 
+        Implements FImageComparator.CompareImages(filename1, filename2, tolerance). 
         
         The result is positive only if both files pass using PyramidDiff, or 
         if both files do not exist. To pass using PyramidDiff, the result
-        returned must be greater than the value specifed by TOLERANCE.
+        returned must be greater than the value specifed by tolerance.
         
         arguments:
             filename1
                 str corresponding to a file to compare.
             filename2
                 str corresponding to another file to compare.
+            tolerance
+                integer corresponding to the acceptable difference
+                between the two images. Not used by the FByteComparator.
         
         returns:
             FCompareResult indicating the images are the same or different. 
@@ -73,7 +76,7 @@ class FPyramidDiff (FImageComparator):
         p = subprocess.Popen(command)
         retcode = p.wait()
         
-        compareResult.SetResult(retcode <= FPyramidDiff.TOLERANCE)
+        compareResult.SetResult(retcode <= tolerance)
         compareResult.SetExtra(retcode)
         return compareResult
     

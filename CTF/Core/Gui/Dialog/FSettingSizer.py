@@ -8,6 +8,8 @@ import os.path
 import string
 import copy
 
+import Core.Common.FUtils as FUtils
+
 from Core.Common.FConstants import *
 from Core.Gui.Dialog.FChangeSettingsDialog import *
 from Core.Logic.FSetting import *
@@ -120,20 +122,19 @@ class FSettingSizer(wx.StaticBoxSizer):
                     break
                 i = i + 1
         
-        if (selection != -1):
-            self.__comboBox.SetSelection(selection)
-            return
-        else:
+        if (selection == -1):
             if (default != None):
                 defaultName = default.GetShortName()
                 if (self.__IsValidSetting(app, op, defaultName)):
                     loadedSetting = FSetting(defaultName, op, app)
                     if (default == loadedSetting):
                         selection = self.__comboBox.FindString(defaultName)
-                        self.__comboBox.SetSelection(selection)
-                        return
-        
-        self.__comboBox.SetSelection(len(list) - 1)
+
+        if (selection == -1):
+            # The last resort: "Default" should ALWAYS exists.
+            selection = self.__comboBox.FindString("Default")
+            
+        self.__comboBox.SetSelection(selection)
     
     def __IsValidSetting(self, app, op, name):
         settingsDir = os.path.join(os.getcwd(), SETTINGS_DIR, op, app)
@@ -142,22 +143,33 @@ class FSettingSizer(wx.StaticBoxSizer):
                 os.path.join(settingsDir, name + "." + SETTING_EXT))
     
     def __GetList(self, app, op):
-        settingsDir = os.path.join(os.getcwd(), SETTINGS_DIR, op, app)
-        self.__settingsDir = settingsDir
+        applicationFolderName = os.path.join(os.getcwd(), SETTINGS_DIR, op, app)
+        self.__settingsDir = applicationFolderName
         
         list = []
         
-        if (not os.path.isdir(settingsDir)):
-            return list
+        # Make sure the settings folders exists.
+        if not os.path.isdir(applicationFolderName):
+            os.makedirs(applicationFolderName)
         
-        for dirItem in os.listdir(settingsDir):
+        # Read in the list of saved settings.
+        for dirItem in os.listdir(applicationFolderName):
             splitted = dirItem.rsplit(".", 1)
-            
             if ((len(splitted) != 2) or splitted[1] != SETTING_EXT): continue
-            
             list.append(splitted[0])
-        
+            
+        # Verify that we have a default setting.
+        hasDefault = list.count("Default")
+        if (hasDefault > 0):
+            list.remove("Default") # We'll put it back, at the top, after sorting..
+        else:
+            # Automatically generate the default settings.
+            app = self.__applicationMap[self.__app]
+            settings = app.GetSettingsForOperation(self.__op)
+            self.__AddSettings("Default", settings)
+            
         list.sort()
+        list.insert(0, "Default")
         return list
     
     def __OnEdit(self, e):
@@ -185,32 +197,29 @@ class FSettingSizer(wx.StaticBoxSizer):
                 settings, name, self.__editable)
         
         if (dialog.ShowModal() == wx.ID_OK):
-            
-            settingFilename = dialog.title + "." + SETTING_EXT
-            settingFilename = os.path.join(self.__settingsDir, settingFilename)
-            
-            if (not os.path.isdir(self.__settingsDir)):
-                os.makedirs(self.__settingsDir)
-            
-            settingFile = open(settingFilename, "w")
-            
-            settings = dialog.GetSettings()
-            for setting in settings:
-                settingFile.write(setting.GetPrettyName() + "\t"
-                                + setting.GetCommand() + "\t"
-                                + setting.GetValue() + "\n")
-            
-            settingFile.close()
-            
-            if (not dialog.title.lower() in 
-                    map(string.lower, self.__comboBox.GetStrings())):
+            self.__AddSettings(dialog.title, dialog.GetSettings())
+
+            if (not dialog.title.lower() in map(string.lower, self.__comboBox.GetStrings())):
                 self.__comboBox.AppendItems([dialog.title])
                 self.__curHarddriveList = self.__GetList(self.__app, self.__op)
                 if (self.__callBack != None):
                     self.__callBack()
-            
-            newSelection = self.__comboBox.FindString(dialog.title)
-            self.__comboBox.SetSelection(newSelection)
         
+            newSelection = self.__comboBox.FindString(dialog.title)
+            self.__comboBox.SetSelection(newSelection)        
+
         dialog.Destroy()
     
+    def __AddSettings(self, name, settings):
+        settingFilename = name + "." + SETTING_EXT
+        settingFilename = os.path.join(self.__settingsDir, settingFilename)
+        settingFile = open(settingFilename, "w")
+        
+        for setting in settings:
+            settingFile.write(setting.GetPrettyName() + "\t"
+                            + setting.GetCommand() + "\t"
+                            + setting.GetValue() + "\n")
+        
+        settingFile.close()
+        
+        

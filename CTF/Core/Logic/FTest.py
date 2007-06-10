@@ -653,7 +653,7 @@ class FTest(FSerializable, FSerializer):
         execution.SetResult(result)
         
     def UpdateResult(self, testProcedure, execution):
-        self.__CompileResult(self, testProcedure, execution)
+        self.__CompileResult(testProcedure, execution)
         self.__UpdateResultImages(testProcedure, execution)
         self.Save(execution, os.path.abspath(
                 os.path.join(execution.GetExecutionDir(), EXECUTION_FILENAME)))

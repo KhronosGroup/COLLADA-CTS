@@ -25,19 +25,22 @@ class FByteComparator (FImageComparator):
         FImageComparator.__init__(self, configDict)
     
     
-    def CompareImages(self, filename1, filename2):
-        """CompareImages(filename1, filename2) -> FCompareResult
+    def CompareImages(self, filename1, filename2, tolerance=5):
+        """CompareImages(filename1, filename2, tolerance = 5) -> FCompareResult
         
-        Implements FImageComparator.CompareImages(filename1, filename2). 
+        Implements FImageComparator.CompareImages(filename1, filename2, tolerance). 
         
         The result is positive only if both files are byte by byte similar, or 
-        if both files do not exist.
+        if both files do not exist. The tolerance value is not used by the ByteComparator.
         
         arguments:
             filename1
                 str corresponding to a file to compare.
             filename2
                 str corresponding to another file to compare.
+            tolerance
+                integer corresponding to the acceptable difference
+                between the two images. Not used by the FByteComparator.
         
         returns:
             FCompareResult indicating the images are the same or different. 

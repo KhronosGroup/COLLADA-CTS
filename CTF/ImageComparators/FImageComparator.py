@@ -72,8 +72,8 @@ class FImageComparator:
         """
         self.configDict = configDict
     
-    def CompareImages(self, filename1, filename2):
-        """CompareImages(filename1, filename2) -> FCompareResult
+    def CompareImages(self, filename1, filename2, tolerance=5):
+        """CompareImages(filename1, filename2, tolerance = 5) -> FCompareResult
         
         Compares two images specified in the filenames. (It must be overridden 
         by any implementations of image comparators.)
@@ -83,6 +83,9 @@ class FImageComparator:
                 str corresponding to a file to compare.
             filename2
                 str corresponding to another file to compare.
+            tolerance
+                integer corresponding to the acceptable difference
+                between the two images. Not used by the FByteComparator.
         
         returns:
             FCompareResult representing the result of the comparison.
