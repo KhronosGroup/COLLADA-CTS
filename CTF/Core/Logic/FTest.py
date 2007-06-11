@@ -623,6 +623,7 @@ class FTest(FSerializable, FSerializer):
     def __CompileResult(self, testProcedure, execution):
         if (execution == None): return
         
+        # Prepare the result structure.
         result = FResult()
         
         history = self.__GetHistoryFilenames()
@@ -650,18 +651,8 @@ class FTest(FSerializable, FSerializer):
                     (self.__HasBlessedExecution(folder, execution))):
                 result.SetPassFromExecution(True)
         
-        execution.SetResult(result)
-        
-    def UpdateResult(self, testProcedure, execution):
-        self.__CompileResult(testProcedure, execution)
-        self.__UpdateResultImages(testProcedure, execution)
-        self.Save(execution, os.path.abspath(
-                os.path.join(execution.GetExecutionDir(), EXECUTION_FILENAME)))
-    
-    def __UpdateResultImages(self, testProcedure, execution):
         # checks the individual outputs
         passed = True
-        result = execution.GetResult()
         for step, app, op, setting in testProcedure.GetStepGenerator():
             outputs = execution.GetOutputLocation(step)
             if (outputs == None):
@@ -719,7 +710,14 @@ class FTest(FSerializable, FSerializer):
                     result.AppendOutput(FResult.FAILED_VALIDATION)
                     passed = False
         result.SetPassFromOutput(passed)
-    
+
+        execution.SetResult(result)
+        
+    def UpdateResult(self, testProcedure, execution):
+        self.__CompileResult(testProcedure, execution)
+        self.Save(execution, os.path.abspath(
+                os.path.join(execution.GetExecutionDir(), EXECUTION_FILENAME)))
+        
     def GetDataSetPath(self):
         return self.__dataSetPath
     
@@ -894,7 +892,6 @@ class FTest(FSerializable, FSerializer):
             self.__currentExecution.SetComments(prevComments)
         
         self.__CompileResult(testProcedure, self.__currentExecution)
-        self.__UpdateResultImages(testProcedure, self.__currentExecution)
         
     def Judge(self, testProcedure):
         self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
