@@ -124,26 +124,17 @@ class FTable(wx.grid.PyGridTableBase):
         # Since this information comes from a serialization
         # and the badge levels may have changed
         # We need to compensate for deleted/new columns.
-        columnsCount = len(columns)
-        columnsToRemove = [];
         hasWhinedOnce = False;
-        for i in range(columnsCount):
-            if (not (columns[i] in self.__columns.keys())):
-                if (not hasWhinedOnce):
+        columnsToRemove = []
+        for column in columns:
+            if not column in self.__columns.keys():
+                if not hasWhinedOnce:
                     print "WARNING: Grid columns have changed. Attempting to compensate."
                     print "         File->Preferences may contain hidden columns."
                     hasWhinedOnce = True
-                columnsToRemove.append(i)
-        for i in range(len(columnsToRemove)):
-            removing = columnsToRemove[i] - i;
-            if (removing == 0 and columnsCount > 1):
-                columns = columns[1:columnsCount]
-            elif (removing == 0):
-                columns = []
-            elif (removing == columnsCount - 1):
-                columns = columns[0:columnsCount-1]
-            else:
-                columns = columns[0:removing] + columns[removing+1:columnsCount]
+                columnsToRemove.append(column)
+        for column in columnsToRemove:
+            columns.remove(column)
         
         # Use this (serialized) column order.
         self.__colsKey = columns

@@ -28,18 +28,19 @@ class FTestSuite(FSerializer):
                     print ("Warning: Ignoring redefinition of configuration " +
                            "key: " + key + ".")
                     continue
-                configDict[key] = value[:-1] # remove \n
+                configDict[key] = value.strip() # remove \n
                 line = f.readline()
             f.close
             
         # Further parse the badge levels configuration.
-        if (not configDict.has_key("badgeLevels")):
-            configDict["badgeLevels"] = "Basic"
-        
-        FGlobals.badgeLevels = configDict["badgeLevels"].split(",")
-        for level in range(len(FGlobals.badgeLevels)):
-            # Strip extra whitespaces and enforce title-case.
-            FGlobals.badgeLevels[level] = FGlobals.badgeLevels[level].strip().title()
+        FGlobals.badgeLevels = []
+        if configDict.has_key("badgeLevels"):
+            wantedBadgeList = configDict["badgeLevels"].split(",")
+            for badge in wantedBadgeList:
+                # Strip extra whitespaces and enforce title-case.
+                level = badge.strip().title()
+                if (len(level) > 0):
+                    FGlobals.badgeLevels.append(level)
         
         # import the application specific scripts
         self.applicationMap = {}
