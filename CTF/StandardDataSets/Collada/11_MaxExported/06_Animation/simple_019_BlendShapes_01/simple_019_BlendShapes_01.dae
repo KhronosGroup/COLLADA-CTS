@@ -48,7 +48,7 @@
                </technique_common>
             </source>
             <source id="morph-weights-pSphere1-obj-weight_0-outtgt">
-               <float_array id="morph-weights-pSphere1-obj-weight_0-outtgt-array" count="3"></float_array>
+               <float_array id="morph-weights-pSphere1-obj-weight_0-outtgt-array" count="3">0 0 0</float_array>
                <technique_common>
                   <accessor source="#morph-weights-pSphere1-obj-weight_0-outtgt-array" count="3">
                      <param name="WEIGHT" type="float"></param>
@@ -98,7 +98,7 @@
                </technique_common>
             </source>
             <source id="morph-weights-pSphere1-obj-weight_1-outtgt">
-               <float_array id="morph-weights-pSphere1-obj-weight_1-outtgt-array" count="4"></float_array>
+               <float_array id="morph-weights-pSphere1-obj-weight_1-outtgt-array" count="4">0 0 0 0</float_array>
                <technique_common>
                   <accessor source="#morph-weights-pSphere1-obj-weight_1-outtgt-array" count="4">
                      <param name="WEIGHT" type="float"></param>
@@ -148,7 +148,7 @@
                </technique_common>
             </source>
             <source id="morph-weights-pSphere1-obj-weight_2-outtgt">
-               <float_array id="morph-weights-pSphere1-obj-weight_2-outtgt-array" count="3"></float_array>
+               <float_array id="morph-weights-pSphere1-obj-weight_2-outtgt-array" count="3">0 0 0</float_array>
                <technique_common>
                   <accessor source="#morph-weights-pSphere1-obj-weight_2-outtgt-array" count="3">
                      <param name="WEIGHT" type="float"></param>
