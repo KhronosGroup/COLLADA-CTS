@@ -1,2 +1,0 @@
-PASSED: Document is valid
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:intensity'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/06_Animation/simple_013_SampledAnim_MaterialAttr_Float_00/simple_013_SampledAnim_MaterialAttr_Float_00.dae, (93, 14).

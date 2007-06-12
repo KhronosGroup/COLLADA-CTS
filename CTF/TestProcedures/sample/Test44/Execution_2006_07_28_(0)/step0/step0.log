@@ -1,2 +1,0 @@
-PASSED: Document is valid
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:DOUBLE_SIDED'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/04_ColladaCore/node_instancing/node_instancing.dae, (166, 14).

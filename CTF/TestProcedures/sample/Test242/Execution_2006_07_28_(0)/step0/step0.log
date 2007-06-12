@@ -1,4 +1,0 @@
-PASSED: Document is valid
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:intensity'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/09_Scene_Data/simple_002_Spotlight_Color_01/simple_002_Spotlight_Color_01.dae, (63, 14).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:aspect_ratio'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/09_Scene_Data/simple_002_Spotlight_Color_01/simple_002_Spotlight_Color_01.dae, (64, 14).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:outer_cone'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/09_Scene_Data/simple_002_Spotlight_Color_01/simple_002_Spotlight_Color_01.dae, (65, 14).

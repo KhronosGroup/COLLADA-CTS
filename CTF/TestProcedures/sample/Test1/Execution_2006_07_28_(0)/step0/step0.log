@@ -1,5 +1,0 @@
-FAILED: Document is invalid
-Error: The element 'http://www.collada.org/2005/11/COLLADASchema:asset' has invalid child element 'http://www.collada.org/2005/11/COLLADASchema:unit'. Expected 'http://www.collada.org/2005/11/COLLADASchema:contributor http://www.collada.org/2005/11/COLLADASchema:created'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/01_Corrupt_Datasets/LondonHouse/LondonHouse.dae, (7, 8).
-Error: The 'texcoord' attribute has an invalid value according to its data type. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/01_Corrupt_Datasets/LondonHouse/LondonHouse.dae, (117, 57).
-Error: The 'texcoord' attribute has an invalid value according to its data type. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/01_Corrupt_Datasets/LondonHouse/LondonHouse.dae, (149, 59).
-Error: The 'texcoord' attribute has an invalid value according to its data type. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/01_Corrupt_Datasets/LondonHouse/LondonHouse.dae, (181, 67).

@@ -1,5 +1,0 @@
-PASSED: Document is valid
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:vertical_aperture'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/04_ColladaCore/animation_clip_single_curve/animation_clip_single_curve.dae, (107, 12).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:horizontal_aperture'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/04_ColladaCore/animation_clip_single_curve/animation_clip_single_curve.dae, (108, 12).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:lens_squeeze'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/04_ColladaCore/animation_clip_single_curve/animation_clip_single_curve.dae, (109, 12).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:double_sided'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/04_ColladaCore/animation_clip_single_curve/animation_clip_single_curve.dae, (179, 14).

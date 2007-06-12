@@ -1,3 +1,0 @@
-PASSED: Document is valid
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:target'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/09_Scene_Data/simple_000_Null-Locator-EmptyTransform_00/simple_000_Null-Locator-EmptyTransform_00.dae, (65, 17).
-Warning: Could not find schema information for the element 'http://www.collada.org/2005/11/COLLADASchema:intensity'. An error occurred at file:///C:/work/package/CTF_1.3/StandardDataSets/Collada/11_MaxExported/09_Scene_Data/simple_000_Null-Locator-EmptyTransform_00/simple_000_Null-Locator-EmptyTransform_00.dae, (81, 14).
