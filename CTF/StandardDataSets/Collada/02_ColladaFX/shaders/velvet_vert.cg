@@ -21,7 +21,7 @@ struct vertout
 vertout main( appin IN,
 uniform float4 eyePoint : LIGHTPOS0,
 uniform float4 lightPoint : LIGHTPOS1,
-uniform float4x4 modelViewMatrix : VIEWPROJ,
+uniform float4x4 modelViewMatrix : WORLDVIEWPROJ,
 uniform float4x4 object : OBJECT
  )
 {
