@@ -387,12 +387,15 @@ def CalculateChecksum(filename):
         string of the checksum for the given file.
         
     """
-    file = open(filename, "rb")
-    checksumCalculator = SHA1.new()
-    for line in file:
-        checksumCalculator.update(line)
-    file.close()
-    return checksumCalculator.hexdigest()
+    try:
+        file = open(filename, "rb")
+        checksumCalculator = SHA1.new()
+        for line in file:
+            checksumCalculator.update(line)
+        file.close()
+        return checksumCalculator.hexdigest()
+    except Exception, e:
+        return "0000000000000000000000000000000000000000"
     
 def CalculateSuiteChecksum():
     """ CalculateSuiteChecksum() -> str
