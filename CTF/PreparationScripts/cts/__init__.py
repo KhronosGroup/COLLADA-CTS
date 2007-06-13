@@ -220,7 +220,7 @@ def backup(filelist, file_extension, backup_path = "backup", should_archive = Tr
         # This junky loop resolves backup file collisions. 
         # Tries renaming file.dae as file#.dae, where # is in [0,MAX_N_CHECKS)
         while backupfile in inventory and counter < MAX_N_CHECKS:
-            backupfile = backupfile[:-len(file_extension)]+counter+file_extension
+            backupfile = backupfile[:-len(file_extension)]+str(counter)+file_extension
             counter = counter + 1
         
         if counter == MAX_N_CHECKS:
