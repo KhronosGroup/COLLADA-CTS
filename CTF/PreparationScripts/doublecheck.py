@@ -121,7 +121,7 @@ print "----------------------------------------------------------"
 progress = cts.ProgressCounter(len(c_files))
 
 # Prep settings before execution
-coherency_path = "\""+coherency_path+"\" "
+coherency_path = "\""+os.path.abspath(coherency_path)+"\" "
 settings = settings + " -log \""+os.path.abspath(log_name)+"\""
 prev_cwd = os.getcwd()
 
