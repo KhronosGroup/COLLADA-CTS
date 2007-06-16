@@ -1,0 +1,326 @@
+# Copyright (C) 2006 Khronos Group
+# Available only to Khronos members.
+# Distribution of this file or its content is strictly prohibited.
+
+import os.path
+
+import Core.Common.FUtils as FUtils
+from Core.Logic.FSettingEntry import *
+from Scripts.FApplication import *
+
+class FMaya (FApplication):
+    """The class which represents Maya 7.0 to the testing framework.
+    
+    Note that this has only been tested on Maya 7.0 and will probably not work
+    on other versions.
+    
+    """
+    
+    __PLUGIN = ("COLLADA")
+    
+    __MEL_SCRIPT_EXTENSION = ".mel"
+    __SCRIPT_EXTENSION = ".py"
+
+    __EXPORT_OPTIONS = [
+            ("Bake transforms", "bakeTransforms", "0"),
+            ("Relative paths", "relativePaths", "0"),
+            ("Bake lighting", "bakeLighting", "0"),
+            ("Export camera as lookat", "exportCameraAsLookat", "0"),
+            ("Export polygons as triangles", "exportTriangles", "0"),
+            ("Sampling", "isSampling", "0"),
+            ("Curve-Contrain", "curveConstrainSampling", "0"),
+            ("Sampling Function", "samplingFunction", ""),
+            ("Export polygon meshes", "exportPolygonMeshes", "1"),
+            ("Export lights", "exportLights", "1"),
+            ("Export cameras", "exportCameras", "1"),
+            ("Export joints and skin", "exportJointsAndSkin", "1"),
+            ("Export animations", "exportAnimations", "1"),
+            ("Export invisible nodes", "exportInvisibleNodes", "0"),
+            ("Export normals", "exportNormals", "1"),
+            ("Export texture coordinates", "exportTexCoords", "1"),
+            ("Export per-vertex colors", "exportVertexColors", "1"),
+            ("Export geometric tangents", "exportTangents", "0"),
+            ("Export texture tangents", "exportTexTangents", "1"),
+            ("Export constraints", "exportConstraints", "1"),
+            ("Export physics", "exportPhysics", "1"),
+            ("Exclusion set mode", "exclusionSetMode", "0"),
+            ("Exclusion set", "exclusionSets", ""),
+            ("Export references", "exportXRefs", "1"),
+            ("De-Reference", "dereferenceXRefs", "0"),
+            ("XFov", "cameraXFov", "0"),
+            ("YFov", "cameraYFov", "1")]
+    
+    __RENDER_CAMERA = "Camera"
+    __RENDER_RENDERER = "Renderer"
+    __RENDER_ANIMATION_START = "Animation Start Frame"
+    __RENDER_ANIMATION_END = "Animation End Frame"
+    __RENDER_ANIMATION_STEP = "Animation Step Interval"
+    __RENDER_STILL_START = "Non-Animation Start Frame"
+    __RENDER_STILL_END = "Non-Animation End Frame"
+    __RENDER_STILL_STEP = "Non-Animation Step Interval"
+    __RENDER_WIDTH = "X resolution"
+    __RENDER_HEIGHT = "Y resolution"
+    __RENDER_ARD = "Device Aspect Ratio (empty to ignore)"
+    __RENDER_FORMAT = "Output Filetype"
+    
+    __RENDER_OPTIONS = [
+            (__RENDER_CAMERA, "- NOT USED -", "|testCamera"),
+            (__RENDER_WIDTH, "- NOT USED -", "300"),
+            (__RENDER_HEIGHT, "- NOT USED -", "300"),
+            (__RENDER_ANIMATION_START, "setAttr defaultRenderGlobals.startFrame ", "1"),
+            (__RENDER_ANIMATION_END, "setAttr defaultRenderGlobals.endFrame ", "45"),
+            (__RENDER_ANIMATION_STEP, "setAttr defaultRenderGlobals.byFrameStep ", "3"),
+            (__RENDER_STILL_START, "setAttr defaultRenderGlobals.startFrame ", "1"),
+            (__RENDER_STILL_END, "setAttr defaultRenderGlobals.endFrame ", "1"),
+            (__RENDER_STILL_STEP, "setAttr defaultRenderGlobals.byFrameStep ", "1")]
+
+    def __init__(self, configDict):
+        """__init__() -> FMaya"""
+        FApplication.__init__(self, configDict)
+        self.__melScript = None
+        self.__currentFilename = None
+        self.__currentImportProperName = None
+        self.__testImportCount = 0
+        self.__workingDir = None
+    
+    def GetPrettyName(self):
+        """GetPrettyName() -> str
+        
+        Implements FApplication.GetPrettyName()
+        
+        """
+        return "Maya 7.0"
+    
+    def GetSettingsForOperation(self, operation):
+        """GetSettingsForOperation(operation) -> list_of_FSettingEntry
+        
+        Implements FApplication.GetSettingsForOperation()
+        
+        """
+        if (operation == IMPORT):
+            return []
+        elif (operation == EXPORT):
+            options = []
+            for entry in FMaya.__EXPORT_OPTIONS:
+                options.append(FSettingEntry(*entry))
+            return options
+        elif (operation == RENDER): 
+            options = []
+            for entry in FMaya.__RENDER_OPTIONS:
+                options.append(FSettingEntry(*entry))
+            return options
+        else:
+            return []
+    
+    def BeginScript(self, workingDir):
+        """BeginScript(workingDir) -> None
+        
+        Implements FApplication.BeginScript()
+        
+        """
+        melFilename = ("script" + str(self.applicationIndex) + FMaya.__MEL_SCRIPT_EXTENSION)
+        self.__melScript = open(os.path.join(workingDir, melFilename) , "w")
+        
+        self.__melScript.write(
+                "int $descriptor;\n" +
+                "catch(`loadPlugin \"" + 
+                FMaya.__PLUGIN.replace("\\", "\\\\") + "\"`);\n" +
+                "catch(`file -f -new`);\n\n" +
+                "proc fixNewlines(string $filename) {\n" +
+                "    $tempFilename = $filename + \".temp\";\n" +
+                "\n" +
+                "    $file=`fopen $filename \"r\"`;\n" +
+                "    $tempFile=`fopen $tempFilename \"w\"`;\n" +
+                "\n" +
+                "    string $nextLine = `fgetline $file`;\n" +
+                "    while (size($nextLine) > 0) { \n" +
+                "        fprint $tempFile `substitute \"\\n\" " + 
+                "$nextLine \"\\r\\n\"`;\n" +
+                "        $nextLine = `fgetline $file`;\n" +
+                "    }\n" +
+                "    fclose $tempFile;\n" +
+                "    fclose $file;\n" +
+                "\n" +
+                "    sysFile -delete $filename;\n" +
+                "    sysFile -rename $filename $tempFilename;\n" +
+                "}\n\n")
+        
+        self.__testImportCount = 0
+        self.__workingDir = workingDir
+    
+    def EndScript(self):
+        """EndScript() -> None
+        
+        Implements FApplication.EndScript()
+        
+        """
+        self.__melScript.close()
+    
+    def RunScript(self):
+        """RunScript() -> None
+        
+        Implements FApplication.RunScript()
+        
+        """
+        if (not os.path.isfile(self.configDict["mayaPath"])):
+            print "Maya does not exist"
+            return True
+        
+        command = ("\"" + self.configDict["mayaPath"] + 
+                   "\" -batch -script \"" + self.__melScript.name + "\"")
+        
+        # quotes around command is awkward, but seems like the only way works
+        print ("start running " + os.path.basename(self.__melScript.name))
+        returnValueImport = self.RunApplication(command, self.__workingDir)
+        if (returnValueImport == 0):
+            print "finished running " + os.path.basename(self.__melScript.name)
+        else:
+            print "crashed running " + os.path.basename(self.__melScript.name)
+            
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+        
+        Implements FApplication.WriteImport(). Assumes a COLLADA, maya binary,
+        or maya ascii file is being imported.
+        
+        """
+        baseName = FUtils.GetProperFilename(filename)
+        self.__currentImportProperName = baseName
+        output = (os.path.join(outputDir, baseName)).replace("\\", "/")
+        filename = filename.replace("\\", "/")
+        self.__currentFilename = output + ".mb"
+        
+        extension = os.path.basename(filename).rsplit(".", 1)[1]
+        
+        if (extension == "mb"): 
+            command = ("catch(`file -type \"mayaBinary\" -o \"" + filename + 
+                       "\"`);\n")
+        elif (extension == "ma"): 
+            command = ("catch(`file -type \"mayaAscii\" -o \"" + filename + 
+                       "\"`);\n")
+        else: 
+            command = ("catch(`file -type \"COLLADA importer\" -o \"" + 
+                       filename + "\"`);\n")
+        
+        self.__melScript.write(
+                "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
+                "$descriptor = `cmdFileOutput -o $logname`;\n" +
+                "catch(`file -f -new`);\n" +
+                command +
+                "catch(`file -rename \"" + output + "\"`);\n" +
+                "catch(`file -save -type \"mayaBinary\"`);\n" +
+                "cmdFileOutput -c $descriptor;\n" + 
+                "fixNewlines $logname;\n\n")
+        
+        self.__testImportCount = self.__testImportCount + 1
+        
+        return [os.path.normpath(baseName + ".mb"),]
+    
+    def WriteRender(self, logname, outputDir, settings, isAnimated):
+        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+        
+        Implements FApplication.WriteRender()
+        
+        """
+        baseName = self.__currentImportProperName
+        output = os.path.normpath(os.path.join(outputDir, baseName))
+        outputDir = os.path.dirname(output)
+                
+        self.__melScript.write(
+                "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
+                "$descriptor = `cmdFileOutput -o $logname`;\n")
+
+        # Set render globals example:
+        # Maya node types: renderGlobals, hardwareRenderGlobals, 
+        # setAttr hardwareRenderGlobals.frameBufferFormat 0
+
+        for setting in settings:
+            
+            # Start by parsing the value.
+            value = setting.GetValue().strip()
+            if (len(value) == 0):
+                value = self.FindDefault(FMaya.__RENDER_OPTIONS, setting.GetPrettyName())
+
+            prettyName = setting.GetPrettyName()
+            if (prettyName == FMaya.__RENDER_ANIMATION_START):
+                if not isAnimated: continue
+                start = int(value)
+            elif (prettyName == FMaya.__RENDER_ANIMATION_END):
+                if not isAnimated: continue
+                end = int(value)
+            elif (prettyName == FMaya.__RENDER_ANIMATION_STEP):
+                if not isAnimated: continue
+                step = int(value)
+                
+            elif (prettyName == FMaya.__RENDER_STILL_START):
+                if isAnimated: continue
+                start = int(value)
+            elif (prettyName == FMaya.__RENDER_STILL_END):
+                if isAnimated: continue
+                end = int(value)
+            elif (prettyName == FMaya.__RENDER_STILL_STEP):
+                if isAnimated: continue
+                step = int(value)
+                
+            # Record these settings for later.                
+            elif (prettyName == FMaya.__RENDER_WIDTH):
+                width = value
+                continue
+            elif (prettyName == FMaya.__RENDER_HEIGHT):
+                height = value
+                continue
+            elif (prettyName == FMaya.__RENDER_CAMERA):
+                camera = value
+                continue
+            
+            self.__melScript.write(setting.GetCommand() + " " + value + ";\n")
+        
+        self.__melScript.write("setAttr defaultRenderGlobals.imageFormat 32;\n") # where 32 is PNG.
+        self.__melScript.write("setAttr -type \"string\" defaultRenderGlobals.imageFilePrefix \"" + str(baseName) + "\";\n")
+        self.__melScript.write("setAttr defaultRenderGlobals.animation " + str(isAnimated).lower() + ";\n")
+        self.__melScript.write("setAttr defaultRenderGlobals.putFrameBeforeExt true;\n")
+        self.__melScript.write("workspace -renderType \"images\" \"" + outputDir.replace("\\", "/") + "\";\n")
+        self.__melScript.write("hwRender -camera \"" + camera + "\" -width " + width + " -height " + height + ";\n\n")
+        self.__melScript.write("cmdFileOutput -c $descriptor;\nfixNewlines $logname;\n\n")
+                
+        outputList = []
+        if not isAnimated:
+            outputList.append(os.path.normpath(output + ".png"))
+        else:
+            numDigit = len(str(end))
+            for i in range(start, end + 1, step):
+                outputList.append(os.path.normpath(output + "." + str(i) + ".png"))
+
+        return outputList
+    
+    def WriteExport(self, logname, outputDir, settings, isAnimated):
+        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+        
+        Implements FApplication.WriteExport()
+        
+        """
+        basename = self.__currentImportProperName + ".dae"
+        output = os.path.join(outputDir, self.__currentImportProperName)
+        output = output.replace("\\", "/")
+        
+        options = ""
+        for setting in settings:
+            value = setting.GetValue().strip()
+            if (value == ""):
+                value = self.FindDefault(FMaya.__EXPORT_OPTIONS, 
+                                         setting.GetPrettyName())
+            
+            options = (options + setting.GetCommand() + "=" + 
+                       value + ";")
+        
+        self.__melScript.write(
+                "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
+                "$descriptor = `cmdFileOutput -o $logname`;\n" +
+                "catch(`file -op \"" + options + 
+                "\" -typ \"COLLADA exporter\" -pr -ea \"" + output + 
+                "\"`);\n" +
+                "cmdFileOutput -c $descriptor;\n" + 
+                "fixNewlines $logname;\n\n")  
+        
+        return [os.path.normpath(basename),]
+    
