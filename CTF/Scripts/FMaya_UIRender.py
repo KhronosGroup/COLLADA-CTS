@@ -3,12 +3,14 @@
 # Distribution of this file or its content is strictly prohibited.
 
 import os.path
-
+import shutil
 import Core.Common.FUtils as FUtils
+
+from stat import *
 from Core.Logic.FSettingEntry import *
 from Scripts.FApplication import *
 
-class FMaya (FApplication):
+class FMaya_UIRender (FApplication):
     """The class which represents Maya 7.0 to the testing framework.
     
     Note that this has only been tested on Maya 7.0 and will probably not work
@@ -75,7 +77,7 @@ class FMaya (FApplication):
             (__RENDER_STILL_STEP, "setAttr defaultRenderGlobals.byFrameStep ", "1")]
 
     def __init__(self, configDict):
-        """__init__() -> FMaya"""
+        """__init__() -> FMaya_UIRender"""
         FApplication.__init__(self, configDict)
         self.__melScript = None
         self.__currentFilename = None
@@ -89,7 +91,7 @@ class FMaya (FApplication):
         Implements FApplication.GetPrettyName()
         
         """
-        return "Maya 7.0"
+        return "Maya - UIRender"
     
     def GetSettingsForOperation(self, operation):
         """GetSettingsForOperation(operation) -> list_of_FSettingEntry
@@ -101,12 +103,12 @@ class FMaya (FApplication):
             return []
         elif (operation == EXPORT):
             options = []
-            for entry in FMaya.__EXPORT_OPTIONS:
+            for entry in FMaya_UIRender.__EXPORT_OPTIONS:
                 options.append(FSettingEntry(*entry))
             return options
         elif (operation == RENDER): 
             options = []
-            for entry in FMaya.__RENDER_OPTIONS:
+            for entry in FMaya_UIRender.__RENDER_OPTIONS:
                 options.append(FSettingEntry(*entry))
             return options
         else:
@@ -118,13 +120,13 @@ class FMaya (FApplication):
         Implements FApplication.BeginScript()
         
         """
-        melFilename = ("script" + str(self.applicationIndex) + FMaya.__MEL_SCRIPT_EXTENSION)
+        melFilename = ("script" + str(self.applicationIndex) + FMaya_UIRender.__MEL_SCRIPT_EXTENSION)
         self.__melScript = open(os.path.join(workingDir, melFilename) , "w")
         
         self.__melScript.write(
                 "int $descriptor;\n" +
                 "catch(`loadPlugin \"" + 
-                FMaya.__PLUGIN.replace("\\", "\\\\") + "\"`);\n" +
+                FMaya_UIRender.__PLUGIN.replace("\\", "\\\\") + "\"`);\n" +
                 "catch(`file -f -new`);\n\n" +
                 "proc fixNewlines(string $filename) {\n" +
                 "    $tempFilename = $filename + \".temp\";\n" +
@@ -147,6 +149,7 @@ class FMaya (FApplication):
         
         self.__testImportCount = 0
         self.__workingDir = workingDir
+        self.__renderFolders = []
     
     def EndScript(self):
         """EndScript() -> None
@@ -176,6 +179,28 @@ class FMaya (FApplication):
             print "finished running " + os.path.basename(self.__melScript.name)
         else:
             print "crashed running " + os.path.basename(self.__melScript.name)
+            
+        # Maya has a tendency to dump images where I don't want them to be.
+        # Look for images in the sub-folders of the output folder and move them to the output folder.
+        for renderFolder in self.__renderFolders:
+            subFolders = [renderFolder]
+            while (len(subFolders) > 0):
+                subFolder = subFolders[-1]
+                subFolders.pop()
+                
+                for dirEntry in os.listdir(subFolder):
+                    pathname = os.path.join(subFolder, dirEntry)
+                    mode = os.stat(pathname)[ST_MODE]
+                    if S_ISDIR(mode):
+                        # Add this sub-folder to our queue.
+                        subFolders.append(pathname)
+                    elif S_ISREG(mode):
+                        # Process all python script files, except for the __init__.py ones.
+                        if FUtils.GetExtension(pathname).lower() == "png":
+                            shutil.move(pathname, os.path.join(renderFolder, dirEntry))
+        self.__renderFolders = []
+        
+        return (returnValueImport == 0)
             
     def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
         """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
@@ -239,37 +264,37 @@ class FMaya (FApplication):
             # Start by parsing the value.
             value = setting.GetValue().strip()
             if (len(value) == 0):
-                value = self.FindDefault(FMaya.__RENDER_OPTIONS, setting.GetPrettyName())
+                value = self.FindDefault(FMaya_UIRender.__RENDER_OPTIONS, setting.GetPrettyName())
 
             prettyName = setting.GetPrettyName()
-            if (prettyName == FMaya.__RENDER_ANIMATION_START):
+            if (prettyName == FMaya_UIRender.__RENDER_ANIMATION_START):
                 if not isAnimated: continue
                 start = int(value)
-            elif (prettyName == FMaya.__RENDER_ANIMATION_END):
+            elif (prettyName == FMaya_UIRender.__RENDER_ANIMATION_END):
                 if not isAnimated: continue
                 end = int(value)
-            elif (prettyName == FMaya.__RENDER_ANIMATION_STEP):
+            elif (prettyName == FMaya_UIRender.__RENDER_ANIMATION_STEP):
                 if not isAnimated: continue
                 step = int(value)
                 
-            elif (prettyName == FMaya.__RENDER_STILL_START):
+            elif (prettyName == FMaya_UIRender.__RENDER_STILL_START):
                 if isAnimated: continue
                 start = int(value)
-            elif (prettyName == FMaya.__RENDER_STILL_END):
+            elif (prettyName == FMaya_UIRender.__RENDER_STILL_END):
                 if isAnimated: continue
                 end = int(value)
-            elif (prettyName == FMaya.__RENDER_STILL_STEP):
+            elif (prettyName == FMaya_UIRender.__RENDER_STILL_STEP):
                 if isAnimated: continue
                 step = int(value)
                 
             # Record these settings for later.                
-            elif (prettyName == FMaya.__RENDER_WIDTH):
+            elif (prettyName == FMaya_UIRender.__RENDER_WIDTH):
                 width = value
                 continue
-            elif (prettyName == FMaya.__RENDER_HEIGHT):
+            elif (prettyName == FMaya_UIRender.__RENDER_HEIGHT):
                 height = value
                 continue
-            elif (prettyName == FMaya.__RENDER_CAMERA):
+            elif (prettyName == FMaya_UIRender.__RENDER_CAMERA):
                 camera = value
                 continue
             
@@ -280,9 +305,12 @@ class FMaya (FApplication):
         self.__melScript.write("setAttr defaultRenderGlobals.animation " + str(isAnimated).lower() + ";\n")
         self.__melScript.write("setAttr defaultRenderGlobals.putFrameBeforeExt true;\n")
         self.__melScript.write("workspace -renderType \"images\" \"" + outputDir.replace("\\", "/") + "\";\n")
-        self.__melScript.write("hwRender -camera \"" + camera + "\" -width " + width + " -height " + height + ";\n\n")
+        self.__melScript.write("catch(`hwRender -camera \"" + camera + "\" -width " + width + " -height " + height + "`);\n\n")
         self.__melScript.write("cmdFileOutput -c $descriptor;\nfixNewlines $logname;\n\n")
                 
+        # Record this folder for image look-ups, because Maya spreads images in unexpected ways.
+        self.__renderFolders.append(outputDir)
+        
         outputList = []
         if not isAnimated:
             outputList.append(os.path.normpath(output + ".png"))
@@ -307,7 +335,7 @@ class FMaya (FApplication):
         for setting in settings:
             value = setting.GetValue().strip()
             if (value == ""):
-                value = self.FindDefault(FMaya.__EXPORT_OPTIONS, 
+                value = self.FindDefault(FMaya_UIRender.__EXPORT_OPTIONS, 
                                          setting.GetPrettyName())
             
             options = (options + setting.GetCommand() + "=" + 
