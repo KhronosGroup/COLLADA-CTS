@@ -22,6 +22,10 @@ class FMaya_UIRender (FApplication):
     
     __MEL_SCRIPT_EXTENSION = ".mel"
     __SCRIPT_EXTENSION = ".py"
+    
+    __IMPORT_OPTIONS = [
+            ("Import document up-axis", "importUpAxis", "0"),
+            ("Import document units", "importUnits", "0")]
 
     __EXPORT_OPTIONS = [
             ("Bake transforms", "bakeTransforms", "0"),
@@ -32,26 +36,30 @@ class FMaya_UIRender (FApplication):
             ("Sampling", "isSampling", "0"),
             ("Curve-Contrain", "curveConstrainSampling", "0"),
             ("Sampling Function", "samplingFunction", ""),
+            ("Static curve removal", "removeStaticCurves", "1"),
             ("Export polygon meshes", "exportPolygonMeshes", "1"),
             ("Export lights", "exportLights", "1"),
             ("Export cameras", "exportCameras", "1"),
             ("Export joints and skin", "exportJointsAndSkin", "1"),
             ("Export animations", "exportAnimations", "1"),
             ("Export invisible nodes", "exportInvisibleNodes", "0"),
+            ("Export default cameras", "exportDefaultCameras", "0"),
             ("Export normals", "exportNormals", "1"),
             ("Export texture coordinates", "exportTexCoords", "1"),
             ("Export per-vertex colors", "exportVertexColors", "1"),
+            ("Export per-vertex color animations", "exportVertexColorAnimations", "1"),
             ("Export geometric tangents", "exportTangents", "0"),
             ("Export texture tangents", "exportTexTangents", "1"),
+            ("Export materials only", "exportMaterialsOnly", "0"),
             ("Export constraints", "exportConstraints", "1"),
             ("Export physics", "exportPhysics", "1"),
             ("Exclusion set mode", "exclusionSetMode", "0"),
             ("Exclusion set", "exclusionSets", ""),
-            ("Export references", "exportXRefs", "1"),
-            ("De-Reference", "dereferenceXRefs", "0"),
+            ("Export external references", "exportXRefs", "1"),
+            ("De-Reference external references", "dereferenceXRefs", "0"),
             ("XFov", "cameraXFov", "0"),
             ("YFov", "cameraYFov", "1")]
-    
+
     __RENDER_CAMERA = "Camera"
     __RENDER_RENDERER = "Renderer"
     __RENDER_ANIMATION_START = "Animation Start Frame"
@@ -99,20 +107,19 @@ class FMaya_UIRender (FApplication):
         Implements FApplication.GetSettingsForOperation()
         
         """
-        if (operation == IMPORT):
-            return []
-        elif (operation == EXPORT):
-            options = []
-            for entry in FMaya_UIRender.__EXPORT_OPTIONS:
+        options = []
+        
+        # Retrieve the list of options for this operation.
+        optionList = None
+        if operation == IMPORT: optionList = FMaya_UIRender.__IMPORT_OPTIONS
+        elif operation == EXPORT: optionList = FMaya_UIRender.__EXPORT_OPTIONS
+        elif operation == RENDER: optionList = FMaya_UIRender.__RENDER_OPTIONS
+
+        # Return a correctly-processed list of FSettingEntry's.
+        if optionList != None:
+            for entry in optionList:
                 options.append(FSettingEntry(*entry))
-            return options
-        elif (operation == RENDER): 
-            options = []
-            for entry in FMaya_UIRender.__RENDER_OPTIONS:
-                options.append(FSettingEntry(*entry))
-            return options
-        else:
-            return []
+        return options
     
     def BeginScript(self, workingDir):
         """BeginScript(workingDir) -> None
@@ -215,18 +222,23 @@ class FMaya_UIRender (FApplication):
         filename = filename.replace("\\", "/")
         self.__currentFilename = output + ".mb"
         
-        extension = os.path.basename(filename).rsplit(".", 1)[1]
+        # Generate the import options string.
+        options = ""
+        for setting in settings:
+            value = setting.GetValue().strip()
+            if len(value) == 0:
+                value = self.FindDefault(FMaya_UIRender.__IMPORT_OPTIONS, setting.GetPrettyName())
+            options = (options + setting.GetCommand() + "=" + value + ";")
         
+        # Generate the import MEL command.
+        extension = FUtils.GetExtension(filename).lower()        
         if (extension == "mb"): 
-            command = ("catch(`file -type \"mayaBinary\" -o \"" + filename + 
-                       "\"`);\n")
+            command = ("catch(`file -type \"mayaBinary\" -o \"" + filename + "\"`);\n")
         elif (extension == "ma"): 
-            command = ("catch(`file -type \"mayaAscii\" -o \"" + filename + 
-                       "\"`);\n")
+            command = ("catch(`file -type \"mayaAscii\" -o \"" + filename + "\"`);\n")
         else: 
-            command = ("catch(`file -type \"COLLADA importer\" -o \"" + 
-                       filename + "\"`);\n")
-        
+            command = ("catch(`file -type \"COLLADA importer\" -op \"" + options + "\" -o \"" + filename + "\"`);\n")
+
         self.__melScript.write(
                 "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
                 "$descriptor = `cmdFileOutput -o $logname`;\n" +
