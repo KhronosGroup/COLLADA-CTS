@@ -58,11 +58,7 @@ class FTest(FSerializable, FSerializer):
         self.__dataSetPath = dataSetPath
         filePath = os.path.dirname(os.path.abspath(dataSetPath))
 
-        # If the given file is a COLLADA document, parse in the keywords and comments.
-        if FCOLLADAParser.IsCOLLADADocument(self.__filename):
-            (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
-        else:
-            (self.__colladaKeyword, self.__colladaComment) = ("", "")
+        self.RefreshCOLLADA()
 
         # valid while running, otherwise None
         self.__beforePreviousExecution = None 
@@ -93,10 +89,7 @@ class FTest(FSerializable, FSerializer):
         # Backward compatibility: if they are missing, read in the keyword/comment from the DAE document.
         if (not self.__dict__.has_key("_FTest__colladaKeyword")
             or not self.__dict__.has_key("_FTest__colladaComment")):
-            if FCOLLADAParser.IsCOLLADADocument(self.__filename):
-                (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
-            else:
-                (self.__colladaKeyword, self.__colladaComment) = ("", "")
+            self.RefreshCOLLADA()
     
     def __UpdateExecution(self):
         self.__previousExecution = None
@@ -805,6 +798,13 @@ class FTest(FSerializable, FSerializer):
         
         return self.__currentExecution.GetEnvironment()
         
+    def RefreshCOLLADA(self):
+        # If the given file is a COLLADA document, parse in the keywords and comments.
+        if FCOLLADAParser.IsCOLLADADocument(self.__filename):
+            (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
+        else:
+            (self.__colladaKeyword, self.__colladaComment) = ("", "")
+
     def GetCOLLADAKeyword(self):
         return self.__colladaKeyword
 

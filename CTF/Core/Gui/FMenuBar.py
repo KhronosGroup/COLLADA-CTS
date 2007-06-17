@@ -22,6 +22,7 @@ class FMenuBar(wx.MenuBar):
     ID_RUN_ALL = wx.NewId()
     ID_RUN_UNRAN = wx.NewId()
     ID_REFRESH = wx.NewId()
+    ID_REFRESH_SELECTED = wx.NewId()
     ID_HELP = wx.NewId()
     ID_ABOUT = wx.NewId()
     ID_ANIMATE = wx.NewId()
@@ -106,6 +107,7 @@ class FMenuBar(wx.MenuBar):
         self.Enable(FMenuBar.ID_RUN_UNRAN, False)
         self.Enable(FMenuBar.ID_SELECT_ALL, False)
         self.Enable(FMenuBar.ID_REFRESH, False)
+        self.Enable(FMenuBar.ID_REFRESH_SELECTED, False)
         self.Enable(FMenuBar.ID_ANIMATE, False)
         self.Enable(FMenuBar.ID_REGEX, False)
         
@@ -119,6 +121,7 @@ class FMenuBar(wx.MenuBar):
             self.__toolbar.EnableTool(FMenuBar.ID_ADD_TEST, False)
             self.__toolbar.EnableTool(FMenuBar.ID_RUN_SELECTED, False)
             self.__toolbar.EnableTool(FMenuBar.ID_REFRESH, False)
+            self.__toolbar.EnableTool(FMenuBar.ID_REFRESH_SELECTED, False)
             self.__toolbar.EnableTool(FMenuBar.ID_HELP, False)
             self.__toolbar.EnableTool(FMenuBar.ID_ANIMATE, False)
     
@@ -155,14 +158,17 @@ class FMenuBar(wx.MenuBar):
                 os.path.join(IMAGES_DIR, "runTest.bmp"), 
                 FMenuBar.ID_RUN_SELECTED, "Run Selected", 
                 "Run the selected tests")
-        self.__AddToolFromDisk(toolbar, 
-                os.path.join(IMAGES_DIR, "refresh.bmp"), FMenuBar.ID_REFRESH,
-                "Refresh Execution Table", "Refreshed the full execution table.")
         
         toolbar.AddSeparator()
         self.__AddCheckToolFromDisk(toolbar, 
                 os.path.join(IMAGES_DIR, "animate.bmp"), FMenuBar.ID_ANIMATE,
                 "Animate Selected Only", "Only animates the selected tests")
+        self.__AddToolFromDisk(toolbar, 
+                os.path.join(IMAGES_DIR, "refresh.bmp"), FMenuBar.ID_REFRESH,
+                "Refresh Execution Table", "Refreshes the full execution table.")
+        self.__AddToolFromDisk(toolbar, 
+                os.path.join(IMAGES_DIR, "refreshSelected.bmp"), FMenuBar.ID_REFRESH_SELECTED,
+                "Refresh Selected Execution Rows", "Refreshes the selected execution table rows.")
         
         toolbar.AddSeparator()
         self.__AddTool(toolbar, wx.ART_HELP, FMenuBar.ID_HELP, 
@@ -245,7 +251,9 @@ class FMenuBar(wx.MenuBar):
         testmenu.Append(FMenuBar.ID_ANIMATE, "Animate Selected Only", 
             "Animates only the selected tests.", wx.ITEM_CHECK)
         testmenu.Append(FMenuBar.ID_REFRESH, "Refresh Table", 
-            "Refreshed the execution table and their results.")
+            "Refreshes the execution table and their results.")
+        testmenu.Append(FMenuBar.ID_REFRESH_SELECTED, "Refresh Selected Rows", 
+            "Refreshes the selected execution table rows and their results.")
         testmenu.AppendSeparator()
         testmenu.Append(FMenuBar.ID_REGEX, "Regular Expression Editor",
                 "Opens the regular expression editor")

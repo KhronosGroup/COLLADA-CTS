@@ -153,6 +153,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         self.menu.Bind(FMenuBar.ID_RUN_UNRAN, self.__OnRunUnran)
         self.menu.Bind(FMenuBar.ID_SELECT_ALL, self.__OnSelectAll)
         self.menu.Bind(FMenuBar.ID_REFRESH, self.__OnRefreshTable)
+        self.menu.Bind(FMenuBar.ID_REFRESH_SELECTED, self.__OnRefreshSelected)
         self.menu.Bind(FMenuBar.ID_ANIMATE, self.__OnAnimate)
         self.menu.Bind(FMenuBar.ID_REGEX, self.__OnRegEx)
         self.CreateStatusBar()
@@ -437,12 +438,28 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         busyInfo = wx.BusyInfo("Refreshing execution table. Please wait...")
         for test in self.__testProcedure.GetTestGenerator():
             result = test.GetCurrentResult()
+            test.RefreshCOLLADA()
             if (result != None) and (not result.IsOverriden()):
                 test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
 
         # Intentionally refresh the full table.
         # This is very costly and should only be called when the user pressed the "Refresh" button.
         self.__grid.FullRefresh()
+        
+    def __OnRefreshSelected(self, e):
+        keys = self.__grid.GetSelectedKeys()
+        if (len(keys) == 0): return
+        
+        busyInfo = wx.BusyInfo("Refreshing selected rows. Please wait...")
+        for key in keys:
+            test = self.__testProcedure.GetTest(key)
+            self.__grid.PartialRefreshRemove(test)
+            test.RefreshCOLLADA()
+            result = test.GetCurrentResult()
+            if (result != None) and (not result.IsOverriden()):
+                test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
+            self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def __OnSaveAs(self, e):
         # contains some of the same code as in FRunConfigDialog
