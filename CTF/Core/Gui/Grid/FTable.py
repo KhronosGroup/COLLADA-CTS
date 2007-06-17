@@ -158,6 +158,12 @@ class FTable(wx.grid.PyGridTableBase):
     
     def InsertData(self, rKey, cKey, data):
         self.__data[rKey][cKey] = data
+        
+    def ClearData(self, rKey, cKey):
+        if (self.__columns[cKey][FTable.__RENDERER] == None):
+            self.__data[rKey][cKey] = ""
+        else:
+            self.__data[rKey][cKey] = None
     
     def GetValue(self, row, col):
         return self.__data[self.__rowsKey[row]][self.__colsKey[col]]
@@ -207,11 +213,12 @@ class FTable(wx.grid.PyGridTableBase):
         
         tempList = []
         for rKey in self.__data.keys():
-            tempList.append((self.__data[rKey][cKey], rKey))
+            data = self.__data[rKey][cKey]
+            if data != None: tempList.append((data, rKey))
         
-        if (len(self.__data) == 0): return
+        if (len(tempList) == 0): return
         
-        if (type(self.__data[0][cKey]) == types.TupleType):
+        if (type(tempList[0]) == types.TupleType):
             # compare only the first element
             cmpFunction = lambda x, y: self.SafeCmp(x, y)
         else:

@@ -296,27 +296,39 @@ class FImageRenderer(FTextRenderer):
     
     def __GetDefaultBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
+            test = imageData.GetTest()
+            grid.PartialRefreshRemove(test)
+
+            # Set this still image/animation as the default blessed image.
             busyInfo = wx.BusyInfo("Default blessing image. Please wait...")
             if (renderedArea.GetType() == FImageRenderArea.IMAGE):
-                imageData.GetTest().DefaultBless(renderedArea.GetFilename())
+                test.DefaultBless(renderedArea.GetFilename())
             elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
-                imageData.GetTest().DefaultBlessAnimation(
-                                                    renderedArea.GetFilename())
-            test = imageData.GetTest()
+                test.DefaultBlessAnimation(renderedArea.GetFilename())
+
+            # Update the result and refresh the grid row.
             test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
-            grid.RefreshTable()
+            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshDone()
+            
         return Bless
     
     def __GetBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
+            test = imageData.GetTest()
+            grid.PartialRefreshRemove(test)
+
+            # Bless this still image/animation.
             busyInfo = wx.BusyInfo("Blessing Image. Please wait...")
             if (renderedArea.GetType() == FImageRenderArea.IMAGE):
-                imageData.GetTest().Bless(renderedArea.GetFilename())
+                test.Bless(renderedArea.GetFilename())
             elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
-                imageData.GetTest().BlessAnimation(renderedArea.GetFilename())
-            test = imageData.GetTest()
+                test.BlessAnimation(renderedArea.GetFilename())
+                
+            # Update the result and refresh the grid row.
             test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
-            grid.RefreshTable()
+            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshDone()
         return Bless
     
     def __GetCompareLogFunc(self, grid, renderedArea, imageData):

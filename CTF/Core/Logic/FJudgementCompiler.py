@@ -12,14 +12,12 @@ class FJudgementCompiler:
         into one coherent badge earned statement. """
 
     def __init__(self):
-        # Start with "no_script" for all the badges.
-        # "no_script" is considered positive and may be overwritten
-        # by a "passed" status if one is found in the list.
-        # For any "missing_data" or "failed", the badge earning
-        # is canceled.
         self.__badgesStatus = []
         for i in range(len(FGlobals.badgeLevels)):
-            self.__badgesStatus.append(FJudgement.NO_SCRIPT)
+            # Create a new tally list for each badge level.
+            tally = []
+            for i in range(FJudgement.STATUS_COUNT): tally.append(0)
+            self.__badgesStatus.append(tally)
         
     def ProcessJudgement(self, badgeIndex, badgeResult):
         """ Considers a local judgement for the given badge.
@@ -28,15 +26,20 @@ class FJudgementCompiler:
             @param badgeResult The local judgement result to consider
                 for the given badge level. """
     
-        oldResult = self.__badgesStatus[badgeIndex]
-        if (oldResult == FJudgement.NO_SCRIPT):
-            # No script is overwritten by everything else.
-            self.__badgesStatus[badgeIndex] = badgeResult 
-        elif (oldResult == FJudgement.PASSED and
-                (badgeResult == FJudgement.MISSING_DATA or badgeResult == FJudgement.FAILED)):
-            # "Passed" can be overwritten by one of the negative judgements.
-            self.__badgesStatus[badgeIndex] = badgeResult 
-        # Otherwise, keep the old result.
+        # Just increment the total for this result value in the tally for this badge level.
+        tally = self.__badgesStatus[badgeIndex]
+        tally[badgeResult] = tally[badgeResult] + 1
+        
+    def RemoveJudgement(self, badgeIndex, badgeResult):
+        """ In order to support partial refreshes, this function allows the UI to remove one
+            judgement from the current tally.
+            @param badgeIndex The integer index of the badge that
+                this judgement relates to.
+            @param badgeResult The local judgement result to remove. """
+
+        # Decrement the total for this result value in the tally for this badge level.
+        tally = self.__badgesStatus[badgeIndex]
+        tally[badgeResult] = tally[badgeResult] - 1
 
     def GenerateStatement(self):
         """ Generates the badges earned statement.
@@ -45,14 +48,19 @@ class FJudgementCompiler:
             
             @return A string to contains the badges earned statement. """
  
+        # For a badge to be earned, you must not have any of the MISSING_DATA and FAILED results.
+        # And you must have at least one PASSED. The number of NO_SCRIPT results is not relevant.
+ 
         # Process the badges status, looking for earned badges.
         text = ""
         for i in range(len(FGlobals.badgeLevels)):
-            badgeStatus = self.__badgesStatus[i]
-            if (badgeStatus == FJudgement.PASSED):
+            tally = self.__badgesStatus[i]
+            missingData = tally[FJudgement.MISSING_DATA]
+            failed = tally[FJudgement.FAILED]
+            passed = tally[FJudgement.PASSED]
+            if (passed > 0) and (failed + missingData == 0):
                 
-                # To get here, at least least one PASSED judgement and
-                # zero or more NO_SCRIPTs judgement must have been processed.
+                # This badge is earned!
                 if (len(text) > 0): text += ", "
                 text += FGlobals.badgeLevels[i]
 

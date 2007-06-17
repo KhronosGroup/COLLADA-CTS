@@ -120,6 +120,11 @@ class FGrid(wx.grid.Grid):
     
     def InsertData(self, rKey, cKey, data):
         self.__table.InsertData(rKey, cKey, data)
+        
+    def ClearRow(self, rKey):
+        for col in range(self.__table.GetNumberCols()):
+            cKey = self.__table.GetColKey(col)
+            self.__table.ClearData(rKey, cKey)
 
     def SetColSize(self, cKey, width):
         self.__table.SetColSize(cKey, width)

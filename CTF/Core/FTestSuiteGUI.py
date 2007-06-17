@@ -152,7 +152,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         self.menu.Bind(FMenuBar.ID_RUN_ALL, self.__OnRunAll)
         self.menu.Bind(FMenuBar.ID_RUN_UNRAN, self.__OnRunUnran)
         self.menu.Bind(FMenuBar.ID_SELECT_ALL, self.__OnSelectAll)
-        self.menu.Bind(FMenuBar.ID_UPDATE, self.__OnAutoUpdateResult)
+        self.menu.Bind(FMenuBar.ID_REFRESH, self.__OnRefreshTable)
         self.menu.Bind(FMenuBar.ID_ANIMATE, self.__OnAnimate)
         self.menu.Bind(FMenuBar.ID_REGEX, self.__OnRegEx)
         self.CreateStatusBar()
@@ -170,7 +170,8 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         for test in self.__testProcedure.GetTestGenerator():
             id = test.GetTestId()
             self.__grid.AddExecution(id, test, test.GetCurrentExecution())
-        self.__grid.RefreshTable()
+            self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def SetStatistics(self, total, passed, failed):
         self.menu.SetTotal(total)
@@ -220,10 +221,14 @@ class RunTable(FSFrame, wx.MDIChildFrame):
             FUtils.ShowWarning(self, "Select only one test to view settings.")
             return
         
-        key = self.__grid.GetSelectedKeys()[0]
+        key = self.__grid.GetSelectedKeys()[0]        
+        test = self.__testProcedure.GetTest(key)
         
-        FBlessedViewerDialog(self, 
-                self.__testProcedure.GetTest(key).GetDataSetPath()).ShowModal()
+        # FBlessedViewerDialog may unbless.
+        self.__grid.PartialRefreshRemove(test)
+        FBlessedViewerDialog(self, test.GetDataSetPath()).ShowModal()
+        self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def __OnViewSettings(self, e):
         if (len(self.__grid.GetSelectedKeys()) == 0): return
@@ -271,8 +276,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                         break
                 
                 if (changed):
-                    addedTestDesc.append(
-                            (key, test.GetDataSetPath(), newSettings))
+                    addedTestDesc.append((key, test.GetDataSetPath(), newSettings))
                     removedTestKeys.append(key)
             if (len(addedTestDesc) > 0):
                 message = ("Permanently delete the following tests and " +
@@ -280,21 +284,20 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                            "settings?\n")
                 if (self.__DisplayDeleteTestMessage(removedTestKeys, message)):
                     for desc in addedTestDesc:
+                        test = self.__testProcedure.GetTest(desc[0])
+                        self.__grid.PartialRefreshRemove(desc[0])
                         self.__testProcedure.RemoveTest(desc[0])
                         testId = self.__testProcedure.AddTest(desc[1], desc[2])
                         test = self.__testProcedure.GetTest(testId)
                         if (testId == desc[0]):
-                            self.__grid.ReplaceExecution(desc[0], test, 
-                                    test.GetCurrentExecution())
+                            self.__grid.ReplaceExecution(desc[0], test, test.GetCurrentExecution())
                         else:
                             print ("<FTestSuiteGUI> inconsistency - should " +
                                    "not happen... recovering")
                             self.__grid.DeleteExecution(desc[0])
-                            self.__grid.AddExecution(testId, test,
-                                    test.GetCurrentExecution())
-                        
-                        
-                self.__grid.RefreshTable()
+                            self.__grid.AddExecution(testId, test, test.GetCurrentExecution())
+                        self.__grid.PartialRefreshAdd(test)
+                    self.__grid.PartialRefreshDone()
     
     def __OnContextRun(self, e):
         self.__OnRunSelected(e)
@@ -306,6 +309,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
             return
         
         test = self.__testProcedure.GetTest(keys[0])
+        self.__grid.PartialRefreshRemove(test)
         executions = test.GetHistory()
         tuples = []
         for execution in executions:
@@ -319,7 +323,8 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                 self.configDict["pythonExecutable"], self.__GetPreferences())
         frame.ShowModal()
         frame.Destroy()
-        self.__grid.RefreshTable()
+        self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def __WarnIfOpened(self, name):
         loadedTestProcedures = self.GetParent().GetLoadedTestProcedure(name)
@@ -358,26 +363,26 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                 
                 self.__WarnIfOpened(dialogTestProcedure)
                 
-                testFilename = os.path.join(RUNS_FOLDER, dialogTestProcedure,
-                        compareDialog.GetTest(), TEST_FILENAME)
+                testFilename = os.path.join(RUNS_FOLDER, dialogTestProcedure, compareDialog.GetTest(), TEST_FILENAME)
                 
                 tuples = []
                 if (blessed):
-                    blessedExecution = test.GetBlessedExecution(
-                            self.__testProcedure)
+                    blessedExecution = test.GetBlessedExecution(self.__testProcedure)
                     if (blessedExecution != None):
                         tuples.append((test, blessedExecution))
                 
                 tuples.append((self.Load(testFilename), self.Load(path)))
                 tuples.append((test, test.GetCurrentExecution()))
                 
+                self.__grid.PartialRefreshRemove(test)
                 dialog = FExecutionDialog(self, "Execution Comparison",
                         self.__testProcedure, tuples, self.__animateAll, 
                         self.configDict["feelingViewerGUI"],
                         self.configDict["pythonExecutable"], 
                         self.__GetPreferences())
                 dialog.ShowModal()
-                self.__grid.RefreshTable()
+                self.__grid.PartialRefreshAdd(test)
+                self.__grid.PartialRefreshDone()
     
     def __OnContextDeleteTest(self, e):
         keys = self.__grid.GetSelectedKeys()
@@ -387,12 +392,14 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         if (self.__DisplayDeleteTestMessage(keys, message)):
             busyInfo = wx.BusyInfo("Deleting tests. Please wait...")
             for key in keys:
+                test = self.__testProcedure.GetTest(key)
+                self.__grid.PartialRefreshRemove(test)
                 self.__testProcedure.RemoveTest(key)
                 self.__grid.DeleteExecution(key)
+                # Intentionally: there is no partial refresh add.
             
-            self.__grid.RefreshTable()
-            self.__grid.ClearSelection()
-    
+            self.__grid.PartialRefreshDone()
+
     def __DisplayDeleteTestMessage(self, keys, message):
         for key in keys:
             test = self.__testProcedure.GetTest(key)
@@ -420,23 +427,22 @@ class RunTable(FSFrame, wx.MDIChildFrame):
             for key in keys:
                 test = self.__testProcedure.GetTest(key)
                 if (test.HasCurrentExecution()):
-                    changed = True
+                    self.__grid.PartialRefreshRemove(test)
                     test.DeleteCurrentExecution()
-                    self.__grid.ReplaceExecution(key, test, 
-                                                 test.GetCurrentExecution())
-            if (changed):
-                self.__grid.RefreshTable()
+                    self.__grid.ReplaceExecution(key, test, test.GetCurrentExecution())
+                    self.__grid.PartialRefreshAdd(test)
+            self.__grid.PartialRefreshDone()
     
-    def __OnAutoUpdateResult(self, e):
-        busyInfo = wx.BusyInfo("Auto updating results. Please wait...")
+    def __OnRefreshTable(self, e):
+        busyInfo = wx.BusyInfo("Refreshing execution table. Please wait...")
         for test in self.__testProcedure.GetTestGenerator():
             result = test.GetCurrentResult()
-            if (result == None): continue
-            
-            if (not test.GetCurrentResult().IsOverriden()):
-                test.UpdateResult(self.__testProcedure, 
-                                  test.GetCurrentExecution())
-        self.__grid.RefreshTable()
+            if (result != None) and (not result.IsOverriden()):
+                test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
+
+        # Intentionally refresh the full table.
+        # This is very costly and should only be called when the user pressed the "Refresh" button.
+        self.__grid.FullRefresh()
     
     def __OnSaveAs(self, e):
         # contains some of the same code as in FRunConfigDialog
@@ -588,15 +594,16 @@ class RunTable(FSFrame, wx.MDIChildFrame):
     
     def __CollectData(self, optionsPage, dataSetPage):
         busyInfo = wx.BusyInfo("Adding tests. Please wait...")
-        for test in dataSetPage.GetChecked():
-            self.__AddTest(test, optionsPage.GetSettings())
-            
-        self.__grid.RefreshTable()
+        for testName in dataSetPage.GetChecked():
+            test = self.__AddTest(testName, optionsPage.GetSettings())
+            self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def __AddTest(self, dataSetName, settings):
         testId = self.__testProcedure.AddTest(dataSetName, settings)
         test = self.__testProcedure.GetTest(testId)
         self.__grid.AddExecution(testId, test, test.GetCurrentExecution())
+        return test
 
     def __OnRunSelected(self, e):
         if (len(self.__grid.GetSelectedKeys()) == 0): return
@@ -634,9 +641,10 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         
         for testId in keys:
             test = self.__testProcedure.GetTest(testId)
-            self.__grid.ReplaceExecution(testId, test, 
-                                         test.GetCurrentExecution())
-        self.__grid.RefreshTable()
+            self.__grid.PartialRefreshRemove(test)
+            self.__grid.ReplaceExecution(testId, test, test.GetCurrentExecution())
+            self.__grid.PartialRefreshAdd(test)
+        self.__grid.PartialRefreshDone()
     
     def __GetCallBack(self, dialog):
         def __callBack(current, max, message):

@@ -17,6 +17,9 @@ class FJudgement:
     # Indicates that this badge level was not original run and checked-for.
     # This value is negative and does stop an application from passing a badge level.
     MISSING_DATA = 3
+    
+    # These enums are used in a list, so this member must always be last.
+    STATUS_COUNT = 4
 
     def __init__(self, result, message):
         if (result == None): self.__result = MISSING_DATA

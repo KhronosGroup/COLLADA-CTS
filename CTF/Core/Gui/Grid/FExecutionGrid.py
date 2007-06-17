@@ -63,6 +63,11 @@ class FExecutionGrid(FGrid):
         self.__executions = [] # [(id, test, execution),]
         self.__executionsKeyMap = {} # {id:position,}
         
+        self.__executionPassed = 0
+        self.__executionFailed = 0
+        self.__executionTotal = 0
+        self.__judgementCompiler = None
+        
         self.__prefBlessed = None
         self.__prefPrevious = None
         self.__prefHeight = None
@@ -139,12 +144,12 @@ class FExecutionGrid(FGrid):
             
             if (execution == None): continue
             
+            self.PartialRefreshRemove(test)
             test.BlessExecution(self.__testProcedure, execution)
             test.UpdateResult(self.__testProcedure, execution)
-            changed = True
-        
-        if (changed):
-            self.RefreshTable()
+            self.PartialRefreshAdd(test)
+            
+        self.PartialRefreshDone()
     
     def __OnContextUpdateResult(self, e):
         keys = self.GetSelectedKeys()
@@ -154,9 +159,10 @@ class FExecutionGrid(FGrid):
         for key in keys:
             position = self.__executionsKeyMap[key]
             id, test, execution = self.__executions[position]
+            self.PartialRefreshRemove(test)
             test.UpdateResult(self.__testProcedure, execution)
-        
-        self.RefreshTable()
+            self.PartialRefreshAdd(test)
+        self.PartialRefreshDone()
     
     def SetAnimateAll(self, value):
         self.__inputRenderer.SetAnimateAll(value)
@@ -185,7 +191,7 @@ class FExecutionGrid(FGrid):
     
     def GetDiff(self):
         return self.__prefDiff
-    
+        
     def SetPreferences(self, newWidth, newHeight, newBlessed, newPrevious, 
                        newDiff, newColumns, save = True):
         if ((newWidth == self.__prefWidth) and 
@@ -229,15 +235,12 @@ class FExecutionGrid(FGrid):
         if (self.__prefPrevious):
             numImages = numImages + 1
         
-        self.SetColSize(FExecutionGrid.__BLESSED, 
-                        max(self.__prefWidth + 10, 100))
-        self.SetColSize(FExecutionGrid.__INPUT, 
-                        max(self.__prefWidth + 10, 100))
+        self.SetColSize(FExecutionGrid.__BLESSED, max(self.__prefWidth + 10, 100))
+        self.SetColSize(FExecutionGrid.__INPUT, max(self.__prefWidth + 10, 100))
         for key in self.__outputKeys:
-            self.SetColSize(key, 
-                    max(numImages * (self.__prefWidth + 10), 100))
+            self.SetColSize(key, max(numImages * (self.__prefWidth + 10), 100))
         
-        self.RefreshTable()
+        self.FullRefresh()
     
     def AddExecution(self, id, test, execution):
         if (self.__executionsKeyMap.has_key(id)):
@@ -365,47 +368,58 @@ class FExecutionGrid(FGrid):
         f.close()
     
     # clears the table and repopulates
-    def RefreshTable(self):
+    def FullRefresh(self):
         self.ClearGrid()
         
-        self.Refresh()
-        
-        total = 0
-        passed = 0
-        failed = 0
-        
-        judgementCompiler = FJudgementCompiler()
+        # Restart the counters.
+        self.__executionTotal = 0
+        self.__executionPassed = 0
+        self.__executionFailed = 0
+        self.__judgementCompiler = FJudgementCompiler()
         
         # Iterate over the tests, filling in the table
         # and processing the results.
         for id, test, execution in self.__executions:
-            total = total + 1
+            self.PartialRefreshAdd(test)
+        self.PartialRefreshDone()
+    
+    def PartialRefreshRemove(self, test):
+        self.__executionTotal = self.__executionTotal - 1
+
+        # Retrieve the execution that is currently displayed.
+        id = test.GetTestId()
+        row = self.__executionsKeyMap[id]
+        (id, test, execution) = self.__executions[row]
+        
+        # Remove the passed/failed status.
+        if execution != None:
+            result = execution.GetResult()
+            if result != None:
+                if result.GetResult():
+                    self.__executionPassed = self.__executionPassed - 1
+                else:
+                    self.__executionFailed = self.__executionFailed - 1
+
+            # Remove the judgements.
+            for i in range(len(FGlobals.badgeLevels)):
+                badgeName = FGlobals.badgeLevels[i]
+                badgeResult = execution.GetJudgementResult(badgeName)
+                self.__judgementCompiler.RemoveJudgement(i, badgeResult)
+
+    def PartialRefreshAdd(self, test):        
+        self.__executionTotal = self.__executionTotal + 1
+        
+        id = test.GetTestId()
             
-            if (execution == None):
-                comments = test.GetCurrentComments()
-                executionDir = None
-            else:
-                comments = execution.GetComments()
-                executionDir = execution.GetExecutionDir()
-            
-            self.InsertData(id, FExecutionGrid.__TEST_ID, test.GetTestId())
-            self.InsertData(id, FExecutionGrid.__FILENAME, (test.GetSeparatedFilename(),))
-            self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_KEYWORD, (test.GetCOLLADAKeyword(),))
-            self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_COMMENT, (test.GetCOLLADAComment(),))
-            self.InsertData(id, FExecutionGrid.__ANNOTATIONS, (comments, test, execution))
-            self.InsertData(id, FExecutionGrid.__INPUT, 
-                    FImageData([test.GetAbsFilename(),], test = test, executionDir = executionDir))
-            
-            blessed = test.GetBlessed()
-            if ((blessed != None) and (len(blessed) != 0)):
-                self.InsertData(id, FExecutionGrid.__BLESSED, 
-                        FImageData(blessed, test = test, 
-                        executionDir = executionDir))
-            
-            if (execution == None): 
-                self.InsertData(id, FExecutionGrid.__DIFFERENT, test.GetCurrentDiffFromPrevious())
-                continue
-            
+        execution = test.GetCurrentExecution()
+        if (execution == None):
+            comments = test.GetCurrentComments()
+            executionDir = None
+        else:
+            comments = execution.GetComments()
+            executionDir = execution.GetExecutionDir()
+                
+        if (execution != None): 
             logs = [] # probably want to put this in a class
             for step, app, op, setting in (self.__testProcedure.GetStepGenerator()):
                 if (op == VALIDATE):
@@ -447,23 +461,39 @@ class FExecutionGrid(FGrid):
                 
                 # Process and render the judgement information
                 self.InsertData(id, FExecutionGrid.__BADGE_START + i, FJudgement(badgeResult, badgeExecutionLog))
-                judgementCompiler.ProcessJudgement(i, badgeResult)
+                self.__judgementCompiler.ProcessJudgement(i, badgeResult)
             
             # Display the environment columns
             self.InsertData(id, FExecutionGrid.__DIFFERENT, execution.GetDiffFromPrevious())
-            self.InsertData(id, FExecutionGrid.__RESULT, (execution.GetResult(), execution))
+            self.InsertData(id, FExecutionGrid.__RESULT, (execution.GetResult(), execution, test))
             self.InsertData(id, FExecutionGrid.__LOGS, logs)
             self.InsertData(id, FExecutionGrid.__TIME, execution.GetTimeRan())
             self.InsertData(id, FExecutionGrid.__ENVIRONMENT, execution.GetEnvironment())
             
             result = execution.GetResult()
-            if (result != None):
-                if (result.GetResult()):
-                    passed = passed + 1
+            if result != None:
+                if result.GetResult():
+                    self.__executionPassed = self.__executionPassed + 1
                 else:
-                    failed = failed + 1
+                    self.__executionFailed = self.__executionFailed + 1
+        else:
+            self.ClearRow(id)
 
-        if (not self.__simplified):
-            self.GetParent().SetStatistics(total, passed, failed)
-            self.GetParent().SetBadgesEarned(judgementCompiler.GenerateStatement())
-    
+        # Insert this data afterwards so that ClearRow can do its work.
+        self.InsertData(id, FExecutionGrid.__TEST_ID, test.GetTestId())
+        self.InsertData(id, FExecutionGrid.__FILENAME, (test.GetSeparatedFilename(),))
+        self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_KEYWORD, (test.GetCOLLADAKeyword(),))
+        self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_COMMENT, (test.GetCOLLADAComment(),))
+        self.InsertData(id, FExecutionGrid.__ANNOTATIONS, (comments, test, execution))
+        self.InsertData(id, FExecutionGrid.__INPUT, FImageData([test.GetAbsFilename(),], test = test, executionDir = executionDir))
+        
+        blessed = test.GetBlessed()
+        if ((blessed != None) and (len(blessed) != 0)):
+            self.InsertData(id, FExecutionGrid.__BLESSED,  FImageData(blessed, test = test, executionDir = executionDir))
+
+    def PartialRefreshDone(self):
+        if not self.__simplified:
+            self.GetParent().SetStatistics(self.__executionTotal, self.__executionPassed, self.__executionFailed)
+            self.GetParent().SetBadgesEarned(self.__judgementCompiler.GenerateStatement())
+        self.Refresh()
+

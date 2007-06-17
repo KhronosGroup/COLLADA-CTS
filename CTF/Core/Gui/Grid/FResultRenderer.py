@@ -40,18 +40,19 @@ class FResultRenderer(FTextRenderer):
         font.SetWeight(wx.BOLD)
         menuItem.SetFont(font)
         menu.AppendItem(menuItem)
-        grid.Bind(wx.EVT_MENU, self.__GetToggleFunc(result[1], grid), id = id)
+        grid.Bind(wx.EVT_MENU, self.__GetToggleFunc(result[1], grid, result[2]), id = id)
     
-    def __GetToggleFunc(self, execution, grid):
+    def __GetToggleFunc(self, execution, grid, test):
         def Toggle(e):
+            grid.PartialRefreshRemove(test)
             execution.ToggleResult()
-            
-            grid.RefreshTable()
+            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshDone()
         return Toggle
     
     def Clicked(self, grid, row, col, position):
         result = grid.GetCellValue(row, col)
         if (result == None): return
         if (result[0] == None): return
-        (self.__GetToggleFunc(result[1], grid))(None)
+        (self.__GetToggleFunc(result[1], grid, result[2]))(None)
     

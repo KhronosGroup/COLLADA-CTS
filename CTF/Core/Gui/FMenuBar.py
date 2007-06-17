@@ -21,7 +21,7 @@ class FMenuBar(wx.MenuBar):
     ID_RUN_SELECTED = wx.NewId()
     ID_RUN_ALL = wx.NewId()
     ID_RUN_UNRAN = wx.NewId()
-    ID_UPDATE = wx.NewId()
+    ID_REFRESH = wx.NewId()
     ID_HELP = wx.NewId()
     ID_ABOUT = wx.NewId()
     ID_ANIMATE = wx.NewId()
@@ -105,7 +105,7 @@ class FMenuBar(wx.MenuBar):
         self.Enable(FMenuBar.ID_RUN_ALL, False)
         self.Enable(FMenuBar.ID_RUN_UNRAN, False)
         self.Enable(FMenuBar.ID_SELECT_ALL, False)
-        self.Enable(FMenuBar.ID_UPDATE, False)
+        self.Enable(FMenuBar.ID_REFRESH, False)
         self.Enable(FMenuBar.ID_ANIMATE, False)
         self.Enable(FMenuBar.ID_REGEX, False)
         
@@ -118,7 +118,7 @@ class FMenuBar(wx.MenuBar):
             self.__toolbar.EnableTool(FMenuBar.ID_SAVEAS, False)
             self.__toolbar.EnableTool(FMenuBar.ID_ADD_TEST, False)
             self.__toolbar.EnableTool(FMenuBar.ID_RUN_SELECTED, False)
-            self.__toolbar.EnableTool(FMenuBar.ID_UPDATE, False)
+            self.__toolbar.EnableTool(FMenuBar.ID_REFRESH, False)
             self.__toolbar.EnableTool(FMenuBar.ID_HELP, False)
             self.__toolbar.EnableTool(FMenuBar.ID_ANIMATE, False)
     
@@ -156,9 +156,8 @@ class FMenuBar(wx.MenuBar):
                 FMenuBar.ID_RUN_SELECTED, "Run Selected", 
                 "Run the selected tests")
         self.__AddToolFromDisk(toolbar, 
-                os.path.join(IMAGES_DIR, "results.bmp"), FMenuBar.ID_UPDATE,
-                "AutoUpdate Results", "Automatically updates all " + 
-                "results not overriden against blessed.")
+                os.path.join(IMAGES_DIR, "refresh.bmp"), FMenuBar.ID_REFRESH,
+                "Refresh Execution Table", "Refreshed the full execution table.")
         
         toolbar.AddSeparator()
         self.__AddCheckToolFromDisk(toolbar, 
@@ -245,8 +244,8 @@ class FMenuBar(wx.MenuBar):
         testmenu.AppendSeparator()
         testmenu.Append(FMenuBar.ID_ANIMATE, "Animate Selected Only", 
             "Animates only the selected tests.", wx.ITEM_CHECK)
-        testmenu.Append(FMenuBar.ID_UPDATE, "AutoUpdate Results", 
-            "Automatically updates all results not overriden against blessed.")
+        testmenu.Append(FMenuBar.ID_REFRESH, "Refresh Table", 
+            "Refreshed the execution table and their results.")
         testmenu.AppendSeparator()
         testmenu.Append(FMenuBar.ID_REGEX, "Regular Expression Editor",
                 "Opens the regular expression editor")
