@@ -1,0 +1,1 @@
+png\directional_10_lights.png
