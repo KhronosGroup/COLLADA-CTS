@@ -1,0 +1,6 @@
+
+
+==== Opening file: C:\svn\khronos\conform\ctf\CTF\StandardDataSets\collada\library_visual_scenes\visual_scene\node\lookat\lookat.dae ====
+
+
+
