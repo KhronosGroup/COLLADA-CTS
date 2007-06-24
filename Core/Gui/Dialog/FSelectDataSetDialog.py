@@ -9,6 +9,7 @@ import re
 import copy
 
 import Core.Common.FUtils as FUtils
+import Core.Common.FCOLLADAParser as FCOLLADAParser
 from Core.Common.FConstants import *
 from Core.Logic.FDataSetParser import *
 
@@ -394,9 +395,8 @@ class FSelectDataSetDialog(wx.wizard.WizardPageSimple, FDataSetParser):
             directory, checked = self.__treeCtrl.GetItemPyData(item)
             if (directory != FSelectDataSetDialog.__FILE): return
             
-            path = DATA_SET_COMMENTS
-            dataSetDirectory = FUtils.GetProperFilename(
-                    self.__treeCtrl.GetItemText(item)[1:-1])
+            path = self.__treeCtrl.GetItemText(item)[1:-1]
+            dataSetDirectory = FUtils.GetProperFilename(path)
             path = os.path.join(dataSetDirectory, path)
             parent = self.__treeCtrl.GetItemParent(item)
             while (parent != self.__treeCtrl.GetRootItem()):
@@ -406,13 +406,9 @@ class FSelectDataSetDialog(wx.wizard.WizardPageSimple, FDataSetParser):
             
             comments = ""
             
-            if (os.path.isfile(path)):
-                f = open(path)
-                line = f.readline()
-                while (line):
-                    comments = comments + line
-                    line = f.readline()
-                f.close()
+            if (os.path.isfile(path) and FCOLLADAParser.IsCOLLADADocument(path)):
+                (title, subject, keyword) = FCOLLADAParser.GetCOLLADAAssetInformation(path)
+                comments = "[%s] Keywords: %s\nDescription: %s" % (title, keyword, subject)
             
             self.__commentsCtrl.SetValue(comments)
         
