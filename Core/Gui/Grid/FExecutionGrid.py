@@ -35,7 +35,8 @@ class FExecutionGrid(FGrid):
     __NEXT_KEY = 14 # WARNING: this is an increasing key: [15-199] is reserved for steps.
     __BADGE_START = 200 # WARNING: this is an increasing key: [200-299] is reserved for badge levels.
     __COLLADA_ASSET_KEYWORD = 300
-    __COLLADA_ASSET_COMMENT = 301
+    __COLLADA_ASSET_SUBJECT = 301
+    __COLLADA_ASSET_ID = 302
     
     __COLUMNS = { __FILENAME : ("Test Filename", 100),
                 __ANNOTATIONS : ("Comments", 100),
@@ -47,8 +48,9 @@ class FExecutionGrid(FGrid):
                 __TIME : ("Time", 100),
                 __ENVIRONMENT : ("Environment", 100),
                 __COLLADA_ASSET_KEYWORD : ("Categories", 100),
-                __COLLADA_ASSET_COMMENT : ("Description", 100),
-                __TEST_ID : ("Test ID", 50)}
+                __COLLADA_ASSET_SUBJECT : ("Description", 100),
+                __COLLADA_ASSET_ID : ("Test Id", 50),
+                __TEST_ID : ("#", 30)}
     
     def __init__(self, parent, testProcedure, simplified, feelingViewerPath,
             pythonPath):
@@ -292,11 +294,14 @@ class FExecutionGrid(FGrid):
         
         self.__AddColumn(FExecutionGrid.__TEST_ID,
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__TEST_ID])
+        self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_ID,
+                FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_ID],
+                self.__wrappedTextRenderer)
         self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_KEYWORD,
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_KEYWORD],
                 self.__wrappedTextRenderer)
-        self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_COMMENT,
-                FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_COMMENT],
+        self.__AddColumn(FExecutionGrid.__COLLADA_ASSET_SUBJECT,
+                FExecutionGrid.__COLUMNS[FExecutionGrid.__COLLADA_ASSET_SUBJECT],
                 self.__wrappedTextRenderer)
         self.__AddColumn(FExecutionGrid.__FILENAME, 
                 FExecutionGrid.__COLUMNS[FExecutionGrid.__FILENAME],
@@ -482,8 +487,9 @@ class FExecutionGrid(FGrid):
         # Insert this data afterwards so that ClearRow can do its work.
         self.InsertData(id, FExecutionGrid.__TEST_ID, test.GetTestId())
         self.InsertData(id, FExecutionGrid.__FILENAME, (test.GetSeparatedFilename(),))
+        self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_ID, (test.GetCOLLADAId(),))
         self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_KEYWORD, (test.GetCOLLADAKeyword(),))
-        self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_COMMENT, (test.GetCOLLADAComment(),))
+        self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_SUBJECT, (test.GetCOLLADASubject(),))
         self.InsertData(id, FExecutionGrid.__ANNOTATIONS, (comments, test, execution))
         self.InsertData(id, FExecutionGrid.__INPUT, FImageData([test.GetAbsFilename(),], test = test, executionDir = executionDir))
         

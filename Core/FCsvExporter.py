@@ -48,7 +48,7 @@ class FCsvExporter:
                 "# of tests warning:," + FCsvExporter.__REPLACE_WARNINGS_COUNT + "\n" + 
                 "# of tests errors:," + FCsvExporter.__REPLACE_ERRORS_COUNT + "\n" +
                 "Badges earned:," + FCsvExporter.__REPLACE_BADGES_EARNED + "\n\n")
-        file.write("Category,Subcategory,Test Filename,Blessed,")    
+        file.write("Test Id,Categories,Description,Test Filename,Blessed,")    
         for step, app, op, settings in testProcedure.GetStepGenerator():
             if (op == VALIDATE and op not in OPS_NEEDING_APP):
                 file.write("<" + str(step) + ">" + " " + op + ",")
@@ -199,7 +199,10 @@ class FCsvExporter:
     def __AddTest(self, file, checksumFile, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
 
-        file.write( test.GetCOLLADAKeyword() + "," + test.GetCOLLADAComment() + "," + test.GetSeparatedFilename() + ",")  
+        file.write(test.GetCOLLADAId() + ",")
+        file.write(test.GetCOLLADAKeyword() + ",")
+        file.write(test.GetCOLLADASubject() + ",")
+        file.write(test.GetSeparatedFilename() + ",")  
 
         execution = test.GetCurrentExecution()
         exportedDir = os.path.join(self.__filesDir, "Test" + str(test.GetTestId()),

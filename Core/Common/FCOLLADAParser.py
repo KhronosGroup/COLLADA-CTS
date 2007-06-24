@@ -27,8 +27,8 @@ def IsCOLLADADocument(filename):
     if extension == "DAE" or extension == "XML": return True
     else: return False
 
-def GetKeywordAndComment(filename):
-    """GetKeywordAndComment(filename) -> (str,str)
+def GetCOLLADAAssetInformation(filename):
+    """GetCOLLADAAssetInformations(filename) -> (str,str)
     
     Retrieves the <keywords> and <comments> the extension of the filename.
     Return ("","") if the filename is invalid or the information was not found.
@@ -41,48 +41,54 @@ def GetKeywordAndComment(filename):
             string corresponding to a COLLADA document filename.
     
     returns:
-        (string, string) where the first string corresponds to
-        the <keywords> element content and the second string corresponds to
-        the <comments> element content.
+        (string, string, string) where the first string corresponds to
+        the <title> element content, the second string corresponds to
+        the <subject> element content and the third string corresponds to
+        the <keywords> element content.
     
     """
     keyword = ""
-    comment = ""
-    reader = Expat.ExpatParser(0, 16*1024)
+    title = ""
+    subject = ""
+    reader = Expat.ExpatParser(0, 4*1024)
 
     try:
-        contentHandler = GetKeywordAndCommentProcessor()
+        contentHandler = COLLADAAssetProcessor()
         reader.setContentHandler(contentHandler)
         reader.parse(filename)
         
         # In theory, you should never get here:
         # the EarlyExitException should always be triggered.
         keyword = contentHandler.GetKeyword()
-        comment = contentHandler.GetComment()
+        title = contentHandler.GetTitle()
+        subject = contentHandler.GetSubject()
         reader.close()
     
     except EarlyExitException, e:
         keyword = contentHandler.GetKeyword()
-        comment = contentHandler.GetComment()
+        title = contentHandler.GetTitle()
+        subject = contentHandler.GetSubject()
         
     except Exception, e:
         pass
         
-    return (keyword, comment)
+    return (title, subject, keyword)
 
 class EarlyExitException(Exception):
     """ [INTERNAL] This exception is used to kill the SAX parser
         once we have found the information we were looking for. """
         
-class GetKeywordAndCommentProcessor(XMLHandler.ContentHandler):
+class COLLADAAssetProcessor(XMLHandler.ContentHandler):
     
     def __init__(self):
         self.__keyword = ""
-        self.__comment = ""
+        self.__title = ""
+        self.__subject = ""
         self.__elementStack = []
         
     def GetKeyword(self): return self.__keyword
-    def GetComment(self): return self.__comment
+    def GetSubject(self): return self.__subject
+    def GetTitle(self): return self.__title
         
     # ContentHandler methods
     def startElement(self, name, attrs):
@@ -109,14 +115,21 @@ class GetKeywordAndCommentProcessor(XMLHandler.ContentHandler):
 
     def characters(self, content):
         if (len(content) > 0):
-            if (len(self.__elementStack) == 4 and
+            if (len(self.__elementStack) == 3 and
                     self.__elementStack[0] == "COLLADA" and
                     self.__elementStack[1] == "asset" and
-                    self.__elementStack[2] == "contributor" and
-                    self.__elementStack[3] == "comments"):
+                    self.__elementStack[2] == "title"):
                         
-                # Only retrieve the first available contributor's comment.
-                if (len(self.__comment) == 0): self.__comment = content.strip(' \t')
+                # Retrieve the one title.
+                self.__title = content.strip(' \t')
+
+            elif (len(self.__elementStack) == 3 and
+                    self.__elementStack[0] == "COLLADA" and
+                    self.__elementStack[1] == "asset" and
+                    self.__elementStack[2] == "subject"):
+                
+                # Retrieve the one subject.
+                self.__subject = content.strip(' \t')
                 
             elif (len(self.__elementStack) == 3 and
                     self.__elementStack[0] == "COLLADA" and
@@ -126,6 +139,7 @@ class GetKeywordAndCommentProcessor(XMLHandler.ContentHandler):
                 # The 1.4.1 schema is vague about this: assume there may
                 # zero or one <keywords> element in the top-level <asset>
                 self.__keyword = content.strip(' \t')
+
 
     def startDocument(self): pass # not interested..
     def startPrefixMapping(self, prefix, uri): pass # not interested..

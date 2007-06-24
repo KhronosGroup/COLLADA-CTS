@@ -88,7 +88,8 @@ class FTest(FSerializable, FSerializer):
         
         # Backward compatibility: if they are missing, read in the keyword/comment from the DAE document.
         if (not self.__dict__.has_key("_FTest__colladaKeyword")
-            or not self.__dict__.has_key("_FTest__colladaComment")):
+            or not self.__dict__.has_key("_FTest__colladaSubject")
+            or not self.__dict__.has_key("_FTest__colladaId")):
             self.RefreshCOLLADA()
     
     def __UpdateExecution(self):
@@ -801,15 +802,18 @@ class FTest(FSerializable, FSerializer):
     def RefreshCOLLADA(self):
         # If the given file is a COLLADA document, parse in the keywords and comments.
         if FCOLLADAParser.IsCOLLADADocument(self.__filename):
-            (self.__colladaKeyword, self.__colladaComment) = FCOLLADAParser.GetKeywordAndComment(self.__filename)
+            (self.__colladaId, self.__colladaSubject, self.__colladaKeyword) = FCOLLADAParser.GetCOLLADAAssetInformation(self.__filename)
         else:
-            (self.__colladaKeyword, self.__colladaComment) = ("", "")
+            (self.__colladaId, self.__colladaSubject, self.__colladaKeyword) = ("", "<Not COLLADA>", "<Not COLLADA>")
 
     def GetCOLLADAKeyword(self):
         return self.__colladaKeyword
 
-    def GetCOLLADAComment(self):
-        return self.__colladaComment
+    def GetCOLLADASubject(self):
+        return self.__colladaSubject
+        
+    def GetCOLLADAId(self):
+        return self.__colladaId
 
     def Prepare(self):
         self.__beforePreviousExecution = self.__previousExecution

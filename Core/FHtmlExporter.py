@@ -90,10 +90,13 @@ class FHtmlExporter:
                         "cellpadding=\"5\" bordercolor=\"gray\">\n" +
                 "        <tr>\n" +
                 "            <th>\n" +
-                "                Category\n" +
+                "                Test Id\n" +
                 "            </th>\n" +
                 "            <th>\n" +
-                "                Subcategory\n" +
+                "                Categories\n" +
+                "            </th>\n" +
+                "            <th>\n" +
+                "                Description\n" +
                 "            </th>\n" +
                 "            <th>\n" +
                 "                Test Filename\n" +
@@ -153,8 +156,6 @@ class FHtmlExporter:
         self.__errorCount = 0
 
         # Prepare the badges earned results.
-        
-
         testCount = 0
         if (keys == None):
             for test in testProcedure.GetTestGenerator():
@@ -447,13 +448,25 @@ class FHtmlExporter:
     
     def __AddTest(self, file, checksumFile, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
+                      
+        # Retrieve the COLLADA asset information and write it out.
+        colladaId = test.GetCOLLADAId()
+        if len(colladaId) == 0: colladaId = "&nbsp;"
+        colladaKeyword = test.GetCOLLADAKeyword()
+        if len(colladaKeyword) == 0: colladaKeyword = "&nbsp;"
+        colladaSubject = test.GetCOLLADASubject()
+        if len(colladaSubject) == 0: colladaSubject = "&nbsp;"
+        
         file.write(
                 "        <tr>\n" +
                 "            <td>\n" +
-                "                " + test.GetCOLLADAKeyword() + "\n" +
+                "                " + colladaId + "\n" +
                 "            </td>\n" +
                 "            <td>\n" +
-                "                " + test.GetCOLLADAComment() + "\n" +
+                "                " + colladaKeyword + "\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                " + colladaSubject + "\n" +
                 "            </td>\n")
         
         exportedDir = os.path.join(self.__filesDir, "Test" + str(test.GetTestId()),
