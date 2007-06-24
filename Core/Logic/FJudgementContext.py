@@ -27,11 +27,24 @@ class FJudgementContext:
         # Create the tokens for some run-time caches
         self.__renderSteps = None
         
-    def GetCurrentTestId():
+    def GetCurrentTestId(self):
         """ Retrieves the identifier of the test case that is currently
             being judged.
             @return The identifier of the current test case. """
         return self.__testId
+        
+    def GetInputFilename(self, testId=None):
+        """ Retrieves the filename of the input COLLADA document
+            for a test case.
+            @param testId Optional parameter used to identify which
+                test input filename to retrieve. If this parameter is not
+                provided, the input filename for the current test case
+                is returned.
+            @return The input filename for the test case document. """
+        
+        test = self.__GetTest(testId)
+        if test == None: return ""
+        else: return test.GetFilename()
         
     def FindTestId(self, substring0, substring1=None, substring2=None):
         """ Retrieves the identifier for the first test case that contains
@@ -147,8 +160,31 @@ class FJudgementContext:
         out = []
         for index in self.__renderSteps:
             location = execution.GetOutputLocation(index)
-            if (type(location) is types.ListType): out.append(location[0])
-            else: out.append(location)
+            out.append(location[0])
+        return out
+    
+    def GetStepOutputFilenames(self, filterType=None, testId=None):
+        """ This function retrieves the list of output filenames.
+            This list can be filtered by one of the step types: "Export",
+            "Import", "Render" or "Validate". Note that if you are interested
+            in all the image files, you should use GetStepImageFilenames.
+            
+            @param filterType A string used to filter the steps to retrieve.
+                Example: "Render", "Validation", "Import" or "Export"
+            @param testId Optional parameter used to retrieve the list of
+                output filenames for another test case. If this parameter
+                is not provided, the list of output filenames for the current
+                test case is returned.
+            @return An indexed list containing the output filenames. """
+            
+        out = []
+        
+        execution = self.__GetExecution(testId)
+        if (execution != None):
+            for index, application, type, settings in self.__testProcedure.GetStepGenerator():
+                if (filterType == None or type == filterType):
+                    location = execution.GetOutputLocation(index)
+                    out.append(location[0])
         return out
         
     def HasStepCrashed(self, testId=None):
@@ -179,6 +215,14 @@ class FJudgementContext:
             It is called by the execution to erase the log after retrieving it.
             This is useful to avoid re-creating the context between judgements. """
         self.__log = ""
+        
+    def __GetTest(self, testId):
+        """ This function is considered PRIVATE.
+            Use this function to correctly support null test identifiers. """
+        if (testId == None):
+            return self.__currentTest
+        else:
+            return self.__testProcedure.GetTest(testId)
 
     def __GetExecution(self, testId):
         """ This function is considered PRIVATE.
