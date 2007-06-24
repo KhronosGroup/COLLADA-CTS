@@ -182,6 +182,7 @@ class FGrid(wx.grid.Grid):
         # Thanks Roger Binns
         totColSize = -self.GetViewStart()[0]*self.GetScrollPixelsPerUnit()[0] 
         for col in range(self.__table.GetNumberCols()):
+            # Render the column header
             dc.SetBrush(wx.Brush("WHEAT", wx.TRANSPARENT))
             dc.SetTextForeground(wx.BLACK)
             colSize = self.GetColSize(col)
@@ -195,6 +196,8 @@ class FGrid(wx.grid.Grid):
             title = self.__table.GetColLabelValue(col)
             
             if self.__table.IsSortedColumn(col):
+                # For selected columns: bold the header and
+                # render an arrow-head for the sort direction.
                 font.SetWeight(wx.BOLD)
                 left = rect[0] + rect[2]/2 - 3
                 top = rect[1] + rect[3] - 8
@@ -207,10 +210,36 @@ class FGrid(wx.grid.Grid):
                             [(left+3,top), (left+6, top+4), (left, top+4)])
             else:
                 font.SetWeight(wx.NORMAL)
+            
+            # Prepare the DC and fit the label to the allowable size.
+            if len(title) > 0:
+                dc.SetFont(font)
+                paddedRect = (rect[0] + 2, rect[1], rect[2] - 4, rect[3] - 4) # Pad for a nicer UI.
+                dc.SetClippingRect(paddedRect)
+                allowableTitle = title;
+                (width, height) = dc.GetTextExtent(allowableTitle)
+                if width > paddedRect[2]:
+                    alignment = wx.ALIGN_LEFT | wx.ALIGN_CENTER_VERTICAL
+
+                    # Title is too long. Shorten and use '..' as appropriate.
+                    currentLength = len(title)
+                    while width > paddedRect[2] and currentLength > 0:
+                        currentLength = currentLength / 2
+                        allowableTitle = title[:currentLength] + ".."
+                        (width, height) = dc.GetTextExtent(allowableTitle)
+
+                    # Now test using re-added characters.
+                    testString = allowableTitle
+                    while width < paddedRect[2]:
+                        allowableTitle = testString
+                        currentLength = currentLength + 1
+                        testString = title[:currentLength] + ".."
+                        (width, height) = dc.GetTextExtent(allowableTitle)
+                else:
+                    alignment = wx.ALIGN_CENTER
                 
-            dc.SetFont(font)
-            dc.SetClippingRect(rect)
-            dc.DrawLabel("%s" % title, rect, wx.ALIGN_CENTER | wx.ALIGN_TOP)
+                # Draw the column header label.
+                dc.DrawLabel(allowableTitle, paddedRect, alignment)
     
     def __OnColSize(self, e):
         col = e.GetRowOrCol()
