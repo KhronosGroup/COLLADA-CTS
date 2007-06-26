@@ -126,10 +126,11 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         file, dirs = self.GetValidFileAndDirs(path)
         
         if (file != None):
+            daeFile = os.path.normpath(file)
             file = os.path.normpath(os.path.dirname(file))
-            match = pattern.match(file)
+            match = pattern.match(daeFile)
             if (match != None):
-                if (match.group() == file):
+                if (match.group() == daeFile):
                     found = False
                     for test in self.GetTestGenerator():
                         if ((test.GetDataSetPath() == file) and 
@@ -139,9 +140,9 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                     if (not found):
                         ignoredMatchFlag = False
                         for ignoredPattern in ignoredPatterns:
-                            ignoredMatch = ignoredPattern.match(file)
+                            ignoredMatch = ignoredPattern.match(daeFile)
                             if ((ignoredMatch != None) and 
-                                    (ignoredMatch.group() == file)):
+                                    (ignoredMatch.group() == daeFile)):
                                 ignoredMatchFlag = True
                                 break
                         if (not ignoredMatchFlag):
