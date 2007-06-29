@@ -1,1 +1,1 @@
-png\cube_polylist1.png
+png\cube_polylist.png

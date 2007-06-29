@@ -1,1 +1,1 @@
-png\cube_triangles1.png
+png\cube_triangles.png

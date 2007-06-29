@@ -27,45 +27,71 @@ class TwoStepJudgingObject:
         # This is where you can test XML or force the comparison of image files
         # or any custom verification you want to do...
         if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during standard steps.")
+            context.Log("FAILED: Crashes during required steps.")
             return False
         else:
-            context.Log("PASSED: No crashes during standard steps.")
-            return True
-    
-    def JudgeIntermediate(self, context):
-        return self.JudgeBasic(context)
-        
-    def JudgeAdvanced(self, context):
-        if not self.JudgeIntermediate(context): return False
-        
+            context.Log("PASSED: No crashes.")
+ 
+        # The outer loop makes sure that the named steps were all executed
+        stepTypeToVerify = [ "Import", "Render", "Export", "Validate" ]
+	for stepType in stepTypeToVerify:
+            validationResults = context.GetStepResults(stepType)
+	    print stepType, validationResults
+            if (len(validationResults) == 0):
+                context.Log("FAILED: No " + stepType.lower() + " step executed.")
+                return False
+	    # The inner loop makes sure each test completed without errors
+	    # QUESTION, does this need to be a loop or can we just do if(validationResults,
+	    # are there ever more than one result per step?
+	    judgement = True
+	    for result in validationResults: judgement = judgement and result
+	    if not judgement:
+	        context.Log("FAILED: " + stepType.lower() + " had errors.")
+		return False
+	context.Log("PASSED: Required steps executed and passed.")
+
         # Look for the "cube_polylist" test case.
-        comparativeTestId = context.FindTestId("cube_polylist", "aggregate", "basic_badge")
+        comparativeTestId = context.FindTestId( "cube_polylist", "aggregate")
         if (comparativeTestId == None):
-            context.Log("FAILED: You must also run the 'basic_badge|aggregate|cube_polylist' test case.")
+            context.Log("FAILED: You must also run the 'aggregate|cube_polylist' test case.")
             return False
         
         # Retrieve the last image filename for this test case.
         imageFilenames = context.GetStepImageFilenames()
         if (len(imageFilenames) == 0):
-            context.Log("FAILED: This test case requires a 'Render' step.")
+            context.Log("FAILED: This test must include a 'Render' step.")
             return False
         filename1 = imageFilenames[-1]
 
         # Retrieve the last image filename for the "cube_polylist" test case.
         imageFilenames = context.GetStepImageFilenames(comparativeTestId)
         if (len(imageFilenames) == 0):
-            context.Log("FAILED: The 'basic_badge|aggregate|cube_polylist' test case must contain a 'Render' step.")
+            context.Log("FAILED: The 'aggregate|cube_polylist' test must include a 'Render' step.")
             return False
         filename2 = imageFilenames[-1]
         
         # Compare the two images.
         result = context.CompareImages(filename1, filename2)
+	print result
         if not result:
-            context.Log("FAILED: This test case's image differs from the 'basic_badge|aggregate|cube_polylist' test case.")
+            context.Log("FAILED: Output doesn't match the 'aggregate|cube_polylist' test.")
             return False
         else:
-            context.Log("PASSED: Produces similar output to 'basic_badge|aggregate|cube_polylist' test case.")
+            context.Log("PASSED: Output matches the 'aggregate|cube_polylist' test.")
             return True
-
+ 
+    # To pass intermediate you need to pass basic, this object could also include additional 
+    # tests that were specific to the intermediate badge.
+    # QUESTION: Is there a way to fetch the result of JudgeBasic so we don't have to run it again?
+    def JudgeIntermediate(self, context):
+        return self.JudgeBasic(context)
+            
+    # To pass advanced you need to pass intermediate, this object could also include additional
+    # tests that were specific to the advanced badge
+    def JudgeAdvanced(self, context):
+        return self.JudgeIntermediate(context)
+        
+# This is where all the work occurs: "judgingObject" is an absolutely necessary token.
+# The dynamic loader looks very specifically for a class instance named "judgingObject".
+#
 judgingObject = TwoStepJudgingObject();

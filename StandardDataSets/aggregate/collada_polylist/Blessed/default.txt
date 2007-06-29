@@ -1,1 +1,1 @@
-png\collada_polylist1.png
+png\collada_polylist.png
