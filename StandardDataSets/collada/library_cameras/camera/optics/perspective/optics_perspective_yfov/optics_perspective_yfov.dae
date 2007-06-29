@@ -82,7 +82,7 @@ limitations under the License.</copyright>
                 </technique>
             </profile_COMMON>
         </effect>
-\    </library_effects>
+    </library_effects>
     <library_geometries>
         <geometry id="pCubeShape1" name="pCubeShape1">
             <mesh>

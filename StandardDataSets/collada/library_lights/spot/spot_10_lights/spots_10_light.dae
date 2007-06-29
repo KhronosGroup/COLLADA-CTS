@@ -327,7 +327,7 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <scale sid="scale">24.8584 24.8584 24.8584</scale>
-                <instance_light url="#spotLightShape9-lib"/>
+                <instance_light url="#spotLightShape8-lib"/>
             </node>
             <node id="spotLight9" name="spotLight9">
                 <translate sid="translate">19.9377 52.8098 48.6615</translate>
@@ -335,7 +335,7 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <scale sid="scale">31.8324 31.8324 31.8324</scale>
-                <instance_light url="#spotLightShape10-lib"/>
+                <instance_light url="#spotLightShape9-lib"/>
             </node>
             <node id="spotLight10" name="spotLight10">
                 <translate sid="translate">73.3769 31.6799 93.8998</translate>
@@ -343,7 +343,7 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <scale sid="scale">28.5289 28.5289 28.5289</scale>
-                <instance_light url="#spotLightShape11-lib"/>
+                <instance_light url="#spotLightShape10-lib"/>
             </node>
         </visual_scene>
     </library_visual_scenes>

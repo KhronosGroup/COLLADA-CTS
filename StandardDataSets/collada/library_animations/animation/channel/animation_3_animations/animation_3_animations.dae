@@ -39,7 +39,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_color-output">
-                <float_array id="prop_color-output-array" count="6">0 1</float_array>
+                <float_array id="prop_color-output-array" count="2">0 1</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_color-output-array">
                         <param name="B" type="float"/>
@@ -47,7 +47,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_color-intangents">
-                <float_array id="prop_color-intangents-array" count="6">1 0</float_array>
+                <float_array id="prop_color-intangents-array" count="2">1 0</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_color-intangents-array">
                         <param name="B" type="float"/>
@@ -55,7 +55,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_color-outtangents">
-                <float_array id="prop_color-outtangents-array" count="6">1 0</float_array>
+                <float_array id="prop_color-outtangents-array" count="2">1 0</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_color-outtangents-array">
                         <param name="B" type="float"/>

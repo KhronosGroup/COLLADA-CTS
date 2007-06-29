@@ -32,104 +32,104 @@ limitations under the License.
     </asset>
   <library_animations>
     <animation id="prop_rotate1">
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-input">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-input-array" count="2">0 5</float_array>
+      <source id="prop_rotate1_prop_rotateZ_ANGLE-input">
+        <float_array id="prop_rotate1_prop_rotateZ_ANGLE-input-array" count="2">0 5</float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-input-array">
+          <accessor count="2" source="#prop_rotate1_prop_rotateZ_ANGLE-input-array">
             <param name="TIME" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-output">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-output-array" count="2">0 -720</float_array>
+      <source id="prop_rotate1_prop_rotateZ_ANGLE-output">
+        <float_array id="prop_rotate1_prop_rotateZ_ANGLE-output-array" count="2">0 -720</float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-output-array">
+          <accessor count="2" source="#prop_rotate1_prop_rotateZ_ANGLE-output-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-intangents">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-intangents-array" count="2">0 1 </float_array>
+      <source id="prop_rotate1_prop_rotateZ_ANGLE-intangents">
+        <float_array id="prop_rotate1_prop_rotateZ_ANGLE-intangents-array" count="2">0 1 </float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents-array">
+          <accessor count="2" source="#prop_rotate1_prop_rotateZ_ANGLE-intangents-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array" count="2">1 0 </float_array>
+      <source id="prop_rotate1_prop_rotateZ_ANGLE-outtangents">
+        <float_array id="prop_rotate1_prop_rotateZ_ANGLE-outtangents-array" count="2">1 0 </float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array">
+          <accessor count="2" source="#prop_rotate1_prop_rotateZ_ANGLE-outtangents-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations">
-        <Name_array id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER </Name_array>
+      <source id="prop_rotate1_prop_rotateZ_ANGLE-interpolations">
+        <Name_array id="prop_rotate1_prop_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER </Name_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array">
+          <accessor count="2" source="#prop_rotate1_prop_rotateZ_ANGLE-interpolations-array">
             <param name="INTERPOLATION" type="Name"/>
           </accessor>
         </technique_common>
       </source>
-      <sampler id="prop_rotateZ_prop_rotateZ_ANGLE-sampler">
-        <input semantic="INPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-input"/>
-        <input semantic="OUTPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-output"/>
-        <input semantic="IN_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents"/>
-        <input semantic="OUT_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents"/>
-        <input semantic="INTERPOLATION" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations"/>
+      <sampler id="prop_rotate1_prop_rotateZ_ANGLE-sampler">
+        <input semantic="INPUT" source="#prop_rotate1_prop_rotateZ_ANGLE-input"/>
+        <input semantic="OUTPUT" source="#prop_rotate1_prop_rotateZ_ANGLE-output"/>
+        <input semantic="IN_TANGENT" source="#prop_rotate1_prop_rotateZ_ANGLE-intangents"/>
+        <input semantic="OUT_TANGENT" source="#prop_rotate1_prop_rotateZ_ANGLE-outtangents"/>
+        <input semantic="INTERPOLATION" source="#prop_rotate1_prop_rotateZ_ANGLE-interpolations"/>
       </sampler>
-      <channel source="#prop_rotateZ_prop_rotateZ_ANGLE-sampler" target="skeleton1/animation_rotateY.ANGLE"/>
+      <channel source="#prop_rotate1_prop_rotateZ_ANGLE-sampler" target="skeleton1/animation_rotateY.ANGLE"/>
     </animation>
     <animation id="prop_rotate2">
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-input">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-input-array" count="2">0 5</float_array>
+      <source id="prop_rotate2_prop_rotateZ_ANGLE-input">
+        <float_array id="prop_rotate2_prop_rotateZ_ANGLE-input-array" count="2">0 5</float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-input-array">
+          <accessor count="2" source="#prop_rotate2_prop_rotateZ_ANGLE-input-array">
             <param name="TIME" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-output">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-output-array" count="2">0 360 </float_array>
+      <source id="prop_rotate2_prop_rotateZ_ANGLE-output">
+        <float_array id="prop_rotate2_prop_rotateZ_ANGLE-output-array" count="2">0 360 </float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-output-array">
+          <accessor count="2" source="#prop_rotate2_prop_rotateZ_ANGLE-output-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-intangents">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-intangents-array" count="2">0 2 </float_array>
+      <source id="prop_rotate2_prop_rotateZ_ANGLE-intangents">
+        <float_array id="prop_rotate2_prop_rotateZ_ANGLE-intangents-array" count="2">0 2 </float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents-array">
+          <accessor count="2" source="#prop_rotate2_prop_rotateZ_ANGLE-intangents-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents">
-        <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array" count="2">2 0 </float_array>
+      <source id="prop_rotate2_prop_rotateZ_ANGLE-outtangents">
+        <float_array id="prop_rotate2_prop_rotateZ_ANGLE-outtangents-array" count="2">2 0 </float_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array">
+          <accessor count="2" source="#prop_rotate2_prop_rotateZ_ANGLE-outtangents-array">
             <param name="ANGLE" type="float"/>
           </accessor>
         </technique_common>
       </source>
-      <source id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations">
-        <Name_array id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER </Name_array>
+      <source id="prop_rotate2_prop_rotateZ_ANGLE-interpolations">
+        <Name_array id="prop_rotate2_prop_rotateZ_ANGLE-interpolations-array" count="2">BEZIER BEZIER </Name_array>
         <technique_common>
-          <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array">
+          <accessor count="2" source="#prop_rotate2_prop_rotateZ_ANGLE-interpolations-array">
             <param name="INTERPOLATION" type="Name"/>
           </accessor>
         </technique_common>
       </source>
-      <sampler id="prop_rotateZ_prop_rotateZ_ANGLE-sampler">
-        <input semantic="INPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-input"/>
-        <input semantic="OUTPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-output"/>
-        <input semantic="IN_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents"/>
-        <input semantic="OUT_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents"/>
-        <input semantic="INTERPOLATION" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations"/>
+      <sampler id="prop_rotate2_prop_rotateZ_ANGLE-sampler">
+        <input semantic="INPUT" source="#prop_rotate2_prop_rotateZ_ANGLE-input"/>
+        <input semantic="OUTPUT" source="#prop_rotate2_prop_rotateZ_ANGLE-output"/>
+        <input semantic="IN_TANGENT" source="#prop_rotate2_prop_rotateZ_ANGLE-intangents"/>
+        <input semantic="OUT_TANGENT" source="#prop_rotate2_prop_rotateZ_ANGLE-outtangents"/>
+        <input semantic="INTERPOLATION" source="#prop_rotate2_prop_rotateZ_ANGLE-interpolations"/>
       </sampler>
-      <channel source="#prop_rotateZ_prop_rotateZ_ANGLE-sampler" target="skeleton2/animation_rotateY.ANGLE"/>
+      <channel source="#prop_rotate2_prop_rotateZ_ANGLE-sampler" target="skeleton2/animation_rotateY.ANGLE"/>
     </animation>
   </library_animations>
   <library_cameras>
@@ -429,7 +429,6 @@ limitations under the License.
         </visual_scene>
     </library_visual_scenes>
     <scene>
-        <instance_physics_scene url="#MayaNativePhysicsScene"/>
         <instance_visual_scene url="#VisualSceneNode"/>
     </scene>
 </COLLADA>

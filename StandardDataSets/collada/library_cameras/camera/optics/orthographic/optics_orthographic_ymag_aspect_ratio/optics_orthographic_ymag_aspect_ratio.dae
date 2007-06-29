@@ -33,10 +33,10 @@ limitations under the License.</copyright>
             <optics>
                 <technique_common>
                     <orthographic>
-                        <ymag>50</ymag>
-                        <znear>0.1</znear>
-                        <zfar>5000</zfar>
-                        <aspect_ratio>5</aspect_ratio>
+                      <ymag>50</ymag>
+                      <aspect_ratio>5</aspect_ratio>
+                      <znear>0.1</znear>
+                      <zfar>5000</zfar>
                     </orthographic>
                 </technique_common>
             </optics>

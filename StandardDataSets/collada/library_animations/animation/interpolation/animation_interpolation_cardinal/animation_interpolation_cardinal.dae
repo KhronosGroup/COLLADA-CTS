@@ -69,7 +69,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-interpolations">
-                <Name_array id="prop_translate_prop_translate_translate-interpolations-array" count="2">CARDINAL CARDINAL CARDINAL</Name_array>
+                <Name_array id="prop_translate_prop_translate_translate-interpolations-array" count="3">CARDINAL CARDINAL CARDINAL</Name_array>
                 <technique_common>
                     <accessor count="3" source="#prop_translate_prop_translate_translate-interpolations-array">
                         <param name="INTERPOLATION" type="Name"/>

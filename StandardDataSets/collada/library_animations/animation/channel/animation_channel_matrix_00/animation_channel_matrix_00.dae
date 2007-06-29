@@ -39,7 +39,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-output">
-                <float_array id="prop_translate_prop_translate_translate-output-array" count="6">50 50</float_array>
+                <float_array id="prop_translate_prop_translate_translate-output-array" count="2">50 50</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_translate_prop_translate_translate-output-array">
                         <param name="Z" type="float"/>
@@ -47,7 +47,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-intangents">
-                <float_array id="prop_translate_prop_translate_translate-intangents-array" count="6">500 0</float_array>
+                <float_array id="prop_translate_prop_translate_translate-intangents-array" count="2">500 0</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_translate_prop_translate_translate-intangents-array">
                         <param name="Z" type="float"/>
@@ -55,7 +55,7 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-outtangents">
-                <float_array id="prop_translate_prop_translate_translate-outtangents-array" count="6">500 0</float_array>
+                <float_array id="prop_translate_prop_translate_translate-outtangents-array" count="2">500 0</float_array>
                 <technique_common>
                     <accessor count="2" source="#prop_translate_prop_translate_translate-outtangents-array">
                         <param name="Z" type="float"/>

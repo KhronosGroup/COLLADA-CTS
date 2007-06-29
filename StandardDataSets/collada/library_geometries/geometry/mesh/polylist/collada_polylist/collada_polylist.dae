@@ -28,41 +28,29 @@ limitations under the License.</copyright>
         <up_axis>Y_UP</up_axis>
     </asset>
     <library_cameras>
-        <camera id="Camera_" name="Camera_">
-            <optics>
-                <technique_common>
-                    <perspective>
-                        <yfov>37.8493</yfov>
-                        <aspect_ratio>1</aspect_ratio>
-                        <znear>10</znear>
-                        <zfar>1000</zfar>
-                    </perspective>
-                </technique_common>
-            </optics>
-        </camera>
-        <camera id="testCameraShape" name="testCameraShape">
-            <optics>
-                <technique_common>
-                    <perspective>
-                        <yfov>37.8501</yfov>
-                        <aspect_ratio>1</aspect_ratio>
-                        <znear>0.01</znear>
-                        <zfar>1000</zfar>
-                    </perspective>
-                </technique_common>
-            </optics>
-        </camera>
+      <camera id="mainCamera" name="mainCamera">
+        <optics>
+          <technique_common>
+            <perspective>
+              <yfov>36.9998</yfov>
+              <aspect_ratio>1</aspect_ratio>
+              <znear>1</znear>
+              <zfar>1000</zfar>
+            </perspective>
+          </technique_common>
+        </optics>
+      </camera>
     </library_cameras>
     <library_lights>
-        <light id="light-lib" name="light">
-            <technique_common>
-                <point>
-                    <color>1 1 1</color>
-                    <constant_attenuation>1</constant_attenuation>
-                    <linear_attenuation>0</linear_attenuation>
-                    <quadratic_attenuation>0</quadratic_attenuation>
-                </point>
-            </technique_common>
+      <light id="light-lib" name="light">
+        <technique_common>
+          <point>
+            <color>1 1 1</color>
+            <constant_attenuation>1</constant_attenuation>
+            <linear_attenuation>0</linear_attenuation>
+            <quadratic_attenuation>0</quadratic_attenuation>
+          </point>
+        </technique_common>
         </light>
         <light id="pointLightShape1-lib" name="pointLightShape1">
             <technique_common>
@@ -236,7 +224,7 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 -13.25</rotate>
                 <rotate sid="rotateX">1 0 0 -20.25</rotate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <instance_camera url="#Camera_"/>
+                <instance_camera url="#mainCamera"/>
             </node>
             <node id="Light" name="Light">
                 <translate sid="translate">-500 1000 400</translate>
@@ -268,13 +256,6 @@ limitations under the License.</copyright>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>
-            </node>
-            <node id="testCamera" name="testCamera">
-                <translate sid="translate">-166.392 282.884 642.115</translate>
-                <rotate sid="rotateY">0 1 0 -13.25</rotate>
-                <rotate sid="rotateX">1 0 0 -20.25</rotate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <instance_camera url="#testCameraShape"/>
             </node>
             <node id="pointLight1" name="pointLight1">
                 <translate sid="translate">3 4 10</translate>
