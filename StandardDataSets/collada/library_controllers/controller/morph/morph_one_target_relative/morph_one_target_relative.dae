@@ -125,7 +125,7 @@ limitations under the License.</copyright>
                     <p>0 0 1 0 4 0</p>
                     <p>1 1 2 1 4 1</p>
                     <p>2 2 3 2 4 2</p>
-                    <p>0 3 3 3 4 3</p>
+                    <p>3 3 0 3 4 3</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -160,7 +160,7 @@ limitations under the License.</copyright>
                     <p>0 0 1 0 4 0</p>
                     <p>1 1 2 1 4 1</p>
                     <p>2 2 3 2 4 2</p>
-                    <p>0 3 3 3 4 3</p>
+                    <p>3 3 0 3 4 3</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -195,7 +195,7 @@ limitations under the License.</copyright>
                     <p>0 0 1 0 4 0</p>
                     <p>1 1 2 1 4 1</p>
                     <p>2 2 3 2 4 2</p>
-                    <p>0 3 3 3 4 3</p>
+                    <p>3 3 0 3 4 3</p>
                 </polygons>
             </mesh>
         </geometry>
