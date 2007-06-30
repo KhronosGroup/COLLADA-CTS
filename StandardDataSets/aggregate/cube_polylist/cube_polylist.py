@@ -15,11 +15,10 @@
 
 class SimpleJudgingObject:
     def __init__(self):
-        # Might be we pass in the "context" straight here as well and cache
-        # the test passing.
-        self.__temp = False
+        pass
         
     def JudgeBasic(self, context):
+            
         # This is where you can test XML or force the comparison of image files
         # or any custom verification you want to do...
         if (context.HasStepCrashed()):
@@ -27,25 +26,20 @@ class SimpleJudgingObject:
             return False
         else:
             context.Log("PASSED: No crashes.")
+        
+        # Check the required steps for positive results.
+        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
+            context.Log("FAILED: Import, export and validate steps must be present and successful.")
+            return False
 
-        # The outer loop makes sure that the named steps were all executed
-        stepTypeToVerify = [ "Import", "Render", "Export", "Validate" ]
-	for stepType in stepTypeToVerify:
-            validationResults = context.GetStepResults(stepType)
-            if (len(validationResults) == 0):
-                context.Log("FAILED: No " + stepType.lower() + " step executed.")
-                return False
-	    # The inner loop makes sure each test completed without errors
-	    # QUESTION, does this need to be a loop or can we just do if(validationResults,
-	    # are there ever more than one result per step?
-	    judgement = True
-	    for result in validationResults: judgement = judgement and result
-	    if not judgement:
-	        context.Log("FAILED: " + stepType.lower() + " had errors.")
-		return False
-	context.Log("PASSED: Required steps executed and passed.")
-	return True
-  
+        # Check that a rendering has been done.
+        if not context.DoesStepsExists([ "Render" ]):
+            context.Log("FAILED: A render step is required.")
+            return False
+        
+        context.Log("PASSED: Required steps executed and passed.")
+        return True
+      
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     # QUESTION: Is there a way to fetch the result of JudgeBasic so we don't have to run it again?

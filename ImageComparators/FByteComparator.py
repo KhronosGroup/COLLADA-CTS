@@ -13,6 +13,9 @@ class FByteComparator (FImageComparator):
     
     """
     
+    PASS_EXTRA = 0
+    FAIL_EXTRA = 10000
+    
     def __init__(self, configDict):
         """__init__() -> FByteComparator
         
@@ -49,6 +52,7 @@ class FByteComparator (FImageComparator):
         """
         compareResult = FCompareResult()
         compareResult.SetResult(False)
+        compareResult.SetExtra(FByteComparator.DEFAULT_EXTRA)
         
         filename1 = os.path.normpath(os.path.abspath(filename1))
         filename2 = os.path.normpath(os.path.abspath(filename2))
@@ -73,7 +77,9 @@ class FByteComparator (FImageComparator):
                 f1.close()
                 f2.close()
                 compareResult.SetResult(True)
+                compareResult.SetExtra(FByteComparator.PASS_EXTRA)
                 return compareResult
+                
             block1 = f1.read(10240) # 10 KB
             block2 = f2.read(10240) # 10 KB
         

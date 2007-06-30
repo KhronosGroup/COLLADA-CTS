@@ -12,7 +12,6 @@ import Core.Common.FCOLLADAParser as FCOLLADAParser
 class ExtraPreservationJudging:
     def __init__(self):
         self.__hasStepCrashed = None
-        self.__temp = False
         
     def JudgeBasic(self, context):
         # For all badge levels: make sure nothing crashed.

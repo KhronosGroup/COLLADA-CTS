@@ -3,7 +3,6 @@
 # Distribution of this file or its content is strictly prohibited.
 
 import Core.Common.FGlobals as FGlobals
-import types as types
 
 from Core.Logic.FResult import *
 
@@ -89,15 +88,14 @@ class FJudgementContext:
             @param message The message to display to the user. """
         self.__log += message + "\n"
 
-    def CompareImages(self, filename1, filename2, tolerance=5):
+    def CompareImages(self, filename1, filename2):
         """ Compares the two images referenced by their filenames.
             This function uses the default comparator.
             @param filename1 The filename of the first image.
             @param filename2 The filename of the second image.
-            @return A boolean indicating whether the two images are
-                considered equal. """
-        compareResult = FGlobals.imageComparator.CompareImages(filename1, filename2, tolerance)
-        return compareResult.GetResult()
+            @return An integer indicating how close the two images are. """
+        compareResult = FGlobals.imageComparator.CompareImages(filename1, filename2)
+        return compareResult.GetExtra()
         
     def GetStepResults(self, filterType=None, testId=None):
         """ This function retrieves the standard steps results.
@@ -203,6 +201,77 @@ class FJudgementContext:
         for index, output in result.GetOutputGenerator():
             if output == FResult.CRASH: return True
         return False
+        
+    def DoesStepsExists(self, stepTypes):
+        """ This function verifies that at least one step exists for
+            each given step type. This function checks on a global level
+            and does not verify any execution results.
+            @param stepTypes A list of step types.
+                Examples: [ "Import", "Render" ].
+            @return A boolean indicating whether all the requested step types
+                exists in the test procedure. """
+
+        if (len(stepTypes) == 0): return False
+            
+        # This list is used to keep track of whether steps exist for the wanted types.
+        existence = []
+        for type in stepTypes:
+            existence.append(False)
+        
+        # Compare the test procedure against the requested step type list.
+        for index, application, type, settings in self.__testProcedure.GetStepGenerator():
+            for i in range(len(stepTypes)):
+                if (not existence[i]) and (type == stepTypes[i]):
+                    existence[i] = True
+        
+        # Compile the results
+        exists = True
+        for e in existence: exists = exists and e
+        return exists
+        
+    def HaveStepsPassed(self, stepTypes, testId=None):
+        """ This function verifies that all at least one step exists for
+            each given step type and that for a given execution, the result
+            for all the steps of a given list of types are positive.
+            @param stepTypes A list of step types.
+                Examples: [ "Import", "Render" ].
+            @param testId Optional parameters used to retrieve the given step
+                results. If no test id is provided, the current execution results
+                are used.
+            @return A boolean indicating whether all the requested step types
+                exists and have positive results. """
+
+        if (len(stepTypes) == 0): return False
+        
+        # Retrieve the wanted execution and its results.
+        execution = self.__GetExecution(testId)
+        if (execution == None): return False
+        result = execution.GetResult()
+
+        # This list is used to keep track of whether steps exist for the wanted types.
+        existence = []
+        for type in stepTypes: existence.append(False)
+        
+        # Compare the test procedure against the requested step type list.
+        # We keep track of the passed results by implication:
+        #   if one fails, the function returns False right away.
+        for index, application, type, settings in self.__testProcedure.GetStepGenerator():
+            for i in range(len(stepTypes)):
+                if type == stepTypes[i]:
+                    existence[i] = True                    
+
+                    # Check the execution results for this step.
+                    output = result.GetOutput(index)
+                    if (output >= FResult.PASSED_IMAGE and output <= FResult.PASSED_VALIDATION):
+                        pass # Cummulative True.
+                    elif (output >= FResult.IGNORED_TYPE and output <= FResult.IGNORED_NONE):
+                        pass # Cummulative True.
+                    else: return False
+        
+        # Compile the existence results.
+        exists = True
+        for e in existence: exists = exists and e
+        return exists
 
     def GetLog(self):
         """ This function is considered INTERNAL.

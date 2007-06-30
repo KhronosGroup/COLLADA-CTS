@@ -4,8 +4,6 @@
 
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
-# [WARNING] this structure is subject to changes.
-#
 
 # See "cube_polylist.py" for a simpler sample judging object.
 
@@ -21,63 +19,69 @@
 
 class TwoStepJudgingObject:
     def __init__(self):
-        self.__temp = False
+        self.__cacheBasicResult = None
+        self.__cacheBasicLogs = None
         
-    def JudgeBasic(self, context):
+    def CachedBasic(self, context):
+        logs = []
         # This is where you can test XML or force the comparison of image files
         # or any custom verification you want to do...
         if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
+            logs.append("FAILED: Crashes during required steps.")
+            return (logs, False)
         else:
-            context.Log("PASSED: No crashes.")
- 
-        # The outer loop makes sure that the named steps were all executed
-        stepTypeToVerify = [ "Import", "Render", "Export", "Validate" ]
-	for stepType in stepTypeToVerify:
-            validationResults = context.GetStepResults(stepType)
-            if (len(validationResults) == 0):
-                context.Log("FAILED: No " + stepType.lower() + " step executed.")
-                return False
-	    # The inner loop makes sure each test completed without errors
-	    # QUESTION, does this need to be a loop or can we just do if(validationResults,
-	    # are there ever more than one result per step?
-	    judgement = True
-	    for result in validationResults: judgement = judgement and result
-	    if not judgement:
-	        context.Log("FAILED: " + stepType.lower() + " had errors.")
-		return False
-	context.Log("PASSED: Required steps executed and passed.")
+            logs.append("PASSED: No crashes.")
+        
+        # Check the required steps for positive results.
+        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
+            logs.append("FAILED: Import, export and validate steps must be present and successful.")
+            return (logs, False)
+
+        # Check that a rendering has been done.
+        if not context.DoesStepsExists([ "Render" ]):
+            logs.append("FAILED: A render step is required.")
+            return (logs, False)
 
         # Look for the "cube_polylist" test case.
-        comparativeTestId = context.FindTestId( "cube_polylist", "aggregate")
+        comparativeTestId = context.FindTestId( "aggregate", "cube_polylist" )
         if (comparativeTestId == None):
-            context.Log("FAILED: You must also run the 'aggregate|cube_polylist' test case.")
-            return False
+            logs.append("FAILED: You must also run the 'aggregate|cube_polylist' test case.")
+            return (logs, False)
         
         # Retrieve the last image filename for this test case.
         imageFilenames = context.GetStepImageFilenames()
         if (len(imageFilenames) == 0):
-            context.Log("FAILED: This test must include a 'Render' step.")
-            return False
+            logs.append("FAILED: This test must include a 'Render' step.")
+            return (logs, False)
         filename1 = imageFilenames[-1]
 
         # Retrieve the last image filename for the "cube_polylist" test case.
         imageFilenames = context.GetStepImageFilenames(comparativeTestId)
         if (len(imageFilenames) == 0):
-            context.Log("FAILED: The 'aggregate|cube_polylist' test must include a 'Render' step.")
-            return False
+            logs.append("FAILED: The 'aggregate|cube_polylist' test must include a 'Render' step.")
+            return (logs, False)
         filename2 = imageFilenames[-1]
         
         # Compare the two images.
+        #   FJudgementContext.CompareImages now returns an integer to indicate
+        #   how close the images are.
         result = context.CompareImages(filename1, filename2)
-        if not result:
-            context.Log("FAILED: Output doesn't match the 'aggregate|cube_polylist' test.")
-            return False
+        if result > 5:
+            logs.append("FAILED: [Comparison: %d] Output doesn't match the 'aggregate|cube_polylist' test. " % result)
+            return (logs, False)
         else:
-            context.Log("PASSED: Output matches the 'aggregate|cube_polylist' test.")
-            return True
- 
+            logs.append("PASSED: [Comparison: %d] Output matches the 'aggregate|cube_polylist' test. " % result)
+            return (logs, True)
+        
+    def JudgeBasic(self, context):
+        # This is a cached version of the script.
+        # This avoids doing the comparison three times..
+        if self.__cacheBasicResult == None:
+            (self.__cacheBasicLogs, self.__cacheBasicResult) = self.CachedBasic(context)
+        for log in self.__cacheBasicLogs:
+            context.Log(log)
+        return self.__cacheBasicResult
+        
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     # QUESTION: Is there a way to fetch the result of JudgeBasic so we don't have to run it again?
