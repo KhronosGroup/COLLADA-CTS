@@ -123,8 +123,6 @@ class COLLADAExtraProcessor(XMLHandler.ContentHandler):
             currentElement = self.__currentExtraElementStack[-1]
             attributes = {}
             for attributeName in attrs.getNames():
-                print attributeName
-                print attrs[attributeName]
                 attributes[attributeName] = attrs[attributeName]
             currentElement["py_test_attrs"] = attributes
 
@@ -163,7 +161,6 @@ class COLLADAExtraProcessor(XMLHandler.ContentHandler):
 class DictionaryCompare:
     def __init__(self, dict):
         self.__d = dict
-        print self.__d
         pass
         
     def Compare(self, other):
