@@ -648,7 +648,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         dialog = FProgressDialog(self, 1, "Running Tests. Please wait.")
         dialog.SetCancelFunc(self.__OnCancelRun)
         myThread = Runner(dialog, self.__testProcedure.RunTests, keys, 
-                self.applicationMap, self.__GetCallBack(dialog))
+                self.applicationMap, self.__StandardCallback(dialog), self.__MarkerCallback(dialog))
         myThread.start()
         dialog.ShowModal()
         myThread.join()
@@ -663,7 +663,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
             self.__grid.PartialRefreshAdd(test)
         self.__grid.PartialRefreshDone()
     
-    def __GetCallBack(self, dialog):
+    def __StandardCallback(self, dialog):
         def __callBack(current, max, message):
             if (max != None):
                 dialog.SetGaugeMax(max)
@@ -674,9 +674,18 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                          FProgressMessageEvent(dialog.GetId(), message))
         
         return __callBack
+        
+    def __MarkerCallback(self, dialog):
+        def __callBack(doClear, filename):
+            if doClear:
+                wx.PostEvent(dialog, FProgressMarkerClearEvent(dialog.GetId()))
+            else:
+                wx.PostEvent(dialog, FProgressMarkerAddEvent(dialog.GetId(), filename))
+                
+        return __callBack
 
     def __OnCancelRun(self, dialog):
-        self.__testProcedure.CancelRun(self.__GetCallBack(dialog))
+        self.__testProcedure.CancelRun(self.__StandardCallback(dialog))
 
 class Runner(threading.Thread):
     def __init__(self, dialog, func, *args):

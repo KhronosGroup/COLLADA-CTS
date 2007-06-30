@@ -269,9 +269,9 @@ class FExecution(FSerializable, FSerializer):
             self.__AddOutputLocation(step, None, None)
                 
     def __InitializeRun(self, appPython, step, op, inStep, filename, settings, 
-                        isAnimated):
+                        isAnimated, markerCallBack):
         stepName = STEP_PREFIX + str(step)
-        outDir = os.path.abspath(os.path.join(self.__executionDir, stepName))
+        outDir = os.path.abspath(os.path.join(self.__executionDir, stepName))            
         logFilename = stepName + "." + LOG_EXT
         logAbsFilename = os.path.join(outDir, stepName + "." + LOG_EXT)
         
@@ -281,7 +281,7 @@ class FExecution(FSerializable, FSerializer):
             print "<FExecution> could not make the step directory"
             print e
         
-        open(logAbsFilename, "w").close() # create the file
+#        open(logAbsFilename, "w").close() # create the file
         
         self.__timeRan = time.localtime()
         
@@ -303,17 +303,22 @@ class FExecution(FSerializable, FSerializer):
         
         output = appPython.AddToScript(op, curInputFile, logAbsFilename, 
                 outDir, settings, isAnimated)
-        
         self.__AddOutputLocation(step, output, logFilename)
+        
+        if markerCallBack != None and len(output) > 0:
+            # Some annoying scripts don't give us valid paths.
+            if not os.path.isabs(output[0]):
+                markerCallBack(False, os.path.join(outDir, output[0]))
+            else: markerCallBack(False, output[0])
     
-    def Run(self, appPython, step, op, inStep, filename, settings, isAnimated):
+    def Run(self, appPython, step, op, inStep, filename, settings, isAnimated, markerCallBack):
         # First run: calculate the check-sum.
         if (len(self.__checksum) == 0):
             self.__checksum = FUtils.CalculateChecksum(filename)
         
         # Run the test steps.
         if (self.__initializedSteps.count(step) == 0):
-            self.__InitializeRun(appPython, step, op, inStep, filename, settings, isAnimated)
+            self.__InitializeRun(appPython, step, op, inStep, filename, settings, isAnimated, markerCallBack)
             self.__initializedSteps.append(step)
         else:
             stepName = STEP_PREFIX + str(step)
@@ -325,11 +330,16 @@ class FExecution(FSerializable, FSerializer):
             if ((inStep == 0) or (self.__outputLocations[inStep] == None)):
                 curInputFile = os.path.abspath(filename)
             else:
-                curInputFile = os.path.abspath(
-                        self.__outputLocations[inStep][-1])
+                curInputFile = os.path.abspath(self.__outputLocations[inStep][-1])
             
-            appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, 
-                    settings, isAnimated)
+            output = appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, settings, isAnimated)
+
+            if markerCallBack != None and len(output) > 0:
+                # Some annoying scripts don't give us valid paths.
+                if not os.path.isabs(output[0]):
+                    markerCallBack(False, os.path.join(outDir, output[0]))
+                else: markerCallBack(False, output[0])
+                
 
     def Validate(self, filename, testProcedure, testId):
         

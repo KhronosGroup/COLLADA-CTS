@@ -355,7 +355,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 i = i + 1
     
     def __RunTestsAux(self, appPython, appIndex, maxAppIndex, testIds, 
-                      applicationMap, callBack):
+                      applicationMap, gaugeCallBack, markerCallback):
         if (self.__cancelRun): return None
         
         steps = []
@@ -363,38 +363,42 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
             if (op != VALIDATE or op in OPS_NEEDING_APP):
                 steps.append(step)
         
-        if (callBack != None):
-            callBack(appIndex, maxAppIndex, 
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex, maxAppIndex, 
                     "Creating script for steps: " + str(steps) + ".")
         appPython.BeginScript(os.path.abspath(self.__dccWorkingDir))
         
+        # Reset the markers
+        if (markerCallback != None):
+            markerCallback(True, None)
+            
         for testId in testIds:
             for step, op in self.__GetOpGenerator(appIndex):
                 if (op == VALIDATE and op not in OPS_NEEDING_APP):
                     self.__testList[testId].Validate(step)
                 else:
-                    self.__testList[testId].Run(appPython, step, op, 
-                                            self.__GetInputStep(step))
+                    self.__testList[testId].Run(appPython, step, op, self.__GetInputStep(step), markerCallback)
         
         appPython.EndScript()
         
         if (self.__cancelRun): return None
         
-        if (callBack != None):
-            callBack(appIndex, maxAppIndex, 
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex, maxAppIndex, 
                     "Running script for steps: " + str(steps) + ".")
         
         return appPython.RunScript()
     
-    # callBack takes 2 parameters: current, max, message
-    def RunTests(self, testIds, applicationMap, callBack = None):
+    # gaugeCallBack takes 3 parameters: [int] current, [int] max, [str] message
+    # markerCallBack takes 2 parameters: [bool] clearList, [str] watchPath
+    def RunTests(self, testIds, applicationMap, gaugeCallBack = None, markerCallBack = None):
         maxAppIndex = 0
         for appIndex, stepIndex, app in self.__GetAppGenerator():
             maxAppIndex = maxAppIndex + 1
         maxAppIndex = maxAppIndex + 3 # validation, compiling, judging..
         
-        if (callBack != None):
-            callBack(0, maxAppIndex, "Preparing " + str(len(testIds)) + 
+        if (gaugeCallBack != None):
+            gaugeCallBack(0, maxAppIndex, "Preparing " + str(len(testIds)) + 
                      " executions for running...")
         
         for testId in testIds:
@@ -423,7 +427,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
             
             while (True):
                 result = self.__RunTestsAux(appPython, appIndex, maxAppIndex, 
-                                            testIds, applicationMap, callBack)
+                                            testIds, applicationMap, gaugeCallBack, markerCallBack)
                 if ((result == None) or (result == True)):
                     break
                 
@@ -442,8 +446,8 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                     if (found):
                         break
                 
-                if (callBack != None):
-                    callBack(appIndex, maxAppIndex, 
+                if (gaugeCallBack != None):
+                    gaugeCallBack(appIndex, maxAppIndex, 
                             "There was a crash. Checking for which case.")
                 
                 if (len(testIds) > 1):
@@ -452,7 +456,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                         if (i >= len(testIds)): break
                         result = self.__RunTestsAux(appPython, appIndex, 
                                 maxAppIndex, [testIds[i],], applicationMap, 
-                                callBack)
+                                gaugeCallBack, markerCallBack)
                         if ((result == None) or (result == False)):
                             break
                 else:
@@ -466,8 +470,8 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 i = i + 1 # skip the broken one
                 if (i >= len(testIds)): break
                 
-                if (callBack != None):
-                    callBack(appIndex, maxAppIndex, 
+                if (gaugeCallBack != None):
+                    gaugeCallBack(appIndex, maxAppIndex, 
                             "There was a crash. Rerunning.")
                 
                 testIds = testIds[i:]
@@ -475,44 +479,44 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
             testIds = savedTestIds
         
         if (self.__cancelRun):
-            callBack(None, None, "Cancelling...")
+            gaugeCallBack(None, None, "Cancelling...")
             for testId in testIds:
                 self.__testList[testId].CancelRun()
-                callBack(None, None, "Reverted test" + str(testId) + ".")
+                gaugeCallBack(None, None, "Reverted test" + str(testId) + ".")
             return
         
         self.__cancelRun = True
         
-        if (callBack != None):
-            callBack(appIndex + 1, maxAppIndex, "Performing validation steps.")
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex + 1, maxAppIndex, "Performing validation steps.")
 
         for testId in testIds:
             self.__testList[testId].Validate(self)
 
-        if (callBack != None):
-            callBack(appIndex + 2, maxAppIndex, "Compiling executions.")
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex + 2, maxAppIndex, "Compiling executions.")
         
         for testId in testIds:
             self.__testList[testId].Compile(self)
             
-        if (callBack != None):
-            callBack(appIndex + 2, maxAppIndex, "Performing badge judging.")
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex + 2, maxAppIndex, "Performing badge judging.")
  
         for testId in testIds:
             self.__testList[testId].Judge(self)
 
-        if (callBack != None):
-            callBack(appIndex + 2, maxAppIndex, "Finalizing executions.")
+        if (gaugeCallBack != None):
+            gaugeCallBack(appIndex + 2, maxAppIndex, "Finalizing executions.")
 
         for testId in testIds:
             self.__testList[testId].Conclude(self)
 
-    def CancelRun(self, callBack = None):
-        if (callBack != None):
+    def CancelRun(self, gaugeCallBack = None):
+        if (gaugeCallBack != None):
             if (self.__cancelRun):
-                callBack(None, None, "Cannot canel anymore.")
+                gaugeCallBack(None, None, "Cannot cancel anymore.")
             else:
-                callBack(None, None, "Cancelling at next available moment.")
+                gaugeCallBack(None, None, "Cancelling at next available moment.")
         self.__cancelRun = True
     
     def __GetInputStep(self, currentStep):

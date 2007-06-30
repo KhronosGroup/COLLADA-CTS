@@ -837,10 +837,10 @@ class FTest(FSerializable, FSerializer):
     def Validate(self, step):
         self.__currentExecution.Validate(step)
     
-    def Run(self, appPython, step, op, inStep):
+    def Run(self, appPython, step, op, inStep, markerCallBack):
         self.__currentExecution.Run(appPython, step, op, inStep, 
                 self.__filename, self.__settings[step].GetSettings(), 
-                self.IsAnimated())
+                self.IsAnimated(), markerCallBack)
     
     def CancelRun(self):
         self.__currentExecution = self.__previousExecution
