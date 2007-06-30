@@ -36,7 +36,6 @@ class TwoStepJudgingObject:
         stepTypeToVerify = [ "Import", "Render", "Export", "Validate" ]
 	for stepType in stepTypeToVerify:
             validationResults = context.GetStepResults(stepType)
-	    print stepType, validationResults
             if (len(validationResults) == 0):
                 context.Log("FAILED: No " + stepType.lower() + " step executed.")
                 return False
@@ -72,7 +71,6 @@ class TwoStepJudgingObject:
         
         # Compare the two images.
         result = context.CompareImages(filename1, filename2)
-	print result
         if not result:
             context.Log("FAILED: Output doesn't match the 'aggregate|cube_polylist' test.")
             return False

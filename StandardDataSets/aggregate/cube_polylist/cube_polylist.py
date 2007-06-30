@@ -32,7 +32,6 @@ class SimpleJudgingObject:
         stepTypeToVerify = [ "Import", "Render", "Export", "Validate" ]
 	for stepType in stepTypeToVerify:
             validationResults = context.GetStepResults(stepType)
-	    print stepType, validationResults
             if (len(validationResults) == 0):
                 context.Log("FAILED: No " + stepType.lower() + " step executed.")
                 return False
