@@ -38,12 +38,16 @@ class FTest(FSerializable, FSerializer):
         for entry in os.listdir(dataSetPath):
             fullEntry = os.path.join(dataSetPath, entry)
             if (os.path.isfile(fullEntry)):
-
                 # Don't grab the python post-processing script,
                 # but any other file with the same name as the last folder.
-                if (FUtils.GetExtension(fullEntry).upper() != "PY" and
-                        FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
-                    self.__filename = fullEntry
+                # DAEs are prefered..
+                if (FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
+                    extension = FUtils.GetExtension(fullEntry).upper()
+                    if (extension == "DAE"):
+                        self.__filename = fullEntry
+                        break
+                    elif (extension.find("PY") == -1):
+                        self.__filename = fullEntry # Record but keep looking..
                     
         if (self.__filename == None):
             raise ValueError, "Invalid Data Set: " + dataSetPath
