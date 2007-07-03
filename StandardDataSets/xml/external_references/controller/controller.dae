@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <contributor>
+            <author>gcorson</author>
+            <authoring_tool>Maya 8.0 | ColladaMaya v3.00 | FCollada v3.0</authoring_tool>
+            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&#13;
+Licensed under the SCEA Shared Source License, Version 1.0 (the&#13;
+&quot;License&quot;); you may not use this file except in compliance with the&#13;
+License. You may obtain a copy of the License at:&#13;
+http://research.scea.com/scea_shared_source_license.html &#13;
+Unless required by applicable law or agreed to in writing, software&#13;
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#13;
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
+See the License for the specific language governing permissions and&#13;
+limitations under the License.</copyright>
+            <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Two%20State%20Test/Two%20State%20Test.mb</source_data>
+        </contributor>
+        <created>2007-02-02T01:41:59Z</created>
+        <modified>2007-02-02T01:41:59Z</modified>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="cameraShape1" name="cameraShape1">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9999</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_materials>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert1-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
+                        <diffuse>
+                            <color>0.5 0.5 0.5 1</color>
+                        </diffuse>
+                        <transparent opaque="RGB_ZERO">
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
+                        <index_of_refraction>
+                            <float>0</float>
+                        </index_of_refraction>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="Two_State_Test">
+            <node id="pCylinder1" name="pCylinder1">
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_controller url="library_controllers.dae#pCylinderShape1-lib-skin">
+                    <skeleton>#VisualSceneNode</skeleton>
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_controller>
+            </node>
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 50 200</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#cameraShape1"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 41.7665</rotate>
+                <rotate sid="rotateX">1 0 0 -27.0659</rotate>
+                <instance_light url="#directionalLightShape1-lib"/>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>
