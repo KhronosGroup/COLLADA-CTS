@@ -15,7 +15,7 @@ from Core.Gui.Dialog.FImageSizer import *
 class FBlessedViewerDialog(wx.Dialog):
     def __init__(self, parent, dataSetPath):
         wx.Dialog.__init__(self, parent, wx.ID_ANY, 
-                "Blessed Viewer", size = wx.Size(600, 600),
+                "Blessed Viewer", size = wx.Size(540, 450),
                 style = wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
         
         sizer = wx.BoxSizer()
@@ -26,11 +26,11 @@ class FBlessedViewerDialog(wx.Dialog):
         window.SetSashGravity(0.5)
         window.SetMinimumPaneSize(20)
         
-        images = FBlessedImagesPanel(window)
+        images = FBlessedImagesPanel(window, dataSetPath)
         names = FBlessedNamesPanel(window, dataSetPath, images)
         window.SplitVertically(names, images, 200)
         
-        sizer.Add(window, 1, wx.EXPAND | wx.ALL, 5)
+        sizer.Add(window, 1, wx.EXPAND | wx.ALL, 0)
 
 class FBlessedNamesPanel(wx.Panel):
     def __init__(self, parent, dataSetPath, imagesPanel):
@@ -38,28 +38,31 @@ class FBlessedNamesPanel(wx.Panel):
         
         self.__dataSetPath = dataSetPath
         self.__imagesPanel = imagesPanel
-        self.__imagesPanel.SetUnblessCallback(self.__Update)
-        
+        self.__imagesPanel.SetChangeCallback(self.__Update)
+        self.__defaultBlessedImageFilename = ""
+
         sizer = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(sizer)
         
-        imageLabel = wx.StaticText(self, wx.ID_ANY, "Blessed Images")
-        self.__imageListBox = wx.ListBox(self, 
-                style = wx.LB_SINGLE | wx.LB_HSCROLL)
+        # UI: Add a label for the default blessed image filename.
+        defaultBlessedLabel = wx.StaticText(self, wx.ID_ANY, "  Default Blessed")
+        sizer.Add(defaultBlessedLabel, 0, wx.ALIGN_LEFT | wx.ALL, 2)
+        
+        # UI: Add a text box with the default blessed image filename at the top.
+        self.__defaultImageTextBox = wx.TextCtrl(self, wx.ID_ANY, style = wx.TE_READONLY)
+        sizer.Add(self.__defaultImageTextBox, 0, wx.EXPAND | wx.ALL, 2)
+        sizer.Add((1, 5), 0)
+
+        # UI: Add a label for the blessed images list box.
+        imageLabel = wx.StaticText(self, wx.ID_ANY, "  Blessed Images/Animations")
+        sizer.Add(imageLabel, 0, wx.ALIGN_LEFT | wx.ALL, 2)
+
+        # UI: Add a list box containing all the bless image filenames.
+        self.__imageListBox = wx.ListBox(self, style = wx.LB_SINGLE | wx.LB_HSCROLL)
         self.Bind(wx.EVT_LISTBOX, self.__ImageOnClick, self.__imageListBox)
+        sizer.Add(self.__imageListBox, 1, wx.EXPAND | wx.ALL, 2)
         
-        animationLabel = wx.StaticText(self, wx.ID_ANY, "Blessed Animations")
-        self.__animationListBox = wx.ListBox(self, 
-                style = wx.LB_SINGLE | wx.LB_HSCROLL)
-        self.Bind(wx.EVT_LISTBOX, self.__AnimationOnClick, 
-                  self.__animationListBox)
-        
-        sizer.Add(imageLabel, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, 5)
-        sizer.Add(self.__imageListBox, 1, wx.EXPAND | wx.ALL, 5)
-        sizer.Add(animationLabel, 0, wx.ALIGN_CENTER_HORIZONTAL | wx.ALL, 5)
-        sizer.Add(self.__animationListBox, 1, wx.EXPAND | wx.ALL, 5)    
-        
-        self.__Update()
+        self.__Update(False)
     
     # returns [(imageName, imagePath),]
     def __GetImageList(self):
@@ -80,8 +83,7 @@ class FBlessedNamesPanel(wx.Panel):
     # returns [(animationName, [imagePath1,]), ]
     def __GetAnimationList(self):
         blessedAnimations = []
-        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, 
-                                  BLESSED_ANIMATIONS)
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, BLESSED_ANIMATIONS)
         if (os.path.isdir(blessedDir)):
             for directory in os.listdir(blessedDir):
                 if (directory[0] == "."): continue # mostly for .svn folders
@@ -96,43 +98,52 @@ class FBlessedNamesPanel(wx.Panel):
         
         return blessedAnimations
     
-    def __Update(self):
+    def __Update(self, onlyDefaultBless):
+        
+        # Update the default blessed image filename.
+        defaultContainerFilename = os.path.join(self.__dataSetPath, BLESSED_DIR, BLESSED_DEFAULT_FILE)
+        if (os.path.isfile(defaultContainerFilename)):
+            blessFile = open(defaultContainerFilename, "rb")
+            filename = blessFile.readline().strip()
+            blessFile.close()
+            if (filename.find(BLESSED_ANIMATIONS) == -1): # Image?
+                filename = os.path.basename(filename)
+            else:
+                filename = os.path.basename(os.path.dirname(filename))
+            self.__defaultImageTextBox.SetLabel(filename)
+        else:
+            self.__defaultImageTextBox.SetLabel("")
+        if onlyDefaultBless: return
+
+        # Update the image filenames list box.
         self.__imageListBox.Clear()
         for name, image in self.__GetImageList():
-            self.__imageListBox.Append(name, [image])
-        
-        self.__animationListBox.Clear()
+            self.__imageListBox.Append("[I] " + name, [image])        
         for name, images in self.__GetAnimationList():
-            self.__animationListBox.Append(name, images)
+            self.__imageListBox.Append("[A] " + name, images)
         
-        self.__imagesPanel.Clear()
+        # Restart the images panel
+        if (self.__imageListBox.GetCount() > 0):
+            self.__imageListBox.Select(0)
+            self.__imagesPanel.SetImage(self.__imageListBox.GetClientData(0))
+        else:
+            self.__imagesPanel.Clear()
     
     def __ImageOnClick(self, e):
         e.Skip()
         selection = self.__imageListBox.GetSelection()
         if (selection == -1): return
-        self.__animationListBox.SetSelection(wx.NOT_FOUND)
         
-        self.__imagesPanel.SetImage(
-                self.__imageListBox.GetClientData(selection))
-    
-    def __AnimationOnClick(self, e):
-        e.Skip()
-        selection = self.__animationListBox.GetSelection()
-        if (selection == -1): return
-        self.__imageListBox.SetSelection(wx.NOT_FOUND)
-        
-        self.__imagesPanel.SetImage(
-                self.__animationListBox.GetClientData(selection))
-
+        self.__imagesPanel.SetImage(self.__imageListBox.GetClientData(selection))
 
 class FBlessedImagesPanel(wx.Panel):
-    def __init__(self, parent):
+    def __init__(self, parent, dataSetPath):
         wx.Panel.__init__(self, parent, style = wx.BORDER_SUNKEN)
         
         self.__filenames = None
         self.__callback = None
         self.__animationSizer = None
+        self.__dataSetPath = dataSetPath
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(sizer)
@@ -159,20 +170,29 @@ class FBlessedImagesPanel(wx.Panel):
         self.__filenames = filenames
         
         self.__animationSizer = FImageSizer(self, wx.EmptyString, filenames, None)
-        sizer.Add(self.__animationSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        sizer.Add(self.__animationSizer, 0, wx.ALIGN_CENTER | wx.ALL, 2)
         
-        button = wx.Button(self, wx.ID_ANY, "Unbless")
-        sizer.Add(button, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        buttonSizer = wx.BoxSizer(wx.HORIZONTAL)
+        sizer.Add(buttonSizer, 0, wx.ALIGN_CENTER | wx.ALL, 2)
+
+        button = wx.Button(self, wx.ID_ANY, "Delete")
+        buttonSizer.Add(button, 0, wx.ALIGN_CENTER | wx.ALL, 2)
         self.Bind(wx.EVT_BUTTON, self.__OnUnbless, button)
         
+        button = wx.Button(self, wx.ID_ANY, "Default Bless")
+        buttonSizer.Add(button, 0, wx.ALIGN_CENTER | wx.ALL, 2)
+        self.Bind(wx.EVT_BUTTON, self.__OnMakeDefault, button)
+
+        buttonSizer.Layout()
         sizer.Layout()
     
-    def SetUnblessCallback(self, callback):
+    def SetChangeCallback(self, callback):
         self.__callback = callback
     
     def __OnUnbless(self, e):
         e.Skip()
         
+        # Delete the blessed image files.
         for filename in self.__filenames:
             os.remove(filename)
             foundFile = False
@@ -185,9 +205,52 @@ class FBlessedImagesPanel(wx.Panel):
                 try:
                     shutil.rmtree(deleteDirectory)
                 except OSError, e:
-                    FUtils.ShowWarning(self, "Unable to delete " + 
-                            deleteDirectory + ".\nError:\n" + str(e) + 
-                            "\n Please delete directory manually.")
+                    FUtils.ShowWarning(self, "Unable to delete " + deleteDirectory + ".\n" +
+                            "Error:\n" + str(e) + "\n Please delete directory manually.")
+        
+        # Verify whether this was the blessed images. In that case: clear the file.
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
+        defaultContainerFilename = os.path.join(blessedDir, BLESSED_DEFAULT_FILE)
+        if (os.path.isfile(defaultContainerFilename)):
+            blessFile = open(defaultContainerFilename, "rb")
+            defaultBlessedImageFilename = blessFile.readline().strip()
+            blessFile.close()
+
+            # Need to compare absolute filenames.
+            if (len(defaultBlessedImageFilename) > 0):
+                defaultBlessedImageFilename = os.path.join(blessedDir, defaultBlessedImageFilename)
+                defaultBlessedImageFilename = os.path.abspath(defaultBlessedImageFilename)
+                isDefault = False
+                for filename in self.__filenames:
+                    filename = os.path.abspath(filename)
+                    if (filename == defaultBlessedImageFilename):
+                        isDefault = True
+                        break
+            
+            if (isDefault):
+                blessFile = open(defaultContainerFilename, "w")
+                blessFile.close()
         
         if (self.__callback != None):
-            self.__callback()
+            self.__callback(False)
+            
+    def __OnMakeDefault(self, e):
+        e.Skip()
+        
+        # Rewrite the default blessed file to include these local filenames.
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
+        defaultContainerFilename = os.path.join(blessedDir, BLESSED_DEFAULT_FILE)
+        blessFile = open(defaultContainerFilename, "w")
+        if (self.__filenames != None) and (len(self.__filenames) > 0):
+            for filename in self.__filenames:
+                relativeFilename = FUtils.GetRelativePath(filename, blessedDir)
+                blessFile.write(relativeFilename)
+                blessFile.write("\n")
+        else:
+            pass # Intentionally leave empty. Can we actually get here in the UI?
+            
+        blessFile.close()
+        
+        if (self.__callback != None):
+            self.__callback(True)
+        

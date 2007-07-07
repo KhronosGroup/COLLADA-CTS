@@ -266,12 +266,12 @@ class FTest(FSerializable, FSerializer):
         
         blessedFilenames = []
         f = open(defaultFile)
-        blessed = f.readline()[:-1] # remove \n
+        blessed = f.readline().strip() # remove \n
         while (blessed):
             blessed = os.path.join(blessedDir, blessed)
             if (os.path.isfile(blessed)): 
                 blessedFilenames.append(blessed)
-            blessed = f.readline()[:-1]
+            blessed = f.readline().strip()
         f.close()
         
         if (blessedFilenames == []):
@@ -282,6 +282,23 @@ class FTest(FSerializable, FSerializer):
             return None
         
         return blessedFilenames
+        
+    def ReplaceDefaultBless(self, filename):
+        # If there is no blessed image, then just default bless this one.
+        if not self.HasBlessed():
+            self.DefaultBless(filename)
+            return
+            
+        # Overwrite the default blessed image file with this image file.
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
+        if (not os.path.isdir(blessedDir)):
+            os.mkdir(blessedDir)
+        
+        f = open(os.path.join(blessedDir, BLESSED_DEFAULT_FILE), "r")
+        replaceFilename = f.readline().strip()
+        replaceFilename = os.path.join(blessedDir, replaceFilename)
+        f.close()
+        shutil.copy2(filename, replaceFilename)
     
     def DefaultBless(self, filename):
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
@@ -380,8 +397,7 @@ class FTest(FSerializable, FSerializer):
             f.close()
             return
         
-        directory = FUtils.GetAvailableDirectory(
-                os.path.join(blessedAnimationDir, "type"), False)
+        directory = FUtils.GetAvailableDirectory(os.path.join(blessedAnimationDir, "type"), False)
         os.mkdir(directory)
         
         digits = len(str(len(filenames)))
@@ -396,6 +412,25 @@ class FTest(FSerializable, FSerializer):
             shutil.copy2(filename, newFilename)
             f.write(FUtils.GetRelativePath(newFilename, blessedDir) + "\n")
             i = i + 1
+        f.close()
+        
+    def ReplaceDefaultBlessAnimation(self, filenames):
+        # If there is no blessed image, then just default bless this one.
+        if not self.HasBlessed():
+            self.DefaultBlessAnimation(filenames)
+            return
+            
+        # Overwrite the default blessed animation image files with these files.
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
+        if (not os.path.isdir(blessedDir)):
+            os.mkdir(blessedDir)
+        
+        f = open(os.path.join(blessedDir, BLESSED_DEFAULT_FILE), "r")
+        for filename in filenames:
+            replaceFilename = f.readline().strip()
+            if (len(replaceFilename) > 0):
+                replaceFilename = os.path.join(blessedDir, replaceFilename)
+                shutil.copy2(filename, replaceFilename)
         f.close()
     
     def __SearchBlessHash(self, testProcedure):
@@ -558,6 +593,19 @@ class FTest(FSerializable, FSerializer):
                 return (blessedArray, [compareResults])
             return ("", allCompareResults)
         return (None, None)
+        
+    def HasBlessed(self):
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR)
+        if (not os.path.isdir(blessedDir)):
+            return False
+        filename = os.path.join(blessedDir, BLESSED_DEFAULT_FILE)
+        if (not os.path.isfile(filename)):
+            return False
+        
+        f = open(filename, "r")
+        blessedFilename = f.readline().strip()
+        f.close()
+        return (len(blessedFilename) > 0)
     
     def __HasBlessed(self, filename):
         """__HasBlessed(filename) -> bool

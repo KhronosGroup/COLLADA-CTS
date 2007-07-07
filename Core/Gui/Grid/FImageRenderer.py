@@ -313,6 +313,25 @@ class FImageRenderer(FTextRenderer):
             
         return Bless
     
+    def __GetReplaceDefaultBlessImageFunc(self, grid, renderedArea, imageData):
+        def Bless(e):
+            test = imageData.GetTest()
+            grid.PartialRefreshRemove(test)
+
+            # Set this still image/animation as the default blessed image.
+            busyInfo = wx.BusyInfo("Replacing default blessed image. Please wait...")
+            if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+                test.ReplaceDefaultBless(renderedArea.GetFilename())
+            elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
+                test.ReplaceDefaultBlessAnimation(renderedArea.GetFilename())
+
+            # Update the result and refresh the grid row.
+            test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
+            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshDone()
+            
+        return Bless
+
     def __GetBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
             test = imageData.GetTest()
@@ -358,100 +377,86 @@ class FImageRenderer(FTextRenderer):
         
         renderedArea = self.__GetRenderedArea(grid, row, col, position)
         if (renderedArea != None):
-            id = wx.NewId()
+            
+            # Compute the typename for this item.
             if (renderedArea.GetType() == FImageRenderArea.IMAGE):
-                menuItem = wx.MenuItem(menu, id, "View Full Image")
+                typename = "Image"
             elif (renderedArea.GetType() == FImageRenderArea.LOG):
-                menuItem = wx.MenuItem(menu, id, "View Log")
+                typename = "Log"
+                menuItem = wx.MenuItem(menu, id, "View " + typename)
             elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
-                menuItem = wx.MenuItem(menu, id, "View Animation")
+                typename = "Animation"
             else:
-                print ("<FImageRenderer> Unexpected type: " + 
-                        str(renderedArea.GetType()))
-                menuItem = None
+                typename = ""
+                print ("<FImageRenderer> Unexpected type: " + str(renderedArea.GetType()))
             
-            if (menuItem != None):
-                filename = renderedArea.GetFilename()
-                if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and 
-                        (self.__IsDaeFile(filename))):
-                    viewerId = wx.NewId()
-                    viewerMenuItem = wx.MenuItem(menu, viewerId, 
-                            "View in Feeling Viewer")
-                    font = menuItem.GetFont()
-                    font.SetWeight(wx.BOLD)
-                    viewerMenuItem.SetFont(font)
-                    menu.AppendItem(viewerMenuItem)
+            id = wx.NewId()
+            menuItem = wx.MenuItem(menu, id, "View " + typename)                
+            filename = renderedArea.GetFilename()
+            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and (self.__IsDaeFile(filename))):
+                viewerId = wx.NewId()
+                viewerMenuItem = wx.MenuItem(menu, viewerId, "View in Feeling Viewer")
+                font = menuItem.GetFont()
+                font.SetWeight(wx.BOLD)
+                viewerMenuItem.SetFont(font)
+                menu.AppendItem(viewerMenuItem)
+                
+                grid.Bind(wx.EVT_MENU, self.__GetShowInViewerFunc(filename), id = viewerId)
+            else:
+                font = menuItem.GetFont()
+                font.SetWeight(wx.BOLD)
+                menuItem.SetFont(font)
+            
+            menu.AppendItem(menuItem)
+            grid.Bind(wx.EVT_MENU, self.__GetOpenFunc(filename, renderedArea.GetType(), grid), id = id)
+            
+            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and (self.__IsDaeFile(filename))):
+                id = wx.NewId()
+                menu.Append(id, "Show Default Asset Tags")
+                
+                def OnContext(e):
+                    self.__ShowAssetTags(imageData.GetDefaultFilename())
+                
+                grid.Bind(wx.EVT_MENU, OnContext, id = id)
                     
-                    grid.Bind(wx.EVT_MENU, 
-                            self.__GetShowInViewerFunc(filename), 
-                            id = viewerId)
-                else:
-                    font = menuItem.GetFont()
-                    font.SetWeight(wx.BOLD)
-                    menuItem.SetFont(font)
+            if self.__showCounts:
+                # Create the "Blessed.." sub-menu
+                id = wx.NewId()
+                blessedMenu = wx.Menu()
+                menu.AppendMenu(id, "Bless " + typename, blessedMenu)
+            
+                # Add to the blessed list and set as the default.
+                id = wx.NewId()
+                if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
+                        (renderedArea.GetType() == FImageRenderArea.ANIMATION)) and 
+                        self.__showCounts):
+                    blessedMenu.Append(id, "Add as Default")
+                    grid.Bind(wx.EVT_MENU, self.__GetDefaultBlessImageFunc(grid, renderedArea, imageData), id = id)
                 
-                menu.AppendItem(menuItem)
-                grid.Bind(wx.EVT_MENU, 
-                          self.__GetOpenFunc(filename, 
-                                             renderedArea.GetType(), grid),
-                          id = id)
+                # Add to alternative blessed list.
+                id = wx.NewId()
+                if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
+                        (renderedArea.GetType() == FImageRenderArea.ANIMATION)) 
+                        and self.__showCounts):
+                    blessedMenu.Append(id, "Add as Alternate")
+                    grid.Bind(wx.EVT_MENU, self.__GetBlessImageFunc(grid, renderedArea, imageData), id = id)
                 
-                if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and 
-                        (self.__IsDaeFile(filename))):
+                # Replace the default blessed.
+                if (imageData.GetTest().HasBlessed()):
                     id = wx.NewId()
-                    menu.Append(id, "Show Default Asset Tags")
-                    
-                    def OnContext(e):
-                        self.__ShowAssetTags(imageData.GetDefaultFilename())
-                    
-                    grid.Bind(wx.EVT_MENU, OnContext, id = id)
-            
+                    if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
+                            (renderedArea.GetType() == FImageRenderArea.ANIMATION)) and 
+                            self.__showCounts):
+                        blessedMenu.Append(id, "Replace Default")
+                        grid.Bind(wx.EVT_MENU, self.__GetReplaceDefaultBlessImageFunc(grid, renderedArea, imageData), id = id)
+
+            # Compare images/animations
             id = wx.NewId()
-            if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
-                    (renderedArea.GetType() == FImageRenderArea.ANIMATION)) and 
-                    self.__showCounts):
-                if (renderedArea.GetType() == FImageRenderArea.IMAGE):
-                    menu.Append(id, "Default Bless Image")
-                else:
-                    menu.Append(id, "Default Bless Animation")
-                grid.Bind(wx.EVT_MENU, 
-                          self.__GetDefaultBlessImageFunc(grid, renderedArea, 
-                                                          imageData), 
-                          id = id)
-            
-            id = wx.NewId()
-            if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
-                    (renderedArea.GetType() == FImageRenderArea.ANIMATION)) 
-                    and self.__showCounts):
-                if (renderedArea.GetType() == FImageRenderArea.IMAGE):
-                    menu.Append(id, "Bless Image")
-                else:
-                    menu.Append(id, "Bless Animation")
-                grid.Bind(wx.EVT_MENU, 
-                        self.__GetBlessImageFunc(grid, renderedArea, 
-                                                 imageData), id = id)
-            
-            id = wx.NewId()
-            # image and not blessed
-            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and 
-                    self.__showCounts):
-                menu.Append(id, "Compare Image")
-                grid.Bind(wx.EVT_MENU, self.__GetCompareImageFunc(grid, 
-                        renderedArea, imageData, FCompareSetupDialog.IMAGE),
-                        id = id)
-            elif ((renderedArea.GetType() == FImageRenderArea.ANIMATION) and 
-                    self.__showCounts):
-                menu.Append(id, "Compare Animation")
-                grid.Bind(wx.EVT_MENU, 
-                          self.__GetCompareImageFunc(grid, renderedArea, 
-                                  imageData, FCompareSetupDialog.ANIMATION), 
-                          id = id)
-            elif (renderedArea.GetType() == FImageRenderArea.LOG):
-                menu.Append(id, "Compare Log")
-                grid.Bind(wx.EVT_MENU, 
-                        self.__GetCompareLogFunc(grid, renderedArea, 
-                                                 imageData), id = id)
-            #TODO: comparison for animations
+            if (renderedArea.GetType() == FImageRenderArea.LOG):
+                grid.Bind(wx.EVT_MENU, self.__GetCompareLogFunc(grid, renderedArea, imageData), id = id)
+            elif (self.__showCounts) and (renderedArea.GetType() == FImageRenderArea.IMAGE or renderedArea.GetType() == FImageRenderArea.ANIMATION):
+                menu.Append(id, "Compare " + typename)
+                grid.Bind(wx.EVT_MENU, self.__GetCompareImageFunc(grid, renderedArea, imageData, renderedArea.GetType()), id = id)
     
     def __ShowAssetTags(self, filename):
         assetFilename = os.path.abspath(

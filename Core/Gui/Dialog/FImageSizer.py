@@ -14,20 +14,18 @@ class FImageSizer(wx.StaticBoxSizer):
         self.__parent = parent
         
         if (caption != None):
-            captionSizer = wx.FlexGridSizer(cols = 2, vgap = 5, hgap = 10)
+            captionSizer = wx.FlexGridSizer(cols = 2, vgap = 2, hgap = 2)
             for entry in caption:
-                captionSizer.Add(
-                        wx.StaticText(parent, wx.ID_ANY, entry[0] + ":"))
+                captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[0] + ":"))
                 captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[1]))
                 
-            self.Add(captionSizer, 0, wx.ALL, 5)
+            self.Add(captionSizer, 0, wx.ALL, 2)
         else:
             # to make it bottom aligned
-            self.Add(wx.BoxSizer(), 1, wx.ALL, 5)
+            self.Add(wx.BoxSizer(), 1, wx.ALL, 2)
         
         controlsSizer = wx.BoxSizer()
-        bmp = wx.ArtProvider_GetBitmap(wx.ART_GO_BACK, wx.ART_OTHER, 
-                wx.Size(16, 16))
+        bmp = wx.ArtProvider_GetBitmap(wx.ART_GO_BACK, wx.ART_OTHER, wx.Size(16, 16))
         button = wx.BitmapButton(self.__parent, wx.ID_ANY, bmp)
         self.__parent.Bind(wx.EVT_BUTTON, self.__OnBack, button)
         controlsSizer.Add(button)
@@ -35,17 +33,16 @@ class FImageSizer(wx.StaticBoxSizer):
         self.__frameNumber = wx.StaticText(self.__parent)
         controlsSizer.Add(self.__frameNumber, 0, wx.ALIGN_CENTER | wx.ALL, 5)
         
-        bmp = wx.ArtProvider_GetBitmap(wx.ART_GO_FORWARD, wx.ART_OTHER, 
-                wx.Size(16, 16))
+        bmp = wx.ArtProvider_GetBitmap(wx.ART_GO_FORWARD, wx.ART_OTHER, wx.Size(16, 16))
         button = wx.BitmapButton(self.__parent, wx.ID_ANY, bmp)
         controlsSizer.Add(button)
         self.__parent.Bind(wx.EVT_BUTTON, self.__OnForward, button)
         
-        self.Add(controlsSizer, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        self.Add(controlsSizer, 0, wx.ALIGN_CENTER | wx.ALL, 2)
         
         image = wx.EmptyBitmap(100, 100)
         self.__bitmap = wx.StaticBitmap(self.__parent, wx.ID_ANY, image)
-        self.Add(self.__bitmap, 0, wx.ALIGN_CENTER | wx.ALL, 5)
+        self.Add(self.__bitmap, 0, wx.ALIGN_CENTER | wx.ALL, 2)
         
         self.__currentStep = 0
         self.SetImageIndex(self.__currentStep)
