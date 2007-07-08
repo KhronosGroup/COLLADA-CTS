@@ -476,13 +476,18 @@ class FExecution(FSerializable, FSerializer):
         
         errors = 0
         warnings = 0
-        log = open(logLocation)
-        line = log.readline()
-        while (line):
-            line = line.lower()
-            errors = errors + line.count("error")
-            warnings = warnings + line.count("warning")
+        try:
+            log = open(logLocation)
             line = log.readline()
-        log.close()
+            while (line):
+                line = line.lower()
+                errors = errors + line.count("error")
+                warnings = warnings + line.count("warning")
+                line = log.readline()
+            log.close()
+        except Exception, e:
+            errors = errors + 1 # Make sure we fail then.
+            pass
+            
         return (errors, warnings)
     
