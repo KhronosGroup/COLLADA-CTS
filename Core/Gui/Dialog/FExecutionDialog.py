@@ -29,7 +29,7 @@ class FExecutionDialog(wx.Dialog):
         for test, execution in tuples:
             self.__grid.AddExecution(i, test, execution)
             i = i + 1
-        self.__grid.RefreshTable()
+        self.__grid.FullRefresh()
         
         sizer.Add(self.__grid, 1, wx.EXPAND)
         self.SetSizer(sizer)
