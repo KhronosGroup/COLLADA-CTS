@@ -52,7 +52,7 @@ class FByteComparator (FImageComparator):
         """
         compareResult = FCompareResult()
         compareResult.SetResult(False)
-        compareResult.SetExtra(FByteComparator.DEFAULT_EXTRA)
+        compareResult.SetExtra(FByteComparator.FAIL_EXTRA)
         
         filename1 = os.path.normpath(os.path.abspath(filename1))
         filename2 = os.path.normpath(os.path.abspath(filename2))
