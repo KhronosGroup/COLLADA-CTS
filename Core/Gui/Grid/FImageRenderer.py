@@ -297,7 +297,7 @@ class FImageRenderer(FTextRenderer):
     def __GetDefaultBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
             test = imageData.GetTest()
-            grid.PartialRefreshRemove(test)
+            grid.PartialRefreshRemove(test, imageData.GetGridId())
 
             # Set this still image/animation as the default blessed image.
             busyInfo = wx.BusyInfo("Default blessing image. Please wait...")
@@ -308,7 +308,7 @@ class FImageRenderer(FTextRenderer):
 
             # Update the result and refresh the grid row.
             test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
-            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshAdd(test, imageData.GetExecution(), imageData.GetGridId())
             grid.PartialRefreshDone()
             
         return Bless
@@ -316,7 +316,7 @@ class FImageRenderer(FTextRenderer):
     def __GetReplaceDefaultBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
             test = imageData.GetTest()
-            grid.PartialRefreshRemove(test)
+            grid.PartialRefreshRemove(test, imageData.GetGridId())
 
             # Set this still image/animation as the default blessed image.
             busyInfo = wx.BusyInfo("Replacing default blessed image. Please wait...")
@@ -327,7 +327,7 @@ class FImageRenderer(FTextRenderer):
 
             # Update the result and refresh the grid row.
             test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
-            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshAdd(test, imageData.GetExecution(), imageData.GetGridId())
             grid.PartialRefreshDone()
             
         return Bless
@@ -335,7 +335,7 @@ class FImageRenderer(FTextRenderer):
     def __GetBlessImageFunc(self, grid, renderedArea, imageData):
         def Bless(e):
             test = imageData.GetTest()
-            grid.PartialRefreshRemove(test)
+            grid.PartialRefreshRemove(test, imageData.GetGridId())
 
             # Bless this still image/animation.
             busyInfo = wx.BusyInfo("Blessing Image. Please wait...")
@@ -346,7 +346,7 @@ class FImageRenderer(FTextRenderer):
                 
             # Update the result and refresh the grid row.
             test.UpdateResult(self.__testProcedure, test.GetCurrentExecution())
-            grid.PartialRefreshAdd(test)
+            grid.PartialRefreshAdd(test, imageData.GetExecution(), imageData.GetGridId())
             grid.PartialRefreshDone()
         return Bless
     
@@ -383,7 +383,6 @@ class FImageRenderer(FTextRenderer):
                 typename = "Image"
             elif (renderedArea.GetType() == FImageRenderArea.LOG):
                 typename = "Log"
-                menuItem = wx.MenuItem(menu, id, "View " + typename)
             elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
                 typename = "Animation"
             else:
@@ -419,7 +418,7 @@ class FImageRenderer(FTextRenderer):
                 
                 grid.Bind(wx.EVT_MENU, OnContext, id = id)
                     
-            if self.__showCounts:
+            if self.__showCounts and typename != "Log":
                 # Create the "Blessed.." sub-menu
                 id = wx.NewId()
                 blessedMenu = wx.Menu()

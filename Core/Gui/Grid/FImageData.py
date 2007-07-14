@@ -8,30 +8,46 @@ import wx
 import Core.Common.FUtils as FUtils
 
 class FImageData:
-    __HEIGHT_SPACING = 5
-    __WIDTH_SPACING = 5 # if > 8, will need to shrink on default preview
+    __HEIGHT_SPACING = 2
+    __WIDTH_SPACING = 2 # if > 8, will need to shrink on default preview
     __BITMAP_WIDTH = 100
     __BITMAP_HEIGHT = 100
     
-    def __init__(self, filenameList, blessedFilenames = None, 
-                previousFilenameList = None, errorCount = 0, warningCount = 0, 
-                logFilename = None, test = None, executionDir = None):
-        self.__blessedFilenames = blessedFilenames
+    def __init__(self, test, execution, step, id, simplified):
+        # Copy the parameters locally
+        self.__test = test
+        self.__execution = execution
+        self.__gridId = id
         
-        self.__filenameList = filenameList
-        self.__defaultFilename = filenameList[-1]
+        # Cache some of the information.
+        self.__blessedFilenames = test.GetBlessed()
+        
+        if (step >= 0): # Steps output
+            self.__filenameList = execution.GetOutputLocation(step)
+        elif (step == -1): # Input file.
+            self.__filenameList = [test.GetAbsFilename()]
+        elif (step == -2): # Blessed file.
+            self.__filenameList = self.__blessedFilenames
+            
+        self.__defaultFilename = self.__filenameList[-1]
         self.__defaultImage = None
         
-        self.__previousFilenameList = previousFilenameList
+        if (simplified): self.__previousFilenameList = None
+        else: self.__previousFilenameList = test.GetPreviousOutputLocation(step)
         
-        self.__errorCount = errorCount
-        self.__warningCount = warningCount
-        self.__logFilename = logFilename
-        self.__test = test
-        if (executionDir != None):
-            self.__executionName = os.path.basename(executionDir)
+        if (self.__execution != None):
+            self.__errorCount = execution.GetErrorCount(step)
+            self.__warningCount = execution.GetWarningCount(step)
+            self.__logFilename = execution.GetLog(step)
+            executionDir = execution.GetExecutionDir()
         else:
-            self.__executionName = None
+            self.__errorCount = None
+            self.__warningCount = None
+            self.__logFilename = None
+            executionDir = None
+        
+        if (executionDir != None): self.__executionName = os.path.basename(executionDir)
+        else: self.__executionName = None
         
         self.__defaultImage = self.GetImage(-1)
     
@@ -39,10 +55,8 @@ class FImageData:
         return self.__executionName
     
     def GetBlessedFilenames(self):
-        if (self.__blessedFilenames == None): 
-            return [None,]
-        
-        return self.__blessedFilenames
+        if (self.__blessedFilenames == None): return [None,]
+        else: return self.__blessedFilenames
     
     def GetBlessedImages(self):
         if (self.__blessedFilenames == None): 
@@ -96,10 +110,13 @@ class FImageData:
         return self.__GetImage(self.__previousFilenameList[imageNumber])
     
     def GetTest(self):
-        if (self.__test == None):
-            raise ValueError, "<FImageData> Test never initialized"
-        
         return self.__test
+        
+    def GetExecution(self):
+        return self.__execution
+    
+    def GetGridId(self):
+        return self.__gridId
     
     def GetLogFilename(self):
         if (self.__logFilename == None):

@@ -146,10 +146,10 @@ class FExecutionGrid(FGrid):
             
             if (execution == None): continue
             
-            self.PartialRefreshRemove(test)
+            self.PartialRefreshRemove(test, id)
             test.BlessExecution(self.__testProcedure, execution)
             test.UpdateResult(self.__testProcedure, execution)
-            self.PartialRefreshAdd(test)
+            self.PartialRefreshAdd(test, execution, id)
             
         self.PartialRefreshDone()
     
@@ -161,9 +161,9 @@ class FExecutionGrid(FGrid):
         for key in keys:
             position = self.__executionsKeyMap[key]
             id, test, execution = self.__executions[position]
-            self.PartialRefreshRemove(test)
+            self.PartialRefreshRemove(test, id)
             test.UpdateResult(self.__testProcedure, execution)
-            self.PartialRefreshAdd(test)
+            self.PartialRefreshAdd(test, execution, id)
         self.PartialRefreshDone()
     
     def SetAnimateAll(self, value):
@@ -385,14 +385,14 @@ class FExecutionGrid(FGrid):
         # Iterate over the tests, filling in the table
         # and processing the results.
         for id, test, execution in self.__executions:
-            self.PartialRefreshAdd(test)
+            self.PartialRefreshAdd(test, execution, id)
         self.PartialRefreshDone()
     
-    def PartialRefreshRemove(self, test):
+    def PartialRefreshRemove(self, test, id=None):
         self.__executionTotal = self.__executionTotal - 1
 
         # Retrieve the execution that is currently displayed.
-        id = test.GetTestId()
+        if (id == None): id = test.GetTestId()
         row = self.__executionsKeyMap[id]
         (id, test, execution) = self.__executions[row]
         
@@ -411,12 +411,14 @@ class FExecutionGrid(FGrid):
                 badgeResult = execution.GetJudgementResult(badgeName)
                 self.__judgementCompiler.RemoveJudgement(i, badgeResult)
 
-    def PartialRefreshAdd(self, test):        
+    def PartialRefreshAdd(self, test, execution=None, id=None):        
         self.__executionTotal = self.__executionTotal + 1
         
-        id = test.GetTestId()
-            
-        execution = test.GetCurrentExecution()
+        # Use defaults values.
+        if (id == None): id = test.GetTestId()
+        if (execution == None): execution = test.GetCurrentExecution()
+
+        # Pick-up the main information containers.
         if (execution == None):
             comments = test.GetCurrentComments()
             executionDir = None
@@ -424,6 +426,7 @@ class FExecutionGrid(FGrid):
             comments = execution.GetComments()
             executionDir = execution.GetExecutionDir()
                 
+        # Process the execution step results.
         if (execution != None): 
             logs = [] # probably want to put this in a class
             for step, app, op, setting in (self.__testProcedure.GetStepGenerator()):
@@ -443,21 +446,9 @@ class FExecutionGrid(FGrid):
                     # application specific python script no operation
                     if (outputFilenameList == None): continue 
                     
-                    if (self.__simplified):
-                        previousList = None
-                    else:
-                        previousList = test.GetPreviousOutputLocation(step)
-                    
                     self.InsertData(id, FExecutionGrid.__NEXT_KEY + step, 
-                            FImageData(outputFilenameList, 
-                                       test.GetBlessed(),
-                                       previousList,
-                                       execution.GetErrorCount(step),
-                                       execution.GetWarningCount(step),
-                                       execution.GetLog(step),
-                                       test,
-                                       execution.GetExecutionDir()))
-                                       
+                            FImageData(test, execution, step, id, self.__simplified))
+
             # Judgement for badge levels
             for i in range(len(FGlobals.badgeLevels)):
                 badgeName = FGlobals.badgeLevels[i]
@@ -470,7 +461,7 @@ class FExecutionGrid(FGrid):
             
             # Display the environment columns
             self.InsertData(id, FExecutionGrid.__DIFFERENT, execution.GetDiffFromPrevious())
-            self.InsertData(id, FExecutionGrid.__RESULT, (execution.GetResult(), execution, test))
+            self.InsertData(id, FExecutionGrid.__RESULT, (execution, test, id))
             self.InsertData(id, FExecutionGrid.__LOGS, logs)
             self.InsertData(id, FExecutionGrid.__TIME, execution.GetTimeRan())
             self.InsertData(id, FExecutionGrid.__ENVIRONMENT, execution.GetEnvironment())
@@ -491,11 +482,11 @@ class FExecutionGrid(FGrid):
         self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_KEYWORD, (test.GetCOLLADAKeyword(),))
         self.InsertData(id, FExecutionGrid.__COLLADA_ASSET_SUBJECT, (test.GetCOLLADASubject(),))
         self.InsertData(id, FExecutionGrid.__ANNOTATIONS, (comments, test, execution))
-        self.InsertData(id, FExecutionGrid.__INPUT, FImageData([test.GetAbsFilename(),], test = test, executionDir = executionDir))
+        self.InsertData(id, FExecutionGrid.__INPUT, FImageData(test, execution, -1, id, self.__simplified))
         
         blessed = test.GetBlessed()
         if ((blessed != None) and (len(blessed) != 0)):
-            self.InsertData(id, FExecutionGrid.__BLESSED,  FImageData(blessed, test = test, executionDir = executionDir))
+            self.InsertData(id, FExecutionGrid.__BLESSED,  FImageData(test, execution, -2, id, self.__simplified))
 
     def PartialRefreshDone(self):
         if not self.__simplified:

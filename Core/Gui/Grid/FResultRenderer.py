@@ -10,29 +10,39 @@ class FResultRenderer(FTextRenderer):
         FTextRenderer.__init__(self)
     
     def Draw(self, grid, attr, dc, rect, row, col, isSelected):
-        result = grid.GetCellValue(row, col)
+        value = grid.GetCellValue(row, col)
         
-        if ((result == None) or (result[0] == None)):
-            FTextRenderer.Draw(self, grid, attr, dc, rect, row, col, 
-                                   isSelected)
-            return
-        
-        result = result[0]
-        if (result.GetResult()):
-            FTextRenderer.ColorDraw(self, dc, rect, wx.Color(0, 255, 0))
+        # Retrieve the result object.
+        if (value != None) and (value[0] != None):
+            execution = value[0]
+            result = execution.GetResult()
+        else: result = None
+
+        if (result != None):
+            # Render a green/red cell with the result text.
+            result = execution.GetResult()
+            
+            if (result != None) and (result.GetResult()): cellColor = wx.Color(0, 255, 0)
+            else: cellColor = wx.Color(255, 0, 0)
+            FTextRenderer.ColorDraw(self, dc, rect, cellColor)
+            textArray = result.GetTextArray()
+            
+            self.RenderText(grid, attr, dc, rect, row, col, isSelected, 
+                            len(textArray), textArray, None, None, None, 
+                            wx.Color(0, 0, 0))
         else:
-            FTextRenderer.ColorDraw(self, dc, rect, wx.Color(255, 0, 0))
-        textArray = result.GetTextArray()
-        
-        self.RenderText(grid, attr, dc, rect, row, col, isSelected, 
-                        len(textArray), textArray, None, None, None, 
-                        wx.Color(0, 0, 0))
+            # Render a plain white cell
+            FTextRenderer.Draw(self, grid, attr, dc, rect, row, col, isSelected)
     
     def AddContext(self, grid, row, col, menu, position):
-        result = grid.GetCellValue(row, col)
+        value = grid.GetCellValue(row, col)
+        if (value != None) and (value[0] != None):
+            execution = value[0]
+            result = execution.GetResult()
+        else: result = None
         if (result == None): return
-        if (result[0] == None): return
         
+        # Add a result toggle menu item
         menu.AppendSeparator()
         id = wx.NewId()
         menuItem = wx.MenuItem(menu, id, "Toggle Result")
@@ -40,19 +50,25 @@ class FResultRenderer(FTextRenderer):
         font.SetWeight(wx.BOLD)
         menuItem.SetFont(font)
         menu.AppendItem(menuItem)
-        grid.Bind(wx.EVT_MENU, self.__GetToggleFunc(result[1], grid, result[2]), id = id)
+        grid.Bind(wx.EVT_MENU, self.__GetToggleFunc(grid, value), id = id)
     
-    def __GetToggleFunc(self, execution, grid, test):
+    def __GetToggleFunc(self, grid, value): # value: (execution, test, id)
         def Toggle(e):
-            grid.PartialRefreshRemove(test)
-            execution.ToggleResult()
-            grid.PartialRefreshAdd(test)
+            # Toggle the execution results.
+            grid.PartialRefreshRemove(value[1], value[2])
+            value[0].ToggleResult()
+            grid.PartialRefreshAdd(value[1], value[0], value[2])
             grid.PartialRefreshDone()
         return Toggle
     
     def Clicked(self, grid, row, col, position):
-        result = grid.GetCellValue(row, col)
+        value = grid.GetCellValue(row, col)
+        if (value != None) and (value[0] != None):
+            execution = value[0]
+            result = execution.GetResult()
+        else: result = None
         if (result == None): return
-        if (result[0] == None): return
-        (self.__GetToggleFunc(result[1], grid, result[2]))(None)
+
+        # Toggle the results.
+        (self.__GetToggleFunc(grid, value))(None)
     

@@ -14,9 +14,10 @@ class FCommentsRenderer(FTextRenderer):
     
     def Draw(self, grid, attr, dc, rect, row, col, isSelected):
         FTextRenderer.Draw(self, grid, attr, dc, rect, row, col, isSelected)
-        
-        self.RenderWrappedText(grid, attr, dc, rect, row, col, isSelected,
-                        grid.GetCellValue(row, col)[0])
+
+        value = grid.GetCellValue(row, col)
+        if (value != None) and (value != ""):
+            self.RenderWrappedText(grid, attr, dc, rect, row, col, isSelected, value[0])
     
     def AddContext(self, grid, row, col, menu, position):
         pass
