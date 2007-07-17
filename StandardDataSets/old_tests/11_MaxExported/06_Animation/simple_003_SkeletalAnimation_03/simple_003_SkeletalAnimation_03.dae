@@ -3509,7 +3509,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-HeadMesh-obj">
-         <skin source="HeadMesh-obj">
+         <skin source="#HeadMesh-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-HeadMesh-obj">
                <Name_array id="skin-bones-table-HeadMesh-obj" count="2">Bone18 Bone19</Name_array>
@@ -3548,7 +3548,7 @@
          </skin>
       </controller>
       <controller id="skin-Body-obj">
-         <skin source="Body-obj">
+         <skin source="#Body-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-Body-obj">
                <Name_array id="skin-bones-table-Body-obj" count="27">Bone01 Bone02 Bone03 Bone04 Bone05 Bone06 Bone07 Bone08 Bone09 Bone10 Bone11 Bone12 Bone13 Bone14 Bone15 Bone16 Bone17 Bone18 Bone19 Bone20 Bone21 Bone22 Bone23 Bone24 Bone25 Bone26 Bone27</Name_array>

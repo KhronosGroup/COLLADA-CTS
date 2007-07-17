@@ -5253,7 +5253,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-eagle-obj">
-         <skin source="eagle-obj">
+         <skin source="#eagle-obj">
             <bind_shape_matrix>1 0 0 27.1823 0 1 0 5.20186e-005 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-eagle-obj">
                <Name_array id="skin-bones-table-eagle-obj" count="13">Bone01 Bone02 Bone03 Bone04 Bone05 Bone06 Bone07 Bone08 Bone09 Bone10 Bone11 Bone12 Bone13</Name_array>

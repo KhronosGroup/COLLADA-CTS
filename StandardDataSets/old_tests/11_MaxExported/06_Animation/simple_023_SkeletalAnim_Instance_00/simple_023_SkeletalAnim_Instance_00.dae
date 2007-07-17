@@ -295,7 +295,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-Box02-obj">
-         <skin source="Box02-obj">
+         <skin source="#Box02-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 -4.98971e-007 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-Box02-obj">
                <Name_array id="skin-bones-table-Box02-obj" count="3">Bone01 Bone02 Bone03</Name_array>

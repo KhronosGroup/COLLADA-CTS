@@ -1520,7 +1520,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-pCube4-obj">
-         <skin source="pCube4-obj">
+         <skin source="#pCube4-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 -5.64008e-007 0 0 1 18 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCube4-obj">
                <Name_array id="skin-bones-table-pCube4-obj" count="1">Bone04</Name_array>
@@ -1559,7 +1559,7 @@
          </skin>
       </controller>
       <controller id="skin-pCube3-obj">
-         <skin source="pCube3-obj">
+         <skin source="#pCube3-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 -2.71867e-007 0 0 1 12 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCube3-obj">
                <Name_array id="skin-bones-table-pCube3-obj" count="1">Bone03</Name_array>
@@ -1598,7 +1598,7 @@
          </skin>
       </controller>
       <controller id="skin-pCube2-obj">
-         <skin source="pCube2-obj">
+         <skin source="#pCube2-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 1.03245e-008 0 0 1 6 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCube2-obj">
                <Name_array id="skin-bones-table-pCube2-obj" count="1">Bone02</Name_array>
@@ -1637,7 +1637,7 @@
          </skin>
       </controller>
       <controller id="skin-pCube1-obj">
-         <skin source="pCube1-obj">
+         <skin source="#pCube1-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCube1-obj">
                <Name_array id="skin-bones-table-pCube1-obj" count="1">Bone01</Name_array>

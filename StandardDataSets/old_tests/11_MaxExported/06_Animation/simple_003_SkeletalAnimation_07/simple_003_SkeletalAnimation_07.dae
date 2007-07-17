@@ -1194,7 +1194,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-pCube1-obj">
-         <skin source="pCube1-obj">
+         <skin source="#pCube1-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 20 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCube1-obj">
                <Name_array id="skin-bones-table-pCube1-obj" count="2">Bone02 Bone03</Name_array>

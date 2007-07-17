@@ -343,7 +343,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-Cylinder01-obj">
-         <skin source="Cylinder01-obj">
+         <skin source="#Cylinder01-obj">
             <bind_shape_matrix>1 0 0 8.66526 0 1 0 -5.09698 0 0 1 0 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-Cylinder01-obj">
                <Name_array id="skin-bones-table-Cylinder01-obj" count="2">Bone01 Bone02</Name_array>

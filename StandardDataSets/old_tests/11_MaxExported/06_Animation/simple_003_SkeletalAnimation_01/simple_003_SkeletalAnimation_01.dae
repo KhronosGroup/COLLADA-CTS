@@ -407,7 +407,7 @@
    </library_geometries>
    <library_controllers>
       <controller id="skin-pCylinder1-obj">
-         <skin source="pCylinder1-obj">
+         <skin source="#pCylinder1-obj">
             <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 3 -0.5 0 0 0 1</bind_shape_matrix>
             <source id="skin-joints-pCylinder1-obj">
                <Name_array id="skin-bones-table-pCylinder1-obj" count="2">bottomBone TopBone</Name_array>
