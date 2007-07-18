@@ -25,7 +25,10 @@ limitations under the License.</copyright>
             <source_data>file:///C:/vs2005/khronos/conform/ctf/CTF/StandardDataSets/collada_basic_badge/aggregate_tests/sphere_polylist/sphere.mb</source_data>
         </contributor>
         <created>2007-04-26T23:49:27Z</created>
-        <modified>2007-04-26T23:49:27Z</modified>
+        <keywords>basic_badge geometry mesh triangles</keywords>
+        <modified>2007-04-26T23:48:35Z</modified>
+        <subject>Draw a sphere using triangles</subject>
+        <title>12</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

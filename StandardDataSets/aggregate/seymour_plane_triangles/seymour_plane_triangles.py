@@ -43,9 +43,9 @@ class TwoStepJudgingObject:
             return (logs, False)
 
         # Look for the "cube_polylist" test case.
-        comparativeTestId = context.FindTestId( "cube_polylist", "aggregate" )
+        comparativeTestId = context.FindTestId( "seymour_plane_polylist", "aggregate" )
         if (comparativeTestId == None):
-            logs.append("FAILED: You must also run the 'aggregate|cube_polylist' test case.")
+            logs.append("FAILED: You must also run the 'aggregate|seymour_plane_polylist' test case.")
             return (logs, False)
         
         # Retrieve the last image filename for this test case.
@@ -58,7 +58,7 @@ class TwoStepJudgingObject:
         # Retrieve the last image filename for the "cube_polylist" test case.
         imageFilenames = context.GetStepImageFilenames(comparativeTestId)
         if (len(imageFilenames) == 0):
-            logs.append("FAILED: The 'aggregate|cube_polylist' test must include a 'Render' step.")
+            logs.append("FAILED: The 'aggregate|seymour_plane_polylist' test must include a 'Render' step.")
             return (logs, False)
         filename2 = imageFilenames[-1]
         
@@ -67,10 +67,10 @@ class TwoStepJudgingObject:
         #   how close the images are.
         result = context.CompareImages(filename1, filename2)
         if result > 5:
-            logs.append("FAILED: [Comparison: %d] Output doesn't match the 'aggregate|cube_polylist' test. " % result)
+            logs.append("FAILED: [Comparison: %d] Output doesn't match the 'aggregate|seymour_plane_polylist' test. " % result)
             return (logs, False)
         else:
-            logs.append("PASSED: [Comparison: %d] Output matches the 'aggregate|cube_polylist' test. " % result)
+            logs.append("PASSED: [Comparison: %d] Output matches the 'aggregate|seymour_plane_polylist' test. " % result)
             return (logs, True)
         
     def JudgeBasic(self, context):
