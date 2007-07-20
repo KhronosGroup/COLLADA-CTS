@@ -157,11 +157,14 @@ class FMax (FApplication):
         else:
             print "crashed running " + os.path.basename(self.__script.name)
         
-        if (hadConfig):
-            shutil.copy2(tempFilename, filename)
-            os.remove(tempFilename)
-        elif (os.path.isfile(filename)):
-            os.remove(filename)
+        try:
+            if (hadConfig):
+                shutil.copy2(tempFilename, filename)
+                os.remove(tempFilename)
+            elif (os.path.isfile(filename)):
+                os.remove(filename)
+        except Exception, e:
+            pass
         
         return (returnValue == 0)
     
