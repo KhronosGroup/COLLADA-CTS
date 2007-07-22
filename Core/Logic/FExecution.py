@@ -95,7 +95,6 @@ class FExecution(FSerializable, FSerializer):
                 return False
 
         # Do not compare log locations.
-        
         if (len(self.__outputLocations) != len(other.__outputLocations)): 
             return False
         for i in range(len(self.__outputLocations)):
@@ -190,7 +189,7 @@ class FExecution(FSerializable, FSerializer):
     
     def GetOutputLocation(self, opNumber):
         #FIXME: should not be perfoming this check
-        if (opNumber >= len(self.__outputLocations)): return None
+        if (opNumber < 0) or (opNumber >= len(self.__outputLocations)): return None
         
         return self.__outputLocations[opNumber]
     

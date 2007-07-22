@@ -32,10 +32,10 @@ class FImageData:
         self.__defaultFilename = self.__filenameList[-1]
         self.__defaultImage = None
         
-        if (simplified): self.__previousFilenameList = None
+        if (simplified or step < 0): self.__previousFilenameList = None
         else: self.__previousFilenameList = test.GetPreviousOutputLocation(step)
         
-        if (self.__execution != None):
+        if (self.__execution != None and step >= 0):
             self.__errorCount = execution.GetErrorCount(step)
             self.__warningCount = execution.GetWarningCount(step)
             self.__logFilename = execution.GetLog(step)

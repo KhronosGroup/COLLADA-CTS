@@ -119,8 +119,7 @@ class FTest(FSerializable, FSerializer):
         
         if (previousDir != None):
             executionPath = os.path.join(previousDir, EXECUTION_FILENAME)
-            self.__previousExecution = self.Load(
-                    os.path.abspath(executionPath))
+            self.__previousExecution = self.Load(os.path.abspath(executionPath))
     
     def IsRecovered(self):
         return self.__isRecovered
@@ -930,7 +929,12 @@ class FTest(FSerializable, FSerializer):
         self.__crashIndices = None
         executionDir = os.path.abspath(
                 os.path.join(self.__currentExecutionDir, EXECUTION_FILENAME))
+                
+        self.__CompileResult(testProcedure, self.__currentExecution)
         
+    def Judge(self, testProcedure):
+        self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
+
         if (self.__previousExecution == None):
             self.__currentExecution.SetDiffFromPrevious(FTest.NA)
             prevComments = self.__defaultComments
@@ -946,11 +950,6 @@ class FTest(FSerializable, FSerializer):
                 prevComments = "<From Previous Execution> " + prevComments
             
             self.__currentExecution.SetComments(prevComments)
-        
-        self.__CompileResult(testProcedure, self.__currentExecution)
-        
-    def Judge(self, testProcedure):
-        self.__currentExecution.Judge(self.__filename, testProcedure, self.__testId)
 
     def Conclude(self, testProcedure):        
         # update requires DiffFromPrevious to be set; update saves also
