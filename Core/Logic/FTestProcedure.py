@@ -285,8 +285,12 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                     ignoredRegEx.append(regExPath)
                 self.SetIgnoredRegEx(regExId, ignoredRegEx)
         
-        testDir = os.path.join(self.__procedureDir, TEST_PREFIX + str(key))
-        shutil.rmtree(testDir)
+        try:
+            testDir = os.path.join(self.__procedureDir, TEST_PREFIX + str(key))
+            shutil.rmtree(testDir)
+        except Exception, e:
+            pass
+            
         self.__supplier.ReturnKey(key)
         self.__testList.pop(key)
         

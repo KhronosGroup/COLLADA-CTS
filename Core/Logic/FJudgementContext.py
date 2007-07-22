@@ -58,27 +58,31 @@ class FJudgementContext:
             @param substring2 An optional third substring to match.
             @return The test identifier for a test case matching the given
                 substrings. """
-        tests = []
         
         # Look against the whole test procedure for the first substring.
+        step1 = []
         for test in self.__testProcedure.GetTestGenerator():
             if (test.GetFilename().find(substring0) != -1):
-                tests.append(test)
+                step1.append(test)
                 
         # Check for the second substring.
         if (substring1 != None):
-            for test in tests:
+            step2 = []
+            for test in step1:
                 if (test.GetFilename().find(substring1) == -1):
-                    tests.remove(test)
+                    step2.append(test)
+        else: step2 = tests
 
         # Check for the third substring.
         if (substring2 != None):
-            for test in tests:
+            step3 = []
+            for test in step2:
                 if (test.GetFilename().find(substring2) == -1):
-                    tests.remove(test)
+                    step3.append(test)
+        else: step3 = step2
                     
         # Return any left-over test's identifier.
-        if (len(tests) > 0): return tests[0].GetTestId()
+        if (len(step3) > 0): return step3[0].GetTestId()
         else: return None
         
         
