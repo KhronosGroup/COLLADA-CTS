@@ -802,8 +802,7 @@ class FTest(FSerializable, FSerializer):
     
     def SetDefaultComments(self, value):
         self.__defaultComments = value
-        self.Save(self, os.path.abspath(
-                os.path.join(self.__testDir, TEST_FILENAME)))
+        self.Save(self, os.path.abspath(os.path.join(self.__testDir, TEST_FILENAME)))
     
     def GetCurrentOutputLocation(self, opNumber):
         if (self.__currentExecution == None): return None
@@ -856,6 +855,10 @@ class FTest(FSerializable, FSerializer):
             (self.__colladaId, self.__colladaSubject, self.__colladaKeyword) = FCOLLADAParser.GetCOLLADAAssetInformation(self.__filename)
         else:
             (self.__colladaId, self.__colladaSubject, self.__colladaKeyword) = ("", "<Not COLLADA>", "<Not COLLADA>")
+
+        # On RefreshTable/Row in the UI: force the re-serialization of the test.
+        if self.__testDir != None:
+            self.Save(self, os.path.abspath(os.path.join(self.__testDir, TEST_FILENAME)))        
 
     def GetCOLLADAKeyword(self):
         return self.__colladaKeyword
