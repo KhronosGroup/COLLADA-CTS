@@ -69,7 +69,7 @@ class FJudgementContext:
         if (substring1 != None):
             step2 = []
             for test in step1:
-                if (test.GetFilename().find(substring1) == -1):
+                if (test.GetFilename().find(substring1) != -1):
                     step2.append(test)
         else: step2 = tests
 
@@ -77,7 +77,7 @@ class FJudgementContext:
         if (substring2 != None):
             step3 = []
             for test in step2:
-                if (test.GetFilename().find(substring2) == -1):
+                if (test.GetFilename().find(substring2) != -1):
                     step3.append(test)
         else: step3 = step2
                     
