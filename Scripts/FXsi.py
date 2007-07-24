@@ -234,13 +234,20 @@ class FXsi (FApplication):
         
         self.__currentImportProperName = FUtils.GetProperFilename(filename)
         basename = self.__currentImportProperName + ".scn"
-        
+
+#        self.__script.write(
+#                command +
+#                "SearchAndReplacePath \"All\", \"" + FXsi.__REPLACE_PATH + 
+#                        "\", \"" + 
+#                        os.path.dirname(filename).replace("\\", "\\\\") + 
+#                        "\", True\n" +
+#                "SaveSceneAs \"" + 
+#                        os.path.join(path, basename).replace("\\", "\\\\") +
+#                        "\"\n"
+#                )
+                        
         self.__script.write(
                 command +
-                "SearchAndReplacePath \"All\", \"" + FXsi.__REPLACE_PATH + 
-                        "\", \"" + 
-                        os.path.dirname(filename).replace("\\", "\\\\") + 
-                        "\", True\n" +
                 "SaveSceneAs \"" + 
                         os.path.join(path, basename).replace("\\", "\\\\") +
                         "\"\n"
