@@ -7,7 +7,7 @@ import os.path
 import Core.Common.FUtils as FUtils
 from Core.Gui.Grid.FTextRenderer import *
 from Core.Gui.Dialog.FCompareSetupDialog import *
-from Core.Gui.Grid.FImageRenderArea import *
+from Core.Gui.FImageType import *
     
 class FLogRenderer(FTextRenderer):
     def __init__(self):
@@ -37,7 +37,7 @@ class FLogRenderer(FTextRenderer):
             
             textArray.append(os.path.basename(logFilename))
             dataArray.append(logFilename)
-            extraArray.append(FImageRenderArea.LOG)
+            extraArray.append(FImageType.LOG)
         
         self.__renderedAreas[(row, col)] = []
         self.RenderText(grid, attr, dc, rect, row, col, isSelected, 

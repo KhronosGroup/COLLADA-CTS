@@ -10,13 +10,10 @@ import types
 import Core.Common.FUtils as FUtils
 from Core.Common.FConstants import *
 from Core.Common.FSerializer import *
+from Core.Gui.FImageType import *
 
 class FCompareSetupDialog(wx.Dialog, FSerializer):
-    IMAGE = 1
-    EXECUTION = 2
-    LOG = 3
-    ANIMATION = 4
-    
+  
     __COMPARE_STEP = "Different Step"
     __COMPARE_EXECUTION = "Different Execution"
     __COMPARE_TEST = "Different Test"
@@ -30,13 +27,13 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
     __BLESSED_EXECUTION = "Include Last Blessed Execution"
     
     def __init__(self, parent, type, testProcedure, test, execution):
-        if (type == FCompareSetupDialog.IMAGE):
+        if (type == FImageType.IMAGE):
             dialogTitle = FCompareSetupDialog.__IMAGE_TITLE
-        elif (type == FCompareSetupDialog.EXECUTION):
+        elif (type == FImageType.EXECUTION):
             dialogTitle = FCompareSetupDialog.__EXECUTION_TITLE
-        elif (type == FCompareSetupDialog.LOG):
+        elif (type == FImageType.LOG):
             dialogTitle = FCompareSetupDialog.__LOG_TITLE
-        elif (type == FCompareSetupDialog.ANIMATION):
+        elif (type == FImageType.ANIMATION):
             dialogTitle = FCompareSetupDialog.__ANIMATION_TITLE
         else:
             raise ValueError, "Invalid type."
@@ -105,14 +102,14 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
         executionDir = os.path.join(RUNS_FOLDER, self.__curTestProcedure,
                 self.__curTest, self.__curExecution)
         
-        if (self.__type == FCompareSetupDialog.EXECUTION):
+        if (self.__type == FImageType.EXECUTION):
             return os.path.normpath(
                     os.path.join(executionDir, EXECUTION_FILENAME))
         
         filename = self.__stepCombo.GetStringSelection()
         if (filename == ""): return None
         
-        if (self.__type == FCompareSetupDialog.LOG):
+        if (self.__type == FImageType.LOG):
             return os.path.normpath(os.path.join(executionDir, filename))
         
         paths = []
@@ -218,7 +215,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
     
     def __OnExecution(self, e):
         self.__curExecution = self.__executionCombo.GetStringSelection()
-        if (not self.__type == FCompareSetupDialog.EXECUTION):
+        if (not self.__type == FImageType.EXECUTION):
             self.__DisableBrowse()
             self.__UpdateStep(self.__curExecution)
             self.__UpdateEnableBrowse(True, True, True, True)
@@ -318,8 +315,8 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
         execution = self.Load(relExecutionPath) 
         for step, app, op, settings in (self.__curTestProcedureObject.
                                                         GetStepGenerator()):
-            if ((self.__type == FCompareSetupDialog.IMAGE) or 
-                    (self.__type == FCompareSetupDialog.ANIMATION)):
+            if ((self.__type == FImageType.IMAGE) or 
+                    (self.__type == FImageType.ANIMATION)):
                 output = execution.GetOutputLocation(step)
                 if (output == None): continue
                 if (not type(output) is types.ListType): continue #validation
@@ -332,7 +329,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
                 stepList.append(FUtils.GetRelativePath(
                         os.path.dirname(output[-1]), relExecutionDir))
                 
-            elif (self.__type == FCompareSetupDialog.LOG):
+            elif (self.__type == FImageType.LOG):
                 output = execution.GetLog(step)
                 if (output == None): continue
                 
@@ -382,7 +379,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
         for entry in entries:
             relPath = os.path.join(RUNS_FOLDER, entry, TEST_PROCEDURE_FILENAME)
             if (os.path.isfile(relPath)):
-                if (self.__type == FCompareSetupDialog.EXECUTION):
+                if (self.__type == FImageType.EXECUTION):
                     # dangerous method call -- optimization only
                     procedure = self.QuickLoad(relPath) 
                     if (not self.__testProcedureObject.StepEquals(procedure)):
@@ -397,14 +394,14 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
     def __GetMiddleSizer(self, type):
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        if (type == FCompareSetupDialog.EXECUTION):
+        if (type == FImageType.EXECUTION):
             self.__blessedCheckBox = wx.CheckBox(self, wx.ID_ANY, 
                     FCompareSetupDialog.__BLESSED_EXECUTION)
         else:
             self.__blessedCheckBox = wx.CheckBox(self, wx.ID_ANY, 
                     FCompareSetupDialog.__BLESSED_IMAGE)
         
-        if (type == FCompareSetupDialog.EXECUTION):
+        if (type == FImageType.EXECUTION):
             compareList = []
         else:
             compareList = [FCompareSetupDialog.__COMPARE_STEP]
@@ -425,7 +422,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
         sizer.Add(self.__compareRadio, 0, wx.EXPAND | wx.ALL, 5)
         sizer.Add(self.__browseSizer, 0, wx.EXPAND | wx.ALL, 5)
         
-        if (type == FCompareSetupDialog.LOG):
+        if (type == FImageType.LOG):
             self.__blessedCheckBox.Show(False)
         return sizer 
     
@@ -462,7 +459,7 @@ class FCompareSetupDialog(wx.Dialog, FSerializer):
         self.Bind(wx.EVT_COMBOBOX, self.__OnExecution, self.__executionCombo,
                 self.__ID_EXECUTION)
         
-        if (type != FCompareSetupDialog.EXECUTION):
+        if (type != FImageType.EXECUTION):
             self.__stepLabel = wx.StaticText(self, wx.ID_ANY, "Step:")
             self.__stepCombo = wx.ComboBox(self, wx.ID_ANY, 
                                            style = wx.CB_READONLY)

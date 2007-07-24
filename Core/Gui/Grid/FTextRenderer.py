@@ -4,6 +4,7 @@
 
 from Core.Gui.Grid.FGridCellRenderer import *
 from Core.Gui.Grid.FImageRenderArea import *
+from Core.Gui.FImageType import *
 
 class FTextRenderer(FGridCellRenderer):
     def __init__(self):

@@ -13,6 +13,14 @@ class FComparisonDialog(wx.Dialog):
     def __init__(self, parent, title1, filename1, title2, filename2, 
                  blessed = None):
         
+        if (filename2 == None and blessed == None):
+            wx.MessageBox("Unable to compare: please provide a compare-against image set or some blessed images.")
+            return
+        elif (filename2 == None):
+            # If a second set of files is not provided, compare against the blessed one.
+            filename2 = blessed
+            blessed = None
+            
         self.__maxFrameCount = max(len(filename1), len(filename2))
         if (blessed != None):
             self.__maxFrameCount = max(self.__maxFrameCount, len(blessed))

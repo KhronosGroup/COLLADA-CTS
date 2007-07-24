@@ -5,11 +5,7 @@
 import wx
 
 class FImageRenderArea:
-    IMAGE = 0
-    LOG = 1
-    ANIMATION = 2
-    VALIDATION = 3
-    
+
     def __init__(self, x, y, width, height, filename, type):
         self.__x = x
         self.__y = y

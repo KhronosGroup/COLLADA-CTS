@@ -14,6 +14,7 @@ from Core.Gui.Dialog.FComparisonDialog import *
 from Core.Gui.Grid.FAssetHandler import *
 from Core.Gui.Grid.FImageRenderArea import *
 from Core.Gui.Grid.FTextRenderer import *
+from Core.Gui.FImageType import *
 
 # used with an FExecutionGrid
 class FImageRenderer(FTextRenderer):
@@ -164,12 +165,12 @@ class FImageRenderer(FTextRenderer):
                 images = imageData.GetBlessedImages()
                 if (len(filenames) == 1):
                     filenames = filenames[0]
-                    type = FImageRenderArea.IMAGE
+                    type = FImageType.IMAGE
                 else:
-                    type = FImageRenderArea.ANIMATION
+                    type = FImageType.ANIMATION
             else:
                 images = [imageData.GetBlessedImage(-1),]
-                type = FImageRenderArea.ANIMATION
+                type = FImageType.ANIMATION
             xOffset, dummy = self.__TestAndDraw(rect, xOffset, yOffset, 
                     images, filenames, grid, dc, row, col,
                     FImageRenderer.__BLESSED, type)
@@ -180,12 +181,12 @@ class FImageRenderer(FTextRenderer):
                 images = imageData.GetPreviousImages()
                 if (len(filenames) == 1):
                     filenames = filenames[0]
-                    type = FImageRenderArea.IMAGE
+                    type = FImageType.IMAGE
                 else:
-                    type = FImageRenderArea.ANIMATION
+                    type = FImageType.ANIMATION
             else:
                 images = [imageData.GetPreviousImage(-1),]
-                type = FImageRenderArea.ANIMATION
+                type = FImageType.ANIMATION
             xOffset, dummy = self.__TestAndDraw(rect, xOffset, yOffset, 
                     images, filenames, grid, dc, row, col,
                     FImageRenderer.__PREVIOUS, type)
@@ -195,12 +196,12 @@ class FImageRenderer(FTextRenderer):
             images = imageData.GetImages()
             if (len(filenames) == 1):
                 filenames = filenames[0]
-                type = FImageRenderArea.IMAGE
+                type = FImageType.IMAGE
             else:
-                type = FImageRenderArea.ANIMATION
+                type = FImageType.ANIMATION
         else:
             images = [imageData.GetImage(-1),]
-            type = FImageRenderArea.ANIMATION
+            type = FImageType.ANIMATION
         self.__TestAndDraw(rect, xOffset, yOffset, images,
                 filenames, grid, dc, row, col,
                 FImageRenderer.__CURRENT, type)
@@ -214,10 +215,10 @@ class FImageRenderer(FTextRenderer):
             extraArray = []
             textArray.append(str(imageData.GetWarningCount()) + " warnings")
             dataArray.append(imageData.GetLogFilename())
-            extraArray.append(FImageRenderArea.LOG)
+            extraArray.append(FImageType.LOG)
             textArray.append(str(imageData.GetErrorCount()) + " errors")
             dataArray.append(imageData.GetLogFilename())
-            extraArray.append(FImageRenderArea.LOG)
+            extraArray.append(FImageType.LOG)
             
             newY = self.RenderText(grid, attr, dc, rect, row, col, isSelected, 
                     len(textArray), textArray, self.__renderedAreas, dataArray, 
@@ -233,7 +234,7 @@ class FImageRenderer(FTextRenderer):
         return wx.Size(self.__imageHeight, self.__imageWidth)
     
     def __GetOpenFunc(self, file, type, grid):
-        if (type == FImageRenderArea.ANIMATION):
+        if (type == FImageType.ANIMATION):
             def Open(e):
                 args = (["\"" + self.__pythonPath + "\"", 
                         "\"" + FImageRenderer.__ANIMATION_FRAME_EXECUTABLE + 
@@ -260,12 +261,9 @@ class FImageRenderer(FTextRenderer):
     
     def __GetCompareImageFunc(self, grid, renderedArea, imageData, type):
         def Compare(e):
-            dialog = FCompareSetupDialog(grid, type, 
-                    self.__testProcedure.GetName(), 
-                    os.path.basename(imageData.GetTest().GetTestDir()),
-                    imageData.GetExecutionName())
+            dialog = FCompareSetupDialog(grid, type, self.__testProcedure.GetName(), os.path.basename(imageData.GetTest().GetTestDir()), imageData.GetExecutionName())
             if (dialog.ShowModal() == wx.ID_OK):
-                if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+                if (renderedArea.GetType() == FImageType.IMAGE):
                     filename = os.path.basename(renderedArea.GetFilename())
                 else:
                     filename = "Animation"
@@ -284,13 +282,19 @@ class FImageRenderer(FTextRenderer):
                 else:
                     blessed = None
                 
-                if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+                if (renderedArea.GetType() == FImageType.IMAGE):
                     filename = [renderedArea.GetFilename(),]
                 else:
                     filename = renderedArea.GetFilename()
                 
-                dialog = FComparisonDialog(grid, title1, filename, 
-                        title2, dialog.GetPath(), blessed)
+                # If the user didn't select something to compare against, use the blessed images.
+                filename2 = dialog.GetPath()
+                if (filename2 == None): 
+                    filename2 = imageData.GetBlessedFilenames()
+                    title2 = [("Blessed", "Blessed")]
+                    blessed = None
+                    
+                dialog = FComparisonDialog(grid, title1, filename, title2, filename2, blessed)
                 dialog.ShowModal()
         return Compare
     
@@ -301,9 +305,9 @@ class FImageRenderer(FTextRenderer):
 
             # Set this still image/animation as the default blessed image.
             busyInfo = wx.BusyInfo("Default blessing image. Please wait...")
-            if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+            if (renderedArea.GetType() == FImageType.IMAGE):
                 test.DefaultBless(renderedArea.GetFilename())
-            elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
+            elif (renderedArea.GetType() == FImageType.ANIMATION):
                 test.DefaultBlessAnimation(renderedArea.GetFilename())
 
             # Update the result and refresh the grid row.
@@ -320,9 +324,9 @@ class FImageRenderer(FTextRenderer):
 
             # Set this still image/animation as the default blessed image.
             busyInfo = wx.BusyInfo("Replacing default blessed image. Please wait...")
-            if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+            if (renderedArea.GetType() == FImageType.IMAGE):
                 test.ReplaceDefaultBless(renderedArea.GetFilename())
-            elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
+            elif (renderedArea.GetType() == FImageType.ANIMATION):
                 test.ReplaceDefaultBlessAnimation(renderedArea.GetFilename())
 
             # Update the result and refresh the grid row.
@@ -339,9 +343,9 @@ class FImageRenderer(FTextRenderer):
 
             # Bless this still image/animation.
             busyInfo = wx.BusyInfo("Blessing Image. Please wait...")
-            if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+            if (renderedArea.GetType() == FImageType.IMAGE):
                 test.Bless(renderedArea.GetFilename())
-            elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
+            elif (renderedArea.GetType() == FImageType.ANIMATION):
                 test.BlessAnimation(renderedArea.GetFilename())
                 
             # Update the result and refresh the grid row.
@@ -379,11 +383,11 @@ class FImageRenderer(FTextRenderer):
         if (renderedArea != None):
             
             # Compute the typename for this item.
-            if (renderedArea.GetType() == FImageRenderArea.IMAGE):
+            if (renderedArea.GetType() == FImageType.IMAGE):
                 typename = "Image"
-            elif (renderedArea.GetType() == FImageRenderArea.LOG):
+            elif (renderedArea.GetType() == FImageType.LOG):
                 typename = "Log"
-            elif (renderedArea.GetType() == FImageRenderArea.ANIMATION):
+            elif (renderedArea.GetType() == FImageType.ANIMATION):
                 typename = "Animation"
             else:
                 typename = ""
@@ -392,7 +396,7 @@ class FImageRenderer(FTextRenderer):
             id = wx.NewId()
             menuItem = wx.MenuItem(menu, id, "View " + typename)                
             filename = renderedArea.GetFilename()
-            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and (self.__IsDaeFile(filename))):
+            if ((renderedArea.GetType() == FImageType.IMAGE) and (self.__IsDaeFile(filename))):
                 viewerId = wx.NewId()
                 viewerMenuItem = wx.MenuItem(menu, viewerId, "View in Feeling Viewer")
                 font = menuItem.GetFont()
@@ -409,7 +413,7 @@ class FImageRenderer(FTextRenderer):
             menu.AppendItem(menuItem)
             grid.Bind(wx.EVT_MENU, self.__GetOpenFunc(filename, renderedArea.GetType(), grid), id = id)
             
-            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and (self.__IsDaeFile(filename))):
+            if ((renderedArea.GetType() == FImageType.IMAGE) and (self.__IsDaeFile(filename))):
                 id = wx.NewId()
                 menu.Append(id, "Show Default Asset Tags")
                 
@@ -426,16 +430,16 @@ class FImageRenderer(FTextRenderer):
             
                 # Add to the blessed list and set as the default.
                 id = wx.NewId()
-                if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
-                        (renderedArea.GetType() == FImageRenderArea.ANIMATION)) and 
+                if (((renderedArea.GetType() == FImageType.IMAGE) or
+                        (renderedArea.GetType() == FImageType.ANIMATION)) and 
                         self.__showCounts):
                     blessedMenu.Append(id, "Add as Default")
                     grid.Bind(wx.EVT_MENU, self.__GetDefaultBlessImageFunc(grid, renderedArea, imageData), id = id)
                 
                 # Add to alternative blessed list.
                 id = wx.NewId()
-                if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
-                        (renderedArea.GetType() == FImageRenderArea.ANIMATION)) 
+                if (((renderedArea.GetType() == FImageType.IMAGE) or
+                        (renderedArea.GetType() == FImageType.ANIMATION)) 
                         and self.__showCounts):
                     blessedMenu.Append(id, "Add as Alternate")
                     grid.Bind(wx.EVT_MENU, self.__GetBlessImageFunc(grid, renderedArea, imageData), id = id)
@@ -443,17 +447,17 @@ class FImageRenderer(FTextRenderer):
                 # Replace the default blessed.
                 if (imageData.GetTest().HasBlessed()):
                     id = wx.NewId()
-                    if (((renderedArea.GetType() == FImageRenderArea.IMAGE) or
-                            (renderedArea.GetType() == FImageRenderArea.ANIMATION)) and 
+                    if (((renderedArea.GetType() == FImageType.IMAGE) or
+                            (renderedArea.GetType() == FImageType.ANIMATION)) and 
                             self.__showCounts):
                         blessedMenu.Append(id, "Replace Default")
                         grid.Bind(wx.EVT_MENU, self.__GetReplaceDefaultBlessImageFunc(grid, renderedArea, imageData), id = id)
 
             # Compare images/animations
             id = wx.NewId()
-            if (renderedArea.GetType() == FImageRenderArea.LOG):
+            if (renderedArea.GetType() == FImageType.LOG):
                 grid.Bind(wx.EVT_MENU, self.__GetCompareLogFunc(grid, renderedArea, imageData), id = id)
-            elif (self.__showCounts) and (renderedArea.GetType() == FImageRenderArea.IMAGE or renderedArea.GetType() == FImageRenderArea.ANIMATION):
+            elif (self.__showCounts) and (renderedArea.GetType() == FImageType.IMAGE or renderedArea.GetType() == FImageType.ANIMATION):
                 menu.Append(id, "Compare " + typename)
                 grid.Bind(wx.EVT_MENU, self.__GetCompareImageFunc(grid, renderedArea, imageData, renderedArea.GetType()), id = id)
     
@@ -487,7 +491,7 @@ class FImageRenderer(FTextRenderer):
         renderedArea = self.__GetRenderedArea(grid, row, col, position)
         if (renderedArea != None):
             filename = renderedArea.GetFilename()
-            if ((renderedArea.GetType() == FImageRenderArea.IMAGE) and 
+            if ((renderedArea.GetType() == FImageType.IMAGE) and 
                     (self.__IsDaeFile(filename))):
                 (self.__GetShowInViewerFunc(filename))(None)
             else:

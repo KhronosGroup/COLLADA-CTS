@@ -6,6 +6,7 @@ import wx
 import time
 
 from Core.Gui.Grid.FImageRenderArea import *
+from Core.Gui.FImageType import *
 
 class FAnimation:
     __REFRESH = 0.1
@@ -95,7 +96,7 @@ class FAnimation:
         
         self.__oldRenderArea = FImageRenderArea(self.__rect.x + 1, 
                 self.__rect.y + 1, width, height, self.__filenameList, 
-                FImageRenderArea.ANIMATION)
+                FImageType.ANIMATION)
         
         self.__renderedAreas[(self.__row, self.__col)].append(
                 self.__oldRenderArea)

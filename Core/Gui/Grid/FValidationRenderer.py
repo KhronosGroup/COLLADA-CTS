@@ -5,7 +5,7 @@
 import os
 
 from Core.Gui.Grid.FTextRenderer import *
-from Core.Gui.Grid.FImageRenderArea import *
+from Core.Gui.FImageType import *
 from Core.Common.FConstants import *
 
 class FValidationRenderer(FTextRenderer):
@@ -39,14 +39,14 @@ class FValidationRenderer(FTextRenderer):
                                    isSelected)
             textArray.append("Passed")
         dataArray.append(outputFilename)
-        extraArray.append(FImageRenderArea.VALIDATION)
+        extraArray.append(FImageType.VALIDATION)
         
         textArray.append(str(warnings) + " warnings")
         dataArray.append(outputFilename)
-        extraArray.append(FImageRenderArea.VALIDATION)
+        extraArray.append(FImageType.VALIDATION)
         textArray.append(str(errors) + " errors")
         dataArray.append(outputFilename)
-        extraArray.append(FImageRenderArea.VALIDATION)
+        extraArray.append(FImageType.VALIDATION)
         
         self.__renderedAreas[(row, col)] = []
         self.RenderText(grid, attr, dc, rect, row, col, isSelected, 
