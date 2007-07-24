@@ -408,7 +408,6 @@
             <instance_geometry url="#pPlane1-obj">
                <bind_material>
                   <technique_common>
-                     <instance_material symbol="Material__10" target="#Material__10"></instance_material>
                      <instance_material symbol="_8_-_Default" target="#_8_-_Default"></instance_material>
                      <instance_material symbol="_3_-_Default" target="#_3_-_Default"></instance_material>
                   </technique_common>
