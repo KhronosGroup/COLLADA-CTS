@@ -192,7 +192,6 @@
             <instance_geometry url="#pPlane1-obj">
                <bind_material>
                   <technique_common>
-                     <instance_material symbol="Material__22" target="#Material__22"></instance_material>
                      <instance_material symbol="material1" target="#material1"></instance_material>
                      <instance_material symbol="material2" target="#material2"></instance_material>
                   </technique_common>
