@@ -333,6 +333,8 @@ class FXsi (FApplication):
                         "OutputDir\", \"" + 
                         os.path.join(path).replace("\\", "\\\\") +
                         "\"\n" +
+                "SetValue \"Passes.mentalray.SamplesMin\", 0\n" +
+                "SetValue \"Passes.mentalray.SamplesMax\", 0\n" +
                 "SetValue \"Passes.Default_Pass.Main.Filename\", \"" + basename + "\"\n" +
                 "SetValue \"Passes.Default_Pass.Main.Format\", \"" + type + "\"\n" +                      
                 "DeleteObj \"B:Camera_Root\"\n" +
