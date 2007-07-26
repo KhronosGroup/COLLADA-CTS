@@ -219,7 +219,7 @@ limitations under the License.</copyright>
     </library_geometries>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
-            <node id="testCamera" name="Camera">
+            <node id="testCamera" name="testCamera">
                 <translate sid="translate">-166.392 282.884 642.115</translate>
                 <rotate sid="rotateY">0 1 0 -13.25</rotate>
                 <rotate sid="rotateX">1 0 0 -20.25</rotate>
