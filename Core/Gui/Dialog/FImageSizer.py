@@ -16,8 +16,12 @@ class FImageSizer(wx.StaticBoxSizer):
         if (caption != None):
             captionSizer = wx.FlexGridSizer(cols = 2, vgap = 2, hgap = 2)
             for entry in caption:
-                captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[0] + ":"))
-                captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[1]))
+                if (len(entry) > 1): 
+                    captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[0] + ":"))
+                    captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[1]))
+                else:
+                    captionSizer.Add(wx.StaticText(parent, wx.ID_ANY, entry[0]))
+                    captionSizer.Add(wx.StaticText(parent, wx.ID_ANY))
                 
             self.Add(captionSizer, 0, wx.ALL, 2)
         else:

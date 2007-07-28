@@ -234,8 +234,17 @@ class FImageRenderer(FTextRenderer):
         return wx.Size(self.__imageHeight, self.__imageWidth)
     
     def __GetOpenFunc(self, file, type, grid):
-        if (type == FImageType.ANIMATION):
+        # Should we open an external loader?
+        internalLoad = (type == FImageType.ANIMATION)
+        if (type == FImageType.IMAGE):
+            extension = FUtils.GetExtension(file).lower()
+            if (extension == "png"):
+                internalLoad = True
+                file = [file]
+
+        if internalLoad:
             def Open(e):
+                # Open the internal viewer as a separate process.
                 args = (["\"" + self.__pythonPath + "\"", 
                         "\"" + FImageRenderer.__ANIMATION_FRAME_EXECUTABLE + 
                         "\""])
@@ -244,11 +253,13 @@ class FImageRenderer(FTextRenderer):
                 os.spawnv(os.P_DETACH, self.__pythonPath, args)
         else:
             def Open(e):
+                # Open the default viewer for this file.
                 if (os.path.isfile(file)):
                     # XXX: this is windows only
                     os.startfile("\"" + file  + "\"")
                 else:
                     FUtils.ShowWarning(grid.GetParent(), "Missing File.")
+                    
         return Open
     
     def __GetShowInViewerFunc(self, filename):
@@ -291,7 +302,7 @@ class FImageRenderer(FTextRenderer):
                 filename2 = dialog.GetPath()
                 if (filename2 == None): 
                     filename2 = imageData.GetBlessedFilenames()
-                    title2 = [("Blessed", "Blessed")]
+                    title2 = [["Default Blessed"], [" "], [" "], [" "]]
                     blessed = None
                     
                 dialog = FComparisonDialog(grid, title1, filename, title2, filename2, blessed)
