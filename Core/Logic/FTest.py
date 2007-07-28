@@ -560,15 +560,22 @@ class FTest(FSerializable, FSerializer):
         
         """
         blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, BLESSED_ANIMATIONS)
+        baseFilename = self.GetBaseFilename()
         if (os.path.isdir(blessedDir)):
             allCompareResults = []
             for directory in os.listdir(blessedDir):
+                if directory == ".svn": continue
+
+                # Retrieve the absolute filename and verify that this is a folder.
                 blessedArray = []
                 fullDirectory = os.path.join(blessedDir, directory)
                 if not os.path.isdir(fullDirectory): continue
                 
+                # Retrieve a list of the files comprising the blessed animation.
+                # By concensus, all blessed files must be pngs.
                 storedFilenames = []
                 for filename in os.listdir(fullDirectory):
+                    if (FUtils.GetExtension(filename).lower() != "png"): continue
                     fullFilename = os.path.join(fullDirectory, filename)
                     if (os.path.isfile(fullFilename)):
                         storedFilenames.append(fullFilename)
@@ -576,6 +583,7 @@ class FTest(FSerializable, FSerializer):
                 
                 if (len(filenames) != len(storedFilenames)): continue
                 
+                # Compare the two lists of files.
                 compareResults = []
                 foundFalse = False
                 for i in range(len(filenames)):
@@ -719,36 +727,28 @@ class FTest(FSerializable, FSerializer):
                             blessed, compareResults = self.__HasBlessed(
                                     outputs[0])
                             if (blessed == None):
-                                result.AppendOutput(
-                                        FResult.IGNORED_NO_BLESS_IMAGE)
+                                result.AppendOutput(FResult.IGNORED_NO_BLESS_IMAGE)
                             else:
-                                message = FGlobals.imageComparator.GetMessage(
-                                        compareResults)
+                                message = FGlobals.imageComparator.GetMessage(compareResults)
                                 if (blessed == ""):
-                                    result.AppendOutput(FResult.FAILED_IMAGE,
-                                            message)
+                                    result.AppendOutput(FResult.FAILED_IMAGE, message)
                                     passed = False
                                 else:
-                                    result.AppendOutput(FResult.PASSED_IMAGE,
-                                            message)
+                                    result.AppendOutput(FResult.PASSED_IMAGE, message)
                         else:
                             result.AppendOutput(FResult.IGNORED_TYPE)
+                            
                     else: # animation
-                        blessed, compareResults = self.__HasBlessedAnimation(
-                                outputs)
+                        blessed, compareResults = self.__HasBlessedAnimation(outputs)
                         if (blessed == None):
-                            result.AppendOutput(
-                                    FResult.IGNORED_NO_BLESS_ANIMATION)
+                            result.AppendOutput(FResult.IGNORED_NO_BLESS_ANIMATION)
                         else:
-                            message = FGlobals.imageComparator.GetMessage(
-                                    compareResults)
+                            message = FGlobals.imageComparator.GetMessage(compareResults)
                             if (blessed == ""):
-                                result.AppendOutput(FResult.FAILED_ANIMATION,
-                                        message)
+                                result.AppendOutput(FResult.FAILED_ANIMATION, message)
                                 passed = False  
                             else:
-                                result.AppendOutput(FResult.PASSED_ANIMATION,
-                                        message)
+                                result.AppendOutput(FResult.PASSED_ANIMATION, message)
             else: # validation
                 if (execution.GetErrorCount(step) == 0):
                     result.AppendOutput(FResult.PASSED_VALIDATION)
