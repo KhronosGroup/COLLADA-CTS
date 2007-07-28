@@ -559,13 +559,14 @@ class FTest(FSerializable, FSerializer):
                     FImageComparator on a single image of the animation.
         
         """
-        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, 
-                                  BLESSED_ANIMATIONS)
+        blessedDir = os.path.join(self.__dataSetPath, BLESSED_DIR, BLESSED_ANIMATIONS)
         if (os.path.isdir(blessedDir)):
             allCompareResults = []
             for directory in os.listdir(blessedDir):
                 blessedArray = []
                 fullDirectory = os.path.join(blessedDir, directory)
+                if not os.path.isdir(fullDirectory): continue
+                
                 storedFilenames = []
                 for filename in os.listdir(fullDirectory):
                     fullFilename = os.path.join(fullDirectory, filename)
