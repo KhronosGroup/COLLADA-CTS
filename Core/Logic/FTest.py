@@ -701,8 +701,7 @@ class FTest(FSerializable, FSerializer):
         else:
             # checks the executions
             folder = self.__SearchBlessHash(testProcedure)
-            if ((folder != None) and 
-                    (self.__HasBlessedExecution(folder, execution))):
+            if (folder != None) and os.path.exists(folder) and (self.__HasBlessedExecution(folder, execution)):
                 result.SetPassFromExecution(True)
         
         # checks the individual outputs
