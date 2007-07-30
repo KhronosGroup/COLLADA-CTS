@@ -2568,14 +2568,11 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <intensity sid="intensity">0.500000</intensity>
       </technique>
     </light>
-    <light id="pointLightShape2-lib" name="pointLightShape2">
+    <light id="ambientLight" name="pointLightShape2">
       <technique_common>
-        <point>
+        <ambient>
           <color sid="color">1.000000 1.000000 1.000000</color>
-          <constant_attenuation>1.000000</constant_attenuation>
-          <linear_attenuation>0</linear_attenuation>
-          <quadratic_attenuation>0</quadratic_attenuation>
-        </point>
+        </ambient>
       </technique_common>
       <technique profile="MAYA">
         <intensity sid="intensity">0.500000</intensity>
@@ -2637,7 +2634,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 0</rotate>
         <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_light url="#pointLightShape2-lib"/>
+        <instance_light url="#ambientLight"/>
       </node>
       <extra>
         <technique profile="MAYA">

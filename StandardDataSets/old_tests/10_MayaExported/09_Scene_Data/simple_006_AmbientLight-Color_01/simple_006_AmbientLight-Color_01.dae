@@ -74,7 +74,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
               <color>0 0 0 1.0</color>
             </emission>
             <ambient>
-              <color>0 0 0 1.0</color>
+              <color>1.000000 1.000000 1.000000 1.0</color>
             </ambient>
             <diffuse>
               <color>1.000000 1.000000 1.000000 1.0</color>

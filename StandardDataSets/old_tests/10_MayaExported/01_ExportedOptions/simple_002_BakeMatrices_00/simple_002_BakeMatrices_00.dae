@@ -41,7 +41,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
               <color sid="emission">0 0 0 1.000000</color>
             </emission>
             <ambient>
-              <color sid="ambient">0 0 0 1.000000</color>
+              <color sid="ambient">1.000000 1.000000 1.000000 1.000000</color>
             </ambient>
             <diffuse>
               <color sid="diffuse">1.000000 1.000000 1.000000 1.000000</color>
@@ -64,7 +64,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
               <color sid="emission">0 0 0 1.000000</color>
             </emission>
             <ambient>
-              <color sid="ambient">0 0 0 1.000000</color>
+              <color sid="ambient">1 0 0 1.000000</color>
             </ambient>
             <diffuse>
               <color sid="diffuse">1.000000 0 0 1.000000</color>
@@ -87,7 +87,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
               <color sid="emission">0 0 0 1.000000</color>
             </emission>
             <ambient>
-              <color sid="ambient">0 0 0 1.000000</color>
+              <color sid="ambient">0 1 0 1.000000</color>
             </ambient>
             <diffuse>
               <color sid="diffuse">0 1.000000 0 1.000000</color>
@@ -110,7 +110,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
               <color sid="emission">0 0 0 1.000000</color>
             </emission>
             <ambient>
-              <color sid="ambient">0 0 0 1.000000</color>
+              <color sid="ambient">0 0 1 1.000000</color>
             </ambient>
             <diffuse>
               <color sid="diffuse">0 0 1.000000 1.000000</color>
