@@ -22,6 +22,7 @@ from Core.Gui.Dialog.FSelectDataSetDialog import *
 from Core.Gui.Dialog.FSettingDialog import *
 from Core.Gui.Grid.FExecutionGrid import *
 from Core.Gui.FMenuBar import *
+from Core.Gui.FImageType import *
 from Core.FTestSuite import *
 from Core.FHtmlExporter import *
 from Core.FCsvExporter import *
@@ -352,7 +353,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
             return
         
         compareDialog = FCompareSetupDialog(self, 
-                FCompareSetupDialog.EXECUTION, self.__testProcedure.GetName(),
+                FImageType.EXECUTION, self.__testProcedure.GetName(),
                 os.path.basename(test.GetTestDir()), 
                 os.path.basename(test.GetCurrentExecutionDir()))
         
