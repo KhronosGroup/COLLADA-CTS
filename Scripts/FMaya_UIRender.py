@@ -266,6 +266,15 @@ class FMaya_UIRender (FApplication):
         self.__melScript.write(
                 "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
                 "$descriptor = `cmdFileOutput -o $logname`;\n")
+        
+        # Unlock all setAttr attributes (for reimported older Maya files)
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.startFrame;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.endFrame;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.byFrameStep;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.imageFormat;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.imageFilePrefix;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.animation;\n")
+        self.__melScript.write("setAttr -lock off defaultRenderGlobals.putFrameBeforeExt;\n")
 
         # Set render globals example:
         # Maya node types: renderGlobals, hardwareRenderGlobals, 
