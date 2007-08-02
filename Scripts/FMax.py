@@ -183,7 +183,7 @@ class FMax (FApplication):
         writeableDir = os.path.dirname(filename).replace("\\", "\\\\")
         writeableFilename = filename.replace("\\", "\\\\")
         if (FUtils.GetExtension(filename) == FMax.__EXTENSION[1:]):
-            command = "    loadMaxFile my_importfilename quiet:true\n"
+            command = "    loadMaxFile my_importfilename useFileUnits:true quiet:true\n"
         else:
             command = "    importFile my_importfilename #noprompt\n"
         
