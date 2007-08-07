@@ -35,8 +35,6 @@ class FXsi (FApplication):
     __RENDER_STILL_END = "Non-Animation End Time"
     __RENDER_STILL_FRAMES = "Non-Animation Frames"
     __RENDER_OPTIONS = [
-            ("X Resolution", "ImageWidth", "300"),
-            ("Y Resolution", "ImageHeight", "300"),
             (__RENDER_ANIMATION_START, "FrameStart", "0"),
             (__RENDER_ANIMATION_END, "FrameEnd", "45"),
             (__RENDER_ANIMATION_FRAMES, "FrameStep", "3"),
@@ -325,10 +323,12 @@ class FXsi (FApplication):
                 "SetValue \"preferences.scripting.cmdlogfilename\", \"" +  
                         self.__logFiles[-1].replace("\\", "\\\\") + 
                         "\"\n" +
-                "SetValue \"Passes.RenderOptions." +
-                        "ImageFormatPreset\", 0\n" +
-                "SetValue \"Passes.RenderOptions." +
-                        "ImagePixelRatio\", 1\n" +
+                "SetValue \"preferences.output_format.preset\", 0\n" +
+                "SetValue \"preferences.output_format.picture_standard\", 0\n" +
+                "SetValue \"preferences.output_format.picture_ratio\", 1\n" +
+                "SetValue \"preferences.output_format.ir_pixel_ratio\", 1\n" +
+                "SetValue \"preferences.output_format.ir_xres\", 300\n" +
+                "SetValue \"preferences.output_format.ir_yres\", 300\n" +
                 "SetValue \"Passes.RenderOptions." +
                         "OutputDir\", \"" + 
                         os.path.join(path).replace("\\", "\\\\") +
