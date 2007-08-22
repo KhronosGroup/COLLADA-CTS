@@ -2,7 +2,7 @@ feelingViewerGUI		..\FeelingViewer\FViewerApplications\Output\FeelingViewer.exe
 feelingViewerCLI		..\FeelingViewer\FViewerApplications\Output\FViewerCLI.exe
 mayaPath			C:\Program Files\Autodesk\Maya8.5\bin\maya.exe
 maxPath				C:\Program Files\Autodesk\3dsMax8\3dsmax.exe
-maxColladaExporterFilename	C:\Program Files\Autodesk\3dsMax8\plugcfg\ColladaExporter.ini
+maxColladaExporterFilename	C:\Program Files\Autodesk\3dsMax8\plugcfg\ColladaMax.ini
 xsiPath				C:\Softimage\XSI_6.01\Application\bin\XSIBATCH.bat
 FXComposerPath			C:\Program Files\NVIDIA Corporation\FX Composer 2\FXComposer2.exe
 pythonExecutable		C:\Python24\python.exe

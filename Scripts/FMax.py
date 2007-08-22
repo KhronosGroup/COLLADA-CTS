@@ -85,20 +85,11 @@ class FMax (FApplication):
         
         """
         if (operation == IMPORT):
-            options = []
-#            for entry in FMax.__IMPORT_OPTIONS:
-#                options.append(FSettingEntry(*entry))
-            return options
+            return [FSettingEntry(*entry) for entry in FMax.__IMPORT_OPTIONS]
         elif (operation == EXPORT):
-            options = []
-            for entry in FMax.__EXPORT_OPTIONS:
-                options.append(FSettingEntry(*entry))
-            return options
+            return [FSettingEntry(*entry) for entry in FMax.__EXPORT_OPTIONS]
         elif (operation == RENDER): 
-            options = []
-            for entry in FMax.__RENDER_OPTIONS:
-                options.append(FSettingEntry(*entry))
-            return options
+            return [FSettingEntry(*entry) for entry in FMax.__RENDER_OPTIONS]
         else:
             return []
     
@@ -186,12 +177,21 @@ class FMax (FApplication):
             command = "    loadMaxFile my_importfilename useFileUnits:true quiet:true\n"
         else:
             command = "    importFile my_importfilename #noprompt\n"
+            
+        cfgFilename = os.path.normpath(
+                self.configDict["maxColladaExporterFilename"])
+        cfgFilename = cfgFilename.replace("\\", "\\\\")
+        
+        options = "".join(["    setINISetting \"%s\" \"ColladaMax\" \"%s\" \"%s\"\n"
+                           % (cfgFilename,setting.GetCommand(),setting.GetValue())
+                           for setting in settings])
         
         self.__script.write(
                 "logfilename = \"" + logname.replace("\\", "\\\\") + "\"\n" +
                 "openLog logfilename mode:\"w\" outputOnly:true\n" +
                 "try (\n" +
-                "    resetmaxfile #noprompt\n" +
+                "    resetmaxfile #noprompt\n" + 
+                options +
                 "    sysInfo.currentdir = \"" + writeableDir + "\"\n" +
                 "    my_importfilename = \"" + writeableFilename + "\"\n" +
                 command + 
@@ -308,20 +308,17 @@ class FMax (FApplication):
                 self.configDict["maxColladaExporterFilename"])
         cfgFilename = cfgFilename.replace("\\", "\\\\")
         
-        options = ""
-        for setting in settings:
-            options = (options + setting.GetCommand() + "=" + 
-                       setting.GetValue() + "\\n")
+        options = "".join(["    setINISetting \"%s\" \"ColladaMax\" \"%s\" \"%s\"\n"
+                           % (cfgFilename,setting.GetCommand(),setting.GetValue())
+                           for setting in settings])
         
         self.__script.write(
                 "logfilename = \"" + logname.replace("\\", "\\\\") + "\"\n" +
                 "openLog logfilename mode:\"w\" outputOnly:true\n" +
-                "try (\n" +
-                "    cfgfile_ptr = createfile \"" + cfgFilename + "\"\n" +
-                "    format \"" + options + "\" to:cfgfile_ptr\n" +
+                "try (\n" + 
+                options +
                 "    outfile_name  = \"" + output + "\"\n" +
                 "    exportFile outfile_name #noprompt\n" +
-                "    close cfgfile_ptr\n"
                 "    print \"Export succeeded with " + output + "\"\n" +
                 ") catch (\n" +
                 "    print \"Export error     with " + output + "\"\n" +
