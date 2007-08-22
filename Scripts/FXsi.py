@@ -28,6 +28,8 @@ class FXsi (FApplication):
             ("Tangents as Vertex Colors", "ExportTangentsAsVtxColor", "False"),
             ("XSI Extra in COLLADA", "ExportXSIExtra", "False")]
     
+    __RENDER_X = "Render Resolution X"
+    __RENDER_Y = "Render Resolution Y"
     __RENDER_ANIMATION_START = "Animation Start Time"
     __RENDER_ANIMATION_END = "Animation End Time"
     __RENDER_ANIMATION_FRAMES = "Animation Frames"
@@ -35,6 +37,8 @@ class FXsi (FApplication):
     __RENDER_STILL_END = "Non-Animation End Time"
     __RENDER_STILL_FRAMES = "Non-Animation Frames"
     __RENDER_OPTIONS = [
+            (__RENDER_X, "xres", "300"),
+            (__RENDER_Y, "yres", "300"),
             (__RENDER_ANIMATION_START, "FrameStart", "0"),
             (__RENDER_ANIMATION_END, "FrameEnd", "45"),
             (__RENDER_ANIMATION_FRAMES, "FrameStep", "3"),
@@ -271,7 +275,14 @@ class FXsi (FApplication):
             os.makedirs(path)
         self.__pathMap.append((path, outputDir))
         
+        start = 0
+        end = 0
+        step = 1
+        xres = 300
+        yres = 300
+        
         command = ""
+        
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FXsi.__RENDER_ANIMATION_START):
@@ -304,17 +315,23 @@ class FXsi (FApplication):
                     continue
                 step = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                               int)
+            elif (prettyName == FXsi.__RENDER_X):
+                xres = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
+                                              int)
+            elif (prettyName == FXsi.__RENDER_Y):
+                yres = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
+                                              int)
 
 
             type = "png"        
-            value = setting.GetValue().strip()
-            if (value == ""):
-                value = self.FindDefault(FXsi.__RENDER_OPTIONS, 
-                                         setting.GetPrettyName())
-            
-            command = (command + "SetValue " +
-                    "\"Passes.RenderOptions." +
-                    setting.GetCommand() + "\", " + value + "\n")
+#            value = setting.GetValue().strip()
+#            if (value == ""):
+#                value = self.FindDefault(FXsi.__RENDER_OPTIONS, 
+#                                         setting.GetPrettyName())
+#            
+#            command = (command + "SetValue " +
+#                    "\"Passes.RenderOptions." +
+#                    setting.GetCommand() + "\", " + value + "\n")
         
         basename = self.__currentImportProperName + "#." + type
         
@@ -327,8 +344,8 @@ class FXsi (FApplication):
                 "SetValue \"preferences.output_format.picture_standard\", 0\n" +
                 "SetValue \"preferences.output_format.picture_ratio\", 1\n" +
                 "SetValue \"preferences.output_format.ir_pixel_ratio\", 1\n" +
-                "SetValue \"preferences.output_format.ir_xres\", 300\n" +
-                "SetValue \"preferences.output_format.ir_yres\", 300\n" +
+                "SetValue \"preferences.output_format.ir_xres\", " + str(xres) + "\n" +
+                "SetValue \"preferences.output_format.ir_yres\", " + str(yres) + "\n" +
                 "SetValue \"Passes.RenderOptions." +
                         "OutputDir\", \"" + 
                         os.path.join(path).replace("\\", "\\\\") +
@@ -339,7 +356,11 @@ class FXsi (FApplication):
                 "SetValue \"Passes.Default_Pass.Main.Format\", \"" + type + "\"\n" +                      
                 "DeleteObj \"B:Camera_Root\"\n" +
                 "DeleteObj \"light\"\n" +
-                command +
+				"SetValue \"Passes.RenderOptions.FrameStart\", " + str(start) + "\n" +
+				"SetValue \"Passes.RenderOptions.FrameEnd\", " + str(end) + "\n" +
+				"SetValue \"Passes.RenderOptions.FrameStep\", " + str(step) + "\n" +
+				"SetValue \"preferences.output_format.frame_step\", " + str(step) + "\n" +
+                command +                
                 "SIUpdateCamerasFromGlobalPref\n" +
                 "SIUpdateRenderOptionsFromGlobalPref\n" +
                 "Set pass = GetValue( \"Passes.Default_Pass\" )\n" +
