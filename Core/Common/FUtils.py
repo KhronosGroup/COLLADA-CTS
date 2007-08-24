@@ -7,6 +7,9 @@ import wx
 import string
 import sha as SHA1
 import sys
+import string
+import xml
+from datetime import datetime, timedelta
 
 from stat import *
 from Core.Gui.Dialog.FConfirmationDialog import *
@@ -429,6 +432,129 @@ def CalculateSuiteChecksum():
                     checksum += CalculateChecksum(pathname) + "\n"
 
     return checksum + "----\n"
+
+def FindXmlChild(node, *childNames):
+    """ FindXmlChild(node, *childName) -> xml.dom.Node
+
+    Allows you to search through the children of an xml node for an element with
+    a particular name. This function takes the Node to search through followed by
+    a variable number of string arguments representing the names of the elements
+    to search through. For example, if "root" is the node corresponding to the
+    <COLLADA> element of a Collada document, you could write
+      FindXmlChild(root, "asset", "contributor", "author")
+    to get the <COLLADA><asset><contributor><author> element.
+
+    return:
+        The matching xml.dom.Node, or None if a matching element wasn't found.
+    """
+    def FindXmlChildShallow(node, childName):
+        """ FindXmlChild helper function """
+        if node == None:
+            return None
+        for child in node.childNodes:
+            if child.nodeType == xml.dom.Node.ELEMENT_NODE and child.nodeName == childName:
+                return child
+    for childName in childNames:
+        node = FindXmlChildShallow(node, childName)
+    return node
+
+def GetXmlContent(node):
+    """ GetXmlContent(node) -> string
+
+    Returns a string containing the character content of an xml.dom.Node
+
+    return:
+        The character content as a string.
+    """
+    if node == None:
+        return ""
+    content = []
+    for child in node.childNodes:
+        if child.nodeType == xml.dom.Node.TEXT_NODE:
+            content.append(child.nodeValue)
+    return string.join(content).strip()
+
+def ParseDate(s):
+    """ ParseDate(s) -> datetime
+
+    This function converts a string containing the subset of ISO8601 that can be
+    represented with xs:dateTime into a datetime object. As such it's suitable
+    for parsing Collada's <created> and <modified> elements. The date must be of
+    the form
+      '-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? (zzzzzz)?
+    See http://www.w3.org/TR/xmlschema-2/#dateTime for more info on the various parts.
+
+    return:
+        A datetime or None if the string wasn't formatted correctly.
+    """
+    # Split the date (yyyy-mm-dd) and time by the "T" in the middle
+    parts = s.split("T")
+    if len(parts) != 2:
+        return None
+    date = parts[0]
+    time = parts[1]
+
+    # Parse the yyyy-mm-dd part
+    parts = date.split("-")
+    yearMultiplier = 1
+    if date[0] == "-":
+        yearMultiplier = -1
+        parts.remove(0)
+    if len(parts) != 3:
+        return None
+    try:
+        year = yearMultiplier * int(parts[0])
+        month = int(parts[1])
+        day = int(parts[2])
+    except ValueError:
+        return None
+
+    # Split the time and time zone by "Z", "+", or "-"
+    timeZoneDelta = timedelta()
+    timeZoneDeltaModifier = 1
+    parts = time.split("Z")
+    if len(parts) > 1:
+        if parts[1] != "":
+            return None
+    if len(parts) == 1:
+        parts = time.split("+")
+    if len(parts) == 1:
+        parts = time.split("-")
+        timeZoneDeltaModifier = -1
+    if len(parts) == 1: # Time zone not present
+        return None
+
+    time = parts[0]
+    timeZone = parts[1]
+
+    if timeZone != "":
+        parts = timeZone.split(":")
+        if len(parts) != 2:
+            return None
+        try:
+            hours = int(parts[0])
+            minutes = int(parts[1])
+        except ValueError:
+            return None
+        timeZoneDelta = timeZoneDeltaModifier * timedelta(0, 0, 0, 0, minutes, hours)
+
+    parts = time.split(":")
+    if len(parts) != 3:
+        return None
+    try:
+        hours = int(parts[0])
+        minutes = int(parts[1])
+        seconds = int(parts[2]) # We're losing the decimal portion here, but it probably doesn't matter
+    except ValueError:
+        return None
+
+    return datetime(year, month, day, hours, minutes, seconds) - timeZoneDelta
+
+# parseDate tests
+# print parseDate("-2000-01-02") # This will fail since Python's datetime doesn't support negative years
+# print parseDate("2007-05-14T22:53:22Z") # Should print "2007-05-14 22:53:22"
+# print parseDate("2002-10-10T12:00:00-05:00") # Should print "2002-10-10 17:00:00"
+# print parseDate("2002-10-10T00:00:00+05:00") # Should print "2002-10-09 19:00:00"
 
 
 # NOTE: might be useful in future

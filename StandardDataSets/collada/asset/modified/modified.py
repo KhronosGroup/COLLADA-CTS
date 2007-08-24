@@ -9,8 +9,8 @@
 
 # This judging object does the following:
 #
-# JudgeBasic: Verifies that no steps crashed and that the <created> time output by
-#             the tool is the same or later than the <created> time in the original file.
+# JudgeBasic: Verifies that no steps crashed and that the <modified> element output by
+#             the tool is within 24 hours of the current time.
 # JudgeIntermediate: Same as basic badge.
 # JudgeAdvanced: Same as intermediate badge.
 
@@ -32,30 +32,24 @@ class JudgingObject:
             context.Log("FAILED: Import, export and validate steps must be present and successful.")
             return False
 
-        # Get the <created> time for the input file
-        root = minidom.parse(context.GetInputFilename()).documentElement
-        inputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "asset", "created")))
-        if inputCreatedDate == None:
-            context.Log("FAILED: Couldn't read <created> value from test input file.")
-            return False
-        
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
         if len(outputFilenames) == 0:
             context.Log("FAILED: There are no export steps.")
             return False
 
-        # Get the <created> time for the output file
+        # Get the <modified> time for the output file
         root = minidom.parse(outputFilenames[0]).documentElement
-        outputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "asset", "created")))
-        if outputCreatedDate == None:
-            context.Log("FAILED: Couldn't read <created> value from the exported file.")
+        modifiedDate = ParseDate(GetXmlContent(FindXmlChild(root, "asset", "modified")))
+        if modifiedDate == None:
+            context.Log("FAILED: Couldn't read <modified> value from the exported file.")
             return False
 
-        if (outputCreatedDate - inputCreatedDate) < timedelta(0):
-            context.Log("FAILED: <created> has an incorrect time stamp. It should be later than the <created> value in the original file.")
-            context.Log("The original <created> time is " + str(inputCreatedDate))
-            context.Log("The exported <created> time is " + str(outputCreatedDate))
+        now = datetime.utcnow()
+        if abs(modifiedDate - now) > timedelta(1):
+            context.Log("FAILED: <modified> has an incorrect time stamp. It should be within 24 hours of the current time.")
+            context.Log("<modified> is " + str(modifiedDate))
+            context.Log("The current time is " + str(now))
             return False
         
         context.Log("PASSED: Required steps executed and passed.")
