@@ -128,28 +128,30 @@ class JudgingObject:
             context.Log("FAILED: Import, export and validate steps must be present and successful.")
             return False
 
+        # Get the <created> time for the input file
+        root = minidom.parse(context.GetInputFilename()).documentElement
+        inputCreatedDate = parseDate(getContent(findChild(root, "asset", "created")))
+        if inputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from test input file.")
+            return False
+        
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
         if len(outputFilenames) == 0:
             context.Log("FAILED: There are no export steps.")
             return False
 
+        # Get the <created> time for the output file
         root = minidom.parse(outputFilenames[0]).documentElement
-        created = findChild(root, "asset", "created")
-        if created == None:
-            context.Log("FAILED: Couldn't find <created> element.")
+        outputCreatedDate = parseDate(getContent(findChild(root, "asset", "created")))
+        if outputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from the exported file.")
             return False
 
-        createdDate = parseDate(getContent(created))
-        if createdDate == None:
-            context.Log("FAILED: Incorrectly formatted date.")
-            return False
-
-        now = datetime.utcnow()
-        if abs(createdDate - now) > timedelta(1):
-            context.Log("FAILED: <created> has an incorrect time stamp. It should be within 24 hours of the current time.")
-            context.Log("<created> is " + str(createdDate))
-            context.Log("The current time is " + str(now))
+        if (outputCreatedDate - inputCreatedDate) < timedelta(0):
+            context.Log("FAILED: <created> has an incorrect time stamp. It should be later than the <created> value in the original file.")
+            context.Log("The original <created> time is " + str(inputCreatedDate))
+            context.Log("The exported <created> time is " + str(outputCreatedDate))
             return False
         
         context.Log("PASSED: Required steps executed and passed.")
