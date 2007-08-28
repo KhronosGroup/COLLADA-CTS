@@ -17,10 +17,10 @@ See the License for the specific language governing permissions and&#13;
 limitations under the License.</copyright>
     </contributor>
     <created>2006-06-21T21:15:16Z</created>
-    <keywords>basic_badge geometry mesh triangles</keywords>
+    <keywords>advanced_badge geometry mesh triangles normals</keywords>
     <modified>2007-06-26T22:52:15Z</modified>
     <subject>COLLADA in 3D triangle letters</subject>
-    <title>2</title>
+    <title>00008</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

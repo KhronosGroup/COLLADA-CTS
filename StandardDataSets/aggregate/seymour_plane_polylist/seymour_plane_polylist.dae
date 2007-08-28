@@ -37,10 +37,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <source_data>file:///C:/vs2005/khronos/conform/ctf/Documentation/CTF_template.mb</source_data>
     </contributor>
     <created>2006-12-13T01:46:41Z</created>
-    <keywords>basic_badge geometry mesh polylist</keywords>
+    <keywords>advanced_badge geometry mesh polylist normals</keywords>
     <modified>2007-07-14T00:28:28Z</modified>
     <subject>Draw a textured toy plane using polylist</subject>
-    <title>7</title>
+    <title>00016</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>

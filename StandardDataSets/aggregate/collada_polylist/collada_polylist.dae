@@ -17,10 +17,10 @@ See the License for the specific language governing permissions and&#13;
 limitations under the License.</copyright>
     </contributor>
     <created>2006-06-21T21:15:16Z</created>
-    <keywords>basic_badge geometry mesh polylist</keywords>
+    <keywords>advanced_badge geometry mesh polylist normals</keywords>
     <modified>2007-06-26T22:51:16Z</modified>
     <subject>Draw COLLADA in 3D polylist letters</subject>
-    <title>1</title>
+    <title>00007</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

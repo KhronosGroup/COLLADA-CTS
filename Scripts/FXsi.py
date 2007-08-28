@@ -39,11 +39,11 @@ class FXsi (FApplication):
     __RENDER_OPTIONS = [
             (__RENDER_X, "xres", "300"),
             (__RENDER_Y, "yres", "300"),
-            (__RENDER_ANIMATION_START, "FrameStart", "0"),
+            (__RENDER_ANIMATION_START, "FrameStart", "1"),
             (__RENDER_ANIMATION_END, "FrameEnd", "45"),
             (__RENDER_ANIMATION_FRAMES, "FrameStep", "3"),
-            (__RENDER_STILL_START, "FrameStart", "0"),
-            (__RENDER_STILL_END, "FrameEnd", "0"),
+            (__RENDER_STILL_START, "FrameStart", "1"),
+            (__RENDER_STILL_END, "FrameEnd", "1"),
             (__RENDER_STILL_FRAMES, "FrameStep", "1")]
     
     def __init__(self, configDict):

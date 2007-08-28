@@ -1,0 +1,1 @@
+png\collada_triangles_basic.png

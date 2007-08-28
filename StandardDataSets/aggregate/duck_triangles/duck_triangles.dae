@@ -37,10 +37,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <source_data>file:///C:/vs2005/khronos/conform/ctf/Documentation/CTF_template.mb</source_data>
     </contributor>
     <created>2006-08-23T22:29:59Z</created>
-    <keywords>basic_badge geometry mesh triangles</keywords>
+    <keywords>advanced_badge geometry mesh triangles normals</keywords>
     <modified>2007-07-13T23:34:19Z</modified>
     <subject>Draw a textured duck using triangles</subject>
-    <title>6</title>
+    <title>00013</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>
