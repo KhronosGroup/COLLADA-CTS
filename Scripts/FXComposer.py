@@ -39,7 +39,7 @@ class FXComposer (FApplication):
     __RENDER_WIDTH = "X resolution"
     __RENDER_HEIGHT = "Y resolution"
 
-    __RENDER_PORT_OPTIONS = ["OpenGL", "Direct3D 9.0"]
+    __RENDER_PORT_OPTIONS = ["OpenGL", "Direct3D9"]
     __RENDER_PORT_OGL = 0
     __RENDER_PORT_D3D = 1
 
