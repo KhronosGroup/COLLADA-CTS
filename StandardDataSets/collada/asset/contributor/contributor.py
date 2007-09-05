@@ -14,24 +14,17 @@
 # JudgeIntermediate: Same as basic badge.
 # JudgeAdvanced: Same as intermediate badge.
 
-import sys, string, os
+import sys, string
 from xml.dom import minidom, Node
-from datetime import datetime, timedelta
-from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
-
-# FindXmlChild wrapper that takes a list of strings instead of using varargs
-def FindXmlChildList(node, childNames):
-    for child in childNames:
-        node = FindXmlChild(node, child)
-    return node
+from Core.Common.FUtils import FindXmlChild, GetXmlContent
 
 # This is just like FindXmlChild, except that it returns a list containing all the
 # child elements matching the last name given in the childNames array. So if you call
 # FindXmlChildren(root, "asset", "contributor") and there are two <contributor>s,
-# you'll get an array containing the two elements.
+# you'll get a list containing the two elements.
 def FindXmlChildren(node, *childNames):
     result = []
-    node = FindXmlChildList(node, childNames[:len(childNames)-1])
+    node = FindXmlChild(node, *childNames[:len(childNames)-1])
     if node == None or len(childNames) == 0:
         return result
     targetName = childNames[len(childNames)-1]
