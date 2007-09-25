@@ -158,6 +158,9 @@ limitations under the License.</copyright>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_light url="#directionalLightShape1-lib"/>
             </node>
+            <node id="cube">
+              <instance_node url="#cube_node"/>
+            </node>
         </visual_scene>
     </library_visual_scenes>
     <scene>

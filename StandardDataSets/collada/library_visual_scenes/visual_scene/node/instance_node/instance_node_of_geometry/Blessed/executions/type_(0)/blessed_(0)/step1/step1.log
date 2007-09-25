@@ -1,0 +1,31 @@
+
+Starting "C:\Program Files\Autodesk\Maya8.5\bin\mayabatch.exe"
+File read in 0 seconds.
+Result: C:/svn/khronos/conform/ctf/TestProcedures/Geometry/Test10/Execution_2007_09_24_(1)/step0/instance_node_of_geometry.mb
+Found camera mainCamera.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 7600 GT/PCI/SSE2), version(2.0.3)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/svn/khronos/conform/ctf/TestProcedures/Geometry/Test10/Execution_2007_09_24_(1)/step1/instance_node_of_geometry.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.7013*100.00 100.00     1 0.00
+hardware rendering frames....................   0.1521 100.00 100.00     1 0.01
+.compute image...............................   0.0996* 65.48  65.48     1 0.00
+.write image to disk.........................   0.0356* 23.41  23.41     1 0.00
+.OTHER.......................................   0.0096*  6.28   6.28     0 0.00
+.translate scene.............................   0.0073   4.80   4.80     1 0.08
+ 2.convert surface properties................   0.0034   2.25  46.94     1 0.09
+  3.translate surface geometry...............   0.0034   2.22  98.77     1 0.07
+   4.translate polygons......................   0.0033   2.18  98.01     1 0.05
+    5.compute topology and normals...........   0.0033*  2.15  98.85     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.08     1 0.00
+ 2.convert surface material properties.......   0.0028   1.86  38.75     1 0.03
+  3.OTHER....................................   0.0028*  1.82  97.88     0 0.00
+  3.compute tangents.........................   0.0001*  0.04   2.12     1 0.00
+.set scene time..............................   0.0001*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        4.52 Mb
+Maximum Resident Size:          171.41 Mb
+Scene C:\svn\khronos\conform\ctf\TestProcedures\Geometry\Test10\Execution_2007_09_24_(1)\step0\instance_node_of_geometry.mb completed.
