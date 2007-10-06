@@ -4,8 +4,6 @@
 
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
-# [WARNING] this structure is subject to changes.
-#
 
 # This sample judging object does the following:
 #
@@ -13,33 +11,24 @@
 # JudgeIntermediate: also verifies that the validation steps are not in error.
 # JudgeAdvanced: same as intermediate badge.
 
+# We import an assistant script that includes the common verifications
+# methods. The assistant buffers its checks, so that running them again
+# does not incurs an unnecessary performance hint.
+from StandardDataSets.scripts import JudgeAssistant
+
 class SimpleJudgingObject:
     def __init__(self):
-        pass
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBasic(self, context):
-        
-        # This is where you can test XML or force the comparison of image files
-        # or any custom verification you want to do...
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        else:
-            context.Log("PASSED: No crashes.")
-
-        # Check the required steps for positive results and that a rendering was done.
-        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            return False
-        if not context.DoesStepsExists([ "Render" ]):
-            context.Log("FAILED: A render step is required.")
-            return False
-        context.Log("PASSED: Required steps executed and passed.")
-        return True
+        # No step should not crash
+        self.__assistant.CheckCrashes(context)
+        # Import/export/validate must exist and pass, while Render must only exist.
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        return self.__assistant.DeferJudgement(context)
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
-    # QUESTION: Is there a way to fetch the result of JudgeBasic so we don't have to run it again?
     def JudgeIntermediate(self, context):
         return self.JudgeBasic(context)
             

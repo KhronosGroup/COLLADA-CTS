@@ -84,11 +84,10 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
           <instance_physics_material url="#nxRigidBody7-material"/>
           <shape>
             <hollow>true</hollow>
-            <tapered_capsule>
-              <height>0.527029</height>
-              <radius1>1.000000 .5</radius1>
-              <radius2>.8 .3</radius2>
-            </tapered_capsule>
+            <box>
+              <half_extents>0.5 0.5 0.5</half_extents>
+            </box>
+            <translate>0 6 0</translate>
           </shape>
         </technique_common>
       </rigid_body>
@@ -102,10 +101,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
               <height>2.827029</height>
               <radius>1.000000 1.5</radius>
             </cylinder>
-            <translate>0.012201 -1.413462 0</translate>
-            <rotate>0 0 1.000000 0</rotate>
-            <rotate>0 1.000000 0 -90.000084</rotate>
-            <rotate>1.000000 0 0 -179.505539</rotate>
           </shape>
         </technique_common>
       </rigid_body>

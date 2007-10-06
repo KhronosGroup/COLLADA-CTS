@@ -59,6 +59,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
             <sphere>
               <radius>1</radius>
             </sphere>
+            <translate>0.012201 -1.413462 0</translate>
           </shape>
         </technique_common>
       </rigid_body>
@@ -255,13 +256,16 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
       <node id="nxRigidBody4" name="nxRigidBody2" type="NODE">
         <translate sid="translate">0 0 0.5</translate>
         <scale sid="scale">3 3 3</scale>
-        <instance_geometry url="#pSphereShape1">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
+        <node id="pivot">
+            <translate>0 0.05 0</translate>
+<!--            <instance_geometry url="#pSphereShape1">
+              <bind_material>
+                <technique_common>
+                  <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+                </technique_common>
+              </bind_material>
+            </instance_geometry> -->
+        </node>
       </node>
       <extra>
         <technique profile="FCOLLADA">

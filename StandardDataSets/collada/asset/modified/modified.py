@@ -18,19 +18,17 @@ import sys, string, os
 from xml.dom import minidom, Node
 from datetime import datetime, timedelta
 from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
+from StandardDataSets.scripts import JudgeAssistant
 
 class JudgingObject:
     def __init__(self):
         self.basicResult = None # Cached result to avoid duplication of work
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBasicImpl(self, context):
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        
-        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            return False
+        self.__assistant.CheckCrashes(context)
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        if not self.__assistant.GetResults(): return False
 
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
@@ -52,7 +50,7 @@ class JudgingObject:
             context.Log("The current time is " + str(now))
             return False
         
-        context.Log("PASSED: Required steps executed and passed.")
+        context.Log("PASSED: <modified> element is correct.")
         return True
       
     def JudgeBasic(self, context):
@@ -60,13 +58,7 @@ class JudgingObject:
             self.basicResult = self.JudgeBasicImpl(context)
         return self.basicResult
 
-    def JudgeIntermediate(self, context):
-        return self.JudgeBasic(context)
-            
-    def JudgeAdvanced(self, context):
-        return self.JudgeIntermediate(context)
+    def JudgeIntermediate(self, context): return self.JudgeBasic(context)
+    def JudgeAdvanced(self, context): return self.JudgeIntermediate(context)
        
-# This is where all the work occurs: "judgingObject" is an absolutely necessary token.
-# The dynamic loader looks very specifically for a class instance named "judgingObject".
-#
 judgingObject = JudgingObject();

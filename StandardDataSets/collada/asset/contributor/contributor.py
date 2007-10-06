@@ -17,6 +17,7 @@
 import sys, string
 from xml.dom import minidom, Node
 from Core.Common.FUtils import FindXmlChild, GetXmlContent
+from StandardDataSets.scripts import JudgeAssistant
 
 # This is just like FindXmlChild, except that it returns a list containing all the
 # child elements matching the last name given in the childNames array. So if you call
@@ -35,16 +36,13 @@ def FindXmlChildren(node, *childNames):
 
 class JudgingObject:
     def __init__(self):
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         self.basicResult = None # Cached result to avoid duplication of work
         
     def JudgeBasicImpl(self, context):
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        
-        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            return False
+        self.__assistant.CheckCrashes(context)
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        if not self.__assistant.GetResults(): return False
 
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
@@ -66,7 +64,7 @@ class JudgingObject:
             context.Log("FAILED: Couldn't find an <asset><contributor><authoring_tool> element")
             return False
         
-        context.Log("PASSED: Required steps executed and passed.")
+        context.Log("PASSED: <contributor> present.")
         return True
       
     def JudgeBasic(self, context):
@@ -80,7 +78,4 @@ class JudgingObject:
     def JudgeAdvanced(self, context):
         return self.JudgeIntermediate(context)
        
-# This is where all the work occurs: "judgingObject" is an absolutely necessary token.
-# The dynamic loader looks very specifically for a class instance named "judgingObject".
-#
 judgingObject = JudgingObject();

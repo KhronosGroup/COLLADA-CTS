@@ -18,19 +18,17 @@ import sys, string, os
 from xml.dom import minidom, Node
 from datetime import datetime, timedelta
 from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
+from StandardDataSets.scripts import JudgeAssistant
 
 class JudgingObject:
     def __init__(self):
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         self.basicResult = None # Cached result to avoid duplication of work
         
     def JudgeBasicImpl(self, context):
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        
-        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            return False
+        self.__assistant.CheckCrashes(context)
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        if not self.__assistant.GetResults(): return False
 
         # Get the <created> time for the input file
         root = minidom.parse(context.GetInputFilename()).documentElement
@@ -58,7 +56,7 @@ class JudgingObject:
             context.Log("The exported <created> time is " + str(outputCreatedDate))
             return False
         
-        context.Log("PASSED: Required steps executed and passed.")
+        context.Log("PASSED: <created> element is correct.")
         return True
       
     def JudgeBasic(self, context):

@@ -2,53 +2,28 @@
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
-# See Core.Logic.FJudgementContext for the information
-# of the 'context' parameter.
-# [WARNING] this structure is subject to changes.
-#
+# Basic: doesn't allow crashes.
+# Intermediate: verifies validation
+# Advanced: checks that intermediate passes.
 
-# This sample judging object does the following:
-#
-# JudgeBasic: just verifies that the standard steps did not crash.
-# JudgeIntermediate: also verifies that the validation steps are not in error.
-# JudgeAdvanced: same as intermediate badge.
+from StandardDataSets.scripts import JudgeAssistant
 
 class SimpleJudgingObject:
     def __init__(self):
-        pass
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBasic(self, context):
-            
-        # This is where you can test XML or force the comparison of image files
-        # or any custom verification you want to do...
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        else:
-            context.Log("PASSED: No crashes.")
-            return True
-      
-    # To pass intermediate you need to pass basic, this object could also include additional 
-    # tests that were specific to the intermediate badge.
-    # QUESTION: Is there a way to fetch the result of JudgeBasic so we don't have to run it again?
+        # To support the case when Intermediate is run before Basic: we reset the judgement result.
+        # This does not affect the cached results, though, so performance is still greatly improved.
+        self.__assistant.ResetJudgement()
+        self.__assistant.CheckCrashes(context)
+        return self.__assistant.DeferJudgement(context)
+
     def JudgeIntermediate(self, context):
-        if not self.JudgeBasic(context):
-            return False
-            
-         # Check the required steps for positive results.
-        if not context.HaveStepsPassed([ "Import", "Export", "Render", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            return False
-                    
-        context.Log("PASSED: Required steps executed and passed.")
-        return True
-            
-    # To pass advanced you need to pass intermediate, this object could also include additional
-    # tests that were specific to the advanced badge
-    def JudgeAdvanced(self, context):
-        return self.JudgeIntermediate(context)
-       
-# This is where all the work occurs: "judgingObject" is an absolutely necessary token.
-# The dynamic loader looks very specifically for a class instance named "judgingObject".
-#
+        self.JudgeBasic(context)
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        return self.__assistant.DeferJudgement(context)
+
+    def JudgeAdvanced(self, context): return self.JudgeIntermediate(context)
+
 judgingObject = SimpleJudgingObject();
