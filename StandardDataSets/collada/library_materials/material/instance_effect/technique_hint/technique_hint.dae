@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+	<asset>
+		<contributor>
+			<author>brehon</author>
+			<authoring_tool>NVIDIA FX Composer 2.0</authoring_tool>
+			<comments/>
+			<copyright>Copyright 2007 Sony Computer Entertainment Inc.
+Licensed under the SCEA Shared Source License, Version 1.0 (the
+"License"); you may not use this file except in compliance with the
+License. You may obtain a copy of the License at:
+http://research.scea.com/scea_shared_source_license.html
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</copyright>
+		</contributor>
+		<created>2007-10-26T17:28:36</created>
+		<keywords>FXComposer, NVIDIA</keywords>
+		<modified>2007-10-26T18:15:30</modified>
+		<subject/>
+		<title/>
+	</asset>
+	<library_effects>
+		<effect id="Effect" name="Technique_Hint_Test">
+			<profile_CG platform="PC-OGL">
+				<include sid="technique_hint" url="technique_hint.cg"/>
+				<newparam sid="TechniqueSurface">
+					<annotate name="ResourceName">
+						<string>technique.png</string>
+					</annotate>
+					<surface type="2D">
+						<init_from>technique</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</newparam>
+				<newparam sid="HintSurface">
+					<annotate name="ResourceName">
+						<string>hint.png</string>
+					</annotate>
+					<surface type="2D">
+						<init_from>hint</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</newparam>
+				<newparam sid="TechniqueSampler">
+					<sampler2D>
+						<source>TechniqueSurface</source>
+						<wrap_s>WRAP</wrap_s>
+						<wrap_t>WRAP</wrap_t>
+						<minfilter>LINEAR</minfilter>
+						<magfilter>LINEAR</magfilter>
+					</sampler2D>
+				</newparam>
+				<newparam sid="HintSampler">
+					<sampler2D>
+						<source>HintSurface</source>
+						<wrap_s>WRAP</wrap_s>
+						<wrap_t>WRAP</wrap_t>
+						<minfilter>LINEAR</minfilter>
+						<magfilter>LINEAR</magfilter>
+					</sampler2D>
+				</newparam>
+				<newparam sid="WVP">
+					<semantic>WORLDVIEWPROJECTION</semantic>
+					<float4x4>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float4x4>
+				</newparam>
+				<technique sid="Technique">
+					<pass sid="Main">
+						<depth_test_enable value="true"/>
+						<cull_face/>
+						<shader stage="VERTEX">
+							<compiler_target>arbvp1</compiler_target>
+							<name source="technique_hint">MainVS</name>
+							<bind symbol="WVP">
+								<param ref="WVP"/>
+							</bind>
+						</shader>
+						<shader stage="FRAGMENT">
+							<compiler_target>arbfp1</compiler_target>
+							<name source="technique_hint">TechniqueMain</name>
+							<bind symbol="TechniqueSampler">
+								<param ref="TechniqueSampler"/>
+							</bind>
+						</shader>
+					</pass>
+				</technique>
+				<technique sid="Hint">
+					<pass sid="Main">
+						<depth_test_enable value="true"/>
+						<cull_face/>
+						<shader stage="VERTEX">
+							<compiler_target>arbvp1</compiler_target>
+							<name source="technique_hint">MainVS</name>
+							<bind symbol="WVP">
+								<param ref="WVP"/>
+							</bind>
+						</shader>
+						<shader stage="FRAGMENT">
+							<compiler_target>arbfp1</compiler_target>
+							<name source="technique_hint">HintMain</name>
+							<bind symbol="HintSampler">
+								<param ref="HintSampler"/>
+							</bind>
+						</shader>
+					</pass>
+				</technique>
+			</profile_CG>
+		</effect>
+	</library_effects>
+	<library_materials>
+		<material id="Material" name="Technique_Material">
+			<instance_effect url="#Effect">
+				<technique_hint platform="PC-OGL" ref="Technique"/>
+				<setparam ref="TechniqueSurface">
+					<surface type="2D">
+						<init_from>technique</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="HintSurface">
+					<surface type="2D">
+						<init_from>hint</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="WVP">
+					<float4x4>13.1765 0 1.29669 1.29409 0 14.9434 0 0 3.53063 0 -4.8393 -4.82963 136.413 0 -2.002 0</float4x4>
+				</setparam>
+			</instance_effect>
+		</material>
+		<material id="Material1" name="Hint_Material">
+			<instance_effect url="#Effect">
+				<technique_hint platform="PC-OGL" ref="Hint"/>
+				<setparam ref="TechniqueSurface">
+					<surface type="2D">
+						<init_from>technique</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="HintSurface">
+					<surface type="2D">
+						<init_from>hint</init_from>
+						<format>R8G8B8A8</format>
+						<size>256 256 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="WVP">
+					<float4x4>13.1765 0 1.29669 1.29409 0 14.9434 0 0 3.53063 0 -4.8393 -4.82963 136.413 0 -2.002 0</float4x4>
+				</setparam>
+			</instance_effect>
+		</material>
+	</library_materials>
+	<library_lights>
+		<light id="DirectionalLight" name="directionalLight">
+			<technique_common>
+				<directional>
+					<color>1 1 1</color>
+				</directional>
+			</technique_common>
+		</light>
+	</library_lights>
+	<library_cameras>
+		<camera id="PerspectiveCamera" name="mainCamera">
+			<optics>
+				<technique_common>
+					<perspective>
+						<yfov>37</yfov>
+						<aspect_ratio>1</aspect_ratio>
+						<znear>1</znear>
+						<zfar>1000</zfar>
+					</perspective>
+				</technique_common>
+			</optics>
+		</camera>
+	</library_cameras>
+	<library_geometries>
+		<geometry id="Plane" name="Plane">
+			<mesh>
+				<source id="FXStream" name="FXStream">
+					<float_array id="FXStream-array" count="243">-1 -0 -1 -1 -0 -0.75 -1 -0 -0.5 -1 -0 -0.25 -1 0 0 -1 0 0.25 -1 0 0.5 -1 0 0.75 -1 0 1 -0.75 -0 -1 -0.75 -0 -0.75 -0.75 -0 -0.5 -0.75 -0 -0.25 -0.75 0 0 -0.75 0 0.25 -0.75 0 0.5 -0.75 0 0.75 -0.75 0 1 -0.5 -0 -1 -0.5 -0 -0.75 -0.5 -0 -0.5 -0.5 -0 -0.25 -0.5 0 0 -0.5 0 0.25 -0.5 0 0.5 -0.5 0 0.75 -0.5 0 1 -0.25 -0 -1 -0.25 -0 -0.75 -0.25 -0 -0.5 -0.25 -0 -0.25 -0.25 0 0 -0.25 0 0.25 -0.25 0 0.5 -0.25 0 0.75 -0.25 0 1 0 0 -1 0 0 -0.75 0 0 -0.5 0 0 -0.25 0 0 0 0 0 0.25 0 0 0.5 0 0 0.75 0 0 1 0.25 0 -1 0.25 0 -0.75 0.25 0 -0.5 0.25 0 -0.25 0.25 0 0 0.25 0 0.25 0.25 0 0.5 0.25 0 0.75 0.25 0 1 0.5 0 -1 0.5 0 -0.75 0.5 0 -0.5 0.5 0 -0.25 0.5 0 0 0.5 0 0.25 0.5 0 0.5 0.5 0 0.75 0.5 0 1 0.75 0 -1 0.75 0 -0.75 0.75 0 -0.5 0.75 0 -0.25 0.75 0 0 0.75 0 0.25 0.75 0 0.5 0.75 0 0.75 0.75 0 1 1 0 -1 1 0 -0.75 1 0 -0.5 1 0 -0.25 1 0 0 1 0 0.25 1 0 0.5 1 0 0.75 1 0 1</float_array>
+					<technique_common>
+						<accessor count="81" source="#FXStream-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="FXStream4" name="FXStream">
+					<float_array id="FXStream4-array" count="243">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0</float_array>
+					<technique_common>
+						<accessor count="81" source="#FXStream4-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="FXStream2" name="FXStream">
+					<float_array id="FXStream2-array" count="243">1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0</float_array>
+					<technique_common>
+						<accessor count="81" source="#FXStream2-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="FXStream3" name="FXStream">
+					<float_array id="FXStream3-array" count="243">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+					<technique_common>
+						<accessor count="81" source="#FXStream3-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="FXStream1" name="FXStream">
+					<float_array id="FXStream1-array" count="162">0 0 0 0.125 0 0.25 0 0.375 0 0.5 0 0.625 0 0.75 0 0.875 0 1 0.125 0 0.125 0.125 0.125 0.25 0.125 0.375 0.125 0.5 0.125 0.625 0.125 0.75 0.125 0.875 0.125 1 0.25 0 0.25 0.125 0.25 0.25 0.25 0.375 0.25 0.5 0.25 0.625 0.25 0.75 0.25 0.875 0.25 1 0.375 0 0.375 0.125 0.375 0.25 0.375 0.375 0.375 0.5 0.375 0.625 0.375 0.75 0.375 0.875 0.375 1 0.5 0 0.5 0.125 0.5 0.25 0.5 0.375 0.5 0.5 0.5 0.625 0.5 0.75 0.5 0.875 0.5 1 0.625 0 0.625 0.125 0.625 0.25 0.625 0.375 0.625 0.5 0.625 0.625 0.625 0.75 0.625 0.875 0.625 1 0.75 0 0.75 0.125 0.75 0.25 0.75 0.375 0.75 0.5 0.75 0.625 0.75 0.75 0.75 0.875 0.75 1 0.875 0 0.875 0.125 0.875 0.25 0.875 0.375 0.875 0.5 0.875 0.625 0.875 0.75 0.875 0.875 0.875 1 1 0 1 0.125 1 0.25 1 0.375 1 0.5 1 0.625 1 0.75 1 0.875 1 1</float_array>
+					<technique_common>
+						<accessor count="81" source="#FXStream1-array" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="Plane-Vertex-0">
+					<input semantic="POSITION" source="#FXStream"/>
+					<input semantic="NORMAL" source="#FXStream4"/>
+					<input semantic="TANGENT" source="#FXStream2"/>
+					<input semantic="BINORMAL" source="#FXStream3"/>
+					<input semantic="TEXCOORD" source="#FXStream1"/>
+				</vertices>
+				<triangles count="128" material="PlaneMaterial">
+					<input offset="0" semantic="VERTEX" source="#Plane-Vertex-0"/>
+					<p>0 10 9 0 1 10 1 11 10 1 2 11 2 12 11 2 3 12 3 13 12 3 4 13 4 14 13 4 5 14 5 15 14 5 6 15 6 16 15 6 7 16 7 17 16 7 8 17 9 19 18 9 10 19 10 20 19 10 11 20 11 21 20 11 12 21 12 22 21 12 13 22 13 23 22 13 14 23 14 24 23 14 15 24 15 25 24 15 16 25 16 26 25 16 17 26 18 28 27 18 19 28 19 29 28 19 20 29 20 30 29 20 21 30 21 31 30 21 22 31 22 32 31 22 23 32 23 33 32 23 24 33 24 34 33 24 25 34 25 35 34 25 26 35 27 37 36 27 28 37 28 38 37 28 29 38 29 39 38 29 30 39 30 40 39 30 31 40 31 41 40 31 32 41 32 42 41 32 33 42 33 43 42 33 34 43 34 44 43 34 35 44 36 46 45 36 37 46 37 47 46 37 38 47 38 48 47 38 39 48 39 49 48 39 40 49 40 50 49 40 41 50 41 51 50 41 42 51 42 52 51 42 43 52 43 53 52 43 44 53 45 55 54 45 46 55 46 56 55 46 47 56 47 57 56 47 48 57 48 58 57 48 49 58 49 59 58 49 50 59 50 60 59 50 51 60 51 61 60 51 52 61 52 62 61 52 53 62 54 64 63 54 55 64 55 65 64 55 56 65 56 66 65 56 57 66 57 67 66 57 58 67 58 68 67 58 59 68 59 69 68 59 60 69 60 70 69 60 61 70 61 71 70 61 62 71 63 73 72 63 64 73 64 74 73 64 65 74 65 75 74 65 66 75 66 76 75 66 67 76 67 77 76 67 68 77 68 78 77 68 69 78 69 79 78 69 70 79 70 80 79 70 71 80</p>
+				</triangles>
+			</mesh>
+		</geometry>
+	</library_geometries>
+	<library_visual_scenes>
+		<visual_scene id="Scene" name="Scene">
+			<node id="Node" name="testCamera" layer="">
+				<matrix>1 0 0 0 0 1 0 0 0 0 1 400 0 0 0 1</matrix>
+				<instance_camera url="#PerspectiveCamera" sid="FXCameraInstance4" name="mainCamera"/>
+			</node>
+			<node id="Node1" name="testLight" layer="">
+				<matrix>0.965926 0 0.258819 50 0 1 0 0 -0.258819 0 0.965926 400 0 0 0 1</matrix>
+				<instance_light url="#DirectionalLight" sid="FXLightInstance" name="directionalLight"/>
+			</node>
+			<node id="Node2" name="Plane_Hint" layer="">
+				<matrix>100 0 0 0 0 1.71143e-006 -50 -50 0 50 1.71143e-006 0 0 0 0 1</matrix>
+				<instance_geometry url="#Plane" sid="FXInstanceGeometry" name="Plane">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="PlaneMaterial" target="#Material1"/>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+			</node>
+			<node id="Node3" name="Plane_Technique" layer="">
+				<matrix>100 0 0 0 0 1.71143e-006 -50 50 0 50 1.71143e-006 0 0 0 0 1</matrix>
+				<instance_geometry url="#Plane" sid="FXInstanceGeometry1" name="Plane">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="PlaneMaterial" target="#Material"/>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<library_images>
+		<image id="technique" name="technique">
+			<init_from>technique.png</init_from>
+		</image>
+		<image id="hint" name="hint">
+			<init_from>hint.png</init_from>
+		</image>
+	</library_images>
+	<scene>
+		<instance_visual_scene url="#Scene"/>
+	</scene>
+</COLLADA>
