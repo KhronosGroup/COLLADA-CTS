@@ -1,0 +1,555 @@
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera0|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene0.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5403*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0905 100.00 100.00     1 0.00
+.compute image...............................   0.0544* 60.13  60.13     1 0.00
+.write image to disk.........................   0.0195* 21.60  21.60     1 0.00
+.translate scene.............................   0.0083   9.19   9.19     1 0.03
+ 2.OTHER.....................................   0.0051*  5.60  61.01     0 0.00
+ 2.convert surface material properties.......   0.0019   2.09  22.72     1 0.02
+  3.OTHER....................................   0.0019*  2.08  99.79     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.21     1 0.00
+ 2.convert surface properties................   0.0014   1.49  16.27     1 0.11
+  3.translate surface geometry...............   0.0013   1.47  98.07     1 0.08
+   4.translate polygons......................   0.0013   1.41  96.16     1 0.06
+    5.compute topology and normals...........   0.0012*  1.37  97.45     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.27     1 0.00
+.OTHER.......................................   0.0082*  9.06   9.06     0 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera1|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene1.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5949*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0868 100.00 100.00     1 0.00
+.compute image...............................   0.0535* 61.70  61.70     1 0.00
+.write image to disk.........................   0.0193* 22.28  22.28     1 0.00
+.OTHER.......................................   0.0083*  9.58   9.58     0 0.00
+.translate scene.............................   0.0055   6.39   6.39     1 0.05
+ 2.convert surface material properties.......   0.0028   3.28  51.35     1 0.01
+  3.OTHER....................................   0.0028*  3.27  99.73     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.27     1 0.00
+ 2.OTHER.....................................   0.0015*  1.77  27.76     0 0.00
+ 2.convert surface properties................   0.0012   1.33  20.89     1 0.13
+  3.translate surface geometry...............   0.0011   1.30  97.45     1 0.10
+   4.translate polygons......................   0.0011   1.25  96.07     1 0.07
+    5.compute topology and normals...........   0.0010*  1.21  96.49     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.27     1 0.00
+.set scene time..............................   0.0000*  0.05   0.05     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.39 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera2|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene2.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5176*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0824 100.00 100.00     1 0.01
+.compute image...............................   0.0519* 63.04  63.04     1 0.00
+.write image to disk.........................   0.0187* 22.75  22.75     1 0.00
+.OTHER.......................................   0.0073*  8.90   8.90     0 0.00
+.translate scene.............................   0.0043   5.26   5.26     1 0.06
+ 2.convert surface material properties.......   0.0017   2.03  38.60     1 0.02
+  3.OTHER....................................   0.0017*  2.03  99.74     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.26     1 0.00
+ 2.OTHER.....................................   0.0016*  1.90  36.06     0 0.00
+ 2.convert surface properties................   0.0011   1.33  25.34     1 0.14
+  3.translate surface geometry...............   0.0011   1.30  97.37     1 0.11
+   4.translate polygons......................   0.0010   1.25  96.23     1 0.07
+    5.compute topology and normals...........   0.0010*  1.22  97.23     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.27     1 0.00
+.set scene time..............................   0.0000*  0.04   0.04     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera3|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene3.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5116*100.00 100.00     1 0.00
+hardware rendering frames....................   0.1504 100.00 100.00     1 0.00
+.write image to disk.........................   0.0867* 57.66  57.66     1 0.00
+.compute image...............................   0.0520* 34.54  34.54     1 0.00
+.OTHER.......................................   0.0074*  4.92   4.92     0 0.00
+.translate scene.............................   0.0043   2.87   2.87     1 0.06
+ 2.convert surface material properties.......   0.0017   1.12  39.00     1 0.02
+  3.OTHER....................................   0.0017*  1.11  99.72     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.28     1 0.00
+ 2.OTHER.....................................   0.0015*  1.01  35.34     0 0.00
+ 2.convert surface properties................   0.0011   0.74  25.66     1 0.13
+  3.translate surface geometry...............   0.0011   0.72  97.67     1 0.10
+   4.translate polygons......................   0.0010   0.69  96.36     1 0.07
+    5.compute topology and normals...........   0.0010*  0.67  96.97     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.46     1 0.00
+.set scene time..............................   0.0000*  0.02   0.02     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera4|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene4.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.4671*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0799 100.00 100.00     1 0.01
+.compute image...............................   0.0488* 61.07  61.07     1 0.00
+.write image to disk.........................   0.0194* 24.30  24.30     1 0.00
+.OTHER.......................................   0.0075*  9.34   9.34     0 0.00
+.translate scene.............................   0.0042   5.26   5.26     1 0.06
+ 2.convert surface material properties.......   0.0016   2.04  38.82     1 0.02
+  3.OTHER....................................   0.0016*  2.03  99.64     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.36     1 0.00
+ 2.OTHER.....................................   0.0015*  1.89  35.90     0 0.00
+ 2.convert surface properties................   0.0011   1.33  25.28     1 0.14
+  3.translate surface geometry...............   0.0010   1.30  98.09     1 0.11
+   4.translate polygons......................   0.0010   1.26  96.82     1 0.07
+    5.compute topology and normals...........   0.0010*  1.24  98.17     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.32     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.37 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera5|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene5.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5070*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0837 100.00 100.00     1 0.00
+.compute image...............................   0.0524* 62.62  62.62     1 0.00
+.write image to disk.........................   0.0189* 22.59  22.59     1 0.00
+.OTHER.......................................   0.0075*  8.91   8.91     0 0.00
+.translate scene.............................   0.0049   5.84   5.84     1 0.05
+ 2.convert surface material properties.......   0.0023   2.70  46.28     1 0.02
+  3.OTHER....................................   0.0023*  2.70  99.82     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.18     1 0.00
+ 2.OTHER.....................................   0.0015*  1.83  31.35     0 0.00
+ 2.convert surface properties................   0.0011   1.31  22.38     1 0.14
+  3.translate surface geometry...............   0.0011   1.29  98.73     1 0.10
+   4.translate polygons......................   0.0010   1.25  96.60     1 0.07
+    5.compute topology and normals...........   0.0010*  1.22  98.01     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.28     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera6|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene6.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.4750*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0816 100.00 100.00     1 0.01
+.compute image...............................   0.0508* 62.27  62.27     1 0.00
+.write image to disk.........................   0.0188* 23.09  23.09     1 0.00
+.OTHER.......................................   0.0074*  9.10   9.10     0 0.00
+.translate scene.............................   0.0045   5.50   5.50     1 0.06
+ 2.convert surface material properties.......   0.0016   2.01  36.59     1 0.02
+  3.OTHER....................................   0.0016*  2.00  99.62     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.38     1 0.00
+ 2.OTHER.....................................   0.0016*  1.97  35.88     0 0.00
+ 2.convert surface properties................   0.0012   1.51  27.53     1 0.12
+  3.translate surface geometry...............   0.0012   1.49  98.72     1 0.09
+   4.translate polygons......................   0.0012   1.44  96.44     1 0.06
+    5.compute topology and normals...........   0.0011*  1.41  97.81     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.32     1 0.00
+.set scene time..............................   0.0000*  0.04   0.04     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera7|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene7.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5154*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0829 100.00 100.00     1 0.00
+.compute image...............................   0.0533* 64.25  64.25     1 0.00
+.write image to disk.........................   0.0184* 22.22  22.22     1 0.00
+.OTHER.......................................   0.0073*  8.83   8.83     0 0.00
+.translate scene.............................   0.0039   4.65   4.65     1 0.07
+ 2.convert surface material properties.......   0.0014   1.70  36.50     1 0.03
+  3.OTHER....................................   0.0014*  1.69  99.71     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.29     1 0.00
+ 2.OTHER.....................................   0.0014*  1.66  35.71     0 0.00
+ 2.convert surface properties................   0.0011   1.29  27.79     1 0.14
+  3.translate surface geometry...............   0.0010   1.26  97.85     1 0.11
+   4.translate polygons......................   0.0010   1.22  96.62     1 0.07
+    5.compute topology and normals...........   0.0010*  1.20  97.99     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.31     1 0.00
+.set scene time..............................   0.0000*  0.04   0.04     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.36 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera8|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene8.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.4913*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0822 100.00 100.00     1 0.01
+.compute image...............................   0.0509* 61.91  61.91     1 0.00
+.write image to disk.........................   0.0196* 23.90  23.90     1 0.00
+.OTHER.......................................   0.0072*  8.82   8.82     0 0.00
+.translate scene.............................   0.0044   5.33   5.33     1 0.06
+ 2.convert surface material properties.......   0.0017   2.05  38.36     1 0.02
+  3.OTHER....................................   0.0017*  2.04  99.58     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.42     1 0.00
+ 2.OTHER.....................................   0.0016*  1.95  36.63     0 0.00
+ 2.convert surface properties................   0.0011   1.33  25.00     1 0.14
+  3.translate surface geometry...............   0.0011   1.30  97.68     1 0.11
+   4.translate polygons......................   0.0010   1.26  96.40     1 0.07
+    5.compute topology and normals...........   0.0010*  1.23  97.91     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.25     1 0.00
+.set scene time..............................   0.0000*  0.04   0.04     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.08 Mb
+Maximum Resident Size:          175.37 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera9|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene9.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5057*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0825 100.00 100.00     1 0.01
+.compute image...............................   0.0516* 62.55  62.55     1 0.00
+.write image to disk.........................   0.0192* 23.23  23.23     1 0.00
+.OTHER.......................................   0.0073*  8.90   8.90     0 0.00
+.translate scene.............................   0.0044   5.27   5.27     1 0.06
+ 2.convert surface material properties.......   0.0017   2.03  38.47     1 0.02
+  3.OTHER....................................   0.0017*  2.02  99.72     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.28     1 0.00
+ 2.OTHER.....................................   0.0015*  1.88  35.60     0 0.00
+ 2.convert surface properties................   0.0011   1.37  25.93     1 0.13
+  3.translate surface geometry...............   0.0011   1.33  97.46     1 0.10
+   4.translate polygons......................   0.0011   1.28  96.44     1 0.07
+    5.compute topology and normals...........   0.0010*  1.24  96.22     1 0.00
+    5.compute average normal.................   0.0000*  0.01   0.50     1 0.00
+.set scene time..............................   0.0000*  0.05   0.05     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.37 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera10|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene10.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.6005*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0867 100.00 100.00     1 0.00
+.compute image...............................   0.0508* 58.64  58.64     1 0.00
+.write image to disk.........................   0.0241* 27.83  27.83     1 0.00
+.OTHER.......................................   0.0072*  8.34   8.34     0 0.00
+.translate scene.............................   0.0045   5.15   5.15     1 0.06
+ 2.convert surface material properties.......   0.0017   1.94  37.64     1 0.02
+  3.OTHER....................................   0.0017*  1.93  99.64     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.36     1 0.00
+ 2.OTHER.....................................   0.0016*  1.81  35.13     0 0.00
+ 2.convert surface properties................   0.0012   1.40  27.23     1 0.12
+  3.translate surface geometry...............   0.0012   1.37  97.82     1 0.09
+   4.translate polygons......................   0.0012   1.33  96.78     1 0.06
+    5.compute topology and normals...........   0.0011*  1.23  92.82     1 0.00
+    5.compute average normal.................   0.0000*  0.01   0.49     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera11|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene11.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5171*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0839 100.00 100.00     1 0.00
+.compute image...............................   0.0527* 62.81  62.81     1 0.00
+.write image to disk.........................   0.0185* 22.05  22.05     1 0.00
+.OTHER.......................................   0.0084* 10.03  10.03     0 0.00
+.translate scene.............................   0.0043   5.09   5.09     1 0.06
+ 2.convert surface material properties.......   0.0017   1.98  38.88     1 0.02
+  3.OTHER....................................   0.0017*  1.97  99.76     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.24     1 0.00
+ 2.OTHER.....................................   0.0014*  1.73  33.91     0 0.00
+ 2.convert surface properties................   0.0012   1.38  27.21     1 0.13
+  3.translate surface geometry...............   0.0011   1.35  97.50     1 0.10
+   4.translate polygons......................   0.0011   1.30  95.99     1 0.07
+    5.compute topology and normals...........   0.0011*  1.27  97.70     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.27     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.39 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera12|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene12.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.4770*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0829 100.00 100.00     1 0.00
+.compute image...............................   0.0522* 62.95  62.95     1 0.00
+.write image to disk.........................   0.0191* 23.02  23.02     1 0.00
+.OTHER.......................................   0.0073*  8.82   8.82     0 0.00
+.translate scene.............................   0.0043   5.18   5.18     1 0.06
+ 2.OTHER.....................................   0.0016*  1.97  38.06     0 0.00
+ 2.convert surface material properties.......   0.0016   1.90  36.55     1 0.02
+  3.OTHER....................................   0.0016*  1.89  99.55     0 0.00
+  3.compute uvs..............................   0.0000*  0.01   0.45     1 0.00
+ 2.convert surface properties................   0.0011   1.32  25.39     1 0.14
+  3.translate surface geometry...............   0.0011   1.30  98.67     1 0.10
+   4.translate polygons......................   0.0010   1.26  97.21     1 0.07
+    5.compute topology and normals...........   0.0010*  1.24  98.48     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.25     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera13|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene13.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.5160*100.00 100.00     1 0.00
+hardware rendering frames....................   0.1201 100.00 100.00     1 0.00
+.write image to disk.........................   0.0571* 47.57  47.57     1 0.00
+.compute image...............................   0.0514* 42.81  42.81     1 0.00
+.OTHER.......................................   0.0072*  5.98   5.98     0 0.00
+.translate scene.............................   0.0043   3.62   3.62     1 0.06
+ 2.convert surface material properties.......   0.0017   1.40  38.63     1 0.02
+  3.OTHER....................................   0.0017*  1.39  99.71     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.29     1 0.00
+ 2.OTHER.....................................   0.0016*  1.31  36.34     0 0.00
+ 2.convert surface properties................   0.0011   0.91  25.04     1 0.14
+  3.translate surface geometry...............   0.0011   0.88  97.60     1 0.11
+   4.translate polygons......................   0.0010   0.85  95.74     1 0.07
+    5.compute topology and normals...........   0.0010*  0.82  97.23     1 0.00
+    5.compute average normal.................   0.0000*  0.00   0.38     1 0.00
+.set scene time..............................   0.0000*  0.02   0.02     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.38 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Starting "C:\Program Files\Autodesk\Maya2008\bin\mayabatch.exe"
+Error: 
+Error: Cannot find file "R:/AVC/mainline/GET/main/development/games/data/game/Tools/Maya2008/Scripts/AutoStart.mel" for source statement.
+File read in 0 seconds.
+Result: C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step0/multi_visualscene.mb
+Found camera testCamera14|cameraShape1.
+Hardware Renderer : vendor(NVIDIA Corporation), renderer(GeForce 8800 GTX/PCI/SSE2), version(2.1.0)
+	fragment API(NVIDIA Cg)
+	vertex API(Cg vertex programs)
+	Cg fragment profile(fp30), vertex profile(arbvp1)
+Rendering frame 1 : C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/collada/scene/animation/multi_visualscene/unitTest/step1/multi_visualscene14.png.1
+Description                                      Time   Tot %  Lev % Count Tim%
+-----------                                      ----   -----  ----- ----- ----
+initialize renderer..........................   0.4719*100.00 100.00     1 0.00
+hardware rendering frames....................   0.0831 100.00 100.00     1 0.00
+.compute image...............................   0.0518* 62.37  62.37     1 0.00
+.write image to disk.........................   0.0191* 23.04  23.04     1 0.00
+.OTHER.......................................   0.0078*  9.41   9.41     0 0.00
+.translate scene.............................   0.0043   5.14   5.14     1 0.06
+ 2.convert surface material properties.......   0.0017   2.00  38.83     1 0.02
+  3.OTHER....................................   0.0017*  1.99  99.75     0 0.00
+  3.compute uvs..............................   0.0000*  0.00   0.25     1 0.00
+ 2.OTHER.....................................   0.0015*  1.79  34.81     0 0.00
+ 2.convert surface properties................   0.0011   1.36  26.36     1 0.13
+  3.translate surface geometry...............   0.0011   1.32  97.53     1 0.10
+   4.translate polygons......................   0.0011   1.27  96.22     1 0.07
+    5.compute topology and normals...........   0.0010*  1.24  97.35     1 0.00
+    5.compute average normal.................   0.0000*  0.01   0.54     1 0.00
+.set scene time..............................   0.0000*  0.03   0.03     1 0.00
+Total Time For Render (hh:mm:ss): 00:00:00
+Maximum Frame Heap Size:        5.07 Mb
+Maximum Resident Size:          175.39 Mb
+Scene C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step0\multi_visualscene.mb completed.
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene0.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene1.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene2.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene3.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene4.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene5.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene6.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene7.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene8.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene9.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene10.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene11.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene12.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene13.png.1
+[Errno 17] File exists
+
+Error: unable to rename: C:\\Projects\\COLLADA_CTF\\trunk\\conform\\ctf\\StandardDataSets\\collada\\scene\\animation\\multi_visualscene\\unitTest\step1\multi_visualscene14.png.1
+[Errno 17] File exists
