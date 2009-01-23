@@ -1,0 +1,1 @@
+Two images collada.jpg and logo are processed by photo shop with changing of opacity as 0.5
