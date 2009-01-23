@@ -1,1 +1,0 @@
-png\effect_blinn_diffuse_color.png
