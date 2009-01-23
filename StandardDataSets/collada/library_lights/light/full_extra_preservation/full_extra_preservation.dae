@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <contributor>
+            <author>Wei</author>
+            <comments>Finish a complicated extra under this file</comments>
+            <authoring_tool>Hand-written</authoring_tool>
+            <author>Guillaume Laforte</author>
+            <authoring_tool>Hand-written</authoring_tool>
+            <comments></comments>
+        </contributor>
+        <created>2007-06-24T13:00:00Z</created>
+        <keywords>library_lights light full extra</keywords>
+        <modified>2007-06-24T13:00:00Z</modified>
+        <modified>2008-08-22T11:40:00Z</modified>
+        <subject>Verifies that the application will export the unknown extra elements intact.</subject>
+        <title>30</title>
+    </asset>
+    <library_lights>
+        <light id="directional-light">
+            <technique_common>
+                <directional>
+                    <color>0.8 0.8 0.5</color>
+                </directional>
+            </technique_common>
+            <extra id ="extra_lighit" name="EL" type="COVERAGE">
+                <asset>
+                  <contributor>
+                    <author>Wei</author>
+                  </contributor>
+                </asset>
+                <technique profile="UNKNOWN_APP" xmlns:max="Extended/Lighting">
+                    <lighting_exponent>1.2</lighting_exponent>
+                </technique>
+            </extra>
+        </light>
+    </library_lights>
+    <library_visual_scenes>
+        <visual_scene id="Visual-scene">
+            <node id="node1">
+                <instance_light url="#directional-light"/>
+                <extra type="COVERAGE">
+                    <technique profile="UNKNOWN_APP">
+                        <lighting_exponent>1.2</lighting_exponent>
+                    </technique>
+                </extra>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#Visual-scene"/>
+    </scene>
+</COLLADA>
