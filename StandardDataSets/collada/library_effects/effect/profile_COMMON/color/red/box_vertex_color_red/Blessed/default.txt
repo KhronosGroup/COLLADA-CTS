@@ -1,0 +1,1 @@
+png\box_vertex_color_red.png

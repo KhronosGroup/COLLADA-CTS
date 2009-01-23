@@ -1,0 +1,1 @@
+png\effect_lambert_transparency_param1.png
