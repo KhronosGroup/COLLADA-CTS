@@ -44,7 +44,12 @@ class FJudgementContext:
         test = self.__GetTest(testId)
         if test == None: return ""
         else: return test.GetFilename()
-        
+    
+    def GetAbsInputFilename(self, testId=None):
+        test = self.__GetTest(testId)
+        if test == None: return ""
+        else: return test.GetAbsFilename()
+    
     def FindTestId(self, substring0, substring1=None, substring2=None):
         """ Retrieves the identifier for the first test case that contains
             the given substrings in its separated filename.

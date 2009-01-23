@@ -8,6 +8,7 @@ import os
 import os.path
 import shutil
 import sys
+import traceback
 import time
 import types
 
@@ -448,10 +449,13 @@ class FExecution(FSerializable, FSerializer):
                     self.__judgingResults[badgeLevel] = FJudgement.NO_SCRIPT
                     self.__judgingLogs[badgeLevel] = "No judging script provided."
             
-        except Exception, e:
+        except Exception, info:
             print "------------------------------------------------------------"
-            print "<FExecution> could not run judging script: '" + os.path.basename(scriptFilename) + "'."
-            print "Error message: '", e, "'."
+            print "<FExecution> could not run judging script: '" + os.path.basename(scriptFilename) + "'."            
+            print 'Exception is thrown at line %d in FExecution.py' %sys.exc_traceback.tb_lineno
+            print info[0]
+            print 'Trace back stack is:\n'
+            traceback.print_exc()
         
 
     def __ParseValidation(self, logLocation):
