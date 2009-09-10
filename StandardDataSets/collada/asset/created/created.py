@@ -23,9 +23,11 @@ from StandardDataSets.scripts import JudgeAssistant
 class JudgingObject:
     def __init__(self):
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        self.basicResult = None # Cached result to avoid duplication of work
+        self.status_baseline = False
+        self.status_superior = False
+        self.status_exemplary = False
         
-    def JudgeBasicImpl(self, context):
+    def CheckDate(self, context):
         self.__assistant.CheckCrashes(context)
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         if not self.__assistant.GetResults(): return False
@@ -59,16 +61,21 @@ class JudgingObject:
         context.Log("PASSED: <created> element is correct.")
         return True
       
-    def JudgeBasic(self, context):
-        if self.basicResult == None:
-            self.basicResult = self.JudgeBasicImpl(context)
-        return self.basicResult
+    def JudgeBaseline(self, context):
+        self.status_baseline = self.CheckDate(context)          
+        return self.status_baseline
 
-    def JudgeIntermediate(self, context):
-        return self.JudgeBasic(context)
+    # To pass intermediate you need to pass basic, this object could also include additional 
+    # tests that were specific to the intermediate badge.
+    def JudgeSuperior(self, context):
+        self.status_superior = self.status_baseline
+        return self.status_superior 
             
-    def JudgeAdvanced(self, context):
-        return self.JudgeIntermediate(context)
+    # To pass advanced you need to pass intermediate, this object could also include additional
+    # tests that were specific to the advanced badge
+    def JudgeExemplary(self, context):
+        self.status_exemplary = self.status_superior
+        return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".

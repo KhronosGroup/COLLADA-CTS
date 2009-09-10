@@ -25,10 +25,24 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline asset unit</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
-    <subject>Test that the unit of distance is in decimeters</subject>
-    <unit meter="0.1" name="decimeter"/>
+    <subject>Reference for the unit test cases using meter=1.0</subject>
+    <unit meter="1.0" name="meter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
   <library_lights>
     <light id="directionalLightShape1-lib" name="directionalLightShape1">
       <technique_common>
@@ -75,7 +89,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <geometry id="cube1Shape" name="cube1Shape">
       <mesh>
         <source id="cube1Shape-positions" name="position">
-          <float_array id="cube1Shape-positions-array" count="12">-10 -10 10 10 -10 10 -10 10 10 10 10 10</float_array>
+          <float_array id="cube1Shape-positions-array" count="12">-1 -1 1 1 -1 1 -1 1 1 1 1 1</float_array>
 	  <technique_common>
 	    <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
 	      <param name="X" type="float"/>
@@ -106,6 +120,13 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </technique_common>
           </bind_material>
         </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera">
+	<translate sid="translate">0 0 4</translate>
+	<rotate sid="rotateZ">0 0 1 0</rotate>
+	<rotate sid="rotateY">0 1 0 0</rotate>
+	<rotate sid="rotateX">1 0 0 0</rotate>
+	<instance_camera url="#mainCamera"/>
       </node>
       <node id="directionalLight1" name="directionalLight1" type="NODE">
         <translate sid="translate">50 0 400</translate>
