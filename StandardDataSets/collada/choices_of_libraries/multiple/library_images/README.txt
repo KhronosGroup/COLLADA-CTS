@@ -1,0 +1,1 @@
+This test performs image comparison with the test case _reference_images. You must run _reference_images first.

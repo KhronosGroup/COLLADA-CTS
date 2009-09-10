@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <authoring_tool>Handwritten</authoring_tool>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline choice of libraries</keywords>
+    <modified>2008-07-07T19:02:33Z</modified>
+    <subject>Test multiple library_materials.  library_materials may be merged, but number of material elements must be preserved.</subject>
+    <unit meter="0.01" name="centimeter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_materials>
+    <material id="lambert2" name="lambert2">
+      <instance_effect url="#lambert2-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="lambert2-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.5 0 0 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="cubeShape" name="cubeShape">
+      <mesh>
+        <source id="cubeShape-positions" name="position">
+          <float_array id="cubeShape-positions-array" count="12">-50 -50 50 50 -50 50 -50 50 50 50 50 50</float_array>
+          <technique_common>
+            <accessor source="#cubeShape-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cubeShape-map1" name="map1">
+          <float_array id="cubeShape-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#cubeShape-map1-array" count="4" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cubeShape-vertices">
+          <input semantic="POSITION" source="#cubeShape-positions"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#cubeShape-vertices" offset="0"/>
+          <input semantic="TEXCOORD" source="#cubeShape-map1" offset="1" set="0"/>
+          <vcount>4</vcount>
+          <p>0 0 1 1 3 2 2 3</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="triangleShape" name="triangleShape">
+      <mesh>
+        <source id="triangleShape-positions" name="position">
+          <float_array id="triangleShape-positions-array" count="9">-50 -50 50 50 -50 50 0 50 50</float_array>
+          <technique_common>
+            <accessor source="#triangleShape-positions-array" count="3" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="triangleShape-vertices">
+          <input semantic="POSITION" source="#triangleShape-positions"/>
+        </vertices>
+        <polylist material="lambert2SG" count="1">
+          <input semantic="VERTEX" source="#triangleShape-vertices" offset="0"/>
+          <vcount>3</vcount>
+          <p>0 1 2</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="untitled">
+      <node id="cube" name="cube" type="NODE">
+        <translate>-50 0 0</translate>
+        <instance_geometry url="#cubeShape">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2SG" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="triangle" name="triangle" type="NODE">
+        <translate>50 0 0</translate>
+        <instance_geometry url="#triangleShape">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2SG" target="#lambert2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" type="NODE">
+        <translate sid="translate">0 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_camera url="#mainCamera"/>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

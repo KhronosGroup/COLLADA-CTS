@@ -12,6 +12,11 @@ exportNormals=1;exportTexCoords=1;
 exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
 exportTexTangents=1;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
       <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
     </contributor>
     <contributor>
@@ -28,18 +33,12 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
       <source_data>file:///C:/Documents%20and%20Settings/wguo6/My%20Documents/maya/projects/default/untitled</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
+    <subject>Test the order of libraries. Used as the baseline scene to compare all other test cases to.</subject>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
-  <library_physics_scenes>
-    <physics_scene id="MayaNativePhysicsScene">
-      <technique_common>
-        <gravity>0 -980 0</gravity>
-        <time_step>0.083</time_step>
-      </technique_common>
-    </physics_scene>
-  </library_physics_scenes>
   <library_cameras>
     <camera id="mainCamera" name="mainCamera">
       <optics>
@@ -52,22 +51,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
           </perspective>
         </technique_common>
       </optics>
-      <extra>
-        <technique profile="MAYA">
-          <vertical_aperture>2.4</vertical_aperture>
-          <horizontal_aperture>2.4</horizontal_aperture>
-          <lens_squeeze>1</lens_squeeze>
-          <film_fit>1</film_fit>
-          <film_fit_offset>0</film_fit_offset>
-          <film_offsetX>0</film_offsetX>
-          <film_offsetY>0</film_offsetY>
-        </technique>
-        <technique profile="FCOLLADA">
-          <vertical_aperture>2.54</vertical_aperture>
-          <horizontal_aperture>2.54</horizontal_aperture>
-          <lens_squeeze>1</lens_squeeze>
-        </technique>
-      </extra>
     </camera>
   </library_cameras>
   <library_lights>
@@ -77,20 +60,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
           <color>1 1 1</color>
         </directional>
       </technique_common>
-      <extra>
-        <technique profile="FCOLLADA">
-          <aspect_ratio>1</aspect_ratio>
-          <overshoot>1</overshoot>
-          <target_default_dist>240</target_default_dist>
-          <constant_attenuation>1</constant_attenuation>
-          <linear_attenuation>0</linear_attenuation>
-          <quadratic_attenuation>0</quadratic_attenuation>
-          <falloff_angle>5</falloff_angle>
-          <falloff_exponent>1</falloff_exponent>
-          <intensity>1</intensity>
-          <outer_cone>5</outer_cone>
-        </technique>
-      </extra>
     </light>
   </library_lights>
   <library_materials>
@@ -122,9 +91,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
               <float>1</float>
             </index_of_refraction>
           </lambert>
-          <extra>
-            <technique profile="FCOLLADA"/>
-          </extra>
         </technique>
       </profile_COMMON>
     </effect>
@@ -136,16 +102,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
           <float_array id="cubeShape-positions-array" count="24">-100 -100 100 100 -100 100 -100 100 100 100 100 100 -100 100 -100 100 100 -100 -100 -100 -100 100 -100 -100</float_array>
           <technique_common>
             <accessor source="#cubeShape-positions-array" count="8" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="cubeShape-normals" name="normal">
-          <float_array id="cubeShape-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-          <technique_common>
-            <accessor source="#cubeShape-normals-array" count="24" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
@@ -166,17 +122,11 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
         </vertices>
         <polylist material="lambert2SG" count="6">
           <input semantic="VERTEX" source="#cubeShape-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#cubeShape-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#cubeShape-map1" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#cubeShape-map1" offset="1" set="0"/>
           <vcount>4 4 4 4 4 4</vcount>
-          <p>0 0 0 1 1 1 3 2 3 2 3 2 2 4 2 3 5 3 5 6 5 4 7 4 4 8 4 5 9 5 7 10 7 6 11 6 6 12 6 7 13 7 1 14 9 0 15 8 1 16 1 7 17 10 5 18 11 3 19 3 6 20 12 0 21 0 2 22 2 4 23 13</p>
+          <p>0 0 1 1 3 3 2 2 2 2 3 3 5 5 4 4 4 4 5 5 7 7 6 6 6 6 7 7 1 9 0 8 1 1 7 10 5 11 3 3 6 12 0 0 2 2 4 13</p>
         </polylist>
       </mesh>
-      <extra>
-        <technique profile="MAYA">
-          <double_sided>1</double_sided>
-        </technique>
-      </extra>
     </geometry>
   </library_geometries>
   <library_visual_scenes>
@@ -207,16 +157,9 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
         <rotate sid="rotateX">1 0 0 0</rotate>
         <instance_light url="#directionalLightShape1-lib"/>
       </node>
-      <extra>
-        <technique profile="FCOLLADA">
-          <start_time>0.041666</start_time>
-          <end_time>2</end_time>
-        </technique>
-      </extra>
     </visual_scene>
   </library_visual_scenes>
   <scene>
-    <instance_physics_scene url="#MayaNativePhysicsScene"/>
     <instance_visual_scene url="#VisualSceneNode"/>
   </scene>
 </COLLADA>
