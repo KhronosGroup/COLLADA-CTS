@@ -23,31 +23,10 @@ See the License for the specific language governing permissions and&amp;#13;
 limitations under the License.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
-        <contributor>
-            <author>Hlaw</author>
-            <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;
-exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
-exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
-        </contributor>
         <created>2007-05-22T23:31:57Z</created>
+	<keywords>Baseline geometry mesh input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
+	<subject>Test three input semantics of a geometry with the same offset</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -76,7 +55,7 @@ limitations under the License.</copyright>
     </library_lights>
     <library_images>
         <image id="file1" name="file1">
-            <init_from>collada.jpg</init_from>
+            <init_from>collada.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -90,14 +69,11 @@ limitations under the License.</copyright>
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>file1</init_from>
-                        <format>A8R8G8B8</format>
                     </surface>
                 </newparam>
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
@@ -111,15 +87,12 @@ limitations under the License.</copyright>
                         <diffuse>
                             <texture texture="file1-sampler" texcoord="TEX0"/>
                         </diffuse>
-                        <transparent opaque="RGB_ZERO">
+                        <transparent>
                             <color>0 0 0 1</color>
                         </transparent>
                         <transparency>
-                            <float>0.5</float>
-                        </transparency>
-                        <index_of_refraction>
                             <float>1</float>
-                        </index_of_refraction>
+                        </transparency>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -129,7 +102,7 @@ limitations under the License.</copyright>
         <geometry id="cube" name="cube">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="12">-25 -25 25 25 -25 25 25 25 25 -25 25 25</float_array>
+                    <float_array id="pCubeShape1-positions-array" count="12">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
                     <technique_common>
                         <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -138,18 +111,8 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pCubeShape1-normals" name="normal">
-                    <float_array id="pCubeShape1-normals-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
-                    <technique_common>
-                        <accessor count="4" source="#pCubeShape1-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
+                    <float_array id="cube-map1-array" count="8">0 0 1 0 0 1 1 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2">
                             <param name="S" type="float"/>
@@ -157,15 +120,25 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color1" name="color1">
+                  <float_array id="cube-color1-array" count="12">1 0 0 0 1 0 0 0 1 1 1 1</float_array>
+                  <technique_common>
+                    <accessor count="4" source="#cube-map1-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
                 <polylist count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="0" semantic="NORMAL" source="#pCubeShape1-normals"/>
+                    <input offset="0" semantic="COLOR" source="#cube-color1"/>
                     <input offset="0" semantic="TEXCOORD" source="#cube-map1" set="0"/>
                     <vcount>4</vcount>
-                    <p>0 1 2 3</p>
+                    <p>0 1 3 2</p>
                 </polylist>
             </mesh>
         </geometry>

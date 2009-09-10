@@ -1,52 +1,26 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
         <contributor>
             <author>Hlaw</author>
             <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
             <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
-exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/svn/khronos/conform/ctf/CTF/StandardDataSets/collada_basic_badge/collada_element/library_geometries/geometry/mesh/triangles/one_triangle.mb</source_data>
-        </contributor>
-        <contributor>
-            <author>Hlaw</author>
-            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
-exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
+						curveConstrainSampling=0;exportCameraAsLookat=0;
+						exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+						exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
+						exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+						exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+						dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+            <copyright>
+# Copyright (C) 2007 - 2009 Khronos Group 
+# Available only to Khronos members and adopters. 
+# Distribution of this file or its content is strictly prohibited.</copyright>
             <source_data>file:///C:/svn/khronos/conform/ctf/CTF/StandardDataSets/collada_basic_badge/collada_element/library_geometries/geometry/mesh/triangles/multi_triangles.mb</source_data>
         </contributor>
         <created>2007-05-04T01:18:03Z</created>
+		<keywords>baseline_badge geometry mesh triangles</keywords>
         <modified>2007-05-04T01:30:03Z</modified>
+		<subject>Test triangles</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -110,7 +84,7 @@ limitations under the License.</copyright>
         <geometry id="pPyramidShape1" name="pPyramidShape1">
             <mesh>
                 <source id="pPyramidShape1-positions" name="position">
-                    <float_array id="pPyramidShape1-positions-array" count="48">3e-006 -14.0685 -28.137 28.137 -14.0685 0 -28.137 -14.0685 -2e-006 -1e-006 -14.0685 28.137 3e-006 -14.0685 -28.137 -28.137 -14.0685 -2e-006 0 14.0685 0 -28.137 -14.0685 -2e-006 -1e-006 -14.0685 28.137 0 14.0685 0 -1e-006 -14.0685 28.137 28.137 -14.0685 0 0 14.0685 0 28.137 -14.0685 0 3e-006 -14.0685 -28.137 0 14.0685 0</float_array>
+                    <float_array count="48" id="pPyramidShape1-positions-array">3e-006 -14.0685 -28.137 28.137 -14.0685 0 -28.137 -14.0685 -2e-006 -1e-006 -14.0685 28.137 3e-006 -14.0685 -28.137 -28.137 -14.0685 -2e-006 0 14.0685 0 -28.137 -14.0685 -2e-006 -1e-006 -14.0685 28.137 0 14.0685 0 -1e-006 -14.0685 28.137 28.137 -14.0685 0 0 14.0685 0 28.137 -14.0685 0 3e-006 -14.0685 -28.137 0 14.0685 0</float_array>
                     <technique_common>
                         <accessor count="16" source="#pPyramidShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -119,19 +93,8 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pPyramidShape1-normals" name="normal">
-                    <float_array id="pPyramidShape1-normals-array" count="48">0 -1 0 0 -1 0 0 -1 0 0 -1 0 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735</float_array>
-                    <technique_common>
-                        <accessor count="16" source="#pPyramidShape1-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="pPyramidShape1-vertices">
                     <input semantic="POSITION" source="#pPyramidShape1-positions"/>
-                    <input semantic="NORMAL" source="#pPyramidShape1-normals"/>
                 </vertices>
                 <triangles count="1" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pPyramidShape1-vertices"/>
@@ -162,7 +125,7 @@ limitations under the License.</copyright>
         <geometry id="pPyramidShape2" name="pPyramidShape2">
             <mesh>
                 <source id="pPyramidShape2-positions" name="position">
-                    <float_array id="pPyramidShape2-positions-array" count="48">4e-006 -17.2345 -34.4689 34.4689 -17.2345 0 -34.4689 -17.2345 -3e-006 -1e-006 -17.2345 34.4689 4e-006 -17.2345 -34.4689 -34.4689 -17.2345 -3e-006 0 17.2345 0 -34.4689 -17.2345 -3e-006 -1e-006 -17.2345 34.4689 0 17.2345 0 -1e-006 -17.2345 34.4689 34.4689 -17.2345 0 0 17.2345 0 34.4689 -17.2345 0 4e-006 -17.2345 -34.4689 0 17.2345 0</float_array>
+                    <float_array count="48" id="pPyramidShape2-positions-array">4e-006 -17.2345 -34.4689 34.4689 -17.2345 0 -34.4689 -17.2345 -3e-006 -1e-006 -17.2345 34.4689 4e-006 -17.2345 -34.4689 -34.4689 -17.2345 -3e-006 0 17.2345 0 -34.4689 -17.2345 -3e-006 -1e-006 -17.2345 34.4689 0 17.2345 0 -1e-006 -17.2345 34.4689 34.4689 -17.2345 0 0 17.2345 0 34.4689 -17.2345 0 4e-006 -17.2345 -34.4689 0 17.2345 0</float_array>
                     <technique_common>
                         <accessor count="16" source="#pPyramidShape2-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -171,19 +134,8 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pPyramidShape2-normals" name="normal">
-                    <float_array id="pPyramidShape2-normals-array" count="48">0 -1 0 0 -1 0 0 -1 0 0 -1 0 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735</float_array>
-                    <technique_common>
-                        <accessor count="16" source="#pPyramidShape2-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="pPyramidShape2-vertices">
                     <input semantic="POSITION" source="#pPyramidShape2-positions"/>
-                    <input semantic="NORMAL" source="#pPyramidShape2-normals"/>
                 </vertices>
                 <triangles count="1" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pPyramidShape2-vertices"/>
@@ -214,7 +166,7 @@ limitations under the License.</copyright>
         <geometry id="pPyramidShape3" name="pPyramidShape3">
             <mesh>
                 <source id="pPyramidShape3-positions" name="position">
-                    <float_array id="pPyramidShape3-positions-array" count="48">4e-006 -16.6203 -33.2406 33.2406 -16.6203 0 -33.2406 -16.6203 -2e-006 -1e-006 -16.6203 33.2406 4e-006 -16.6203 -33.2406 -33.2406 -16.6203 -2e-006 0 16.6203 0 -33.2406 -16.6203 -2e-006 -1e-006 -16.6203 33.2406 0 16.6203 0 -1e-006 -16.6203 33.2406 33.2406 -16.6203 0 0 16.6203 0 33.2406 -16.6203 0 4e-006 -16.6203 -33.2406 0 16.6203 0</float_array>
+                    <float_array count="48" id="pPyramidShape3-positions-array">4e-006 -16.6203 -33.2406 33.2406 -16.6203 0 -33.2406 -16.6203 -2e-006 -1e-006 -16.6203 33.2406 4e-006 -16.6203 -33.2406 -33.2406 -16.6203 -2e-006 0 16.6203 0 -33.2406 -16.6203 -2e-006 -1e-006 -16.6203 33.2406 0 16.6203 0 -1e-006 -16.6203 33.2406 33.2406 -16.6203 0 0 16.6203 0 33.2406 -16.6203 0 4e-006 -16.6203 -33.2406 0 16.6203 0</float_array>
                     <technique_common>
                         <accessor count="16" source="#pPyramidShape3-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -223,19 +175,8 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pPyramidShape3-normals" name="normal">
-                    <float_array id="pPyramidShape3-normals-array" count="48">0 -1 0 0 -1 0 0 -1 0 0 -1 0 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 -0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735 0.57735 0.57735 -0.57735</float_array>
-                    <technique_common>
-                        <accessor count="16" source="#pPyramidShape3-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="pPyramidShape3-vertices">
                     <input semantic="POSITION" source="#pPyramidShape3-positions"/>
-                    <input semantic="NORMAL" source="#pPyramidShape3-normals"/>
                 </vertices>
                 <triangles count="1" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pPyramidShape3-vertices"/>

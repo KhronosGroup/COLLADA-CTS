@@ -2,8 +2,7 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
   <asset>
     <contributor>
-      <author> Wei Guo </author>
-      <author>gcorson</author>
+      <author>Wei Guo, gcorson</author>
       <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
       <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
 curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
@@ -16,7 +15,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
+    <keywords>superior_badge mesh input</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test preservation of customized 3 dimensional input</subject>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

@@ -56,6 +56,7 @@ class SimpleJudgingObject:
             for eachInput in inputInputLst:
                 if GetAttriByEle( eachInput, 'semantic') == 'SHINDEX':
                     resSHIndex = GetDataFromInput( testIO.GetRoot(self.inputFilleName), eachInput, 'float_array')
+                    print "input: ",resSHIndex
                     # check whether there is such data
                     if resSHIndex == None:
                         return [False, 'Error: no data is hold.']
@@ -66,6 +67,7 @@ class SimpleJudgingObject:
             for eachOutput in inputOutputLst:
                 if GetAttriByEle( eachOutput, 'semantic') == 'SHINDEX':
                     resSHIndex = GetDataFromInput( testIO.GetRoot(self.outputFilleNameLst[0]), eachOutput, 'float_array')
+                    print "output: ",resSHIndex
                     if resSHIndex == None:
                         return [False, 'Error: no data is hold.']
                     else:
@@ -131,7 +133,7 @@ class SimpleJudgingObject:
             return [False, 'Failed, inputs are missing.']
         
     # This function is enough to test whether baked matrix is correct or not. through image comparison
-    def JudgeBaseline(self, context):
+    def JudgeBasic(self, context):
         
         if len(self.tagLst) == 0:
             context.Log("Error: judging script doesn't have enough information about tag names.")
@@ -156,6 +158,7 @@ class SimpleJudgingObject:
         
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
+        print "output file name: ",outputFilenames
         if len(outputFilenames) == 0:
             context.Log("FAILED: There are no export steps.")
             return False
@@ -173,13 +176,14 @@ class SimpleJudgingObject:
             self.status_basic = 1
             return True
         else:
+            print "zzz: ", resChkCustom_array[1]
             self.status_basic = 0
             context.Log("FAILED: No baseline badge defined and failed in test of Exemplary bagde.")
             return False
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
-    def JudgeExemplary(self, context):        
+    def JudgeIntermediate(self, context):        
         context.Log(self.msgB2M)
         if self.status_basic == 1:
             return True
@@ -188,7 +192,7 @@ class SimpleJudgingObject:
    
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
-    def JudgeSuperior(self, context):
+    def JudgeAdvanced(self, context):
         context.Log("N/A")
         return False
 

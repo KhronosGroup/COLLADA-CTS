@@ -3,10 +3,9 @@
     <asset>
         <contributor>
             <author>WeiGuo</author>
-            <comments>Customized data added and need to be preserved.</comments>
-            <author>Hlaw</author>
             <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+            <comments>Customized data added and need to be preserved.
+Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
 curveConstrainSampling=0;exportCameraAsLookat=0;
 exportLights=1;exportCameras=1;exportJointsAndSkin=1;
 exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
@@ -49,7 +48,9 @@ limitations under the License.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+        <keywords>superior_badge mesh input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
+        <subject>Test preservation of customized 3 dimensional input</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -144,7 +145,7 @@ limitations under the License.</copyright>
                 <source id="cube-color1" name="color1">
                   <float_array id="cube-color1-array" count="12">0 0 0 0 0 0 1 1 1 1 1 1</float_array>
                   <technique_common>
-                    <accessor count="4" source="#cube-map1-array" stride="3">
+                    <accessor count="4" source="#cube-color1-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
