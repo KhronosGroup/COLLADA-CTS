@@ -1,0 +1,1 @@
+This is a broken test. I use wrong skeleton id in the <skeleton> under instance_controller, so application should not be able to generate any skinning effect and instead, there should be only a cylinder as original mesh. Judging for this test case compares its image to the image generated from reference_skin_broken.
