@@ -1,1 +1,0 @@
-png\box_diffuse_color_green.png

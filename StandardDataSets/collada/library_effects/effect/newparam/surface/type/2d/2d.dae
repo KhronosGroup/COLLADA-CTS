@@ -1,30 +1,17 @@
 <?xml version="1.0"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
-        <contributor>
-            <author>Wei Guo</author>
-            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
-exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
+		<contributor>
+			<copyright>
+		    	# Copyright (C) 2007 - 2009 Khronos Group
+		        # Available only to Khronos members and adopters.
+		        # Distribution of this file or its content is strictly prohibited.
+			</copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+        <keywords>Badge: Baseline</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
+        <subject>Newparam: surface Type: 2D</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -58,26 +45,20 @@ limitations under the License.</copyright>
     </library_materials>
     <library_effects>
       <effect id="lambert1-fx">
+        <image id="checkerboard_jpg" name="checkerboard_jpg">
+          <init_from>checkerboard.png</init_from>
+        </image>
         <newparam sid="file1-surface">
           <surface type="2D">
             <init_from>checkerboard_jpg</init_from>
-            <format>R8G8B8A8</format>
           </surface>
         </newparam>
-
         <newparam sid="file1-sampler">
           <sampler2D>
             <source>file1-surface</source>
-            <minfilter>NEAREST</minfilter>
-            <magfilter>NEAREST</magfilter>
           </sampler2D>
         </newparam>
-
         <profile_COMMON>
-          <image id="checkerboard_jpg" name="checkerboard_jpg">
-            <init_from>checkerboard.jpg</init_from>
-          </image>
-                
                 <technique sid="common">
                     <lambert>
                         <emission>
@@ -95,9 +76,6 @@ limitations under the License.</copyright>
                         <transparency>
                             <float>1.0</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -116,7 +94,7 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                
+
                 <source id="cube-map1" name="map1">
                     <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
                     <technique_common>
@@ -125,7 +103,7 @@ limitations under the License.</copyright>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
-                </source>               
+                </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>

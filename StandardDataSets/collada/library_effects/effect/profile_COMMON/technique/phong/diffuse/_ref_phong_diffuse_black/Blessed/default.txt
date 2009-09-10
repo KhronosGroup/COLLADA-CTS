@@ -1,0 +1,1 @@
+png\_ref_phong_diffuse_black1.png
