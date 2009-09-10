@@ -12,32 +12,43 @@ exportNormals=1;exportTexCoords=1;
 exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=0;
 dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+# Copyright (C) 2007 - 2009 Khronos Group 
+# Available only to Khronos members and adopters. 
+# Distribution of this file or its content is strictly prohibited.
+      </copyright>
       <source_data>file:///R:/AVC/Users/jawilli3/Projects/Maya2008/AVC/colladaTests/scenes/checkerRGB.mb</source_data>
     </contributor>
     <created>2008-09-17T22:34:24Z</created>
+    <keywords>Superior material extra</keywords>
     <modified>2008-09-17T22:34:24Z</modified>
+    <subject>Test multiple full extra preservation</subject>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
-  <library_physics_scenes>
-    <physics_scene id="MayaNativePhysicsScene">
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9999</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
       <technique_common>
-        <gravity>0 -980 0</gravity>
-        <time_step>0.083</time_step>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
       </technique_common>
-    </physics_scene>
-  </library_physics_scenes>
-  <library_images>
-    <image id="file1" name="file1">
-      <init_from>./checkerRGB.jpg</init_from>
-      <extra>
-        <technique profile="MAYA">
-          <dgnode_type>kFile</dgnode_type>
-          <image_sequence>0</image_sequence>
-        </technique>
-      </extra>
-    </image>
-  </library_images>
+    </light>
+  </library_lights>
   <library_materials>
     <material id="lamb1" name="lamb1">
       <instance_effect url="#lamb1-fx"/>
@@ -59,7 +70,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <material id="lamb2" name="lamb2">
       <instance_effect url="#lamb2-fx"/>
       <extra>
-        <technique profile="MAYA">
+        <technique profile="MAX">
           <dynamic_attributes>
             <ilrIrradianceMult short_name="ilrIrradianceMult" type="color3">1 1 1</ilrIrradianceMult>
             <ilrGlossyRefractions short_name="ilrGlossyRefractions" type="bool">0</ilrGlossyRefractions>
@@ -67,8 +78,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
             <ilrGlossyRefrSharpness short_name="ilrGlossyRefrSharpness" type="float">4</ilrGlossyRefrSharpness>
             <ilrGlossyRefrAnisotropic short_name="ilrGlossyRefrAnisotropic" type="bool">0</ilrGlossyRefrAnisotropic>
             <ilrGlossyRefrAngle short_name="ilrGlossyRefrAngle" type="float">0</ilrGlossyRefrAngle>
-            <ilrGlossyRefrSpreadX short_name="ilrGlossyRefrSpreadX" type="float">5</ilrGlossyRefrSpreadX>
-            <ilrGlossyRefrSpreadY short_name="ilrGlossyRefrSpreadY" type="float">1</ilrGlossyRefrSpreadY>
           </dynamic_attributes>
         </technique>
       </extra>
@@ -76,548 +85,206 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <material id="lamb3" name="lamb3">
       <instance_effect url="#lamb3-fx"/>
       <extra>
-        <technique profile="MAYA">
+        <technique profile="FCOLLADA">
           <dynamic_attributes>
             <ilrIrradianceMult short_name="ilrIrradianceMult" type="color3">1 1 1</ilrIrradianceMult>
             <ilrGlossyRefractions short_name="ilrGlossyRefractions" type="bool">0</ilrGlossyRefractions>
             <ilrGlossyRefrMaximumRays short_name="ilrGlossyRefrMaximumRays" type="int">4</ilrGlossyRefrMaximumRays>
             <ilrGlossyRefrSharpness short_name="ilrGlossyRefrSharpness" type="float">4</ilrGlossyRefrSharpness>
-            <ilrGlossyRefrAnisotropic short_name="ilrGlossyRefrAnisotropic" type="bool">0</ilrGlossyRefrAnisotropic>
-            <ilrGlossyRefrAngle short_name="ilrGlossyRefrAngle" type="float">0</ilrGlossyRefrAngle>
-            <ilrGlossyRefrSpreadX short_name="ilrGlossyRefrSpreadX" type="float">5</ilrGlossyRefrSpreadX>
-            <ilrGlossyRefrSpreadY short_name="ilrGlossyRefrSpreadY" type="float">1</ilrGlossyRefrSpreadY>
           </dynamic_attributes>
         </technique>
       </extra>
     </material>
   </library_materials>
-  <library_effects>
-    <effect id="lamb1-fx">
-      <profile_COMMON>
-        <newparam sid="file1-surface">
-          <surface type="2D">
-            <init_from>file1</init_from>
-            <format>A8R8G8B8</format>
-          </surface>
-        </newparam>
-        <newparam sid="file1-sampler">
-          <sampler2D>
-            <source>file1-surface</source>
-            <wrap_s>WRAP</wrap_s>
-            <wrap_t>WRAP</wrap_t>
-            <minfilter>NONE</minfilter>
-            <magfilter>NONE</magfilter>
-            <mipfilter>NONE</mipfilter>
-          </sampler2D>
-        </newparam>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <texture texture="file1-sampler" texcoord="TEX0">
-                <extra>
-                  <technique profile="MAYA">
-                    <wrapU>1</wrapU>
-                    <wrapV>1</wrapV>
-                    <mirrorU>0</mirrorU>
-                    <mirrorV>0</mirrorV>
-                    <coverageU>1</coverageU>
-                    <coverageV>1</coverageV>
-                    <translateFrameU>0</translateFrameU>
-                    <translateFrameV>0</translateFrameV>
-                    <rotateFrame>0</rotateFrame>
-                    <stagger>0</stagger>
-                    <fast>0</fast>
-                    <repeatU>1</repeatU>
-                    <repeatV>1</repeatV>
-                    <offsetU>0</offsetU>
-                    <offsetV>0</offsetV>
-                    <rotateUV>0</rotateUV>
-                    <noiseU>0</noiseU>
-                    <noiseV>0</noiseV>
-                    <blend_mode>NONE</blend_mode>
-                  </technique>
-                </extra>
-              </texture>
-            </diffuse>
-            <transparent opaque="RGB_ZERO">
-              <color>0 0 0 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
-          </lambert>
-          <extra>
-            <technique profile="FCOLLADA"/>
-          </extra>
-        </technique>
-      </profile_COMMON>
-    </effect>
-    <effect id="lamb2-fx">
-      <profile_COMMON>
-        <newparam sid="file1-surface">
-          <surface type="2D">
-            <init_from>file1</init_from>
-            <format>A8R8G8B8</format>
-          </surface>
-        </newparam>
-        <newparam sid="file1-sampler">
-          <sampler2D>
-            <source>file1-surface</source>
-            <wrap_s>WRAP</wrap_s>
-            <wrap_t>WRAP</wrap_t>
-            <minfilter>NONE</minfilter>
-            <magfilter>NONE</magfilter>
-            <mipfilter>NONE</mipfilter>
-          </sampler2D>
-        </newparam>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <texture texture="file1-sampler" texcoord="TEX0">
-                <extra>
-                  <technique profile="MAYA">
-                    <wrapU>1</wrapU>
-                    <wrapV>1</wrapV>
-                    <mirrorU>0</mirrorU>
-                    <mirrorV>0</mirrorV>
-                    <coverageU>1</coverageU>
-                    <coverageV>1</coverageV>
-                    <translateFrameU>0</translateFrameU>
-                    <translateFrameV>0</translateFrameV>
-                    <rotateFrame>0</rotateFrame>
-                    <stagger>0</stagger>
-                    <fast>0</fast>
-                    <repeatU>3</repeatU>
-                    <repeatV>3</repeatV>
-                    <offsetU>0</offsetU>
-                    <offsetV>0</offsetV>
-                    <rotateUV>0</rotateUV>
-                    <noiseU>0</noiseU>
-                    <noiseV>0</noiseV>
-                    <blend_mode>NONE</blend_mode>
-                  </technique>
-                </extra>
-              </texture>
-            </diffuse>
-            <transparent opaque="RGB_ZERO">
-              <color>0 0 0 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
-          </lambert>
-          <extra>
-            <technique profile="FCOLLADA"/>
-          </extra>
-        </technique>
-      </profile_COMMON>
-    </effect>
-    <effect id="lamb3-fx">
-      <profile_COMMON>
-        <newparam sid="file1-surface">
-          <surface type="2D">
-            <init_from>file1</init_from>
-            <format>A8R8G8B8</format>
-          </surface>
-        </newparam>
-        <newparam sid="file1-sampler">
-          <sampler2D>
-            <source>file1-surface</source>
-            <wrap_s>WRAP</wrap_s>
-            <wrap_t>WRAP</wrap_t>
-            <minfilter>NONE</minfilter>
-            <magfilter>NONE</magfilter>
-            <mipfilter>NONE</mipfilter>
-          </sampler2D>
-        </newparam>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <texture texture="file1-sampler" texcoord="TEX0">
-                <extra>
-                  <technique profile="MAYA">
-                    <wrapU>1</wrapU>
-                    <wrapV>1</wrapV>
-                    <mirrorU>0</mirrorU>
-                    <mirrorV>0</mirrorV>
-                    <coverageU>1</coverageU>
-                    <coverageV>1</coverageV>
-                    <translateFrameU>0</translateFrameU>
-                    <translateFrameV>0</translateFrameV>
-                    <rotateFrame>0</rotateFrame>
-                    <stagger>0</stagger>
-                    <fast>0</fast>
-                    <repeatU>3</repeatU>
-                    <repeatV>1</repeatV>
-                    <offsetU>0</offsetU>
-                    <offsetV>0</offsetV>
-                    <rotateUV>0</rotateUV>
-                    <noiseU>0</noiseU>
-                    <noiseV>0</noiseV>
-                    <blend_mode>NONE</blend_mode>
-                  </technique>
-                </extra>
-              </texture>
-            </diffuse>
-            <transparent opaque="RGB_ZERO">
-              <color>0 0 0 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
-          </lambert>
-          <extra>
-            <technique profile="FCOLLADA"/>
-          </extra>
-        </technique>
-      </profile_COMMON>
-    </effect>
-  </library_effects>
-  <library_geometries>
-    <geometry id="pPlaneShape1" name="pPlaneShape1">
-      <mesh>
-        <source id="pPlaneShape1-positions" name="position">
-          <float_array id="pPlaneShape1-positions-array" count="363">-0.5 0 0.5 -0.4 0 0.5 -0.3 0 0.5 -0.2 0 0.5 -0.1 0 0.5 0 0 0.5 0.1 0 0.5 0.2 0 0.5 0.3 0 0.5 0.4 0 0.5 0.5 0 0.5 -0.5 0 0.4 -0.4 0 0.4 -0.3 0 0.4 -0.2 0 0.4 -0.1 0 0.4 0 0 0.4 0.1 0 0.4 0.2 0 0.4 0.3 0 0.4 0.4 0 0.4 0.5 0 0.4 -0.5 0 0.3 -0.4 0 0.3 -0.3 0 0.3 -0.2 0 0.3 -0.1 0 0.3 0 0 0.3 0.1 0 0.3 0.2 0 0.3 0.3 0 0.3 0.4 0 0.3 0.5 0 0.3 -0.5 0 0.2 -0.4 0 0.2 -0.3 0 0.2 -0.2 0 0.2 -0.1 0 0.2 0 0 0.2 0.1 0 0.2 0.2 0 0.2 0.3 0 0.2 0.4 0 0.2 0.5 0 0.2 -0.5 0 0.1 -0.4 0 0.1 -0.3 0 0.1 -0.2 0 0.1 -0.1 0 0.1 0 0 0.1 0.1 0 0.1 0.2 0 0.1 0.3 0 0.1 0.4 0 0.1 0.5 0 0.1 -0.5 0 0 -0.4 0 0 -0.3 0 0 -0.2 0 0 -0.1 0 0 0 0 0 0.1 0 0 0.2 0 0 0.3 0 0 0.4 0 0 0.5 0 0 -0.5 0 -0.1 -0.4 0 -0.1 -0.3 0 -0.1 -0.2 0 -0.1 -0.1 0 -0.1 0 0 -0.1 0.1 0 -0.1 0.2 0 -0.1 0.3 0 -0.1 0.4 0 -0.1 0.5 0 -0.1 -0.5 0 -0.2 -0.4 0 -0.2 -0.3 0 -0.2 -0.2 0 -0.2 -0.1 0 -0.2 0 0 -0.2 0.1 0 -0.2 0.2 0 -0.2 0.3 0 -0.2 0.4 0 -0.2 0.5 0 -0.2 -0.5 0 -0.3 -0.4 0 -0.3 -0.3 0 -0.3 -0.2 0 -0.3 -0.1 0 -0.3 0 0 -0.3 0.1 0 -0.3 0.2 0 -0.3 0.3 0 -0.3 0.4 0 -0.3 0.5 0 -0.3 -0.5 0 -0.4 -0.4 0 -0.4 -0.3 0 -0.4 -0.2 0 -0.4 -0.1 0 -0.4 0 0 -0.4 0.1 0 -0.4 0.2 0 -0.4 0.3 0 -0.4 0.4 0 -0.4 0.5 0 -0.4 -0.5 0 -0.5 -0.4 0 -0.5 -0.3 0 -0.5 -0.2 0 -0.5 -0.1 0 -0.5 0 0 -0.5 0.1 0 -0.5 0.2 0 -0.5 0.3 0 -0.5 0.4 0 -0.5 0.5 0 -0.5</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape1-positions-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape1-normals" name="normal">
-          <float_array id="pPlaneShape1-normals-array" count="363">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape1-normals-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape1-map1" name="map1">
-          <float_array id="pPlaneShape1-map1-array" count="242">0 0 0.1 0 0.2 0 0.3 0 0.4 0 0.5 0 0.6 0 0.7 0 0.8 0 0.9 0 1 0 0 0.1 0.1 0.1 0.2 0.1 0.3 0.1 0.4 0.1 0.5 0.1 0.6 0.1 0.7 0.1 0.8 0.1 0.9 0.1 1 0.1 0 0.2 0.1 0.2 0.2 0.2 0.3 0.2 0.4 0.2 0.5 0.2 0.6 0.2 0.7 0.2 0.8 0.2 0.9 0.2 1 0.2 0 0.3 0.1 0.3 0.2 0.3 0.3 0.3 0.4 0.3 0.5 0.3 0.6 0.3 0.7 0.3 0.8 0.3 0.9 0.3 1 0.3 0 0.4 0.1 0.4 0.2 0.4 0.3 0.4 0.4 0.4 0.5 0.4 0.6 0.4 0.7 0.4 0.8 0.4 0.9 0.4 1 0.4 0 0.5 0.1 0.5 0.2 0.5 0.3 0.5 0.4 0.5 0.5 0.5 0.6 0.5 0.7 0.5 0.8 0.5 0.9 0.5 1 0.5 0 0.6 0.1 0.6 0.2 0.6 0.3 0.6 0.4 0.6 0.5 0.6 0.6 0.6 0.7 0.6 0.8 0.6 0.9 0.6 1 0.6 0 0.7 0.1 0.7 0.2 0.7 0.3 0.7 0.4 0.7 0.5 0.7 0.6 0.7 0.7 0.7 0.8 0.7 0.9 0.7 1 0.7 0 0.8 0.1 0.8 0.2 0.8 0.3 0.8 0.4 0.8 0.5 0.8 0.6 0.8 0.7 0.8 0.8 0.8 0.9 0.8 1 0.8 0 0.9 0.1 0.9 0.2 0.9 0.3 0.9 0.4 0.9 0.5 0.9 0.6 0.9 0.7 0.9 0.8 0.9 0.9 0.9 1 0.9 0 1 0.1 1 0.2 1 0.3 1 0.4 1 0.5 1 0.6 1 0.7 1 0.8 1 0.9 1 1 1</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape1-map1-array" count="121" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <vertices id="pPlaneShape1-vertices">
-          <input semantic="POSITION" source="#pPlaneShape1-positions"/>
-          <input semantic="NORMAL" source="#pPlaneShape1-normals"/>
-        </vertices>
-        <polylist material="blinn3SG" count="100">
-          <input semantic="VERTEX" source="#pPlaneShape1-vertices" offset="0"/>
-          <input semantic="TEXCOORD" source="#pPlaneShape1-map1" offset="1" set="0"/>
-          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</vcount>
-          <p>0 0 1 1 12 12 11 11 1 1 2 2 13 13 12 12 2 2 3 3 14 14 13 13 3 3 4 4 15 15 14 14 4 4 5 5 16 16 15 15 5 5 6 6 17 17 16 16 6 6 7 7 18 18 17 17 7 7 8 8 19 19 18 18 8 8 9 9 20 20 19 19 9 9 10 10 21 21 20 20 11 11 12 12 23 23 22 22 12 12 13 13 24 24 23 23 13 13 14 14 25 25 24 24 14 14 15 15 26 26 25 25 15 15 16 16 27 27 26 26 16 16 17 17 28 28 27 27 17 17 18 18 29 29 28 28 18 18 19 19 30 30 29 29 19 19 20 20 31 31 30 30 20 20 21 21 32 32 31 31 22 22 23 23 34 34 33 33 23 23 24 24 35 35 34 34 24 24 25 25 36 36 35 35 25 25 26 26 37 37 36 36 26 26 27 27 38 38 37 37 27 27 28 28 39 39 38 38 28 28 29 29 40 40 39 39 29 29 30 30 41 41 40 40 30 30 31 31 42 42 41 41 31 31 32 32 43 43 42 42 33 33 34 34 45 45 44 44 34 34 35 35 46 46 45 45 35 35 36 36 47 47 46 46 36 36 37 37 48 48 47 47 37 37 38 38 49 49 48 48 38 38 39 39 50 50 49 49 39 39 40 40 51 51 50 50 40 40 41 41 52 52 51 51 41 41 42 42 53 53 52 52 42 42 43 43 54 54 53 53 44 44 45 45 56 56 55 55 45 45 46 46 57 57 56 56 46 46 47 47 58 58 57 57 47 47 48 48 59 59 58 58 48 48 49 49 60 60 59 59 49 49 50 50 61 61 60 60 50 50 51 51 62 62 61 61 51 51 52 52 63 63 62 62 52 52 53 53 64 64 63 63 53 53 54 54 65 65 64 64 55 55 56 56 67 67 66 66 56 56 57 57 68 68 67 67 57 57 58 58 69 69 68 68 58 58 59 59 70 70 69 69 59 59 60 60 71 71 70 70 60 60 61 61 72 72 71 71 61 61 62 62 73 73 72 72 62 62 63 63 74 74 73 73 63 63 64 64 75 75 74 74 64 64 65 65 76 76 75 75 66 66 67 67 78 78 77 77 67 67 68 68 79 79 78 78 68 68 69 69 80 80 79 79 69 69 70 70 81 81 80 80 70 70 71 71 82 82 81 81 71 71 72 72 83 83 82 82 72 72 73 73 84 84 83 83 73 73 74 74 85 85 84 84 74 74 75 75 86 86 85 85 75 75 76 76 87 87 86 86 77 77 78 78 89 89 88 88 78 78 79 79 90 90 89 89 79 79 80 80 91 91 90 90 80 80 81 81 92 92 91 91 81 81 82 82 93 93 92 92 82 82 83 83 94 94 93 93 83 83 84 84 95 95 94 94 84 84 85 85 96 96 95 95 85 85 86 86 97 97 96 96 86 86 87 87 98 98 97 97 88 88 89 89 100 100 99 99 89 89 90 90 101 101 100 100 90 90 91 91 102 102 101 101 91 91 92 92 103 103 102 102 92 92 93 93 104 104 103 103 93 93 94 94 105 105 104 104 94 94 95 95 106 106 105 105 95 95 96 96 107 107 106 106 96 96 97 97 108 108 107 107 97 97 98 98 109 109 108 108 99 99 100 100 111 111 110 110 100 100 101 101 112 112 111 111 101 101 102 102 113 113 112 112 102 102 103 103 114 114 113 113 103 103 104 104 115 115 114 114 104 104 105 105 116 116 115 115 105 105 106 106 117 117 116 116 106 106 107 107 118 118 117 117 107 107 108 108 119 119 118 118 108 108 109 109 120 120 119 119</p>
-        </polylist>
-      </mesh>
-      <extra>
-        <technique profile="MAYA">
-          <double_sided>1</double_sided>
-          <dynamic_attributes>
-            <ilrReceiveGI short_name="ilrReceiveGI" type="bool">1</ilrReceiveGI>
-            <ilrCastGI short_name="ilrCastGI" type="bool">1</ilrCastGI>
-            <ilrStaticGI short_name="ilrStaticGI" type="bool">0</ilrStaticGI>
-            <ilrSmoothGI short_name="ilrSmoothGI" type="bool">1</ilrSmoothGI>
-            <ilrCastOcclusion short_name="ilrCastOcclusion" type="bool">1</ilrCastOcclusion>
-            <ilrReceiveOcclusion short_name="ilrReceiveOcclusion" type="bool">1</ilrReceiveOcclusion>
-            <ilrVisibleInFG short_name="ilrVisibleInFG" type="bool">1</ilrVisibleInFG>
-            <ilrShadowBias short_name="ilrShadowBias" type="bool">0</ilrShadowBias>
-            <ilrSmoothNormals short_name="ilrSmoothNormals" type="bool">0</ilrSmoothNormals>
-            <ilrNormalThreshold short_name="ilrNormalThreshold" type="float">30</ilrNormalThreshold>
-            <ilrIntensityOverride short_name="ilrIntensityOverride" type="bool">0</ilrIntensityOverride>
-            <ilrPrimaryIntensity short_name="ilrPrimaryIntensity" type="float">1</ilrPrimaryIntensity>
-            <ilrPrimarySaturation short_name="ilrPrimarySaturation" type="float">1</ilrPrimarySaturation>
-            <ilrSecondaryIntensity short_name="ilrSecondaryIntensity" type="float">1</ilrSecondaryIntensity>
-            <ilrSecondarySaturation short_name="ilrSecondarySaturation" type="float">1</ilrSecondarySaturation>
-            <ilrCausticsOverride short_name="ilrCausticsOverride" type="bool">0</ilrCausticsOverride>
-            <ilrCausticsAccuracy short_name="ilrCausticsAccuracy" type="float">1</ilrCausticsAccuracy>
-            <ilrCausticsRadius short_name="ilrCausticsRadius" type="float">0</ilrCausticsRadius>
-            <ilrCausticsIntensity short_name="ilrCausticsIntensity" type="float">1</ilrCausticsIntensity>
-            <ilrCausticsSaturation short_name="ilrCausticsSaturation" type="float">1</ilrCausticsSaturation>
-            <ilrGlobalPhotonMapOverride short_name="ilrGlobalPhotonMapOverride" type="bool">0</ilrGlobalPhotonMapOverride>
-            <ilrGlobalPhotonMapAccuracy short_name="ilrGlobalPhotonMapAccuracy" type="float">1</ilrGlobalPhotonMapAccuracy>
-            <ilrGlobalPhotonMapRadius short_name="ilrGlobalPhotonMapRadius" type="float">0</ilrGlobalPhotonMapRadius>
-            <ilrFinalGatherOverride short_name="ilrFinalGatherOverride" type="bool">0</ilrFinalGatherOverride>
-            <ilrFinalGatherRays short_name="ilrFinalGatherRays" type="int">1000</ilrFinalGatherRays>
-            <ilrFinalGatherAccuracy short_name="ilrFinalGatherAccuracy" type="float">1</ilrFinalGatherAccuracy>
-            <ilrFinalGatherSmooth short_name="ilrFinalGatherSmooth" type="float">1</ilrFinalGatherSmooth>
-            <ilrPathTracerOverride short_name="ilrPathTracerOverride" type="bool">0</ilrPathTracerOverride>
-            <ilrPathTracerFilterType short_name="ilrPathTracerFilterType" type="string">Box</ilrPathTracerFilterType>
-            <ilrPathTracerFilterSize short_name="ilrPathTracerFilterSize" type="float">3</ilrPathTracerFilterSize>
-            <ilrBakeResOverride short_name="ilrBakeResOverride" type="bool">0</ilrBakeResOverride>
-            <ilrBakeResXOverride short_name="ilrBakeResXOverride" type="int">512</ilrBakeResXOverride>
-            <ilrBakeResYOverride short_name="ilrBakeResYOverride" type="int">512</ilrBakeResYOverride>
-            <ilrBakeScaleOverride short_name="ilrBakeScaleOverride" type="float">1</ilrBakeScaleOverride>
-            <subdivEnable short_name="subdivEnable" type="bool">0</subdivEnable>
-            <subdivDepth short_name="subdivDepth" type="int">2</subdivDepth>
-            <subdivCorner short_name="subdivCorner" type="bool">0</subdivCorner>
-            <smoothUV short_name="smoothUV" type="bool">1</smoothUV>
-          </dynamic_attributes>
-        </technique>
-      </extra>
-    </geometry>
-    <geometry id="pPlaneShape2" name="pPlaneShape2">
-      <mesh>
-        <source id="pPlaneShape2-positions" name="position">
-          <float_array id="pPlaneShape2-positions-array" count="363">-0.5 0 0.5 -0.4 0 0.5 -0.3 0 0.5 -0.2 0 0.5 -0.1 0 0.5 0 0 0.5 0.1 0 0.5 0.2 0 0.5 0.3 0 0.5 0.4 0 0.5 0.5 0 0.5 -0.5 0 0.4 -0.4 0 0.4 -0.3 0 0.4 -0.2 0 0.4 -0.1 0 0.4 0 0 0.4 0.1 0 0.4 0.2 0 0.4 0.3 0 0.4 0.4 0 0.4 0.5 0 0.4 -0.5 0 0.3 -0.4 0 0.3 -0.3 0 0.3 -0.2 0 0.3 -0.1 0 0.3 0 0 0.3 0.1 0 0.3 0.2 0 0.3 0.3 0 0.3 0.4 0 0.3 0.5 0 0.3 -0.5 0 0.2 -0.4 0 0.2 -0.3 0 0.2 -0.2 0 0.2 -0.1 0 0.2 0 0 0.2 0.1 0 0.2 0.2 0 0.2 0.3 0 0.2 0.4 0 0.2 0.5 0 0.2 -0.5 0 0.1 -0.4 0 0.1 -0.3 0 0.1 -0.2 0 0.1 -0.1 0 0.1 0 0 0.1 0.1 0 0.1 0.2 0 0.1 0.3 0 0.1 0.4 0 0.1 0.5 0 0.1 -0.5 0 0 -0.4 0 0 -0.3 0 0 -0.2 0 0 -0.1 0 0 0 0 0 0.1 0 0 0.2 0 0 0.3 0 0 0.4 0 0 0.5 0 0 -0.5 0 -0.1 -0.4 0 -0.1 -0.3 0 -0.1 -0.2 0 -0.1 -0.1 0 -0.1 0 0 -0.1 0.1 0 -0.1 0.2 0 -0.1 0.3 0 -0.1 0.4 0 -0.1 0.5 0 -0.1 -0.5 0 -0.2 -0.4 0 -0.2 -0.3 0 -0.2 -0.2 0 -0.2 -0.1 0 -0.2 0 0 -0.2 0.1 0 -0.2 0.2 0 -0.2 0.3 0 -0.2 0.4 0 -0.2 0.5 0 -0.2 -0.5 0 -0.3 -0.4 0 -0.3 -0.3 0 -0.3 -0.2 0 -0.3 -0.1 0 -0.3 0 0 -0.3 0.1 0 -0.3 0.2 0 -0.3 0.3 0 -0.3 0.4 0 -0.3 0.5 0 -0.3 -0.5 0 -0.4 -0.4 0 -0.4 -0.3 0 -0.4 -0.2 0 -0.4 -0.1 0 -0.4 0 0 -0.4 0.1 0 -0.4 0.2 0 -0.4 0.3 0 -0.4 0.4 0 -0.4 0.5 0 -0.4 -0.5 0 -0.5 -0.4 0 -0.5 -0.3 0 -0.5 -0.2 0 -0.5 -0.1 0 -0.5 0 0 -0.5 0.1 0 -0.5 0.2 0 -0.5 0.3 0 -0.5 0.4 0 -0.5 0.5 0 -0.5</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape2-positions-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape2-normals" name="normal">
-          <float_array id="pPlaneShape2-normals-array" count="363">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape2-normals-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape2-map1" name="map1">
-          <float_array id="pPlaneShape2-map1-array" count="242">0 0 0.1 0 0.2 0 0.3 0 0.4 0 0.5 0 0.6 0 0.7 0 0.8 0 0.9 0 1 0 0 0.1 0.1 0.1 0.2 0.1 0.3 0.1 0.4 0.1 0.5 0.1 0.6 0.1 0.7 0.1 0.8 0.1 0.9 0.1 1 0.1 0 0.2 0.1 0.2 0.2 0.2 0.3 0.2 0.4 0.2 0.5 0.2 0.6 0.2 0.7 0.2 0.8 0.2 0.9 0.2 1 0.2 0 0.3 0.1 0.3 0.2 0.3 0.3 0.3 0.4 0.3 0.5 0.3 0.6 0.3 0.7 0.3 0.8 0.3 0.9 0.3 1 0.3 0 0.4 0.1 0.4 0.2 0.4 0.3 0.4 0.4 0.4 0.5 0.4 0.6 0.4 0.7 0.4 0.8 0.4 0.9 0.4 1 0.4 0 0.5 0.1 0.5 0.2 0.5 0.3 0.5 0.4 0.5 0.5 0.5 0.6 0.5 0.7 0.5 0.8 0.5 0.9 0.5 1 0.5 0 0.6 0.1 0.6 0.2 0.6 0.3 0.6 0.4 0.6 0.5 0.6 0.6 0.6 0.7 0.6 0.8 0.6 0.9 0.6 1 0.6 0 0.7 0.1 0.7 0.2 0.7 0.3 0.7 0.4 0.7 0.5 0.7 0.6 0.7 0.7 0.7 0.8 0.7 0.9 0.7 1 0.7 0 0.8 0.1 0.8 0.2 0.8 0.3 0.8 0.4 0.8 0.5 0.8 0.6 0.8 0.7 0.8 0.8 0.8 0.9 0.8 1 0.8 0 0.9 0.1 0.9 0.2 0.9 0.3 0.9 0.4 0.9 0.5 0.9 0.6 0.9 0.7 0.9 0.8 0.9 0.9 0.9 1 0.9 0 1 0.1 1 0.2 1 0.3 1 0.4 1 0.5 1 0.6 1 0.7 1 0.8 1 0.9 1 1 1</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape2-map1-array" count="121" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <vertices id="pPlaneShape2-vertices">
-          <input semantic="POSITION" source="#pPlaneShape2-positions"/>
-          <input semantic="NORMAL" source="#pPlaneShape2-normals"/>
-        </vertices>
-        <polylist material="blinn2SG" count="100">
-          <input semantic="VERTEX" source="#pPlaneShape2-vertices" offset="0"/>
-          <input semantic="TEXCOORD" source="#pPlaneShape2-map1" offset="1" set="0"/>
-          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</vcount>
-          <p>0 0 1 1 12 12 11 11 1 1 2 2 13 13 12 12 2 2 3 3 14 14 13 13 3 3 4 4 15 15 14 14 4 4 5 5 16 16 15 15 5 5 6 6 17 17 16 16 6 6 7 7 18 18 17 17 7 7 8 8 19 19 18 18 8 8 9 9 20 20 19 19 9 9 10 10 21 21 20 20 11 11 12 12 23 23 22 22 12 12 13 13 24 24 23 23 13 13 14 14 25 25 24 24 14 14 15 15 26 26 25 25 15 15 16 16 27 27 26 26 16 16 17 17 28 28 27 27 17 17 18 18 29 29 28 28 18 18 19 19 30 30 29 29 19 19 20 20 31 31 30 30 20 20 21 21 32 32 31 31 22 22 23 23 34 34 33 33 23 23 24 24 35 35 34 34 24 24 25 25 36 36 35 35 25 25 26 26 37 37 36 36 26 26 27 27 38 38 37 37 27 27 28 28 39 39 38 38 28 28 29 29 40 40 39 39 29 29 30 30 41 41 40 40 30 30 31 31 42 42 41 41 31 31 32 32 43 43 42 42 33 33 34 34 45 45 44 44 34 34 35 35 46 46 45 45 35 35 36 36 47 47 46 46 36 36 37 37 48 48 47 47 37 37 38 38 49 49 48 48 38 38 39 39 50 50 49 49 39 39 40 40 51 51 50 50 40 40 41 41 52 52 51 51 41 41 42 42 53 53 52 52 42 42 43 43 54 54 53 53 44 44 45 45 56 56 55 55 45 45 46 46 57 57 56 56 46 46 47 47 58 58 57 57 47 47 48 48 59 59 58 58 48 48 49 49 60 60 59 59 49 49 50 50 61 61 60 60 50 50 51 51 62 62 61 61 51 51 52 52 63 63 62 62 52 52 53 53 64 64 63 63 53 53 54 54 65 65 64 64 55 55 56 56 67 67 66 66 56 56 57 57 68 68 67 67 57 57 58 58 69 69 68 68 58 58 59 59 70 70 69 69 59 59 60 60 71 71 70 70 60 60 61 61 72 72 71 71 61 61 62 62 73 73 72 72 62 62 63 63 74 74 73 73 63 63 64 64 75 75 74 74 64 64 65 65 76 76 75 75 66 66 67 67 78 78 77 77 67 67 68 68 79 79 78 78 68 68 69 69 80 80 79 79 69 69 70 70 81 81 80 80 70 70 71 71 82 82 81 81 71 71 72 72 83 83 82 82 72 72 73 73 84 84 83 83 73 73 74 74 85 85 84 84 74 74 75 75 86 86 85 85 75 75 76 76 87 87 86 86 77 77 78 78 89 89 88 88 78 78 79 79 90 90 89 89 79 79 80 80 91 91 90 90 80 80 81 81 92 92 91 91 81 81 82 82 93 93 92 92 82 82 83 83 94 94 93 93 83 83 84 84 95 95 94 94 84 84 85 85 96 96 95 95 85 85 86 86 97 97 96 96 86 86 87 87 98 98 97 97 88 88 89 89 100 100 99 99 89 89 90 90 101 101 100 100 90 90 91 91 102 102 101 101 91 91 92 92 103 103 102 102 92 92 93 93 104 104 103 103 93 93 94 94 105 105 104 104 94 94 95 95 106 106 105 105 95 95 96 96 107 107 106 106 96 96 97 97 108 108 107 107 97 97 98 98 109 109 108 108 99 99 100 100 111 111 110 110 100 100 101 101 112 112 111 111 101 101 102 102 113 113 112 112 102 102 103 103 114 114 113 113 103 103 104 104 115 115 114 114 104 104 105 105 116 116 115 115 105 105 106 106 117 117 116 116 106 106 107 107 118 118 117 117 107 107 108 108 119 119 118 118 108 108 109 109 120 120 119 119</p>
-        </polylist>
-      </mesh>
-      <extra>
-        <technique profile="MAYA">
-          <double_sided>1</double_sided>
-          <dynamic_attributes>
-            <ilrReceiveGI short_name="ilrReceiveGI" type="bool">1</ilrReceiveGI>
-            <ilrCastGI short_name="ilrCastGI" type="bool">1</ilrCastGI>
-            <ilrStaticGI short_name="ilrStaticGI" type="bool">0</ilrStaticGI>
-            <ilrSmoothGI short_name="ilrSmoothGI" type="bool">1</ilrSmoothGI>
-            <ilrCastOcclusion short_name="ilrCastOcclusion" type="bool">1</ilrCastOcclusion>
-            <ilrReceiveOcclusion short_name="ilrReceiveOcclusion" type="bool">1</ilrReceiveOcclusion>
-            <ilrVisibleInFG short_name="ilrVisibleInFG" type="bool">1</ilrVisibleInFG>
-            <ilrShadowBias short_name="ilrShadowBias" type="bool">0</ilrShadowBias>
-            <ilrSmoothNormals short_name="ilrSmoothNormals" type="bool">0</ilrSmoothNormals>
-            <ilrNormalThreshold short_name="ilrNormalThreshold" type="float">30</ilrNormalThreshold>
-            <ilrIntensityOverride short_name="ilrIntensityOverride" type="bool">0</ilrIntensityOverride>
-            <ilrPrimaryIntensity short_name="ilrPrimaryIntensity" type="float">1</ilrPrimaryIntensity>
-            <ilrPrimarySaturation short_name="ilrPrimarySaturation" type="float">1</ilrPrimarySaturation>
-            <ilrSecondaryIntensity short_name="ilrSecondaryIntensity" type="float">1</ilrSecondaryIntensity>
-            <ilrSecondarySaturation short_name="ilrSecondarySaturation" type="float">1</ilrSecondarySaturation>
-            <ilrCausticsOverride short_name="ilrCausticsOverride" type="bool">0</ilrCausticsOverride>
-            <ilrCausticsAccuracy short_name="ilrCausticsAccuracy" type="float">1</ilrCausticsAccuracy>
-            <ilrCausticsRadius short_name="ilrCausticsRadius" type="float">0</ilrCausticsRadius>
-            <ilrCausticsIntensity short_name="ilrCausticsIntensity" type="float">1</ilrCausticsIntensity>
-            <ilrCausticsSaturation short_name="ilrCausticsSaturation" type="float">1</ilrCausticsSaturation>
-            <ilrGlobalPhotonMapOverride short_name="ilrGlobalPhotonMapOverride" type="bool">0</ilrGlobalPhotonMapOverride>
-            <ilrGlobalPhotonMapAccuracy short_name="ilrGlobalPhotonMapAccuracy" type="float">1</ilrGlobalPhotonMapAccuracy>
-            <ilrGlobalPhotonMapRadius short_name="ilrGlobalPhotonMapRadius" type="float">0</ilrGlobalPhotonMapRadius>
-            <ilrFinalGatherOverride short_name="ilrFinalGatherOverride" type="bool">0</ilrFinalGatherOverride>
-            <ilrFinalGatherRays short_name="ilrFinalGatherRays" type="int">1000</ilrFinalGatherRays>
-            <ilrFinalGatherAccuracy short_name="ilrFinalGatherAccuracy" type="float">1</ilrFinalGatherAccuracy>
-            <ilrFinalGatherSmooth short_name="ilrFinalGatherSmooth" type="float">1</ilrFinalGatherSmooth>
-            <ilrPathTracerOverride short_name="ilrPathTracerOverride" type="bool">0</ilrPathTracerOverride>
-            <ilrPathTracerFilterType short_name="ilrPathTracerFilterType" type="string">Box</ilrPathTracerFilterType>
-            <ilrPathTracerFilterSize short_name="ilrPathTracerFilterSize" type="float">3</ilrPathTracerFilterSize>
-            <ilrBakeResOverride short_name="ilrBakeResOverride" type="bool">0</ilrBakeResOverride>
-            <ilrBakeResXOverride short_name="ilrBakeResXOverride" type="int">512</ilrBakeResXOverride>
-            <ilrBakeResYOverride short_name="ilrBakeResYOverride" type="int">512</ilrBakeResYOverride>
-            <ilrBakeScaleOverride short_name="ilrBakeScaleOverride" type="float">1</ilrBakeScaleOverride>
-            <subdivEnable short_name="subdivEnable" type="bool">0</subdivEnable>
-            <subdivDepth short_name="subdivDepth" type="int">2</subdivDepth>
-            <subdivCorner short_name="subdivCorner" type="bool">0</subdivCorner>
-            <smoothUV short_name="smoothUV" type="bool">1</smoothUV>
-          </dynamic_attributes>
-        </technique>
-      </extra>
-    </geometry>
-    <geometry id="pPlaneShape3" name="pPlaneShape3">
-      <mesh>
-        <source id="pPlaneShape3-positions" name="position">
-          <float_array id="pPlaneShape3-positions-array" count="363">-0.5 0 0.5 -0.4 0 0.5 -0.3 0 0.5 -0.2 0 0.5 -0.1 0 0.5 0 0 0.5 0.1 0 0.5 0.2 0 0.5 0.3 0 0.5 0.4 0 0.5 0.5 0 0.5 -0.5 0 0.4 -0.4 0 0.4 -0.3 0 0.4 -0.2 0 0.4 -0.1 0 0.4 0 0 0.4 0.1 0 0.4 0.2 0 0.4 0.3 0 0.4 0.4 0 0.4 0.5 0 0.4 -0.5 0 0.3 -0.4 0 0.3 -0.3 0 0.3 -0.2 0 0.3 -0.1 0 0.3 0 0 0.3 0.1 0 0.3 0.2 0 0.3 0.3 0 0.3 0.4 0 0.3 0.5 0 0.3 -0.5 0 0.2 -0.4 0 0.2 -0.3 0 0.2 -0.2 0 0.2 -0.1 0 0.2 0 0 0.2 0.1 0 0.2 0.2 0 0.2 0.3 0 0.2 0.4 0 0.2 0.5 0 0.2 -0.5 0 0.1 -0.4 0 0.1 -0.3 0 0.1 -0.2 0 0.1 -0.1 0 0.1 0 0 0.1 0.1 0 0.1 0.2 0 0.1 0.3 0 0.1 0.4 0 0.1 0.5 0 0.1 -0.5 0 0 -0.4 0 0 -0.3 0 0 -0.2 0 0 -0.1 0 0 0 0 0 0.1 0 0 0.2 0 0 0.3 0 0 0.4 0 0 0.5 0 0 -0.5 0 -0.1 -0.4 0 -0.1 -0.3 0 -0.1 -0.2 0 -0.1 -0.1 0 -0.1 0 0 -0.1 0.1 0 -0.1 0.2 0 -0.1 0.3 0 -0.1 0.4 0 -0.1 0.5 0 -0.1 -0.5 0 -0.2 -0.4 0 -0.2 -0.3 0 -0.2 -0.2 0 -0.2 -0.1 0 -0.2 0 0 -0.2 0.1 0 -0.2 0.2 0 -0.2 0.3 0 -0.2 0.4 0 -0.2 0.5 0 -0.2 -0.5 0 -0.3 -0.4 0 -0.3 -0.3 0 -0.3 -0.2 0 -0.3 -0.1 0 -0.3 0 0 -0.3 0.1 0 -0.3 0.2 0 -0.3 0.3 0 -0.3 0.4 0 -0.3 0.5 0 -0.3 -0.5 0 -0.4 -0.4 0 -0.4 -0.3 0 -0.4 -0.2 0 -0.4 -0.1 0 -0.4 0 0 -0.4 0.1 0 -0.4 0.2 0 -0.4 0.3 0 -0.4 0.4 0 -0.4 0.5 0 -0.4 -0.5 0 -0.5 -0.4 0 -0.5 -0.3 0 -0.5 -0.2 0 -0.5 -0.1 0 -0.5 0 0 -0.5 0.1 0 -0.5 0.2 0 -0.5 0.3 0 -0.5 0.4 0 -0.5 0.5 0 -0.5</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape3-positions-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape3-normals" name="normal">
-          <float_array id="pPlaneShape3-normals-array" count="363">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape3-normals-array" count="121" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pPlaneShape3-map1" name="map1">
-          <float_array id="pPlaneShape3-map1-array" count="242">0 0 0.1 0 0.2 0 0.3 0 0.4 0 0.5 0 0.6 0 0.7 0 0.8 0 0.9 0 1 0 0 0.1 0.1 0.1 0.2 0.1 0.3 0.1 0.4 0.1 0.5 0.1 0.6 0.1 0.7 0.1 0.8 0.1 0.9 0.1 1 0.1 0 0.2 0.1 0.2 0.2 0.2 0.3 0.2 0.4 0.2 0.5 0.2 0.6 0.2 0.7 0.2 0.8 0.2 0.9 0.2 1 0.2 0 0.3 0.1 0.3 0.2 0.3 0.3 0.3 0.4 0.3 0.5 0.3 0.6 0.3 0.7 0.3 0.8 0.3 0.9 0.3 1 0.3 0 0.4 0.1 0.4 0.2 0.4 0.3 0.4 0.4 0.4 0.5 0.4 0.6 0.4 0.7 0.4 0.8 0.4 0.9 0.4 1 0.4 0 0.5 0.1 0.5 0.2 0.5 0.3 0.5 0.4 0.5 0.5 0.5 0.6 0.5 0.7 0.5 0.8 0.5 0.9 0.5 1 0.5 0 0.6 0.1 0.6 0.2 0.6 0.3 0.6 0.4 0.6 0.5 0.6 0.6 0.6 0.7 0.6 0.8 0.6 0.9 0.6 1 0.6 0 0.7 0.1 0.7 0.2 0.7 0.3 0.7 0.4 0.7 0.5 0.7 0.6 0.7 0.7 0.7 0.8 0.7 0.9 0.7 1 0.7 0 0.8 0.1 0.8 0.2 0.8 0.3 0.8 0.4 0.8 0.5 0.8 0.6 0.8 0.7 0.8 0.8 0.8 0.9 0.8 1 0.8 0 0.9 0.1 0.9 0.2 0.9 0.3 0.9 0.4 0.9 0.5 0.9 0.6 0.9 0.7 0.9 0.8 0.9 0.9 0.9 1 0.9 0 1 0.1 1 0.2 1 0.3 1 0.4 1 0.5 1 0.6 1 0.7 1 0.8 1 0.9 1 1 1</float_array>
-          <technique_common>
-            <accessor source="#pPlaneShape3-map1-array" count="121" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <vertices id="pPlaneShape3-vertices">
-          <input semantic="POSITION" source="#pPlaneShape3-positions"/>
-          <input semantic="NORMAL" source="#pPlaneShape3-normals"/>
-        </vertices>
-        <polylist material="blinn1SG" count="100">
-          <input semantic="VERTEX" source="#pPlaneShape3-vertices" offset="0"/>
-          <input semantic="TEXCOORD" source="#pPlaneShape3-map1" offset="1" set="0"/>
-          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4</vcount>
-          <p>0 0 1 1 12 12 11 11 1 1 2 2 13 13 12 12 2 2 3 3 14 14 13 13 3 3 4 4 15 15 14 14 4 4 5 5 16 16 15 15 5 5 6 6 17 17 16 16 6 6 7 7 18 18 17 17 7 7 8 8 19 19 18 18 8 8 9 9 20 20 19 19 9 9 10 10 21 21 20 20 11 11 12 12 23 23 22 22 12 12 13 13 24 24 23 23 13 13 14 14 25 25 24 24 14 14 15 15 26 26 25 25 15 15 16 16 27 27 26 26 16 16 17 17 28 28 27 27 17 17 18 18 29 29 28 28 18 18 19 19 30 30 29 29 19 19 20 20 31 31 30 30 20 20 21 21 32 32 31 31 22 22 23 23 34 34 33 33 23 23 24 24 35 35 34 34 24 24 25 25 36 36 35 35 25 25 26 26 37 37 36 36 26 26 27 27 38 38 37 37 27 27 28 28 39 39 38 38 28 28 29 29 40 40 39 39 29 29 30 30 41 41 40 40 30 30 31 31 42 42 41 41 31 31 32 32 43 43 42 42 33 33 34 34 45 45 44 44 34 34 35 35 46 46 45 45 35 35 36 36 47 47 46 46 36 36 37 37 48 48 47 47 37 37 38 38 49 49 48 48 38 38 39 39 50 50 49 49 39 39 40 40 51 51 50 50 40 40 41 41 52 52 51 51 41 41 42 42 53 53 52 52 42 42 43 43 54 54 53 53 44 44 45 45 56 56 55 55 45 45 46 46 57 57 56 56 46 46 47 47 58 58 57 57 47 47 48 48 59 59 58 58 48 48 49 49 60 60 59 59 49 49 50 50 61 61 60 60 50 50 51 51 62 62 61 61 51 51 52 52 63 63 62 62 52 52 53 53 64 64 63 63 53 53 54 54 65 65 64 64 55 55 56 56 67 67 66 66 56 56 57 57 68 68 67 67 57 57 58 58 69 69 68 68 58 58 59 59 70 70 69 69 59 59 60 60 71 71 70 70 60 60 61 61 72 72 71 71 61 61 62 62 73 73 72 72 62 62 63 63 74 74 73 73 63 63 64 64 75 75 74 74 64 64 65 65 76 76 75 75 66 66 67 67 78 78 77 77 67 67 68 68 79 79 78 78 68 68 69 69 80 80 79 79 69 69 70 70 81 81 80 80 70 70 71 71 82 82 81 81 71 71 72 72 83 83 82 82 72 72 73 73 84 84 83 83 73 73 74 74 85 85 84 84 74 74 75 75 86 86 85 85 75 75 76 76 87 87 86 86 77 77 78 78 89 89 88 88 78 78 79 79 90 90 89 89 79 79 80 80 91 91 90 90 80 80 81 81 92 92 91 91 81 81 82 82 93 93 92 92 82 82 83 83 94 94 93 93 83 83 84 84 95 95 94 94 84 84 85 85 96 96 95 95 85 85 86 86 97 97 96 96 86 86 87 87 98 98 97 97 88 88 89 89 100 100 99 99 89 89 90 90 101 101 100 100 90 90 91 91 102 102 101 101 91 91 92 92 103 103 102 102 92 92 93 93 104 104 103 103 93 93 94 94 105 105 104 104 94 94 95 95 106 106 105 105 95 95 96 96 107 107 106 106 96 96 97 97 108 108 107 107 97 97 98 98 109 109 108 108 99 99 100 100 111 111 110 110 100 100 101 101 112 112 111 111 101 101 102 102 113 113 112 112 102 102 103 103 114 114 113 113 103 103 104 104 115 115 114 114 104 104 105 105 116 116 115 115 105 105 106 106 117 117 116 116 106 106 107 107 118 118 117 117 107 107 108 108 119 119 118 118 108 108 109 109 120 120 119 119</p>
-        </polylist>
-      </mesh>
-      <extra>
-        <technique profile="MAYA">
-          <double_sided>1</double_sided>
-          <dynamic_attributes>
-            <ilrReceiveGI short_name="ilrReceiveGI" type="bool">1</ilrReceiveGI>
-            <ilrCastGI short_name="ilrCastGI" type="bool">1</ilrCastGI>
-            <ilrStaticGI short_name="ilrStaticGI" type="bool">0</ilrStaticGI>
-            <ilrSmoothGI short_name="ilrSmoothGI" type="bool">1</ilrSmoothGI>
-            <ilrCastOcclusion short_name="ilrCastOcclusion" type="bool">1</ilrCastOcclusion>
-            <ilrReceiveOcclusion short_name="ilrReceiveOcclusion" type="bool">1</ilrReceiveOcclusion>
-            <ilrVisibleInFG short_name="ilrVisibleInFG" type="bool">1</ilrVisibleInFG>
-            <ilrShadowBias short_name="ilrShadowBias" type="bool">0</ilrShadowBias>
-            <ilrSmoothNormals short_name="ilrSmoothNormals" type="bool">0</ilrSmoothNormals>
-            <ilrNormalThreshold short_name="ilrNormalThreshold" type="float">30</ilrNormalThreshold>
-            <ilrIntensityOverride short_name="ilrIntensityOverride" type="bool">0</ilrIntensityOverride>
-            <ilrPrimaryIntensity short_name="ilrPrimaryIntensity" type="float">1</ilrPrimaryIntensity>
-            <ilrPrimarySaturation short_name="ilrPrimarySaturation" type="float">1</ilrPrimarySaturation>
-            <ilrSecondaryIntensity short_name="ilrSecondaryIntensity" type="float">1</ilrSecondaryIntensity>
-            <ilrSecondarySaturation short_name="ilrSecondarySaturation" type="float">1</ilrSecondarySaturation>
-            <ilrCausticsOverride short_name="ilrCausticsOverride" type="bool">0</ilrCausticsOverride>
-            <ilrCausticsAccuracy short_name="ilrCausticsAccuracy" type="float">1</ilrCausticsAccuracy>
-            <ilrCausticsRadius short_name="ilrCausticsRadius" type="float">0</ilrCausticsRadius>
-            <ilrCausticsIntensity short_name="ilrCausticsIntensity" type="float">1</ilrCausticsIntensity>
-            <ilrCausticsSaturation short_name="ilrCausticsSaturation" type="float">1</ilrCausticsSaturation>
-            <ilrGlobalPhotonMapOverride short_name="ilrGlobalPhotonMapOverride" type="bool">0</ilrGlobalPhotonMapOverride>
-            <ilrGlobalPhotonMapAccuracy short_name="ilrGlobalPhotonMapAccuracy" type="float">1</ilrGlobalPhotonMapAccuracy>
-            <ilrGlobalPhotonMapRadius short_name="ilrGlobalPhotonMapRadius" type="float">0</ilrGlobalPhotonMapRadius>
-            <ilrFinalGatherOverride short_name="ilrFinalGatherOverride" type="bool">0</ilrFinalGatherOverride>
-            <ilrFinalGatherRays short_name="ilrFinalGatherRays" type="int">1000</ilrFinalGatherRays>
-            <ilrFinalGatherAccuracy short_name="ilrFinalGatherAccuracy" type="float">1</ilrFinalGatherAccuracy>
-            <ilrFinalGatherSmooth short_name="ilrFinalGatherSmooth" type="float">1</ilrFinalGatherSmooth>
-            <ilrPathTracerOverride short_name="ilrPathTracerOverride" type="bool">0</ilrPathTracerOverride>
-            <ilrPathTracerFilterType short_name="ilrPathTracerFilterType" type="string">Box</ilrPathTracerFilterType>
-            <ilrPathTracerFilterSize short_name="ilrPathTracerFilterSize" type="float">3</ilrPathTracerFilterSize>
-            <ilrBakeResOverride short_name="ilrBakeResOverride" type="bool">0</ilrBakeResOverride>
-            <ilrBakeResXOverride short_name="ilrBakeResXOverride" type="int">512</ilrBakeResXOverride>
-            <ilrBakeResYOverride short_name="ilrBakeResYOverride" type="int">512</ilrBakeResYOverride>
-            <ilrBakeScaleOverride short_name="ilrBakeScaleOverride" type="float">1</ilrBakeScaleOverride>
-            <subdivEnable short_name="subdivEnable" type="bool">0</subdivEnable>
-            <subdivDepth short_name="subdivDepth" type="int">2</subdivDepth>
-            <subdivCorner short_name="subdivCorner" type="bool">0</subdivCorner>
-            <smoothUV short_name="smoothUV" type="bool">1</smoothUV>
-            <miShadingSamplesOverride short_name="mso" type="bool">0</miShadingSamplesOverride>
-            <miShadingSamples short_name="msh" type="float">0</miShadingSamples>
-            <miMaxDisplaceOverride short_name="mdo" type="bool">0</miMaxDisplaceOverride>
-            <miMaxDisplace short_name="mmd" type="float">0</miMaxDisplace>
-          </dynamic_attributes>
-        </technique>
-      </extra>
-    </geometry>
-  </library_geometries>
+    <library_effects>
+        <effect id="lamb1-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
+                        <diffuse>
+                            <color>1 0 0 1</color>
+                        </diffuse>
+                        <transparent>
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+        <effect id="lamb2-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
+                        <diffuse>
+                            <color>0 1 0 1</color>
+                        </diffuse>
+                        <transparent>
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+        <effect id="lamb3-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
+                        <diffuse>
+                            <color>0 0 1 1</color>
+                        </diffuse>
+                        <transparent>
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_geometries>
+        <geometry id="pCubeShape1" name="pCubeShape1">
+            <mesh>
+                <source id="pCubeShape1-positions" name="position">
+                    <float_array count="12" id="pCubeShape1-positions-array">-25 -25 0 25 -25 0 25 25 0 -25 25 0</float_array>
+                    <technique_common>
+                        <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="pCubeShape1-vertices">
+                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
+                </vertices>
+                <polygons count="1" material="initialShadingGroup1">
+                    <input offset="0" semantic="VERTEX" source="#pCubeShape1-vertices"/>
+                    <p>0 1 2 3</p>
+                </polygons>
+            </mesh>
+        </geometry>
+        <geometry id="triangleShape" name="triangleShape">
+            <mesh>
+                <source id="triangleShape-positions" name="position">
+                    <float_array count="9" id="triangleShape-positions-array">0 25 0 -25 -25 0 25 -25 0</float_array>
+                    <technique_common>
+                        <accessor count="3" source="#triangleShape-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="triangleShape-vertices">
+                    <input semantic="POSITION" source="#triangleShape-positions"/>
+                </vertices>
+                <triangles count="1" material="initialShadingGroup2">
+                    <input offset="0" semantic="VERTEX" source="#triangleShape-vertices"/>
+                    <p>0 1 2</p>
+                </triangles>
+            </mesh>
+        </geometry>
+        <geometry id="hexagonShape" name="hexagonShape">
+            <mesh>
+                <source id="hexagonShape-positions" name="position">
+                    <float_array count="18" id="hexagonShape-positions-array">0 25 0 -25 15 0 -25 -15 0 0 -25 0 25 -15 0 25 15 0</float_array>
+                    <technique_common>
+                        <accessor count="6" source="#hexagonShape-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="hexagonShape-vertices">
+                    <input semantic="POSITION" source="#hexagonShape-positions"/>
+                </vertices>
+                <polylist count="1" material="initialShadingGroup3">
+                    <input offset="0" semantic="VERTEX" source="#hexagonShape-vertices"/>
+                    <vcount>6</vcount>
+		    <p>0 1 2 3 4 5</p>
+                </polylist>
+            </mesh>
+        </geometry>
+    </library_geometries>
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode" name="checkerRGB">
-      <node id="pPlane1" name="pPlane1" type="NODE">
-        <translate sid="translate">0 0 0.112805</translate>
+      <node id="pCube1" name="pCube1">
+	<translate>0 0 0</translate>
+	<scale>1.5 1.5 1.5</scale>
+	<instance_geometry url="#pCubeShape1">
+	    <bind_material>
+		<technique_common>
+		    <instance_material symbol="initialShadingGroup1" target="#lamb1"/>
+		</technique_common>
+	    </bind_material>
+	</instance_geometry>
+      </node>
+      <node id="triangle" name="triangle">
+	<translate>-80 0 0</translate>
+	<scale>1.5 1.5 1.5</scale>
+	<instance_geometry url="#triangleShape">
+	    <bind_material>
+		<technique_common>
+		    <instance_material symbol="initialShadingGroup2" target="#lamb2"/>
+		</technique_common>
+	    </bind_material>
+	</instance_geometry>
+      </node>
+      <node id="hexagon" name="hexagon">
+	<translate>80 0 0</translate>
+	<scale>1.5 1.5 1.5</scale>
+	<instance_geometry url="#hexagonShape">
+	    <bind_material>
+		<technique_common>
+		    <instance_material symbol="initialShadingGroup3" target="#lamb3"/>
+		</technique_common>
+	    </bind_material>
+	</instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" type="NODE">
+        <translate sid="translate">0 0 400</translate>
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 0</rotate>
         <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_geometry url="#pPlaneShape1">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="blinn3SG" target="#lamb3">
-                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
+        <instance_camera url="#mainCamera"/>
       </node>
-      <node id="pPlane2" name="pPlane2" type="NODE">
-        <translate sid="translate">0 0 -0.937343</translate>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
         <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
         <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_geometry url="#pPlaneShape2">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="blinn2SG" target="#lamb2">
-                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
+        <instance_light url="#directionalLightShape1-lib"/>
       </node>
-      <node id="pPlane3" name="pPlane3" type="NODE">
-        <translate sid="translate">0 0 -2</translate>
-        <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 0</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_geometry url="#pPlaneShape3">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="blinn1SG" target="#lamb1">
-                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
-      </node>
-      <extra>
-        <technique profile="FCOLLADA">
-          <start_time>0.041666</start_time>
-          <end_time>2</end_time>
-        </technique>
-      </extra>
     </visual_scene>
   </library_visual_scenes>
   <scene>
-    <instance_physics_scene url="#MayaNativePhysicsScene"/>
     <instance_visual_scene url="#VisualSceneNode"/>
   </scene>
 </COLLADA>
