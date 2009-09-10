@@ -1,0 +1,1 @@
+png\ambient_3_lights.png
