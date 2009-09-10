@@ -17,8 +17,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_cameras', 'camera']
-attrName = 'id'
+tagLst = []
+attrName = ''
 attrVal = ''
 dataToCheck = ''
 
@@ -39,7 +39,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -50,9 +50,10 @@ class SimpleJudgingObject:
         if (self.status_baseline == False):
             self.status_superior = self.status_baseline
             return self.status_superior
-        
-        # Check for preservation of element
-        self.__assistant.AttributePreserved(context, self.tagList, self.attrName)
+         
+        # Compare the rendered images
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_orthographic_no_geometry", None, None, 5, True, False)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

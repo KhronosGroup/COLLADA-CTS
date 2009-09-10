@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
         <contributor>
@@ -11,20 +11,16 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
+            <copyright>
+# Copyright (C) 2007 - 2009 Khronos Group 
+# Available only to Khronos members and adopters. 
+# Distribution of this file or its content is strictly prohibited.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+		<keywords>superior_badge camera orthographic</keywords>
         <modified>2007-05-23T00:01:59Z</modified>
+		<subject>Test orthographic camera</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -87,7 +83,7 @@ limitations under the License.</copyright>
         <geometry id="pCubeShape1" name="pCubeShape1">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="24">-2.73906 -1.81773 7.89704 2.73906 -1.81773 7.89704 -2.73906 1.81773 7.89704 2.73906 1.81773 7.89704 -2.73906 1.81773 -7.89704 2.73906 1.81773 -7.89704 -2.73906 -1.81773 -7.89704 2.73906 -1.81773 -7.89704</float_array>
+                    <float_array count="24" id="pCubeShape1-positions-array">-2.73906 -1.81773 7.89704 2.73906 -1.81773 7.89704 -2.73906 1.81773 7.89704 2.73906 1.81773 7.89704 -2.73906 1.81773 -7.89704 2.73906 1.81773 -7.89704 -2.73906 -1.81773 -7.89704 2.73906 -1.81773 -7.89704</float_array>
                     <technique_common>
                         <accessor count="8" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -96,18 +92,8 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pCubeShape1-normals" name="normal">
-                    <float_array id="pCubeShape1-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-                    <technique_common>
-                        <accessor count="24" source="#pCubeShape1-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <source id="pCubeShape1-map1" name="map1">
-                    <float_array id="pCubeShape1-map1-array" count="28">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
+                    <float_array count="28" id="pCubeShape1-map1-array">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
                     <technique_common>
                         <accessor count="14" source="#pCubeShape1-map1-array" stride="2">
                             <param name="S" type="float"/>
@@ -120,10 +106,9 @@ limitations under the License.</copyright>
                 </vertices>
                 <polylist count="6" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pCubeShape1-vertices"/>
-                    <input offset="1" semantic="NORMAL" source="#pCubeShape1-normals"/>
-                    <input offset="2" semantic="TEXCOORD" source="#pCubeShape1-map1" set="0"/>
+                    <input offset="1" semantic="TEXCOORD" set="0" source="#pCubeShape1-map1"/>
                     <vcount>4 4 4 4 4 4</vcount>
-                    <p>0 0 0 1 1 1 3 2 3 2 3 2 2 4 2 3 5 3 5 6 5 4 7 4 4 8 4 5 9 5 7 10 7 6 11 6 6 12 6 7 13 7 1 14 9 0 15 8 1 16 1 7 17 10 5 18 11 3 19 3 6 20 12 0 21 0 2 22 2 4 23 13</p>
+                    <p>0 0 1 1 3 2 2 3 2 4 3 5 5 6 4 7 4 8 5 9 7 10 6 11 6 12 7 13 1 14 0 15 1 16 7 17 5 18 3 19 6 20 0 21 2 22 4 23</p>
                 </polylist>
             </mesh>
         </geometry>
