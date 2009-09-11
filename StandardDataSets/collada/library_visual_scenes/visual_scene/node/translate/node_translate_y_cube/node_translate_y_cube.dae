@@ -11,20 +11,16 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
+            <copyright>
+            # Copyright (C) 2007 - 2009 Khronos Group
+            # Available only to Khronos members and adopters.
+            # Distribution of this file or its content is strictly prohibited.
+            </copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+        <keywords>Baseline node translate</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
+        <subject>Test a translate element to translate in the Y dimension</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -76,9 +72,6 @@ limitations under the License.</copyright>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -91,16 +84,6 @@ limitations under the License.</copyright>
                     <float_array id="cube-positions-array" count="24">-50 -50 50 50 -50 50 -50 50 50 50 50 50 -50 50 -50 50 50 -50 -50 -50 -50 50 -50 -50</float_array>
                     <technique_common>
                         <accessor count="8" source="#cube-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-normals" name="normal">
-                    <float_array id="cube-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-                    <technique_common>
-                        <accessor count="24" source="#cube-normals-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -121,9 +104,8 @@ limitations under the License.</copyright>
                 </vertices>
                 <triangles count="12" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="NORMAL" source="#cube-normals"/>
-                    <input offset="2" semantic="TEXCOORD" source="#cube-map1" set="0"/>
-                    <p>0 0 0 1 1 1 2 3 2 2 3 2 1 1 1 3 2 3 2 4 2 3 5 3 4 7 4 4 7 4 3 5 3 5 6 5 4 8 4 5 9 5 6 11 6 6 11 6 5 9 5 7 10 7 6 12 6 7 13 7 0 15 8 0 15 8 7 13 7 1 14 9 1 16 1 7 17 10 3 19 3 3 19 3 7 17 10 5 18 11 6 20 12 0 21 0 4 23 13 4 23 13 0 21 0 2 22 2</p>
+                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
+                    <p>0 0 1 1 2 2 2 2 1 1 3 3 2 2 3 3 4 4 4 4 3 3 5 5 4 4 5 5 6 6 6 6 5 5 7 7 6 6 7 7 0 8 0 8 7 7 1 9 1 1 7 10 3 3 3 3 7 10 5 11 6 12 0 0 4 13 4 13 0 0 2 2</p>
                 </triangles>
             </mesh>
         </geometry>

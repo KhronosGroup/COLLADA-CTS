@@ -4,154 +4,68 @@
 
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
-# [WARNING] this structure is subject to changes.
-#
 
 # This sample judging object does the following:
 #
 # JudgeBaseline: just verifies that the standard steps did not crash.
-# JudgeExemplary: also verifies that the validation steps are not in error.
-# JudgeSuperior: same as intermediate badge.
+# JudgeSuperior: also verifies that the validation steps are not in error.
+# JudgeExemplary: same as intermediate badge.
 
-# Status value:
-# -1000 : Initail status: test does not start yet.
-# 0 : Failed
-# 1 : Successful
-
-from Core.Common.DOMParser import *
-from Core.Common.CheckingModule import *
-
-from xml.dom.minidom import parse, parseString
-import os
+# We import an assistant script that includes the common verifications
+# methods. The assistant buffers its checks, so that running them again
+# does not incurs an unnecessary performance hint.
+from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-nodeIdLst = ['testCamera']
 parentId = 'VisualSceneNode'
 tagName = 'node'
 attrLst = ['layer']
+attrVal = ''
+dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, status_basic_, status_intermediate_, status_advanced_, nodeIdLst_, attrLst_):
-        self.status_basic = status_basic_
-        self.status_intermediate = status_intermediate_
-        self.status_advanced = status_advanced_
-        self.nodeIdLst = nodeIdLst_ # the node list where we will check
-        self.attrLst = attrLst_ # the attributes list where we will check.
-        self.inputFilleName = ''
-        self.outputFilleNameLst = []
-        
-    # This function is enough to test whether baked matrix is correct or not. through image comparison
+    def __init__(self, _parentId, _tagName, _attrLst, _attrVal, _data):
+        self.parentId = _parentId
+        self.tagName = _tagName
+        self.attrList = _attrLst
+        self.attrVal = _attrVal
+        self.dataToCheck = _data
+        self.status_baseline = False
+        self.status_superior = False
+        self.status_exemplary = False
+        self.__assistant = JudgeAssistant.JudgeAssistant()
+            
     def JudgeBaseline(self, context):
+        # No step should not crash
+        self.__assistant.CheckCrashes(context)
         
-        if len(self.attrLst) == 0:
-            context.Log("Error: judging script doesn't have enough information about attributes.")
-            return False
-        
-        # This is where you can test XML or force the comparison of image files
-        # or any custom verification you want to do...
-        if (context.HasStepCrashed()):
-            context.Log("FAILED: Crashes during required steps.")
-            return False
-        else:
-            context.Log("PASSED: No crashes.")
-
-        # Check the required steps for positive results and that a rendering was done.
-        if not context.HaveStepsPassed([ "Import", "Export", "Validate" ]):
-            context.Log("FAILED: Import, export and validate steps must be present and successful.")
-            self.status_basic = 0
-            return False
-        
-        # Get the input file
-        self.inputFilleName = context.GetAbsInputFilename(context.GetCurrentTestId())
-        
-        # Get the output file
-        outputFilenames = context.GetStepOutputFilenames("Export")
-        if len(outputFilenames) == 0:
-            context.Log("FAILED: There are no export steps.")
-            return False
-        else:
-            del self.outputFilleNameLst[:]
-            self.outputFilleNameLst.extend( outputFilenames )
-    
-        context.Log("PASSED: Required steps executed and passed.")
-        
-        self.status_basic = 1
-        return True
+        # Import/export/validate must exist and pass, while Render must only exist.
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+       
+        self.status_baseline = self.__assistant.GetResults()
+        return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
-    def JudgeExemplary(self, context):
-        if (self.status_basic == 1):
-            
-            testIO = DOMParserIO( self.inputFilleName, self.outputFilleNameLst )
-            # load files and generate root
-            testIO.Init()
-            testPChecker = PresChecker(testIO.GetRoot(self.inputFilleName), testIO.GetRoot(self.outputFilleNameLst[0])  )
-            
-            # Testing nodes with id:
-            for eachNodeId in nodeIdLst:
-                resSetEle = testPChecker.ResetElementById(eachNodeId)
-                resGetByTag = testPChecker.ResetElementsByTag(parentId,  tagName)
-
-                if resGetByTag[0] == False:
-                    context.Log("Failed: layers are notpreserved.")
-                    context.Log("Message: " + resGetByTag[1])
-                    return False
-                
-                # check whether there is id retrived correctly
-                if resSetEle[0] == True:
-                    resChkAttri = testPChecker.checkAttri(self.attrLst[0])
-                    
-                    if resChkAttri[0] != True:                        
-                        context.Log("Failed: " + resChkAttri[1])
-                        testIO.Delink()
-                        return False
-                else:
-                    context.Log("Failed: related element doesn't exist.")
-                    testIO.Delink()
-                    return False
-            
-            context.Log("In node, requied attribute of layter is reserved.")                        
-                    
-            # Get all tags and then compare the attributes:
-            resEleTags = testPChecker.checkElesAttribute( attrLst[0] )            
-            s
-            # release memory
-            testIO.Delink()
-            
-            # flag for all test: only pass all, then we can give a bdage
-            if resEleTags[0] == True:
-                context.Log("Passed: all layers are preserved.")
-                return True
-            else:
-                context.Log("Failed: layers are notpreserved.")
-                context.Log("Message: " + resEleTags[1])
-                return False
-        else:
-            context.Log("Did not pass basic test, not continue.")
-            self.status_intermediate = 0            
-            return False        
-
-    # To pass advanced you need to pass intermediate, this object could also include additional
-    # tests that were specific to the advanced badge
     def JudgeSuperior(self, context):
-        context.Log("N/A")
-        return False
-
-    # To pass FX you need to pass basic?
-    # This object could also include additional
-    # tests that were specific to the FX badges
-    def JudgeFx(self, context):
-        context.Log("N/A")
-        return False
-
+        # if baseline fails, no point in further checking
+        if (self.status_baseline == False):
+            self.status_superior = self.status_baseline
+            return self.status_superior
+    
+        # Check for preservation of attributes
+        self.__assistant.CheckAttrWithoutID(context, self.parentId, self.tagName, self.attrList)
+            
+        self.status_superior = self.__assistant.DeferJudgement(context)
+        return self.status_superior 
+            
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
-    def JudgePhysics(self, context):
-        context.Log("N/A")
-        return False
-
+    def JudgeExemplary(self, context):
+        self.status_exemplary = self.status_superior
+        return self.status_exemplary 
+       
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(-1000, -1000, -1000, nodeIdLst, attrLst);
+judgingObject = SimpleJudgingObject(parentId, tagName, attrLst, attrVal, dataToCheck);

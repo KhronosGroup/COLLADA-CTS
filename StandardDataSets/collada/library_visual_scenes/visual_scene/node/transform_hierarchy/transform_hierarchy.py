@@ -22,13 +22,14 @@ class SimpleJudgingObject:
         pass
     
     def CheckEnvirmoment(self):
-        if (os.environ.has_key('COLLADA_CTF_EXTERNAL_TOOL')):
-            print "There is checker defined as below:"
-            print os.environ['COLLADA_CTF_EXTERNAL_TOOL']
-            return True
-        else:
-            print "Missing envirmental variable: COLLADA_CTF_EXTERNAL_TOOL"  
-            return False 
+#        if (os.environ.has_key('COLLADA_CTF_EXTERNAL_TOOL')):
+#            print "There is checker defined as below:"
+#            print os.environ['COLLADA_CTF_EXTERNAL_TOOL']
+#            return True
+#        else:
+#            print "Missing envirmental variable: COLLADA_CTF_EXTERNAL_TOOL"  
+#            return False 
+         return True
     
     def CheckHierarchy(self, context):
         absInputFileName = context.GetAbsInputFilename(context.GetCurrentTestId())
@@ -41,7 +42,9 @@ class SimpleJudgingObject:
         
         if self.CheckEnvirmoment():
             # We have the tool installed correctly.
-            command = os.environ['COLLADA_CTF_EXTERNAL_TOOL'] + "\HierarchyPreservationChecking.exe " + absInputFileName + " " + outFileNames[0]
+#            command = os.environ['COLLADA_CTF_EXTERNAL_TOOL'] + "\HierarchyPreservationChecking.exe " + absInputFileName + " " + outFileNames[0]
+            command = "Tools\HierarchyPreservationChecking.exe " + absInputFileName + " " + outFileNames[0]
+
             #print command
             p = subprocess.Popen(command)
             result = p.wait()

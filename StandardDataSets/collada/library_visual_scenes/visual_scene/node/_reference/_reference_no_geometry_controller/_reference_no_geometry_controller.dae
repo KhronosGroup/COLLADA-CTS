@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <created>2009-05-04T12:00:00Z</created>
+	<keywords>Baseline geometry mesh</keywords>
+        <modified>2009-05-04T12:00:00Z</modified>
+        <subject>Reference test file of an image texture on a basic square</subject>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="mainCamera" name="mainCamera">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9998</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_visual_scenes>
+        <visual_scene id="visual_scene_node" name="untitled">
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 50 200</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#cameraShape1"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 41.7665</rotate>
+                <rotate sid="rotateX">1 0 0 -27.0659</rotate>
+                <instance_light url="#directionalLightShape1-lib"/>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#visual_scene_node"/>
+    </scene>
+</COLLADA>

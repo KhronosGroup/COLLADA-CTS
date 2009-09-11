@@ -1,1 +1,1 @@
-png\instance_material_same_geometry.png
+png\instance_material.png
