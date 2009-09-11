@@ -1,0 +1,1 @@
+This test performs image comparison with the test case reference_effects. You must run reference_effects first.

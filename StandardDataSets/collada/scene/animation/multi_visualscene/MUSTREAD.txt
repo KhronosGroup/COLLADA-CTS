@@ -1,3 +1,0 @@
-There is a parent folder called Animation. This is for generating animation of blessed images.
-
-The test case is generated based on setting that animation is 30 frame per second.
