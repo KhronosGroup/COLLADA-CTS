@@ -5,6 +5,9 @@
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
 
+from Core.Common.DOMParser import *
+from Core.Common.CheckingModule import *
+
 """ A judge assistant. The purpose of this structure is to abstract
     out the parts that are very common amongst the different per-test
     case judging scripts. This should writing and maintaining per-test
@@ -22,6 +25,10 @@ class JudgeAssistant:
         self.__checkCrashesResult = None
         self.__checkStepsResult = []
         self.__compareImagesResults = []
+        self.__compareRendersResults = None
+        self.__preservationResults = None
+        self.__inputFileName = ""
+        self.__outputFileNameList = []
         
         # This is the persistant result value.
         self.__result = True
@@ -52,7 +59,7 @@ class JudgeAssistant:
         The result of this function is cached so that running
         it multiple times never impacts performance.
         @param context The judgement context.
-        @param defaultLogText Whether the default log strings should be output.
+        @param != Whether the default log strings should be output.
         @return Whether any of the steps have crashed. """
     def CheckCrashes(self, context, defaultLogText = True):
 
@@ -109,7 +116,8 @@ class JudgeAssistant:
         return self.__checkStepsResult[2] and self.__checkStepsResult[3]
 
     """ Checks whether the images generated for this test case are
-        equivalent to the images generated for another test case.
+        equivalent to the images generated for another test case. Only does 
+        comparison on the first Render step of each test case.
         @param context The judgement context.
         @param substring0 A first substring to match. This parameter is necesssary.
         @param substring1 An optional second substring to match.
@@ -118,16 +126,15 @@ class JudgeAssistant:
         @param defaultLogText Whether the default log strings should be output.
         @return Whether the images generated of this test case are
             equivalent to the images of the other test case. """
-    def CompareImagesAgainst(self, context, testCaseId0, testCaseId1=None, testCaseId2=None, maxDifference = 5, defaultLogText = True):
-        
+    def CompareImagesAgainst(self, context, testCaseId0, testCaseId1=None, testCaseId2=None, maxDifference = 5, defaultLogText = True, compareEqual = True):
         # Look for a buffered result set.
         result = None
         tokenList = [testCaseId0, testCaseId1, testCaseId2]
         tokenListString = self.TokenListString(tokenList)
-        for resultSet in self.__compareImagesResults:
-            if resultSet[0] == tokenList:
-                result = resultSet
-                break
+#        for resultSet in self.__compareImagesResults:
+#            if resultSet[0] == tokenList:
+#                result = resultSet
+#                break
 
         if result == None:
             result = [tokenList]
@@ -137,20 +144,33 @@ class JudgeAssistant:
             result.append(otherTestId != None)
 
             # Retrieve the image filenames for this test case.
-            imageFilenames = context.GetStepImageFilenames()
-            imageFilenameCount = len(imageFilenames)
+            # renderSteps[0] is the first render step
+            renderSteps = context.GetStepImageFilenames()
+            if (len(renderSteps) > 0):
+                imageFilenames = renderSteps[0]
+                imageFilenameCount = len(imageFilenames)
+            else:
+                imageFilenameCount = 0
+                
             result.append(imageFilenameCount > 0)
-
+            
             if result[1] and result[2]:
                 # Retrieve the image filenames for the other test case.
-                otherFilenames = context.GetStepImageFilenames(otherTestId)
-                otherFilenameCount = len(otherFilenames)
+                otherRenderSteps = context.GetStepImageFilenames(otherTestId)
+                if (len(otherRenderSteps) > 0):
+                    otherFilenames = otherRenderSteps[0]
+                    otherFilenameCount = len(otherFilenames)
+                else:
+                    otherFilenameCount = 0
+                
                 result.append(otherFilenameCount > 0)
                 
                 if result[3]:
                     # Compare the images by index.
                     count = min(imageFilenameCount, otherFilenameCount)
                     for i in range(count):
+#                        print "image1: " + imageFilenames[i]
+#                        print "image2: " + otherFilenames[i]
                         result.append(context.CompareImages(imageFilenames[i], otherFilenames[i]))
 
             # Cache these results.
@@ -158,19 +178,27 @@ class JudgeAssistant:
                 
         # Log the results.
         if defaultLogText:
-            if not result[1]:
+            if not result[1] or not result[3]:
                 context.Log("FAILED: You must also run the '" + tokenListString + "' test case.")
             if not result[2]:
                 context.Log("FAILED: This test must include a 'Render' step.")
             if len(result) > 4 and not result[3]:
                 context.Log("FAILED: The '" + tokenListString + "' must include a 'Render' step.")
             for i in range(len(result) - 4):
-                if (len(result) == 5): identifier = "Output"
-                else: identifier = "Output #%i" % i + 1
-                if result[4+i] > maxDifference:
-                    context.Log("FAILED: " + identifier + " doesn't match the '" + tokenListString + "' test. Result: %i" % result[4+i])
+                if (len(result) == 5): 
+                    identifier = "Output"
+                else: identifier = "Output #%s" % str(i + 1)
+
+                if (compareEqual):
+                    if result[4+i] > maxDifference:
+                        context.Log("FAILED: " + identifier + " doesn't match the '" + tokenListString + "' test. Result: %s" % str(result[4+i]))
+                    else:
+                        context.Log("PASSED: " + identifier + " matches the '" + tokenListString + "' test. Result: %s" % str(result[4+i]))
                 else:
-                    context.Log("PASSED: " + identifier + " matches the '" + tokenListString + "' test. Result: %i" % result[4+i])
+                    if result[4+i] > maxDifference:
+                        context.Log("PASSED: " + identifier + " doesn't match the '" + tokenListString + "' test. Result: %s" % str(result[4+i]))
+                    else:
+                        context.Log("FAILED: " + identifier + " matches the '" + tokenListString + "' test. Result: %s" % str(result[4+i]))
 
         # Compile the results.
         localResult = True
@@ -178,7 +206,10 @@ class JudgeAssistant:
         elif not result[3]: localResult = False
         else:
             for i in range(len(result) - 4):
-                if result[4+i] > maxDifference: localResult = False
+                if (compareEqual):
+                    if result[4+i] > maxDifference: localResult = False
+                else:
+                    if result[4+i] <= maxDifference: localResult = False
         if not localResult: self.__result = False
         return localResult
             
@@ -186,23 +217,892 @@ class JudgeAssistant:
         @param tokens A list of tokens.
         @return A string containing the list of tokens in a nice form. """
     def TokenListString(self, tokens):
-        
-        # Remove all bad tokens first.
-        badTokens = []
+        newTokens = []
         for i in range(len(tokens)):
-            if tokens[i] == None or tokens[i] == "": badTokens.append(i)
-        if len(badTokens) > 0:
-            tokens = tokens[0:-1]
-            badTokens.reverse()
-            for i in badTokens:
-                del tokens[i:i]
-
-        # Generate the nice string.
+            if tokens[i] != None and tokens[i] != "":
+                newTokens.append(tokens[i])
+   
         output = ""
-        count = len(tokens)
+        count = len(newTokens)
         for i in range(count):
-            token = tokens[i]
+            token = newTokens[i]
             if i == 0: output += token.title()
             elif i < count - 1: output += ", " + token.lower()
             else: output += " and " + token.lower()
+        
         return output
+
+############################################################
+
+    # Sets the input file and output file list
+    def SetInputOutputFiles(self, context):
+        outputFileList = []
+    
+        # Get the input file
+        self.__inputFileName = context.GetAbsInputFilename(context.GetCurrentTestId())
+
+        # Get the output file
+        outputFileList = context.GetStepOutputFilenames("Export")
+        
+        if len(outputFileList) == 0:
+            context.Log("FAILED: There are no export steps.")
+            return False
+        else:
+            del self.__outputFileNameList[:]
+            self.__outputFileNameList.extend( outputFileList )
+            return True
+        
+
+    # Compare images from different render steps
+    def CompareRenderedImages(self, context):
+        self.__compareRendersResults = True
+        msg = "PASSED: Output images match input images."
+    
+        # Retrieve the image files for this test case.
+        imageFilenames = context.GetStepImageFilenames()
+        if (len(imageFilenames) == 0):
+            self.__compareRendersResults = False
+            msg = "FAILED: Unable to retrieve image locations."
+        else:
+            inputImages = imageFilenames[0]
+            outputImages = imageFilenames[1]
+            if (len(inputImages) != len(outputImages)):
+                self.__compareRendersResults = False
+                msg = "FAILED: Number of input images do not match output images."
+            else:
+                # Compare each image in the render steps
+                for i in range(len(inputImages)):
+                    result = context.CompareImages(inputImages[i], outputImages[i])
+                    if result > 5:
+                        self.__compareRendersResults = False
+                        msg = "FAILED: Output images do not match input images."
+
+        if (not self.__compareRendersResults):
+            self.__result = False
+            
+        context.Log(msg)
+        return self.__compareRendersResults        
+    
+    # Checks whether images in a render step show animation
+    def HasAnimatedImages(self, context):
+        self.__compareRendersResults = False
+        msg = "FAILED: Images do not show animation."
+    
+        # Retrieve the image files for this test case.
+        imageFilenames = context.GetStepImageFilenames()
+        if (len(imageFilenames) == 0):
+            self.__compareRendersResults = False
+            msg = "FAILED: Unable to retrieve image locations."
+        else:
+            inputImages = imageFilenames[0]
+            if (len(inputImages) < 3):
+                self.__compareRendersResults = False
+                msg = "FAILED: Number of animation images are too few."
+            else:
+                # Compare each image in the list with its previous image
+                for i in range(1, len(inputImages)):
+                    result = context.CompareImages(inputImages[i], inputImages[i-1])
+                    if result > 5:
+                        self.__compareRendersResults = True
+                        msg = "PASSED: Images show animation."
+                        break
+#                        print "failed on image: " + inputImages[i]
+
+        if (not self.__compareRendersResults):
+            self.__result = False
+            
+        context.Log(msg)
+        return self.__compareRendersResults 
+
+    # Checks for the existence of an element in an output file specified by the tagList path
+    def ElementPreserved(self, context, tagList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # get required elements from the path def'ed by the tagLst
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+
+        if (len(elementList) > 0):
+            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+        
+        testIO.Delink()
+        return self.__preservationResults
+        
+        
+    # Checks for the existence of an element in an output file specified a list of paths in tagListArray
+    # The first tagList should contain the original tag, while the ones after
+    # contain the possible tags the original can be transformed to
+    def ElementTransformed(self, context, tagListArray):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        # Get the original input tag to check for
+        inputTagList = tagListArray[0]
+
+        # get required elements from the path def'ed by the tagLst
+        for eachtagList in tagListArray:
+            elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachtagList)
+            if (len(elementList) > 0):
+                testIO.Delink()
+                context.Log("PASSED: <"+ inputTagList[len(inputTagList)-1] +"> is preserved as <"+ eachtagList[len(eachtagList)-1] +">")
+                self.__preservationResults = True
+                return self.__preservationResults
+                
+        testIO.Delink()
+        context.Log("FAILED: <"+ inputTagList[len(inputTagList)-1] +"> is not preserved.")
+        self.__preservationResults = False
+        self.__result = False
+        return self.__preservationResults
+        
+    # Checks for the existence of a specific element type with a specific id in the output file
+    # The tagListArray contains the possible path(s) that the node can be found in 
+    def ElementPreservedById(self, context, tagListArray, id):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        # get required elements from the path def'ed by the tagLst
+        for eachtagList in tagListArray:
+            elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachtagList)
+            if (len(elementList) > 0):
+                for eachElement in elementList:
+                    if (GetAttriByEle(eachElement, "id") == id):
+                        testIO.Delink()
+                        context.Log("PASSED: <"+ eachElement.nodeName +" id =\'"+ id + "\'> is preserved.")
+                        self.__preservationResults = True
+                        return self.__preservationResults
+
+        testIO.Delink()
+        context.Log("FAILED: <"+ tagListArray[0][len(tagListArray[0])-1] +" id =\'"+ id + "\'> is not preserved.")
+        self.__preservationResults = False
+        self.__result = False
+        return self.__preservationResults
+        
+    # Checks an element's attribute value in the output file against a known attributeName and attributeValue
+    def AttributeCheck(self, context, tagList, attributeName, attributeValue):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # check for tag found in output file
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+
+        for eachElement in elementList:
+            if (GetAttriByEle(eachElement, attributeName) == attributeValue):
+                context.Log("PASSED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is preserved.")
+                self.__preservationResults = True
+                break
+
+        if (self.__preservationResults != True):
+            context.Log("FAILED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+        
+        testIO.Delink()
+        return self.__preservationResults
+
+
+    # Compares an element's attribute value between the input and output file with a known attributeName
+    def AttributePreserved(self, context, tagList, attributeName):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+                
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0]) )
+
+        # get input and output tags
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagList)
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+
+        if ( len(inputElementList) > 0 and len(outputElementList) > 0 ):
+            resetElements = testPChecker.ResetElements(inputElementList, outputElementList)
+
+            # check whether the attribute is retrieved and are equal
+            if resetElements[0] == True:            
+                resChkVale = testPChecker.checkAttri(attributeName)
+                if resChkVale[0] == True:
+                    context.Log("PASSED: " + attributeName + " of <"+ tagList[len(tagList)-1] +"> is preserved.")
+                    self.__preservationResults = True
+                else:
+                    context.Log("FAILED: " + attributeName + " of <"+ tagList[len(tagList)-1] +"> is not preserved.")
+                    self.__preservationResults = False
+                    self.__result = False
+            else:
+                context.Log("FAILED: " + attributeName + " of <"+ tagList[len(tagList)-1] +"> is not found.")
+                self.__preservationResults = False
+                self.__result = False
+        else:
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> is not found.")
+            self.__preservationResults = False
+            self.__result = False
+
+        testIO.Delink()
+        return self.__preservationResults
+    
+    
+    # Compares an element's data against known data of type "float" or "string"
+    def ElementDataCheck(self, context, tagList, knownData, dataType="float"):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+    
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        # get required elements from the path def'ed by the tagLst
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        # separate each data value for comparison
+        dataToCheckList = knownData.split()
+        
+        foundMatch = False
+        for index in range( len(elementList) ):
+            outputDataList = elementList[index].childNodes[0].nodeValue.split()
+            
+            if ( len(outputDataList) > 0 and len(outputDataList) == len(dataToCheckList) ):
+                foundMatch = True
+                for i in range( len(outputDataList) ):
+                    if (dataType == "float"):
+                        if ( not IsValueEqual(float(outputDataList[i]), float(dataToCheckList[i]), 'float') ):
+                            foundMatch = False
+                            break
+                    else:
+                        if ( not IsValueEqual(outputDataList[i], dataToCheckList[i], 'string') ):
+                            foundMatch = False
+                            break
+            else:
+                foundMatch = False
+            
+            if (foundMatch):
+                break
+                
+        if (foundMatch):
+            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> data is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> data is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+        
+    # Compares an element's data between the input and output file of type "float" or "string"
+    def ElementDataPreserved(self, context, tagList, dataType="float"):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0]) )
+
+        # get input and output tags
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagList)
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        dataToCheckList = inputElementList[0].childNodes[0].nodeValue.split()
+
+        foundMatch = False
+        for index in range( len(outputElementList) ):
+            outputDataList = outputElementList[index].childNodes[0].nodeValue.split()
+            
+            if ( len(outputDataList) > 0 and len(outputDataList) == len(dataToCheckList) ):
+                foundMatch = True
+                for i in range( len(outputDataList) ):
+                    if (dataType == "float"):
+                        if ( not IsValueEqual(float(outputDataList[i]), float(dataToCheckList[i]), 'float') ):
+                            foundMatch = False
+                            break
+                    else:
+                        if ( not IsValueEqual(outputDataList[i], dataToCheckList[i], 'string') ):
+                            foundMatch = False
+                            break
+            else:
+                foundMatch = False
+            
+            if (foundMatch):
+                break
+
+        if (foundMatch):
+            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> data is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> data is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+
+    # Checks for the existence of data in all elements found in the tagList path
+    def ElementDataExists(self, context, tagList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        dataExists = True
+
+        if (len(outputElementList) > 0):
+            for index in range( len(outputElementList) ):
+                if ( outputElementList[index].hasChildNodes() ):
+                    
+                    # If the element has more than a single child, then it contains child elements and not data
+                    if ( len(outputElementList[index].childNodes) > 1):
+                        dataExists = False
+                        break
+
+                    childNode = outputElementList[index].childNodes[0]
+                    
+                    # TEXT_NODE indicates that child node is data
+                    if (childNode.nodeType == childNode.TEXT_NODE):
+                        if (childNode == None or len(childNode.nodeValue.split()) == 0):
+                            dataExists = False
+                            break
+                    else:
+                        dataExists = False
+                        break
+                else:
+                    dataExists = False
+                    break
+        else:
+            dataExists = False
+
+        if (dataExists):
+            context.Log("PASSED: Element data exists.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: Element data does not exist.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+
+    # Check for the perservation of element data in the tagListArray[] paths
+    # The first tagListArray[0] should contain the original tag, while the ones after
+    # contain the possible tag locations the dat can be in
+    def ElementDataPreservedIn(self, context, tagListArray, dataType="float"):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0]) )
+
+        # get input tags
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagListArray[0])
+        
+        dataToCheckList = inputElementList[0].childNodes[0].nodeValue.split()
+        
+        # Get the original input tag to check for
+        inputTagList = tagListArray[0]
+
+        # get required elements from the path def'ed by the tagLst
+        for eachtagList in tagListArray:
+            outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachtagList)
+
+            foundMatch = False
+            for index in range( len(outputElementList) ):
+                outputDataList = outputElementList[index].childNodes[0].nodeValue.split()
+                if ( len(outputDataList) > 0 and len(outputDataList) == len(dataToCheckList) ):
+                    foundMatch = True
+                    for i in range( len(outputDataList) ):
+                        if (dataType == "float"):
+                            if ( not IsValueEqual( float(outputDataList[i]), float(dataToCheckList[i]), 'float') ):
+                                foundMatch = False
+                                break
+                        else:
+                            if ( not IsValueEqual( outputDataList[i], dataToCheckList[i], 'string') ):
+                                foundMatch = False
+                                break
+                else:
+                    foundMatch = False
+            
+                if (foundMatch):
+                    break
+            if (foundMatch):
+                break
+
+        # Get the original input tag to check for
+        inputTagList = tagListArray[0]
+        
+        if (foundMatch):
+            context.Log("PASSED: <"+ inputTagList[len(inputTagList)-1] +"> data is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: <"+ inputTagList[len(inputTagList)-1] +"> data is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+        
+    
+    # Compares the element count of the input and output files in the possible paths in taglist
+    def CompareElementCount(self, context, tagListArray):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # Get the original input tag to check for
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagListArray[0])
+        inputTagList = tagListArray[0]
+        sameCount = False
+
+        # get required elements from the path def'ed by the tagLst
+        for eachtagList in tagListArray:
+            outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachtagList)
+            if (len(inputElementList) == len(outputElementList)):
+                sameCount = True
+                break
+        
+        if (sameCount):
+            context.Log("PASSED: Number of <"+ inputTagList[len(inputTagList)-1] +"> is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: Number of <"+ inputTagList[len(inputTagList)-1] +"> is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+
+        testIO.Delink()
+        return self.__preservationResults
+        
+    # Checks the preservation of the attributes in attrLst for each node containing the IDs in nodeIdLst
+    def CheckAttrByID(self, context, nodeIdLst, attrLst):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0])  )
+           
+        # use id for the element
+        for eachNodeId in nodeIdLst:
+            resSetEle = testPChecker.ResetElementById(eachNodeId)
+               
+            # check whether there is id retrived correctly
+            if resSetEle[0] == True:
+                for eachAttr in attrLst:
+                    resChkAttri = testPChecker.checkAttri(eachAttr)
+                  
+                    if resChkAttri[0] == True:
+                        context.Log("PASSED: In " + eachNodeId + ", required attribute " + eachAttr + " is preserved.")                        
+                    else:
+                        testIO.Delink()
+                        context.Log("FAILED: In " + eachNodeId + ", required attribute " + eachAttr + " is not preserved.")
+                        self.__preservationResults = False
+                        self.__result = False
+                        return self.__preservationResults
+            else:
+                testIO.Delink()
+                context.Log("FAILED: " + eachNodeId + " doesn't exist.")
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+            
+        # flag for all test: only pass all, then we can give a bdage
+        context.Log("PASSED: All attributes are preserved.")
+        testIO.Delink()
+        self.__preservationResults = True
+        return self.__preservationResults
+            
+    # Compares the attributes in attrLst 
+    def CheckAttrWithoutID(self, context, parentId, tagName, attrLst):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0]) )
+        resGetByTag = testPChecker.ResetElementsByTag(parentId,  tagName)
+            
+        if resGetByTag[0] == False:
+            context.Log("Failed: Attributes are not preserved.")
+            context.Log("Message: " + resGetByTag[1])
+            self.__preservationResults = False
+            self.__result = False
+            return self.__preservationResults
+        
+        for eachAttr in attrLst:
+            # Get all tags and then compare the attributes:
+            resEleTags = testPChecker.checkElesAttribute(eachAttr)
+            
+            if resEleTags[0] == False:
+                testIO.Delink()
+                context.Log("FAILED: Attribute " + eachAttr + " is not preserved.")
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+            else:
+                context.Log("PASSED: Attribute " + eachAttr + " is preserved.")
+            
+        # flag for all test: only pass all, then we can give a bdage
+        context.Log("PASSED: All attributes are preserved.")
+        testIO.Delink()
+        self.__preservationResults = True
+        return self.__preservationResults
+
+################## newParam checking #######################
+
+    # Checks for the preservation or transformation of newparam/param
+    # If we start with newparam/param in the input file, the newparam can be baked into the referencing element
+    #   or preserved in <effect><newparam> and <effect><profile_COMMON><newparam>
+    # Only works for newparam/param pair of type float, float2, float3, float4
+    # Will also work for inverse baking (moving baked value into newparam/param)
+    def NewparamCheck(self, context, originalLocation, bakedLocation, newparamLocations):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        testPChecker = PresChecker(testIO.GetRoot(self.__inputFileName), testIO.GetRoot(self.__outputFileNameList[0]) )
+
+        # get input tags
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), originalLocation)
+        
+        # check the original input file for the existence of the element first
+        if (len(inputElementList) == 0):
+            context.Log("FAILED: Element is not found in the input file.")
+            self.__preservationResults = False
+            self.__result = False
+            testIO.Delink()
+            return self.__preservationResults
+        
+        dataToCheckList = inputElementList[0].childNodes[0].nodeValue.split()
+        
+        # check the baked location for existence of data
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), bakedLocation)
+        baked = False
+        for index in range( len(outputElementList) ):
+            outputDataList = outputElementList[index].childNodes[0].nodeValue.split()
+            if ( len(outputDataList) > 0 and len(outputDataList) == len(dataToCheckList) ):
+                baked = True
+                for i in range( len(outputDataList) ):
+                    if ( not IsValueEqual( float(outputDataList[i]), float(dataToCheckList[i]), 'float') ):
+                        baked = False
+                        break
+            else:
+                baked = False
+            
+            if (baked):
+                break
+
+        # if value is not baked, check for the existence of the value in a newparam
+        if (not baked):
+            foundInNewparam = False
+            newparamSID = None
+            for eachLocation in newparamLocations:
+                outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachLocation)
+
+                foundInNewparam = False
+                for index in range( len(outputElementList) ):
+                    outputDataList = outputElementList[index].childNodes[0].nodeValue.split()
+                    if ( len(outputDataList) > 0 and len(outputDataList) == len(dataToCheckList) ):
+                        foundInNewparam = True
+                        for i in range( len(outputDataList) ):
+                            if ( not IsValueEqual( float(outputDataList[i]), float(dataToCheckList[i]), 'float') ):
+                                foundInNewparam = False
+                                break
+                    else:
+                        foundInNewparam = False
+                    
+                    # newparam was found, so now get its sid
+                    if (foundInNewparam):
+                        newparam = outputElementList[index].parentNode
+                        newparamSID = GetAttriByEle(newparam, 'sid')
+#                        print "newparam sid: " + newparamSID
+                        break
+
+                if (foundInNewparam):
+                    break
+        
+            # match was found in newparam, so now check that the correct param references it
+            foundParam = False
+            if (foundInNewparam and newparamSID != None):
+                paramLocation = bakedLocation
+                paramLocation[len(paramLocation)-1] = 'param'
+            
+                outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), paramLocation)
+                for eachParam in outputElementList:
+                    paramRef = GetAttriByEle(eachParam, 'ref')
+                    if (paramRef == newparamSID):
+                         foundParam = True
+                         break
+        
+        if (baked):
+            context.Log("PASSED: "+ originalLocation[len(originalLocation)-1] +" data is baked into the referencing element.")
+            self.__preservationResults = True
+        elif (foundInNewparam and foundParam):
+            context.Log("PASSED: "+ originalLocation[len(originalLocation)-1] +" data is found in newparam/param.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: "+ originalLocation[len(originalLocation)-1] +" data is not baked or found in newparam/param.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+        
+################## Preservation checking ##################
+
+    def CompareAttributes(self, inputElement, outputElement):
+        inputAttributes = inputElement.attributes
+        outputAttributes = outputElement.attributes
+        
+        if (inputAttributes.length != outputAttributes.length):
+            return False
+         
+        for attrName in inputAttributes.keys():
+            if (inputElement.getAttribute(attrName) != outputElement.getAttribute(attrName)):
+                return False
+            
+        return True
+        
+    def CompareData(self, inputElement, outputELement):
+        inputData = inputElement.childNodes[0].nodeValue
+        outputData = outputELement.childNodes[0].nodeValue
+        
+        if (inputData != outputData):
+            return False
+            
+        return True
+
+    def CheckPreservation(self, context, inputElement, outputElement, ordered):
+    
+        # Compare attributes
+        if (self.CompareAttributes(inputElement, outputElement) == False):
+            context.Log("FAILED: attributes do not match for <" + inputElement.nodeName + ">.")
+            return False
+        else:
+            print "attributes match"
+    
+        # If there is 1 child and it is of type TEXT_NODE, then the element contains data only
+        if ( len(inputElement.childNodes) == 1 and inputElement.childNodes[0].nodeType == inputElement.TEXT_NODE):
+            if ( len(outputElement.childNodes) == 1 and outputElement.childNodes[0].nodeType == outputElement.TEXT_NODE):
+                if (not self.CompareData(inputElement, outputElement)):
+                    context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
+                    return False
+                else:
+                    print "data of " + inputElement.nodeName + " match."
+            else:
+                context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
+                return False
+               
+        if ( len(inputElement.childNodes) != len(outputElement.childNodes) ):
+            context.Log("FAILED: Number of child elements not equal for <" + inputElement.nodeName + ">.")
+            return False
+        
+        for inputChild in inputElement.childNodes:
+            if (inputChild.nodeType == inputChild.ELEMENT_NODE):
+                print "node type is element, named: " + inputChild.nodeName
+                
+                found = False
+                for outputChild in outputElement.childNodes:
+                    if (outputChild.nodeName == inputChild.nodeName):
+                        print "found child: " + outputChild.nodeName
+                        found = True
+                        if (self.CheckPreservation(context, inputChild, outputChild, ordered) == False):
+                            return False
+                        else:
+                            break
+                
+                if (not found):
+                    context.Log("FAILED: <" + inputChild.nodeName + "> not found.")
+                    return False
+                    
+        return True
+            
+    def FullPreservation(self, context, tagList, identifier, ordered="False"):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+                
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        preserved = True
+        
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagList)
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        if ( len(inputElementList) == 0 ):
+            context.Log("FAILED: Unable to find <"+ tagList[len(tagList)-1] +"> in input.")
+            preserved = False
+        elif ( len(outputElementList) == 0 ):
+            context.Log("FAILED: Unable to find <"+ tagList[len(tagList)-1] +"> in output.")
+            preserved = False
+              
+        if (preserved == True):
+            for eachInputElement in inputElementList:
+                profileName = eachInputElement.getAttribute(identifier)
+                found = False
+                for eachOutputElement in outputElementList:
+                    if (eachOutputElement.getAttribute(identifier) == profileName):
+                        found = True
+                        if (self.CheckPreservation(context, eachInputElement, eachOutputElement, ordered) == False):
+                            preserved = False
+                        
+                        break
+            
+                if (not found):
+                    context.Log("FAILED: <" + eachInputElement.nodeName + "> with " + identifier + "=\"" + profileName + "\" not found.")
+                    preserved = False
+                    
+                if (not preserved):
+                    break
+        
+        if (preserved):
+            context.Log("PASSED: Extra information is preserved.")
+            self.__preservationResults = True
+        else:
+            self.__preservationResults = False
+            self.__result = False
+            
+        testIO.Delink()
+        return self.__preservationResults
+        
+################## instance element checking ##################
+        
+
+    def _GetInstanceCount(self, daeElement, tagName, attrName=None, attrVal=None):
+
+        # get the count in visual scene of input file
+        elementList = daeElement.getElementsByTagName(tagName)
+        count = len(elementList)
+
+        if (attrName != None and attrVal != None):
+            count = 0
+            for eachNode in elementList:
+                attributeVal = GetAttriByEle( eachNode, attrName)
+                if (attrName == "url" or attrName == "source" or attrName == "target"):
+                    attributeVal = attributeVal[1:len( attributeVal )]
+
+	        if (attributeVal == attrVal):
+	            count = count + 1	    
+
+	print "count of " + tagName + ": " + str(count)
+	return count
+	
+    def CompareElementCount(self, context, tagList, tagName, attrName=None, attrVal=None):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+      
+        inputRoot = testIO.GetRoot(self.__inputFileName)
+        outputRoot = testIO.GetRoot(self.__outputFileNameList[0])
+
+        # get the count of the element in the input file
+        inputElementList = GetElementsByTags(inputRoot, tagList)
+        if ( len(inputElementList) > 0 ):
+            inputCount = self._GetInstanceCount(inputElementList[0], tagName, attrName, attrVal)
+        else:
+            inputCount = 0
+        
+        # get the count of the element in the output file
+        outputElementList = GetElementsByTags(outputRoot, tagList)
+        if ( len(outputElementList) > 0 ):
+            outputCount = self._GetInstanceCount(outputElementList[0], tagName, attrName, attrVal)
+        else:
+            outputCount = 0
+        
+        print "input count: " + str(inputCount)
+        print "output count of " + tagName + ": " + str(outputCount)
+               
+        if (outputCount == inputCount):
+            if (attrName == None):
+                context.Log("PASSED: Number of " + tagName + " are preserved.")
+            else:
+                context.Log("PASSED: Number of " + tagName + " with " + attrName + "=" + attrVal + " are preserved.")
+            
+            self.__preservationResults = True
+        else:
+            if (attrName == None):
+                context.Log("FAILED: Number of " + tagName + " are not preserved.")
+            else:
+                context.Log("FAILED: Number of " + tagName + " with " + attrName + "=" + attrVal + " are not preserved.")
+
+            self.__preservationResults = False
+            self.__result = False
+            
+        testIO.Delink()
+        return self.__preservationResults
