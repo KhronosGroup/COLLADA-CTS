@@ -64,6 +64,9 @@ class FJudgementContext:
             @return The test identifier for a test case matching the given
                 substrings. """
         
+        if (substring0 == None):
+            return None
+        
         # Look against the whole test procedure for the first substring.
         step1 = []
         for test in self.__testProcedure.GetTestGenerator():
@@ -76,7 +79,10 @@ class FJudgementContext:
             for test in step1:
                 if (test.GetFilename().find(substring1) != -1):
                     step2.append(test)
-        else: step2 = tests
+            
+            if (len(step2) == 0):
+                step2 = step1
+        else: step2 = step1
 
         # Check for the third substring.
         if (substring2 != None):
@@ -84,6 +90,9 @@ class FJudgementContext:
             for test in step2:
                 if (test.GetFilename().find(substring2) != -1):
                     step3.append(test)
+                    
+            if (len(step3) == 0):
+                step3 = step2
         else: step3 = step2
                     
         # Return any left-over test's identifier.
@@ -167,7 +176,7 @@ class FJudgementContext:
         out = []
         for index in self.__renderSteps:
             location = execution.GetOutputLocation(index)
-            out.append(location[0])
+            out.append(location)
         return out
     
     def GetStepOutputFilenames(self, filterType=None, testId=None):
@@ -312,3 +321,20 @@ class FJudgementContext:
             if not test.HasCurrentExecution():
                 return None
             return test.GetCurrentExecution()
+
+#################################################################
+
+    def MatchBlessedImage(self):
+        """ This function retrieves the step result of comparing a rendered
+            image with the blessed image.
+            @return True if all images from Render steps match the blessed
+                images, and False otherwise. """
+        execution = self.__GetExecution(None)
+        result = execution.GetResult()
+        for index, output in result.GetOutputGenerator():
+            if (output == FResult.IGNORED_NO_BLESS_IMAGE):
+                return None
+	    elif (output == FResult.FAILED_IMAGE or output == FResult.FAILED_ANIMATION):
+	        return False
+
+        return True
