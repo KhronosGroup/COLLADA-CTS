@@ -197,6 +197,26 @@ def GetElementsByHierTags(daeElement, tagLst):
     else:
         return []
 
+# find the occurances of a path search
+def FindElement(daeElement, tagLst):
+    if daeElement != None and len(tagLst) > 0:
+        intermediate = [daeElement]
+        for index in range( len(tagLst) ):
+            Lst = []
+            for x in range( len(intermediate) ):
+                nLst = intermediate[x].getElementsByTagName( tagLst[index] )
+                for y in range( len(nLst) ):
+                    Lst.append( nLst[y] )
+
+            if len(Lst) == 0:
+                return []
+            else:
+                intermediate = Lst
+
+        return intermediate
+    else:
+        return []
+
 # define a function which will get attributes from a element
 def GetAttriByEle(daeElement, attrName):
     # check whether element has that attributes
