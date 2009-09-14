@@ -63,9 +63,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <transparency>
               <float>1</float>
             </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>          
         </technique>
       </profile_COMMON>
@@ -77,7 +74,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <source id="cube1Shape-positions" name="position">
           <float_array id="cube1Shape-positions-array" count="12">-100 -100 100 100 -100 100 -100 100 100 100 100 100</float_array>
 	  <technique_common>
-	    <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
+	    <accessor count="4" source="#cube1Shape-positions-array" stride="3">
 	      <param name="X" type="float"/>
 	      <param name="Y" type="float"/>
 	      <param name="Z" type="float"/>
@@ -98,7 +95,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode" name="CTF_template">
       <node id="cube1" name="cube1" type="NODE">
-        <scale>0.5 0.5 0.5</scale>
+        <scale>0.75 0.75 0.75</scale>
         <instance_geometry url="#cube1Shape">
           <bind_material>
             <technique_common>

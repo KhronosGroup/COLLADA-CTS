@@ -67,7 +67,7 @@
         <source id="Cone01-mesh-positions">
           <float_array id="Cone01-mesh-positions-array" count="15">-50 0 -75 0 -50 -75 50 0 -75 0 50 -75 0 0 150</float_array>
           <technique_common>
-            <accessor source="#Cone01-mesh-positions-array" count="144" stride="3">
+            <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
