@@ -33,17 +33,17 @@ limitations under the License.</copyright>
     <library_animations>
         <animation id="prop_translate">
             <source id="prop_translate_prop_translate_translate-input">
-                <float_array id="prop_translate_prop_translate_translate-input-array" count="3">0 0.7 1.6 2.5</float_array>
+                <float_array id="prop_translate_prop_translate_translate-input-array" count="4">0 0.7 1.6 2.5</float_array>
                 <technique_common>
-                    <accessor count="3" source="#prop_translate_prop_translate_translate-input-array">
+                    <accessor count="4" source="#prop_translate_prop_translate_translate-input-array">
                         <param name="TIME" type="float"/>
                     </accessor>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-output">
-                <float_array id="prop_translate_prop_translate_translate-output-array" count="9">-50 -50 0 -25 25 0 0 50 0 50 -50 0</float_array>
+                <float_array id="prop_translate_prop_translate_translate-output-array" count="12">-50 -50 0 -25 25 0 0 50 0 50 -50 0</float_array>
                 <technique_common>
-                    <accessor count="3" source="#prop_translate_prop_translate_translate-output-array" stride="3">
+                    <accessor count="4" source="#prop_translate_prop_translate_translate-output-array" stride="3">
                         <param name="X" type="float"/>
                         <param name="Y" type="float"/>
                         <param name="Z" type="float"/>
@@ -51,9 +51,9 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-intangents">
-                <float_array id="prop_translate_prop_translate_translate-intangents-array" count="9">1 1 0 0 0 0 0 0 0 1 1 0</float_array>
+                <float_array id="prop_translate_prop_translate_translate-intangents-array" count="12">1 1 0 0 0 0 0 0 0 1 1 0</float_array>
                 <technique_common>
-                    <accessor count="3" source="#prop_translate_prop_translate_translate-intangents-array" stride="3">
+                    <accessor count="4" source="#prop_translate_prop_translate_translate-intangents-array" stride="3">
                         <param name="X" type="float"/>
                         <param name="Y" type="float"/>
                         <param name="Z" type="float"/>
@@ -61,9 +61,9 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-outtangents">
-                <float_array id="prop_translate_prop_translate_translate-outtangents-array" count="9">1 1 0 0 0 0 0 0 0 1 1 0</float_array>
+                <float_array id="prop_translate_prop_translate_translate-outtangents-array" count="12">1 1 0 0 0 0 0 0 0 1 1 0</float_array>
                 <technique_common>
-                    <accessor count="3" source="#prop_translate_prop_translate_translate-outtangents-array" stride="3">
+                    <accessor count="4" source="#prop_translate_prop_translate_translate-outtangents-array" stride="3">
                         <param name="X" type="float"/>
                         <param name="Y" type="float"/>
                         <param name="Z" type="float"/>
@@ -71,9 +71,9 @@ limitations under the License.</copyright>
                 </technique_common>
             </source>
             <source id="prop_translate_prop_translate_translate-interpolations">
-                <Name_array id="prop_translate_prop_translate_translate-interpolations-array" count="3">STEP STEP STEP STEP</Name_array>
+                <Name_array id="prop_translate_prop_translate_translate-interpolations-array" count="4">STEP STEP STEP STEP</Name_array>
                 <technique_common>
-                    <accessor count="3" source="#prop_translate_prop_translate_translate-interpolations-array">
+                    <accessor count="4" source="#prop_translate_prop_translate_translate-interpolations-array">
                         <param name="INTERPOLATION" type="Name"/>
                     </accessor>
                 </technique_common>

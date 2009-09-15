@@ -74,7 +74,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <input semantic="OUT_TANGENT" source="#prop_translate_prop_translate_translate-outtangents"/>
                 <input semantic="INTERPOLATION" source="#prop_translate_prop_translate_translate-interpolations"/>
             </sampler>
-            <channel source="#prop_translate_prop_translate_translate-sampler" target="shine1-fx/color.G"/>
+            <channel source="#prop_translate_prop_translate_translate-sampler" target="shine1-fx/common/color.G"/>
         </animation>
     </library_animations>
     <library_cameras>
@@ -108,7 +108,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_effects>
         <effect id="shine1-fx">
             <profile_COMMON>
-                <technique>
+                <technique sid="common">
                     <phong>
                         <ambient>
                             <color sid="color">0 0 0 1</color>

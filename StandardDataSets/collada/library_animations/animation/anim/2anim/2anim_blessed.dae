@@ -25,7 +25,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2006-08-23T22:42:50Z</created>
         <keywords>Superior animation</keywords>
         <modified>2006-08-23T22:42:50Z</modified>
-        <subject>Blessed test of two animations on a geometry in the X-Y plane.</subject>
+        <subject>Blessed test animating a geometry in the X-Y plane.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -132,21 +132,12 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <shininess>
                             <float>78.942</float>
                         </shininess>
-                        <reflective>
-                            <color>0 0 0 1</color>
-                        </reflective>
-                        <reflectivity>
-                            <float>0.5</float>
-                        </reflectivity>
                         <transparent>
                             <color>0 0 0 1</color>
                         </transparent>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>0</float>
-                        </index_of_refraction>
                     </phong>
                 </technique>
             </profile_COMMON>
