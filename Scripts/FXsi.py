@@ -37,8 +37,8 @@ class FXsi (FApplication):
     __RENDER_STILL_END = "Non-Animation End Time"
     __RENDER_STILL_FRAMES = "Non-Animation Frames"
     __RENDER_OPTIONS = [
-            (__RENDER_X, "xres", "300"),
-            (__RENDER_Y, "yres", "300"),
+            (__RENDER_X, "xres", "512"),
+            (__RENDER_Y, "yres", "512"),
             (__RENDER_ANIMATION_START, "FrameStart", "1"),
             (__RENDER_ANIMATION_END, "FrameEnd", "45"),
             (__RENDER_ANIMATION_FRAMES, "FrameStep", "3"),
@@ -278,8 +278,8 @@ class FXsi (FApplication):
         start = 0
         end = 0
         step = 1
-        xres = 300
-        yres = 300
+        xres = 512
+        yres = 512
         
         command = ""
         

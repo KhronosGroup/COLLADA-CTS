@@ -25,8 +25,8 @@ class FViewer (FApplication):
     __IMPORT_OPTIONS = [
             ("Background Color", "-backColor", "0x00000000"),
             (__IMPORT_CAMERA, "-cam", "testCamera"),
-            ("X resolution", "-width", "300"),
-            ("Y resolution", "-height", "300"),
+            ("X resolution", "-width", "512"),
+            ("Y resolution", "-height", "512"),
             (__IMPORT_OUTPUT_FORMAT, "", "png"),
             (__IMPORT_ANIMATION_START, "-startFrame", "0.0"),
             (__IMPORT_ANIMATION_END, "-endFrame", "2.0"),
