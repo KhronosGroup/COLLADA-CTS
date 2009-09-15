@@ -11,7 +11,7 @@
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Badge: Baseline</keywords>
         <modified>2009-05-27T13:05:43Z</modified>
-        <subject>Library: Images Test: Image Load</subject>
+        <subject>Reference test of a single image texture applied to the diffuse color</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -40,7 +40,10 @@
     </library_lights>
     <library_images>
         <image id="file1" name="file1">
-            <init_from>fullRed.png</init_from>
+            <init_from>collada.png</init_from>
+        </image>
+        <image id="file2" name="file2">
+            <init_from>checkerboard.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -93,7 +96,6 @@
                         </accessor>
                     </technique_common>
                 </source>
-
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>

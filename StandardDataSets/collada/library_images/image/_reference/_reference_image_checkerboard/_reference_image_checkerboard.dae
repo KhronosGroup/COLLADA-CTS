@@ -11,7 +11,7 @@
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Badge: Baseline</keywords>
         <modified>2009-05-27T13:05:43Z</modified>
-        <subject>Library: Images Test: Image Load</subject>
+        <subject>Library: Images Test: Multi-texturing</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -40,7 +40,7 @@
     </library_lights>
     <library_images>
         <image id="file1" name="file1">
-            <init_from>fullRed.png</init_from>
+            <init_from>checkerboard.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -64,8 +64,14 @@
                 <technique sid="common">
                     <lambert>
                         <diffuse>
-                            <texture texture="file1-sampler" texcoord="TEX0"/>
+                            <color>1 1 1 1</color>
                         </diffuse>
+                        <transparent opaque="RGB_ZERO">
+                            <texture texture="file1-sampler" texcoord="TEX1"/>
+                        </transparent>
+                        <transparency>
+                            <float>0.5</float>
+                        </transparency>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -84,22 +90,21 @@
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
+                <source id="cube-map2" name="map2">
+                    <float_array id="cube-map2-array" count="8">0 0 1 0 1 1 0 1</float_array>
                     <technique_common>
-                        <accessor count="4" source="#cube-map1-array" stride="2">
+                        <accessor count="4" source="#cube-map2-array" stride="2">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
                 <polylist count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
+                    <input offset="1" semantic="TEXCOORD" source="#cube-map2" set="1"/>
                     <vcount>4</vcount>
                     <p>0 0 1 1 3 2 2 3</p>
                 </polylist>
@@ -114,7 +119,7 @@
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="lambert2SG" target="#lambert1">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                                <bind_vertex_input semantic="TEX1" input_semantic="TEXCOORD" input_set="1"/>
                             </instance_material>
                         </technique_common>
                     </bind_material>
