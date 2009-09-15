@@ -4,9 +4,16 @@
     <contributor>
       <author>wguo6</author>
       <authoring_tool>Handwritten</authoring_tool>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
     </contributor>
     <created>2008-06-12T12:30:18Z</created>
+    <keywords>Baseline visual_scene</keywords>
     <modified>2008-06-12T12:30:18Z</modified>
+    <subject>Test the use and preservation of a dash in the id of a visual_scene element</subject>
     <unit name="inch" meter="0.0254"/>
     <up_axis>Y_UP</up_axis>
   </asset>
