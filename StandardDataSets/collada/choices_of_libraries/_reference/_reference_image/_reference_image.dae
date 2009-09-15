@@ -112,22 +112,13 @@
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-map2" name="map2">
-                    <float_array id="cube-map2-array" count="8">0.25 0.25 0.75 0.25 0.75 0.75 0.25 0.75</float_array>
-                    <technique_common>
-                        <accessor count="4" source="#cube-map2-array" stride="2">
-                            <param name="S" type="float"/>
-                            <param name="T" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
                 <polylist count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
                     <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map2" set="1"/>
+                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="1"/>
                     <vcount>4</vcount>
                     <p>0 0 1 1 3 2 2 3</p>
                 </polylist>
