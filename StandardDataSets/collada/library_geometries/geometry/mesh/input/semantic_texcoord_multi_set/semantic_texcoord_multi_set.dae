@@ -189,7 +189,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </bind_material>
                 </instance_geometry>
             </node>
-            <node id="cube_node" name="cube_node">
+            <node id="cube_node2" name="cube_node2">
                 <translate>55 0 0</translate>
                 <scale sid="scale">2 2 2</scale>
                 <instance_geometry url="#cube">

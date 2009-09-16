@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'mesh', 'source', 'technique_common', 'accessor', 'param']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -40,13 +40,13 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
-		# if baseline fails, no point in further checking
+	# if baseline fails, no point in further checking
         if (self.status_baseline == False):
             self.status_superior = self.status_baseline
             return self.status_superior

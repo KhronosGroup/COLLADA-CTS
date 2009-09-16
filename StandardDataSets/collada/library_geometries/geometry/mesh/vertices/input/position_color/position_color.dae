@@ -95,7 +95,7 @@
                 <source id="cube-color1" name="color1">
                   <float_array id="cube-color1-array" count="12">1 0 0 0 1 0 0 0 1 1 1 1</float_array>
                   <technique_common>
-                    <accessor count="4" source="#cube-map1-array" stride="3">
+                    <accessor count="4" source="#cube-color1-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>

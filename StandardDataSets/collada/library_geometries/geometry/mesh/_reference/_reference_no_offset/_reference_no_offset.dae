@@ -116,15 +116,14 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </source>
              
                 <source id="cube-map1" name="map1">
-                    <float_array count="10" id="cube-map1-array">
-						-1.0 -1.0 
+                    <float_array count="8" id="cube-map1-array">
 						0.2 0.2 
 						0.8 0.2 
 						0.8 0.8 
 						0.2 0.8 
 					</float_array>
                     <technique_common>
-                        <accessor count="4" source="#cube-map1-array" stride="2" offset="2">
+                        <accessor count="4" source="#cube-map1-array" stride="2" offset="0">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>

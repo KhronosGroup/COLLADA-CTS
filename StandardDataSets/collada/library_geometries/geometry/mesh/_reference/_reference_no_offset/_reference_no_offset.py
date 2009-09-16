@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'mesh', 'source', 'technique_common', 'accessor', 'param']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -39,13 +39,14 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
-        
+
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+            
         # Compare the rendered images
         self.__assistant.CompareRenderedImages(context)
-        
-        # Check for preservation of element
-        #self.__assistant.ElementTransformed(context, self.tagList)
-        
+               
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
