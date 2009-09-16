@@ -49,7 +49,7 @@
           <newparam sid="theParam">
             <float>0.5</float>
           </newparam>
-          <technique>
+          <technique sid="gles">
             <pass/>
           </technique>
         </profile_GLES>

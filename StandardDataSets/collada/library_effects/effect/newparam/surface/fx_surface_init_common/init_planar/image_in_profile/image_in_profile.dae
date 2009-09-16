@@ -60,7 +60,7 @@
         </newparam>
         <profile_COMMON>
                 <image id="logo" name="logo">
-                  <init_from>logo_2_power.dds</init_from>
+                  <init_from>logo_2_power.png</init_from>
                 </image>
                 <technique sid="common">
                     <lambert>

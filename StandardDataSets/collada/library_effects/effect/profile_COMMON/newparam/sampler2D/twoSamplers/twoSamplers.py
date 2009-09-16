@@ -17,14 +17,16 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_effects', 'effect', 'profile_COMMON', 'newparam', 'sampler2D']]
+tagLst = ['library_effects', 'effect', 'profile_COMMON', 'newparam']
+tagName = 'sampler2D'
 attrName = ''
 attrVal = ''
 dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrName, _attrVal, _data):
+    def __init__(self, _tagLst, _tagName, _attrName, _attrVal, _data):
         self.tagList = _tagLst
+        self.tagName = _tagName
         self.attrName = _attrName
         self.attrVal = _attrVal
         self.dataToCheck = _data
@@ -44,7 +46,7 @@ class SimpleJudgingObject:
         self.__assistant.CompareRenderedImages(context)
         
         # Check for preservation of element
-        self.__assistant.CompareElementCount(context, self.tagList)
+        self.__assistant.CompareElementCount(context, self.tagList, self.tagName)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
@@ -64,4 +66,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, tagName, attrName, attrVal, dataToCheck);

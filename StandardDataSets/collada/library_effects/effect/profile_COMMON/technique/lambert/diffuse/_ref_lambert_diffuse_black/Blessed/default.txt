@@ -1,0 +1,1 @@
+png\_ref_lambert_diffuse_black.png
