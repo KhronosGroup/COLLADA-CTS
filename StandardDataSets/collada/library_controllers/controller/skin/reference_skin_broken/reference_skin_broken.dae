@@ -2,11 +2,10 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
         <contributor>
-          <author>Wei Guo</author>
-          <comments>A broken test case for skinning and please see README.txt for more detail.</comments>
-            <author>gcorson</author>
+          <author>Wei Guo, gcorson</author>
             <authoring_tool>Maya 8.0 | ColladaMaya v3.00 | FCollada v3.0</authoring_tool>
-            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+            <comments>A broken test case for skinning and please see README.txt for more detail.
+            Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
 curveConstrainSampling=0;exportCameraAsLookat=0;
 exportLights=1;exportCameras=1;exportJointsAndSkin=1;
 exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
@@ -75,9 +74,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                       <transparency>
                           <float>1</float>
                       </transparency>
-                      <index_of_refraction>
-                          <float>0</float>
-                      </index_of_refraction>
                   </lambert>
               </technique>
           </profile_COMMON>
