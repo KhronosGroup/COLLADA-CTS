@@ -1,1 +1,1 @@
-png\_reference_effect_constant_transparency_01.png
+png\_reference_effect_constant_transparency_0.png
