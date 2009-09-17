@@ -55,7 +55,7 @@ class SimpleJudgingObject:
         # Then compare images against a default directional light reference test for non-equivalence
         # Last, check for preservation of element data
         if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "_reference_spot_attenuation_0", None, None, 5, True, False) ):
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_spot_attenuation_default", None, None, 5, True, False) ):
                 self.__assistant.ElementDataPreserved(context, self.tagList, "float")
         
         self.status_superior = self.__assistant.DeferJudgement(context)

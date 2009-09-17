@@ -42,7 +42,7 @@
                 <spot>
                     <color>1 1 1</color>
                     <falloff_angle>40</falloff_angle>
-                    <falloff_exponent>20</falloff_exponent>
+                    <falloff_exponent>10</falloff_exponent>
                 </spot>
             </technique_common>
         </light>

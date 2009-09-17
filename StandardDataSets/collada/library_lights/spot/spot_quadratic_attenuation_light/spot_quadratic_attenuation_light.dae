@@ -41,7 +41,7 @@
             <technique_common>
                 <spot>
                     <color>1 1 1</color>
-                    <constant_attenuation>0</constant_attenuation>
+                    <constant_attenuation>1</constant_attenuation>
                     <linear_attenuation>0</linear_attenuation>
                     <quadratic_attenuation>5</quadratic_attenuation>
                 </spot>
