@@ -3,7 +3,6 @@
   <asset>
     <contributor>
       <author>Wei Guo, gcorson</author>
-      <comments>Modified for LN testing purpose. Nodes of joints in LN.</comments>
       <authoring_tool>Maya 8.0 | ColladaMaya v2.04 | FCollada v1.14</authoring_tool>
       <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
 curveConstrainSampling=0;exportCameraAsLookat=0;
