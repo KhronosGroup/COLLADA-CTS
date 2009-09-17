@@ -54,11 +54,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <instance_effect url="#lambert1-fx"/>
       <extra>
         <technique profile="MAYA">
-          <asset>
-            <contributor>
-              <author>Wei</author>
-            </contributor>
-          </asset>
           <dynamic_attributes>
             <ilrIrradianceMult short_name="ilrIrradianceMult" type="color3">1 1 1</ilrIrradianceMult>
             <ilrGlossyRefractions short_name="ilrGlossyRefractions" type="bool">0</ilrGlossyRefractions>

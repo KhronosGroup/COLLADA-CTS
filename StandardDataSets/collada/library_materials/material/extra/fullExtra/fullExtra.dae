@@ -20,7 +20,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <modified>2007-05-07T19:42:16Z</modified>
     <keywords>Superior material extra</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test full extra preservation</subject>
@@ -55,11 +54,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <instance_effect url="#lambert1-fx"/>
       <extra>
         <technique profile="MAYA">
-          <asset>
-            <contributor>
-              <author>Wei</author>
-            </contributor>
-          </asset>
           <dynamic_attributes>
             <ilrIrradianceMult short_name="ilrIrradianceMult" type="color3">1 1 1</ilrIrradianceMult>
             <ilrGlossyRefractions short_name="ilrGlossyRefractions" type="bool">0</ilrGlossyRefractions>
