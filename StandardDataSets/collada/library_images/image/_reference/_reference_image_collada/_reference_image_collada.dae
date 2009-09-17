@@ -11,7 +11,7 @@
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Badge: Baseline</keywords>
         <modified>2009-05-27T13:05:43Z</modified>
-        <subject>Reference test of a single image texture applied to the diffuse color</subject>
+        <subject>Reference test of a collada logo image texture applied to the diffuse color</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -41,9 +41,6 @@
     <library_images>
         <image id="file1" name="file1">
             <init_from>collada.png</init_from>
-        </image>
-        <image id="file2" name="file2">
-            <init_from>checkerboard.png</init_from>
         </image>
     </library_images>
     <library_materials>
