@@ -44,12 +44,6 @@
             <diffuse>
               <color>0.588235 0.588235 0.588235 1</color>
             </diffuse>
-            <reflective>
-              <color>0 0 0 1</color>
-            </reflective>
-            <reflectivity>
-              <float>1</float>
-            </reflectivity>
             <transparent opaque="A_ONE">
               <color>1 1 1 1</color>
             </transparent>
