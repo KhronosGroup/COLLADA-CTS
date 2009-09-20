@@ -67,9 +67,6 @@
             <transparency>
               <float>1</float>
             </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>
         </technique>
       </profile_COMMON>
@@ -95,9 +92,6 @@
             <transparency>
               <float>1</float>
             </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>
         </technique>
       </profile_COMMON>

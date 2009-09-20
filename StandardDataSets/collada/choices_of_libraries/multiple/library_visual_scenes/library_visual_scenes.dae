@@ -67,15 +67,10 @@
             <transparency>
               <float>1</float>
             </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>
         </technique>
       </profile_COMMON>
     </effect>
-  </library_effects>
-  <library_effects>
     <effect id="lambert2-fx">
       <profile_COMMON>
         <technique sid="common">
@@ -95,9 +90,6 @@
             <transparency>
               <float>1</float>
             </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>
         </technique>
       </profile_COMMON>
