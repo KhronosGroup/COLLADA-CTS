@@ -75,17 +75,17 @@
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
-                    <lambert>
-                        <diffuse>
+                    <constant>
+                        <emission>
                             <texture texture="file1-sampler" texcoord="TEX0"/>
-                        </diffuse>
+                        </emission>
                         <transparent opaque="RGB_ZERO">
                             <texture texture="file2-sampler" texcoord="TEX1"/>
                         </transparent>
                         <transparency>
                             <float>0.5</float>
                         </transparency>
-                    </lambert>
+                    </constant>
                 </technique>
             </profile_COMMON>
         </effect>

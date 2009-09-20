@@ -62,11 +62,11 @@
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
-                    <lambert>
-                        <diffuse>
+                    <constant>
+                        <emission>
                             <texture texture="file1-sampler" texcoord="TEX0"/>
-                        </diffuse>
-                    </lambert>
+                        </emission>
+                    </constant>
                 </technique>
             </profile_COMMON>
         </effect>

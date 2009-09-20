@@ -47,11 +47,11 @@
         <effect id="lambert1-fx">
             <profile_COMMON>
                 <technique sid="common">
-                    <lambert>
-                        <diffuse>
+                    <constant>
+                        <emission>
                             <color>1 0 0 1</color>
-                        </diffuse>
-                    </lambert>
+                        </emission>
+                    </constant>
                 </technique>
             </profile_COMMON>
         </effect>
