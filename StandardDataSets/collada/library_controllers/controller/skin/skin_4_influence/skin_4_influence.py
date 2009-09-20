@@ -46,23 +46,22 @@ class SimpleJudgingObject:
     # To pass superior you need to pass baseline, this object could also include additional 
     # tests that were specific to the superior badge.
     def JudgeSuperior(self, context):
-        self.status_superior = self.status_baseline
-        return self.status_superior 
+        # if baseline fails, no point in further checking
+        if (self.status_baseline == False):
+            self.status_superior = self.status_baseline
+            return self.status_superior
+            
+        # Compare the rendered images between import and export, and if passed, 
+        # compare images against reference test
+        self.__assistant.CompareRenderedImages(context)
+        
+        self.status_superior = self.__assistant.DeferJudgement(context)
+        return self.status_superior
             
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
-        # if superior fails, no point in further checking
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-            
-        # Compare the rendered images between import and export, and if passed, 
-        # compare images against reference test
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "reference_5_influence")
-        
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        self.status_exemplary = self.status_superior
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.

@@ -12,6 +12,11 @@ exportNormals=1;exportTexCoords=1;
 exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
       <source_data>file:///C:/vs2005/khronos/conform/ctf/StandardDataSets/collada/library_controllers/controller/skin/simple_skin/New_Project/untitled</source_data>
     </contributor>
     <created>2007-07-26T19:27:10Z</created>
