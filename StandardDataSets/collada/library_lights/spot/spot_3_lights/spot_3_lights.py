@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_lights', 'light', 'technique_common', 'spot']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -51,11 +51,11 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
             
-        # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
-        
-        # Check for preservation of element
-        self.__assistant.ElementPreserved(context, self.tagList)
+        # Compare the rendered images between import and export
+        # Then compare images against a reference test for equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_spot_white_light", None, None, 5, True, True) ):
+              self.__assistant.CompareImagesAgainst(context, "_reference_no_lights", None, None, 5, True, False)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
