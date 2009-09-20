@@ -33,14 +33,14 @@ class SimpleJudgingObject:
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
-        self.inputFilleName = ''
-        self.outputFilleNameLst = []
+        self.__inputFileName = ''
+        self.__outputFileNameList = []
         self.__assistant = JudgeAssistant.JudgeAssistant()
 
     # Compares source data between input and output files
     def SourcePreserved(self, context, matchSemantic):
         # Get the input file
-        self.inputFilleName = context.GetAbsInputFilename(context.GetCurrentTestId())
+        self.__inputFileName = context.GetAbsInputFilename(context.GetCurrentTestId())
         
         # Get the output file
         outputFilenames = context.GetStepOutputFilenames("Export")
@@ -48,22 +48,22 @@ class SimpleJudgingObject:
             context.Log("FAILED: There are no export steps.")
             return False
         else:
-            del self.outputFilleNameLst[:]
-            self.outputFilleNameLst.extend( outputFilenames )
+            del self.__outputFileNameList[:]
+            self.__outputFileNameList.extend( outputFilenames )
     
-        testIO = DOMParserIO( self.inputFilleName, self.outputFilleNameLst )
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
         # load files and generate root
         testIO.Init()
         
         # get input list
-        inputInputLst = FindElement(testIO.GetRoot(self.inputFilleName), self.tagList[0])
+        inputInputLst = FindElement(testIO.GetRoot(self.__inputFileName), self.tagList[0])
         if len( inputInputLst ) == 0:
             context.Log('FAILED: ' + matchSemantic + ' semantic of input is not found')
             return False
         
         inputOutputLst = []
         for eachTagList in self.tagList:
-            inputOutputLst = FindElement(testIO.GetRoot(self.outputFilleNameLst[0]), eachTagList)
+            inputOutputLst = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachTagList)
             if (len(inputOutputLst) > 0):
                 break
                 
@@ -75,11 +75,11 @@ class SimpleJudgingObject:
             inputSemantic = GetAttriByEle(eachInput, 'semantic')
             if (inputSemantic == matchSemantic):
                 dataType = 'Name_array'
-                inputDataElement = GetDataFromInput( testIO.GetRoot(self.inputFilleName), eachInput, dataType)
+                inputDataElement = GetDataFromInput( testIO.GetRoot(self.__inputFileName), eachInput, dataType)
 
                 if inputDataElement == None:
                     dataType = 'IDREF_array'
-                    inputDataElement = GetDataFromInput( testIO.GetRoot(self.inputFilleName), eachInput, dataType)
+                    inputDataElement = GetDataFromInput( testIO.GetRoot(self.__inputFileName), eachInput, dataType)
                     if inputDataElement == None:
                         context.Log('FAILED: ' + matchSemantic + ' source data in input is not found')
                         return False
@@ -90,7 +90,7 @@ class SimpleJudgingObject:
                     
         for eachOuput in inputOutputLst:
             if (GetAttriByEle(eachOuput, 'semantic') == inputSemantic):
-                outputDataElement = GetDataFromInput( testIO.GetRoot(self.outputFilleNameLst[0]), eachOuput, dataType)
+                outputDataElement = GetDataFromInput( testIO.GetRoot(self.__outputFileNameList[0]), eachOuput, dataType)
 
                 if outputDataElement == None:
                     context.Log('FAILED: ' + dataType + ' ' + matchSemantic + ' source in output is not found')
@@ -116,10 +116,10 @@ class SimpleJudgingObject:
                         context.Log('FAILED: ' + matchSemantic + ' source data is not preserved')
                         return False
         else:
-            context.Log('FAILED: " + matchSemantic + " source data is not preserved')
+            context.Log('FAILED: ' + matchSemantic + ' source data is not preserved')
             return False
 
-        context.Log('PASSED: " + matchSemantic + " source data is preserved')
+        context.Log('PASSED: ' + matchSemantic + ' source data is preserved')
         return True
         
     def JudgeBaseline(self, context):
