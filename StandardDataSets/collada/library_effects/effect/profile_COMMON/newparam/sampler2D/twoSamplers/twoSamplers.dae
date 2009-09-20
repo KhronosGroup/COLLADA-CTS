@@ -46,14 +46,12 @@
     <library_effects>
       <effect id="lambert1-fx">
         <profile_COMMON>
-
                 <image id="collada_jpg" name="collada_jpg">
                    <init_from>collada.png</init_from>
                 </image>
             	<image id="file2" name="file2">
               		<init_from>checkerboard.png</init_from>
             	</image>
-
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>collada_jpg</init_from>
@@ -64,22 +62,16 @@
                         <init_from>file2</init_from>
                     </surface>
                 </newparam>
-
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <newparam sid="file2-sampler">
                     <sampler2D>
                         <source>file2-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
-
                 <technique sid="common">
                     <lambert>
                         <emission>
@@ -97,9 +89,6 @@
                         <transparency>
                             <float>0.5</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>

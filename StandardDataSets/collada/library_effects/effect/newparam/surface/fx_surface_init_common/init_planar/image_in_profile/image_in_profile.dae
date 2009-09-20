@@ -60,7 +60,7 @@
         </newparam>
         <profile_COMMON>
                 <image id="logo" name="logo">
-                  <init_from>logo_2_power.png</init_from>
+                  <init_from>checkerboard.png</init_from>
                 </image>
                 <technique sid="common">
                     <lambert>
@@ -130,7 +130,6 @@
                         <technique_common>
                             <instance_material symbol="lambert2SG" target="#lambert1">
                                 <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                                <bind_vertex_input semantic="TEX1" input_semantic="TEXCOORD" input_set="1"/>
                             </instance_material>
                         </technique_common>
                     </bind_material>

@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_effects', 'effect', 'newparam', 'surface', 'init_from']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -44,8 +44,10 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
             
-        # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
+        # Compare the rendered images between import and export, and if passed, 
+        # compare images against reference test
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "image_in_effect", None, None, 5, True, True)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_effects', 'effect', 'newparam', 'surface', 'init_from']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
