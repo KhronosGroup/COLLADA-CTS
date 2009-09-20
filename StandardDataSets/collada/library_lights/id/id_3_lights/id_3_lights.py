@@ -17,9 +17,9 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_lights', 'light', 'technique_common', 'directional', 'color']
-attrName = ''
-attrVal = ''
+tagLst = ['library_lights', 'light']
+attrName = 'id'
+attrVal = ['this-is-an-id-test', 'this.is.an.id.test', 'this_is_an_id_test']
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -38,7 +38,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -50,12 +50,12 @@ class SimpleJudgingObject:
         if (self.status_baseline == False):
             self.status_superior = self.status_baseline
             return self.status_superior
-    
-        # Compare the rendered images between import and export
-        # Then compare images against a default directional light reference test for equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "_reference_directional_3_lights", None, None, 5, True, True) ):
-              self.__assistant.CompareImagesAgainst(context, "_reference_no_lights", None, None, 5, True, False)
+            
+    	# Check for preservation of element data
+    	for eachIdVal in attrVal:
+            if ( not self.__assistant.AttributeCheck(context, self.tagList, self.attrName, eachIdVal) ):
+                self.status_superior = False
+                return self.status_superior
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

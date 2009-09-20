@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_lights', 'light', 'technique_common', 'directional', 'color']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -34,7 +34,7 @@ class SimpleJudgingObject:
         self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBaseline(self, context):
-        # No step should not crash
+        # No step should crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
@@ -51,11 +51,8 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
     
-        # Compare the rendered images between import and export
-        # Then compare images against a default directional light reference test for equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "_reference_directional_3_lights", None, None, 5, True, True) ):
-              self.__assistant.CompareImagesAgainst(context, "_reference_no_lights", None, None, 5, True, False)
+        # Compare the rendered images
+        self.__assistant.CompareRenderedImages(context)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

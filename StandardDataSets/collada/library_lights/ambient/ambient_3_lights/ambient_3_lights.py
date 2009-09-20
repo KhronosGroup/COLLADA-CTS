@@ -55,7 +55,8 @@ class SimpleJudgingObject:
         # Then compare images against a half red and blue ambient light reference test for equivalence
         # Last, check for preservation of element data
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_ambient_red_green_blue", None, None, 5, True, True)
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_ambient_red_green_blue", None, None, 5, True, True) ):
+              self.__assistant.CompareImagesAgainst(context, "_reference_no_lights", None, None, 5, True, False)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

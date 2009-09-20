@@ -9,9 +9,9 @@
 			</copyright>
         </contributor>
         <created>2007-05-18T23:37:06Z</created>
-        <keywords>Superior light directional</keywords>
+        <keywords>Superior light point</keywords>
         <modified>2009-05-27T15:06:15Z</modified>
-        <subject>Test multiple directional lights</subject>
+        <subject>Test multiple point lights</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -30,25 +30,34 @@
         </camera>
     </library_cameras>
     <library_lights>
-        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+        <light id="pointLightShape1-lib" name="pointLightShape1">
             <technique_common>
-                <directional>
-                    <color>0.5 0 0</color>
-                </directional>
+                <point>
+                    <color>1 0 0</color>
+                    <constant_attenuation>1</constant_attenuation>
+                    <linear_attenuation>0</linear_attenuation>
+                    <quadratic_attenuation>0</quadratic_attenuation>
+                </point>
             </technique_common>
         </light>
-        <light id="directionalLightShape2-lib" name="directionalLightShape2">
+        <light id="pointLightShape2-lib" name="pointLightShape2">
             <technique_common>
-                <directional>
+                <point>
                     <color>0 1 0</color>
-                </directional>
+                    <constant_attenuation>1</constant_attenuation>
+                    <linear_attenuation>0</linear_attenuation>
+                    <quadratic_attenuation>0</quadratic_attenuation>
+                </point>
             </technique_common>
         </light>
-        <light id="directionalLightShape3-lib" name="directionalLightShape3">
+        <light id="pointLightShape3-lib" name="pointLightShape3">
             <technique_common>
-                <directional>
+                <point>
                     <color>0 0 1</color>
-                </directional>
+                    <constant_attenuation>1</constant_attenuation>
+                    <linear_attenuation>0</linear_attenuation>
+                    <quadratic_attenuation>0</quadratic_attenuation>
+                </point>
             </technique_common>
         </light>
     </library_lights>
@@ -71,6 +80,12 @@
                         <diffuse>
                             <color>0.5 0.5 0.5 1</color>
                         </diffuse>
+                        <transparent>
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -112,18 +127,11 @@
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="testCamera" name="testCamera">
-                <translate sid="translate">0 0 400</translate>
+                <translate sid="translate">-0.069809 -0.034906 399.999</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
+                <rotate sid="rotateY">0 1 0 -0.8</rotate>
+                <rotate sid="rotateX">1 0 0 0.4</rotate>
                 <instance_camera url="#mainCamera"/>
-            </node>
-            <node id="directionalLight1" name="directionalLight1">
-                <translate sid="translate">50 0 400</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 15</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#directionalLightShape1-lib"/>
             </node>
             <node id="pTorus1" name="pTorus1">
                 <translate sid="translate">3.52444 4.7461 -5.42559</translate>
@@ -140,19 +148,26 @@
                     </bind_material>
                 </instance_geometry>
             </node>
-            <node id="directionalLight2" name="directionalLight2">
-                <translate sid="translate">50 0 400</translate>
+            <node id="pointLight1" name="pointLight1">
+                <translate sid="translate">-37.3792 -34.6977 75.9731</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#directionalLightShape2-lib"/>
+                <instance_light url="#pointLightShape1-lib"/>
             </node>
-            <node id="directionalLight3" name="directionalLight3">
-                <translate sid="translate">50 0 400</translate>
+            <node id="pointLight2" name="pointLight2">
+                <translate sid="translate">-37.3792 -34.6977 75.9731</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#directionalLightShape3-lib"/>
+                <instance_light url="#pointLightShape2-lib"/>
+            </node>
+            <node id="pointLight3" name="pointLight3">
+                <translate sid="translate">-37.3792 -34.6977 75.9731</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_light url="#pointLightShape3-lib"/>
             </node>
         </visual_scene>
     </library_visual_scenes>
