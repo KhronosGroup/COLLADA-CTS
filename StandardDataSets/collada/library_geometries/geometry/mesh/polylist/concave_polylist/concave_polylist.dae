@@ -48,31 +48,19 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         </light>
     </library_lights>
     <library_materials>
-        <material id="lambert1" name="lambert1">
-            <instance_effect url="#lambert1-fx"/>
+        <material id="constant1" name="constant1">
+            <instance_effect url="#constant1-fx"/>
         </material>
     </library_materials>
     <library_effects>
-        <effect id="lambert1-fx">
+        <effect id="constant1-fx">
             <profile_COMMON>
                 <technique sid="common">
-                    <lambert>
+                    <constant>
                         <emission>
                             <color>0.5 0.5 0.5 1</color>
                         </emission>
-                        <ambient>
-                            <color>0 0 0 1</color>
-                        </ambient>
-                        <diffuse>
-                            <color>0 0 0 1</color>
-                        </diffuse>
-                        <transparent>
-                            <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1</float>
-                        </transparency>
-                    </lambert>
+                    </constant>
                 </technique>
             </profile_COMMON>
         </effect>
@@ -108,7 +96,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <instance_geometry url="#pCubeShape1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+                            <instance_material symbol="initialShadingGroup" target="#constant1"/>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>

@@ -18,9 +18,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2009-05-04T12:00:00Z</created>
-		<keywords>baseline_badge geometry mesh source technique_common param</keywords>
+	<keywords>Baseline geometry mesh polygons</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
-		<subject>Test param for preservation</subject>
+	<subject>Test Test the preservation of vertices in a polygons primitive.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -98,13 +98,14 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <geometry id="cube" name="cube">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array count="18" id="pCubeShape1-positions-array">
+                    <float_array count="21" id="pCubeShape1-positions-array">
 						0 -25 25 
 						25 -25 25
 						25 25 25 
 						0 25 25
 						-25 25 25
 						-25 -25 25 
+						0 -25 25 
 					</float_array>
                     <technique_common>
                         <accessor count="6" source="#pCubeShape1-positions-array" stride="3">
@@ -141,9 +142,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
                     <input offset="1" semantic="TEXCOORD" set="0" source="#cube-map1"/>
                     <p>0 0 1 1 2 2</p>
-					<p>0 0 2 2 3 3</p>
-					<p>0 4 3 5 4 6</p>
-					<p>0 4 4 6 5 7</p>
+		    <p>0 0 2 2 3 3</p>
+		    <p>0 4 3 5 4 6</p>
+		    <p>0 4 4 6 5 7</p>
                 </polygons>
             </mesh>
         </geometry>

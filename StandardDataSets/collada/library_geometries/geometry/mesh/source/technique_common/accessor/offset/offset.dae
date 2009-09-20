@@ -18,9 +18,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2009-05-04T12:00:00Z</created>
-		<keywords>baseline_badge geometry mesh source technique_common param</keywords>
+	<keywords>baseline_badge geometry mesh source technique_common param</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
-		<subject>Test param for preservation</subject>
+	<subject>Test param for preservation</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -88,9 +88,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <transparency>
                             <float>1.0</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -106,7 +103,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 						25 -25 25 
 						-25 25 25 
 						25 25 25 
-					</float_array>
+		    </float_array>
                     <technique_common>
                         <accessor count="4" source="#pCubeShape1-positions-array" stride="3" offset="3">
                             <param name="X" type="float"/>
@@ -123,7 +120,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 						0.8 0.2 
 						0.8 0.8 
 						0.2 0.8 
-					</float_array>
+		    </float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2" offset="2">
                             <param name="S" type="float"/>

@@ -1,4 +1,0 @@
-ERROR: (type=source,id=pCubeShape1-positions)total size of all params + offset > accessor stride!
-ERROR: CHECK_count Failed: expected=15, result=0(type=source,id=pCubeShape1-positions)accessor_stride >= accessor_size but array_count != accessor_count * accessor_stride
-ERROR: (type=source,id=cube-map1)total size of all params + offset > accessor stride!
-ERROR: CHECK_count Failed: expected=10, result=0(type=source,id=cube-map1)accessor_stride >= accessor_size but array_count != accessor_count * accessor_stride

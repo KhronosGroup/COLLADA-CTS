@@ -17,9 +17,9 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
-attrVal = ''
+tagLst = [['library_geometries', 'geometry', 'mesh', 'vertices', 'input'], ['library_geometries', 'geometry', 'mesh', 'source', 'float_array']]
+attrName = 'semantic'
+attrVal = 'POSITION'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -40,6 +40,15 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
 
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+        
+        # Check that the input semantic is preserved
+        # Check that the source exists and is not null
+        if ( self.__assistant.AttributeCheck(context, self.tagList[0], self.attrName, self.attrVal) ):        
+            self.__assistant.ElementDataExists(context, self.tagList[1])
+        
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
