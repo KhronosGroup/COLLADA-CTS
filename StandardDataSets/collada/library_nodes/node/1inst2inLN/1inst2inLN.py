@@ -88,17 +88,22 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
-        
+
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+            
         # Compare the rendered images, then check for visual scene equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.CheckNodes(context)
-            if (self.visualSceneCheck == True):
-                context.Log("PASSED: Visual scenes are equivalent.")
-            else:
-                context.Log("FALSE: Visual scenes are not equivalent.")
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_2insts", None, None, 5, True, False) ):
+                self.CheckNodes(context)
+                if (self.visualSceneCheck == True):
+                    context.Log("PASSED: Visual scenes are equivalent.")
+                else:
+                    context.Log("FALSE: Visual scenes are not equivalent.")
                 
-            self.status_baseline = self.visualSceneCheck
-            return self.status_baseline
+                self.status_baseline = self.visualSceneCheck
+                return self.status_baseline
 
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

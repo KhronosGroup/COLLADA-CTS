@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Baseline library_nodes</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
-        <subject>Test the instantiation of two different nodes declared in library_nodes</subject>
+        <subject>Test the that unreferenced ID in library_nodes is not in the scene</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -169,7 +169,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<instance_light url="#directionalLightShape1-lib"/>
       </node>
       <node id="NodeRoot">
-        <instance_node url="#cube"/>
         <instance_node url="#triangle"/>
       </node>
     </visual_scene>
