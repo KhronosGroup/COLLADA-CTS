@@ -9,9 +9,9 @@
 			</copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
-        <keywords>Badge: Baseline</keywords>
+        <keywords>Baseline effect newparam sampler2D</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Newparam: sampler2D</subject>
+        <subject>Test the WRAP mode for a sampler2D</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -58,8 +58,8 @@
           <!-- Test for sampler2D: Basic Badge -->
           <sampler2D>
             <source>file1-surface</source>
-            <minfilter>NEAREST</minfilter>
-            <magfilter>NEAREST</magfilter>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
           </sampler2D>
         </newparam>
 
@@ -81,9 +81,6 @@
                 <transparency>
                     <float>1.0</float>
                 </transparency>
-                <index_of_refraction>
-                    <float>1</float>
-                </index_of_refraction>
             </lambert>
           </technique>
         </profile_COMMON>
@@ -104,7 +101,7 @@
                 </source>
 
                 <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
+                    <float_array id="cube-map1-array" count="8">0 0 2 0 2 2 0 2</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2">
                             <param name="S" type="float"/>
