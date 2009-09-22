@@ -99,9 +99,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </mesh>
         </geometry>
     </library_geometries>
-    <library_nodes>
-
-    </library_nodes>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node" name="cube_node">
