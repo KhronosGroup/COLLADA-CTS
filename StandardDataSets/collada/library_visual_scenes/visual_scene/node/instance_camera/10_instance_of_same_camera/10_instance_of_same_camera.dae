@@ -125,7 +125,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <rotate sid="rotateZ">0 0 1 2.98093</rotate>
                 <rotate sid="rotateY">0 1 0 -26.6163</rotate>
                 <rotate sid="rotateX">1 0 0 25.2091</rotate>
-                <scale sid="scale">2.22186 2.22186 2.22186</scale>
+                <scale sid="scale">10 10 10</scale>
                 <instance_geometry url="#pCubeShape1">
                     <bind_material>
                         <technique_common>
