@@ -14,8 +14,6 @@
     <keywords>Baseline visual_scene</keywords>
     <modified>2008-06-12T12:30:18Z</modified>
     <subject>Test the use and preservation of a underscore in the id of a visual_scene element</subject>
-    <unit name="inch" meter="0.0254"/>
-    <up_axis>Y_UP</up_axis>
   </asset>
   <library_visual_scenes>
     <visual_scene id="This_is_a_test_id">
