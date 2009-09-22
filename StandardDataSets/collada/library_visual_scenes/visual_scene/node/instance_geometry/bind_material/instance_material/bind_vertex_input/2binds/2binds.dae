@@ -47,7 +47,7 @@
             <init_from>fullBlue.png</init_from>
         </image>
         <image id="file2" name="file2">
-            <init_from>fullGreen.png</init_from>
+            <init_from>checkerboard.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -81,10 +81,10 @@
                 <technique sid="common">
                     <lambert>
                         <emission>
-                          <texture texture="file2-sampler" texcoord="TEX0"/> 
+                          <texture texture="file1-sampler" texcoord="TEX1"/> 
                         </emission>
                         <diffuse>
-                          <texture texture="file1-sampler" texcoord="TEX1"/>
+                          <texture texture="file2-sampler" texcoord="TEX0"/>
                         </diffuse>
                     </lambert>
                 </technique>

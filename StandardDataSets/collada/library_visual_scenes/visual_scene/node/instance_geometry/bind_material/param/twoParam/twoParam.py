@@ -14,11 +14,12 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
+from Core.Common.DOMParser import *
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = ['library_visual_scenes', 'visual_scene', 'node', 'instance_geometry', 'bind_material', 'param']
-attrNameLst = ['semantic', 'type']
+attrNameLst = ['name', 'sid', 'semantic', 'type']
 attrVal = ''
 dataToCheck = ''
 
@@ -31,8 +32,64 @@ class SimpleJudgingObject:
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
+        self.inputFilleName = ''
+        self.outputFilleNameLst = []
         self.__assistant = JudgeAssistant.JudgeAssistant()
+
+    def ParamCheck(self, context):
+        # Get the input file
+        self.inputFilleName = context.GetAbsInputFilename(context.GetCurrentTestId())
         
+        # Get the output file
+        outputFilenames = context.GetStepOutputFilenames("Export")
+        if len(outputFilenames) == 0:
+            context.Log("FAILED: There are no export steps.")
+            return False
+        else:
+            del self.outputFilleNameLst[:]
+            self.outputFilleNameLst.extend( outputFilenames )
+    
+        testIO = DOMParserIO( self.inputFilleName, self.outputFilleNameLst )
+        # load files and generate root
+        testIO.Init()
+        
+        # get input list
+        inputInputLst = FindElement(testIO.GetRoot(self.inputFilleName), self.tagList)
+        if len( inputInputLst ) == 0:
+            context.Log('FAILED: param of input is not found')
+            return False
+        
+        inputOutputLst = []
+        inputOutputLst = FindElement(testIO.GetRoot(self.outputFilleNameLst[0]), self.tagList)
+        if len( inputOutputLst ) == 0:
+            context.Log('FAILED: param of output is not found')
+            return False
+        
+        for eachInput in inputInputLst:
+            found = False
+            for eachOutput in inputOutputLst:
+                for eachAttr in self.attrNameList:
+                    print GetAttriByEle(eachInput, eachAttr)
+                    print GetAttriByEle(eachOutput, eachAttr)
+                    if (GetAttriByEle(eachOutput, eachAttr) != GetAttriByEle(eachInput, eachAttr) ):
+                        found = False
+                        break
+                    else:
+                        found = True
+                
+                if (found == True):
+                    break
+                    
+            if (found == False):
+                break;
+                    
+        if (found == True):
+            context.Log('PASSED: param attributes are preserved')
+        else:
+            context.Log('FAILED: param attributes are not preserved')
+            
+        return found
+
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -51,14 +108,17 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
     
-        # Loop through attribute name list and check for preservation of attribute values
-        for eachAttrName in self.attrNameList:
-            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)
-            if (self.__assistant.GetResults() == False):
-                break
-            
-        self.status_superior = self.__assistant.DeferJudgement(context)
+        self.status_superior = self.ParamCheck(context)
         return self.status_superior 
+        
+        # Loop through attribute name list and check for preservation of attribute values
+#        for eachAttrName in self.attrNameList:
+#            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)
+#            if (self.__assistant.GetResults() == False):
+#                break
+            
+#        self.status_superior = self.__assistant.DeferJudgement(context)
+#        return self.status_superior 
             
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge

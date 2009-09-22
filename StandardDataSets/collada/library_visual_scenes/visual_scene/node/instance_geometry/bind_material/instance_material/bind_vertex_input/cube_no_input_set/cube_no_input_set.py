@@ -17,28 +17,28 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_visual_scenes', 'visual_scene', 'node', 'instance_geometry', 'bind_material', 'param']
-attrNameLst = ['semantic', 'type']
+tagLst = []
+attrName = ''
 attrVal = ''
 dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrNameLst, _attrVal, _data):
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
         self.tagList = _tagLst
-        self.attrNameList = _attrNameLst
+        self.attrName = _attrName
         self.attrVal = _attrVal
         self.dataToCheck = _data
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -51,12 +51,11 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
     
-        # Loop through attribute name list and check for preservation of attribute values
-        for eachAttrName in self.attrNameList:
-            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)
-            if (self.__assistant.GetResults() == False):
-                break
-            
+        # Compare the rendered images
+        # Then compare images against reference test for non-equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_cube_blue", None, None, 5, True, True)
+
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
             
@@ -69,4 +68,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrNameLst, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);

@@ -39,7 +39,11 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
-        
+
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+            
         # Compare the rendered images between import and export
         # Then compare images against reference test to check for non-equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):

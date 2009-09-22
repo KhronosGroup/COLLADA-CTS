@@ -40,23 +40,22 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
-        self.status_baseline = self.__assistant.GetResults()
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+
+        # Compare the rendered images
+        # Then compare images against reference test for non-equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_cube_collada", None, None, 5, True, True)
+        
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
-        # if baseline fails, no point in further checking
-        if (self.status_baseline == False):
-            self.status_superior = self.status_baseline
-            return self.status_superior
-    
-        # Compare the rendered images
-        # Then compare images against reference test for non-equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_cube_collada", None, None, 5, True, True)
-
-        self.status_superior = self.__assistant.DeferJudgement(context)
+        self.status_superior = self.status_baseline
         return self.status_superior 
             
     # To pass advanced you need to pass intermediate, this object could also include additional

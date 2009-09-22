@@ -45,7 +45,9 @@ class SimpleJudgingObject:
             return False
             
         # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
+        # Then compare images against reference test for non-equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_instance_material_same_geometry", None, None, 5, True, True)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

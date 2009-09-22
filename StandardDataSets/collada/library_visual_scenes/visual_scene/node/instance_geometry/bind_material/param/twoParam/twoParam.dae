@@ -73,9 +73,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -122,8 +119,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <rotate sid="rotateX">1 0 0 45</rotate>
                 <instance_geometry url="#cube">
                     <bind_material>
-                        <param sid="windAmount" semantic="WINDSPEED" type="float3"/>
-                        <param sid="sunReflectivity" semantic="REFLECTIVITY" type="float"/>
+                        <param name="paramName1" sid="windAmount" semantic="WINDSPEED" type="float3"/>
+                        <param name="paramName2" sid="sunReflectivity" semantic="REFLECTIVITY" type="float"/>
                         <technique_common>
                             <instance_material symbol="initialShadingGroup" target="#lambert1"/>
                         </technique_common>
