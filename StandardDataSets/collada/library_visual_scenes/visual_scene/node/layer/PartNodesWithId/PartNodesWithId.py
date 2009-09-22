@@ -17,17 +17,17 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-parentId = 'VisualSceneNode'
-tagName = 'node'
-attrLst = ['layer']
+tagLst = ['library_visual_scenes', 'visual_scene']
+tagNameLst = ['instance_camera', 'instance_light', 'instance_geometry']
+attrName = 'layer'
 attrVal = ''
 dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _parentId, _tagName, _attrLst, _attrVal, _data):
-        self.parentId = _parentId
-        self.tagName = _tagName
-        self.attrList = _attrLst
+    def __init__(self, _tagList, _tagNameLst, _attrName, _attrVal, _data):
+        self.tagList = _tagList
+        self.tagNameList = _tagNameLst
+        self.attrName = _attrName
         self.attrVal = _attrVal
         self.dataToCheck = _data
         self.status_baseline = False
@@ -54,7 +54,10 @@ class SimpleJudgingObject:
             return self.status_superior
     
         # Check for preservation of attributes
-        self.__assistant.CheckAttrWithoutID(context, self.parentId, self.tagName, self.attrList)
+        for eachTagName in self.tagNameList:
+            if ( not self.__assistant.CheckAttrByChild(context, self.tagList, eachTagName, self.attrName) ):
+                self.status_superior = False
+                return self.status_superior
             
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
@@ -68,4 +71,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(parentId, tagName, attrLst, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, tagNameLst, attrName, attrVal, dataToCheck);

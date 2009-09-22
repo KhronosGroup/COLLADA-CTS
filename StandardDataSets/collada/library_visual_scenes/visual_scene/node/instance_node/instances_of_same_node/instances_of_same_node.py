@@ -91,7 +91,18 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
-        self.status_baseline = self.__assistant.GetResults()
+        # Compare the rendered images, then check for visual scene equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.CheckNodes(context)
+            if (self.visualSceneCheck == True):
+                context.Log("PASSED: Visual scenes are equivalent.")
+            else:
+                context.Log("FALSE: Visual scenes are not equivalent.")
+                
+            self.status_baseline = self.visualSceneCheck
+            return self.status_baseline
+
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -102,33 +113,20 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
 
-        # Compare the rendered images, check for visual scene equivalence, then check for library_nodes preservation
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.CheckNodes(context)
-            if (self.visualSceneCheck == True):
-                context.Log("PASSED: Visual scenes are equivalent.")
-                
-                if (self.nodeCheck == True):
-                    context.Log("PASSED: Library nodes are preserved.")
-                    self.__assistant.CompareElementCount(context, self.tagList, self.tagName, self.attrName, self.attrVal)
+        # Check for library_nodes preservation
+        if (self.nodeCheck == True):
+            context.Log("PASSED: Library nodes are preserved.")
+            self.__assistant.CompareImagesAgainst(context, "_reference_instances_of_same_node", None, None, 5, True, True)
+            self.__assistant.CompareElementCount(context, self.tagList, self.tagName, self.attrName, self.attrVal)
                     
-                    self.status_superior = self.__assistant.DeferJudgement(context)
-                    return self.status_superior 
-
-                else:
-                   context.Log("FALSE: Library nodes are not preserved.")
-                   
-                self.status_superior = self.nodeCheck
-                return self.status_superior
-            else:
-                context.Log("FALSE: Visual scenes are not equivalent.")
-                
-            self.status_superior = self.visualSceneCheck
-            return self.status_superior
+            self.status_superior = self.__assistant.DeferJudgement(context)
+            return self.status_superior 
+        else:
+            context.Log("FALSE: Library nodes are not preserved.")
             
-        self.status_superior = self.__assistant.DeferJudgement(context)
-        return self.status_superior 
-            
+        self.status_superior = self.nodeCheck
+        return self.status_superior
+        
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):

@@ -151,14 +151,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </bind_material>
         </instance_controller>
       </node>
-    </library_nodes>
-    <library_visual_scenes>
-        <visual_scene id="VisualSceneNode" name="Two_State_Test">
-            <node id="pCylinder1" name="pCylinder1">
-                <scale sid="scale">1 1 1</scale>
-                <translate sid="translate">0 -50 0</translate>
-                <instance_node url="#CylinderWithSkeleton"/>
-            </node>
+      
             <node id="joint1" name="joint1" type="JOINT">
                 <scale sid="scale">1 1 1</scale>
                 <rotate sid="jointOrientZ">0 0 1 90</rotate>
@@ -199,6 +192,15 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         </node>
                     </node>
                 </node>
+            </node>
+            
+    </library_nodes>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="Two_State_Test">
+            <node id="pCylinder1" name="pCylinder1">
+                <scale sid="scale">1 1 1</scale>
+                <translate sid="translate">0 -50 0</translate>
+                <instance_node url="#CylinderWithSkeleton"/>
             </node>
             <node id="testCamera" name="testCamera">
                 <translate sid="translate">0 0 400</translate>

@@ -12,7 +12,7 @@
       </copyright>
     </contributor>
     <created>2008-07-31T18:53:06Z</created>
-    <keywords>Baseline/Superior node instance_node</keywords>
+    <keywords>Superior node</keywords>
     <modified>2008-07-31T18:53:17Z</modified>
     <subject>Test the layer attribute of a nodes without an id</subject>
     <unit meter="0.0254" name="inch"/>
@@ -51,12 +51,6 @@
       <profile_COMMON>
         <technique sid="common">
           <phong>
-            <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
             <diffuse>
               <color>0.5 0.5 0.5 1</color>
             </diffuse>
@@ -66,12 +60,6 @@
             <shininess>
               <float>10</float>
             </shininess>
-            <reflective>
-              <color>0 0 0 1</color>
-            </reflective>
-            <reflectivity>
-              <float>1</float>
-            </reflectivity>
             <transparent opaque="A_ONE">
               <color>1 1 1 1</color>
             </transparent>

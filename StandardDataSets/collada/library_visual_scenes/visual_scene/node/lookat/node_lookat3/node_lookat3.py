@@ -47,7 +47,7 @@ class SimpleJudgingObject:
         # Compare the rendered images between import and export
         # Then compare images against reference test to check for non-equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "node_lookat", None, None, 5, True, False)
+            self.__assistant.CompareImagesAgainst(context, "node_lookat2", None, None, 5, True, False)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

@@ -110,6 +110,7 @@ class SimpleJudgingObject:
                 
                 if (self.nodeCheck == True):
                     context.Log("PASSED: Library nodes are preserved.")
+                    self.__assistant.CompareImagesAgainst(context, "_reference_light_color", None, None, 5, True, True)
                     self.__assistant.CompareElementCount(context, self.tagList, self.tagName, self.attrName, self.attrVal)
                     
                     self.status_superior = self.__assistant.DeferJudgement(context)

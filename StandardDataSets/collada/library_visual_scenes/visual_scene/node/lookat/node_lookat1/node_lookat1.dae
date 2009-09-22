@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Baseline node lookat</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
-        <subject>Test a camera node's lookat element set to (400 0 0 0 0 0 0 1 0)</subject>
+        <subject>Test the lookat element of a node to position and orient a geometry (50 0 0 0 0 -1000 0 1 0)</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -57,67 +57,43 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <effect id="lambert1-fx">
             <profile_COMMON>
                 <technique sid="common">
-                    <lambert>
+                    <constant>
                         <emission>
-                            <color>0 0 0 1</color>
+                            <color>0 0 1 1</color>
                         </emission>
-                        <ambient>
-                            <color>0 0 0 1</color>
-                        </ambient>
-                        <diffuse>
-                            <color>0.5 0.5 0.5 1</color>
-                        </diffuse>
-                        <transparent>
-                            <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1</float>
-                        </transparency>
-                    </lambert>
+                    </constant>
                 </technique>
             </profile_COMMON>
         </effect>
     </library_effects>
-    <library_geometries>
-        <geometry id="cube" name="cube">
-            <mesh>
-                <source id="cube-positions" name="position">
-                    <float_array id="cube-positions-array" count="24">-50 -50 50 50 -50 50 -50 50 50 50 50 50 -50 50 -50 50 50 -50 -50 -50 -50 50 -50 -50</float_array>
-                    <technique_common>
-                        <accessor count="8" source="#cube-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="28">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
-                    <technique_common>
-                        <accessor count="14" source="#cube-map1-array" stride="2">
-                            <param name="S" type="float"/>
-                            <param name="T" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#cube-positions"/>
-                </vertices>
-                <triangles count="12" material="initialShadingGroup">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
-                    <p>0 0 1 1 2 2 2 2 1 1 3 3 2 2 3 3 4 4 4 4 3 3 5 5 4 4 5 5 6 6 6 6 5 5 7 7 6 6 7 7 0 8 0 8 7 7 1 9 1 1 7 10 3 3 3 3 7 10 5 11 6 12 0 0 4 13 4 13 0 0 2 2</p>
-                </triangles>
-            </mesh>
-        </geometry>
-    </library_geometries>
+  <library_geometries>
+    <geometry id="pyramid-mesh" name="pyramid">
+      <mesh>
+        <source id="pyramid-mesh-positions">
+          <float_array id="pyramid-mesh-positions-array" count="15">-50 0 75 0 -50 75 50 0 75 0 50 75 0 0 -125</float_array>
+          <technique_common>
+            <accessor source="#pyramid-mesh-positions-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pyramid-mesh-vertices">
+          <input semantic="POSITION" source="#pyramid-mesh-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="6">
+          <input semantic="VERTEX" source="#pyramid-mesh-vertices" offset="0"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node" name="cube_node">
-                <rotate sid="rotateZ">0 0 1 45</rotate>
-                <rotate sid="rotateY">0 1 0 45</rotate>
-                <rotate sid="rotateX">1 0 0 45</rotate>
-                <instance_geometry url="#cube">
+                <lookat sid="lookat">50 0 0 0 0 -1000 0 1 0</lookat>
+                <instance_geometry url="#pyramid-mesh">
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="initialShadingGroup" target="#lambert1"/>
@@ -126,7 +102,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </instance_geometry>
             </node>
             <node id="testCamera" name="testCamera">
-                <lookat sid="lookat">400 0 0 0 0 0 0 1 0</lookat>
+                <translate sid="translate">0 0 400</translate> 
                 <instance_camera url="#mainCamera"/>
             </node>
             <node id="directionalLight1" name="directionalLight1">

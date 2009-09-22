@@ -101,7 +101,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </library_geometries>
     <library_nodes>
         <node id="testCamera" name="testCamera">
-            <translate sid="translate">0 0 400</translate>
+            <translate sid="translate">0 100 400</translate>
             <rotate sid="rotateZ">0 0 1 0</rotate>
             <rotate sid="rotateY">0 1 0 0</rotate>
             <rotate sid="rotateX">1 0 0 0</rotate>

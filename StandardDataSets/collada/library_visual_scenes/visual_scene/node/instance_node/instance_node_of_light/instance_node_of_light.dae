@@ -43,7 +43,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <light id="directionalLightShape1-lib" name="directionalLightShape1">
             <technique_common>
                 <directional>
-                    <color>1 1 1</color>
+                    <color>0 0 1</color>
                 </directional>
             </technique_common>
         </light>

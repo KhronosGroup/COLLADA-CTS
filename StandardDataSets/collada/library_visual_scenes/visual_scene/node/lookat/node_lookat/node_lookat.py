@@ -46,7 +46,7 @@ class SimpleJudgingObject:
         
         # Compare the rendered images between import and export
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_node_rotate_zyx_cube", None, None, 5, True, True)
+            self.__assistant.CompareImagesAgainst(context, "_reference_node_lookat_default", None, None, 5, True, True)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
