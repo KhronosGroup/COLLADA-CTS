@@ -53,10 +53,11 @@ class SimpleJudgingObject:
             
         # Compare the rendered images between import and export, and if passed, 
         # compare images against reference test
-        self.__assistant.CompareRenderedImages(context)
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_4_influence")
         
         self.status_superior = self.__assistant.DeferJudgement(context)
-        return self.status_superior
+        return self.status_superior 
             
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge

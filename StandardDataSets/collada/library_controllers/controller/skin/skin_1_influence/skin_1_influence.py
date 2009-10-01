@@ -54,7 +54,7 @@ class SimpleJudgingObject:
         # Compare the rendered images between import and export, and if passed, 
         # compare images against reference test
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "reference_1_influence")
+            self.__assistant.CompareImagesAgainst(context, "_reference_1_influence")
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior
