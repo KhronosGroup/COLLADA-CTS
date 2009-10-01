@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2006-08-23T22:42:50Z</created>
         <keywords>Baseline choice of libraries</keywords>
         <modified>2006-08-23T22:42:50Z</modified>
-        <subject>Test multiple library_animations. library_animations may be merged, but animation must be preserved.</subject>
+        <subject>Reference test two animation (translate X and scale Y)</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -76,8 +76,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </sampler>
             <channel source="#prop_translate_prop_translate_translate-sampler" target="prop/translate.X"/>
         </animation>
-    </library_animations>
-    <library_animations>
         <animation id="prop_scale">
             <source id="prop_scale_prop_scale_scale-input">
                 <float_array id="prop_scale_prop_scale_scale-input-array" count="2">0 5</float_array>

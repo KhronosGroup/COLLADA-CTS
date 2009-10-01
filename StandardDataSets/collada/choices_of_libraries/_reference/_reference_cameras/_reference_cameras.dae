@@ -12,7 +12,7 @@
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
-    <subject>Test multiple library_lights.  library may be merged, but all lights must be preserved.</subject>
+    <subject>Reference test of three cameras</subject>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
@@ -29,30 +29,36 @@
         </technique_common>
       </optics>
     </camera>
+    <camera id="secondCamera" name="secondCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>20</znear>
+            <zfar>2000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+    <camera id="thirdCamera" name="thirdCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>30</znear>
+            <zfar>3000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
   </library_cameras>
   <library_lights>
     <light id="directionalLightShape1-lib" name="directionalLightShape1">
       <technique_common>
         <directional>
           <color>1 1 1</color>
-        </directional>
-      </technique_common>
-    </light>
-  </library_lights>
-  <library_lights>
-    <light id="directionalLightShape1-lib2" name="directionalLightShape2">
-      <technique_common>
-        <directional>
-          <color>0 1 0</color>
-        </directional>
-      </technique_common>
-    </light>
-  </library_lights>
-  <library_lights>
-    <light id="directionalLightShape1-lib3" name="directionalLightShape3">
-      <technique_common>
-        <directional>
-          <color>0 0 1</color>
         </directional>
       </technique_common>
     </light>
@@ -82,6 +88,9 @@
             <transparency>
               <float>1</float>
             </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
           </lambert>
         </technique>
       </profile_COMMON>
@@ -142,26 +151,26 @@
         <rotate sid="rotateX">1 0 0 0</rotate>
         <instance_camera url="#mainCamera"/>
       </node>
+      <node id="testCamera2" name="testCamera2" type="NODE">
+        <translate sid="translate">0 0 600</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_camera url="#secondCamera"/>
+      </node>
+      <node id="testCamera3" name="testCamera3" type="NODE">
+        <translate sid="translate">0 0 800</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_camera url="#thirdCamera"/>
+      </node>
       <node id="directionalLight1" name="directionalLight1" type="NODE">
         <translate sid="translate">50 0 400</translate>
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 15</rotate>
         <rotate sid="rotateX">1 0 0 0</rotate>
         <instance_light url="#directionalLightShape1-lib"/>
-      </node>
-      <node id="directionalLight2" name="directionalLight2" type="NODE">
-        <translate sid="translate">50 0 400</translate>
-        <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 15</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_light url="#directionalLightShape1-lib2"/>
-      </node>
-      <node id="directionalLight3" name="directionalLight3" type="NODE">
-        <translate sid="translate">50 0 400</translate>
-        <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 15</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_light url="#directionalLightShape1-lib3"/>
       </node>
     </visual_scene>
   </library_visual_scenes>

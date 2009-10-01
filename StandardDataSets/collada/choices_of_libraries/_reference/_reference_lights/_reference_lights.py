@@ -32,7 +32,7 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-               
+        
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -50,14 +50,12 @@ class SimpleJudgingObject:
         if (self.status_baseline == False):
             self.status_superior = self.status_baseline
             return self.status_superior
-    
-        # Compare the rendered images between import and export
-        # Then compare images against a reference test for equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_lights", None, None, 5, True, True)
+        
+        # Compare the import and export rendered images
+        self.__assistant.CompareRenderedImages(context)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
-        return self.status_superior 
+        return self.status_superior
             
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
