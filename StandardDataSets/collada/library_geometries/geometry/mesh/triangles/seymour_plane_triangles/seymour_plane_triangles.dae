@@ -24,68 +24,12 @@ limitations under the License.</copyright>
             <source_data>file:///C:/vs2005/sample_data/Complete_Packages/SCEA_Private/Maya_MoonLander/Moonlander/untitled</source_data>
         </contributor>
         <created>2006-12-13T01:46:41Z</created>
+        <keywords>Exemplary geometry mesh triangles</keywords>
         <modified>2007-02-21T23:12:59Z</modified>
+        <subject>Test the handling of normals and textures in a triangles primitive</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
-    <library_animations>
-        <animation id="prop_rotateZ">
-            <source id="prop_rotateZ_prop_rotateZ_ANGLE-input">
-                <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-input-array" count="2">0 1</float_array>
-                <technique_common>
-                    <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-input-array">
-                        <param name="TIME" type="float"/>
-                    </accessor>
-                </technique_common>
-                <technique profile="MAYA">
-                    <pre_infinity>CONSTANT</pre_infinity>
-                    <post_infinity>CONSTANT</post_infinity>
-                </technique>
-            </source>
-            <source id="prop_rotateZ_prop_rotateZ_ANGLE-output">
-                <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-output-array" count="2">0 360</float_array>
-                <technique_common>
-                    <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-output-array">
-                        <param name="ANGLE" type="float"/>
-                    </accessor>
-                </technique_common>
-            </source>
-            <source id="prop_rotateZ_prop_rotateZ_ANGLE-intangents">
-                <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-intangents-array" count="4">-0.333333 -120 0.666667 240</float_array>
-                <technique_common>
-                    <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents-array" stride="2">
-                        <param name="X" type="float"/>
-                        <param name="Y" type="float"/>
-                    </accessor>
-                </technique_common>
-            </source>
-            <source id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents">
-                <float_array id="prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array" count="4">0.333333 120 1.33333 480</float_array>
-                <technique_common>
-                    <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents-array" stride="2">
-                        <param name="X" type="float"/>
-                        <param name="Y" type="float"/>
-                    </accessor>
-                </technique_common>
-            </source>
-            <source id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations">
-                <Name_array id="prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array" count="2">LINEAR LINEAR</Name_array>
-                <technique_common>
-                    <accessor count="2" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations-array">
-                        <param name="INTERPOLATION" type="Name"/>
-                    </accessor>
-                </technique_common>
-            </source>
-            <sampler id="prop_rotateZ_prop_rotateZ_ANGLE-sampler">
-                <input semantic="INPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-input"/>
-                <input semantic="OUTPUT" source="#prop_rotateZ_prop_rotateZ_ANGLE-output"/>
-                <input semantic="IN_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-intangents"/>
-                <input semantic="OUT_TANGENT" source="#prop_rotateZ_prop_rotateZ_ANGLE-outtangents"/>
-                <input semantic="INTERPOLATION" source="#prop_rotateZ_prop_rotateZ_ANGLE-interpolations"/>
-            </sampler>
-            <channel source="#prop_rotateZ_prop_rotateZ_ANGLE-sampler" target="prop/rotateZ.ANGLE"/>
-        </animation>
-    </library_animations>
     <library_cameras>
         <camera id="cameraShape1" name="cameraShape1">
             <optics>
@@ -111,7 +55,7 @@ limitations under the License.</copyright>
     </library_lights>
     <library_images>
         <image id="file1" name="file1">
-            <init_from>./planeDiffuse.tga</init_from>
+            <init_from>./planeDiffuse.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -128,14 +72,11 @@ limitations under the License.</copyright>
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>file1</init_from>
-                        <format>A8R8G8B8</format>
                     </surface>
                 </newparam>
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
@@ -155,21 +96,6 @@ limitations under the License.</copyright>
                         <shininess>
                             <float>78.942</float>
                         </shininess>
-                        <reflective>
-                            <color>0 0 0 1</color>
-                        </reflective>
-                        <reflectivity>
-                            <float>0.5</float>
-                        </reflectivity>
-                        <transparent>
-                            <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1</float>
-                        </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </phong>
                 </technique>
             </profile_COMMON>
@@ -179,14 +105,11 @@ limitations under the License.</copyright>
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>file1</init_from>
-                        <format>A8R8G8B8</format>
                     </surface>
                 </newparam>
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
@@ -206,21 +129,6 @@ limitations under the License.</copyright>
                         <shininess>
                             <float>0.30576</float>
                         </shininess>
-                        <reflective>
-                            <color>0 0 0 1</color>
-                        </reflective>
-                        <reflectivity>
-                            <float>0.5</float>
-                        </reflectivity>
-                        <transparent>
-                            <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1</float>
-                        </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </blinn>
                 </technique>
             </profile_COMMON>
