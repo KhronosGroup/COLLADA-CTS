@@ -29,9 +29,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <optics>
                 <technique_common>
                     <orthographic>
-                        <ymag>50</ymag>
-                        <znear>0.1</znear>
-                        <zfar>5000</zfar>
+                      <ymag>100</ymag>
+                      <aspect_ratio>1</aspect_ratio>
+                      <znear>0.1</znear>
+                      <zfar>5000</zfar>
                     </orthographic>
                 </technique_common>
             </optics>

@@ -29,8 +29,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <optics>
                 <technique_common>
                     <perspective>
-                        <xfov>50</xfov>
-                        <yfov>50</yfov>
+                        <xfov>10</xfov>
+                        <yfov>90</yfov>
                         <znear>1</znear>
                         <zfar>5000</zfar>
                     </perspective>

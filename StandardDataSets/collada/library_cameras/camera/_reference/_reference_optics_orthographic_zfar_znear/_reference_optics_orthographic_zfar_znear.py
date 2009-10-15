@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_cameras', 'camera', 'optics', 'technique_common', 'orthographic', 'ymag']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -33,7 +33,7 @@ class SimpleJudgingObject:
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
             
-    # Baseline
+	# Baseline
     def JudgeBaseline(self, context):
         # No step should crash
         self.__assistant.CheckCrashes(context)
@@ -52,9 +52,7 @@ class SimpleJudgingObject:
             return self.status_superior
          
         # Compare the rendered images
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "optics_orthographic_xmag", None, None, 5, True, True) ):
-                self.__assistant.ElementDataPreserved(context, self.tagList, "float")
+        self.__assistant.CompareRenderedImages(context)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

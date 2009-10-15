@@ -30,7 +30,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <technique_common>
                     <perspective>
                         <xfov>50</xfov>
-                        <aspect_ratio>0.2</aspect_ratio>
+                        <aspect_ratio>10</aspect_ratio>
                         <znear>1</znear>
                         <zfar>5000</zfar>
                     </perspective>

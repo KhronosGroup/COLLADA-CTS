@@ -72,9 +72,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -135,7 +132,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <rotate sid="rotateZ">0 0 1 -43.62</rotate>
                 <rotate sid="rotateY">0 1 0 -11.4571</rotate>
                 <rotate sid="rotateX">1 0 0 18.3426</rotate>
-                <scale sid="scale">10.2812 10.1689 395771</scale>
+                <scale sid="scale">10.2812 10.1689 100</scale>
                 <instance_geometry url="#pCubeShape1">
                     <bind_material>
                         <technique_common>

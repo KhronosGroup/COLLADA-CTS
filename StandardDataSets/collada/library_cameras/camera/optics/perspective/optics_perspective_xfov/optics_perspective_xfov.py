@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = ['library_cameras', 'camera', 'optics', 'technique_common', 'perspective', 'xfov']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -46,14 +46,16 @@ class SimpleJudgingObject:
   
     # Superior
     def JudgeSuperior(self, context):
-		# if baseline fails, no point in further checking
+	# if baseline fails, no point in further checking
         if (self.status_baseline == False):
             self.status_superior = self.status_baseline
             return self.status_superior
          
-        # Compare the rendered images
+        # Compare the rendered images, then compare against reference
+        # Then check for preservation of element data
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_perspective_no_geometry", None, None, 5, True, False)
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_perspective_no_geometry", None, None, 5, True, False) );
+                self.__assistant.ElementDataPreserved(context, self.tagList, "float")
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

@@ -29,7 +29,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <optics>
                 <technique_common>
                     <perspective>
-                        <xfov>0.5</xfov>
+                        <xfov>50</xfov>
                         <znear>1</znear>
                         <zfar>5000</zfar>
                     </perspective>
@@ -71,9 +71,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>

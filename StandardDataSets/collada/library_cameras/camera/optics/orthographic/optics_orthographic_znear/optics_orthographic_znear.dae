@@ -18,9 +18,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
-		<keywords>superior_badge camera orthographic</keywords>
+	<keywords>superior_badge camera orthographic</keywords>
         <modified>2007-05-23T00:01:59Z</modified>
-		<subject>Test orthographic camera</subject>
+	<subject>Test znear element orthographic camera</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -29,7 +29,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <optics>
                 <technique_common>
                     <orthographic>
-                      <ymag>40</ymag>
+                      <ymag>100</ymag>
                       <aspect_ratio>1</aspect_ratio>
                       <znear>500</znear>
                       <zfar>5000</zfar>
@@ -72,9 +72,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <transparency>
                             <float>1</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
