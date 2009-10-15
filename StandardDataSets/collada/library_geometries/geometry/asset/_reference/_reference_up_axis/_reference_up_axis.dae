@@ -15,7 +15,7 @@
     <created>2008-09-25T00:49:34Z</created>
     <keywords>Exemplary library_geometries geometry asset up_axis</keywords>
     <modified>2008-09-25T00:49:41Z</modified>
-    <subject>Test that the up_axis in a geometry set to positive Z</subject>
+    <subject>Reference test for the up_axis in a geometry set to positive Z</subject>
     <unit meter="0.0254" name="inch"/>
     <up_axis>Y_UP</up_axis>
   </asset>
@@ -71,15 +71,9 @@
   </library_effects>
   <library_geometries>
     <geometry id="Cone01-mesh" name="Cone01">
-      <asset>
-        <created>2008-09-06T01:05:50Z</created>
-        <modified>2008-09-06T01:13:23Z</modified>
-        <unit meter="1" name="meter"/>
-        <up_axis>Z_UP</up_axis>
-      </asset>
       <mesh>
         <source id="Cone01-mesh-positions">
-          <float_array id="Cone01-mesh-positions-array" count="15">-1.27 0 -1.905 0 -1.27 -1.905 1.27 0 -1.905 0 1.27 -1.905 0 0 3.81</float_array>
+          <float_array id="Cone01-mesh-positions-array" count="15">-50 0 -75 0 -50 -75 50 0 -75 0 50 -75 0 0 150</float_array>
           <technique_common>
             <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
@@ -103,7 +97,7 @@
       <node id="Cone01-node" name="Cone01" type="NODE">   
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 0</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 -90</rotate>
         <instance_geometry url="#Cone01-mesh">
           <bind_material>
             <technique_common>
