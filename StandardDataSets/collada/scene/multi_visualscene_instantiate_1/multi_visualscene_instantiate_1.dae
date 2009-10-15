@@ -132,6 +132,7 @@
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode1" name="untitled">
       <node id="triangle" name="triangle" type="NODE">
+        <translate>-50 0 0</translate>
         <scale>3 3 3</scale>
         <instance_geometry url="#triangleShape">
           <bind_material>
@@ -184,6 +185,7 @@
     </visual_scene>
     <visual_scene id="VisualSceneNode3" name="untitled">
       <node id="cube" name="cube" type="NODE">
+        <translate>50 0 0</translate>
         <scale>3 3 3</scale>
         <instance_geometry url="#pCubeShape1">
           <bind_material>
