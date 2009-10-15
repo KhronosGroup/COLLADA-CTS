@@ -20,7 +20,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-04T00:23:06Z</created>
 	<keywords>Baseline geometry mesh</keywords>
         <modified>2007-05-04T00:23:06Z</modified>
-	<subject>Test a mix of polygons, polylist, and triangles primitives</subject>
+	<subject>Reference test of a triangle, square, and hexagon using triangles primitive.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -81,10 +81,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <vertices id="pCubeShape1-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
-                <polygons count="1" material="initialShadingGroup">
+                <triangles count="2" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pCubeShape1-vertices"/>
-                    <p>0 1 2 3</p>
-                </polygons>
+                    <p>0 1 2 0 2 3</p>
+                </triangles>
             </mesh>
         </geometry>
         <geometry id="triangleShape" name="triangleShape">
@@ -123,11 +123,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <vertices id="hexagonShape-vertices">
                     <input semantic="POSITION" source="#hexagonShape-positions"/>
                 </vertices>
-                <polylist count="1" material="initialShadingGroup">
+                <triangles count="4" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#hexagonShape-vertices"/>
-                    <vcount>6</vcount>
-		    <p>0 1 2 3 4 5</p>
-                </polylist>
+		    <p>0 1 2 0 2 3 0 3 4 0 4 5</p>
+                </triangles>
             </mesh>
         </geometry>
     </library_geometries>

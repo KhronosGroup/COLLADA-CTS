@@ -46,10 +46,8 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
             
-        # Compare the rendered images between import and export
-        # Then compare images against reference test for non equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_polygons_polylist_triangles", None, None, 5, True, True)
+        # Compare the rendered images
+        self.__assistant.CompareRenderedImages(context)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
