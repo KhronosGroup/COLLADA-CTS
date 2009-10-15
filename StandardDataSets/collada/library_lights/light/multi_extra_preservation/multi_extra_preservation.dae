@@ -2,14 +2,12 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
         <contributor>
-            <author>Wei Guo</author>
-            <authoring_tool>Hand-written</authoring_tool>
-            <author>Guillaume Laforte</author>
+            <author>Wei Guo, Guillaume Laforte</author>
             <authoring_tool>Hand-written</authoring_tool>
             <comments>Add multiple extra, which may contain information from different application</comments>
         </contributor>
         <created>2007-06-24T13:00:00Z</created>
-        <keywords>library_lights light extra</keywords>
+        <keywords>Exemplary library_lights light extra</keywords>
         <modified>2007-06-24T13:00:00Z</modified>
         <subject>Verifies that the application will export the unknown extra elements intact.</subject>
         <title>30</title>
@@ -21,15 +19,18 @@
                     <color>0.8 0.8 0.5</color>
                 </directional>
             </technique_common>
-            <extra type="COVERAGE">
+            <extra>
                 <technique profile="UNKNOWN_APP">
+                    <dynamic>Yes</dynamic>
                     <lighting_exponent>1.2</lighting_exponent>
                 </technique>
             </extra>
-            <extra type="SH">
-              <technique profile="UNKNOWN_APP_1">
-                <dynamic>No</dynamic>
-              </technique>
+            <extra>
+                <technique profile="AnotherApplication">
+                  <test infor="testing">
+                    <value attr1="attr_value1" attr2="attr_value2">should not be changed</value>
+                  </test>
+                </technique>
             </extra>
         </light>
     </library_lights>
@@ -37,11 +38,6 @@
         <visual_scene id="Visual-scene">
             <node id="node1">
                 <instance_light url="#directional-light"/>
-                <extra type="COVERAGE">
-                    <technique profile="UNKNOWN_APP">
-                        <lighting_exponent>1.2</lighting_exponent>
-                    </technique>
-                </extra>
             </node>
         </visual_scene>
     </library_visual_scenes>
