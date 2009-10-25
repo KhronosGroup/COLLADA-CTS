@@ -17,10 +17,10 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_effects', 'effect', 'newparam', 'sampler2D']
+tagLst = [['library_effects', 'effect', 'newparam', 'sampler2D', 'wrap_t'], ['library_effects', 'effect', 'profile_COMMON', 'newparam', 'sampler2D', 'wrap_t']]
 attrName = ''
 attrVal = ''
-dataToCheck = ''
+dataToCheck = 'CLAMP'
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data):
@@ -32,7 +32,14 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+    
+    def dataPreserved(self, context):
+        for eachTag in self.tagList:
+            if (self.__assistant.ElementDataCheck(context, eachTag, self.dataToCheck, "string")):
+                return True
+                        
+        return False
+    
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -44,11 +51,13 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
             
-        # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
-        
-        # Check for preservation of element
-        self.__assistant.ElementPreserved(context, self.tagList)
+        # Compare the rendered images between import and export
+        # Then compare images against reference test
+        # Last, check for preservation of element data
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            if ( self.__assistant.CompareImagesAgainst(context, "_reference_wrap", None, None, 5, True, False) ):
+                if ( self.__assistant.CompareImagesAgainst(context, "clamp", None, None, 5, True, False) ):
+                    self.dataPreserved(context)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
