@@ -26,7 +26,7 @@ limitations under the License.</copyright>
         <created>2007-05-22T23:31:57Z</created>
 	<keywords>Exemplary geometry mesh input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-	<subject>Test the handling of semantic NORMAL</subject>
+	<subject>Test the handling of semantic NORMAL in a polylist primitive.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

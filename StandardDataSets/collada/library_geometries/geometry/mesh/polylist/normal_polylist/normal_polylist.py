@@ -63,6 +63,7 @@ class SimpleJudgingObject:
         # Then compare images against reference test for non equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
             if ( self.__assistant.CompareImagesAgainst(context, "_reference_no_geometry", None, None, 5, True, False) ):
+                self.__assistant.CompareImagesAgainst(context, "_reference_semantic_normal", None, None, 5, True, False)
         
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
