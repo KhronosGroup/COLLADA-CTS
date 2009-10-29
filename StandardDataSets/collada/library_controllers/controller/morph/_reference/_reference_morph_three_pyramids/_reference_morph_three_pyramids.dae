@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a normalized morph controller on a single target</subject>
+        <subject>Reference test of three pyramids with coordinates baked in to be equivalent to morph_one_target_normalized</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -137,6 +137,41 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </polygons>
             </mesh>
         </geometry>
+        <geometry id="cube3" name="cube3">
+            <mesh>
+                <source id="pCubeShape3-positions" name="position">
+                    <float_array id="pCubeShape3-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 50 0</float_array>
+                    <technique_common>
+                        <accessor count="5" source="#pCubeShape3-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="pCubeShape3-normals" name="normal">
+                    <float_array id="pCubeShape3-normals-array" count="12">0 0 1 1 0 0 -1 0 0 -1 0 0</float_array>
+                    <technique_common>
+                        <accessor count="4" source="#pCubeShape3-normals-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="cube-vertices3">
+                    <input semantic="POSITION" source="#pCubeShape3-positions"/>
+                </vertices>
+                <polygons count="4" material="lambert2SG">
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices3"/>
+                    <input offset="1" semantic="NORMAL" source="#pCubeShape3-normals"/>
+                    <p>0 0 1 0 4 0</p>
+                    <p>1 1 2 1 4 1</p>
+                    <p>2 2 3 2 4 2</p>
+                    <p>3 3 0 3 4 3</p>
+                </polygons>
+            </mesh>
+        </geometry>
     </library_geometries>
     <library_controllers>
         <controller id="morph1">
@@ -188,13 +223,13 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </node>
             <node id="cube_node3" name="cube_node3">
                 <translate sid="translate">0 0 0</translate>
-                <instance_controller url="#morph1">
+                <instance_geometry url="#cube3">
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="lambert2SG" target="#lambert1"/>
                         </technique_common>
                     </bind_material>
-                </instance_controller>
+                </instance_geometry>
             </node>
             <node id="testCamera" name="testCamera">
                 <translate sid="translate">0 0 400</translate>

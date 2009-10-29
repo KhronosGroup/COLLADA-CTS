@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a normalized morph controller on a single target</subject>
+        <subject>Reference test of three pyramids with coordinates baked in to be equivalent to morph_one_target_normalized</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -188,13 +188,13 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </node>
             <node id="cube_node3" name="cube_node3">
                 <translate sid="translate">0 0 0</translate>
-                <instance_controller url="#morph1">
+                <instance_geometry url="#cube1">
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="lambert2SG" target="#lambert1"/>
                         </technique_common>
                     </bind_material>
-                </instance_controller>
+                </instance_geometry>
             </node>
             <node id="testCamera" name="testCamera">
                 <translate sid="translate">0 0 400</translate>

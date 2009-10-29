@@ -11,17 +11,22 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <copyright>
-      # Copyright (C) 2007 - 2009 Khronos Group
-      # Available only to Khronos members and adopters.
-      # Distribution of this file or its content is strictly prohibited.
-      </copyright>
+            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
+Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
+&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
+License. You may obtain a copy of the License at:&amp;#13;
+http://research.scea.com/scea_shared_source_license.html &amp;#13;
+Unless required by applicable law or agreed to in writing, software&amp;#13;
+distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
+See the License for the specific language governing permissions and&amp;#13;
+limitations under the License.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
-        <keywords>Exemplary controller morph</keywords>
+        <keywords>Exemplary controller morph source</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a morph controller on two targets</subject>
+        <subject>Test the preservation of target source data on export</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -59,7 +64,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <technique sid="common">
                     <lambert>
                         <diffuse>
-                            <color>0.5 0.5 0.5 1</color>
+                            <color>0.3 0.3 0.3 1</color>
                         </diffuse>
                     </lambert>
                 </technique>
@@ -70,7 +75,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <geometry id="cube1" name="cube1">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 -100 0</float_array>
+                    <float_array id="pCubeShape1-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 0</float_array>
                     <technique_common>
                         <accessor count="5" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -80,9 +85,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </technique_common>
                 </source>
                 <source id="pCubeShape1-normals" name="normal">
-                    <float_array id="pCubeShape1-normals-array" count="15">0 0 1 1 0 0 -1 0 0 -1 0 0</float_array>
+                    <float_array id="pCubeShape1-normals-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
                     <technique_common>
-                        <accessor count="5" source="#pCubeShape1-normals-array" stride="3">
+                        <accessor count="4" source="#pCubeShape1-normals-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -105,7 +110,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <geometry id="cube2" name="cube2">
             <mesh>
                 <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 100 0</float_array>
+                    <float_array id="pCubeShape2-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 -25</float_array>
                     <technique_common>
                         <accessor count="5" source="#pCubeShape2-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -115,7 +120,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </technique_common>
                 </source>
                 <source id="pCubeShape2-normals" name="normal">
-                    <float_array id="pCubeShape2-normals-array" count="12">0 0 1 1 0 0 -1 0 0 -1 0 0</float_array>
+                    <float_array id="pCubeShape2-normals-array" count="12">1 1 1 -1 1 1 -1 -1 1 1 -1 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#pCubeShape2-normals-array" stride="3">
                             <param name="X" type="float"/>
@@ -140,7 +145,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <geometry id="cube3" name="cube3">
             <mesh>
                 <source id="pCubeShape3-positions" name="position">
-                    <float_array id="pCubeShape3-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 0 0</float_array>
+                    <float_array id="pCubeShape3-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 25</float_array>
                     <technique_common>
                         <accessor count="5" source="#pCubeShape3-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -150,7 +155,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </technique_common>
                 </source>
                 <source id="pCubeShape3-normals" name="normal">
-                    <float_array id="pCubeShape3-normals-array" count="12">0 0 1 1 0 0 -1 0 0 -1 0 0</float_array>
+                    <float_array id="pCubeShape3-normals-array" count="12">-1 -1 1 1 -1 1 1 1 1 -1 1 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#pCubeShape3-normals-array" stride="3">
                             <param name="X" type="float"/>
@@ -175,19 +180,19 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </library_geometries>
     <library_controllers>
         <controller id="morph1">
-            <morph source="#cube3">
+            <morph source="#cube1">
                 <source id="morph-targets">
-                    <IDREF_array id="morph-targets-array" count="2">cube1 cube2</IDREF_array>
+                    <IDREF_array id="morph-targets-array" count="10">cube1 cube2 cube3 cube1 cube2 cube3 cube1 cube2 cube3 cube3</IDREF_array>
                     <technique_common>
-                        <accessor count="2" source="#morph-targets-array">
+                        <accessor count="10" source="#morph-targets-array">
                             <param name="MORPH_TARGET" type="IDREF"/>
                         </accessor>
                     </technique_common>
                 </source>
                 <source id="morph-weights">
-                    <float_array id="morph-weights-array" count="2">0.5 1</float_array>
+                    <float_array id="morph-weights-array" count="10">0.05 0.1 0.05 0.1 0.1 0.1 0.15 0.05 0.1 0.15</float_array>
                     <technique_common>
-                        <accessor count="2" source="#morph-weights-array">
+                        <accessor count="10" source="#morph-weights-array">
                             <param name="MORPH_WEIGHT" type="float"/>
                         </accessor>
                     </technique_common>
@@ -202,31 +207,53 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node1" name="cube_node1">
-                <translate sid="translate">-80 0 0</translate>
+                <translate sid="translate">-60 -60 0</translate>
+                <scale sid="scale">2 2 2</scale>
                 <instance_geometry url="#cube1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
+                            <instance_material symbol="lambert2SG" target="#lambert1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>
             </node>
             <node id="cube_node2" name="cube_node2">
-                <translate sid="translate">80 0 0</translate>
+                <translate sid="translate">60 60 0</translate>
+                <scale sid="scale">2 2 2</scale>
                 <instance_geometry url="#cube2">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
+                            <instance_material symbol="lambert2SG" target="#lambert1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>
             </node>
             <node id="cube_node3" name="cube_node3">
-                <translate sid="translate">0 0 0</translate>
+                <translate sid="translate">-60 60 0</translate>
+                <scale sid="scale">2 2 2</scale>
+                <instance_geometry url="#cube3">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert2SG" target="#lambert1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
+            <node id="cube_node4" name="cube_node4">
+                <translate sid="translate">60 -60 0</translate>
+                <scale sid="scale">2 2 2</scale>
                 <instance_controller url="#morph1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
+                            <instance_material symbol="lambert2SG" target="#lambert1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_controller>

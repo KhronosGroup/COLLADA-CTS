@@ -26,7 +26,7 @@ limitations under the License.</copyright>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a morph controller referencing a geometry with position and normal in the vertices and texture and color in the primitive</subject>
+        <subject>Test a morph controller referencing a geometry with position, normal, texture, and color in the vertices element</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -125,9 +125,9 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <source id="cube-color1" name="color1">
-                  <float_array id="cube-color1-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <float_array id="cube-color1-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
                   <technique_common>
-                    <accessor count="3" source="#cube-color1-array" stride="3">
+                    <accessor count="12" source="#cube-color1-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
@@ -137,15 +137,15 @@ limitations under the License.</copyright>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                     <input semantic="NORMAL" source="#pCubeShape1-normals"/>
+                    <input semantic="TEXCOORD" source="#cube-map1"/>
+                    <input semantic="COLOR" source="#cube-color1"/>
                 </vertices>
                 <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
-                    <input offset="2" semantic="COLOR" source="#cube-color1"/>
-                    <p>0 0 0 1 1 1 2 2 2</p>
-                    <p>3 3 1 4 4 0 5 5 2</p>
-                    <p>6 6 0 7 7 1 8 8 2</p>
-                    <p>9 9 1 10 10 0 11 11 2</p>
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices" set="0"/>
+                    <p>0 1 2</p>
+                    <p>3 4 5</p>
+                    <p>6 7 8</p>
+                    <p>9 10 11</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -181,9 +181,9 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <source id="cube-color2" name="color2">
-                  <float_array id="cube-color2-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <float_array id="cube-color2-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
                   <technique_common>
-                    <accessor count="3" source="#cube-color2-array" stride="3">
+                    <accessor count="12" source="#cube-color2-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
@@ -193,15 +193,15 @@ limitations under the License.</copyright>
                 <vertices id="cube-vertices2">
                     <input semantic="POSITION" source="#pCubeShape2-positions"/>
                     <input semantic="NORMAL" source="#pCubeShape2-normals"/>
+                    <input semantic="TEXCOORD" source="#cube-map2"/>
+                    <input semantic="COLOR" source="#cube-color2"/>
                 </vertices>
                 <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices2"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map2" set="0"/>
-                    <input offset="2" semantic="COLOR" source="#cube-color2"/>
-                    <p>0 0 0 1 1 1 2 2 2</p>
-                    <p>3 3 1 4 4 0 5 5 2</p>
-                    <p>6 6 0 7 7 1 8 8 2</p>
-                    <p>9 9 1 10 10 0 11 11 2</p>
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices2" set="0"/>
+                    <p>0 1 2</p>
+                    <p>3 4 5</p>
+                    <p>6 7 8</p>
+                    <p>9 10 11</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -237,9 +237,9 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <source id="cube-color3" name="color3">
-                  <float_array id="cube-color3-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <float_array id="cube-color3-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
                   <technique_common>
-                    <accessor count="3" source="#cube-color3-array" stride="3">
+                    <accessor count="12" source="#cube-color3-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
@@ -249,15 +249,15 @@ limitations under the License.</copyright>
                 <vertices id="cube-vertices3">
                     <input semantic="POSITION" source="#pCubeShape3-positions"/>
                     <input semantic="NORMAL" source="#pCubeShape3-normals"/>
+                    <input semantic="TEXCOORD" source="#cube-map3"/>
+                    <input semantic="COLOR" source="#cube-color3"/>
                 </vertices>
                 <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices3"/>
-                    <input offset="1" semantic="TEXCOORD" source="#cube-map3" set="0"/>
-                    <input offset="2" semantic="COLOR" source="#cube-color3"/>
-                    <p>0 0 0 1 1 1 2 2 2</p>
-                    <p>3 3 1 4 4 0 5 5 2</p>
-                    <p>6 6 0 7 7 1 8 8 2</p>
-                    <p>9 9 1 10 10 0 11 11 2</p>
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices3" set="0"/>
+                    <p>0 1 2</p>
+                    <p>3 4 5</p>
+                    <p>6 7 8</p>
+                    <p>9 10 11</p>
                 </polygons>
             </mesh>
         </geometry>

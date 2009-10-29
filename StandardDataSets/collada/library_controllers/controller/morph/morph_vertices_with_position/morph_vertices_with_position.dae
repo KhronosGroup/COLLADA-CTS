@@ -24,7 +24,9 @@ limitations under the License.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+        <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
+        <subject>Test a morph controller referencing a geometry with position in the vertices and texture, color, normal in the primitive</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -44,7 +46,7 @@ limitations under the License.</copyright>
     </library_cameras>
     <library_images>
         <image id="file1" name="file1">
-            <init_from>collada.jpg</init_from>
+            <init_from>collada.png</init_from>
         </image>
     </library_images>
     <library_materials>
@@ -67,43 +69,25 @@ limitations under the License.</copyright>
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>file1</init_from>
-                        <format>A8R8G8B8</format>
                     </surface>
                 </newparam>
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
-                    <phong>
-                        <emission>
-                            <color>0 0 0 1</color>
-                        </emission>
-                        <ambient>
-                            <color>0.1 0.1 0.1 1</color>
-                        </ambient>
+                    <lambert>
                         <diffuse>
                             <texture texture="file1-sampler" texcoord="TEX0"/>
                         </diffuse>
-                        <specular>
-                            <color>0.3 0.3 0.3 1</color>
-                        </specular>
-                        <shininess>
-                            <float>10</float>
-                        </shininess>
                         <transparent opaque="RGB_ZERO">
                             <color>0 0 0 1</color>
                         </transparent>
                         <transparency>
                             <float>0.5</float>
                         </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
-                    </phong>
+                    </lambert>
                 </technique>
             </profile_COMMON>
         </effect>
@@ -140,6 +124,16 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color1" name="color1">
+                  <float_array id="cube-color1-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <technique_common>
+                    <accessor count="3" source="#cube-color1-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
@@ -147,17 +141,18 @@ limitations under the License.</copyright>
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
                     <input offset="1" semantic="NORMAL" source="#pCubeShape1-normals"/>
                     <input offset="2" semantic="TEXCOORD" source="#cube-map1" set="0"/>
-                    <p>0 0 0 1 0 1 4 0 4</p>
-                    <p>1 1 1 2 1 2 4 1 4</p>
-                    <p>2 2 2 3 2 3 4 2 4</p>
-                    <p>3 3 3 0 3 0 4 3 4</p>
+                    <input offset="3" semantic="COLOR" source="#cube-color1"/>
+                    <p>0 0 0 0 1 0 1 1 4 0 4 2</p>
+                    <p>1 1 1 1 2 1 2 0 4 1 4 2</p>
+                    <p>2 2 2 0 3 2 3 1 4 2 4 2</p>
+                    <p>3 3 3 1 0 3 0 0 4 3 4 2</p>
                 </polygons>
             </mesh>
         </geometry>
         <geometry id="cube2" name="cube2">
             <mesh>
                 <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 -25</float_array>
+                    <float_array id="pCubeShape2-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 -50</float_array>
                     <technique_common>
                         <accessor count="5" source="#pCubeShape2-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -185,6 +180,16 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color2" name="color2">
+                  <float_array id="cube-color2-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <technique_common>
+                    <accessor count="3" source="#cube-color2-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices2">
                     <input semantic="POSITION" source="#pCubeShape2-positions"/>
                 </vertices>
@@ -192,17 +197,18 @@ limitations under the License.</copyright>
                     <input offset="0" semantic="VERTEX" source="#cube-vertices2"/>
                     <input offset="1" semantic="NORMAL" source="#pCubeShape2-normals"/>
                     <input offset="2" semantic="TEXCOORD" source="#cube-map2" set="0"/>
-                    <p>0 0 0 1 0 1 4 0 4</p>
-                    <p>1 1 1 2 1 2 4 1 4</p>
-                    <p>2 2 2 3 2 3 4 2 4</p>
-                    <p>3 3 3 0 3 0 4 3 4</p>
+                    <input offset="3" semantic="COLOR" source="#cube-color2"/>
+                    <p>0 0 0 0 1 0 1 1 4 0 4 2</p>
+                    <p>1 1 1 1 2 1 2 0 4 1 4 2</p>
+                    <p>2 2 2 0 3 2 3 1 4 2 4 2</p>
+                    <p>3 3 3 1 0 3 0 0 4 3 4 2</p>
                 </polygons>
             </mesh>
         </geometry>
         <geometry id="cube3" name="cube3">
             <mesh>
                 <source id="pCubeShape3-positions" name="position">
-                    <float_array id="pCubeShape3-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 25</float_array>
+                    <float_array id="pCubeShape3-positions-array" count="15">-25 -25 0 25 -25 0 25 25 0 -25 25 0 0 0 50</float_array>
                     <technique_common>
                         <accessor count="5" source="#pCubeShape3-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -230,6 +236,16 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color3" name="color3">
+                  <float_array id="cube-color3-array" count="9">1 0 0 0 1 0 0 0 1</float_array>
+                  <technique_common>
+                    <accessor count="3" source="#cube-color3-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices3">
                     <input semantic="POSITION" source="#pCubeShape3-positions"/>
                 </vertices>
@@ -237,10 +253,11 @@ limitations under the License.</copyright>
                     <input offset="0" semantic="VERTEX" source="#cube-vertices3"/>
                     <input offset="1" semantic="NORMAL" source="#pCubeShape3-normals"/>
                     <input offset="2" semantic="TEXCOORD" source="#cube-map3" set="0"/>
-                    <p>0 0 0 1 0 1 4 0 4</p>
-                    <p>1 1 1 2 1 2 4 1 4</p>
-                    <p>2 2 2 3 2 3 4 2 4</p>
-                    <p>3 3 3 0 3 0 4 3 4</p>
+                    <input offset="3" semantic="COLOR" source="#cube-color3"/>
+                    <p>0 0 0 0 1 0 1 1 4 0 4 2</p>
+                    <p>1 1 1 1 2 1 2 0 4 1 4 2</p>
+                    <p>2 2 2 0 3 2 3 1 4 2 4 2</p>
+                    <p>3 3 3 1 0 3 0 0 4 3 4 2</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -257,7 +274,7 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <source id="morph-weights">
-                    <float_array id="morph-weights-array" count="1">0.5</float_array>
+                    <float_array id="morph-weights-array" count="1">0.75</float_array>
                     <technique_common>
                         <accessor count="1" source="#morph-weights-array">
                             <param name="MORPH_WEIGHT" type="float"/>
