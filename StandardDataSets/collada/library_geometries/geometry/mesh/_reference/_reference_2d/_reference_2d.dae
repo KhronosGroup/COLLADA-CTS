@@ -79,6 +79,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
