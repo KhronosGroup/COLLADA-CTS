@@ -21,7 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a normalized morph controller on a single target</subject>
+        <subject>Test a normalized morph controller referencing a single target</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
