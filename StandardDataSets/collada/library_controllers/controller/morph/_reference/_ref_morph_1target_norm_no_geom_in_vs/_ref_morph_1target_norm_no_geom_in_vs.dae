@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+    <asset>
+        <contributor>
+            <author>Hlaw</author>
+            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
+            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
+        </contributor>
+        <created>2007-05-22T23:31:57Z</created>
+        <keywords>Exemplary controller morph</keywords>
+        <modified>2007-06-04T23:05:43Z</modified>
+        <subject>Reference test of three pyramids with coordinates baked in to be equivalent to morph_one_target_normalized_no_geom_in_vs</subject>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="mainCamera" name="mainCamera">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9998</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_materials>
+        <material id="lambert1" name="lambert2">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert1-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>0.5 0.5 0.5 1</color>
+                        </diffuse>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_geometries>
+        <geometry id="cube1" name="cube1">
+            <mesh>
+                <source id="pCubeShape3-positions" name="position">
+                    <float_array id="pCubeShape3-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 50 0</float_array>
+                    <technique_common>
+                        <accessor count="5" source="#pCubeShape3-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="cube-vertices3">
+                    <input semantic="POSITION" source="#pCubeShape3-positions"/>
+                </vertices>
+                <polygons count="4" material="lambert2SG">
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices3"/>
+                    <p>0 1 4</p>
+                    <p>1 2 4</p>
+                    <p>2 3 4</p>
+                    <p>3 0 4</p>
+                </polygons>
+            </mesh>
+        </geometry>
+    </library_geometries>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="untitled">
+            <node id="cube_node1" name="cube_node1">
+                <translate sid="translate">0 0 0</translate>
+                <instance_geometry url="#cube1">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert2SG" target="#lambert1"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#mainCamera"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <translate sid="translate">40 0 40</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_light url="#directionalLightShape1-lib"/>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>

@@ -14,8 +14,6 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
-
-from Core.Common.DOMParser import *
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
@@ -33,8 +31,6 @@ class SimpleJudgingObject:
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
-        self.__inputFileName = ''
-        self.__outputFileNameList = []
         self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBaseline(self, context):
@@ -60,8 +56,11 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
         
-        # Check for preservation of element data in the path specified by the tag list
-        self.__assistant.ElementDataPreserved(context, self.tagList, "string")
+        # Compare the rendered images between import and export
+        self.__assistant.CompareRenderedImages(context)
+        
+        # Check for preservation of target array count
+        self.__assistant.ElementDataCountPreserved(context, self.tagList)
         
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary

@@ -60,6 +60,9 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
         
+        # Compare the rendered images between import and export
+        self.__assistant.CompareRenderedImages(context)
+        
         # Check for preservation of element data in the path specified by the tag list
         self.__assistant.ElementDataPreserved(context, self.tagList, "float")
         
