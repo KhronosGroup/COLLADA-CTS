@@ -1,1 +1,1 @@
-png\2d_triangles
+png\2d_triangles.png
