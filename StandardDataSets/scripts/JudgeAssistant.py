@@ -272,6 +272,10 @@ class JudgeAssistant:
             else:
                 # Compare each image in the render steps
                 for i in range(len(inputImages)):
+                    print ""
+                    print inputImages[i]
+                    print outputImages[i]
+                    print ""
                     result = context.CompareImages(inputImages[i], outputImages[i])
                     if result > 5:
                         self.__compareRendersResults = False
@@ -341,9 +345,9 @@ class JudgeAssistant:
         return self.__preservationResults
         
         
-    # Checks for the existence of an element in an output file specified a list of paths in tagListArray
+    # Checks for the existence of an element in an output file specified by a list of paths in tagListArray
     # The first tagList should contain the original tag, while the ones after
-    # contain the possible tags the original can be transformed to
+    # contain the possible tags the original can be transformed into
     def ElementTransformed(self, context, tagListArray):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
@@ -627,8 +631,45 @@ class JudgeAssistant:
                 
         testIO.Delink()
         return self.__preservationResults
+        
+    # Compares the number of data in an element between the input and output as specified by the tag list
+    def ElementDataCountPreserved(self, context, tagList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
 
-    # Check for the perservation of element data in the tagListArray[] paths
+        # get input and output tags
+        inputElementList = FindElement(testIO.GetRoot(self.__inputFileName), tagList)
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        if ( len(inputElementList) == 0 or len(outputElementList) == 0 ):
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> in input or output is not found.")
+            self.__preservationResults = False
+            self.__result = False
+            testIO.Delink()
+            return self.__preservationResults
+        
+        inputDataCount = len(inputElementList[0].childNodes[0].nodeValue.split())
+        outputDataCount = len(outputElementList[0].childNodes[0].nodeValue.split())
+        
+        if (inputDataCount == outputDataCount):
+            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> data count is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> data count is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+                
+        testIO.Delink()
+        return self.__preservationResults
+        
+    # Check for the preservation of element data in the tagListArray[] paths
     # The first tagListArray[0] should contain the original tag, while the ones after
     # contain the possible tag locations the dat can be in
     def ElementDataPreservedIn(self, context, tagListArray, dataType="float"):
@@ -692,7 +733,9 @@ class JudgeAssistant:
         return self.__preservationResults
         
     
-    # Checks the preservation of the attributes in attrLst for each node containing the IDs in nodeIdLst
+    # Checks the preservation of the attributes in attrLst for each node with the IDs in nodeIdLst
+    # nodeIdLst: list of node IDs
+    # attrLst: list of attributes names to check for preservation
     def CheckAttrByID(self, context, nodeIdLst, attrLst):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
@@ -1086,9 +1129,8 @@ class JudgeAssistant:
 	return count
     
     # Compares the count of an element in the path specified by a tag list path. If both 
-    # attrName and attrVal is not None, the count will only include those elements with
+    # attrName and attrVal are not None, the count will only include those elements with
     # that attribute and value.
-    # attribute namd and value limits the count to that attribute only.
     # tagList: the path to the element
     # tagName: the element name
     # attrName: the attribute name
