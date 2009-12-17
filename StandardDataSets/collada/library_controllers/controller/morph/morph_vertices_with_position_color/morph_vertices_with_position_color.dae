@@ -11,17 +11,22 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <copyright>
-      # Copyright (C) 2007 - 2009 Khronos Group
-      # Available only to Khronos members and adopters.
-      # Distribution of this file or its content is strictly prohibited.
-      </copyright>
+            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
+Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
+&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
+License. You may obtain a copy of the License at:&amp;#13;
+http://research.scea.com/scea_shared_source_license.html &amp;#13;
+Unless required by applicable law or agreed to in writing, software&amp;#13;
+distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
+See the License for the specific language governing permissions and&amp;#13;
+limitations under the License.</copyright>
             <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a morph controller a referencing non-existent target. Should not show morph effect.</subject>
+        <subject>Test a morph controller referencing a geometry with position and color in the vertices</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -39,6 +44,16 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </optics>
         </camera>
     </library_cameras>
+    <library_images>
+        <image id="file1" name="file1">
+            <init_from>collada.png</init_from>
+        </image>
+    </library_images>
+    <library_materials>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
     <library_lights>
         <light id="directionalLightShape1-lib" name="directionalLightShape1">
             <technique_common>
@@ -48,18 +63,13 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </technique_common>
         </light>
     </library_lights>
-    <library_materials>
-        <material id="lambert1" name="lambert2">
-            <instance_effect url="#lambert1-fx"/>
-        </material>
-    </library_materials>
     <library_effects>
         <effect id="lambert1-fx">
             <profile_COMMON>
                 <technique sid="common">
                     <lambert>
                         <diffuse>
-                            <color>0.5 0.5 0.5 1</color>
+                            <color>1 1 1 1</color>
                         </diffuse>
                     </lambert>
                 </technique>
@@ -70,48 +80,64 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <geometry id="cube1" name="cube1">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 -100 0</float_array>
+                    <float_array id="pCubeShape1-positions-array" count="9">-25 0 0 25 0 0 0 -100 0</float_array>
                     <technique_common>
-                        <accessor count="5" source="#pCubeShape1-positions-array" stride="3">
+                        <accessor count="3" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color1" name="color1">
+                  <float_array id="cube-color1-array" count="9">1 0 0 1 0 0 1 0 0</float_array>
+                  <technique_common>
+                    <accessor count="3" source="#cube-color1-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
+                    <input semantic="COLOR" source="#cube-color1"/>
                 </vertices>
-                <polygons count="4" material="lambert2SG">
+                <polygons count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <p>0 1 4</p>
-                    <p>1 2 4</p>
-                    <p>2 3 4</p>
-                    <p>3 0 4</p>
+                    <p>0 2 1</p>
                 </polygons>
             </mesh>
         </geometry>
         <geometry id="cube2" name="cube2">
             <mesh>
                 <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="15">-25 0 25 25 0 25 25 0 -25 -25 0 -25 0 100 0</float_array>
+                    <float_array id="pCubeShape2-positions-array" count="9">-25 0 0 25 0 0 0 100 0</float_array>
                     <technique_common>
-                        <accessor count="5" source="#pCubeShape2-positions-array" stride="3">
+                        <accessor count="3" source="#pCubeShape2-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
+                <source id="cube-color2" name="color2">
+                  <float_array id="cube-color2-array" count="9">0 1 0 0 1 0 0 1 0</float_array>
+                  <technique_common>
+                    <accessor count="3" source="#cube-color2-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
                 <vertices id="cube-vertices2">
                     <input semantic="POSITION" source="#pCubeShape2-positions"/>
+                    <input semantic="COLOR" source="#cube-color2"/>
                 </vertices>
-                <polygons count="4" material="lambert2SG">
+                <polygons count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices2"/>
-                    <p>0 1 4</p>
-                    <p>1 2 4</p>
-                    <p>2 3 4</p>
-                    <p>3 0 4</p>
+                    <p>0 2 1</p>
                 </polygons>
             </mesh>
         </geometry>
@@ -136,8 +162,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </technique_common>
                 </source>
                 <targets>
-                    <input semantic="INCORRECT_TARGET_SEMANTIC" source="#morph-targets"/>
-                    <input semantic="INCORRECT_WEIGHT_SEMANTIC" source="#morph-weights"/>
+                    <input semantic="MORPH_TARGET" source="#morph-targets"/>
+                    <input semantic="MORPH_WEIGHT" source="#morph-weights"/>
                 </targets>
             </morph>
         </controller>
