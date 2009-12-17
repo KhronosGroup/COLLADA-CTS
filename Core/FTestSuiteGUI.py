@@ -6,6 +6,8 @@ import wx
 import wx.wizard
 import shutil
 import threading
+import zipfile
+import glob, os
 
 import Core.Common.FUtils as FUtils
 from Core.Common.FConstants import *
@@ -27,6 +29,48 @@ from Core.FTestSuite import *
 from Core.FHtmlExporter import *
 from Core.FCsvExporter import *
 
+def makeArchive(fileList, archive):
+     """
+     'fileList' is a list of file names - full path each name
+     'archive' is the file name for the archive with a full path
+     """
+     try:
+         a = zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED)
+         for f in fileList:
+             print "archiving file %s" % (f)
+             a.write(f)
+         a.close()
+         return True
+     except: return False
+
+def dirEntries(dir_name, subdir, *args):
+     '''Return a list of file names found in directory 'dir_name'
+     If 'subdir' is True, recursively access subdirectories under 'dir_name'.
+     Additional arguments, if any, are file extensions to match filenames. Matched
+         file names are added to the list.
+     If there are no additional arguments, all files found in the directory are
+         added to the list.
+     Example usage: fileList = dirEntries(r'H:\TEMP', False, 'txt', 'py')
+         Only files with 'txt' and 'py' extensions will be added to the list.
+     Example usage: fileList = dirEntries(r'H:\TEMP', True)
+         All files and all the files in subdirectories under H:\TEMP will be added
+         to the list.
+     '''
+     fileList = []
+     for file in os.listdir(dir_name):
+         dirfile = os.path.join(dir_name, file)
+         if os.path.isfile(dirfile):
+             if not args:
+                 fileList.append(dirfile)
+             else:
+                 if os.path.splitext(dirfile)[1][1:] in args:
+                     fileList.append(dirfile)
+         # recursively access file names in subdirectories
+         elif os.path.isdir(dirfile) and subdir:
+             print "Accessing directory:", dirfile
+             fileList.extend(dirEntries(dirfile, subdir, *args))
+     return fileList
+     
 class FSFrame(FTestSuite):
     def __init__(self, MDIparent, createToolbar):
         FTestSuite.__init__(self)
@@ -145,6 +189,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         self.menu.Bind(FMenuBar.ID_EXPORT_ALL, self.__OnExportAll)
         self.menu.Bind(FMenuBar.ID_EXPORT_SELECTED, self.__OnExportSelected)
         self.menu.Bind(FMenuBar.ID_CLOSE, self.__OnClose)
+        self.menu.Bind(FMenuBar.ID_PACKAGE_RESULTS, self.__OnPackageResults)
         self.Bind(wx.EVT_CLOSE, self.__OnClose)
         self.menu.Bind(FMenuBar.ID_RELOAD, self.__OnReload)
         self.menu.Bind(FMenuBar.ID_PREFERENCES, self.__OnPreference)
@@ -523,13 +568,37 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                 os.path.abspath(os.path.join(dest, TEST_PROCEDURE_FILENAME)))
         self.Close()
         self.Destroy()
-    
+
+    def __OnPackageResults(self, e):
+        fileChooser = wx.FileDialog(self, "Package Results to ...", 
+                MAIN_FOLDER, "",  
+                "ZIP file (*.zip)|*.zip", 
+                wx.SAVE)
+	dir = 'c:\\ctf\\PackagedResults\\'
+	basename=dir + 'results'
+	print "basename: %s" % (basename)
+
+	self.__csvExporter.ToCsv(basename+".csv", 
+	    self.__testProcedure, self.__grid.GetShowBlessed(),
+	    self.__grid.GetShowPrevious(), 
+	    self.__grid.GetThumbnailWidth(),
+	    self.__grid.GetThumbnailHeight())
+	self.__htmlExporter.ToHtml(basename+".html", 
+	    self.__testProcedure, self.__grid.GetShowBlessed(),
+	    self.__grid.GetShowPrevious(), 
+	    self.__grid.GetThumbnailWidth(),
+	    self.__grid.GetThumbnailHeight())
+
+	makeArchive(dirEntries(dir, True) + dirEntries("c:\\ctf\Scripts", True) + ["c:\\ctf\config.txt"], basename + ".zip")
+	    
     def __OnExportAllCsv(self, e):
         fileChooser = wx.FileDialog(self, "Export Test Procedure As ...", 
                 MAIN_FOLDER, "",  
                 "CSV file (*.csv)|*.csv", 
                 wx.SAVE)
+        dir = fileChooser.GetPath()
         if (fileChooser.ShowModal() == wx.ID_OK):
+            print "writing to cvs: %s" % (fileChooser.GetPath())
             busyInfo = wx.BusyInfo("Exporting to CSV. Please wait...")
             self.__csvExporter.ToCsv(fileChooser.GetPath(), 
                     self.__testProcedure, self.__grid.GetShowBlessed(),
