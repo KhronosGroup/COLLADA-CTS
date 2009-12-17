@@ -576,6 +576,10 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                 wx.SAVE)
 	dir = 'c:\\ctf\\PackagedResults\\'
 	basename=dir + 'results'
+	d = os.path.dirname(basename)
+	if not os.path.exists(d):
+		os.makedirs(d)
+		
 	print "basename: %s" % (basename)
 
 	self.__csvExporter.ToCsv(basename+".csv", 
