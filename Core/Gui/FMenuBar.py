@@ -14,6 +14,7 @@ class FMenuBar(wx.MenuBar):
     ID_SAVEAS = wx.NewId()
     ID_EXPORT_ALL = wx.NewId()
     ID_EXPORT_SELECTED = wx.NewId()
+    ID_PACKAGE_RESULTS = wx.NewId()
     ID_CLOSE = wx.NewId()
     ID_EXIT = wx.NewId()
     ID_PREFERENCES = wx.NewId()
@@ -96,6 +97,7 @@ class FMenuBar(wx.MenuBar):
         self.Enable(FMenuBar.ID_EXPORT_ALL, False)
         self.Enable(FMenuBar.ID_EXPORT_ALL_CSV, False)
         self.Enable(FMenuBar.ID_EXPORT_SELECTED, False)
+        self.Enable(FMenuBar.ID_PACKAGE_RESULTS, False)
         self.Enable(FMenuBar.ID_CLOSE, False)
         self.Enable(FMenuBar.ID_EXIT, False)
         
@@ -217,6 +219,11 @@ class FMenuBar(wx.MenuBar):
                         "Exports the selected tests of current run to HTML")
         filemenu.Append(FMenuBar.ID_EXPORT_ALL_CSV, "Export All to &CSV",
                         "Exports the current test procedure to CSV")
+        filemenu.AppendSeparator()
+        
+        filemenu.Append(FMenuBar.ID_PACKAGE_RESULTS, "&Package Results", 
+                        "Packages Results for Submission")
+
         filemenu.AppendSeparator()
         
         filemenu.Append(FMenuBar.ID_PREFERENCES, "&Preferences", 
