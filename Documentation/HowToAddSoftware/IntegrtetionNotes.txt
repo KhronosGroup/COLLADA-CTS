@@ -1,0 +1,12 @@
+How to setup test procedures for a new renderer
+
+Can you we check the high level with all 5 steps
+   image comparators different?
+   
+   blessed images not on preservation test cases
+   
+   
+WriteImport
+   camera and light
+   mustUseCameraAndLight
+   

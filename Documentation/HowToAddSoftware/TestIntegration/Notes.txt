@@ -1,0 +1,16 @@
+Notes:
+
+must use tabs in config
+
+
+use IDLE to debug
+
+ToDocument
+
+Cross talk between methods and why to use it
+Debug.py 
+Mimic.py
+
+Explain Test Procedures directory and how to use to debug what happened
+
+Must be online to run coherency checker
