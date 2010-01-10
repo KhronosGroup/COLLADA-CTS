@@ -42,7 +42,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -59,9 +59,6 @@ class SimpleJudgingObject:
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
-        
-        # Compare the rendered images between import and export
-        self.__assistant.CompareRenderedImages(context)
         
         # Check for preservation of element data in the path specified by the tag list
         self.__assistant.ElementDataPreserved(context, self.tagList, "float")

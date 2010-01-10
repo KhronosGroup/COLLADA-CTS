@@ -26,7 +26,7 @@ limitations under the License.</copyright>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Reference test where coordinates and colors are baked in to be equivalent to morph_vertices_with_position_texture.</subject>
+        <subject>Reference test where coordinates, normals, textures, and colors are baked in to be equivalent to morph_vertices_with_position_normal_texture_color.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -95,31 +95,53 @@ limitations under the License.</copyright>
     <library_geometries>
         <geometry id="cube1" name="cube1">
             <mesh>
-                <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="12">-20 0 0 -10 50 0 30 50 0 20 0 0</float_array>
+                <source id="cube1-positions" name="position">
+                    <float_array id="cube1-positions-array" count="12">-20 0 0 -10 50 0 30 50 0 20 0 0</float_array>
                     <technique_common>
-                        <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
+                        <accessor count="4" source="#cube1-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0.38 0 0.38 1 0.88 1 0.88 0</float_array>
+                <source id="cube1-normals" name="normal">
+                    <float_array id="cube1-normals-array" count="12">0 0 0.5 0 0 0.5 0 0 0.5 0 0 0.5</float_array>
                     <technique_common>
-                        <accessor count="4" source="#cube-map1-array" stride="2">
+                        <accessor count="4" source="#cube1-normals-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <source id="cube1-map" name="map1">
+                    <float_array id="cube1-map-array" count="8">0.38 0 0.38 1 0.88 1 0.88 0</float_array>
+                    <technique_common>
+                        <accessor count="4" source="#cube1-map-array" stride="2">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
-                    <input semantic="TEXCOORD" source="#cube-map1"/>
+                <source id="cube1-color" name="color1">
+                  <float_array id="cube1-color-array" count="12">0.25 0 0.75 0.75 0.25 0 0 0.75 0.25 0.25 0.75 1</float_array>
+                  <technique_common>
+                    <accessor count="4" source="#cube1-color-array" stride="3">
+                      <param name="R" type="float"/>
+                      <param name="G" type="float"/>
+                      <param name="B" type="float"/>
+                    </accessor>
+                  </technique_common>
+                </source>
+                <vertices id="cube1-vertices">
+                    <input semantic="POSITION" source="#cube1-positions"/>
+                    <input semantic="NORMAL" source="#cube1-normals"/>
+                    <input semantic="TEXCOORD" source="#cube1-map"/>
+                    <input semantic="COLOR" source="#cube1-color"/>
                 </vertices>
                 <polygons count="1" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices" set="0"/>
+                    <input offset="0" semantic="VERTEX" source="#cube1-vertices" set="0"/>
                     <p>0 3 2 1</p>
                 </polygons>
             </mesh>

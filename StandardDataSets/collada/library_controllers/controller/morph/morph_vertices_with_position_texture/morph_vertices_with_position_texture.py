@@ -59,7 +59,7 @@ class SimpleJudgingObject:
         # Compare the rendered images between import and export
         # Then compare images against reference test for non equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_morph_vertices_with_position_color", None, None, 5, True, True)
+            self.__assistant.CompareImagesAgainst(context, "_reference_morph_vertices_with_position_texture", None, None, 5, True, True)
         
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary

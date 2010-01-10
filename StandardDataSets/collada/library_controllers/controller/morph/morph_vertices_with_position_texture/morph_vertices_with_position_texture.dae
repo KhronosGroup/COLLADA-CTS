@@ -95,10 +95,10 @@ limitations under the License.</copyright>
     <library_geometries>
         <geometry id="cube1" name="cube1">
             <mesh>
-                <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="12">-25 0 0 -20 -50 0 20 -50 0 25 0 0</float_array>
+                <source id="cube1-positions" name="position">
+                    <float_array id="cube1-positions-array" count="12">-20 0 0 -40 50 0 0 50 0 20 0 0</float_array>
                     <technique_common>
-                        <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
+                        <accessor count="4" source="#cube1-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -106,7 +106,7 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 1 0 0 0.5 0 0.5 1</float_array>
+                    <float_array id="cube-map1-array" count="8">0 0 0 1 0.5 1 0.5 0</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2">
                             <param name="S" type="float"/>
@@ -115,7 +115,7 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
+                    <input semantic="POSITION" source="#cube1-positions"/>
                     <input semantic="TEXCOORD" source="#cube-map1"/>
                 </vertices>
                 <polygons count="1" material="lambert2SG">
@@ -126,10 +126,10 @@ limitations under the License.</copyright>
         </geometry>
         <geometry id="cube2" name="cube2">
             <mesh>
-                <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="12">-25 0 0 -20 50 0 20 50 0 25 0 0</float_array>
+                <source id="cube2-positions" name="position">
+                    <float_array id="cube2-positions-array" count="12">-20 0 0 0 50 0 40 50 0 20 0 0</float_array>
                     <technique_common>
-                        <accessor count="4" source="#pCubeShape2-positions-array" stride="3">
+                        <accessor count="4" source="#cube2-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -146,7 +146,7 @@ limitations under the License.</copyright>
                     </technique_common>
                 </source>
                 <vertices id="cube-vertices2">
-                    <input semantic="POSITION" source="#pCubeShape2-positions"/>
+                    <input semantic="POSITION" source="#cube2-positions"/>
                     <input semantic="TEXCOORD" source="#cube-map2"/>
                 </vertices>
                 <polygons count="1" material="lambert2SG">
@@ -185,12 +185,14 @@ limitations under the License.</copyright>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node3" name="cube_node3">
-                <translate sid="translate">0 -50 0</translate>
+                <translate sid="translate">0 -75 0</translate>
                 <scale>3 3 3</scale>
                 <instance_controller url="#morph1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
+                            <instance_material symbol="lambert2SG" target="#lambert1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_controller>

@@ -95,178 +95,116 @@ limitations under the License.</copyright>
     <library_geometries>
         <geometry id="cube1" name="cube1">
             <mesh>
-                <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="36">-25 -25 0 25 -25 0 0 0 0 25 -25 0 25 25 0 0 0 0 25 25 0 -25 25 0 0 0 0 -25 25 0 -25 -25 0 0 0 0</float_array>
+                <source id="cube1-positions" name="position">
+                    <float_array id="cube1-positions-array" count="12">-20 0 0 -40 50 0 0 50 0 20 0 0</float_array>
                     <technique_common>
-                        <accessor count="12" source="#pCubeShape1-positions-array" stride="3">
+                        <accessor count="4" source="#cube1-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pCubeShape1-normals" name="normal">
-                    <float_array id="pCubeShape1-normals-array" count="36">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+                <source id="cube1-normals" name="normal">
+                    <float_array id="cube1-normals-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
                     <technique_common>
-                        <accessor count="12" source="#pCubeShape1-normals-array" stride="3">
+                        <accessor count="4" source="#cube1-normals-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="24">0 0 1 0 0.5 0.5 1 0 1 1 0.5 0.5 1 1 0 1 0.5 0.5 0 1 0 0 0.5 0.5</float_array>
+                <source id="cube1-map" name="map1">
+                    <float_array id="cube1-map-array" count="8">0 0 0 1 0.5 1 0.5 0</float_array>
                     <technique_common>
-                        <accessor count="12" source="#cube-map1-array" stride="2">
+                        <accessor count="4" source="#cube1-map-array" stride="2">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-color1" name="color1">
-                  <float_array id="cube-color1-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
+                <source id="cube1-color" name="color1">
+                  <float_array id="cube1-color-array" count="12">1 0 0 0 1 0 0 0 1 1 0 1</float_array>
                   <technique_common>
-                    <accessor count="12" source="#cube-color1-array" stride="3">
+                    <accessor count="4" source="#cube1-color-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
                     </accessor>
                   </technique_common>
                 </source>
-                <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
-                    <input semantic="NORMAL" source="#pCubeShape1-normals"/>
-                    <input semantic="TEXCOORD" source="#cube-map1"/>
-                    <input semantic="COLOR" source="#cube-color1"/>
+                <vertices id="cube1-vertices">
+                    <input semantic="POSITION" source="#cube1-positions"/>
+                    <input semantic="NORMAL" source="#cube1-normals"/>
+                    <input semantic="TEXCOORD" source="#cube1-map"/>
+                    <input semantic="COLOR" source="#cube1-color"/>
                 </vertices>
-                <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices" set="0"/>
-                    <p>0 1 2</p>
-                    <p>3 4 5</p>
-                    <p>6 7 8</p>
-                    <p>9 10 11</p>
+                <polygons count="1" material="lambert2SG">
+                    <input offset="0" semantic="VERTEX" source="#cube1-vertices" set="0"/>
+                    <p>0 3 2 1</p>
                 </polygons>
             </mesh>
         </geometry>
         <geometry id="cube2" name="cube2">
             <mesh>
-                <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="36">-25 -25 0 25 -25 0 0 0 -50 25 -25 0 25 25 0 0 0 -50 25 25 0 -25 25 0 0 0 -50 -25 25 0 -25 -25 0 0 0 -50</float_array>
+                <source id="cube2-positions" name="position">
+                    <float_array id="cube2-positions-array" count="12">-20 0 0 0 50 0 40 50 0 20 0 0</float_array>
                     <technique_common>
-                        <accessor count="12" source="#pCubeShape2-positions-array" stride="3">
+                        <accessor count="4" source="#cube2-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pCubeShape2-normals" name="normal">
-                    <float_array id="pCubeShape2-normals-array" count="36">1 1 1 1 1 1 1 1 1 -1 1 1 -1 1 1 -1 1 1 -1 -1 1 -1 -1 1 -1 -1 1 1 -1 1 1 -1 1 1 -1 1</float_array>
+                <source id="cube2-normals" name="normal">
+                    <float_array id="cube2-normals-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
                     <technique_common>
-                        <accessor count="12" source="#pCubeShape2-normals-array" stride="3">
+                        <accessor count="4" source="#cube2-normals-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-map2" name="map2">
-                    <float_array id="cube-map2-array" count="24">0 0 1 0 0.25 0.25 1 0 1 1 0.25 0.25 1 1 0 1 0.25 0.25 0 1 0 0 0.25 0.25</float_array>
+                <source id="cube2-map" name="map1">
+                    <float_array id="cube2-map-array" count="8">0.5 0 0.5 1 1 1 1 0</float_array>
                     <technique_common>
-                        <accessor count="12" source="#cube-map2-array" stride="2">
+                        <accessor count="4" source="#cube2-map-array" stride="2">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-color2" name="color2">
-                  <float_array id="cube-color2-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
+                <source id="cube2-color" name="color1">
+                  <float_array id="cube2-color-array" count="12">0 0 1 1 0 0 0 1 0 0 1 1</float_array>
                   <technique_common>
-                    <accessor count="12" source="#cube-color2-array" stride="3">
+                    <accessor count="4" source="#cube2-color-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
                     </accessor>
                   </technique_common>
                 </source>
-                <vertices id="cube-vertices2">
-                    <input semantic="POSITION" source="#pCubeShape2-positions"/>
-                    <input semantic="NORMAL" source="#pCubeShape2-normals"/>
-                    <input semantic="TEXCOORD" source="#cube-map2"/>
-                    <input semantic="COLOR" source="#cube-color2"/>
+                <vertices id="cube2-vertices">
+                    <input semantic="POSITION" source="#cube2-positions"/>
+                    <input semantic="NORMAL" source="#cube2-normals"/>
+                    <input semantic="TEXCOORD" source="#cube2-map"/>
+                    <input semantic="COLOR" source="#cube2-color"/>
                 </vertices>
-                <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices2" set="0"/>
-                    <p>0 1 2</p>
-                    <p>3 4 5</p>
-                    <p>6 7 8</p>
-                    <p>9 10 11</p>
-                </polygons>
-            </mesh>
-        </geometry>
-        <geometry id="cube3" name="cube3">
-            <mesh>
-                <source id="pCubeShape3-positions" name="position">
-                    <float_array id="pCubeShape3-positions-array" count="36">-25 -25 0 25 -25 0 0 0 50 25 -25 0 25 25 0 0 0 50 25 25 0 -25 25 0 0 0 50 -25 25 0 -25 -25 0 0 0 50</float_array>
-                    <technique_common>
-                        <accessor count="12" source="#pCubeShape3-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="pCubeShape3-normals" name="normal">
-                    <float_array id="pCubeShape3-normals-array" count="36">-1 -1 1 -1 -1 1 -1 -1 1 1 -1 1 1 -1 1 1 -1 1 1 1 1 1 1 1 1 1 1 -1 1 1 -1 1 1 -1 1 1</float_array>
-                    <technique_common>
-                        <accessor count="12" source="#pCubeShape3-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-map3" name="map3">
-                    <float_array id="cube-map3-array" count="24">0 0 1 0 0.75 0.75 1 0 1 1 0.75 0.75 1 1 0 1 0.75 0.75 0 1 0 0 0.75 0.75</float_array>
-                    <technique_common>
-                        <accessor count="12" source="#cube-map3-array" stride="2">
-                            <param name="S" type="float"/>
-                            <param name="T" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-color3" name="color3">
-                  <float_array id="cube-color3-array" count="36">1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1</float_array>
-                  <technique_common>
-                    <accessor count="12" source="#cube-color3-array" stride="3">
-                      <param name="R" type="float"/>
-                      <param name="G" type="float"/>
-                      <param name="B" type="float"/>
-                    </accessor>
-                  </technique_common>
-                </source>
-                <vertices id="cube-vertices3">
-                    <input semantic="POSITION" source="#pCubeShape3-positions"/>
-                    <input semantic="NORMAL" source="#pCubeShape3-normals"/>
-                    <input semantic="TEXCOORD" source="#cube-map3"/>
-                    <input semantic="COLOR" source="#cube-color3"/>
-                </vertices>
-                <polygons count="4" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices3" set="0"/>
-                    <p>0 1 2</p>
-                    <p>3 4 5</p>
-                    <p>6 7 8</p>
-                    <p>9 10 11</p>
+                <polygons count="1" material="lambert2SG">
+                    <input offset="0" semantic="VERTEX" source="#cube2-vertices" set="0"/>
+                    <p>0 3 2 1</p>
                 </polygons>
             </mesh>
         </geometry>
     </library_geometries>
     <library_controllers>
         <controller id="morph1">
-            <morph source="#cube2">
+            <morph source="#cube1">
                 <source id="morph-targets">
-                    <IDREF_array id="morph-targets-array" count="1">cube3</IDREF_array>
+                    <IDREF_array id="morph-targets-array" count="1">cube2</IDREF_array>
                     <technique_common>
                         <accessor count="1" source="#morph-targets-array">
                             <param name="MORPH_TARGET" type="IDREF"/>
@@ -290,48 +228,9 @@ limitations under the License.</copyright>
     </library_controllers>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
-            <node id="cube_node1" name="cube_node1">
-                <translate sid="translate">-60 -60 0</translate>
-                <scale sid="scale">2 2 2</scale>
-                <instance_geometry url="#cube1">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                            </instance_material>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
-            <node id="cube_node2" name="cube_node2">
-                <translate sid="translate">60 60 0</translate>
-                <scale sid="scale">2 2 2</scale>
-                <instance_geometry url="#cube2">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                            </instance_material>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
             <node id="cube_node3" name="cube_node3">
-                <translate sid="translate">-60 60 0</translate>
-                <scale sid="scale">2 2 2</scale>
-                <instance_geometry url="#cube3">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                            </instance_material>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
-            <node id="cube_node4" name="cube_node4">
-                <translate sid="translate">60 -60 0</translate>
-                <scale sid="scale">2 2 2</scale>
+                <translate sid="translate">0 -75 0</translate>
+                <scale>3 3 3</scale>
                 <instance_controller url="#morph1">
                     <bind_material>
                         <technique_common>
