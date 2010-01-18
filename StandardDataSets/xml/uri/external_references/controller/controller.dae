@@ -11,17 +11,11 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&#13;
-&quot;License&quot;); you may not use this file except in compliance with the&#13;
-License. You may obtain a copy of the License at:&#13;
-http://research.scea.com/scea_shared_source_license.html &#13;
-Unless required by applicable law or agreed to in writing, software&#13;
-distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
-See the License for the specific language governing permissions and&#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Two%20State%20Test/Two%20State%20Test.mb</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
         </contributor>
         <created>2007-02-02T01:41:59Z</created>
         <modified>2007-02-02T01:41:59Z</modified>
@@ -84,6 +78,48 @@ limitations under the License.</copyright>
             </profile_COMMON>
         </effect>
     </library_effects>
+  <library_nodes>
+    <node id="joint1" name="joint1" type="JOINT">
+      <rotate sid="jointOrientZ">0 0 1 90</rotate>
+      <rotate sid="jointOrientY">0 1 0 0</rotate>
+      <rotate sid="jointOrientX">1 0 0 0</rotate>
+      <node id="joint2" name="joint2" type="JOINT">
+        <translate sid="translate">20 0 0</translate>
+        <rotate sid="jointOrientZ">0 0 1 0</rotate>
+        <rotate sid="jointOrientY">0 1 0 0</rotate>
+        <rotate sid="jointOrientX">1 0 0 0</rotate>
+        <rotate sid="rotateZ">0 0 1 20</rotate>
+        <node id="joint3" name="joint3" type="JOINT">
+          <translate sid="translate">20 0 0</translate>
+          <rotate sid="jointOrientZ">0 0 1 0</rotate>
+          <rotate sid="jointOrientY">0 1 0 0</rotate>
+          <rotate sid="jointOrientX">1 0 0 0</rotate>
+          <rotate sid="rotateZ">0 0 1 20</rotate>
+          <node id="joint4" name="joint4" type="JOINT">
+            <translate sid="translate">20 0 0</translate>
+            <rotate sid="jointOrientZ">0 0 1 0</rotate>
+            <rotate sid="jointOrientY">0 1 0 0</rotate>
+            <rotate sid="jointOrientX">1 0 0 0</rotate>
+            <rotate sid="rotateZ">0 0 1 20</rotate>
+            <node id="joint5" name="joint5" type="JOINT">
+              <translate sid="translate">20 0 0</translate>
+              <rotate sid="jointOrientZ">0 0 1 0</rotate>
+              <rotate sid="jointOrientY">0 1 0 0</rotate>
+              <rotate sid="jointOrientX">1 0 0 0</rotate>
+              <rotate sid="rotateZ">0 0 1 -20</rotate>
+              <node id="joint6" name="joint6" type="JOINT">
+                <translate sid="translate">20 0 0</translate>
+                <rotate sid="jointOrientZ">0 0 1 0</rotate>
+                <rotate sid="jointOrientY">0 1 0 0</rotate>
+                <rotate sid="jointOrientX">1 0 0 0</rotate>
+                <rotate sid="rotateZ">0 0 1 -20</rotate>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </library_nodes>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="Two_State_Test">
             <node id="pCylinder1" name="pCylinder1">
@@ -91,7 +127,7 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_controller url="library_controllers.dae#pCylinderShape1-lib-skin">
-                    <skeleton>#VisualSceneNode</skeleton>
+                    <skeleton>#joint1</skeleton>
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="initialShadingGroup" target="#lambert1"/>

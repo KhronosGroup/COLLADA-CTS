@@ -18,7 +18,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       </copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
+	<keywords>Exemplary URI external_references</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
+	<subject>Reference test external referencing.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -45,6 +47,39 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </technique_common>
         </light>
     </library_lights>
+    <library_materials>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert1-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
+                        <diffuse>
+                            <color>0.5 0.5 0.5 1</color>
+                        </diffuse>
+                        <transparent>
+                            <color>0 0 0 1</color>
+                        </transparent>
+                        <transparency>
+                            <float>1</float>
+                        </transparency>
+                        <index_of_refraction>
+                            <float>1</float>
+                        </index_of_refraction>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
     <library_geometries>
         <geometry id="cube" name="cube">
             <mesh>
@@ -98,7 +133,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <instance_geometry url="#cube">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="initialShadingGroup" target="library_materials.dae#lambert1"/>
+                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>
