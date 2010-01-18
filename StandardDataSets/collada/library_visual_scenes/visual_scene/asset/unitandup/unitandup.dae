@@ -90,7 +90,7 @@
         <up_axis>Z_UP</up_axis>
       </asset>
       <node id="cube1" name="cube1" type="NODE">
-        <translate>0.0 -0.6 -0.3</translate>
+        <translate>0.0 0.6 0.3</translate>
         <instance_geometry url="#cube1Shape">
           <bind_material>
             <technique_common>
