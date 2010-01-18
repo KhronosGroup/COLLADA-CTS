@@ -20,7 +20,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
-        <subject>Test a morph controller referencing a geometry with position and color in the vertices</subject>
+        <subject>Test a morph controller where the target mesh has vertices not in the base mesh. Extra vertices in the target should be ignored.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -95,10 +95,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </source>
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
-                    <input semantic="COLOR" source="#cube-color1"/>
                 </vertices>
                 <polygons count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
+                    <input offset="0" semantic="COLOR" source="#cube-color1"/>
                     <p>0 2 1</p>
                 </polygons>
             </mesh>

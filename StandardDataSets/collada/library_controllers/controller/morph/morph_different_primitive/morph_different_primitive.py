@@ -14,12 +14,10 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
-
-from Core.Common.DOMParser import *
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_controllers', 'controller', 'morph', 'source', 'IDREF_array']
+tagLst = []
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -33,10 +31,8 @@ class SimpleJudgingObject:
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
-        self.__inputFileName = ''
-        self.__outputFileNameList = []
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+  
     def JudgeBaseline(self, context):
         # No step should crash
         self.__assistant.CheckCrashes(context)
@@ -52,20 +48,22 @@ class SimpleJudgingObject:
     def JudgeSuperior(self, context):
         self.status_superior = self.status_baseline
         return self.status_superior 
-            
+                
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
-        
-        # Check for preservation of element data in the path specified by the tag list
-        self.__assistant.ElementDataPreserved(context, self.tagList, "string")
+            
+        # Compare the rendered images between import and export
+        # Then compare images against reference test for non equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_morph_one_target_normalized", None, None, 5, True, True)
         
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary
-       
+
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
