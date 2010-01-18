@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>wguo6</author>
+      <authoring_tool>Maya2008 Extension 2 | ColladaMaya v3.05B</authoring_tool>
+      <comments>ColladaMaya export options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;
+exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=0;
+dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+      <source_data>file:///C:/Documents%20and%20Settings/wguo6/My%20Documents/maya/projects/default/untitled</source_data>
+    </contributor>
+    <created>2008-09-19T20:17:39Z</created>
+    <keywords>Exemplary animation asset</keywords>
+    <modified>2008-09-19T02:09:47Z</modified>
+    <subject>Reference test for up_axis test case, where up_axis is not applied within an animation.</subject>
+    <unit meter="0.01" name="centimeter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>90</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_animations>
+    <animation id="pCube1.translate">
+      <source id="pCube1.translate_pCube1_translate.Y-input">
+        <float_array id="pCube1.translate_pCube1_translate.Y-input-array" count="2">0 1</float_array>
+        <technique_common>
+          <accessor source="#pCube1.translate_pCube1_translate.Y-input-array" count="2" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+        <technique profile="MAYA">
+          <pre_infinity>CONSTANT</pre_infinity>
+          <post_infinity>CONSTANT</post_infinity>
+        </technique>
+      </source>
+      <source id="pCube1.translate_pCube1_translate.Y-output">
+        <float_array id="pCube1.translate_pCube1_translate.Y-output-array" count="2">-10 10</float_array>
+        <technique_common>
+          <accessor source="#pCube1.translate_pCube1_translate.Y-output-array" count="2" stride="1">
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube1.translate_pCube1_translate.Y-interpolations">
+        <Name_array id="pCube1.translate_pCube1_translate.Y-interpolations-array" count="2">BEZIER BEZIER</Name_array>
+        <technique_common>
+          <accessor source="#pCube1.translate_pCube1_translate.Y-interpolations-array" count="2" stride="1">
+            <param name="INTERPOLATION" type="Name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube1.translate_pCube1_translate.Y-intangents">
+        <float_array id="pCube1.translate_pCube1_translate.Y-intangents-array" count="4">-0.333333 -16.6667 0.666667 3.33333</float_array>
+        <technique_common>
+          <accessor source="#pCube1.translate_pCube1_translate.Y-intangents-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="pCube1.translate_pCube1_translate.Y-outtangents">
+        <float_array id="pCube1.translate_pCube1_translate.Y-outtangents-array" count="4">0.333333 -3.33333 1.33333 16.6667</float_array>
+        <technique_common>
+          <accessor source="#pCube1.translate_pCube1_translate.Y-outtangents-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="pCube1.translate_pCube1_translate.Y-sampler">
+        <input semantic="INPUT" source="#pCube1.translate_pCube1_translate.Y-input"/>
+        <input semantic="OUTPUT" source="#pCube1.translate_pCube1_translate.Y-output"/>
+        <input semantic="INTERPOLATION" source="#pCube1.translate_pCube1_translate.Y-interpolations"/>
+        <input semantic="IN_TANGENT" source="#pCube1.translate_pCube1_translate.Y-intangents"/>
+        <input semantic="OUT_TANGENT" source="#pCube1.translate_pCube1_translate.Y-outtangents"/>
+      </sampler>
+      <channel source="#pCube1.translate_pCube1_translate.Y-sampler" target="pCube1/translate.Y"/>
+    </animation>
+  </library_animations>
+  <library_materials>
+    <material id="lambert2" name="lambert2">
+      <instance_effect url="#lambert2-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert2-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <constant>
+            <emission>
+              <color>0.4784 0.103 0.054059 0.8</color>
+            </emission>
+          </constant>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="pCubeShape1" name="pCubeShape1">
+      <mesh>
+        <source id="pCubeShape1-positions" name="position">
+          <float_array id="pCubeShape1-positions-array" count="24">-1.5 -1.5 1.5 1.5 -1.5 1.5 -1.5 1.5 1.5 1.5 1.5 1.5 -1.5 1.5 -1.5 1.5 1.5 -1.5 -1.5 -1.5 -1.5 1.5 -1.5 -1.5</float_array>
+          <technique_common>
+            <accessor source="#pCubeShape1-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pCubeShape1-vertices">
+          <input semantic="POSITION" source="#pCubeShape1-positions"/>
+        </vertices>
+        <polylist material="lambert2SG" count="6">
+          <input semantic="VERTEX" source="#pCubeShape1-vertices" offset="0"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 1 3 2 2 3 5 4 4 5 7 6 6 7 1 0 1 7 5 3 6 0 2 4</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="untitled">
+      <node id="pCube1" name="pCube1" type="NODE">
+        <translate sid="translate">0 -9.16667 0</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <scale>5 1 1</scale>
+        <instance_geometry url="#pCubeShape1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2SG" target="#lambert2"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" type="NODE">
+        <translate sid="translate">0 1 20</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_camera url="#mainCamera"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

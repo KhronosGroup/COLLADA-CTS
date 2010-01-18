@@ -11,20 +11,16 @@ exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=0;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///R:/Art%20%26%20Design/PSVR%20Facial%20Animation/bones01.mb</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
         </contributor>
         <created>2007-05-26T00:27:52Z</created>
+        <keywords>Exemplary animation channel</keywords>
         <modified>2007-05-26T00:27:53Z</modified>
+        <subject>Test the animation of morph weight.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -60,10 +56,6 @@ limitations under the License.</copyright>
                         <param name="TIME" type="float"/>
                     </accessor>
                 </technique_common>
-                <technique profile="MAYA">
-                    <pre_infinity>CONSTANT</pre_infinity>
-                    <post_infinity>CONSTANT</post_infinity>
-                </technique>
             </source>
             <source id="blendShape1_bMouth1_mouthShape-morph-morph_weights_0_-output">
                 <float_array id="blendShape1_bMouth1_mouthShape-morph-morph_weights_0_-output-array" count="3">0 1 -0.5</float_array>
@@ -119,24 +111,9 @@ limitations under the License.</copyright>
             <profile_COMMON>
                 <technique sid="common">
                     <lambert>
-                        <emission>
-                            <color>0 0 0 1</color>
-                        </emission>
-                        <ambient>
-                            <color>0 0 0 1</color>
-                        </ambient>
                         <diffuse>
                             <color>0.5 0.5 0.5 1</color>
                         </diffuse>
-                        <transparent>
-                            <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1</float>
-                        </transparency>
-                        <index_of_refraction>
-                            <float>1</float>
-                        </index_of_refraction>
                     </lambert>
                 </technique>
             </profile_COMMON>
@@ -165,24 +142,14 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="mouthShape-map1" name="map1">
-                    <float_array id="mouthShape-map1-array" count="20">0 0 0.5 0 1 0 0.0625 0.5 0.9375 0.5 0 1 0.5 1 1 1 0.5 0.25 0.5 0.75</float_array>
-                    <technique_common>
-                        <accessor count="10" source="#mouthShape-map1-array" stride="2">
-                            <param name="S" type="float"/>
-                            <param name="T" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="mouthShape-vertices">
                     <input semantic="POSITION" source="#mouthShape-positions"/>
                 </vertices>
                 <polylist count="4" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#mouthShape-vertices"/>
                     <input offset="1" semantic="NORMAL" source="#mouthShape-normals"/>
-                    <input offset="2" semantic="TEXCOORD" source="#mouthShape-map1" set="0"/>
                     <vcount>4 4 4 4</vcount>
-                    <p>4 0 4 7 1 7 6 2 6 9 3 9 3 4 3 9 3 9 6 2 6 5 5 5 0 6 0 1 7 1 8 8 8 3 9 3 1 7 1 2 10 2 4 11 4 8 8 8</p>
+                    <p>4 0 7 1 6 2 9 3 3 4 9 3 6 2 5 5 0 6 1 7 8 8 3 9 1 7 2 10 4 11 8 8</p>
                 </polylist>
             </mesh>
         </geometry>
@@ -208,24 +175,14 @@ limitations under the License.</copyright>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="bMouthShape1-map1" name="map1">
-                    <float_array id="bMouthShape1-map1-array" count="20">0 0 0.5 0 1 0 0.0625 0.5 0.9375 0.5 0 1 0.5 1 1 1 0.5 0.25 0.5 0.75</float_array>
-                    <technique_common>
-                        <accessor count="10" source="#bMouthShape1-map1-array" stride="2">
-                            <param name="S" type="float"/>
-                            <param name="T" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
                 <vertices id="bMouthShape1-vertices">
                     <input semantic="POSITION" source="#bMouthShape1-positions"/>
                 </vertices>
                 <polylist count="4" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#bMouthShape1-vertices"/>
                     <input offset="1" semantic="NORMAL" source="#bMouthShape1-normals"/>
-                    <input offset="2" semantic="TEXCOORD" source="#bMouthShape1-map1" set="0"/>
                     <vcount>4 4 4 4</vcount>
-                    <p>4 0 4 7 1 7 6 2 6 9 3 9 3 4 3 9 3 9 6 2 6 5 5 5 0 6 0 1 7 1 8 8 8 3 9 3 1 7 1 2 10 2 4 11 4 8 8 8</p>
+                    <p>4 0 7 1 6 2 9 3 3 4 9 3 6 2 5 5 0 6 1 7 8 8 3 9 1 7 2 10 4 11 8 8</p>
                 </polylist>
             </mesh>
         </geometry>

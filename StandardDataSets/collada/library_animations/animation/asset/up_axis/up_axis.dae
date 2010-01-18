@@ -43,6 +43,8 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
   <library_animations>
     <animation id="pCube1.translate">
       <asset>
+        <created>2010-01-15T01:05:50Z</created>
+        <modified>2010-01-15T01:13:23Z</modified>
         <up_axis>Z_UP</up_axis>
       </asset>
       <source id="pCube1.translate_pCube1_translate.Z-input">
@@ -106,23 +108,11 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <effect id="lambert2-fx">
       <profile_COMMON>
         <technique sid="common">
-          <lambert>
+          <constant>
             <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
-            <diffuse>
               <color>0.4784 0.103 0.054059 0.8</color>
-            </diffuse>
-            <transparent opaque="RGB_ZERO">
-              <color>0 0 0 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
-          </lambert>
+            </emission>
+          </constant>
         </technique>
       </profile_COMMON>
     </effect>
@@ -140,33 +130,13 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
             </accessor>
           </technique_common>
         </source>
-        <source id="pCubeShape1-normals" name="normal">
-          <float_array id="pCubeShape1-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-          <technique_common>
-            <accessor source="#pCubeShape1-normals-array" count="24" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="pCubeShape1-map1" name="map1">
-          <float_array id="pCubeShape1-map1-array" count="28">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
-          <technique_common>
-            <accessor source="#pCubeShape1-map1-array" count="14" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
         <vertices id="pCubeShape1-vertices">
           <input semantic="POSITION" source="#pCubeShape1-positions"/>
         </vertices>
         <polylist material="lambert2SG" count="6">
           <input semantic="VERTEX" source="#pCubeShape1-vertices" offset="0"/>
-          <input semantic="TEXCOORD" source="#pCubeShape1-map1" offset="1" set="0"/>
           <vcount>4 4 4 4 4 4</vcount>
-          <p>0 0 1 1 3 3 2 2 2 2 3 3 5 5 4 4 4 4 5 5 7 7 6 6 6 6 7 7 1 9 0 8 1 1 7 10 5 11 3 3 6 12 0 0 2 2 4 13</p>
+          <p>0 1 3 2 2 3 5 4 4 5 7 6 6 7 1 0 1 7 5 3 6 0 2 4</p>
         </polylist>
       </mesh>
     </geometry>
