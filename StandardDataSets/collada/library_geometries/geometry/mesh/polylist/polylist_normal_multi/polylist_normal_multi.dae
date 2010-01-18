@@ -11,17 +11,11 @@ exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&amp;#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&amp;#13;
-&amp;quot;License&amp;quot;); you may not use this file except in compliance with the&amp;#13;
-License. You may obtain a copy of the License at:&amp;#13;
-http://research.scea.com/scea_shared_source_license.html &amp;#13;
-Unless required by applicable law or agreed to in writing, software&amp;#13;
-distributed under the License is distributed on an &amp;quot;AS IS&amp;quot; BASIS,&amp;#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&amp;#13;
-See the License for the specific language governing permissions and&amp;#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
 	<keywords>Exemplary geometry mesh input</keywords>

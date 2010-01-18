@@ -5,20 +5,11 @@
       <author>wguo6</author>
       <authoring_tool>3dsMax 10 - Feeling ColladaMax v3.05B.</authoring_tool>
       <comments>ColladaMax Export Options: ExportNormals=1;ExportEPolyAsTriangles=1;ExportXRefs=1;ExportSelected=0;ExportTangents=0;ExportAnimations=1;SampleAnim=0;ExportAnimClip=0;BakeMatrices=0;ExportRelativePaths=1;AnimStart=0;AnimEnd=3.33333;</comments>
-      <source_data>file:///C:/Projects/CTF_Models/FromBryan/newmodels/Axis.max</source_data>
-    </contributor>
-    <contributor>
-      <author>wguo6</author>
-      <authoring_tool>Maya2008 | ColladaMaya v3.05B</authoring_tool>
-      <comments>ColladaMaya export options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
-exportLights=0;exportCameras=0;exportJointsAndSkin=0;
-exportAnimations=0;exportTriangles=1;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=0;
-exportVertexColors=0;exportVertexColorsAnimation=0;exportTangents=0;
-exportTexTangents=0;exportConstraints=0;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file:///C:/Documents%20and%20Settings/wguo6/My%20Documents/maya/projects/default/untitled</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
     </contributor>
     <created>2008-09-06T01:05:50Z</created>
     <keywords>Exemplary geometry asset unit</keywords>
