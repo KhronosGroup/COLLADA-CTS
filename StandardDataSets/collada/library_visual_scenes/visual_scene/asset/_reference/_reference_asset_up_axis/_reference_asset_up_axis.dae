@@ -7,23 +7,32 @@
     <contributor>
     <author>gcorson</author>
       <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
-      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
-curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
-exportLights=1;exportCameras=1;exportJointsAndSkin=1;
-exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
-exportNormals=1;exportTexCoords=1;
-exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
-exportTexTangents=1;exportConstraints=1;exportPhysics=0;exportXRefs=1;
-dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-      <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
     </contributor>
-    <subject>ASSET_TESTING</subject>
-    <keyword>0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 5.0</keyword> <!--3 vectors interesting point;up_axis for rendering system;position of camera -->
     <created>2007-05-07T19:42:16Z</created>
+    <keyword>Exemplary visual_scene asset up_axis</keyword>
     <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test the up_axis of an asset within a visual_scene element.</subject>
     <unit meter="1.0" name="meter"/>
-    <up_axis>Y_UP</up_axis>
   </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
   <library_lights>
     <light id="directionalLightShape1-lib" name="directionalLightShape1">
       <technique_common>
@@ -43,24 +52,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       <profile_COMMON>
         <technique sid="common">
           <lambert>
-            <emission>
-              <color>0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color>0 0 0 1</color>
-            </ambient>
             <diffuse>
               <color>0.5 0.5 0.5 1</color>
             </diffuse>
-            <transparent opaque="RGB_ZERO">
-              <color>0 0 0 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
-            <index_of_refraction>
-              <float>1</float>
-            </index_of_refraction>
           </lambert>          
         </technique>
       </profile_COMMON>
@@ -89,57 +83,22 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </accessor>
           </technique_common>
         </source>
-        <source id="cube1Shape-map1" name="map1">
-          <float_array id="cube1Shape-map1-array" count="28">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
-          <technique_common>
-            <accessor source="#cube1Shape-map1-array" count="14" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="cube1Shape-map1-tangents">
-          <float_array id="cube1Shape-map1-tangents-array" count="9">1 0 0 0 0 -1 0 0 1</float_array>
-          <technique_common>
-            <accessor source="#cube1Shape-map1-tangents-array" count="3" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="cube1Shape-map1-binormals">
-          <float_array id="cube1Shape-map1-binormals-array" count="12">0 1 0 0 0 -1 0 -1 0 0 0 1</float_array>
-          <technique_common>
-            <accessor source="#cube1Shape-map1-binormals-array" count="4" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
         <vertices id="cube1Shape-vertices">
           <input semantic="POSITION" source="#cube1Shape-positions"/>
         </vertices>
         <polylist material="initialShadingGroup" count="6">
           <input semantic="VERTEX" source="#cube1Shape-vertices" offset="0"/>
           <input semantic="NORMAL" source="#cube1Shape-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#cube1Shape-map1" offset="2" set="0"/>
-          <input semantic="TEXTANGENT" source="#cube1Shape-map1-tangents" offset="3" set="0"/>
-          <input semantic="TEXBINORMAL" source="#cube1Shape-map1-binormals" offset="4" set="0"/>
           <vcount>4 4 4 4 4 4</vcount>
-          <p>0 0 0 0 0 1 1 1 0 0 3 2 3 0 0 2 3 2 0 0 2 4 2 0 1 3 5 3 0 1 5 6 5 0 1 4 7 4 0 1 4 8 4 0 2 5 9 5 0 2 7 10 7 0 2 6 11 6 0 2 6 12 6 0 3 7 13 7 0 3 1 14 9 0 3 0 15 8 0 3 1 16 1 1 0 7 17 10 1 0 5 18 11 1 0 3 19 3 1 0 6 20 12 2 0 0 21 0 2 0 2 22 2 2 0 4 23 13 2 0</p>
+          <p>0 0 1 1 3 2 2 3 2 4 3 5 5 6 4 7 4 8 5 9 7 10 6 11 6 12 7 13 1 14 0 15 1 16 7 17 5 18 3 19 6 20 0 21 2 22 4 23</p>
         </polylist>
       </mesh>      
     </geometry>
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode" name="CTF_template">
-      <!--<asset>
-        <unit meter="0.1" name="decimeter"/>
-      </asset>-->
       <node id="cube1" name="cube1" type="NODE">
-        <translate>0.5 0.5 0</translate>
+        <translate>0.0 0.5 -1</translate>
         <instance_geometry url="#cube1Shape">
           <bind_material>
             <technique_common>
@@ -147,6 +106,13 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </technique_common>
           </bind_material>
         </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera">
+	<translate sid="translate">0 0 4</translate>
+	<rotate sid="rotateZ">0 0 1 0</rotate>
+	<rotate sid="rotateY">0 1 0 0</rotate>
+	<rotate sid="rotateX">1 0 0 0</rotate>
+	<instance_camera url="#mainCamera"/>
       </node>
       <node id="directionalLight1" name="directionalLight1" type="NODE">
         <translate sid="translate">50 0 400</translate>

@@ -69,8 +69,6 @@ class SimpleJudgingObject:
             found = False
             for eachOutput in inputOutputLst:
                 for eachAttr in self.attrNameList:
-                    print GetAttriByEle(eachInput, eachAttr)
-                    print GetAttriByEle(eachOutput, eachAttr)
                     if (GetAttriByEle(eachOutput, eachAttr) != GetAttriByEle(eachInput, eachAttr) ):
                         found = False
                         break
