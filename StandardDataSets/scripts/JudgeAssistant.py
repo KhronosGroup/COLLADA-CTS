@@ -622,10 +622,10 @@ class JudgeAssistant:
             dataExists = False
 
         if (dataExists):
-            context.Log("PASSED: Element data exists.")
+            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> data exists.")
             self.__preservationResults = True
         else:
-            context.Log("FAILED: Element data does not exist.")
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> data does not exist.")
             self.__preservationResults = False
             self.__result = False
                 
@@ -972,7 +972,7 @@ class JudgeAssistant:
         testIO.Delink()
         return self.__preservationResults
         
-################## Preservation checking ##################
+################## Preservation checking (elements order not required to be equal) ##################
 
     # Helper function to compare the attributes between two elements.
     # inputElement: the first element
@@ -1105,9 +1105,186 @@ class JudgeAssistant:
             
         testIO.Delink()
         return self.__preservationResults
+
+################## Transform stack preservation ##################
+
+    # Checks for complete preservation of the transform stack.
+    # nodeIdLst: list of nodes to check
+    def TransformStackPreserved(self, context, nodeIdLst):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # Find matrix stack from the node list, the id should be preserved
+        for eachNode in nodeIdLst:
+            rootOut = testIO.GetRoot( self.__outputFileNameList[0] )
+            rootIn = testIO.GetRoot( self.__inputFileName )
+            
+            # input nodes with transformation for testing
+            nodeOutContTrs = GetElementByID(rootOut, eachNode)
+            nodeInContTrs = GetElementByID(rootIn, eachNode)
+            
+            if (nodeOutContTrs == None or nodeInContTrs == None):
+                testIO.Delink()
+                context.Log("FAILED: Node '" + eachNode + "' in input or output does not exist.")
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+            
+            # get transformation from it
+            trsOutList = GetTransformationsOfNode(nodeOutContTrs)
+            trsInList = GetTransformationsOfNode(nodeInContTrs)
+            
+            # compare matrix stack
+            if len( trsOutList ) != len( trsInList ):
+                testIO.Delink()
+                context.Log("FAILED: Number of transforms in node '" + eachNode + "' are not equal.")
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+            
+            for index in range(0, len(trsOutList)):
+                outputDataList = trsOutList[index].childNodes[0].nodeValue.split()
+                inputDataList = trsInList[index].childNodes[0].nodeValue.split()
+                
+                if ( len(outputDataList) != len(inputDataList) ):
+                    testIO.Delink()
+                    context.Log("FAILED: Transform stacks of node '" + eachNode + "' are not equal.")
+                    self.__preservationResults = False
+                    self.__result = False
+                    return self.__preservationResults
+                    
+                for i in range(0, len(outputDataList) ):
+                    if ( not IsValueEqual(float(outputDataList[i]), float(inputDataList[i]), 'float') ):
+                        testIO.Delink()
+                        context.Log("FAILED: Transform stacks of node '" + eachNode + "' are not equal.")
+                        self.__preservationResults = False
+                        self.__result = False
+                        return self.__preservationResults
+
+            context.Log("PASSED: Transform stacks of node '" + eachNode + "' are preserved.")
+
+        testIO.Delink()
+        self.__preservationResults = True
+        return self.__preservationResults
+
+################## Complete element preservation (including ordering and exact data) ##################
+
+
+    # Get number of element child nodes filtering an ignore list
+    # element: the element to check for child nodes
+    # ignoreList: list of node names to ignore
+    def GetElementChildNodes(self, element, ignoreList):
+        childElementList = []
+        for eachChild in element.childNodes:
+            if (eachChild.nodeName not in ignoreList):
+                if (eachChild.nodeType == eachChild.ELEMENT_NODE):
+                    childElementList.append(eachChild)
+        
+        return childElementList
+
+    # Helper function that recursively checks the preservation of elements, attributes, and data.
+    # inputElement: the current element to check in the input file.
+    # outputElement: the current element to check in the output file.
+    def CheckPreservationHelper(self, context, inputElement, outputElement, ignoreList):
+    
+        print inputElement.nodeName + " : " + outputElement.nodeName
+        
+        # Compare attributes
+        if (self.CompareAttributes(inputElement, outputElement) == False):
+            context.Log("FAILED: attributes do not match for <" + inputElement.nodeName + ">.")
+            return False
+        else:
+            print "attributes match"
+        
+        # If there is 1 child and it is of type TEXT_NODE, then the element contains data only
+        if ( len(inputElement.childNodes) == 1 and inputElement.childNodes[0].nodeType == inputElement.TEXT_NODE):
+            if ( len(outputElement.childNodes) == 1 and outputElement.childNodes[0].nodeType == outputElement.TEXT_NODE):
+                if (not self.CompareData(inputElement, outputElement)):
+                    context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
+                    return False
+                else:
+                    print "data of " + inputElement.nodeName + " match."
+            else:
+                context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
+                return False
+
+        inputChildElementList = self.GetElementChildNodes(inputElement, ignoreList)
+        outputChildElementList = self.GetElementChildNodes(outputElement, ignoreList)
+
+        inputNumbOfChildElements = len(inputChildElementList)
+        outputNumbOfChildElements = len(outputChildElementList)
+        
+        if (inputNumbOfChildElements != outputNumbOfChildElements):
+            context.Log("FAILED: Number of child elements not equal for " + inputElement.nodeName + ".")
+            return False
+        
+        for index in range(0, inputNumbOfChildElements):
+            inputChild = inputChildElementList[index]
+            outputChild = outputChildElementList[index]
+        
+            if (inputChild.nodeType == inputChild.ELEMENT_NODE and outputChild.nodeType == outputChild.ELEMENT_NODE ):
+                if (inputChild.nodeName == outputChild.nodeName):
+                    print "node type is element, named: " + inputChild.nodeName
+                    if ( self.CheckPreservationHelper(context, inputChild, outputChild, ignoreList) == False ):
+                        return False
+                else:
+                    print "failed. " + inputChild.nodeName + " : " + outputChild.nodeName
+                    return False
+        
+        return True
+
+    # Checks that all elements, attributes, and data are preserved between input and
+    # files. Used for extra preservation.
+    # taglist: the path to the beginning of the preservation check.
+    # identifier: attribute that identifies the element to check in case there are multiple
+    #    elements in the same tagList path.
+    def CompletePreservation(self, context, nodeType, nodeId, ignoreList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+                
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        preserved = True
+        
+        inputElement = GetElementByID(testIO.GetRoot(self.__inputFileName), nodeId)
+        outputElement = GetElementByID(testIO.GetRoot(self.__outputFileNameList[0]), nodeId)
+        
+        if ( inputElement == None ):
+            context.Log("FAILED: Unable to find " + nodeType + " with id '" + nodeId + "' in input.")
+            preserved = False
+        elif ( outputElement == None ):
+            context.Log("FAILED: Unable to find " + nodeType + " with id '" + nodeId + "' in output.")
+            preserved = False
+        elif ( inputElement.nodeName != outputElement.nodeName ):
+            context.Log("FAILED: Node type with id " + nodeId + " do not match.")
+            preserved = False
+        
+        if (preserved == True):
+            preserved = self.CheckPreservationHelper(context, inputElement, outputElement, ignoreList)
+        
+        if (preserved):
+            context.Log("PASSED: " + nodeType + " with id '" + nodeId + "' is completely preserved.")
+            self.__preservationResults = True
+        else:
+            self.__preservationResults = False
+            self.__result = False
+            
+        testIO.Delink()
+        return self.__preservationResults
         
 ################## instance element checking ##################
-        
 
     def _GetInstanceCount(self, daeElement, tagName, attrName=None, attrVal=None):
 
