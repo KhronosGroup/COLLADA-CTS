@@ -1,0 +1,103 @@
+##############################################################################
+# COLLADA 1.0 submission details template
+# $Id $
+# $URL $
+##############################################################################
+#
+# This form should be filled in and included in the conformance submission
+# as the file submission_details.txt in the PackedResults folder.
+#
+# Lines beginning with "#" are comments to assist in filling out the template.
+#
+##############################################################################
+
+##############################################################################
+#
+# Submission information (mostly section 7 and H.5 of Conformance Process 
+# Document) that needs to be copied onto the web submission form.
+#
+##############################################################################
+
+# Contact details.
+#
+Company:
+Contact Name:
+Contact Email:
+Contact Telephone:
+
+# Version of COLLADA specification being tested
+#
+COLLADA Version: 1.4
+
+# Badge Level Earned(Baseline, Superior, Exemplary)
+
+Conformance Badge Level:
+
+# Define the conformant implementation as specified in section 
+# H6 of the Conformance Process Attachment.
+#
+# Standalone application name
+# or plugin/codec name -> what does it plug into(app plugin sdk, version)
+# environment details:
+#   OS(name, version)
+#   COLLADA libraries, version
+#   Supporting libraries, version
+
+Conformant Implementation:
+
+Standalone App: [ Y/N ]  Application Name: []   Version: []
+Plugin: [ Y/N ]  Plugin Name: []  Plugin SDK: []  Plugin SDK Version: []
+Codec: [ Y/N ]  Codec Name: []  Codec SDK: []  Codec SDK Version: []
+
+OS: []  Version []
+COLLADA Library1: []  Version []
+COLLADA Library2: []  Version []
+Supporting Library1: []  Version []
+Supporting Library2: []  Version []
+
+# Statement of conformance listing each conformant product (at a specific
+# version) that is covered by this implementation. List each conformant product
+# on a separate line starting "Conformant Product:". The first in the list
+# is the product/device that the tests were actually run on.
+#
+# Each conformant product is likely to be one of:
+#  * standalone application / application plugin/codec and the specific environment 
+*    plus the software product
+#    that contains this COLLADA implementation required to build and run
+#                           
+#
+Conformant Product1:  [] Version []
+Conformant Product2:  [] Version []
+
+##############################################################################
+#
+# Further submission information (mostly section 7 of Conformance Process
+# Document).
+#
+##############################################################################
+
+# Date of tests used, 8 digit string as given in filename.
+#
+Tests date:
+
+# Date of "Khronos Conformance Process" that this submission
+# adheres to (as shown in the change history at the start of the document).
+#
+Conformance Process Document date:
+
+# Date of "COLLADA Conformance Process Details" attachement to
+# the Khronos Conformance Process document that this submission adheres to
+# (as shown in the change history at the start of the attachment).
+#
+COLLADA Conformance Process Attachment date:
+
+# List of Khronos Bugzilla bugs and associated waiver statement filed for adopters package bugs that have been fixed
+# by modifying the tests or software used in this submission. Separate bug numbers with
+# commas; if none, specify "none". It is OK to use an existing bug describing
+# the same problem. In any case, after filing this conformance submission,
+# add a comment to the bug referencing the submission tracking number
+# giving justification for the test change.
+#
+Adopter's Package Bugs:
+
+

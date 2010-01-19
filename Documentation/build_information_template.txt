@@ -1,0 +1,28 @@
+##############################################################################
+# COLLADA 1.0 build information template
+# $Id $
+# $URL $
+##############################################################################
+#
+# This form should be filled in and included in the conformance submission
+# as the file build_information.txt in the PackedResults folder.  It should
+# list all files added/removed/modified to fix bugs and summarizing the integration
+# and build procedure.
+#
+# Lines beginning with "#" are comments to assist in filling out the template.
+#
+##############################################################################
+
+# Action[Mod|Add|Rem]: [File] - Comment
+# 
+#  Example:
+#     Mod: config.txt - Added My Software to list
+#     Add: Scripts/FMySoftware.py - Integration script for my software
+#     Mod: StandardDataSets/Collada/asset/up_axis/up_axis.dae - Does not validate
+#     Rem: StandardDataSets/Collada/asset/up_axis/up_axis.dae - Invalid Test
+
+# Document any binaries changed and why.
+#
+#  Example:
+#     python: Version 2.6.2 - Required to run correctly on Windows 7
+#     pythonurl: http://www.python.org/download/python_2.6.2.exe 
