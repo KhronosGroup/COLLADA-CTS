@@ -44,7 +44,7 @@ class CoherencyTest (FApplication):
         Implements FApplication.GetPrettyName()
         
         """
-        return "Coherency Test 1.0"
+        return "Coherency Test 1.1"
     
     def GetOperationsList(self):
         """GetOperationsList() -> list_of_str
@@ -98,7 +98,7 @@ class CoherencyTest (FApplication):
         
         """
         if (not os.path.isfile(self.configDict["coherencyPath"])):
-            print "Coherency Test 1.0 does not exist"
+            print "Coherency Test 1.1 does not exist"
             return True
         
         print ("start running " + os.path.basename(self.__script.name))
