@@ -319,7 +319,7 @@ class JudgeAssistant:
         return self.__compareRendersResults 
 
     # Checks for the existence of an element in an output file specified by the tagList path
-    def ElementPreserved(self, context, tagList):
+    def ElementPreserved(self, context, tagList, defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -334,13 +334,16 @@ class JudgeAssistant:
         elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
 
         if (len(elementList) > 0):
-            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> is preserved.")
+            logMsg = "PASSED: <"+ tagList[len(tagList)-1] +"> is preserved."
             self.__preservationResults = True
         else:
-            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> is not preserved.")
+            logMsg = "FAILED: <"+ tagList[len(tagList)-1] +"> is not preserved."
             self.__preservationResults = False
             self.__result = False
-        
+
+        if (defaultLogText):
+            context.Log(logMsg)
+
         testIO.Delink()
         return self.__preservationResults
         
@@ -1141,7 +1144,7 @@ class JudgeAssistant:
             trsOutList = GetTransformationsOfNode(nodeOutContTrs)
             trsInList = GetTransformationsOfNode(nodeInContTrs)
             
-            # compare matrix stack
+            # compare transform stack count
             if len( trsOutList ) != len( trsInList ):
                 testIO.Delink()
                 context.Log("FAILED: Number of transforms in node '" + eachNode + "' are not equal.")
@@ -1150,6 +1153,16 @@ class JudgeAssistant:
                 return self.__preservationResults
             
             for index in range(0, len(trsOutList)):
+                # Compare transform element name
+                if (trsInList[index].nodeName != trsOutList[index].nodeName):
+                    context.Log("FAILED: " + trsInList[index].nodeName + " not equal to " + trsOutList[index].nodeName + ".")
+                    return False            
+            
+                # Check for attribute preservation
+                if (self.CompareAttributes(trsInList[index], trsOutList[index]) == False):
+                    context.Log("FAILED: attributes do not match for <" + trsInList[index].nodeName + ">.")
+                    return False
+
                 outputDataList = trsOutList[index].childNodes[0].nodeValue.split()
                 inputDataList = trsInList[index].childNodes[0].nodeValue.split()
                 
