@@ -111,7 +111,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                     </technique_common>
                 </source>
                 <source id="pCubeShape2-normals" name="normal">
-                    <float_array id="pCubeShape2-normals-array" count="9">0 0 1 0 0 1 0 0 1</float_array>
+                    <float_array id="pCubeShape2-normals-array" count="9">0 0 1 0 0 0.1 0 0 1</float_array>
                     <technique_common>
                         <accessor count="3" source="#pCubeShape2-normals-array" stride="3">
                             <param name="X" type="float"/>
@@ -159,28 +159,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </library_controllers>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
-            <node id="cube_node1" name="cube_node1">
-                <translate sid="translate">-80 0 0</translate>
-                <instance_geometry url="#cube1">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
-            <node id="cube_node2" name="cube_node2">
-                <translate sid="translate">80 0 0</translate>
-                <instance_geometry url="#cube2">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
             <node id="cube_node3" name="cube_node3">
-                <translate sid="translate">0 0 0</translate>
+                <translate sid="translate">0 -50 0</translate>
+                <scale>3 3 3</scale>
                 <instance_controller url="#morph1">
                     <bind_material>
                         <technique_common>

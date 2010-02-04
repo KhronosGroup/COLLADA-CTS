@@ -38,16 +38,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </optics>
         </camera>
     </library_cameras>
-    <library_images>
-        <image id="file1" name="file1">
-            <init_from>collada.png</init_from>
-        </image>
-    </library_images>
-    <library_materials>
-        <material id="lambert1" name="lambert1">
-            <instance_effect url="#lambert1-fx"/>
-        </material>
-    </library_materials>
     <library_lights>
         <light id="directionalLightShape1-lib" name="directionalLightShape1">
             <technique_common>
@@ -57,6 +47,11 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </technique_common>
         </light>
     </library_lights>
+    <library_materials>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
     <library_effects>
         <effect id="lambert1-fx">
             <profile_COMMON>
@@ -71,70 +66,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         </effect>
     </library_effects>
     <library_geometries>
-        <geometry id="cube1" name="cube1">
-            <mesh>
-                <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="9">-25 0 0 25 0 0 0 -100 0</float_array>
-                    <technique_common>
-                        <accessor count="3" source="#pCubeShape1-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-color1" name="color1">
-                  <float_array id="cube-color1-array" count="9">1 0 0 1 0 0 1 0 0</float_array>
-                  <technique_common>
-                    <accessor count="3" source="#cube-color1-array" stride="3">
-                      <param name="R" type="float"/>
-                      <param name="G" type="float"/>
-                      <param name="B" type="float"/>
-                    </accessor>
-                  </technique_common>
-                </source>
-                <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
-                </vertices>
-                <polygons count="1" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="0" semantic="COLOR" source="#cube-color1"/>
-                    <p>0 2 1</p>
-                </polygons>
-            </mesh>
-        </geometry>
-        <geometry id="cube2" name="cube2">
-            <mesh>
-                <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="9">-25 0 0 25 0 0 0 100 0</float_array>
-                    <technique_common>
-                        <accessor count="3" source="#pCubeShape2-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-color2" name="color2">
-                  <float_array id="cube-color2-array" count="9">0 1 0 0 1 0 0 1 0</float_array>
-                  <technique_common>
-                    <accessor count="3" source="#cube-color2-array" stride="3">
-                      <param name="R" type="float"/>
-                      <param name="G" type="float"/>
-                      <param name="B" type="float"/>
-                    </accessor>
-                  </technique_common>
-                </source>
-                <vertices id="cube-vertices2">
-                    <input semantic="POSITION" source="#pCubeShape2-positions"/>
-                    <input semantic="COLOR" source="#cube-color2"/>
-                </vertices>
-                <polygons count="1" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices2"/>
-                    <p>0 2 1</p>
-                </polygons>
-            </mesh>
-        </geometry>
         <geometry id="cube3" name="cube3">
             <mesh>
                 <source id="pCubeShape3-positions" name="position">
@@ -170,28 +101,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </library_geometries>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
-            <node id="cube_node1" name="cube_node1">
-                <translate sid="translate">-80 0 0</translate>
-                <instance_geometry url="#cube1">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
-            <node id="cube_node2" name="cube_node2">
-                <translate sid="translate">80 0 0</translate>
-                <instance_geometry url="#cube2">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert1"/>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
             <node id="cube_node3" name="cube_node3">
-                <translate sid="translate">0 0 0</translate>
+                <translate sid="translate">0 -50 0</translate>
+                <scale>3 3 3</scale>
                 <instance_geometry url="#cube3">
                     <bind_material>
                         <technique_common>

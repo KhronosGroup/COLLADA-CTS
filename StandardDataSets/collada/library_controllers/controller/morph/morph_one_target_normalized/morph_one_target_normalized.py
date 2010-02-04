@@ -17,8 +17,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
+tagLst = ['library_controllers', 'controller']
+attrName = ['id', 'name']
 attrVal = ''
 dataToCheck = ''
 
@@ -60,7 +60,11 @@ class SimpleJudgingObject:
         # Then compare images against reference test for non equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_morph_one_target_normalized", None, None, 5, True, True)
-        
+
+            # Check for attribute preservation
+            for eachAttrName in self.attrName:
+                self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)            
+
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary
 

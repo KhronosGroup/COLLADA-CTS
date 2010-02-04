@@ -145,7 +145,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node4" name="cube_node4">
-                <translate sid="translate">0 0 0</translate>
+                <translate sid="translate">0 20 0</translate>
+                <scale>2 2 2</scale>
                 <instance_controller url="#morph1">
                     <bind_material>
                         <technique_common>
