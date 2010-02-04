@@ -17,10 +17,10 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_lights', 'light', 'technique_common', 'directional', 'color']
+tagLst = []
 attrName = ''
 attrVal = ''
-dataToCheck = '1 1 1'
+dataToCheck = ''
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data):
@@ -32,7 +32,7 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -40,7 +40,15 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
 
-        self.status_baseline = self.__assistant.GetResults()
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+
+        # Compare the rendered images between import and export, and if passed, 
+        # compare images against reference test
+        self.__assistant.CompareRenderedImages(context)
+
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -52,26 +60,7 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-	# if superior fails, no point in further checking
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-            
-        # Compare the rendered images between import and export, and if passed, 
-        # compare images against reference test
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_geometry")
-
-        if (self.__assistant.GetResults() == False):
-            self.status_exemplary = False
-            return self.status_exemplary 
-        
-        # Check that the external reference hasn't been baked into the export
-        if (self.__assistant.ElementDataCheck(context, self.tagList, self.dataToCheck):
-            self.status_exemplary = False
-        else:
-            self.status_exemplary = True
-        
+        self.status_exemplary = self.status_superior
         return self.status_exemplary 
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.

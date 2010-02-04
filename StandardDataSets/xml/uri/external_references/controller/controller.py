@@ -15,11 +15,12 @@
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
 from StandardDataSets.scripts import JudgeAssistant
+from Core.Common.FUtils import SplitPath
 
 # Please feed your node list here:
-tagLst = []
+tagLst = [['library_controllers', 'controller'], ['library_visual_scenes', 'visual_scene', 'node', 'instance_controller']]
 attrName = ''
-attrVal = ''
+attrVal = 'library_controllers.dae#pCylinderShape1-lib-skin'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -32,6 +33,33 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
+
+    # Checks the url attribute of an element for a matching term
+    def CheckForURLTerm(self, context, tagList, urlTerm):
+        outputFileList = []
+    
+        # Get the input file
+        inputFileName = context.GetAbsInputFilename(context.GetCurrentTestId())
+
+        # Get the output file
+        outputFileList = context.GetStepOutputFilenames("Export")
+
+        if len(outputFileList) == 0:
+            context.Log("FAILED: There are no export steps.")
+            return False
+            
+        testIO = DOMParserIO( inputFileName, outputFileList )
+        # load files and generate root
+        testIO.Init()
+
+        outputElementList = FindElement(testIO.GetRoot(outputFileList[0]), tagList)
+        
+        for eachNode in outputElementList:
+            pathNames = SplitPath( GetAttriByEle(eachNode, "url") )
+            if (urlTerm in pathNames):
+                return True
+                
+        return False
         
     def JudgeBaseline(self, context):
         # No step should not crash
@@ -62,7 +90,22 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_controller")
 
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        if (self.__assistant.GetResults() == False):
+            self.status_exemplary = False
+            return self.status_exemplary 
+        
+        # Check that the external reference element hasn't been baked into the export
+        if (self.__assistant.ElementPreserved(context, self.tagList[0], False):
+            self.status_exemplary = False
+        else:
+            self.status_exemplary = True
+        
+        # Check that the external url reference exists
+        if (self.CheckForURLTerm(context, self.tagList[1], self.attrVal):
+            self.status_exemplary = False
+        else:
+            self.status_exemplary = True
+            
         return self.status_exemplary 
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.

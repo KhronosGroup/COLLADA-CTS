@@ -11,20 +11,16 @@ exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
 exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
 dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
-            <copyright>Copyright 2007 Sony Computer Entertainment Inc.&#13;
-Licensed under the SCEA Shared Source License, Version 1.0 (the&#13;
-&quot;License&quot;); you may not use this file except in compliance with the&#13;
-License. You may obtain a copy of the License at:&#13;
-http://research.scea.com/scea_shared_source_license.html &#13;
-Unless required by applicable law or agreed to in writing, software&#13;
-distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#13;
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
-See the License for the specific language governing permissions and&#13;
-limitations under the License.</copyright>
-            <source_data>file:///C:/vs2005/ctf/CTF/StandardDataSets/Collada/04_ColladaCore/greg_percent_encoding_spaces/maya.mb</source_data>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
         </contributor>
         <created>2007-03-21T00:17:10Z</created>
-        <modified>2007-03-21T00:17:10Z</modified>
+	<keywords>Exemplary URI</keywords>
+        <modified>2007-05-22T23:31:57Z</modified>
+	<subject>Test encoding of text in a file path.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -57,24 +53,21 @@ limitations under the License.</copyright>
         </image>
     </library_images>
     <library_materials>
-        <material id="lambert2" name="lambert2">
-            <instance_effect url="#lambert2-fx"/>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
         </material>
     </library_materials>
     <library_effects>
-        <effect id="lambert2-fx">
+        <effect id="lambert1-fx">
             <profile_COMMON>
                 <newparam sid="file1-surface">
                     <surface type="2D">
                         <init_from>file1</init_from>
-                        <format>A8R8G8B8</format>
                     </surface>
                 </newparam>
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
@@ -103,7 +96,7 @@ limitations under the License.</copyright>
         </effect>
     </library_effects>
     <library_geometries>
-        <geometry id="pPlaneShape1" name="pPlaneShape1">
+        <geometry id="cube" name="cube">
             <mesh>
                 <source id="pPlaneShape1-positions" name="position">
                     <float_array id="pPlaneShape1-positions-array" count="12">-100 0 100 100 0 100 -100 0 -100 100 0 -100</float_array>
@@ -138,7 +131,7 @@ limitations under the License.</copyright>
                     <input semantic="POSITION" source="#pPlaneShape1-positions"/>
                     <input semantic="NORMAL" source="#pPlaneShape1-normals"/>
                 </vertices>
-                <polylist count="1" material="lambert2SG">
+                <polylist count="1" material="initialShadingGroup">
                     <input offset="0" semantic="VERTEX" source="#pPlaneShape1-vertices"/>
                     <input offset="1" semantic="TEXCOORD" source="#pPlaneShape1-map1" set="0"/>
                     <vcount>4</vcount>
@@ -148,7 +141,20 @@ limitations under the License.</copyright>
         </geometry>
     </library_geometries>
     <library_visual_scenes>
-        <visual_scene id="VisualSceneNode" name="maya">
+        <visual_scene id="VisualSceneNode" name="untitled">
+            <node id="cube_node" name="cube_node">
+                <translate sid="translate">0 0 99.4865</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 90</rotate>
+                <instance_geometry url="#cube">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
             <node id="testCamera" name="testCamera">
                 <translate sid="translate">0 0 400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
@@ -162,21 +168,6 @@ limitations under the License.</copyright>
                 <rotate sid="rotateY">0 1 0 15</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_light url="#directionalLightShape1-lib"/>
-            </node>
-            <node id="pPlane1" name="pPlane1">
-                <translate sid="translate">0 0 99.4865</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 90</rotate>
-                <instance_geometry url="#pPlaneShape1">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="lambert2SG" target="#lambert2">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                            </instance_material>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
             </node>
         </visual_scene>
     </library_visual_scenes>
