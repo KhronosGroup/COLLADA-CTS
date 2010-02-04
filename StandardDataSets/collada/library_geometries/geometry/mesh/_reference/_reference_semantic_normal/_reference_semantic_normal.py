@@ -4,14 +4,12 @@
 
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
-#
 
 # This sample judging object does the following:
 #
-# JudgeBaseline: verifies that app did not crash, the required steps have been performed, 
-#  the rendered images match, and the required element(s) has been preserved
-# JudgeExemplary: returns Baseline status.
-# JudgeSuperior: returns Baseline status.
+# JudgeBaseline: just verifies that the standard steps did not crash.
+# JudgeSuperior: also verifies that the validation steps are not in error.
+# JudgeExemplary: same as intermediate badge.
 
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
