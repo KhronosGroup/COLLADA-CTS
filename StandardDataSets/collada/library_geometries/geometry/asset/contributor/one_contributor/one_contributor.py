@@ -17,11 +17,11 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'author'],
-          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'authoring_tool'],
-          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'comments'],
-          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'copyright'],
-          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'source_data']]
+tagLst = [['library_geometries', 'geometry', 'asset', 'contributor', 'author'],
+          ['library_geometries', 'geometry', 'asset', 'contributor', 'authoring_tool'],
+          ['library_geometries', 'geometry', 'asset', 'contributor', 'comments'],
+          ['library_geometries', 'geometry', 'asset', 'contributor', 'copyright'],
+          ['library_geometries', 'geometry', 'asset', 'contributor', 'source_data']]
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -70,4 +70,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, nodeType, nodeId, ignoreList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
