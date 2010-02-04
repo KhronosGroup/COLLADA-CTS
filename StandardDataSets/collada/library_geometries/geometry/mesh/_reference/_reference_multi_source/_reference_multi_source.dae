@@ -10,9 +10,9 @@
 # Distribution of this file or its content is strictly prohibited.</copyright>
         </contributor>
         <created>2009-05-04T12:00:00Z</created>
-	<keywords>Exemplary geometry asset</keywords>
+	<keywords>Exemplary geometry mesh vertices input</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
-	<subject>Test that the authoring_tool exists if the geometry element has changed in any way and the contributor is not in the input file.</subject>
+	<subject>Reference test for multiple sources of POSITION, TEXCOORD, COLOR, and NORMAL for vertices input</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -64,6 +64,12 @@
                 </newparam>
                 <technique sid="common">
                     <lambert>
+                        <emission>
+                            <color>0 0 0 1</color>
+                        </emission>
+                        <ambient>
+                            <color>0 0 0 1</color>
+                        </ambient>
                         <diffuse>
                             <texture texture="file1-sampler" texcoord="TEX0"/>
                         </diffuse>
@@ -81,53 +87,53 @@
     <library_geometries>
         <geometry id="cube" name="cube">
             <mesh>
-                <source id="pCubeShape1-positions" name="position">
-                    <float_array id="pCubeShape1-positions-array" count="12">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
+                <source id="pCubeShape1-positions2" name="position">
+                    <float_array id="pCubeShape1-positions2-array" count="12">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
                     <technique_common>
-                        <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
+                        <accessor count="4" source="#pCubeShape1-positions2-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="pCubeShape1-normals" name="normal">
-                    <float_array id="pCubeShape1-normals-array" count="12">0 0 1 0 0 -1 0 0 -1 0 0 1</float_array>
+                <source id="cube-map2" name="map1">
+                    <float_array id="cube-map2-array" count="8">0 0 0.5 0 0 1 0.5 1</float_array>
                     <technique_common>
-                        <accessor count="4" source="#pCubeShape1-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 0 1 0 0 1 1 1</float_array>
-                    <technique_common>
-                        <accessor count="4" source="#cube-map1-array" stride="2">
+                        <accessor count="4" source="#cube-map2-array" stride="2">
                             <param name="S" type="float"/>
                             <param name="T" type="float"/>
                         </accessor>
                     </technique_common>
                 </source>
-                <source id="cube-color1" name="color1">
-                  <float_array id="cube-color1-array" count="12">1 0 0 0 1 0 0 0 1 1 1 1</float_array>
+                <source id="cube-color2" name="color2">
+                  <float_array id="cube-color2-array" count="12">1 0 0 0 1 0 0 0 1 1 1 1</float_array>
                   <technique_common>
-                    <accessor count="4" source="#cube-color1-array" stride="3">
+                    <accessor count="4" source="#cube-color2-array" stride="3">
                       <param name="R" type="float"/>
                       <param name="G" type="float"/>
                       <param name="B" type="float"/>
                     </accessor>
                   </technique_common>
                 </source>
+                <source id="pCubeShape1-normals2" name="normals2">
+                    <float_array id="pCubeShape1-normals2-array" count="12">0 0 -1 0 0 1 0 0 -1 0 0 1</float_array>
+                    <technique_common>
+                        <accessor count="4" source="#pCubeShape1-normals2-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
                 <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#pCubeShape1-positions"/>
-                    <input semantic="NORMAL" source="#pCubeShape1-normals"/>
-                    <input semantic="TEXCOORD" source="#cube-map1"/>
-		    <input semantic="COLOR" source="#cube-color1"/>
+                    <input semantic="POSITION" source="#pCubeShape1-positions2"/>
                 </vertices>
                 <polylist count="1" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices" set="0"/>                    
+                    <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
+                    <input offset="0" semantic="TEXCOORD" source="#cube-map2" set="0"/>
+		    <input offset="0" semantic="COLOR" source="#cube-color2"/>
+		    <input offset="0" semantic="NORMAL" source="#pCubeShape1-normals2"/>
                     <vcount>4</vcount>
                     <p>0 1 3 2</p>
                 </polylist>

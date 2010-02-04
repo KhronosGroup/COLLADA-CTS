@@ -19,8 +19,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
+tagLst = ['library_geometries', 'geometry']
+attrName = ['id', 'name']
 attrVal = ''
 dataToCheck = ''
 
@@ -51,7 +51,7 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_polygons_polylist_triangles", None, None, 5, True, True)
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -63,8 +63,16 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
-        return self.status_exemplary 
+        # if superior fails, no point in further checking
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+
+        for eachAttrName in self.attrName:
+            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)            
+
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".

@@ -17,29 +17,29 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'asset', 'modified']
-nodeType = 'geometry'
-nodeId = 'cube'
-ignoreList = ['asset']
+tagLst = []
+attrName = ''
+attrVal = ''
+dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _nodeType, _nodeId, _ignoreList):
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
         self.tagList = _tagLst
-        self.nodeType = _nodeType
-        self.nodeId = _nodeId
-        self.ignoreList = _ignoreList
+        self.attrName = _attrName
+        self.attrVal = _attrVal
+        self.dataToCheck = _data
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-
+        
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+       
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
@@ -57,16 +57,15 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        # if element is not preserved, then modified date must exist in the output
-        # if element is preserved, return true
-        if (not self.__assistant.CompletePreservation(context, self.nodeType, self.nodeId, self.ignoreList)):
-            self.status_exemplary = self.__assistant.ElementDataExists(context, self.tagList)
-            return self.status_exemplary
-        else:
-            self.status_exemplary = True
-            return self.status_exemplary 
+        # Compare the rendered images between import and export
+        # Then compare images against reference test for equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_multi_source", None, None, 5, True, True)
         
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary 
+       
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, nodeType, nodeId, ignoreList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);

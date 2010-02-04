@@ -17,8 +17,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
+tagLst = ['library_geometries', 'geometry','asset', 'unit']
+attrName = ['meter', 'name']
 attrVal = ''
 dataToCheck = ''
 
@@ -61,6 +61,9 @@ class SimpleJudgingObject:
         # compare images against reference test
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_unit")
+
+            for eachAttrName in self.attrName:
+                self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)            
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 

@@ -82,7 +82,14 @@
         <geometry id="cube" name="cube">
             <asset>
                 <contributor>
+                    <author>Bugs Bunny</author>
                     <authoring_tool>HandWritten</authoring_tool>
+                    <comments>What up doc</comments>
+                    <copyright>
+                    # Copyright date
+                    # Other info go here
+                    </copyright>
+                    <source_data>Source data go here</source_data>
                 </contributor>
                 <created>2007-05-07T19:42:16Z</created>
                 <modified>2007-05-07T19:42:16Z</modified>

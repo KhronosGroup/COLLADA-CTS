@@ -14,20 +14,25 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
+
+import sys, string, os
+from xml.dom import minidom, Node
+from datetime import datetime, timedelta
+from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = ['library_geometries', 'geometry', 'asset', 'created']
-nodeType = 'geometry'
-nodeId = 'cube'
-ignoreList = ['asset']
+attrName = ''
+attrVal = ''
+dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _nodeType, _nodeId, _ignoreList):
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
         self.tagList = _tagLst
-        self.nodeType = _nodeType
-        self.nodeId = _nodeId
-        self.ignoreList = _ignoreList
+        self.attrName = _attrName
+        self.attrVal = _attrVal
+        self.dataToCheck = _data
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -54,12 +59,14 @@ class SimpleJudgingObject:
             context.Log("FAILED: Couldn't read <created> value from the exported file.")
             return None
 
-        if (outputCreatedDate - inputCreatedDate) == timedelta(0):
-            return 0
-        elif (outputCreatedDate - inputCreatedDate) > timedelta(0):
-            return 1
-        else:
-            return -1
+        if (outputCreatedDate - inputCreatedDate) != timedelta(0):
+            context.Log("FAILED: <created> is not preserved.")
+            context.Log("The original <created> time is " + str(inputCreatedDate))
+            context.Log("The exported <created> time is " + str(outputCreatedDate))
+            return False
+            
+        context.Log("PASSED: <created> element is preserved.")
+        return True
             
     def JudgeBaseline(self, context):
         # No step should not crash
@@ -85,23 +92,10 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        result = self.CheckDate(context)
-
-        # If created date exists in the input file, created date must be preserved 
-        # regardless of changes to the element in the output file
-        if (result == None):
-            context.Log("FAILED: <created> is not preserved.")
-            self.status_exemplary = False
-        elif (result == 0):
-            context.Log("PASSED: <created> is preserved.")
-            self.status_exemplary = True        
-        else:
-            context.Log("FAILED: <created> is not preserved.")
-            self.status_exemplary = False
-            
+        self.status_exemplary = self.CheckDate(context)
         return self.status_exemplary
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, nodeType, nodeId, ignoreList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
