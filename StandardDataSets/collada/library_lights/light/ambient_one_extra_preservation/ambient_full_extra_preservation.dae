@@ -9,13 +9,13 @@
         <created>2007-06-24T13:00:00Z</created>
         <keywords>Exemplary library_lights light extra</keywords>
         <modified>2008-08-22T11:40:00Z</modified>
-        <subject>Verifies that the application will export the unknown extra elements intact.</subject>
+        <subject>Verifies that the application will export the unknown extra elements of an ambient light intact.</subject>
         <title>30</title>
     </asset>
     <library_lights>
         <light id="directional-light">
             <technique_common>
-                <directional>
+                <ambient>
                     <color>0.8 0.8 0.5</color>
                 </directional>
             </technique_common>

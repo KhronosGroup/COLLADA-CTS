@@ -7,7 +7,7 @@
             <comments>Finish multiple complicated extra under this file</comments>
         </contributor>
         <created>2007-06-24T13:00:00Z</created>
-        <keywords>Exemplary library_lights light full extra</keywords>
+        <keywords>Exemplary library_lights light extra</keywords>
         <modified>2008-08-22T11:40:00Z</modified>
         <subject>Verifies that the application will export the unknown extra elements intact.</subject>
         <title>30</title>
@@ -38,10 +38,38 @@
                 </point>
             </technique_common>
             <extra>
-                <technique profile="AnotherApplication">
+                <technique profile="AnotherApplicationA">
                   <test infor="testing">
                     <value attr1="attr_value1" attr2="attr_value2">should not be changed</value>
                   </test>
+                </technique>
+            </extra>
+            <extra>
+                <technique profile="AnotherApplicationB">
+                  <test infor="testing">
+                    <value attr1="attr_value1" attr2="attr_value2">should not be changed</value>
+                    <lighting_exponent attr1="attrval1" attr2="attrval2">101.2</lighting_exponent>
+                  </test>
+                </technique>
+            </extra>        
+        </light>
+        <light id="spot-light">
+            <technique_common>
+                <spot>
+                    <color>0 0.5 0</color>
+                </spot>
+            </technique_common>
+            <extra>
+                <technique profile="AnotherApplicationSpotA">
+                  <someTag infor="testing2">
+                    <value attr3="attr_value3" attr4="attr_value4">test data</value>
+                  </someTag>
+                  <dynamic>Yes</dynamic>
+                </technique>
+            </extra>
+            <extra>
+                <technique profile="AnotherApplicationSpotB">
+                  <dynamic>Maybe</dynamic>
                 </technique>
             </extra>
         </light>
@@ -53,6 +81,9 @@
             </node>
             <node id="node2">
                 <instance_light url="#point-light"/>
+            </node>
+            <node id="node3">
+                <instance_light url="#spot-light"/>
             </node>
         </visual_scene>
     </library_visual_scenes>
