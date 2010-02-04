@@ -16,7 +16,7 @@
     <keywords>Exemplary node asset up_axis</keywords>
     <modified>2008-09-25T00:49:41Z</modified>
     <subject>Test the up_axis of an asset in a node set to positive Z</subject>
-    <unit meter="0.0254" name="inch"/>
+    <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
   <library_cameras>
@@ -52,18 +52,9 @@
       <profile_COMMON>
         <technique sid="common">
           <lambert>
-            <ambient>
-              <color>0.588235 0.588235 0.588235 1</color>
-            </ambient>
             <diffuse>
-              <color>0.588235 0.588235 0.588235 1</color>
+              <color>0.5 0.5 0.5 1</color>
             </diffuse>
-            <transparent opaque="A_ONE">
-              <color>1 1 1 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
           </lambert>
         </technique>
       </profile_COMMON>
@@ -73,7 +64,7 @@
     <geometry id="Cone01-mesh" name="Cone01">
       <mesh>
         <source id="Cone01-mesh-positions">
-          <float_array id="Cone01-mesh-positions-array" count="15">-50 -75 0 0 -75 50 50 -75 0 0 -50 -75 0 150 0</float_array>
+          <float_array id="Cone01-mesh-positions-array" count="15">-50 0 -75  0 -50 -75  50 0 -75  0 50 -75  0 0 150</float_array>
           <technique_common>
             <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
@@ -100,8 +91,8 @@
           <modified>2008-09-06T01:13:23Z</modified>
           <up_axis>Z_UP</up_axis>
         </asset>
-        <!-- equivalent to translation [0 -100 -200] -->
-        <translate>0 200 -100</translate>
+        <!-- equivalent to translation [50 -20 -100] in Y_UP -->
+        <translate>50 100 -20</translate>
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 0</rotate>
         <rotate sid="rotateX">1 0 0 0</rotate>

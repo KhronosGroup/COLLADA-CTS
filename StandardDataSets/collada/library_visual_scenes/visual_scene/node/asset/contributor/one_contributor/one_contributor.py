@@ -17,17 +17,21 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'asset', 'contributor', 'authoring_tool']
-nodeType = 'geometry'
-nodeId = 'cube'
-ignoreList = ['asset']
+tagLst = [['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'author'],
+          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'authoring_tool'],
+          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'comments'],
+          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'copyright'],
+          ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'contributor', 'source_data']]
+attrName = ''
+attrVal = ''
+dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _nodeType, _nodeId, _ignoreList):
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
         self.tagList = _tagLst
-        self.nodeType = _nodeType
-        self.nodeId = _nodeId
-        self.ignoreList = _ignoreList
+        self.attrName = _attrName
+        self.attrVal = _attrVal
+        self.dataToCheck = _data
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -57,17 +61,13 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        # if element is not preserved, then authoring_tool must exist
-        # if element is preserved, then authuring_tool must also be preserved
-        if (not self.__assistant.CompletePreservation(context, self.nodeType, self.nodeId, self.ignoreList)):
-            self.status_exemplary = self.__assistant.ElementDataExists(context, self.tagList)
-            return self.status_exemplary
-        else:
-            self.__assistant.ElementDataPreserved(context, tagList, "string")
-            self.status_exemplary = self.__assistant.DeferJudgement(context)
-            return self.status_exemplary 
+        for eachTagList in self.tagList:
+            self.__assistant.ElementDataPreserved(context, eachTagList, "string")
+
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary 
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, nodeType, nodeId, ignoreList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);

@@ -15,7 +15,7 @@
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Exemplary node</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
-        <subject>Test the complete preservation of a look_at transform stack.</subject>
+        <subject>Test the complete preservation of a translation, rotation, and scale transform stack.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -97,9 +97,37 @@
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node" name="cube_node">
-                <lookat>50 0 0 0 0 -1000 0 1 0</lookat>
-                <lookat>0 50 0 0 0 -1000 0 1 0</lookat>
-                <lookat>0 0 -100 0 0 -1000 0 1 0</lookat>
+                <!-- Same effect as 100 0 0 -->
+                <translate>20 0 -30</translate>
+                <translate>20 -10 0</translate>
+                <translate>20 0 0</translate>
+                <translate>20 0 0</translate>
+                <translate>10 0 30</translate>
+                <translate>10 10 0</translate>
+                <!-- Same effect as 1 0 0 0 -->
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <rotate>1 0 0 45</rotate>
+                <!-- Same effect as 0 1 0 135 -->
+                <rotate>0 1 0 45</rotate>
+                <rotate>0 1 0 45</rotate>
+                <rotate>0 1 0 45</rotate>
+                <!-- Same effect as 0 0 1 0 -->
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <rotate>0 0 1 45</rotate>
+                <scale>1 1.5 1</scale>
+                <scale>1 1 1.5</scale>
                 <instance_geometry url="#cube">
                     <bind_material>
                         <technique_common>

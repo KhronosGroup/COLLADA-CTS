@@ -14,10 +14,10 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keyword>Exemplary visual_scene asset up_axis</keyword>
+    <keyword>Exemplary visual_scene asset unit</keyword>
     <modified>2007-05-07T19:42:16Z</modified>
-    <subject>Test the up_axis of an asset within a visual_scene element.</subject>
-    <unit meter="1.0" name="meter"/>
+    <subject>Test the unit of an asset within a visual_scene element</subject>
+    <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>
     <camera id="mainCamera" name="mainCamera">
@@ -61,45 +61,33 @@
     </effect>
   </library_effects>
   <library_geometries>
-    <geometry id="cube1Shape" name="cube1Shape">
+    <geometry id="Cone01-mesh" name="Cone01">
       <mesh>
-        <source id="cube1Shape-positions" name="position">
-          <float_array id="cube1Shape-positions-array" count="24">-1 -1 1 1 -1 1 -1 1 1 1 1 1 -1 1 -1 1 1 -1 -1 -1 -1 1 -1 -1</float_array>
+        <source id="Cone01-mesh-positions">
+          <float_array id="Cone01-mesh-positions-array" count="15">-50 -75 0 0 -75 50 50 -75 0 0 -75 -50 0 150 0</float_array>
           <technique_common>
-            <accessor source="#cube1Shape-positions-array" count="8" stride="3">
+            <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
             </accessor>
           </technique_common>
         </source>
-        <source id="cube1Shape-normals" name="normal">
-          <float_array id="cube1Shape-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-          <technique_common>
-            <accessor source="#cube1Shape-normals-array" count="24" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <vertices id="cube1Shape-vertices">
-          <input semantic="POSITION" source="#cube1Shape-positions"/>
+        <vertices id="Cone01-mesh-vertices">
+          <input semantic="POSITION" source="#Cone01-mesh-positions"/>
         </vertices>
-        <polylist material="initialShadingGroup" count="6">
-          <input semantic="VERTEX" source="#cube1Shape-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#cube1Shape-normals" offset="1"/>
-          <vcount>4 4 4 4 4 4</vcount>
-          <p>0 0 1 1 3 2 2 3 2 4 3 5 5 6 4 7 4 8 5 9 7 10 6 11 6 12 7 13 1 14 0 15 1 16 7 17 5 18 3 19 6 20 0 21 2 22 4 23</p>
-        </polylist>
-      </mesh>      
+        <triangles material="initialShadingGroup" count="6">
+          <input semantic="VERTEX" source="#Cone01-mesh-vertices" offset="0"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
     </geometry>
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode" name="CTF_template">
       <node id="cube1" name="cube1" type="NODE">
-        <translate>0.0 0.5 -1</translate>
-        <instance_geometry url="#cube1Shape">
+        <translate>50 -20 -100</translate>
+        <instance_geometry url="#Cone01-mesh">
           <bind_material>
             <technique_common>
               <instance_material symbol="initialShadingGroup" target="#lambert1"/>
@@ -108,7 +96,7 @@
         </instance_geometry>
       </node>
       <node id="testCamera" name="testCamera">
-	<translate sid="translate">0 0 4</translate>
+	<translate sid="translate">0 0 400</translate>
 	<rotate sid="rotateZ">0 0 1 0</rotate>
 	<rotate sid="rotateY">0 1 0 0</rotate>
 	<rotate sid="rotateX">1 0 0 0</rotate>
