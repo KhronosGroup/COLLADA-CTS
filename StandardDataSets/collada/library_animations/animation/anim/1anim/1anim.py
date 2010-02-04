@@ -17,8 +17,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
+tagLst = ['library_animations', 'animation']
+attrName = ['id', 'name']
 attrVal = ''
 dataToCheck = ''
 
@@ -55,14 +55,22 @@ class SimpleJudgingObject:
         if ( self.__assistant.HasAnimatedImages(context) ):
             self.__assistant.CompareRenderedImages(context)
         
-        self.status_superior = self.__assistant.DeferJudgement(context)
+        self.status_superior = self.__assistant.GetResults()
         return self.status_superior
             
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
-        return self.status_exemplary 
+        # if superior fails, no point in further checking
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+
+        for eachAttrName in self.attrName:
+            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)            
+
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".

@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = ['library_animations', 'animation','asset', 'up_axis']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -61,7 +61,8 @@ class SimpleJudgingObject:
         if ( self.__assistant.HasAnimatedImages(context) ):
             self.__assistant.CompareRenderedImages(context)
             self.__assistant.CompareImagesAgainst(context, "_reference_up_axis", None, None, 5, True, True)
-        
+            self.__assistant.ElementDataPreserved(context, self.tagList, "string")
+
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary
        

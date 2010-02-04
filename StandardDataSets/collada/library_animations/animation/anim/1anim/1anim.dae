@@ -31,7 +31,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </asset>
     <library_animations>
       <animation id="group">
-        <animation id="prop_translate">
+        <animation id="prop_translate" name="translate_prop">
             <source id="prop_translate_prop_translate_translate-input">
                 <float_array id="prop_translate_prop_translate_translate-input-array" count="2">0 5</float_array>
                 <technique_common>
