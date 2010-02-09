@@ -47,3 +47,4 @@ DOCUMENTATION = "../Documentation/README.doc"
 FILEWATCHER = "FileWatcher.exe"
 KILLER = "ProcessKiller.exe"
 VERSION = 1.3
+PACKAGE_RESULTS_DIR = "../PackagedResults"

@@ -574,8 +574,8 @@ class RunTable(FSFrame, wx.MDIChildFrame):
                 MAIN_FOLDER, "",  
                 "ZIP file (*.zip)|*.zip", 
                 wx.SAVE)
-	dir = 'c:\\ctf\\PackagedResults\\'
-	basename=dir + 'results'
+	dir = os.path.normpath(PACKAGE_RESULTS_DIR)
+	basename=dir + '\\results'
 	d = os.path.dirname(basename)
 	if not os.path.exists(d):
 		os.makedirs(d)
@@ -593,7 +593,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
 	    self.__grid.GetThumbnailWidth(),
 	    self.__grid.GetThumbnailHeight())
 
-	makeArchive(dirEntries(dir, True) + dirEntries("c:\\ctf\Scripts", True) + ["c:\\ctf\config.txt"], basename + ".zip")
+	makeArchive(dirEntries(dir, True) + dirEntries(os.path.normpath(SCRIPTS_DIR), True) + [os.path.normpath(CONFIGURATION_FILE)], basename + ".zip")
 	    
     def __OnExportAllCsv(self, e):
         fileChooser = wx.FileDialog(self, "Export Test Procedure As ...", 
