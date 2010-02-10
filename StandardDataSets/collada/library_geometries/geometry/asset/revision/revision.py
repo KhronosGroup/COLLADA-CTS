@@ -14,15 +14,10 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
-
-import sys, string, os
-from xml.dom import minidom, Node
-from datetime import datetime, timedelta
-from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'asset', 'modified']
+tagLst = ['library_geometries', 'geometry', 'asset', 'revision']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -37,45 +32,14 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-
-    def CheckDate(self, context):
-        # Get the <modified> time for the input file
-        root = minidom.parse(context.GetInputFilename()).documentElement
-        inputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_geometries", "geometry", "asset", "modified")))
-        if inputDate == None:
-            context.Log("FAILED: Couldn't read <modified> value from test input file.")
-            return None
         
-        # Get the output file
-        outputFilenames = context.GetStepOutputFilenames("Export")
-        if len(outputFilenames) == 0:
-            context.Log("FAILED: There are no export steps.")
-            return None
-
-        # Get the <modified> time for the output file
-        root = minidom.parse(outputFilenames[0]).documentElement
-        outputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_geometries", "geometry", "asset", "modified")))
-        if outputDate == None:
-            context.Log("FAILED: Couldn't read <modified> value from the exported file.")
-            return None
-
-        # Modified data must be greater than or equal to original date to pass
-        if (outputDate - inputDate) < timedelta(0):
-            context.Log("FAILED: <modified> is not preserved.")
-            context.Log("The original <modified> time is " + str(inputDate))
-            context.Log("The exported <modified> time is " + str(outputDate))
-            return False
-            
-        context.Log("PASSED: <modified> element is preserved.")
-        return True
-            
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-
+        
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
@@ -93,9 +57,12 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        self.status_exemplary = self.CheckDate(context)
-        return self.status_exemplary
-        
+        # Check for existence of element data
+        self.__assistant.ElementDataExists(context, self.tagList)
+
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary 
+       
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #

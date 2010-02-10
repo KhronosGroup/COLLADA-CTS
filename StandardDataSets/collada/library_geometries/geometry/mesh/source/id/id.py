@@ -1,15 +1,17 @@
-# Copyright (C) 2007 Khronos Group
+# Copyright (C) 2007 - 2009 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
 # See Core.Logic.FJudgementContext for the information
 # of the 'context' parameter.
+#
 
 # This sample judging object does the following:
 #
-# JudgeBaseline: just verifies that the standard steps did not crash.
-# JudgeSuperior: also verifies that the validation steps are not in error.
-# JudgeExemplary: same as intermediate badge.
+# JudgeBaseline: verifies that app did not crash, the required steps have been performed, 
+#  the rendered images match, and the required element(s) has been preserved
+# JudgeExemplary: returns Baseline status.
+# JudgeSuperior: returns Baseline status.
 
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
@@ -17,9 +19,9 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
-attrName = ''
-attrVal = ''
+tagLst = ['library_geometries', 'geometry', 'mesh', 'source']
+attrName = 'id'
+attrVal = 'pCubeShape1-positions'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -38,9 +40,9 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
-
-        self.status_baseline = self.__assistant.GetResults()
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        
+        self.status_baseline = self.__assistant.self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -56,15 +58,12 @@ class SimpleJudgingObject:
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
-            
-        # Compare the rendered images between import and export, and if passed, 
-        # compare images against reference test
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_unit")
+
+        self.__assistant.ElementDataCheck(context, self.tagList, self.attrVal, "string")
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
-        
+       
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #

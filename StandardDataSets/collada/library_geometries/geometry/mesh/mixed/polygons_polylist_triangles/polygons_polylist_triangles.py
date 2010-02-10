@@ -20,7 +20,7 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = ['library_geometries', 'geometry']
-attrName = ['id', 'name']
+attrName = 'id'
 attrVal = ''
 dataToCheck = ''
 
@@ -68,8 +68,7 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        for eachAttrName in self.attrName:
-            self.__assistant.AttributePreserved(context, self.tagList, eachAttrName)            
+        self.__assistant.AttributePreserved(context, self.tagList, self.attrName)            
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary
