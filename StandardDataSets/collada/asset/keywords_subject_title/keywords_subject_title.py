@@ -17,11 +17,9 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['asset', 'contributor', 'author'],
-          ['asset', 'contributor', 'authoring_tool'],
-          ['asset', 'contributor', 'comments'],
-          ['asset', 'contributor', 'copyright'],
-          ['asset', 'contributor', 'source_data']]
+tagLst = [['asset', 'keywords'],
+          ['asset', 'subject'],
+          ['asset', 'title']]
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -43,9 +41,6 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-        
-        # Check for preservation of element
-        self.__assistant.ElementDataExists(context, self.tagList[1])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline

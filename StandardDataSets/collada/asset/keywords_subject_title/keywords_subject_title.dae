@@ -12,18 +12,10 @@
       </copyright>
       <source_data>file:///C:models/test</source_data>
     </contributor>
-    <contributor>
-      <author>Some Author</author>
-      <authoring_tool>HandWritten Tool</authoring_tool>
-      <comments>Comments go here</comments>
-      <copyright>
-      # This is the copyright
-      </copyright>
-      <source_data>file:///C:models2/test2</source_data>
-    </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keywords>Baseline asset contributor</keywords>
+    <keywords>Baseline asset keywords subject title</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
-    <subject>Test multiple contributor elements.</subject>
+    <subject>Test the preservation of the keywords, subject, and title elements of an asset.</subject>
+    <title>The title of the document</title>
   </asset>
 </COLLADA>

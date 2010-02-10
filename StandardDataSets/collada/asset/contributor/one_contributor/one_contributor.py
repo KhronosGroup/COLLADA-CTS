@@ -17,7 +17,11 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['asset', 'contributor', 'authoring_tool']
+tagLst = [['asset', 'contributor', 'author'],
+          ['asset', 'contributor', 'authoring_tool'],
+          ['asset', 'contributor', 'comments'],
+          ['asset', 'contributor', 'copyright'],
+          ['asset', 'contributor', 'source_data']]
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -41,9 +45,9 @@ class SimpleJudgingObject:
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
         # Check for preservation of element
-        self.__assistant.ElementDataExists(context, self.tagList)
+        self.__assistant.ElementDataExists(context, self.tagList[1])
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -55,7 +59,15 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
+	# if superior fails, no point in further checking
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+
+        for eachTagList in self.tagList:
+            self.__assistant.ElementDataPreserved(context, eachTagList, "string")
+
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
