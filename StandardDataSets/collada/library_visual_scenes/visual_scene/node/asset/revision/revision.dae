@@ -16,7 +16,7 @@
     <created>2007-05-07T19:42:16Z</created>
     <keyword>Exemplary node asset</keyword>
     <modified>2007-05-07T19:42:16Z</modified>
-    <subject>Test the preservation of the contributor element in the asset of a node</subject>
+    <subject>Test that the revision element of an asset in a node is not null when it exists in the original file.</subject>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>
@@ -87,18 +87,9 @@
     <visual_scene id="VisualSceneNode" name="CTF_template">
       <node id="cube1" name="cube1" type="NODE">
 	<asset>
-	    <contributor>
-		<author>Bugs Bunny</author>
-		<authoring_tool>HandWritten</authoring_tool>
-		<comments>What up doc</comments>
-		<copyright>
-		# Copyright date
-		# Other info go here
-		</copyright>
-		<source_data>Source data go here</source_data>
-	    </contributor>
-	    <created>2007-05-07T19:42:16Z</created>
-	    <modified>2007-05-07T19:42:16Z</modified>
+          <created>2007-05-07T19:42:16Z</created>
+          <modified>2007-05-07T19:42:16Z</modified>
+          <revision>Revision information goes here</revision>
 	</asset>
         <translate>50 -20 -100</translate>
         <instance_geometry url="#Cone01-mesh">

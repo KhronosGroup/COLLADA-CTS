@@ -22,7 +22,7 @@ from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'modified']
+tagLst = ['library_visual_scenes', 'visual_scene', 'asset', 'created']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -39,11 +39,11 @@ class SimpleJudgingObject:
         self.__assistant = JudgeAssistant.JudgeAssistant()
 
     def CheckDate(self, context):
-        # Get the <modified> time for the input file
+        # Get the <created> time for the input file
         root = minidom.parse(context.GetInputFilename()).documentElement
-        inputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "node", "asset", "modified")))
-        if inputDate == None:
-            context.Log("FAILED: Couldn't read <modified> value from test input file.")
+        inputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "created")))
+        if inputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from test input file.")
             return None
         
         # Get the output file
@@ -52,21 +52,20 @@ class SimpleJudgingObject:
             context.Log("FAILED: There are no export steps.")
             return None
 
-        # Get the <modified> time for the output file
+        # Get the <created> time for the output file
         root = minidom.parse(outputFilenames[0]).documentElement
-        outputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "node", "asset", "modified")))
-        if outputDate == None:
-            context.Log("FAILED: Couldn't read <modified> value from the exported file.")
+        outputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "created")))
+        if outputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from the exported file.")
             return None
 
-        # Modified data must be greater than or equal to original date to pass
-        if (outputDate - inputDate) < timedelta(0):
-            context.Log("FAILED: <modified> is not preserved.")
-            context.Log("The original <modified> time is " + str(inputDate))
-            context.Log("The exported <modified> time is " + str(outputDate))
+        if (outputCreatedDate - inputCreatedDate) != timedelta(0):
+            context.Log("FAILED: <created> is not preserved.")
+            context.Log("The original <created> time is " + str(inputCreatedDate))
+            context.Log("The exported <created> time is " + str(outputCreatedDate))
             return False
             
-        context.Log("PASSED: <modified> element is preserved or updated correctly.")
+        context.Log("PASSED: <created> element is preserved.")
         return True
             
     def JudgeBaseline(self, context):
@@ -94,7 +93,7 @@ class SimpleJudgingObject:
             return self.status_exemplary
 
         self.status_exemplary = self.CheckDate(context)
-        return self.status_exemplary       
+        return self.status_exemplary
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".

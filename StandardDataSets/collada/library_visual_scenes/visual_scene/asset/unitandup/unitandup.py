@@ -17,16 +17,14 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstAttr = ['library_visual_scenes', 'visual_scene','asset', 'unit']
-tagLstData = ['library_visual_scenes', 'visual_scene','asset', 'up_axis']
-attrName = ['meter', 'name']
+tagLst = []
+attrName = ''
 attrVal = ''
 dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLstAttr, _tagLstData, _attrName, _attrVal, _data):
-        self.tagListAttr = _tagLstAttr
-        self.tagListData = _tagLstData
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
+        self.tagList = _tagLst
         self.attrName = _attrName
         self.attrVal = _attrVal
         self.dataToCheck = _data
@@ -63,11 +61,6 @@ class SimpleJudgingObject:
         # compare images against reference test
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_asset_unitandup")
-            
-            for eachAttrName in self.attrName:
-                self.__assistant.AttributePreserved(context, self.tagListAttr, eachAttrName)
-                
-            self.__assistant.ElementDataPreserved(context, self.tagListData, "string")
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
@@ -75,4 +68,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLstAttr, tagLstData, attrName, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);

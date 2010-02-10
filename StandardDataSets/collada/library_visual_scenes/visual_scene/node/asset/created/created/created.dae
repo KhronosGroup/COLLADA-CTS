@@ -1,141 +1,121 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
-    <asset>
-        <contributor>
-	<author> Wei Guo </author>
-	<comments> Reuse this model for matrix stack testing </comments>
-            <author>Hlaw</author>
-            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
-            <copyright>
-            # Copyright (C) 2007 - 2009 Khronos Group
-            # Available only to Khronos members and adopters.
-            # Distribution of this file or its content is strictly prohibited.
-            </copyright>
-        </contributor>
-        <created>2007-05-22T23:31:57Z</created>
-        <keywords>Exemplary node asset contributor</keywords>
-        <modified>2007-05-22T23:31:57Z</modified>
-	<subject>Test that the created date of an asset in a node is preserved regardless of changes to the element in the output file.</subject>
-        <unit meter="0.01" name="centimeter"/>
-        <up_axis>Y_UP</up_axis>
-    </asset>
-    <library_cameras>
-        <camera id="mainCamera" name="mainCamera">
-            <optics>
-                <technique_common>
-                    <perspective>
-                        <yfov>36.9999</yfov>
-                        <aspect_ratio>1</aspect_ratio>
-                        <znear>1</znear>
-                        <zfar>1000</zfar>
-                    </perspective>
-                </technique_common>
-            </optics>
-        </camera>
-    </library_cameras>
-    <library_lights>
-        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+  <asset>
+    <contributor>
+      <author> Wei Guo </author>
+    </contributor>
+    <contributor>
+    <author>gcorson</author>
+      <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keyword>Exemplary node asset</keyword>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test that the created date of an asset in a node is preserved regardless of changes to the element in the output file.</subject>
+    <unit meter="0.01" name="centimeter"/>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>      
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+          </lambert>          
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Cone01-mesh" name="Cone01">
+      <mesh>
+        <source id="Cone01-mesh-positions">
+          <float_array id="Cone01-mesh-positions-array" count="15">-50 -75 0 0 -75 50 50 -75 0 0 -75 -50 0 150 0</float_array>
+          <technique_common>
+            <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone01-mesh-vertices">
+          <input semantic="POSITION" source="#Cone01-mesh-positions"/>
+        </vertices>
+        <triangles material="initialShadingGroup" count="6">
+          <input semantic="VERTEX" source="#Cone01-mesh-vertices" offset="0"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="CTF_template">
+      <node id="cube1" name="cube1" type="NODE">
+	<asset>
+	    <created>2007-05-07T19:42:16Z</created>
+	    <modified>2007-05-07T19:42:16Z</modified>
+	</asset>
+        <translate>50 -20 -100</translate>
+        <instance_geometry url="#Cone01-mesh">
+          <bind_material>
             <technique_common>
-                <directional>
-                    <color>1 1 1</color>
-                </directional>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
             </technique_common>
-        </light>
-    </library_lights>
-    <library_materials>
-        <material id="lambert1" name="lambert1">
-            <instance_effect url="#lambert1-fx"/>
-        </material>
-    </library_materials>
-    <library_effects>
-        <effect id="lambert1-fx">
-            <profile_COMMON>
-                <technique sid="common">
-                    <lambert>
-                        <diffuse>
-                            <color>0.5 0.5 0.5 1</color>
-                        </diffuse>
-                    </lambert>
-                </technique>
-            </profile_COMMON>
-        </effect>
-    </library_effects>
-    <library_geometries>
-        <geometry id="cube" name="cube">
-            <mesh>
-                <source id="cube-positions" name="position">
-                    <float_array id="cube-positions-array" count="24">-50 -50 50 50 -50 50 -50 50 50 50 50 50 -50 50 -50 50 50 -50 -50 -50 -50 50 -50 -50</float_array>
-                    <technique_common>
-                        <accessor count="8" source="#cube-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <source id="cube-normals" name="normal">
-                    <float_array id="cube-normals-array" count="72">0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
-                    <technique_common>
-                        <accessor count="24" source="#cube-normals-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <vertices id="cube-vertices">
-                    <input semantic="POSITION" source="#cube-positions"/>
-                </vertices>
-                <triangles count="12" material="initialShadingGroup">
-                    <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="NORMAL" source="#cube-normals"/>
-                    <p>0 0 1 1 2 3 2 3 1 1 3 2 2 4 3 5 4 7 4 7 3 5 5 6 4 8 5 9 6 11 6 11 5 9 7 10 6 12 7 13 0 15 0 15 7 13 1 14 1 16 7 17 3 19 3 19 7 17 5 18 6 20 0 21 4 23 4 23 0 21 2 22</p>
-                </triangles>
-            </mesh>
-        </geometry>
-    </library_geometries>
-    <library_visual_scenes>
-        <visual_scene id="VisualSceneNode" name="untitled">
-            <node id="cube_node" name="cube_node">
-                <asset>
-                    <created>2007-05-07T19:42:16Z</created>
-                    <modified>2007-05-07T19:42:16Z</modified>
-                </asset>
-                <lookat>50 0 0 0 0 -1000 0 1 0</lookat>
-                <lookat>0 50 0 0 0 -1000 0 1 0</lookat>
-                <translate>0 0 100</translate>
-                <translate>0 0 -200</translate>
-                <rotate>0 1 0 45</rotate>
-                <rotate>1 0 0 45</rotate>
-                <matrix>0.5 0 0 0 0 1.5 0 0 0 0 2 0 0 0 0 1</matrix>
-                <matrix>1 0 0 0 0 0.7071 -0.7071 0 0 0.7071 0.7071 0 0 0 0 1</matrix>
-                <scale>2 0.5 1</scale>
-                <scale>1 1 1.5</scale>
-                <instance_geometry url="#cube">
-                    <bind_material>
-                        <technique_common>
-                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
-                        </technique_common>
-                    </bind_material>
-                </instance_geometry>
-            </node>
-            <node id="testCamera" name="testCamera">
-                <translate sid="translate">0 0 400</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_camera url="#mainCamera"/>
-            </node>
-            <node id="directionalLight1" name="directionalLight1">
-                <translate sid="translate">50 0 400</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 15</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#directionalLightShape1-lib"/>
-            </node>
-        </visual_scene>
-    </library_visual_scenes>
-    <scene>
-        <instance_visual_scene url="#VisualSceneNode"/>
-    </scene>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera">
+	<translate sid="translate">0 0 400</translate>
+	<rotate sid="rotateZ">0 0 1 0</rotate>
+	<rotate sid="rotateY">0 1 0 0</rotate>
+	<rotate sid="rotateX">1 0 0 0</rotate>
+	<instance_camera url="#mainCamera"/>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>      
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
 </COLLADA>

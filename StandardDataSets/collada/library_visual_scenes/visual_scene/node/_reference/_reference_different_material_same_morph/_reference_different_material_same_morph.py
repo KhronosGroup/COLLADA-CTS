@@ -32,39 +32,36 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+  
     def JudgeBaseline(self, context):
-        # No step should not crash
+        # No step should crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
-
+        
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
-  
-    # To pass intermediate you need to pass basic, this object could also include additional 
-    # tests that were specific to the intermediate badge.
+    
+    # To pass superior you need to pass baseline, this object could also include additional 
+    # tests that were specific to the superior badge.
     def JudgeSuperior(self, context):
         self.status_superior = self.status_baseline
         return self.status_superior 
-            
-    # To pass advanced you need to pass intermediate, this object could also include additional
-    # tests that were specific to the advanced badge
+                
+    # To pass exemplary you need to pass superior, this object could also include additional
+    # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
-	# if superior fails, no point in further checking
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
             
-        # Compare the rendered images between import and export, and if passed, 
-        # compare images against reference test
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_asset_unitandup")
+        # Compare the rendered images between import and export
+        self.__assistant.CompareRenderedImages(context)
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary 
-        
+        return self.status_exemplary
+
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #

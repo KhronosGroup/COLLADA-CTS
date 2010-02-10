@@ -22,7 +22,7 @@ from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_visual_scenes', 'visual_scene', 'node', 'asset', 'modified']
+tagLst = ['library_visual_scenes', 'visual_scene', 'asset', 'modified']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -41,7 +41,7 @@ class SimpleJudgingObject:
     def CheckDate(self, context):
         # Get the <modified> time for the input file
         root = minidom.parse(context.GetInputFilename()).documentElement
-        inputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "node", "asset", "modified")))
+        inputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "modified")))
         if inputDate == None:
             context.Log("FAILED: Couldn't read <modified> value from test input file.")
             return None
@@ -54,7 +54,7 @@ class SimpleJudgingObject:
 
         # Get the <modified> time for the output file
         root = minidom.parse(outputFilenames[0]).documentElement
-        outputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "node", "asset", "modified")))
+        outputDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "modified")))
         if outputDate == None:
             context.Log("FAILED: Couldn't read <modified> value from the exported file.")
             return None
@@ -94,7 +94,7 @@ class SimpleJudgingObject:
             return self.status_exemplary
 
         self.status_exemplary = self.CheckDate(context)
-        return self.status_exemplary       
+        return self.status_exemplary
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
