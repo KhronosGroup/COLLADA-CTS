@@ -17,8 +17,8 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_controllers', 'controller']
-attrName = 'id'
+tagLst = []
+attrName = ''
 attrVal = ''
 dataToCheck = ''
 
@@ -48,25 +48,23 @@ class SimpleJudgingObject:
     def JudgeSuperior(self, context):
         self.status_superior = self.status_baseline
         return self.status_superior 
-                
+            
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
+        # if superior fails, no point in further checking
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
             
-        # Compare the rendered images between import and export
-        # Then compare images against reference test for non equivalence
+        # Compare the rendered images between import and export, and if passed, 
+        # compare images against reference test
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_morph_one_target_normalized", None, None, 5, True, True)
-
-            # Check for attribute preservation
-            self.__assistant.AttributePreserved(context, self.tagList, self.attrName)            
-
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary
-
+            self.__assistant.CompareImagesAgainst(context, "_reference_2_influence")
+        
+        self.status_superior = self.__assistant.DeferJudgement(context)
+        return self.status_superior
+       
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
