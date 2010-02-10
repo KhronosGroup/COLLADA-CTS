@@ -17,7 +17,9 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = [['library_animations', 'animation', 'asset', 'keywords'],
+          ['library_animations', 'animation', 'asset', 'subject'],
+          ['library_animations', 'animation', 'asset', 'title']]
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -32,38 +34,36 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-
+        
     def JudgeBaseline(self, context):
-        # No step should crash
+        # No step should not crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
-        
-    # To pass superior you need to pass baseline, this object could also include additional
-    # tests that were specific to the exemplary badge
+  
+    # To pass intermediate you need to pass basic, this object could also include additional 
+    # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
         self.status_superior = self.status_baseline
         return self.status_superior 
-        
+            
+    # To pass advanced you need to pass intermediate, this object could also include additional
+    # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        # if superior fails, no point in further checking
+	# if superior fails, no point in further checking
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
-        
-        # Checks that images show animation
-        # Compare the import and export rendered images
-        # Compare rendered images to reference test case images
-        if ( self.__assistant.HasAnimatedImages(context) ):
-            self.__assistant.CompareRenderedImages(context)
-            self.__assistant.CompareImagesAgainst(context, "_reference_up_axis", None, None, 5, True, True)
+
+        for eachTagList in self.tagList:
+            self.__assistant.ElementDataPreserved(context, eachTagList, "string")
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary
+        return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
