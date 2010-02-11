@@ -72,7 +72,7 @@
           </technique_common>
         </source>
         <source id="custom-source" name="custom-source">
-          <float_array id="custom-array" count="12">0 1 2 3 4 5 6 7 8 9 10 11</float_array>
+          <Name_array id="custom-array" count="12">a b c d e f g h i j k l</Name_array>
           <technique_common>
             <accessor source="#custom-array" count="4" stride="3">
               <param name="A" type="float"/>

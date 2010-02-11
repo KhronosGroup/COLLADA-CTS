@@ -19,11 +19,11 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_geometries', 'geometry', 'mesh', 'float_array']
+tagLst = ['library_geometries', 'geometry', 'mesh', 'source', 'Name_array']
 primTagLstArray = [['library_geometries', 'geometry', 'mesh', 'polylist', 'input'], ['library_geometries', 'geometry', 'mesh', 'triangles', 'input'], ['library_geometries', 'geometry', 'mesh', 'polygons', 'input']]
 attrName = 'semantic'
 attrVal = 'CUSTOM'
-dataToCheck = '0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15'
+dataToCheck = 'a b c d e f g h i j k l'
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _primTagLstArray, _attrName, _attrVal, _data):
@@ -62,7 +62,7 @@ class SimpleJudgingObject:
             return self.status_exemplary
 
         # Check for preservation of element data and then semantic attribute
-        if ( self.__assistant.ElementDataCheck(context, self.tagList, dataToCheck, "float") ):
+        if ( self.__assistant.ElementDataCheck(context, self.tagList, self.dataToCheck, "string") ):
             attributePreserved = False
             for eachPrimTagList in self.primTagListArray:
                 if ( self.__assistant.AttributeCheck(context, eachPrimTagList, self.attrName, self.attrVal) ):

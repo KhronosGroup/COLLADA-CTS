@@ -87,6 +87,7 @@
         </vertices>
         <polylist material="lambert2SG" count="1">
           <input semantic="VERTEX" source="#cubeShape-vertices" offset="0"/>
+          <input semantic="CUSTOM" source="#custom-source" offset="0"/>
           <vcount>4</vcount>
           <p>0 1 3 2</p>
         </polylist>
