@@ -46,14 +46,13 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
             
-        # Compare the rendered images between import and export
-        # Then compare images against reference test for non equivalence
-        # Last, check for preservation of element data
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "_reference_no_geometry", None, None, 5, True, False) ):
-                self.__assistant.ElementTransformed(context, self.tagList)
+        # Compare the rendered images
+        self.__assistant.CompareRenderedImages(context)
         
-        self.status_baseline = self.__assistant.GetResults()
+        # Check for preservation of element
+        self.__assistant.ElementTransformed(context, self.tagList)
+        
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -65,13 +64,7 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-            
-        self.__assistant.ElementPreserved(context, self.tagList[0])
-
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        self.status_exemplary = self.status_superior
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.

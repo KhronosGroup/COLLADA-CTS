@@ -49,10 +49,22 @@ class SimpleJudgingObject:
         # Compare the rendered images
         self.__assistant.CompareRenderedImages(context)
         
-        # Check for preservation of element
-        self.__assistant.ElementTransformed(context, self.tagList)
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = False
+        
+        if (self.__assistant.ElementPreserved(context, self.tagList[0]):
+            if (self.__assistant.AttributePreserved(context, self.tagList[0], self.attrName):
+                self.status_baseline = True
+        elif (self.__assistant.ElementPreserved(context, self.tagList[1]):
+            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName):
+                self.status_baseline = True
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2]):
+            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName):
+                self.status_baseline = True
+
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 

@@ -20,7 +20,7 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = [['library_geometries', 'geometry', 'mesh', 'triangles'], ['library_geometries', 'geometry', 'mesh', 'polygons'], ['library_geometries', 'geometry', 'mesh', 'polylist']]
-attrName = ''
+attrName = 'count'
 attrVal = ''
 dataToCheck = ''
 
@@ -52,7 +52,7 @@ class SimpleJudgingObject:
         # Check for preservation of element
         self.__assistant.ElementTransformed(context, self.tagList)
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -64,7 +64,19 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+        
+        self.status_exemplary = False
+        
+        if (self.__assistant.ElementPreserved(context, self.tagList[1]):
+            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName):
+                self.status_exemplary = True
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2]):
+            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName):
+                self.status_exemplary = True
+
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
