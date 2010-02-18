@@ -14,11 +14,13 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
+
+from xml.dom import minidom, Node
+from Core.Common.FUtils import FindXmlChild, GetXmlContent
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_visual_scenes', 'visual_scene', 'asset', 'keywords'],
-          ['library_visual_scenes', 'visual_scene', 'asset', 'subject'],
+tagLst = [['library_visual_scenes', 'visual_scene', 'asset', 'subject'],
           ['library_visual_scenes', 'visual_scene', 'asset', 'title']]
 attrName = ''
 attrVal = ''
@@ -34,7 +36,42 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
+
+    def checkKeywords(self, context):
+        # Get the keywords for the input file
+        root = minidom.parse(context.GetInputFilename()).documentElement
+        inputKeywordList = GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "keywords")).split()
         
+        if (len(inputKeywordList) == 0):
+            context.Log("FAILED: Couldn't find keywords in input file.")
+            return False
+        
+        # Get the output file
+        outputFilenames = context.GetStepOutputFilenames("Export")
+        if len(outputFilenames) == 0:
+            context.Log("FAILED: There are no export steps.")
+            return False
+
+        # Get the keywords time for the output file
+        root = minidom.parse(outputFilenames[0]).documentElement
+        outputKeywordList = GetXmlContent(FindXmlChild(root, "library_visual_scenes", "visual_scene", "asset", "keywords")).split()
+        
+        if (len(outputKeywordList) == 0):
+            context.Log("FAILED: Couldn't find keywords in output file.")
+            return False
+
+        if (len(outputKeywordList) != len(inputKeywordList)):
+            context.Log("FAILED: Number of keywords do not match between input and output.")
+            return False
+        
+        for eachInputKeyword in inputKeywordList:
+            if (eachInputKeyword not in outputKeywordList):
+                context.Log("FAILED: " + eachInputKeyword + " not found in output.")
+                return False            
+        
+        context.Log("PASSED: All keywrods are preserved.")
+        return True
+
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -57,6 +94,10 @@ class SimpleJudgingObject:
 	# if superior fails, no point in further checking
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
+            return self.status_exemplary
+
+        if (self.checkKeywords(context) == False):
+            self.status_exemplary = False
             return self.status_exemplary
 
         for eachTagList in self.tagList:
