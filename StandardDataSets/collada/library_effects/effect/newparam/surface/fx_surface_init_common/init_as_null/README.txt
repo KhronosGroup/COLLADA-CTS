@@ -1,1 +1,0 @@
-Blessed image is from FX Compooser.
