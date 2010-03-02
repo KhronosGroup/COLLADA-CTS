@@ -2,178 +2,67 @@
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
-# This sample judging object does advanced-badge extra-preservation checks.
+# See Core.Logic.FJudgementContext for the information
+# of the 'context' parameter.
+
+# This sample judging object does the following:
 #
+# JudgeBaseline: just verifies that the standard steps did not crash.
+# JudgeSuperior: also verifies that the validation steps are not in error.
+# JudgeExemplary: same as intermediate badge.
 
-import xml.sax.expatreader as Expat
-import xml.sax.handler as XMLHandler
-import Core.Common.FCOLLADAParser as FCOLLADAParser
+# We import an assistant script that includes the common verifications
+# methods. The assistant buffers its checks, so that running them again
+# does not incurs an unnecessary performance hint.
+from StandardDataSets.scripts import JudgeAssistant
 
-class ExtraPreservationJudging:
-    def __init__(self):
-        self.__hasStepCrashed = None
+# Please feed your node list here:
+tagLst = ['library_visual_scenes', 'visual_scene', 'extra', 'technique']
+attrName = 'profile'
+attrVal = ''
+dataToCheck = ''
+
+class SimpleJudgingObject:
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
+        self.tagList = _tagLst
+        self.attrName = _attrName
+        self.attrVal = _attrVal
+        self.dataToCheck = _data
+        self.status_baseline = False
+        self.status_superior = False
+        self.status_exemplary = False
+        self.__assistant = JudgeAssistant.JudgeAssistant()
         
     def JudgeBaseline(self, context):
-        # For all badge levels: make sure nothing crashed.
-        if (self.__hasStepCrashed == None):
-            # Cache the often verified status.
-            self.__hasStepCrashed = context.HasStepCrashed()
-
-        if (self.__hasStepCrashed):
-            context.Log("FAILED: Crashes during standard steps.")
-            return False
-        else:
-            context.Log("PASSED: No crashes during standard steps.")
-            return True
-    
-    def JudgeExemplary(self, context):
-        return self.JudgeBaseline(context)
+        # No step should not crash
+        self.__assistant.CheckCrashes(context)
         
+        # Import/export/validate must exist and pass, while Render must only exist.
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        
+        self.status_baseline = self.__assistant.GetResults()
+        return self.status_baseline
+  
+    # To pass intermediate you need to pass basic, this object could also include additional 
+    # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
-        if not self.JudgeBaseline(context): return False
-
-        # Retrieve the filenames for all the export steps.
-        outputFilenames = context.GetStepOutputFilenames("Export")
-        if len(outputFilenames) == 0:
-            context.Log("FAILED: There are no export steps.")
-            return False
-
-        # Verify that these are all COLLADA documents.
-        for filename in outputFilenames:
-            if not FCOLLADAParser.IsCOLLADADocument(filename):
-                context.Log("FAILED: Exported a non-COLLADA document.")
-                return False
+        if (self.status_baseline == False):
+            self.status_superior = self.status_baseline
+            return self.status_superior
+            
+    	# Check for preservation of element data
+        self.__assistant.FullPreservation(context, self.tagList, self.attrName)
         
-        # Process the input document
-        inputFilename = context.GetInputFilename()
-        reader = Expat.ExpatParser(0, 4*1024)
-        try:
-            contentHandler = COLLADAExtraProcessor()
-            reader.setContentHandler(contentHandler)
-            reader.parse(inputFilename)
-            originalExtraInformation = contentHandler.GetExtras()
-        except Exception, e:
-            context.Log("FAILED: Crashed while parsing the test case file.")
-            context.Log("        Please verify your conformance test integrity.")
-            context.Log("        Exception: %s." % str(e))
-            return False
-            
-        # Generate the comparator
-        comparator = DictionaryCompare(originalExtraInformation)
-            
-        # Process the exported document and verify whether the extra was preserved every time.
-        for filename in outputFilenames:
-            try:
-                contentHandler = COLLADAExtraProcessor()
-                reader.setContentHandler(contentHandler)
-                reader.parse(filename)
-                newExtraInformation = contentHandler.GetExtras()
-                if not comparator.Compare(newExtraInformation):
-                    context.Log("FAILED: Extra information was not preserved.")
-                    return False
+        self.status_superior = self.__assistant.DeferJudgement(context)
+        return self.status_superior 
                 
-            except Exception, e:
-                context.Log("FAILED: Crashed while parsing the export file: '%s'." % filename)
-                context.Log("        Exception: %s." % str(e))
-                return False
-                
-        context.Log("PASSED: Extra information was preserved on re-export.")
-        return True
-
-# Load the extra-preservation judging script.
-judgingObject = ExtraPreservationJudging();
-
-class COLLADAExtraProcessor(XMLHandler.ContentHandler):
-    
-    def __init__(self):
-        self.__extras = []
-        self.__currentExtra = None
-        self.__currentExtraElementStack = []
-        self.__elementStack = []
-        
-    def GetExtras(self): return self.__extras
-        
-    # ContentHandler methods
-    def startElement(self, name, attrs):
-        if (len(self.__elementStack) == 0 and name != "COLLADA"):
-            raise Exception("Not a COLLADA document..")
-
-        if (self.__currentExtra != None):
-            currentElement = self.__currentExtraElementStack[-1]
-            newElement = {}
-            self.__currentExtraElementStack.append(newElement)
-            currentElement[name] = newElement
-            
-        elif (name == "extra"):
-            # Create a new dictionary for the extra information.
-            self.__currentExtra = {}
-            self.__currentExtra["placement"] = self.__elementStack[:] # clones.
-            self.__extras.append(self.__currentExtra)
-            
-            # Create a new dictionary for the extra XML tree.
-            element = {}
-            self.__currentExtraElementStack.append(element)
-            self.__currentExtra["tree"] = element
-
-        else:
-            self.__elementStack.append(name)
-            
-        if (self.__currentExtra != None):
-            # Record the local attributes.
-            currentElement = self.__currentExtraElementStack[-1]
-            attributes = {}
-            for attributeName in attrs.getNames():
-                attributes[attributeName] = attrs[attributeName]
-            currentElement["py_test_attrs"] = attributes
-
-    def endElement(self, name):
-        if (self.__currentExtra != None):
-            # We are inside an extra: are we leaving it or simply done with an inside element?
-            if (len(self.__currentExtraElementStack) > 0):
-                self.__currentExtraElementStack.pop()
-            if (len(self.__currentExtraElementStack) == 0):
-                self.__currentExtra = None
-
-        elif (len(self.__elementStack) > 0):
-            # Outside of the extras, just keep track of the current element stack.
-            self.__elementStack.pop()
-
-    def characters(self, content):
-        # Record this extra bit of content.
-        if (len(content) > 0 and self.__currentExtra != None):
-            # Record this extra bit of content.
-            currentElement = self.__currentExtraElementStack[-1]
-            
-            if (not currentElement.has_key("py_test_contents")):
-                contents = []
-            else:
-                contents = currentElement["py_test_contents"]
-            contents.append(content)
-
-    def startDocument(self): pass # not interested..
-    def startPrefixMapping(self, prefix, uri): pass # not interested..
-    def endPrefixMapping(self, prefix): pass # not interested..
-    def ignorableWhitespace(self, content): pass # not interested..
-    def processingInstruction(self, target, data): pass # not interested..
-    def startElementNS(self, name, qname, attrs): self.startElement(name, attrs) # not interested in NS data
-    def endElementNS(self, name, qname): self.endElement(name) # not interested in NS data
-
-class DictionaryCompare:
-    def __init__(self, dict):
-        self.__d = dict
-        pass
-        
-    def Compare(self, other):
-        # Iterate over the original list. Each element should exist in the second list.
-        for entry in self.__d:
-            originalPlacement = entry["placement"]
-
-            found = False
-            for otherEntry in other:
-                if (originalPlacement == otherEntry["placement"]):
-                    if (entry["tree"] == otherEntry["tree"]):
-                        found = True
-                        other.remove(otherEntry)
-                        break
-            if not found: return False
-        return True
+    # To pass advanced you need to pass intermediate, this object could also include additional
+    # tests that were specific to the advanced badge
+    def JudgeExemplary(self, context):
+        self.status_exemplary = self.status_superior
+        return self.status_exemplary 
+       
+# This is where all the work occurs: "judgingObject" is an absolutely necessary token.
+# The dynamic loader looks very specifically for a class instance named "judgingObject".
+#
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
