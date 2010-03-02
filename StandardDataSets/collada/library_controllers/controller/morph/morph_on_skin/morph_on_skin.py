@@ -38,7 +38,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -52,8 +52,17 @@ class SimpleJudgingObject:
     # To pass exemplary you need to pass superior, this object could also include additional
     # tests that were specific to the exemplary badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
-        return self.status_exemplary 
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+            
+        # Compare the rendered images between import and export
+        # Then compare images against reference test for non equivalence
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_skin_on_morph", None, None, 5, True, True)
+        
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary
 
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
