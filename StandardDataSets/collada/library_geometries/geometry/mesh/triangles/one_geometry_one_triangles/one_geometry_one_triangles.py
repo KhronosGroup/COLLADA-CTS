@@ -20,7 +20,7 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = [['library_geometries', 'geometry', 'mesh', 'triangles'], ['library_geometries', 'geometry', 'mesh', 'polygons'], ['library_geometries', 'geometry', 'mesh', 'polylist']]
-attrName = ''
+attrName = 'count'
 attrVal = ''
 dataToCheck = ''
 
