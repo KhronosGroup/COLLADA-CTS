@@ -20,7 +20,8 @@ from Core.Common.FUtils import FindXmlChild, GetXmlContent
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['asset', 'subject'],
+tagLst = [['asset', 'keywords'],
+          ['asset', 'subject']
           ['asset', 'title']]
 attrName = ''
 attrVal = ''
@@ -36,41 +37,6 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-
-    def checkKeywords(self, context):
-        # Get the keywords for the input file
-        root = minidom.parse(context.GetInputFilename()).documentElement
-        inputKeywordList = GetXmlContent(FindXmlChild(root, "asset", "keywords")).split()
-        
-        if (len(inputKeywordList) == 0):
-            context.Log("FAILED: Couldn't find keywords in input file.")
-            return False
-        
-        # Get the output file
-        outputFilenames = context.GetStepOutputFilenames("Export")
-        if len(outputFilenames) == 0:
-            context.Log("FAILED: There are no export steps.")
-            return False
-
-        # Get the keywords time for the output file
-        root = minidom.parse(outputFilenames[0]).documentElement
-        outputKeywordList = GetXmlContent(FindXmlChild(root, "asset", "keywords")).split()
-        
-        if (len(outputKeywordList) == 0):
-            context.Log("FAILED: Couldn't find keywords in output file.")
-            return False
-
-        if (len(outputKeywordList) != len(inputKeywordList)):
-            context.Log("FAILED: Number of keywords do not match between input and output.")
-            return False
-        
-        for eachInputKeyword in inputKeywordList:
-            if (eachInputKeyword not in outputKeywordList):
-                context.Log("FAILED: " + eachInputKeyword + " not found in output.")
-                return False            
-        
-        context.Log("PASSED: All keywrods are preserved.")
-        return True
 
     def JudgeBaseline(self, context):
         # No step should not crash
@@ -95,13 +61,10 @@ class SimpleJudgingObject:
         if (self.status_superior == False):
             self.status_exemplary = self.status_superior
             return self.status_exemplary
-
-        if (self.checkKeywords(context) == False):
-            self.status_exemplary = False
-            return self.status_exemplary
             
-        for eachTagList in self.tagList:
-            self.__assistant.ElementDataPreserved(context, eachTagList, "string")
+        self.__assistant.checkKeywords(context, self.tagList[0])
+        self.__assistant.ElementDataPreserved(context, self.tagList[1], "string")
+        self.__assistant.ElementDataPreserved(context, self.tagList[2], "string")
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
