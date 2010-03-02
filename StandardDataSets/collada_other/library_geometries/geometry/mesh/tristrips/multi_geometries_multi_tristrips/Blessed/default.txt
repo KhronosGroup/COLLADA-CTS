@@ -1,0 +1,1 @@
+png\multi_geometries_multi_tristrips.png
