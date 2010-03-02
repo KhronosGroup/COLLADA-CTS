@@ -7,6 +7,7 @@
 
 from Core.Common.DOMParser import *
 from Core.Common.CheckingModule import *
+from Core.Common.FUtils import GetXmlContent
 
 """ A judge assistant. The purpose of this structure is to abstract
     out the parts that are very common amongst the different per-test
@@ -1373,4 +1374,129 @@ class JudgeAssistant:
             self.__result = False
             
         testIO.Delink()
+        return self.__preservationResults
+
+################## asset checking ##################
+
+    # Checks for keywords preservation. Keywords are not order dependent.
+    # tagList: the path to the keywords element
+    # childList: list of child names to check
+    def checkKeywords(self, context, tagList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+      
+        inputRoot = testIO.GetRoot(self.__inputFileName)
+        outputRoot = testIO.GetRoot(self.__outputFileNameList[0])
+    
+        # Get the keywords for the input file
+        inputElement = FindElement(inputRoot, tagList)
+        if (len(inputElement) == 0):
+            context.Log("FAILED: Couldn't find keywords in input file.")
+            return False
+
+        inputKeywordList = GetXmlContent(inputElement[0]).split()
+        
+        # Get the keywords time for the output file
+        outputElement = FindElement(outputRoot, tagList)
+        if (len(outputElement) == 0):
+            context.Log("FAILED: Couldn't find keywords in output file.")
+            testIO.Delink()
+            self.__preservationResults = False
+            self.__result = False
+            return self.__preservationResults        
+        
+        outputKeywordList = GetXmlContent(outputElement[0]).split()
+        
+        if (len(outputKeywordList) != len(inputKeywordList)):
+            context.Log("FAILED: Number of keywords do not match between input and output.")
+            testIO.Delink()
+            self.__preservationResults = False
+            self.__result = False
+            return self.__preservationResults  
+        
+        for eachInputKeyword in inputKeywordList:
+            if (eachInputKeyword not in outputKeywordList):
+                context.Log("FAILED: " + eachInputKeyword + " not found in output keywords.")
+                testIO.Delink()
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults           
+        
+        context.Log("PASSED: All keywords are preserved.")
+        testIO.Delink()
+        self.__preservationResults = True
+        return self.__preservationResults
+
+    # Checks for element and first level child element preservation given a child element
+    # tagList: root location to start searching for the child element
+    # childList: list of child names to check
+    def checkShallowElePreservationByChild(self, context, tagList, childList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # get input and output tags
+        inAuthToolList = FindElement(testIO.GetRoot(self.__inputFileName), tagList)
+        outAuthToolList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        if (len(outAuthToolList) < len(inAuthToolList)):
+            context.Log("FAILED: "+ tagList[len(tagList)-2] +" is not preserved.")
+            testIO.Delink()
+            return False
+        
+        for inAuthTool in inAuthToolList:
+            inputContributor = inAuthTool.parentNode
+            for outAuthTool in outAuthToolList:
+                found = False
+
+                # found the matching node
+                if (inAuthTool.childNodes[0].nodeValue == outAuthTool.childNodes[0].nodeValue):
+                
+                    found = True
+                    outputContributor = outAuthTool.parentNode
+                    
+                    for eachTag in childList:
+                        inChildList = inputContributor.getElementsByTagName(eachTag)
+                        outChildList = outputContributor.getElementsByTagName(eachTag)
+
+                        if ( len(inChildList) != len(outChildList) ):
+                            context.Log("FAILED: " + eachTag + " is not found.")
+                            testIO.Delink()
+                            self.__preservationResults = False
+                            self.__result = False
+                            return self.__preservationResults 
+                        
+                        if (inChildList[0].childNodes[0].nodeValue != outChildList[0].childNodes[0].nodeValue):
+                            context.Log("FAILED: " + eachTag + " is not preserved.")
+                            testIO.Delink()
+                            self.__preservationResults = False
+                            self.__result = False
+                            return self.__preservationResults 
+            
+                if (found):
+                    break
+                    
+            if (not found):
+                context.Log("FAILED: " + tagList[len(tagList)-2] + " is not preserved.")
+                testIO.Delink()
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults   
+                    
+        context.Log("PASSED: " + tagList[len(tagList)-2] + " is preserved.")
+        testIO.Delink()
+        self.__preservationResults = True
         return self.__preservationResults
