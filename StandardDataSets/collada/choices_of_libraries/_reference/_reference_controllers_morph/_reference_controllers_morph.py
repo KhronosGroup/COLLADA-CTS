@@ -46,23 +46,21 @@ class SimpleJudgingObject:
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
-        # if baseline fails, no point in further checking
-        if (self.status_baseline == False):
-            self.status_superior = self.status_baseline
-            return self.status_superior
-        
-        # Compare the import and export rendered images, then compare against reference
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_controllers_skin")
-        
-        self.status_superior = self.__assistant.DeferJudgement(context)
+        self.status_superior = self.status_baseline
         return self.status_superior
             
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-        self.status_exemplary = self.status_superior
-        return self.status_exemplary 
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+        
+        # Compare the import and export rendered images
+        self.__assistant.CompareRenderedImages(context)
+        
+        self.status_exemplary = self.__assistant.DeferJudgement(context)
+        return self.status_exemplary
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
