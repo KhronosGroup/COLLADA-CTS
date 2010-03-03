@@ -140,8 +140,8 @@ class FApplication:
         """
         raise NotImplementedError, "Application.RunScript()"
     
-    def WriteValidate(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteValidate(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Writes the script for the execution of a validator application. 
 		(It must be overriden by any implementations of application specific scripts.)
@@ -175,8 +175,8 @@ class FApplication:
         """
         raise NotImplementedError, "Application.WriteValidate()"
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Writes the import operation to the script that will be used to run
         the actual DCC. (It must be overriden by any implementations of
@@ -211,8 +211,8 @@ class FApplication:
         """
         raise NotImplementedError, "Application.WriteImport()"
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Writes the render operation to the script that will be used to run
         the actual DCC. It assumes that WriteImport has been called. (It must 
@@ -244,8 +244,8 @@ class FApplication:
         """
         raise NotImplementedError, "Application.WriteRender()"
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Writes the export operation to the script that will be used to run
         the actual DCC. It assumes that WriteImport has been called. (It must 
@@ -278,8 +278,8 @@ class FApplication:
         raise NotImplementedError, "Application.WriteExport()"
     
     def AddToScript(self, operation, filename, logname, outputDir, settings, 
-                    isAnimated):
-        """AddToScript(operation, filename, logname, outputDir, settings, isAnimated) -> list_of_str
+                    isAnimated, cameraRig, lightingRig):
+        """AddToScript(operation, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Calls the appropriate Write* method with the correct parameters to 
         write the operation specified. (It should *not* be overriden by any
@@ -315,15 +315,16 @@ class FApplication:
             log files.
         
         """
+        
         if (operation == IMPORT):
             return self.WriteImport(filename, logname, outputDir, settings, 
-                                    isAnimated)
+                                    isAnimated, cameraRig, lightingRig)
         elif (operation == RENDER):
-            return self.WriteRender(logname, outputDir, settings, isAnimated)
+            return self.WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig)
         elif (operation == EXPORT):
-            return self.WriteExport(logname, outputDir, settings, isAnimated)
+            return self.WriteExport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig)
         elif (operation == VALIDATE):
-            return self.WriteValidate(filename, logname, outputDir, settings, isAnimated)
+            return self.WriteValidate(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig)
     
     def RunApplication(self, command, workingDir):
         """RunApplication(command, workingDir) -> int

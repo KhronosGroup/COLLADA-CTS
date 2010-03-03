@@ -1,4 +1,4 @@
-# Copyright (C) 2006 Khronos Group
+# Copyright (C) 2006-2010 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
@@ -31,8 +31,12 @@ class FTest(FSerializable, FSerializer):
             starting from the working directory  (the one from os.getcwd()).
         
         """
+
         FSerializable.__init__(self)
         FSerializer.__init__(self)
+        
+        self.__cameraRig = 0
+        self.__lightingRig = 0
         
         self.__filename = None
         for entry in os.listdir(dataSetPath):
@@ -41,17 +45,42 @@ class FTest(FSerializable, FSerializer):
                 # Don't grab the python post-processing script,
                 # but any other file with the same name as the last folder.
                 # DAEs are prefered..
+
                 if (FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
                     extension = FUtils.GetExtension(fullEntry).upper()
+                    print "Checking extension: %s" % (extension)
+                    
                     if (extension == "DAE"):
                         self.__filename = fullEntry
-                        break
+                    elif (extension == "CNF"):
+                        print "Found config file"
+			f = open(fullEntry)
+			line = f.readline()
+
+			while line:
+
+			    while line.count("\t\t") > 0:
+				line = line.replace("\t\t", "\t")
+
+			    key, value = line.split("\t", 1)
+
+			    if (key == "CameraRig"):
+			    	self.__cameraRig = value[:-1]
+			    elif (key == "LightingRig"):
+			    	self.__lightingRig = value[:-1]
+			    	
+			    line = f.readline()
+
+			f.close()
+                        
+                    	self.__cameraRig=1
                     elif (extension.find("PY") == -1):
                         self.__filename = fullEntry # Record but keep looking..
                     
         if (self.__filename == None):
             raise ValueError, "Invalid Data Set: " + dataSetPath
         
+
         self.__testDir = None
         self.__testId = testId
         self.__previousExecution = None
@@ -786,6 +815,12 @@ class FTest(FSerializable, FSerializer):
     def GetSettings(self):
         return self.__settings
     
+    def GetCameraRig(self):
+        return self.__cameraRig
+
+    def GetLightingRig(self):
+        return self.__lightingRig
+        
     def IsAnimated(self):
         return ((self.__filename.find("Animation") != -1) or
                 (self.__filename.find("animation") != -1))
@@ -894,7 +929,7 @@ class FTest(FSerializable, FSerializer):
     def Run(self, appPython, step, op, inStep, markerCallBack):
         self.__currentExecution.Run(appPython, step, op, inStep, 
                 self.__filename, self.__settings[step].GetSettings(), 
-                self.IsAnimated(), markerCallBack)
+                self.IsAnimated(), self.GetCameraRig(), self.GetLightingRig(), markerCallBack)
     
     def CancelRun(self):
         self.__currentExecution = self.__previousExecution

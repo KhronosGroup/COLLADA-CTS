@@ -159,8 +159,8 @@ class FMax (FApplication):
         
         return (returnValue == 0)
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteImport()
         
@@ -207,8 +207,8 @@ class FMax (FApplication):
         
         return [os.path.normpath(baseName),]
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender()
         
@@ -217,32 +217,32 @@ class FMax (FApplication):
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FMax.__RENDER_ANIMATION_START):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMax.__RENDER_ANIMATION_END):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMax.__RENDER_ANIMATION_STEP):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                               int)
             elif (prettyName == FMax.__RENDER_STILL_START):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMax.__RENDER_STILL_END):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMax.__RENDER_STILL_STEP):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FMax.__RENDER_OPTIONS, setting,
                                               int)
@@ -295,8 +295,8 @@ class FMax (FApplication):
             outputList.append(os.path.normpath(outputTemp))
         return outputList
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteExport()
         

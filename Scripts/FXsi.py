@@ -194,8 +194,8 @@ class FXsi (FApplication):
         
         return True
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteImport()
         
@@ -259,8 +259,8 @@ class FXsi (FApplication):
         
         return [basename,]
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender().
         
@@ -286,32 +286,32 @@ class FXsi (FApplication):
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FXsi.__RENDER_ANIMATION_START):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FXsi.__RENDER_ANIMATION_END):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FXsi.__RENDER_ANIMATION_FRAMES):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                               int)
             elif (prettyName == FXsi.__RENDER_STILL_START):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FXsi.__RENDER_STILL_END):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FXsi.__RENDER_STILL_FRAMES):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FXsi.__RENDER_OPTIONS, setting,
                                               int)
@@ -375,8 +375,8 @@ class FXsi (FApplication):
                               type,)
         return outputList
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteExport().
         

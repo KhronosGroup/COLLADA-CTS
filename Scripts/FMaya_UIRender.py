@@ -209,8 +209,8 @@ class FMaya_UIRender (FApplication):
         
         return (returnValueImport == 0)
             
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteImport(). Assumes a COLLADA, maya binary,
         or maya ascii file is being imported.
@@ -253,8 +253,8 @@ class FMaya_UIRender (FApplication):
         
         return [os.path.normpath(baseName + ".mb"),]
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender()
         
@@ -323,7 +323,7 @@ class FMaya_UIRender (FApplication):
         
         self.__melScript.write("setAttr defaultRenderGlobals.imageFormat 32;\n") # where 32 is PNG.
         self.__melScript.write("setAttr -type \"string\" defaultRenderGlobals.imageFilePrefix \"" + str(baseName) + "\";\n")
-        self.__melScript.write("setAttr defaultRenderGlobals.animation " + str(isAnimated).lower() + ";\n")
+        self.__melScript.write("setAttr defaultRenderGlobals.animation " + str(isAnimated, cameraRig, lightingRig).lower() + ";\n")
         self.__melScript.write("setAttr defaultRenderGlobals.putFrameBeforeExt true;\n")
         self.__melScript.write("workspace -renderType \"images\" \"" + outputDir.replace("\\", "/") + "\";\n")
         self.__melScript.write("catch(`hwRender -camera \"" + camera + "\" -width " + width + " -height " + height + "`);\n\n")
@@ -342,8 +342,8 @@ class FMaya_UIRender (FApplication):
 
         return outputList
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteExport()
         

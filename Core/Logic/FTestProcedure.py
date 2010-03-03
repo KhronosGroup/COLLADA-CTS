@@ -370,7 +370,12 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         if (gaugeCallBack != None):
             gaugeCallBack(appIndex, maxAppIndex, 
                     "Creating script for steps: " + str(steps) + ".")
-        appPython.BeginScript(os.path.abspath(self.__dccWorkingDir))
+        try:
+           appPython.BeginScript(os.path.abspath(self.__dccWorkingDir))
+        except WindowsError:
+           return None
+           
+        
         
         # Reset the markers
         if (markerCallback != None):
@@ -383,8 +388,11 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
                 else:
                     self.__testList[testId].Run(appPython, step, op, self.__GetInputStep(step), markerCallback)
         
-        appPython.EndScript()
-        
+        try:
+           appPython.EndScript()
+        except WindowsError:
+           return None
+           
         if (self.__cancelRun): return None
         
         if (gaugeCallBack != None):

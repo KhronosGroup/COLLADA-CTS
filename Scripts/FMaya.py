@@ -200,8 +200,8 @@ class FMaya (FApplication):
         
         return ((returnValueImport == 0) and (returnValueRender == 0))
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteImport(). Assumes a COLLADA, maya binary,
         or maya ascii file is being imported.
@@ -239,8 +239,8 @@ class FMaya (FApplication):
         
         return [os.path.normpath(baseName + ".mb"),]
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender()
         
@@ -253,32 +253,32 @@ class FMaya (FApplication):
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FMaya.__RENDER_ANIMATION_START):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMaya.__RENDER_ANIMATION_END):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMaya.__RENDER_ANIMATION_STEP):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                               int)
             elif (prettyName == FMaya.__RENDER_STILL_START):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMaya.__RENDER_STILL_END):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMaya.__RENDER_STILL_STEP):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 step = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                               int)
@@ -334,8 +334,8 @@ class FMaya (FApplication):
         
         return outputList
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteExport()
         

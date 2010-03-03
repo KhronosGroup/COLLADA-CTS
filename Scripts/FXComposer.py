@@ -320,8 +320,8 @@ class FXComposer (FApplication):
         
         return (returnValue == 0)
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteImport().
         
@@ -338,8 +338,8 @@ class FXComposer (FApplication):
         
         return [output, ]
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender()
         
@@ -353,33 +353,33 @@ class FXComposer (FApplication):
 
             #   Non-animation: start, end and total number of frames
             if (prettyName == FXComposer.__RENDER_ANIMATION_START):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                setting, float)
             elif (prettyName == FXComposer.__RENDER_ANIMATION_END):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                              setting, float)
             elif (prettyName == FXComposer.__RENDER_ANIMATION_FRAMES):
-                if (not isAnimated):
+                if (not isAnimated, cameraRig, lightingRig):
                     continue
                 frameCount = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                     setting, int)
             #   Animation: start, end and total number of frames
             elif (prettyName == FXComposer.__RENDER_STILL_START):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 start = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                setting, float)
             elif (prettyName == FXComposer.__RENDER_STILL_END):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 end = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                              setting, float)
             elif (prettyName == FXComposer.__RENDER_STILL_FRAMES):
-                if (isAnimated):
+                if (isAnimated, cameraRig, lightingRig):
                     continue
                 frameCount = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                     setting, int)
@@ -470,8 +470,8 @@ class FXComposer (FApplication):
     
         return outputList
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_strImplements FApplication.WriteExport(). Feeling Viewer has no export.
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_strImplements FApplication.WriteExport(). Feeling Viewer has no export.
 
         Implements FApplication.WriteExport().
 

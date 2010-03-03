@@ -269,7 +269,7 @@ class FExecution(FSerializable, FSerializer):
             self.__AddOutputLocation(step, None, None)
                 
     def __InitializeRun(self, appPython, step, op, inStep, filename, settings, 
-                        isAnimated, markerCallBack):
+                        isAnimated, cameraRig, lightingRig, markerCallBack):
         stepName = STEP_PREFIX + str(step)
         outDir = os.path.abspath(os.path.join(self.__executionDir, stepName))            
         logFilename = stepName + "." + LOG_EXT
@@ -302,7 +302,7 @@ class FExecution(FSerializable, FSerializer):
             curInputFile = os.path.abspath(self.__outputLocations[inStep][-1])
         
         output = appPython.AddToScript(op, curInputFile, logAbsFilename, 
-                outDir, settings, isAnimated)
+                outDir, settings, isAnimated, cameraRig, lightingRig)
         self.__AddOutputLocation(step, output, logFilename)
         
         if markerCallBack != None and len(output) > 0:
@@ -311,14 +311,14 @@ class FExecution(FSerializable, FSerializer):
                 markerCallBack(False, os.path.join(outDir, output[0]))
             else: markerCallBack(False, output[0])
     
-    def Run(self, appPython, step, op, inStep, filename, settings, isAnimated, markerCallBack):
+    def Run(self, appPython, step, op, inStep, filename, settings, isAnimated, cameraRig, lightingRig, markerCallBack):
         # First run: calculate the check-sum.
         if (len(self.__checksum) == 0):
             self.__checksum = FUtils.CalculateChecksum(filename)
         
         # Run the test steps.
         if (self.__initializedSteps.count(step) == 0):
-            self.__InitializeRun(appPython, step, op, inStep, filename, settings, isAnimated, markerCallBack)
+            self.__InitializeRun(appPython, step, op, inStep, filename, settings, isAnimated, cameraRig, lightingRig, markerCallBack)
             self.__initializedSteps.append(step)
         else:
             stepName = STEP_PREFIX + str(step)
@@ -332,7 +332,7 @@ class FExecution(FSerializable, FSerializer):
             else:
                 curInputFile = os.path.abspath(self.__outputLocations[inStep][-1])
             
-            output = appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, settings, isAnimated)
+            output = appPython.AddToScript(op, curInputFile, logAbsFilename, outDir, settings, isAnimated, cameraRig, lightingRig)
 
             if markerCallBack != None and len(output) > 0:
                 # Some annoying scripts don't give us valid paths.
