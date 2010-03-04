@@ -17,10 +17,10 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = ['library_images', 'image', 'init_from']
 attrName = ''
 attrVal = ''
-dataToCheck = ''
+dataToCheck = 'PASSIMAGE_mixed.PnG'
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data):
@@ -48,6 +48,7 @@ class SimpleJudgingObject:
         # compare images against reference test
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_directory")
+            self.__assistant.CheckForURLTermInElementData(context, self.tagList, self.dataToCheck)
 
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

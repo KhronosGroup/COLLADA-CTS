@@ -17,10 +17,10 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_visual_scenes', 'visual_scene'], ['scene', 'instance_visual_scene']]
+tagLst = ['library_images', 'image', 'init_from']
 attrName = ''
-attrVal = 'library_visual_scenes.dae#VisualSceneNode'
-dataToCheck = ''
+attrVal = ''
+dataToCheck = 'PASSIMAGE_UPPER.PNG'
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data):
@@ -32,7 +32,7 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+
     def JudgeBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -40,7 +40,17 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
 
-        self.status_baseline = self.__assistant.GetResults()
+        if (self.__assistant.GetResults() == False): 
+            self.status_baseline = False
+            return False
+
+        # Compare the rendered images between import and export, and if passed, 
+        # compare images against reference test
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_directory")
+            self.__assistant.CheckForURLTermInElementData(context, self.tagList, self.dataToCheck)
+
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -52,28 +62,7 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
-	# if superior fails, no point in further checking
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-            
-        # Compare the rendered images between import and export
-        # Compare images against reference test
-        # Check for url term
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_geometry")
-            self.__assistant.CheckForURLTermInAttr(context, self.tagList[1], self.attrVal)
-
-        if (self.__assistant.GetResults() == False):
-            self.status_exemplary = False
-            return self.status_exemplary 
-        else:
-            self.status_exemplary = True
-        
-        # Check that the external reference element hasn't been baked into the export
-        if (self.__assistant.ElementPreserved(context, self.tagList[0], False)):
-            self.status_exemplary = False
-            
+        self.status_exemplary = self.status_superior
         return self.status_exemplary 
         
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.

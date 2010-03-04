@@ -65,12 +65,12 @@ class SimpleJudgingObject:
         if (self.__assistant.GetResults() == False):
             self.status_exemplary = False
             return self.status_exemplary 
-        
-        # Check that the external reference hasn't been baked into the export
-        if (self.__assistant.ElementDataCheck(context, self.tagList, self.dataToCheck):
-            self.status_exemplary = False
         else:
             self.status_exemplary = True
+        
+        # Check that the external reference hasn't been baked into the export
+        if (self.__assistant.ElementDataCheck(context, self.tagList, self.dataToCheck, "float", False)):
+            self.status_exemplary = False
         
         return self.status_exemplary 
         
