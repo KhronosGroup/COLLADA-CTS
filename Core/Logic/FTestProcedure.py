@@ -182,9 +182,9 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         """
         self.__Initialize(procedureDir)
         try:
-            os.mkdir(self.__dccWorkingDir)
+            os.makedirs(self.__dccWorkingDir)
         except OSError, e:
-            print "<FTestProcedure> could not make the working directory"
+            print "<FTestProcedure> could not make the working directory: %s" % (self.__dccWorkingDir);
             print e
     
     def InitializeFromLoad(self, filename):
@@ -215,7 +215,10 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
     def __Initialize(self, procedureDir):
         self.__procedureDir = procedureDir
         self.__name = os.path.basename(procedureDir)
-        self.__dccWorkingDir = os.path.join(self.__procedureDir, DCC_WORK)
+        self.__dccWorkingDir = os.path.join(self.__procedureDir, DCC_WORK1)
+        self.__dccWorkingDir = os.path.join(self.__dccWorkingDir, DCC_WORK2)
+        self.__dccWorkingDir = os.path.join(self.__dccWorkingDir, DCC_WORK3)
+        print "WorkingDir: %s" % (self.__dccWorkingDir)
     
     def GetName(self):
         return self.__name
@@ -232,7 +235,7 @@ class FTestProcedure(FSerializable, FSerializer, FRegExManager,
         try:
             os.mkdir(testDir)
         except OSError, e:
-            print "<FTestProcedure> could not make test directory"
+            print "<FTestProcedure> could not make test directory %s" % testDir
             print e
         
         if (settings == None):

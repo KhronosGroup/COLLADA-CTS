@@ -48,7 +48,6 @@ class FTest(FSerializable, FSerializer):
 
                 if (FUtils.GetProperFilename(fullEntry) == os.path.basename(dataSetPath)):
                     extension = FUtils.GetExtension(fullEntry).upper()
-                    print "Checking extension: %s" % (extension)
                     
                     if (extension == "DAE"):
                         self.__filename = fullEntry
