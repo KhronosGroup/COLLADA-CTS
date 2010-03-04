@@ -253,32 +253,32 @@ class FMaya (FApplication):
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FMaya.__RENDER_ANIMATION_START):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 start = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMaya.__RENDER_ANIMATION_END):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 end = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMaya.__RENDER_ANIMATION_STEP):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 step = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                               int)
             elif (prettyName == FMaya.__RENDER_STILL_START):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 start = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                                int)
             elif (prettyName == FMaya.__RENDER_STILL_END):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 end = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                              int)
             elif (prettyName == FMaya.__RENDER_STILL_STEP):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 step = self.GetSettingValueAs(FMaya.__RENDER_OPTIONS, setting,
                                               int)

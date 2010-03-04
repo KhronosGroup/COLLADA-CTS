@@ -138,32 +138,32 @@ class FViewer (FApplication):
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FViewer.__IMPORT_ANIMATION_START):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 start = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS, 
                                                setting, float)
             elif (prettyName == FViewer.__IMPORT_ANIMATION_END):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 end = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS, 
                                              setting, float)
             elif (prettyName == FViewer.__IMPORT_ANIMATION_FRAMES):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 frameCount = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS,
                                                     setting, int)
             elif (prettyName == FViewer.__IMPORT_STILL_START):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 start = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS, 
                                                setting, float)
             elif (prettyName == FViewer.__IMPORT_STILL_END):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 end = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS, 
                                              setting, float)
             elif (prettyName == FViewer.__IMPORT_STILL_FRAMES):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 frameCount = self.GetSettingValueAs(FViewer.__IMPORT_OPTIONS,
                                                     setting, int)

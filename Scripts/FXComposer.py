@@ -353,33 +353,33 @@ class FXComposer (FApplication):
 
             #   Non-animation: start, end and total number of frames
             if (prettyName == FXComposer.__RENDER_ANIMATION_START):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 start = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                setting, float)
             elif (prettyName == FXComposer.__RENDER_ANIMATION_END):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 end = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                              setting, float)
             elif (prettyName == FXComposer.__RENDER_ANIMATION_FRAMES):
-                if (not isAnimated, cameraRig, lightingRig):
+                if (not isAnimated):
                     continue
                 frameCount = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                     setting, int)
             #   Animation: start, end and total number of frames
             elif (prettyName == FXComposer.__RENDER_STILL_START):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 start = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                setting, float)
             elif (prettyName == FXComposer.__RENDER_STILL_END):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 end = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                              setting, float)
             elif (prettyName == FXComposer.__RENDER_STILL_FRAMES):
-                if (isAnimated, cameraRig, lightingRig):
+                if (isAnimated):
                     continue
                 frameCount = self.GetSettingValueAs(FXComposer.__RENDER_OPTIONS, 
                                                     setting, int)
