@@ -18,7 +18,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       </copyright>
         </contributor>
         <created>2007-03-21T00:17:10Z</created>
-	<keywords>Exemplary URI</keywords>
+	<keywords>Baseline URI</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
 	<subject>Test encoding of spaces in a file path.</subject>
         <unit meter="0.01" name="centimeter"/>
