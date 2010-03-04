@@ -55,14 +55,14 @@ class SimpleJudgingObject:
         
         self.status_baseline = False
         
-        if (self.__assistant.ElementPreserved(context, self.tagList[0]):
-            if (self.__assistant.AttributePreserved(context, self.tagList[0], self.attrName):
+        if (self.__assistant.ElementPreserved(context, self.tagList[0])):
+            if (self.__assistant.AttributePreserved(context, self.tagList[0], self.attrName)):
                 self.status_baseline = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[1]):
-            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName):
+        elif (self.__assistant.ElementPreserved(context, self.tagList[1])):
+            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName)):
                 self.status_baseline = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[2]):
-            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName):
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2])):
+            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName)):
                 self.status_baseline = True
 
         return self.status_baseline

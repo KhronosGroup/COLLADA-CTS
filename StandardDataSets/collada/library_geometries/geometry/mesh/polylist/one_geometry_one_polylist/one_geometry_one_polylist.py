@@ -70,11 +70,11 @@ class SimpleJudgingObject:
         
         self.status_exemplary = False
         
-        if (self.__assistant.ElementPreserved(context, self.tagList[1]):
-            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName):
+        if (self.__assistant.ElementPreserved(context, self.tagList[1])):
+            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName)):
                 self.status_exemplary = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[2]):
-            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName):
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2])):
+            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName)):
                 self.status_exemplary = True
 
         return self.status_exemplary 
