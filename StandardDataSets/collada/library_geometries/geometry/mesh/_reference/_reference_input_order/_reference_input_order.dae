@@ -141,7 +141,7 @@
                     </technique_common>
                 </source>
                 <source id="cube-map2" name="map2">
-                    <float_array id="cube-map1-array" count="8">0 0 1 0 0 1 1 1</float_array>
+                    <float_array id="cube-map2-array" count="8">0 0 1 0 0 1 1 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map2-array" stride="2">
                             <param name="S" type="float"/>
