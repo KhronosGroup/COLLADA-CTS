@@ -7,7 +7,7 @@
 
 from Core.Common.DOMParser import *
 from Core.Common.CheckingModule import *
-from Core.Common.FUtils import GetXmlContent
+from Core.Common.FUtils import GetXmlContent, SplitPath
 
 """ A judge assistant. The purpose of this structure is to abstract
     out the parts that are very common amongst the different per-test
@@ -485,7 +485,7 @@ class JudgeAssistant:
     
     
     # Compares an element's data against known data of type "float" or "string"
-    def ElementDataCheck(self, context, tagList, knownData, dataType="float"):
+    def ElementDataCheck(self, context, tagList, knownData, dataType="float", defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -524,13 +524,16 @@ class JudgeAssistant:
                 break
                 
         if (foundMatch):
-            context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> data is preserved.")
+            logMsg = "PASSED: <"+ tagList[len(tagList)-1] +"> data is preserved."
             self.__preservationResults = True
         else:
-            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> data is not preserved.")
+            logMsg = "FAILED: <"+ tagList[len(tagList)-1] +"> data is not preserved."
             self.__preservationResults = False
             self.__result = False
-                
+
+        if (defaultLogText):
+            context.Log(logMsg)
+
         testIO.Delink()
         return self.__preservationResults
         
@@ -1500,3 +1503,55 @@ class JudgeAssistant:
         testIO.Delink()
         self.__preservationResults = True
         return self.__preservationResults
+
+################## xml uri checking ##################
+
+    # Checks for the existence of a url term in an url attribute
+    # tagList: path to the element
+    # urlMatch: the url term to match
+    def CheckForURLTermInAttr(self, context, tagList, urlMatch):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        for eachNode in outputElementList:
+            pathNames = SplitPath( GetAttriByEle(eachNode, "url") )
+            if (urlMatch in pathNames):
+                return True
+                
+        return False
+        
+    # Checks for the existence of a url term in the data of an element
+    # tagList: path to the element
+    # urlMatch: the url term to match
+    def CheckForURLTermInElementData(self, context, tagList, urlMatch):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+    
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+
+        if (len(outputElementList) == 0):
+            context.Log("FAILED: Couldn't find <" + tagList[len(tagList)-1] + "> in output file.")
+            return False
+
+        for eachNode in outputElementList:
+            pathNames = SplitPath( GetXmlContent(eachNode) )
+            if (urlMatch in pathNames):
+                return True
+                
+        return False
