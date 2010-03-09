@@ -130,7 +130,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
   <library_nodes>
     <node id="nodes">
       <node id="cube" name="cube" type="NODE">
-        <translate>-50 0 0</translate>
         <instance_geometry url="#cubeShape">
           <bind_material>
             <technique_common>
@@ -140,7 +139,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         </instance_geometry>
       </node>
       <node id="triangle" name="triangle" type="NODE">
-        <translate>50 0 0</translate>
         <instance_geometry url="#triangleShape">
           <bind_material>
             <technique_common>
@@ -169,8 +167,14 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<instance_light url="#directionalLightShape1-lib"/>
       </node>
       <node id="NodeRoot">
-        <instance_node url="#cube"/>
-        <instance_node url="#triangle"/>
+        <node id="cube_n">
+          <translate>-50 0 0</translate>
+          <instance_node url="#cube"/>
+        </node>
+        <node id="cube_n">
+          <translate>50 0 0</translate>
+          <instance_node url="#triangle"/>
+        </node>
       </node>
     </visual_scene>
   </library_visual_scenes>

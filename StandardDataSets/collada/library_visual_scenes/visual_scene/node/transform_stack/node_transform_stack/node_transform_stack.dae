@@ -2,8 +2,6 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
     <asset>
         <contributor>
-	<author> Wei Guo </author>
-	<comments> Reuse this model for matrix stack testing </comments>
             <author>Hlaw</author>
             <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
             <copyright>

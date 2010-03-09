@@ -95,15 +95,14 @@ class SimpleJudgingObject:
             
         # Compare the rendered images, then check for visual scene equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "_reference_2insts", None, None, 5, True, True ) ):
-                self.CheckNodes(context)
-                if (self.visualSceneCheck == True):
-                    context.Log("PASSED: Visual scenes are equivalent.")
-                else:
-                    context.Log("FALSE: Visual scenes are not equivalent.")
+            self.CheckNodes(context)
+            if (self.visualSceneCheck == True):
+                context.Log("PASSED: Visual scenes are equivalent.")
+            else:
+                context.Log("FALSE: Visual scenes are not equivalent.")
                 
-                self.status_baseline = self.visualSceneCheck
-                return self.status_baseline
+            self.status_baseline = self.visualSceneCheck
+            return self.status_baseline
 
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

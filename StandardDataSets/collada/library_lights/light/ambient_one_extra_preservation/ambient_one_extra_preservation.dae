@@ -17,7 +17,7 @@
             <technique_common>
                 <ambient>
                     <color>0.8 0.8 0.5</color>
-                </directional>
+                </ambient>
             </technique_common>
             <extra>
                 <technique profile="UNKNOWN_APP">

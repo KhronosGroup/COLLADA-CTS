@@ -45,7 +45,8 @@ class SimpleJudgingObject:
             return False
         
         # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "_reference_up_axis")
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

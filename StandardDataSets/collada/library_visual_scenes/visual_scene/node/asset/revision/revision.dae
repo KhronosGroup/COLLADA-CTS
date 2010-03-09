@@ -14,7 +14,7 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keyword>Exemplary node asset</keyword>
+    <keywords>Exemplary node asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the revision element of an asset in a node is not null when it exists in the original file.</subject>
     <unit meter="0.01" name="centimeter"/>

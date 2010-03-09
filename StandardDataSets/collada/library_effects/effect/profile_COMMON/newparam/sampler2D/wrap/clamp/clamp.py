@@ -39,13 +39,13 @@ class SimpleJudgingObject:
         inEffectS = self.__assistant.ElementDataCheck(context, self.tagList[0], self.dataToCheck, "string")
         inEffectT = self.__assistant.ElementDataCheck(context, self.tagList[1], self.dataToCheck, "string")
         
-        if (inEffectS and inEffectT)
+        if (inEffectS and inEffectT):
             return True
         
         inProfileS = self.__assistant.ElementDataCheck(context, self.tagList2[0], self.dataToCheck, "string")
         inProfileT = self.__assistant.ElementDataCheck(context, self.tagList2[1], self.dataToCheck, "string")
         
-        if (inProfileS and inProfileT)
+        if (inProfileS and inProfileT):
             return True
             
         return False

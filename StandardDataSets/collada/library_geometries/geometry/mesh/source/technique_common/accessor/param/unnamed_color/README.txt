@@ -1,1 +1,0 @@
-Unnamed parameters are listed for the Extra bad according to the Badges By Element spreadsheet.

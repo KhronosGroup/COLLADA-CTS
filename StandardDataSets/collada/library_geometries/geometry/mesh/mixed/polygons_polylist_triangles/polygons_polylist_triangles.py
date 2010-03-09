@@ -51,7 +51,7 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_polygons_polylist_triangles", None, None, 5, True, True)
         
-        self.status_baseline = self.__assistant.GetResults(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 

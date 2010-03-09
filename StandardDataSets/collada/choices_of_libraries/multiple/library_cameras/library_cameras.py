@@ -57,8 +57,7 @@ class SimpleJudgingObject:
         
         # Check for preservation of element by id
         for eachAttrVal in self.attrVal:
-            if ( not self.__assistant.AttributeCheck(context, self.tagList, self.attrName, eachAttrVal) ):
-                break
+            self.__assistant.AttributeCheck(context, self.tagList, self.attrName, eachAttrVal)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior

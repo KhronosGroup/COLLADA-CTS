@@ -42,7 +42,7 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
-        self.status_baseline = self.__assistant.self.__assistant.GetResults()
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 

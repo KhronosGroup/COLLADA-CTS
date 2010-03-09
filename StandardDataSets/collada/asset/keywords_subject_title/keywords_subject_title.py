@@ -21,7 +21,7 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = [['asset', 'keywords'],
-          ['asset', 'subject']
+          ['asset', 'subject'],
           ['asset', 'title']]
 attrName = ''
 attrVal = ''

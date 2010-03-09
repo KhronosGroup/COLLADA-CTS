@@ -49,7 +49,7 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             self.__assistant.CompareImagesAgainst(context, "_reference_texcoord_2_set")
             
-        self.status_baseline = self.__assistant.DeferJudgement()
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 

@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = ['library_cameras', 'camera', 'optics', 'technique_common', 'perspective', 'yfov']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -53,7 +53,8 @@ class SimpleJudgingObject:
          
         # Compare the rendered images
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_perspective_no_geometry", None, None, 5, True, False)
+            if ( self.__assistant.CompareImagesAgainst(context, "optics_perspective_xfov", None, None, 5, True, True) ):
+                self.__assistant.ElementDataPreserved(context, self.tagList, "float")
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

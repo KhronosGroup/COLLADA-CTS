@@ -14,7 +14,7 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keyword>Exemplary visual_scene asset</keyword>
+    <keywords>Exemplary visual_scene asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test the preservation of the contributor element in the asset of a visual scene</subject>
     <unit meter="0.01" name="centimeter"/>

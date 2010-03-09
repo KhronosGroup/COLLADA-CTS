@@ -47,7 +47,7 @@ class SimpleJudgingObject:
         # Compare the rendered images between import and export
         # Then compare images against reference test to check for equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_2D")
+            self.__assistant.CompareImagesAgainst(context, "_reference_2d")
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

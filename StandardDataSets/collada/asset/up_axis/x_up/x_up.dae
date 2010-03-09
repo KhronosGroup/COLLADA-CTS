@@ -3,14 +3,12 @@
   <asset>
     <contributor>
       <author>wguo6</author>
-      <authoring_tool>3dsMax 10 - Feeling ColladaMax v3.05B.</authoring_tool>
-      <comments>ColladaMax Export Options: ExportNormals=1;ExportEPolyAsTriangles=1;ExportXRefs=1;ExportSelected=0;ExportTangents=0;ExportAnimations=1;SampleAnim=0;ExportAnimClip=0;BakeMatrices=0;ExportRelativePaths=1;AnimStart=0;AnimEnd=3.33333;</comments>
+      <authoring_tool>Handwritten</authoring_tool>
       <copyright>
       # Copyright (C) 2007 - 2009 Khronos Group
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
-      <source_data>file:///S:/Junk/Wei_Guo/CTF_Models/FromBryan/Cone.max</source_data>
     </contributor>
     <created>2008-09-25T00:49:34Z</created>
     <keywords>Baseline asset up_axis</keywords>
@@ -38,18 +36,9 @@
       <profile_COMMON>
         <technique sid="common">
           <lambert>
-            <ambient>
-              <color>0.588235 0.588235 0.588235 1</color>
-            </ambient>
             <diffuse>
-              <color>0.588235 0.588235 0.588235 1</color>
+              <color>0.5 0.5 0.5 1</color>
             </diffuse>
-            <transparent opaque="A_ONE">
-              <color>1 1 1 1</color>
-            </transparent>
-            <transparency>
-              <float>1</float>
-            </transparency>
           </lambert>
         </technique>
       </profile_COMMON>

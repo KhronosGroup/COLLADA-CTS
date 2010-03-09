@@ -14,7 +14,7 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keyword>Exemplary node asset</keyword>
+    <keywords>Exemplary node asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test the preservation of the keywords, subject, and title elements of an asset in a node.</subject>
     <unit meter="0.01" name="centimeter"/>

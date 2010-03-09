@@ -65,15 +65,11 @@
                 <newparam sid="file1-sampler">
                     <sampler2D>
                         <source>file1-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <newparam sid="file2-sampler">
                     <sampler2D>
                         <source>file2-surface</source>
-                        <minfilter>LINEAR_MIPMAP_LINEAR</minfilter>
-                        <magfilter>LINEAR</magfilter>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">

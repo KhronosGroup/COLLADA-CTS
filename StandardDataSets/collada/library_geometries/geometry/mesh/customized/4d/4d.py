@@ -78,4 +78,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, primTagLstArray, attrName, attrVal, dataToCheck);

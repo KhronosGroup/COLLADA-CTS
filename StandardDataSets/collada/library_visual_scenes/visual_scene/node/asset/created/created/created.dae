@@ -14,7 +14,7 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keyword>Exemplary node asset</keyword>
+    <keywords>Exemplary node asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the created date of an asset in a node is preserved regardless of changes to the element in the output file.</subject>
     <unit meter="0.01" name="centimeter"/>
