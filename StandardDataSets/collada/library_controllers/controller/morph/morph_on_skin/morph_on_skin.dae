@@ -32,7 +32,7 @@
 		</camera>
 	</library_cameras>
 	<library_lights>
-		<light id="lights_0" name="lights_0">
+		<light id="directionalLightShape1-lib" name="directionalLightShape1">
 			<technique_common>
 				<directional>
 					<color>1 1 1</color>
@@ -46,7 +46,7 @@
 				<technique sid="default">
 					<constant>
 						<emission>
-							<color sid="diffuse">0.5 0.5 0.5 0</color>
+							<color sid="diffuse">0 0 1 0</color>
 						</emission>
 					</constant>
 				</technique>
@@ -214,18 +214,18 @@
 				<instance_camera url="#mainCamera"/>
 			</node>
 			<node id="light" name="light">
-				<translate sid="translate">40 0 40</translate>
+				<translate sid="translate">50 0 400</translate>
 				<rotate sid="rotateZ">0 0 1 0</rotate>
 				<rotate sid="rotateY">0 1 0 15</rotate>
 				<rotate sid="rotateX">1 0 0 0</rotate>
-				<instance_light url="#lights_0"/>
+				<instance_light url="#directionalLightShape1-lib"/>
 			</node>
 			<node id="grid" name="grid">
 				<translate sid="translation">0.000000 0.000000 0.000000</translate>
 				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
 				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
 				<rotate sid="rotation_x">1.000000 0.000000 0.000000 90.000000</rotate>
-				<scale sid="scale">30 30 30</scale>
+				<scale sid="scale">15 15 15</scale>
 				<instance_controller url="#controllers_1">
 					<bind_material>
 						<technique_common>
