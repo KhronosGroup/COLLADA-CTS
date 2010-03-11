@@ -37,13 +37,6 @@
                 </directional>
             </technique_common>
         </light>
-        <light id="ambientLightShape1-lib" name="ambientLightShape1">
-            <technique_common>
-                <ambient>
-                    <color>1 1 1</color>
-                </ambient>
-            </technique_common>
-        </light>
     </library_lights>
     <library_materials>
         <material id="lambert1" name="lambert2">
@@ -148,9 +141,6 @@
                 <rotate sid="rotateY">0 1 0 15</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_light url="#directionalLightShape1-lib"/>
-            </node>
-            <node id="ambientLight1" name="ambientLight1">
-                <instance_light url="#ambientLightShape1-lib"/>
             </node>
         </visual_scene>
     </library_visual_scenes>
