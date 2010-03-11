@@ -17,15 +17,6 @@
     <unit meter="0.0254" name="inch"/>
     <up_axis>X_UP</up_axis>
   </asset>
-  <library_lights>
-    <light id="directionalLightShape1-lib" name="directionalLightShape1">
-      <technique_common>
-        <directional>
-          <color>1 1 1</color>
-        </directional>
-      </technique_common>
-    </light>
-  </library_lights>
   <library_materials>
     <material id="_1_-_Default" name="_1_-_Default">
       <instance_effect url="#_1_-_Default-fx"/>
@@ -80,13 +71,6 @@
             </technique_common>
           </bind_material>
         </instance_geometry>
-      </node>
-      <node id="directionalLight1" name="directionalLight1" type="NODE">
-        <translate sid="translate">50 0 400</translate>
-        <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 15</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_light url="#directionalLightShape1-lib"/>
       </node>
     </visual_scene>
   </library_visual_scenes>

@@ -20,7 +20,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
-      <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline asset unit</keywords>
@@ -29,15 +28,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <unit meter="0.1" name="decimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
-  <library_lights>
-    <light id="directionalLightShape1-lib" name="directionalLightShape1">
-      <technique_common>
-        <directional>
-          <color>1 1 1</color>
-        </directional>
-      </technique_common>      
-    </light>
-  </library_lights>
   <library_materials>
     <material id="lambert1" name="lambert1">
       <instance_effect url="#lambert1-fx"/>
@@ -104,13 +94,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           </bind_material>
         </instance_geometry>
       </node>
-      <node id="directionalLight1" name="directionalLight1" type="NODE">
-        <translate sid="translate">50 0 400</translate>
-        <rotate sid="rotateZ">0 0 1 0</rotate>
-        <rotate sid="rotateY">0 1 0 15</rotate>
-        <rotate sid="rotateX">1 0 0 0</rotate>
-        <instance_light url="#directionalLightShape1-lib"/>
-      </node>      
     </visual_scene>
   </library_visual_scenes>
   <scene>
