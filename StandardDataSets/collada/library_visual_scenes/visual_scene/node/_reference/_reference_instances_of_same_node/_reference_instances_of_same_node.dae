@@ -30,7 +30,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <optics>
                 <technique_common>
                     <perspective>
-                        <yfov>39.8873</yfov>
+                        <yfov>39.9998</yfov>
                         <aspect_ratio>1</aspect_ratio>
                         <znear>1</znear>
                         <zfar>1000</zfar>
@@ -152,7 +152,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </instance_geometry>
             </node>
             <node id="directionalLight1" name="directionalLight1">
-                <translate sid="translate">0 0 400</translate>
+                <translate sid="translate">50 0 400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>

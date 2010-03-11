@@ -26,7 +26,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <up_axis>Y_UP</up_axis>
     </asset>
     <library_cameras>
-        <camera id="cameraShape1" name="cameraShape1">
+        <camera id="mainCamera" name="mainCamera">
             <optics>
                 <technique_common>
                     <perspective>
@@ -291,7 +291,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
                 <rotate sid="rotateY">0 1 0 0</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_camera url="#cameraShape1"/>
+                <instance_camera url="#mainCamera"/>
             </node>
             <node id="directionalLight1" name="directionalLight1">
                 <rotate sid="rotateZ">0 0 1 0</rotate>
