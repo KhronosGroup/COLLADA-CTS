@@ -25,14 +25,14 @@
         <up_axis>Y_UP</up_axis>
     </asset>
     <library_cameras>
-        <camera id="cameraShape1" name="cameraShape1">
+        <camera id="mainCamera" name="mainCamera">
             <optics>
                 <technique_common>
                     <perspective>
-                        <yfov>37.8492</yfov>
-                        <aspect_ratio>1.5</aspect_ratio>
+                        <yfov>36.9998</yfov>
+                        <aspect_ratio>1</aspect_ratio>
                         <znear>1</znear>
-                        <zfar>10000</zfar>
+                        <zfar>1000</zfar>
                     </perspective>
                 </technique_common>
             </optics>
@@ -134,8 +134,9 @@
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="LOD3sp" name="LOD3sp">
+                <translate sid="translate">0 -100 -100</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateY">0 1 0 -140</rotate>
                 <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_geometry url="#LOD3spShape-lib">
                     <bind_material>
@@ -148,19 +149,19 @@
                 </instance_geometry>
             </node>
             <node id="testCamera" name="testCamera">
-                <translate sid="translate">400.113 463.264 -431.078</translate>
+                <translate sid="translate">0 0 400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 -223.2</rotate>
-                <rotate sid="rotateX">1 0 0 -38.4</rotate>
-                <instance_camera url="#cameraShape1"/>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#mainCamera"/>
             </node>
-            <node id="directionalLight1" name="directionalLight1">
-                <translate sid="translate">148.654 183.672 -292.179</translate>
-                <rotate sid="rotateZ">0 0 1 -12.8709</rotate>
-                <rotate sid="rotateY">0 1 0 -191.679</rotate>
-                <rotate sid="rotateX">1 0 0 -45.6358</rotate>
-                <instance_light url="#directionalLightShape1-lib"/>
-            </node>
+            <node id="directionalLight1" name="directionalLight1" type="NODE">
+		<translate sid="translate">50 0 400</translate>
+		<rotate sid="rotateZ">0 0 1 0</rotate>
+		<rotate sid="rotateY">0 1 0 15</rotate>
+		<rotate sid="rotateX">1 0 0 0</rotate>
+		<instance_light url="#directionalLightShape1-lib"/>
+           </node>
         </visual_scene>
     </library_visual_scenes>
     <scene>

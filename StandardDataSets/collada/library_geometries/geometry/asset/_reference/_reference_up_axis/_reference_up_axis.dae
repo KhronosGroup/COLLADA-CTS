@@ -73,7 +73,7 @@
     <geometry id="Cone01-mesh" name="Cone01">
       <mesh>
         <source id="Cone01-mesh-positions">
-          <float_array id="Cone01-mesh-positions-array" count="15">-50 0 -75 0 -50 -75 50 0 -75 0 50 -75 0 0 150</float_array>
+          <float_array id="Cone01-mesh-positions-array" count="15">-50 -75 0 0 -75 50 50 -75 0 0 -75 -50 0 150 0</float_array>
           <technique_common>
             <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
@@ -97,7 +97,7 @@
       <node id="Cone01-node" name="Cone01" type="NODE">   
         <rotate sid="rotateZ">0 0 1 0</rotate>
         <rotate sid="rotateY">0 1 0 0</rotate>
-        <rotate sid="rotateX">1 0 0 -90</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
         <instance_geometry url="#Cone01-mesh">
           <bind_material>
             <technique_common>

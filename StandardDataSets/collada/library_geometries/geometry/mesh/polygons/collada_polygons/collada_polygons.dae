@@ -37,28 +37,15 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         </optics>
       </camera>
     </library_cameras>
-    <library_lights>
-      <light id="light-lib" name="light">
-        <technique_common>
-          <point>
-            <color>1 1 1</color>
-            <constant_attenuation>1</constant_attenuation>
-            <linear_attenuation>0</linear_attenuation>
-            <quadratic_attenuation>0</quadratic_attenuation>
-          </point>
-        </technique_common>
-        </light>
-        <light id="pointLightShape1-lib" name="pointLightShape1">
-            <technique_common>
-                <point>
-                    <color>1 1 1</color>
-                    <constant_attenuation>1</constant_attenuation>
-                    <linear_attenuation>0</linear_attenuation>
-                    <quadratic_attenuation>0</quadratic_attenuation>
-                </point>
-            </technique_common>
-        </light>
-    </library_lights>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+    </light>
+  </library_lights>
     <library_materials>
         <material id="Stone" name="Stone">
             <instance_effect url="#Stone-fx"/>
@@ -6880,23 +6867,24 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="testCamera" name="testCamera">
-                <translate sid="translate">-166.392 282.884 642.115</translate>
-                <rotate sid="rotateY">0 1 0 -13.25</rotate>
-                <rotate sid="rotateX">1 0 0 -20.25</rotate>
+                <translate sid="translate">0 0 400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
                 <instance_camera url="#mainCamera"/>
             </node>
-            <node id="Light" name="Light">
-                <translate sid="translate">-500 1000 400</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#light-lib"/>
-            </node>
+	      <node id="directionalLight1" name="directionalLight1" type="NODE">
+		<translate sid="translate">50 0 400</translate>
+		<rotate sid="rotateZ">0 0 1 0</rotate>
+		<rotate sid="rotateY">0 1 0 15</rotate>
+		<rotate sid="rotateX">1 0 0 0</rotate>
+		<instance_light url="#directionalLightShape1-lib"/>
+	      </node>
             <node id="Floor" name="Floor">
+                <translate sid="translate">0 -100 -400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
+                <rotate sid="rotateY">0 1 0 20</rotate>
+                <rotate sid="rotateX">1 0 0 20</rotate>
                 <instance_geometry url="#floor-lib">
                     <bind_material>
                         <technique_common>
@@ -6906,9 +6894,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                 </instance_geometry>
             </node>
             <node id="Collada" name="Collada">
+                <translate sid="translate">0 -100 -400</translate>
                 <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
+                <rotate sid="rotateY">0 1 0 20</rotate>
+                <rotate sid="rotateX">1 0 0 20</rotate>
                 <instance_geometry url="#collada-lib">
                     <bind_material>
                         <technique_common>
@@ -6916,13 +6905,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>
-            </node>
-            <node id="pointLight1" name="pointLight1">
-                <translate sid="translate">3 4 10</translate>
-                <rotate sid="rotateZ">0 0 1 0</rotate>
-                <rotate sid="rotateY">0 1 0 0</rotate>
-                <rotate sid="rotateX">1 0 0 0</rotate>
-                <instance_light url="#pointLightShape1-lib"/>
             </node>
         </visual_scene>
     </library_visual_scenes>
