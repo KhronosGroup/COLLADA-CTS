@@ -41,23 +41,28 @@ class SimpleJudgingObject:
         if (self.__assistant.GetResults() == False): 
             self.status_baseline = False
             return False
-            
-        # Compare the rendered images between import and export
-        # Then compare images against reference test
-        # Last, check for preservation of element data
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            if ( self.__assistant.CompareImagesAgainst(context, "effect_lambert_ambient_color") ):
-                self.__assistant.NewparamCheck(context, originalLocation, bakedLocation, newparamLocations)
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        # Check for preservation of element data in different locations
+        self.__assistant.NewparamCheck(context, originalLocation, bakedLocation, newparamLocations)
+        
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
-        self.status_superior = self.status_baseline
-        return self.status_superior 
+        if (self.status_baseline == False):
+            self.status_superior = self.status_baseline
+            return self.status_superior
             
+        # Compare the rendered images between import and export
+        # Then compare images against reference test
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            self.__assistant.CompareImagesAgainst(context, "effect_lambert_ambient_color")
+
+        self.status_superior = self.__assistant.DeferJudgement(context)
+        return self.status_superior
+        
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeExemplary(self, context):
