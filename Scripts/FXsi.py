@@ -26,7 +26,8 @@ class FXsi (FApplication):
             ("Convert to Triangles", "Triangulate", "False"),
             ("Apply Subdivision", "ApplySubdivisionToGeometry", "False"),
             ("Tangents as Vertex Colors", "ExportTangentsAsVtxColor", "False"),
-            ("XSI Extra in COLLADA", "ExportXSIExtra", "False")]
+			("XSI Extra in COLLADA", "ExportXSIExtra", "False"),
+			("Keep Reference Paths Relative", "PathRelative", "False")]
     
     __RENDER_X = "Render Resolution X"
     __RENDER_Y = "Render Resolution Y"
@@ -65,7 +66,7 @@ class FXsi (FApplication):
         Implements FApplication.GetPrettyName()
         
         """
-        return "XSI 6.0"
+        return "Softimage 2011"
     
     def GetSettingsForOperation(self, operation):
         """GetSettingsForOperation(operation) -> list_of_FSettingEntry
