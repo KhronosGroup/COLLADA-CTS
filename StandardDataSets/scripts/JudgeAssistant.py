@@ -264,6 +264,9 @@ class JudgeAssistant:
         if (len(imageFilenames) == 0):
             self.__compareRendersResults = False
             msg = "FAILED: Unable to retrieve image locations."
+        elif (len(imageFilenames) == 1):
+            self.__compareRendersResults = False
+            msg = "FAILED: Unable to retrieve both image locations."
         else:
             inputImages = imageFilenames[0]
             outputImages = imageFilenames[1]
