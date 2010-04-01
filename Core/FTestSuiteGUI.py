@@ -8,6 +8,7 @@ import shutil
 import threading
 import zipfile
 import glob, os
+import shutil
 
 import Core.Common.FUtils as FUtils
 from Core.Common.FConstants import *
@@ -37,6 +38,10 @@ def makeArchive(fileList, archive):
      try:
          a = zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED)
          for f in fileList:
+             pos = f.find(".zip");
+             if (pos >= 0):
+                print "skipping zip file %s" % (f)
+             	continue
              print "archiving file %s" % (f)
              a.write(f)
          a.close()
@@ -579,7 +584,11 @@ class RunTable(FSFrame, wx.MDIChildFrame):
 	d = os.path.dirname(basename)
 	if not os.path.exists(d):
 		os.makedirs(d)
-		
+
+	rdirname = dir + '\\results_Files';
+	print "removing dir: %s" % (rdirname)
+	shutil.rmtree(rdirname)
+			
 	print "basename: %s" % (basename)
 
 	self.__csvExporter.ToCsv(basename+".csv", 
