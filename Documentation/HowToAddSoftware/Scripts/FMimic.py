@@ -95,8 +95,8 @@ class FMimic (FApplication):
         
         return (returnValue == 0)
     
-    def WriteImport(self, filename, logname, outputDir, settings, isAnimated):
-        """WriteImport(filename, logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteImport(self, filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(filename, logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
                 
         """
         outputFormat = ".png"
@@ -122,8 +122,8 @@ class FMimic (FApplication):
         return [os.path.normpath(outputFilename)]
         
     
-    def WriteRender(self, logname, outputDir, settings, isAnimated):
-        """WriteRender(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteRender(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteRender(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteRender()
         
@@ -148,8 +148,8 @@ class FMimic (FApplication):
         return [os.path.normpath(imageFilename),]
 
     
-    def WriteExport(self, logname, outputDir, settings, isAnimated):
-        """WriteImport(logname, outputDir, settings, isAnimated) -> list_of_str
+    def WriteExport(self, logname, outputDir, settings, isAnimated, cameraRig, lightingRig):
+        """WriteImport(logname, outputDir, settings, isAnimated, cameraRig, lightingRig) -> list_of_str
         
         Implements FApplication.WriteExport()
         
