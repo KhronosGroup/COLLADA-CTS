@@ -587,7 +587,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
 
 	rdirname = dir + '\\results_Files';
 	print "removing dir: %s" % (rdirname)
-	shutil.rmtree(rdirname)
+	shutil.rmtree(rdirname, True)
 			
 	print "basename: %s" % (basename)
 
