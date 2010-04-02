@@ -36,14 +36,25 @@ def makeArchive(fileList, archive):
      'archive' is the file name for the archive with a full path
      """
      try:
+     	 typeList = [".png", ".dae", ".html", ".csv", ".sha", ".log", ".py", ".txt"]
          a = zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED)
          for f in fileList:
-             pos = f.find(".zip");
-             if (pos >= 0):
-                print "skipping zip file %s" % (f)
-             	continue
-             print "archiving file %s" % (f)
-             a.write(f)
+             found = False
+             for t in typeList:             
+                 pos = f.find(t)
+		 if (pos > -1):
+		     # Insure its the last thing
+		     flen = len(f)
+		     tlen = len(t)
+#		     print "flen: %s  tlen: %s  pos: %s" % (flen, tlen, pos)
+		     if (pos == (flen - tlen)):
+		         found = True
+             if (found):
+#  	         print "archiving file %s" % (f)
+	         a.write(f)
+	     else:
+	     	 print "shipping file %s" % (f)
+
          a.close()
          return True
      except: return False
