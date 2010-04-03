@@ -12,6 +12,7 @@
         <keywords>Baseline effect newparam sampler2D</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test a mix of WRAP and CLAMP wrapping mode for a sampler2D under profile_COMMON</subject>
+        <title>0199</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

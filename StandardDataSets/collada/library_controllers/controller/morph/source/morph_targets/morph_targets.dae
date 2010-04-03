@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <keywords>Exemplary controller morph source</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test the preservation of target source data on export</subject>
+        <title>0127</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

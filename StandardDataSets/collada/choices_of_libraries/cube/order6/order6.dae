@@ -36,6 +36,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test switching the order of library_material and library_effects</subject>
+        <title>0015</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

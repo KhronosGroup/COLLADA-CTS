@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 		<keywords>superior_badge camera perspective</keywords>
         <modified>2007-05-23T00:01:59Z</modified>
 		<subject>Test perspective camera</subject>
+        <title>0100</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Exemplary geometry mesh input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
 	<subject>Test the handling of semantic NORMAL in a polylist primitive.</subject>
+        <title>0394</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

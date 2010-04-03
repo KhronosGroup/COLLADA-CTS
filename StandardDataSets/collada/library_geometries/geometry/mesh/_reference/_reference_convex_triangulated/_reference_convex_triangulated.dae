@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 		<keywords>baseline_badge geometry mesh polygons</keywords>
         <modified>2007-05-04T00:23:06Z</modified>
 		<subject>Test convex shaped polygons</subject>
+        <title>0387</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

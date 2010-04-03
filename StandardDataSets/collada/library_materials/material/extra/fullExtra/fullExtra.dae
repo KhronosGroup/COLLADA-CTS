@@ -23,6 +23,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Superior material extra</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test full extra preservation</subject>
+        <title>0448</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

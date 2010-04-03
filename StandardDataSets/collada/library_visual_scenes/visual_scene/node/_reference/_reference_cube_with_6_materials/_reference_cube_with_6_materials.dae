@@ -22,6 +22,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <keywords>Baseline node instance_geometry bind_material technique_common instance_material</keywords>
         <modified>2007-05-30T01:14:24Z</modified>
         <subject>Test the binding of a material to a cube geometry</subject>
+        <title>0562</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

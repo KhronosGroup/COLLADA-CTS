@@ -22,6 +22,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <keywords>Superior animation channel</keywords>
         <modified>2006-08-23T22:42:50Z</modified>
         <subject>Test an animation channel targeted at a translation matrix</subject>
+        <title>0064</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

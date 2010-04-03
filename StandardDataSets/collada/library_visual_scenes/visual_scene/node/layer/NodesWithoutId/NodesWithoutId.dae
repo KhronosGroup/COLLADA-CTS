@@ -15,6 +15,7 @@
     <keywords>Superior node</keywords>
     <modified>2008-07-31T18:53:17Z</modified>
     <subject>Test the layer attribute of a nodes without an id</subject>
+        <title>0505</title>
     <unit meter="0.0254" name="inch"/>
     <up_axis>Z_UP</up_axis>
   </asset>

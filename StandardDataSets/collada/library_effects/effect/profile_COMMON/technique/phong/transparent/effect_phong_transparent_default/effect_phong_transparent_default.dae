@@ -12,6 +12,7 @@
        	<keywords>Superior effect profile_COMMON technique phong</keywords>
         <modified>2009-05-26T16:10:42Z</modified>
         <subject>Test that the default transparent element of the Phong technique is equivalent to A_ONE</subject>
+        <title>0305</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

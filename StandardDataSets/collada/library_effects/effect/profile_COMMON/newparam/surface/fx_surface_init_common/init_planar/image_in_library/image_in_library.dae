@@ -12,6 +12,7 @@
         <keywords>Baseline effect profile_COMMON newparam surface</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test the init_planar of a 2D surface in profile_COMMON, where the reference image is located in library_images</subject>
+        <title>0204</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

@@ -17,6 +17,7 @@
     <keywords>Exemplary visual_scene asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test the preservation of the keywords, subject, and title elements of an asset in a visual scene.</subject>
+        <title>0461</title>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>

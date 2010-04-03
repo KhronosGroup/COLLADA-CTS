@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Baseline URI</keywords>
         <modified>2007-04-17T21:35:54Z</modified>
 	<subject>Test element ids with a dash.</subject>
+        <title>0671</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

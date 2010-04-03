@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Baseline URI</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
 	<subject>Test uri referencing where the reference file is in uppercase</subject>
+        <title>0676</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

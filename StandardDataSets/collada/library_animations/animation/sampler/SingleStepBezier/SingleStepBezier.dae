@@ -23,6 +23,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Superior animation sampler input</keywords>
     <modified>2008-09-04T21:16:35Z</modified>
     <subject>Test an animation and a mix of a single STEP and multiple BEZIER curve interpolation method to target an object's translation in the X direction</subject>
+        <title>0084</title>
     <unit meter="1" name="meter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Exemplary geometry asset</keywords>
         <modified>2007-05-04T00:23:06Z</modified>
         <subject>Test the preservation of the keywords, subject, and title elements of an asset in an geometry.</subject>
+        <title>0326</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

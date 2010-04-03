@@ -36,6 +36,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test placing library_lights after library_visual_scenes</subject>
+        <title>0017</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

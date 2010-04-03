@@ -27,6 +27,7 @@ limitations under the License.</copyright>
 		<keywords>baseline_badge effect profile_COMMON newparam float2</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 		<subject>Test newparam/float2 in profile_COMMON</subject>
+        <title>0595</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

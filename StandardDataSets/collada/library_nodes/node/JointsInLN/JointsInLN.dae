@@ -23,6 +23,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <modified>2007-07-14T00:28:28Z</modified>
     <subject>Test for preservation joints in library_nodes</subject>
     <title>00022</title>
+        <title>0456</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>

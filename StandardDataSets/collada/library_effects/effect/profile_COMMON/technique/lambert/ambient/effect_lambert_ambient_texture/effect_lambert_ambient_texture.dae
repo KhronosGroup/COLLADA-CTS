@@ -12,6 +12,7 @@
         <keywords>Baseline effect profile_COMMON technique lambert</keywords>
         <modified>2007-05-23T22:57:55Z</modified>
         <subject>Test an image texture applied to the ambient color of the Lambert technique</subject>
+        <title>0259</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

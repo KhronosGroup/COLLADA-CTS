@@ -27,6 +27,7 @@ limitations under the License.</copyright>
 	<keywords>Exemplary geometry mesh vertices input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
 	<subject>Test semantic NORMAL in the vertices element of a geometry</subject>
+        <title>0379</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

@@ -14,6 +14,7 @@
     <keywords>Superior choice_of_primitives input</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test that custom 3 dimensional data of a geometry is preserved.</subject>
+        <title>0336</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

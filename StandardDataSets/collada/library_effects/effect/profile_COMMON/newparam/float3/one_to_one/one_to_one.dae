@@ -12,6 +12,7 @@
         <keywords>Baseline effect profile_COMMON newparam float3</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test a newparam of type float3 referenced multiple times</subject>
+        <title>0189</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

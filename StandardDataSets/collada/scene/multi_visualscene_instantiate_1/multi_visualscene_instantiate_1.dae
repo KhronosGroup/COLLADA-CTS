@@ -13,6 +13,7 @@
     <keywords>Baseline scene</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test multiple visual scenes in the library, but instantiating only one in the scene.</subject>
+        <title>0579</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

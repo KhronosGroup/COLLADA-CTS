@@ -25,6 +25,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline asset unit</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the unit of distance is in decimeters</subject>
+        <title>0002</title>
     <unit meter="0.1" name="decimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

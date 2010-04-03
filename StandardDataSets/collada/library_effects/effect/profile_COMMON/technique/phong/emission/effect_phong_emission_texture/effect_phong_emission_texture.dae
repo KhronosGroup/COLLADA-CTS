@@ -12,6 +12,7 @@
         <keywords>Superior effect profile_COMMON technique phong</keywords>
         <modified>2007-05-23T22:57:55Z</modified>
         <subject>Test an image texture applied to the emission color of the Phong technique</subject>
+        <title>0292</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

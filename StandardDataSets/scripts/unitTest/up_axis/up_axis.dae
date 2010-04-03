@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keyword>0 0 0 0 1 0 0 0 10</keyword> <!--3 vectors interesting point;up_axis for rendering system;position of camera -->
     <created>2007-05-07T19:42:16Z</created>
     <modified>2007-05-07T19:42:16Z</modified>
+        <title>0668</title>
     <unit meter="0.01" name="centermeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

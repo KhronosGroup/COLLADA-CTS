@@ -13,6 +13,7 @@
     <keywords>Baseline scene</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Reference test of a hexagon.</subject>
+        <title>0580</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Baseline geometry mesh polylist</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 	<subject>Test the handling of 2D data in a triangles primitive.</subject>
+        <title>0368</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

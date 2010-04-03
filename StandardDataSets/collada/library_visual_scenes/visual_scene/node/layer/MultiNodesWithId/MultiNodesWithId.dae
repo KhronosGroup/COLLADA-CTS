@@ -15,6 +15,7 @@
     <keywords>Superior node</keywords>
     <modified>2008-07-31T18:53:17Z</modified>
     <subject>Test the preservation of the layer attribute of a node</subject>
+        <title>0503</title>
     <unit meter="0.0254" name="inch"/>
     <up_axis>Z_UP</up_axis>
   </asset>

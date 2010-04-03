@@ -5,6 +5,7 @@
 	<keywords>Baseline geometry mesh</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
         <subject>Reference test file with out geometry</subject>
+        <title>0390</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

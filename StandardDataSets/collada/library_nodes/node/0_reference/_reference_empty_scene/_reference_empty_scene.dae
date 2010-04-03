@@ -14,6 +14,7 @@
         <keywords>Baseline library_nodes</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
         <subject>Reference test of an empty scene</subject>
+        <title>0452</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

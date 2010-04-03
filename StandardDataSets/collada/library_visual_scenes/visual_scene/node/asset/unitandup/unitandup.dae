@@ -16,6 +16,7 @@
     <keywords>Exemplary node asset up_axis</keywords>
     <modified>2008-09-25T00:49:41Z</modified>
     <subject>Test the unit and up_axis of an asset in a node</subject>
+        <title>0477</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

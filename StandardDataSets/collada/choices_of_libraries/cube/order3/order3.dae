@@ -37,6 +37,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test moving the scene element to secondary on top</subject>
+        <title>0012</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

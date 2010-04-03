@@ -22,6 +22,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     </contributor>
     <created>2008-09-06T01:05:50Z</created>
     <modified>2008-09-06T01:13:23Z</modified>
+        <title>0589</title>
     <unit meter="1" name="meter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

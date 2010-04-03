@@ -23,6 +23,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Superior controller skin</keywords>
     <modified>2007-07-26T21:50:45Z</modified>
     <subject>Non-controller reference test for comparison with the test case skin_2_influence</subject>
+        <title>0154</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>

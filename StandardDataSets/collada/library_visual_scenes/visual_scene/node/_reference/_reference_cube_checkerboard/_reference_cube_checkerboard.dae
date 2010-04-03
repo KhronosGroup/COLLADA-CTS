@@ -16,6 +16,7 @@
         <keywords>Baseline node instance_geometry bind_material technique_common instance_material bind_vertex_input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test two bind_vertex_input of a material applied to a geometry in the visual scene</subject>
+        <title>0559</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

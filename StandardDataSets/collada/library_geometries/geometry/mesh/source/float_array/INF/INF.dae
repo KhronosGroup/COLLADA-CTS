@@ -21,6 +21,7 @@
 	<keywords>Superior geometry mesh source float_array</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 	<subject>Test for proper lexical representation of INF in the source of a mesh.</subject>
+        <title>0363</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

@@ -14,6 +14,7 @@
         <keywords>Exemplary node</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
         <subject>Test the complete preservation of a translation, rotation, and scale transform stack.</subject>
+        <title>0549</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

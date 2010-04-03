@@ -12,6 +12,7 @@
 		<keywords>Baseline effect profile_COMMON newparam</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 		<subject>Test a newparam with the same sid in profile_COMMON and a different profile</subject>
+        <title>0194</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

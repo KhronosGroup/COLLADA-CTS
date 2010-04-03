@@ -16,6 +16,7 @@
         <keywords>Superior node instance_geometry bind_material technique_common instance_material bind_vertex_input</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test the binding of a texture to the material using texture set</subject>
+        <title>0492</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

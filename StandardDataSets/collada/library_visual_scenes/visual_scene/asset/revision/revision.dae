@@ -17,6 +17,7 @@
     <keywords>Exemplary visual_scene asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the revision element of an asset in a visual scene is not null when it exists in the original file.</subject>
+        <title>0463</title>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>

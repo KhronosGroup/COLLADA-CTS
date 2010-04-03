@@ -12,6 +12,7 @@
 		<keywords>Badge: Baseline</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 		<subject>Newparam: sampler2D (appears twice)</subject>
+        <title>0196</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

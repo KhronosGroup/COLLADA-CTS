@@ -23,6 +23,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Superior controller skin</keywords>
     <modified>2007-07-26T19:25:53Z</modified>
     <subject>Test a skin controller with two influences per vertex</subject>
+        <title>0145</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>

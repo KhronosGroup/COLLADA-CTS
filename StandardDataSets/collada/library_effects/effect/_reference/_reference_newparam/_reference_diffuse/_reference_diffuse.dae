@@ -12,6 +12,7 @@
         <keywords>Badge: Baseline</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Reference test for float3 and float4 diffuse test case</subject>
+        <title>0315</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

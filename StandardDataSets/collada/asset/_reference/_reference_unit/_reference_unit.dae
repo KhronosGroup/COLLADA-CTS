@@ -26,6 +26,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline asset unit</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Reference for the unit test cases using meter=1.0</subject>
+        <title>0008</title>
     <unit meter="1.0" name="meter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

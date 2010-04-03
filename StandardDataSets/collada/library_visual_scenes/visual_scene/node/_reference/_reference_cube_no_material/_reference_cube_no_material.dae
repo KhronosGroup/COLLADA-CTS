@@ -16,6 +16,7 @@
         <keywords>Baseline node instance_geometry bind_material technique_common instance_material</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Reference test of a cube with green emissive material for texture binding</subject>
+        <title>0561</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

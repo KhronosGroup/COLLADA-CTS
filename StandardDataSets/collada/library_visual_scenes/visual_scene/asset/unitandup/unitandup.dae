@@ -17,6 +17,7 @@
     <keywords>Exemplary visual_scene asset up_axis</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test the unit and up_axis of an asset within a visual_scene element.</subject>
+        <title>0465</title>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_lights>

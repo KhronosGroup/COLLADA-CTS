@@ -13,6 +13,7 @@
 	<keywords>Exemplary geometry mesh vertices input</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 	<subject>Test semantic POSITION, TEXCOORD, COLOR, and NORMAL in the vertices input</subject>
+        <title>0382</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

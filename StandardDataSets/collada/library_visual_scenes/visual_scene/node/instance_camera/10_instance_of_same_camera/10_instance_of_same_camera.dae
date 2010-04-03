@@ -22,6 +22,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <keywords>Superior node instance_camera</keywords>
         <modified>2007-05-24T21:40:44Z</modified>
         <subject>Test ten instance camera instantiated within a different node in the visual scene</subject>
+        <title>0481</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

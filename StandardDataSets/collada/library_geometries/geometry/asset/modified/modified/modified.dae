@@ -21,6 +21,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Exemplary geometry asset</keywords>
         <modified>2007-05-04T00:23:06Z</modified>
 	<subject>Test that the modified date of an asset in a geometry is greater than or equal to the original modified date.</subject>
+        <title>0327</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

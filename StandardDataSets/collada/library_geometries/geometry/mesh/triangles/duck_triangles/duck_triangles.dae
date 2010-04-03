@@ -21,6 +21,7 @@
 		<keywords>baseline_badge geometry mesh triangles</keywords>
         <modified>2007-02-21T22:52:44Z</modified>
 		<subject>Test triangles</subject>
+        <title>0370</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

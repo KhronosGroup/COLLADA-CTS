@@ -12,6 +12,7 @@
         <keywords>Badge: Baseline</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Effect: image (in different directory from source collada, appears twice)</subject>
+        <title>0158</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

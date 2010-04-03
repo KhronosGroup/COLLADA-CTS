@@ -17,6 +17,7 @@
     <keywords>Exemplary visual_scene asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the modified date of an asset in a visual scene is greater than or equal to the original modified date.</subject>
+        <title>0462</title>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>

@@ -22,6 +22,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <keywords>Exemplary controller morph</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Reference test of three pyramids with coordinates baked in to be equivalent to morph_one_target_relative</subject>
+        <title>0131</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

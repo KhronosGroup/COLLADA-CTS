@@ -22,6 +22,7 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Exemplary animation asset</keywords>
     <modified>2008-09-19T02:09:47Z</modified>
     <subject>Test the preservation of the asset contributor element in an animation</subject>
+        <title>0043</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

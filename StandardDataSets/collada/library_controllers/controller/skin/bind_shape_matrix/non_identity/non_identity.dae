@@ -23,6 +23,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Superior controller skin bind_shape_matrix</keywords>
     <modified>2007-07-26T19:26:30Z</modified>
     <subject>Test a skin controller with a non-identity bind_shape_matrix</subject>
+        <title>0139</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Z_UP</up_axis>
   </asset>

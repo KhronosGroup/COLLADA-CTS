@@ -12,6 +12,7 @@
         <keywords>Superior effect profile_COMMON technique blinn</keywords>
         <modified>2007-05-23T22:57:55Z</modified>
         <subject>Test an image texture applied to the diffuse color of the Blinn technique</subject>
+        <title>0213</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

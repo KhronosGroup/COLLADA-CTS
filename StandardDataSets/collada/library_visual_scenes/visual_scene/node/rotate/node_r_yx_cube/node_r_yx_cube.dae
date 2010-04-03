@@ -15,6 +15,7 @@
         <keywords>Baseline node rotate</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
         <subject>Test rotate elements around the Y and X axis</subject>
+        <title>0532</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

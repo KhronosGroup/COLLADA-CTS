@@ -27,6 +27,7 @@ limitations under the License.</copyright>
         <keywords>Superior animation sampler input</keywords>
         <modified>2006-08-23T22:42:50Z</modified>
         <subject>Test an animation element and the STEP curve interpolation method</subject>
+        <title>0080</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

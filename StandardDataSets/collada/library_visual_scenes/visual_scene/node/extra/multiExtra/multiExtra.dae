@@ -13,6 +13,7 @@
     <keywords>Superior visual_scene node extra</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Verifies that the application will export the unknown extra elements of a node intact.</subject>
+        <title>0479</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

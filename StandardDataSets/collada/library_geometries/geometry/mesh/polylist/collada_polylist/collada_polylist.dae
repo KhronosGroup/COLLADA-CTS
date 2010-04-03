@@ -20,6 +20,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 		<keywords>Baseline geometry mesh polylist</keywords>
         <modified>2006-06-21T21:15:16Z</modified>
 		<subject>Test polylist</subject>
+        <title>0353</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>

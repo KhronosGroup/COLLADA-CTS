@@ -14,6 +14,7 @@
 		<modified>2010-03-09T17:10:25Z</modified>
 		<revision>1.4.1</revision>
 		<subject>Reference where geometry is baked to be equivalent to test case morph_on_skin</subject>
+        <title>0132</title>
 		<unit meter="0.01" name="centimeter"></unit>
 		<up_axis>Y_UP</up_axis>
 	</asset>

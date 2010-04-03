@@ -13,6 +13,7 @@
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Reference test of three cameras</subject>
+        <title>0030</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

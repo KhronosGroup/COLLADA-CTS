@@ -13,6 +13,7 @@
     <keywords>Baseline choice of libraries</keywords>
     <modified>2008-07-07T19:02:33Z</modified>
     <subject>Test multiple library_materials.  library_materials may be merged, but number of material elements must be preserved.</subject>
+        <title>0026</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>

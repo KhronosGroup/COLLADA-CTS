@@ -25,6 +25,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Baseline asset unit</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the unit of distance is in feet</subject>
+        <title>0003</title>
     <unit meter="0.3048" name="foot"/>
     <up_axis>Y_UP</up_axis>
   </asset>

@@ -14,6 +14,7 @@
     <keywords>Baseline asset up_axis</keywords>
     <modified>2008-09-25T00:49:41Z</modified>
     <subject>Test that the upward axis is set to positive Z</subject>
+        <title>0007</title>
     <unit meter="0.0254" name="inch"/>
     <up_axis>Z_UP</up_axis>
   </asset>

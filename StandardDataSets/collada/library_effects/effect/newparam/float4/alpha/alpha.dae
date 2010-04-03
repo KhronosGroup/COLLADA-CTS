@@ -12,6 +12,7 @@
         <keywords>Baseline effect newparam float4</keywords>
         <modified>2007-06-04T23:05:43Z</modified>
         <subject>Test a newparam of type float4, with its last value set to 0.5 (for the color's alpha value)</subject>
+        <title>0166</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
