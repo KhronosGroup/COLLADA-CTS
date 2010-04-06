@@ -12,5 +12,6 @@
     <keywords>Baseline asset modified</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
     <subject>Test that the modified element time output from the export is within 24 hours of the current time</subject>
+    <title>0708</title>                
   </asset>
 </COLLADA>
