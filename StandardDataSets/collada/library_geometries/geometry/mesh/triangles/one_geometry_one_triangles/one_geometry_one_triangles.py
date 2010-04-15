@@ -21,7 +21,7 @@ from StandardDataSets.scripts import JudgeAssistant
 # Please feed your node list here:
 tagLst = [['library_geometries', 'geometry', 'mesh', 'triangles'], ['library_geometries', 'geometry', 'mesh', 'polygons'], ['library_geometries', 'geometry', 'mesh', 'polylist']]
 attrName = 'count'
-attrVal = ''
+attrVal = '6'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -55,14 +55,17 @@ class SimpleJudgingObject:
         
         self.status_baseline = False
         
-        if (self.__assistant.ElementPreserved(context, self.tagList[0])):
-            if (self.__assistant.AttributePreserved(context, self.tagList[0], self.attrName)):
-                self.status_baseline = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[1])):
-            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName)):
-                self.status_baseline = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[2])):
-            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName)):
+        if (self.__assistant.ElementPreserved(context, self.tagList[0], False)):
+            context.Log("PASSED: Geometry preserved as " + self.tagList[0][len(self.tagList[0])-1] + ".")
+            if (self.__assistant.AttributeCheck(context, self.tagList[0], self.attrName, self.attrVal)):
+                self.status_baseline = True                
+        elif (self.__assistant.ElementPreserved(context, self.tagList[1], False)):
+            context.Log("PASSED: Geometry preserved as " + self.tagList[1][len(self.tagList[1])-1] + ".")
+            if (self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal)):
+                self.status_baseline = True                
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2], False)):
+            context.Log("PASSED: Geometry preserved as " + self.tagList[2][len(self.tagList[2])-1] + ".")
+            if (self.__assistant.AttributeCheck(context, self.tagList[2], self.attrName, self.attrVal)):
                 self.status_baseline = True
 
         return self.status_baseline

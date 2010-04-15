@@ -21,7 +21,7 @@ from StandardDataSets.scripts import JudgeAssistant
 # Please feed your node list here:
 tagLst = [['library_geometries', 'geometry', 'mesh', 'triangles'], ['library_geometries', 'geometry', 'mesh', 'polygons'], ['library_geometries', 'geometry', 'mesh', 'polylist']]
 attrName = 'count'
-attrVal = ''
+attrVal = '6'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -52,7 +52,7 @@ class SimpleJudgingObject:
         # Check for preservation of element
         self.__assistant.ElementTransformed(context, self.tagList)
         
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -69,14 +69,16 @@ class SimpleJudgingObject:
             return self.status_exemplary
         
         self.status_exemplary = False
-        
-        if (self.__assistant.ElementPreserved(context, self.tagList[1])):
-            if (self.__assistant.AttributePreserved(context, self.tagList[1], self.attrName)):
-                self.status_exemplary = True
-        elif (self.__assistant.ElementPreserved(context, self.tagList[2])):
-            if (self.__assistant.AttributePreserved(context, self.tagList[2], self.attrName)):
-                self.status_exemplary = True
 
+        if (self.__assistant.ElementPreserved(context, self.tagList[1], False)):
+            context.Log("PASSED: Geometry preserved as " + self.tagList[1][len(self.tagList[1])-1] + ".")
+            if (self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal)):
+                self.status_exemplary = True                
+        elif (self.__assistant.ElementPreserved(context, self.tagList[2], False)):
+            context.Log("PASSED: Geometry preserved as " + self.tagList[2][len(self.tagList[2])-1] + ".")
+            if (self.__assistant.AttributeCheck(context, self.tagList[2], self.attrName, self.attrVal)):
+                self.status_exemplary = True
+                
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
