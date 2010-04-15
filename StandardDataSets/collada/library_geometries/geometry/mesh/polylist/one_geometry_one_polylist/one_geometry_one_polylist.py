@@ -78,7 +78,9 @@ class SimpleJudgingObject:
             context.Log("PASSED: Geometry preserved as " + self.tagList[2][len(self.tagList[2])-1] + ".")
             if (self.__assistant.AttributeCheck(context, self.tagList[2], self.attrName, self.attrVal)):
                 self.status_exemplary = True
-                
+        else:
+            context.Log("FAILED: Geometry is not preserved as " + self.tagList[1][len(self.tagList[1])-1] + " or " + self.tagList[2][len(self.tagList[2])-1] + ".")
+        
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
