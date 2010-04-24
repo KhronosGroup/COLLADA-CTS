@@ -20,16 +20,33 @@ from StandardDataSets.scripts import JudgeAssistant
 originalLocation =['library_effects', 'effect', 'profile_COMMON', 'newparam', 'float4']
 bakedLocation = ['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert', 'transparent', 'color']
 newparamLocations = [['library_effects', 'effect', 'newparam', 'float4'], ['library_effects', 'effect', 'profile_COMMON', 'newparam', 'float4']]
+tagLst = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert', 'transparent', 'color'], ['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert', 'transparency', 'float']]
+dataToCheck = ['1 1 1 1', '0.5']
 
 class SimpleJudgingObject:
-    def __init__(self, _originalLocation, _bakedLocation, _newparamLocations):
+    def __init__(self, _originalLocation, _bakedLocation, _newparamLocations, _tagLst, _dataToCheck):
         self.originalLocation = _originalLocation
         self.bakedLocation = _bakedLocation
         self.newparamLocations = _newparamLocations
+        self.tagList = _tagLst
+        self.dataToCheck = dataToCheck
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
+        
+    def checkTransparent(self, context):
+        if ( self.__assistant.NewparamCheck(context, self.originalLocation, self.bakedLocation, self.newparamLocations, False) ):
+            context.Log("PASSED: Transparent value is baked or preserved in a newparam.")
+            return True
+        else:
+            if ( self.__assistant.ElementDataCheck(context, self.tagList[0], self.dataToCheck[0], "float", False) and 
+                 self.__assistant.ElementDataCheck(context, self.tagList[1], self.dataToCheck[1], "float", False) ):
+                context.Log("PASSED: Transparent alpha value is preserved in transparency element.")
+                return True
+        
+        context.Log("FAILED: Transparent value is not preserved.")
+        return False
         
     def JudgeBaseline(self, context):
         # No step should not crash
@@ -47,7 +64,8 @@ class SimpleJudgingObject:
         # Last, check for preservation of element data
         if ( self.__assistant.CompareRenderedImages(context) ):
             if ( self.__assistant.CompareImagesAgainst(context, "effect_lambert_transparent_default") ):
-                self.__assistant.NewparamCheck(context, originalLocation, bakedLocation, newparamLocations)
+                self.status_baseline = self.checkTransparent(context)
+                return self.status_baseline
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
@@ -67,4 +85,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(originalLocation, bakedLocation, newparamLocations);
+judgingObject = SimpleJudgingObject(originalLocation, bakedLocation, newparamLocations, tagLst, dataToCheck);

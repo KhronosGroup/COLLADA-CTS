@@ -18,13 +18,15 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparent', 'color'], ['library_effects', 'effect', 'profile_COMMON', 'newparam', 'float4'], ['library_effects', 'effect', 'newparam', 'float4']]
+tagLst2 = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparent', 'color'], ['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparency', 'float']]
 attrName = ''
 attrVal = ''
-dataToCheck = ''
+dataToCheck = ['1 1 1 1', '0.5']
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrName, _attrVal, _data):
+    def __init__(self, _tagLst, _attrName, _attrVal, _data, _tagLst2):
         self.tagList = _tagLst
+        self.tagList2 = _tagLst2
         self.attrName = _attrName
         self.attrVal = _attrVal
         self.dataToCheck = _data
@@ -32,6 +34,19 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
+
+    def checkTransparent(self, context):
+        if ( self.__assistant.ElementDataPreservedIn(context, self.tagList, "float", False) ):
+            context.Log("PASSED: Transparent value is preserved.")
+            return True
+        else:
+            if ( self.__assistant.ElementDataCheck(context, self.tagList2[0], self.dataToCheck[0], "float", False) and 
+                 self.__assistant.ElementDataCheck(context, self.tagList2[1], self.dataToCheck[1], "float", False) ):
+                context.Log("PASSED: Transparent alpha value is preserved in transparency element.")
+                return True
+        
+        context.Log("FAILED: Transparent value is not preserved.")
+        return False
         
     def JudgeBaseline(self, context):
         # No step should not crash
@@ -58,7 +73,8 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             if ( self.__assistant.CompareImagesAgainst(context, "_ref_blinn_transparent_aone_black", None, None, 5, True, True) ):
                 if ( self.__assistant.CompareImagesAgainst(context, "_ref_blinn_transparent_aone_alpha0", None, None, 5, True, False) ):
-                    self.__assistant.ElementDataPreservedIn(context, self.tagList, "float")
+                    self.status_baseline = self.checkTransparent(context)
+                    return self.status_baseline
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
@@ -72,4 +88,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck, tagLst2);
