@@ -37,7 +37,7 @@ class FImageRenderer(FTextRenderer):
         self.__showPrevious = showPrevious
         
         self.__diffCommand = ""
-        self.__animateAll = True
+        self.__animateAll = False
         
         self.__renderedAreas = {} # {(row, col) : [FImageRenderArea]}
         self.__animations = {} # {(row, col, id) : ""}

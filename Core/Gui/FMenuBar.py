@@ -52,6 +52,9 @@ class FMenuBar(wx.MenuBar):
         
         self.Bind(FMenuBar.ID_ANIMATE, self.__OnAnimate)
         
+        # Set Animate Selected Only to true at start up
+        self.Check(FMenuBar.ID_ANIMATE, True)
+        
         self.__DisableAll()
     
     def __OnAnimate(self, e):

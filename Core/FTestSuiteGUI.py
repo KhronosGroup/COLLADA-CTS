@@ -226,7 +226,7 @@ class RunTable(FSFrame, wx.MDIChildFrame):
         self.__csvExporter = FCsvExporter()
         self.__htmlExporter = FHtmlExporter()
         
-        self.__animateAll = True
+        self.__animateAll = False
         
         self.__grid = self.__CreateGrid()
         self.__grid.SortColumn(0, True)
