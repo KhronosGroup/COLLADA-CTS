@@ -56,8 +56,8 @@ class FXComposer (FApplication):
         (__RENDER_STILL_END, "", "0.0"), 
         (__RENDER_STILL_FRAMES, "", "1"), 
         
-        (__RENDER_WIDTH, "", "300"), 
-        (__RENDER_HEIGHT, "", "300"), 
+        (__RENDER_WIDTH, "", "512"), 
+        (__RENDER_HEIGHT, "", "512"), 
         (__RENDER_OUTPUT_FORMAT, "", "png")]
     
     

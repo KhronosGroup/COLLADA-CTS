@@ -37,7 +37,7 @@ class FMax (FApplication):
             (__RENDER_STILL_START, "fromframe", "1"),
             (__RENDER_STILL_END, "toframe", "1"),
             (__RENDER_STILL_STEP, "nthframe", "1"),
-            ("Output Size", "outputSize", "[300,300]"),
+            ("Output Size", "outputSize", "[512,512]"),
             (__RENDER_FILE_TYPE, "", "png"),
             ("Renderer", "renderer", "#production"),
             ("Progress Bar", "progressbar", "false"),

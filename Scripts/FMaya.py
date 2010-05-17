@@ -63,8 +63,8 @@ class FMaya (FApplication):
     __RENDER_OPTIONS = [
             ("Camera", "-cam", "\"|testCamera\""),
             ("Renderer", "-r", "ctfHw"),
-            (__RENDER_WIDTH, "-x", "300"),
-            (__RENDER_HEIGHT, "-y", "300"),
+            (__RENDER_WIDTH, "-x", "512"),
+            (__RENDER_HEIGHT, "-y", "512"),
             (__RENDER_ARD, "-ard", "1.0"),
             (__RENDER_ANIMATION_START, "-s", "1"),
             (__RENDER_ANIMATION_END, "-e", "45"),

@@ -75,8 +75,8 @@ class FMaya_UIRender (FApplication):
     
     __RENDER_OPTIONS = [
             (__RENDER_CAMERA, "- NOT USED -", "|testCamera"),
-            (__RENDER_WIDTH, "- NOT USED -", "300"),
-            (__RENDER_HEIGHT, "- NOT USED -", "300"),
+            (__RENDER_WIDTH, "- NOT USED -", "512"),
+            (__RENDER_HEIGHT, "- NOT USED -", "512"),
             (__RENDER_ANIMATION_START, "setAttr defaultRenderGlobals.startFrame ", "1"),
             (__RENDER_ANIMATION_END, "setAttr defaultRenderGlobals.endFrame ", "45"),
             (__RENDER_ANIMATION_STEP, "setAttr defaultRenderGlobals.byFrameStep ", "3"),
