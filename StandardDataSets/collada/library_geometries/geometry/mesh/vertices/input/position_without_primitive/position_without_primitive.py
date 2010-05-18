@@ -38,7 +38,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
 
         if (self.__assistant.GetResults() == False): 
             self.status_baseline = False

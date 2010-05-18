@@ -156,7 +156,9 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           <translate>-50 0 0</translate>
           <instance_node url="#cube_node"/>
         </node>
-        <instance_node url="#directionalLight1"/>
+        <node id="light">
+          <instance_node url="#directionalLight1"/>
+        </node>
       </node>
     </visual_scene>
   </library_visual_scenes>
