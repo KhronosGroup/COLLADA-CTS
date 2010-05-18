@@ -264,9 +264,6 @@ class JudgeAssistant:
         if (len(imageFilenames) == 0):
             self.__compareRendersResults = False
             msg = "FAILED: Unable to retrieve image locations."
-        elif (len(imageFilenames) == 1):
-            self.__compareRendersResults = False
-            msg = "FAILED: Unable to retrieve both image locations."
         else:
             inputImages = imageFilenames[0]
             outputImages = imageFilenames[1]
@@ -682,7 +679,7 @@ class JudgeAssistant:
     # Check for the preservation of element data in the tagListArray[] paths
     # The first tagListArray[0] should contain the original tag, while the ones after
     # contain the possible tag locations the dat can be in
-    def ElementDataPreservedIn(self, context, tagListArray, dataType="float"):
+    def ElementDataPreservedIn(self, context, tagListArray, dataType="float", defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -732,13 +729,16 @@ class JudgeAssistant:
         inputTagList = tagListArray[0]
         
         if (foundMatch):
-            context.Log("PASSED: <"+ inputTagList[len(inputTagList)-1] +"> data is preserved.")
+            logMsg = "PASSED: <"+ inputTagList[len(inputTagList)-1] +"> data is preserved."
             self.__preservationResults = True
         else:
-            context.Log("FAILED: <"+ inputTagList[len(inputTagList)-1] +"> data is not preserved.")
+            logMsg = "FAILED: <"+ inputTagList[len(inputTagList)-1] +"> data is not preserved."
             self.__preservationResults = False
             self.__result = False
-                
+
+        if (defaultLogText):
+            context.Log(logMsg)
+            
         testIO.Delink()
         return self.__preservationResults
         
@@ -884,7 +884,7 @@ class JudgeAssistant:
     #   or preserved in <effect><newparam> and <effect><profile_COMMON><newparam>
     # Only works for newparam/param pair of type float, float2, float3, float4
     # Will also work for inverse baking (moving baked value into newparam/param)
-    def NewparamCheck(self, context, originalLocation, bakedLocation, newparamLocations):
+    def NewparamCheck(self, context, originalLocation, bakedLocation, newparamLocations, defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -969,16 +969,19 @@ class JudgeAssistant:
                          break
         
         if (baked):
-            context.Log("PASSED: "+ originalLocation[len(originalLocation)-1] +" data is baked into the referencing element.")
+            logMsg = "PASSED: "+ originalLocation[len(originalLocation)-1] +" data is baked into the referencing element."
             self.__preservationResults = True
         elif (foundInNewparam and foundParam):
-            context.Log("PASSED: "+ originalLocation[len(originalLocation)-1] +" data is found in newparam/param.")
+            logMsg = "PASSED: "+ originalLocation[len(originalLocation)-1] +" data is found in newparam/param."
             self.__preservationResults = True
         else:
-            context.Log("FAILED: "+ originalLocation[len(originalLocation)-1] +" data is not baked or found in newparam/param.")
+            logMsg = "FAILED: "+ originalLocation[len(originalLocation)-1] +" data is not baked or found in newparam/param."
             self.__preservationResults = False
             self.__result = False
-                
+
+        if (defaultLogText):
+            context.Log(logMsg)
+            
         testIO.Delink()
         return self.__preservationResults
         
