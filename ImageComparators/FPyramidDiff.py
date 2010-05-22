@@ -124,7 +124,7 @@ class FPyramidDiff (FImageComparator):
                     bestValue = curBestValue
                     highValue = curHighValue
                     lowValue = curLowValue
-            return ("Failed (best result: [" + str(lowValue).zfill(4) + "-" + 
+            return ("Warning (best result: [" + str(lowValue).zfill(4) + "-" + 
                     str(highValue).zfill(4) + "]{" + str(bestValue) + "})")
         
         # message for image
@@ -135,7 +135,7 @@ class FPyramidDiff (FImageComparator):
         
         for result in compareResultList:
             bestValue = min(bestValue, result.GetExtra())
-        return "Failed (best image result: " + str(bestValue).zfill(4) + ")"
+        return "Warning (best image result: " + str(bestValue).zfill(4) + ")"
     
     def __GetTotalValue(self, resultList):
         curResult = 0

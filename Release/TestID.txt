@@ -1,0 +1,12 @@
+Each test case requires a unique ID. When adding a new test to the suite, the test ID must be incremented by one. The test ID is maintained in the COLLADA file's document level <title> element. 
+
+
+A test case ID is assigned manually as follows:
+
+(1) Read the current test ID listed below in this document
+(2) Increment the current test ID by one in this document
+(3) Add the test ID to the COLLADA test file's document level <title> element
+
+
+
+CURRENT TEST ID: 0701

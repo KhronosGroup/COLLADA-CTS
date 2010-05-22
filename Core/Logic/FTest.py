@@ -759,7 +759,8 @@ class FTest(FSerializable, FSerializer):
                                 message = FGlobals.imageComparator.GetMessage(compareResults)
                                 if (blessed == ""):
                                     result.AppendOutput(FResult.FAILED_IMAGE, message)
-                                    passed = False
+#                                    passed = False  # do not want grid to be red when image is not equal to blessed image
+                                    passed = True
                                 else:
                                     result.AppendOutput(FResult.PASSED_IMAGE, message)
                         else:
@@ -773,7 +774,8 @@ class FTest(FSerializable, FSerializer):
                             message = FGlobals.imageComparator.GetMessage(compareResults)
                             if (blessed == ""):
                                 result.AppendOutput(FResult.FAILED_ANIMATION, message)
-                                passed = False  
+#                                passed = False  # do not want grid to be red when image is not equal to blessed image
+                                passed = True
                             else:
                                 result.AppendOutput(FResult.PASSED_ANIMATION, message)
             else: # validation
