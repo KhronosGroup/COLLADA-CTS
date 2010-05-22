@@ -440,7 +440,37 @@ class JudgeAssistant:
         testIO.Delink()
         return self.__preservationResults
 
+    # Checks an element and all children with the same element name for the existence of id=attributeValue.
+    # Starting location to search is specified by the tagList
+    # Element name to search in is tagList[len(tagList)-1]
+    def CheckIDinParentAndChildren(self, context, tagList, attributeValue):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
 
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # check for tag found in output file
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+
+        for eachElement in elementList:
+            if (GetElementByID(eachElement, attributeValue) != None):
+                context.Log("PASSED: <"+ tagList[len(tagList)-1] +"> id is preserved.")
+                self.__preservationResults = True
+                break
+
+        if (self.__preservationResults != True):
+            context.Log("FAILED: <"+ tagList[len(tagList)-1] +"> id is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+        
+        testIO.Delink()
+        return self.__preservationResults
+        
     # Compares an element's attribute value between the input and output file with a known attributeName
     def AttributePreserved(self, context, tagList, attributeName):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
