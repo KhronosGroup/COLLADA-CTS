@@ -18,8 +18,8 @@ from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
 tagLst = ['library_animations', 'animation', 'animation']
-attrName = 'id'
-attrVal = ''
+attrName = ''
+attrVal = 'prop_translate'
 dataToCheck = ''
 
 class SimpleJudgingObject:
@@ -66,7 +66,8 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
 
-        self.__assistant.AttributePreserved(context, self.tagList, self.attrName)            
+        # Check for preservation of id in animation and child animatiion elements
+        self.__assistant.CheckIDinParentAndChildren(context, self.tagList, self.attrVal)      
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary

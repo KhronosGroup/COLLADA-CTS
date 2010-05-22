@@ -70,9 +70,9 @@
                
                 <technique sid="common">
                     <lambert>
-                        <emission>
+                        <diffuse>
                           <texture texture="file1-sampler" texcoord="TEX0"/>                            
-                        </emission>
+                        </diffuse>
                     </lambert>
                 </technique>
             </profile_COMMON>

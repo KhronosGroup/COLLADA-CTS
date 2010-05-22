@@ -71,7 +71,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <geometry id="pyramid-mesh" name="pyramid">
       <mesh>
         <source id="pyramid-mesh-positions">
-          <float_array id="pyramid-mesh-positions-array" count="15">-50 0 75 0 -50 75 50 0 75 0 50 75 0 0 -125</float_array>
+          <float_array id="pyramid-mesh-positions-array" count="15">-75 0 -50 -75 -50 0 -75 0 50 -75 50 0 125 0 0</float_array>
           <technique_common>
             <accessor source="#pyramid-mesh-positions-array" count="5" stride="3">
               <param name="X" type="float"/>
@@ -93,7 +93,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node" name="cube_node">
-                <rotate sid="rotateY">0 1 0 -90</rotate>
                 <instance_geometry url="#pyramid-mesh">
                     <bind_material>
                         <technique_common>

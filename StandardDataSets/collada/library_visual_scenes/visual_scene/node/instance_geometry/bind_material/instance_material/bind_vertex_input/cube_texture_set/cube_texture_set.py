@@ -45,9 +45,9 @@ class SimpleJudgingObject:
             return False
 
         # Compare the rendered images
-        # Then compare images against reference test for non-equivalence
+        # Then compare images against cube_texture_coord for equivalence
         if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "_reference_cube_collada", None, None, 5, True, True)
+            self.__assistant.CompareImagesAgainst(context, "cube_texture_coord", None, None, 5, True, True)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline

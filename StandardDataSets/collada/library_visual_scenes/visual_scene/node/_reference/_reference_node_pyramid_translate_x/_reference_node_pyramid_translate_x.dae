@@ -21,8 +21,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         <created>2007-05-22T23:31:57Z</created>
         <keywords>Baseline node lookat</keywords>
         <modified>2007-05-22T23:31:57Z</modified>
-        <subject>Test the lookat element of a node to position and orient a geometry (50 0 0 0 0 -1000 0 1 0)</subject>
-        <title>0508</title>
+        <subject>Reference test of a pyramid pointed in the negative z direction</subject>
+        <title>0701</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -93,7 +93,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
     <library_visual_scenes>
         <visual_scene id="VisualSceneNode" name="untitled">
             <node id="cube_node" name="cube_node">
-                <lookat sid="lookat">50 0 0 50 0 -1000 0 1 0</lookat>
+                <translate>50 0 0</translate>
                 <instance_geometry url="#pyramid-mesh">
                     <bind_material>
                         <technique_common>

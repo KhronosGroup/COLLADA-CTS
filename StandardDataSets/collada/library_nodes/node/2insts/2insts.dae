@@ -172,7 +172,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
           <translate>-50 0 0</translate>
           <instance_node url="#cube"/>
         </node>
-        <node id="cube_n">
+        <node id="triangle_n">
           <translate>50 0 0</translate>
           <instance_node url="#triangle"/>
         </node>

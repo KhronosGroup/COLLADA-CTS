@@ -70,21 +70,9 @@
                
                 <technique sid="common">
                     <lambert>
-                        <emission>
-                          <texture texture="file1-sampler" texcoord="TEX0"/>                            
-                        </emission>
-                        <ambient>
-                            <color>0 0 0 1</color>
-                        </ambient>
                         <diffuse>
-                          <color>0 0 0 1</color>
+                          <texture texture="file1-sampler" texcoord="TEX0"/>                            
                         </diffuse>
-                        <transparent opaque="RGB_ZERO">
-                          <color>0 0 0 1</color>
-                        </transparent>
-                        <transparency>
-                            <float>1.0</float>
-                        </transparency>
                     </lambert>
                 </technique>
             </profile_COMMON>

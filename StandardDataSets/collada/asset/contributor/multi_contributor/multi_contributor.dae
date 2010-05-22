@@ -10,7 +10,6 @@
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
-      <source_data>file:///C:models/test</source_data>
     </contributor>
     <contributor>
       <author>Some Author</author>
@@ -19,7 +18,6 @@
       <copyright>
       # This is the copyright
       </copyright>
-      <source_data>file:///C:models2/test2</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline asset contributor</keywords>
