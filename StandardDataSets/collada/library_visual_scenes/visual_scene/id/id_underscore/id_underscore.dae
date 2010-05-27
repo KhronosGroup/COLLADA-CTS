@@ -14,6 +14,7 @@
     <keywords>Baseline visual_scene</keywords>
     <modified>2008-06-12T12:30:18Z</modified>
     <subject>Test the use and preservation of a underscore in the id of a visual_scene element</subject>
+    <title>0704</title>
   </asset>
   <library_visual_scenes>
     <visual_scene id="This_is_a_test_id">
