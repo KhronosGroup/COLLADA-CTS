@@ -1,4 +1,4 @@
-# Copyright (C) 2006 Khronos Group
+# Copyright (C) 2006-2010 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
@@ -8,7 +8,6 @@ RENDER = "Render"
 VALIDATE = "Validate"
 OPERATIONS = [IMPORT, EXPORT, RENDER, VALIDATE]
 OPS_NEEDING_APP = [IMPORT, VALIDATE]
-#SCHEMA_LOCATION = "COLLADASchema_141_review_20060327.xsd"
 SCHEMA_LOCATION = "COLLADASchema.xsd"
 SCHEMA_NAMESPACE = "http://www.collada.org/2005/11/COLLADASchema"
 ABSTRACT_APPLICATION = "FApplication.py"
@@ -48,5 +47,5 @@ CONFIGURATION_FILE = "../config.txt"
 DOCUMENTATION = "../Documentation/README.doc"
 FILEWATCHER = "FileWatcher.exe"
 KILLER = "ProcessKiller.exe"
-VERSION = 1.3
+VERSION = 1.0.0
 PACKAGE_RESULTS_DIR = "../PackagedResults"

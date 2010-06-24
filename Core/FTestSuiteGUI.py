@@ -1,4 +1,4 @@
-# Copyright (C) 2006 Khronos Group
+# Copyright (C) 2006-2010 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
@@ -190,10 +190,10 @@ class FSFrame(FTestSuite):
         os.startfile("\"" + DOCUMENTATION  + "\"")
     
     def __OnAbout(self, e):
-        message = ("Conformance Testing Framework v" + str(VERSION) +"\n\n" +
-                   "Copyright (C) 2006-2007 Khronos Group\n" +
+        message = ("COLLADA Conformance Test Suite v" + str(VERSION) +"\n\n" +
+                   "Copyright (C) 2006-2010 Khronos Group\n" +
                    "Available only to Khronos members.\n")
-        wx.MessageDialog(self, message, "About Conformance Testing Framework", 
+        wx.MessageDialog(self, message, "About COLLADA Conformance Test Suite", 
                          style = wx.OK).ShowModal()
 
 class RunTable(FSFrame, wx.MDIChildFrame):
