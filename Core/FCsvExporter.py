@@ -199,6 +199,7 @@ class FCsvExporter:
     def __AddTest(self, file, checksumFile, testProcedure, test, 
                   showBlessed, showPrevious, width, height):
 
+	print "ID: %s" % (test.GetCOLLADAId())
         file.write(test.GetCOLLADAId() + ",")
         file.write(test.GetCOLLADAKeyword() + ",")
         file.write(test.GetCOLLADASubject() + ",")
