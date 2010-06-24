@@ -1,86 +1,18 @@
-CTF_v1.3 (July 28, 2006):
-    - fixed some incorrect absolute texture paths to relative paths in the data
-      sets
-    - added the spline_NURBS_text data set and removed the obsolete spline
-      data sets
-    - added a Catapult data set
-    - added skin_position_animation data set
-    - added FXComposer data sets
-    - added common_rigid_body data set
-    - added moving_concave data set
-    - added the collada version of the ragdoll scene and removed the maya 
-      version
-    - updated the convex_nonconvex data set
-    - updated all data sets to use convex_mesh when appropriate
-    - updated near/far planes in simple_002_Spotlight_Dropoff_03 to show 
-      something in the scene
-    - fixed empty bindings in some FX files
-    - added missing testCamera from some data sets
-    - added remaining missing blessed images
-    - corrected all the data sets that do not validate
-    - updated to official COLLADA 1.4.1 schema, with the import tag deleted
-
-    - implemented a crude way of allowing multiple data set directories. This 
-      can be done by using the list DATA_SET_DIRS in Core/Common/FConstants.py
-    - added a fix to file silently when trying to copy a file during export to
-      HTML to a path that is too long
-    - updated the default settings for the viewer to use testCamera and
-      transparent background
-
-CTF_v1.2 (July 2, 2006):
-    - added the remaining data sets as defined by Collada testing framework
-      proposal
-    - added LondonHouse data set donated by SCEA
-    - added using a regular expression to store the test scenes that has been 
-      deleted so that the CTF does not detect those as new test scenes each 
-      time a test procedure is loaded; the GUI has been updated so it can edit
-      this new regular expression as well
-    - added GetOperationsList in the Fapplication which can be overriden if
-      an application specific script does not implement all operations (e.g
-      Feeling Viewer)
-    - added a check to see if there is a file where the config.txt says a DCC
-      is located before attempting to run
-    - added a confirmation before deleting a regular expression
-    - added a viewer for blessed images/animations which includes a means to
-      unbless them (note: the CTF does not have permission to delete some svn
-      files, so the user might have to delete the directory if it is under svn)
-    - added exporting the initial data set which exporting to HTML
+CTS_v0.9.3
+   -fixed ImageComparator handling of transparency
+   
+CTS_v0.9.2
+   -Updated test framework so that not passing a blessed image comparison does not fail the test.  Changed the log message from FAILED to WARNING if a test does not pass the blessed image comparison.
+   -library_geometries\geometry\mesh\triangles\one_geometry_one_triangles: Updated judging script to allow transformation between triangles and polygons/polylist on export.
+   -library_visual_scenes\visual_scene\node\id\id_dash, id_period, id_underscore: Updated judging script to check node and child nodes for preservation of id. Previously only checked the node specified by the tag list.
+   -library_visual_scenes\visual_scene\node\instance_geometry\bind_material\instance_material\bind_vertex_input\cube_texture_set: Updated judging script to compare image against correct reference test.
+   -library_visual_scenes\visual_scene\node\lookat\node_lookat: Updated judging script to compare image against correct reference test.
+   -xml\id\id_with_dash, id_with_period, id_with_underscore: Added missing judging script to subversion repository.     - fixed some tests
+   
+CTS_v0.9.1  
+    - added templates to Documentation directory
+    - updated Documentation/SubmittingResults.doc for latest procedure
     
-    - fixed test procedures being corrupted after some operation stopped the
-      CTF from completing its run (e.g. killing the CTF process)
-    - fixed crash when attempting to use blank values for settings or values
-      that don't cast properly (e.g. not a number for start frame); 
-      these values now default to the value given when ::new:: is selected
-    - fixed crash due to recursion with over 1000 data sets in a directory
-    - fixed possible problems with regular expressions when "special" 
-      characters are in the file paths (e.g. "^", "$", ".", etc have special 
-      meanings for regular expressions)
-    - fixed crashes with really long regular expressions (e.g. greater than
-      100,000 characters) by now limiting regular expressions to be no more
-      than 30,000 characters but there can be more than one regular expression
-      per unique serious of settings; updated the GUI to be able to edit all
-      of them and are known as "pages" of a regular expresions
-    - fixed crash when attempting to validate Feeling Viewer export data,
-      which is nothing
-    - fixed a crash with select multiple tests and then show previous
-    - fixed outdated comments in FUtils about the GetRelativePath function
-    - fixed some typos and updated some message dialogs to be more explanatory
-
-CTF_v1.1b (June 15, 2006):
-    - added many data sets
-    - added support for exporting to csv donated by Paul McCluskey of SCEA
-      along with some cleanup
-    - added check to see if feeling viewer CLI exists before trying to run it
-    - added a .NET program that can kill a process by name which is used to 
-      kill Max and Windows error reporting windows: GUI and command line
+CTS_v0.9.0 (January 10, 2010)
+    - initial release
     
-    - fixed several test cases that did not have testCamera in the scene, or
-      had bad data
-    - fixed a few blessed images that didn't deserve to be blessed
-    - fixed a possible crash because a command that didn't have "\\" as path 
-      delimiter
-    - fixed minor crash when select "Diff Image" with a non-image file (e.g. 
-      maya file)
-
-CTF_v1.0b (May 31, 2006):
-    - initial version
