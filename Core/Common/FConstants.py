@@ -47,5 +47,5 @@ CONFIGURATION_FILE = "../config.txt"
 DOCUMENTATION = "../Documentation/README.doc"
 FILEWATCHER = "FileWatcher.exe"
 KILLER = "ProcessKiller.exe"
-VERSION = "1.0.0"
+VERSION = 1.0
 PACKAGE_RESULTS_DIR = "../PackagedResults"
