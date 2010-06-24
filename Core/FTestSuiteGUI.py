@@ -48,7 +48,9 @@ def makeArchive(fileList, archive):
 		     tlen = len(t)
 #		     print "flen: %s  tlen: %s  pos: %s" % (flen, tlen, pos)
 		     if (pos == (flen - tlen)):
-		         found = True
+		         pos = f.find("blessed")
+		         if (pos < 0):
+		             found = True
              if (found):
 #  	         print "archiving file %s" % (f)
 	         a.write(f)
