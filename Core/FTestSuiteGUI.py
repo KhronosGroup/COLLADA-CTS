@@ -187,7 +187,7 @@ class FSFrame(FTestSuite):
         
     def __OnHelp(self, e):
         # XXX: this is windows only
-        os.startfile("\"" + DOCUMENTATION  + "\"")
+        os.startfile(DOCUMENTATION)
     
     def __OnAbout(self, e):
         message = ("COLLADA Conformance Test Suite v" + str(VERSION) +"\n\n" +
