@@ -45,9 +45,7 @@ class SimpleJudgingObject:
             return False
             
         # Compare the rendered images between import and export
-        # Then compare images against reference test to check for non-equivalence
-        if ( self.__assistant.CompareRenderedImages(context) ):
-            self.__assistant.CompareImagesAgainst(context, "reference_texcoord_use_set")
+        self.__assistant.CompareRenderedImages(context)
         
         self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
