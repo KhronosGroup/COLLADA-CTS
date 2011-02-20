@@ -41,6 +41,12 @@ class FTestSuite(FSerializer):
                 level = badge.strip().title()
                 if (len(level) > 0):
                     FGlobals.badgeLevels.append(level)
+
+        # Further parse the adopter package status
+        FGlobals.adoptersPackage = False
+        if configDict.has_key("adoptersPackage"):
+            FGlobals.adoptersPackage = configDict["adoptersPackage"]
+            print "IsAdopters %s" % (FGlobals.adoptersPackage)
         
         # import the application specific scripts
         self.applicationMap = {}

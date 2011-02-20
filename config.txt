@@ -5,6 +5,8 @@ maxPath				C:\Program Files\Autodesk\3dsMax8\3dsmax.exe
 maxColladaExporterFilename	C:\Program Files\Autodesk\3dsMax8\plugcfg\ColladaMax.ini
 xsiPath				C:\Softimage\Softimage_7.5\Application\bin\XSIBATCH.bat
 FXComposerPath			C:\Program Files\NVIDIA Corporation\FX Composer 2\FXComposer2.exe
+mimicPath			..\Documentation\HowToAddSoftware\TestIntegration\mimic.bat
+mimicRenderPath			..\Documentation\HowToAddSoftware\TestIntegration\mimic_render.bat
 pythonExecutable		C:\Python24\python.exe
 ioTimeoutMilli			60000
 detectCrash			True
@@ -13,3 +15,4 @@ pyramidDiffPath			..\PyramidDiff\Output\PyramidDiff.exe
 coherencyPath			..\Core\CoherencyTest\coherencytest.exe
 schemaValidatePath		..\Core\SchemaValidate.exe
 badgeLevels			Baseline, Superior, Exemplary, Fx, Physics
+adoptersPackage			True

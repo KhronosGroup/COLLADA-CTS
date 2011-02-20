@@ -1,3 +1,10 @@
+CTS_V1.0.1
+   Added Implementors Package
+   Updated Install documentation to include Admin mode requirement
+   
+CTS_V1.0.0
+   Initial Public release
+   
 CTS_v0.9.3
    -fixed ImageComparator handling of transparency
    

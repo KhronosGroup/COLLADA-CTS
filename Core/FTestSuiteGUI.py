@@ -10,6 +10,8 @@ import zipfile
 import glob, os
 import shutil
 
+import Core.Common.FGlobals as FGlobals
+
 import Core.Common.FUtils as FUtils
 from Core.Common.FConstants import *
 from Core.Gui.Dialog.FAppSettingsDialog import *
@@ -36,7 +38,13 @@ def makeArchive(fileList, archive):
      'archive' is the file name for the archive with a full path
      """
      try:
-     	 typeList = [".png", ".dae", ".html", ".csv", ".sha", ".log", ".py", ".txt"]
+         print "making archive: %s   adopters: %s " % (archive, FGlobals.adoptersPackage)
+     	 if (FGlobals.adoptersPackage == 'True'):     	 
+    	    typeList = [".png", ".dae", ".html", ".csv", ".sha", ".log", ".py", ".txt"]
+     	 else:
+            typeList = [".html", ".csv", ".sha", ".txt", ".py"]
+     	 	
+     	 print "TypeList: %s" % (typeList)
          a = zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED)
          for f in fileList:
              found = False
@@ -52,12 +60,14 @@ def makeArchive(fileList, archive):
 		         if (pos < 0):
 		             found = True
              if (found):
-#  	         print "archiving file %s" % (f)
+  	         print "archiving file %s" % (f)
 	         a.write(f)
 	     else:
-	     	 print "shipping file %s" % (f)
+	     	 print "skipping file %s" % (f)
 
          a.close()
+         
+         print "Done making archive"
          return True
      except: return False
 
