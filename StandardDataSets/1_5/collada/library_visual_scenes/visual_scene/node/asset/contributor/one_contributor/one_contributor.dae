@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author> Wei Guo </author>
+    </contributor>
+    <contributor>
+    <author>gcorson</author>
+      <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Exemplary node asset</keywords>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test the preservation of the contributor element in the asset of a node</subject>
+        <title>0471</title>
+    <unit meter="0.01" name="centimeter"/>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>      
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+          </lambert>          
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Cone01-mesh" name="Cone01">
+      <mesh>
+        <source id="Cone01-mesh-positions">
+          <float_array count="15" id="Cone01-mesh-positions-array">-50 -75 0 0 -75 50 50 -75 0 0 -75 -50 0 150 0</float_array>
+          <technique_common>
+            <accessor count="5" source="#Cone01-mesh-positions-array" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone01-mesh-vertices">
+          <input semantic="POSITION" source="#Cone01-mesh-positions"/>
+        </vertices>
+        <triangles count="6" material="initialShadingGroup">
+          <input offset="0" semantic="VERTEX" source="#Cone01-mesh-vertices"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="CTF_template">
+      <node id="cube1" name="cube1" type="NODE">
+	<asset>
+	    <contributor>
+		<author>Bugs Bunny</author>
+		<authoring_tool>HandWritten</authoring_tool>
+		<comments>What up doc</comments>
+		<copyright>
+		# Copyright date
+		# Other info go here
+		</copyright>
+		<source_data>Source data go here</source_data>
+	    </contributor>
+	    <created>2007-05-07T19:42:16Z</created>
+	    <modified>2007-05-07T19:42:16Z</modified>
+	</asset>
+        <translate>50 -20 -100</translate>
+        <instance_geometry url="#Cone01-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera">
+	<translate sid="translate">0 0 400</translate>
+	<rotate sid="rotateZ">0 0 1 0</rotate>
+	<rotate sid="rotateY">0 1 0 0</rotate>
+	<rotate sid="rotateX">1 0 0 0</rotate>
+	<instance_camera url="#mainCamera"/>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>      
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

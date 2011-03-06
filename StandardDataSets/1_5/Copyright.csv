@@ -1,0 +1,298 @@
+"This packaged distribution contains copyrighted materials. The rights to
+use copy modify and redistribute these materials varies from file to file
+or directory to directory within this packaged distribution.
+
+Each file or directory will clearly identify the copyright holder(s) and
+the license rights to use the materials. Individuals are responsible for
+obeying the license terms specified by the copyright holder. If there is
+any ambiguity about the rights to use copyrighted materials: the user
+should contact the copyright holder for clarification. In case the
+copyright holder is unable to clarify: users should assume that materials
+are Copyright: All Rights Reserved. In other words: where there is
+ambiguity about the rights to use any material in the distribution no
+copying or redistribution is allowed without permission from the Copyright
+holder.
+
+THE SOFTWARE AND ACCOMPANYING DOCUMENTATION IS PROVIDED ""AS IS"" AND TO THE
+MAXIMUM EXTENT PERMITTED BY LAW KHRONOS GROUP
+DISCLAIMS ALL WARRANTIES OF ANY KIND WHETHER EXPRESS OR IMPLIED INCLUDING
+BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE.",
+
+.\Collada\01_Corrupt_Datasets\Invalid_Collada,Feeling Software
+.\Collada\01_Corrupt_Datasets\LondonHouse,SCEA
+.\Collada\01_Corrupt_Datasets\Renamed_jpg,Feeling Software
+
+.\Collada\02_ColladaFX\cgfx_file_on_disk,nVidia
+.\Collada\02_ColladaFX\cgfxShader_00_bumpReflect_00,Feeling Software
+.\Collada\02_ColladaFX\cgfxShader_00_goochy_01,Feeling Software
+.\Collada\02_ColladaFX\cgfxShader_animation_00,Feeling Software
+.\Collada\02_ColladaFX\cgShader_00_bumpReflection_01,Feeling Software
+.\Collada\02_ColladaFX\cgShader_00_matte_02,Feeling Software
+.\Collada\02_ColladaFX\cgShader_00_parameterAnimation_00,Feeling Software
+.\Collada\02_ColladaFX\cgShader_00_pureTexture_03,Feeling Software
+.\Collada\02_ColladaFX\cgShader_00_velvet_00,Feeling Software
+.\Collada\02_ColladaFX\geometryAnimation_00,Feeling Software
+.\Collada\02_ColladaFX\multiModel_00,Feeling Software
+.\Collada\02_ColladaFX\multiModel_01_stressTest_00,Feeling Software
+.\Collada\02_ColladaFX\multiModel_02_hierarchy_00,Feeling Software
+.\Collada\02_ColladaFX\multiShader_00,Feeling Software
+.\Collada\02_ColladaFX\shaders,nVidia
+.\Collada\02_ColladaFX\standardShader_00,Feeling Software
+.\Collada\02_ColladaFX\textures,nVidia
+
+.\Collada\03_ColladaPhysics_Animation\animated_contrain_flag,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\Catapult,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\chain,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\common_analytic_shapes,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\common_rigid_body,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\contrain_interpenetrate,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\convex_nonconvex,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\friction,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\mass_rigid_body,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\moving_concave,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\ragdoll_00,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\ragdoll_instance_00,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\rigid_body,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\rigid_body_avalanche,Feeling Software
+.\Collada\03_ColladaPhysics_Animation\springs_limits,Feeling Software
+
+.\Collada\04_ColladaCore\animation_clip_multiple,Feeling Software
+.\Collada\04_ColladaCore\animation_clip_simple,Feeling Software
+.\Collada\04_ColladaCore\animation_clip_single_curve,Feeling Software
+.\Collada\04_ColladaCore\animation_clip_start_end,Feeling Software
+.\Collada\04_ColladaCore\animation_hierarchical,Feeling Software
+.\Collada\04_ColladaCore\asset_scale_upaxis,Feeling Software
+.\Collada\04_ColladaCore\external_references,Feeling Software
+.\Collada\04_ColladaCore\instanced_rigid_body_animation,Feeling Software
+.\Collada\04_ColladaCore\instanced_skinned_character_animation,Feeling Software
+.\Collada\04_ColladaCore\morph_weight_animation,Feeling Software
+.\Collada\04_ColladaCore\morphing_plus_skinning_plus_physics_animation,Feeling Software
+.\Collada\04_ColladaCore\node_instancing,Feeling Software
+.\Collada\04_ColladaCore\skin_position_animation,Feeling Software
+.\Collada\04_ColladaCore\spline_NURBS_text,Feeling Software
+.\Collada\04_ColladaCore\vertex_animation_normals,Feeling Software
+.\Collada\04_ColladaCore\vertex_multiple_texture_tangents,Feeling Software
+
+.\Collada\09_FXComposer\AngleFitting,Feeling Software
+.\Collada\09_FXComposer\Demon,Feeling Software
+.\Collada\09_FXComposer\Hazard,Feeling Software
+.\Collada\09_FXComposer\MrWiggle_animation,Feeling Software
+.\Collada\09_FXComposer\Widgie,Feeling Software
+
+.\Collada\10_MayaExported\01_ExportedOptions\simple_000_TriangleList_00, SCEA
+.\Collada\10_MayaExported\01_ExportedOptions\simple_001_PolyList_00, SCEA
+.\Collada\10_MayaExported\01_ExportedOptions\simple_002_BakeMatrices_00, SCEA
+.\Collada\10_MayaExported\01_ExportedOptions\simple_003_VariableSamplingRate_00, SCEA
+
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_000_Translation_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_001_Scaling_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_002_Rotation_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_003_Parenting_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_004_Instancing_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_005_Skew_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_006_Pivot_00, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_006_Pivot_01, SCEA
+.\Collada\10_MayaExported\03_Heirarchy_And_Transforms\simple_006_Pivot_02, SCEA
+
+.\Collada\10_MayaExported\04_Materials_And_Textures\FS_100_00_Issue1237772, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_02-ChannelMapping_Ambient, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_03-ChannelMapping_Bump, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_04-ChannelMapping_Incandescence, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_05-ChannelMapping_Specularity, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_001_N_RGBA_Textures_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_001_N_RGBA_Textures_01, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_003_TransparencyAsMaterialParam_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_005_Bake_Procedural_Texcoords_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_006_Common_Profile_Material_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_007_Per_Polygon_Materal_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_008_MaterialAttribute-Color_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_008_MaterialAttribute-Reflectivity_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_009_PerVertexLighting_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_010_TextureFormats-BMP_00, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_010_TextureFormats-JPG_01, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_010_TextureFormats-PNG_02, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_010_TextureFormats-TGA_03, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_010_TextureFormats-TIFF_04, SCEA
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_011_Blinn_Material,Feeling Software
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_012_SpotLights,Feeling Software
+.\Collada\10_MayaExported\04_Materials_And_Textures\simple_013_PointLights,Feeling Software
+
+.\Collada\10_MayaExported\05_Vertex_Attributes\FS_100_00_Holes,Feeling Software
+.\Collada\10_MayaExported\05_Vertex_Attributes\simple_000_N_TexCoord_sets_00, SCEA
+.\Collada\10_MayaExported\05_Vertex_Attributes\simple_001_Normals_00, SCEA
+.\Collada\10_MayaExported\05_Vertex_Attributes\simple_002_VertexColors_00, SCEA
+
+.\Collada\10_MayaExported\06_Animation\FS_100_00_AnimCurve,Feeling Software
+.\Collada\10_MayaExported\06_Animation\FS_101_00_TextureAnimation1,Feeling Software
+.\Collada\10_MayaExported\06_Animation\simple_000_Bones_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_001_SampledAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_002_KeyframedAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_01, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_02, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_03, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_04, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_05-SmoothBinding, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_06-IK, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_07, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_08, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_09-IK, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_10, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_003_SkeletalAnimation_11, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_005_LightAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_006_CameraAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_007_VertexColorAnimation_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_008_KeyframeAnim_MaterialAttr_Bool_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_009_KeyframeAnim_MaterialAttr_Float_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_010_KeyframeAnim_MaterialAttr_Int_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_011_KeyframeAnim_MaterialAttr_Vector3_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_012_SampledAnim_MaterialAttr_Bool_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_013_SampledAnim_MaterialAttr_Float_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_014_SampledAnim_MaterialAttr_Int_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_015_SampledAnim_MaterialAttr_Vector3_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_016_PointConstraint_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_017_VertexAnimtion-Position_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_018_BindPose_Normal_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_018_BindPose_Normal_01-Animated, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_019_BlendShapes_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_019_BlendShapes_01-Animated, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_020_KeyframeAnim_VertexAttribute-Normal_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_021_KeyframeAnim_Instance_00-GeometryOnly, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_022_SampledAnim_Instance_00-GeometryOnly, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_023_Expressions_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_023_SkeletalAnim_Instance_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_024_DrivenKey_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_025_SkeletalAnimation_Pivot_00, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_025_SkeletalAnimation_Pivot_01, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_025_SkeletalAnimation_Pivot_02, SCEA
+.\Collada\10_MayaExported\06_Animation\simple_025_SkeletalAnimation_Pivot_03, SCEA
+
+.\Collada\10_MayaExported\07_Physics\animatedRigidBody_00, SCEA
+.\Collada\10_MayaExported\07_Physics\arbitaryCenterOfMass_00, SCEA
+.\Collada\10_MayaExported\07_Physics\Constraint_00_linearDriver_00, SCEA
+.\Collada\10_MayaExported\07_Physics\Constraint_01_angularDriver_00, SCEA
+
+.\Collada\10_MayaExported\09_Scene_Data\simple_000_Null-Locator-EmptyTransform_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera-Aspect_02, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera-FarPlane_05, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera-FOV_01, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera-NearPlane_04, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_001_Camera-Orthographic_03, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_002_Spotlight_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_002_Spotlight-Color_01, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_002_Spotlight-Dropoff_03, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_002_Spotlight-Penumbra_02, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_003_DirectionalLight_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_003_DirectionalLight-Color_01, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_004_AreaLight_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_004_AreaLight-Color_01, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_005_PointLight_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_005_PointLight-Color_01, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_005_PointLight-Decay_02, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_006_AmbientLight_00, SCEA
+.\Collada\10_MayaExported\09_Scene_Data\simple_006_AmbientLight-Color_01, SCEA
+
+.\Collada\11_MaxExported\01_ExportOptions\simple_000_TriangleList_00, SCEA
+.\Collada\11_MaxExported\01_ExportOptions\simple_001_PolyList_00, SCEA
+.\Collada\11_MaxExported\01_ExportOptions\simple_002_BakeMatrices_00, SCEA
+.\Collada\11_MaxExported\01_ExportOptions\simple_003_VariableSamplingRate_00, SCEA
+
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_000_Translation_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_001_Scaling_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_002_Rotation_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_003_Parenting_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_004_Instancing_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_005_Skew_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_006_Pivot_00, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_006_Pivot_01, SCEA
+.\Collada\11_MaxExported\03_Heirarchy_And_Transforms\simple_006_Pivot_02, SCEA
+
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_02, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_03, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_04, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_000_N_RGB_Texture_05, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_003_TransparencyAsMaterialParam_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_005_Bake_Procedural_Texcoords_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_006_Common_Profile_Material_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_007_Per_Polygon_Material_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_008_MaterialAttribute-Color_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_008_MaterialAttribute-Reflectivity_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_009_KeyframeAnim_MaterialAttr_Float_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_009_PerVertexLighting_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_010_TextureFormats-BMP_00, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_010_TextureFormats-JPG_01, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_010_TextureFormats-PNG_02, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_010_TextureFormats-TGA_03, SCEA
+.\Collada\11_MaxExported\04_Materials_And_Textures\simple_010_TextureFormats-TIFF_04, SCEA
+
+.\Collada\11_MaxExported\05_Vertex_Attributes\simple_000_N_TexCoord_sets_00, SCEA
+.\Collada\11_MaxExported\05_Vertex_Attributes\simple_001_Normals_00, SCEA
+.\Collada\11_MaxExported\05_Vertex_Attributes\simple_002_VertexColors_00, SCEA
+
+.\Collada\11_MaxExported\06_Animation\simple_000_Bones_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_001_SampledAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_002_KeyframedAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_01, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_02, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_03, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_04, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_05, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_SkeletalAnimation_07, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_003_VariableSamplingRate_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_005_LightAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_005_PointLight-Decay_02, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_006_CameraAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_007_VertexColorAnimation_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_008_KeyframeAnim_MaterialAttr_Bool_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_010_KeyframeAnim_MaterialAttr_Int_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_011_KeyframeAnim_MaterialAttr_Vector_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_011_KeyframeAnim_MaterialAttr_Vector3_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_012_SampledAnim_MaterialAttr_Bool_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_013_SampledAnim_MaterialAttr_Float_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_014_SampledAnim_MaterialAttr_Int_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_015_SampledAnim_MaterialAttr_Vector3_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_017_VertexAnimtion-Position_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_018_BindPose_Normal_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_018_BindPose_Normal_01-Animated, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_019_BlendShapes_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_019_BlendShapes_01, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_020_KeyframeAnim_VertexAttribute-Normal_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_021_KeyframeAnim_Instance_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_021_KeyframeAnim_Instance_00-GeometryOnly, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_022_SampledAnim_Instance_00-GeometryOnly, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_023_SkeletalAnim_Instance_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_025_SkeletalAnimation_Pivot_00, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_025_SkeletalAnimation_Pivot_01, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_025_SkeletalAnimation_Pivot_02, SCEA
+.\Collada\11_MaxExported\06_Animation\simple_025_SkeletalAnimation_Pivot_03, SCEA
+
+.\Collada\11_MaxExported\09_Scene_Data\simple_000_Null-Locator-EmptyTransform_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera-Aspect_02, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera-FarPlane_05, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera-FOV_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera-NearPlane_04, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_001_Camera-Orthographic_03, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight_Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight_Dropoff_03, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight_Penumbra_02, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight-Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight-Dropoff_03, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_002_Spotlight-Penumbra_02, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_003_DirectionalLight_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_003_DirectionalLight-Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_003_DirectionalLight-Color_01_alternate, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_004_AreaLight_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_004_AreaLight_Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_004_AreaLight-Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_005_LightAnimation_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_005_PointLight_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_005_PointLight-Color_01, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_006_AmbientLight_00, SCEA
+.\Collada\11_MaxExported\09_Scene_Data\simple_006_AmbientLight-Color_01, SCEA
+
+.\Textures, SCEA

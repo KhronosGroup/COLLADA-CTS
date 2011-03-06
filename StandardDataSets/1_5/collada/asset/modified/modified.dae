@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline asset modified</keywords>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test that the modified element time output from the export is within 24 hours of the current time</subject>
+    <title>0708</title>                
+  </asset>
+</COLLADA>

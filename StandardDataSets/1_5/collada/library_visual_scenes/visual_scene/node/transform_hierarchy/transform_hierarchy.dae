@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+    <asset>
+        <contributor>
+            <author>gcorson</author>
+            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
+            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+            <copyright>
+            # Copyright (C) 2007 - 2009 Khronos Group
+            # Available only to Khronos members and adopters.
+            # Distribution of this file or its content is strictly prohibited.
+            </copyright>
+            <source_data>file:///C:/Documents%20and%20Settings/gcorson/My%20Documents/maya/projects/default/scenes/CTF%20template.mb</source_data>
+        </contributor>
+        <created>2007-03-20T22:06:01Z</created>
+        <keywords>Baseline node translate</keywords>
+        <modified>2007-03-20T22:06:01Z</modified>
+        <subject>Test that the hierarchy of transform nodes</subject>
+        <title>0547</title>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="mainCamera" name="mainCamera">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9999</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_materials>
+        <material id="lambert2" name="lambert2">
+            <instance_effect url="#lambert2-fx"/>
+        </material>
+        <material id="lambert3" name="lambert3">
+            <instance_effect url="#lambert3-fx"/>
+        </material>
+        <material id="lambert4" name="lambert4">
+            <instance_effect url="#lambert4-fx"/>
+        </material>
+        <material id="lambert5" name="lambert5">
+            <instance_effect url="#lambert5-fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert2-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>0 1 0 1</color>
+                        </diffuse>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+        <effect id="lambert3-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>0 0 1 1</color>
+                        </diffuse>
+                       </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+        <effect id="lambert4-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>1 1 0 1</color>
+                        </diffuse>
+                     </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+        <effect id="lambert5-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>1 0 0 1</color>
+                        </diffuse>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_geometries>
+        <geometry id="pCylinderShape1" name="pCylinderShape1">
+            <mesh>
+                <source id="pCylinderShape1-positions" name="position">
+                    <float_array count="126" id="pCylinderShape1-positions-array">9.51057 -0.5 -3.09017 8.09018 -0.5 -5.87786 5.87786 -0.5 -8.09017 3.09017 -0.5 -9.51057 0 -0.5 -10 -3.09017 -0.5 -9.51057 -5.87785 -0.5 -8.09017 -8.09017 -0.5 -5.87785 -9.51057 -0.5 -3.09017 -10 -0.5 0 -9.51057 -0.5 3.09017 -8.09017 -0.5 5.87785 -5.87785 -0.5 8.09017 -3.09017 -0.5 9.51057 0 -0.5 10 3.09017 -0.5 9.51057 5.87785 -0.5 8.09017 8.09017 -0.5 5.87785 9.51057 -0.5 3.09017 10 -0.5 0 9.51057 0.5 -3.09017 8.09018 0.5 -5.87786 5.87786 0.5 -8.09017 3.09017 0.5 -9.51057 0 0.5 -10 -3.09017 0.5 -9.51057 -5.87785 0.5 -8.09017 -8.09017 0.5 -5.87785 -9.51057 0.5 -3.09017 -10 0.5 0 -9.51057 0.5 3.09017 -8.09017 0.5 5.87785 -5.87785 0.5 8.09017 -3.09017 0.5 9.51057 0 0.5 10 3.09017 0.5 9.51057 5.87785 0.5 8.09017 8.09017 0.5 5.87785 9.51057 0.5 3.09017 10 0.5 0 0 -0.5 0 0 0.5 0</float_array>
+                    <technique_common>
+                        <accessor count="42" source="#pCylinderShape1-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="pCylinderShape1-vertices">
+                    <input semantic="POSITION" source="#pCylinderShape1-positions"/>
+                </vertices>
+                <polylist count="60" material="lambert5SG">
+                    <input offset="0" semantic="VERTEX" source="#pCylinderShape1-vertices"/>
+                    <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</vcount>
+                    <p>0 1 21 20 1 2 22 21 2 3 23 22 3 4 24 23 4 5 25 24 5 6 26 25 6 7 27 26 7 8 28 27 8 9 29 28 9 10 30 29 10 11 31 30 11 12 32 31 12 13 33 32 13 14 34 33 14 15 35 34 15 16 36 35 16 17 37 36 17 18 38 37 18 19 39 38 19 0 20 39 1 0 40 2 1 40 3 2 40 4 3 40 5 4 40 6 5 40 7 6 40 8 7 40 9 8 40 10 9 40 11 10 40 12 11 40 13 12 40 14 13 40 15 14 40 16 15 40 17 16 40 18 17 40 19 18 40 0 19 40 20 21 41 21 22 41 22 23 41 23 24 41 24 25 41 25 26 41 26 27 41 27 28 41 28 29 41 29 30 41 30 31 41 31 32 41 32 33 41 33 34 41 34 35 41 35 36 41 36 37 41 37 38 41 38 39 41 39 20 41</p>
+                </polylist>
+            </mesh>
+        </geometry>
+        <geometry id="pCylinderShape7" name="pCylinderShape7">
+            <mesh>
+                <source id="pCylinderShape7-positions" name="position">
+                    <float_array count="126" id="pCylinderShape7-positions-array">3.80423 -0.5 -1.23607 3.23607 -0.5 -2.35114 2.35114 -0.5 -3.23607 1.23607 -0.5 -3.80423 0 -0.5 -4 -1.23607 -0.5 -3.80423 -2.35114 -0.5 -3.23607 -3.23607 -0.5 -2.35114 -3.80423 -0.5 -1.23607 -4 -0.5 0 -3.80423 -0.5 1.23607 -3.23607 -0.5 2.35114 -2.35114 -0.5 3.23607 -1.23607 -0.5 3.80423 0 -0.5 4 1.23607 -0.5 3.80423 2.35114 -0.5 3.23607 3.23607 -0.5 2.35114 3.80423 -0.5 1.23607 4 -0.5 0 3.80423 0.5 -1.23607 3.23607 0.5 -2.35114 2.35114 0.5 -3.23607 1.23607 0.5 -3.80423 0 0.5 -4 -1.23607 0.5 -3.80423 -2.35114 0.5 -3.23607 -3.23607 0.5 -2.35114 -3.80423 0.5 -1.23607 -4 0.5 0 -3.80423 0.5 1.23607 -3.23607 0.5 2.35114 -2.35114 0.5 3.23607 -1.23607 0.5 3.80423 0 0.5 4 1.23607 0.5 3.80423 2.35114 0.5 3.23607 3.23607 0.5 2.35114 3.80423 0.5 1.23607 4 0.5 0 0 -0.5 0 0 0.5 0</float_array>
+                    <technique_common>
+                        <accessor count="42" source="#pCylinderShape7-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="pCylinderShape7-vertices">
+                    <input semantic="POSITION" source="#pCylinderShape7-positions"/>
+                </vertices>
+                <polylist count="60" material="lambert2SG">
+                    <input offset="0" semantic="VERTEX" source="#pCylinderShape7-vertices"/>
+                    <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</vcount>
+                    <p>0 1 21 20 1 2 22 21 2 3 23 22 3 4 24 23 4 5 25 24 5 6 26 25 6 7 27 26 7 8 28 27 8 9 29 28 9 10 30 29 10 11 31 30 11 12 32 31 12 13 33 32 13 14 34 33 14 15 35 34 15 16 36 35 16 17 37 36 17 18 38 37 18 19 39 38 19 0 20 39 1 0 40 2 1 40 3 2 40 4 3 40 5 4 40 6 5 40 7 6 40 8 7 40 9 8 40 10 9 40 11 10 40 12 11 40 13 12 40 14 13 40 15 14 40 16 15 40 17 16 40 18 17 40 19 18 40 0 19 40 20 21 41 21 22 41 22 23 41 23 24 41 24 25 41 25 26 41 26 27 41 27 28 41 28 29 41 29 30 41 30 31 41 31 32 41 32 33 41 33 34 41 34 35 41 35 36 41 36 37 41 37 38 41 38 39 41 39 20 41</p>
+                </polylist>
+            </mesh>
+        </geometry>
+        <geometry id="pCylinderShape13" name="pCylinderShape13">
+            <mesh>
+                <source id="pCylinderShape13-positions" name="position">
+                    <float_array count="126" id="pCylinderShape13-positions-array">5.70634 -0.5 -1.8541 4.8541 -0.5 -3.52671 3.52671 -0.5 -4.8541 1.8541 -0.5 -5.70634 0 -0.5 -6 -1.8541 -0.5 -5.70634 -3.52671 -0.5 -4.8541 -4.8541 -0.5 -3.52671 -5.70634 -0.5 -1.8541 -6 -0.5 0 -5.70634 -0.5 1.8541 -4.8541 -0.5 3.52671 -3.52671 -0.5 4.8541 -1.8541 -0.5 5.70634 0 -0.5 6 1.8541 -0.5 5.70634 3.52671 -0.5 4.8541 4.8541 -0.5 3.52671 5.70634 -0.5 1.8541 6 -0.5 0 5.70634 0.5 -1.8541 4.8541 0.5 -3.52671 3.52671 0.5 -4.8541 1.8541 0.5 -5.70634 0 0.5 -6 -1.8541 0.5 -5.70634 -3.52671 0.5 -4.8541 -4.8541 0.5 -3.52671 -5.70634 0.5 -1.8541 -6 0.5 0 -5.70634 0.5 1.8541 -4.8541 0.5 3.52671 -3.52671 0.5 4.8541 -1.8541 0.5 5.70634 0 0.5 6 1.8541 0.5 5.70634 3.52671 0.5 4.8541 4.8541 0.5 3.52671 5.70634 0.5 1.8541 6 0.5 0 0 -0.5 0 0 0.5 0</float_array>
+                    <technique_common>
+                        <accessor count="42" source="#pCylinderShape13-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="pCylinderShape13-vertices">
+                    <input semantic="POSITION" source="#pCylinderShape13-positions"/>
+                </vertices>
+                <polylist count="60" material="lambert3SG">
+                    <input offset="0" semantic="VERTEX" source="#pCylinderShape13-vertices"/>
+                    <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</vcount>
+                    <p>0 1 21 20 1 2 22 21 2 3 23 22 3 4 24 23 4 5 25 24 5 6 26 25 6 7 27 26 7 8 28 27 8 9 29 28 9 10 30 29 10 11 31 30 11 12 32 31 12 13 33 32 13 14 34 33 14 15 35 34 15 16 36 35 16 17 37 36 17 18 38 37 18 19 39 38 19 0 20 39 1 0 40 2 1 40 3 2 40 4 3 40 5 4 40 6 5 40 7 6 40 8 7 40 9 8 40 10 9 40 11 10 40 12 11 40 13 12 40 14 13 40 15 14 40 16 15 40 17 16 40 18 17 40 19 18 40 0 19 40 20 21 41 21 22 41 22 23 41 23 24 41 24 25 41 25 26 41 26 27 41 27 28 41 28 29 41 29 30 41 30 31 41 31 32 41 32 33 41 33 34 41 34 35 41 35 36 41 36 37 41 37 38 41 38 39 41 39 20 41</p>
+                </polylist>
+            </mesh>
+        </geometry>
+        <geometry id="pCylinderShape19" name="pCylinderShape19">
+            <mesh>
+                <source id="pCylinderShape19-positions" name="position">
+                    <float_array count="126" id="pCylinderShape19-positions-array">4.75529 -0.5 -1.54509 4.04509 -0.5 -2.93893 2.93893 -0.5 -4.04509 1.54509 -0.5 -4.75528 0 -0.5 -5 -1.54509 -0.5 -4.75528 -2.93893 -0.5 -4.04509 -4.04509 -0.5 -2.93893 -4.75528 -0.5 -1.54508 -5 -0.5 0 -4.75528 -0.5 1.54508 -4.04509 -0.5 2.93893 -2.93893 -0.5 4.04508 -1.54508 -0.5 4.75528 0 -0.5 5 1.54508 -0.5 4.75528 2.93893 -0.5 4.04508 4.04508 -0.5 2.93893 4.75528 -0.5 1.54508 5 -0.5 0 4.75529 0.5 -1.54509 4.04509 0.5 -2.93893 2.93893 0.5 -4.04509 1.54509 0.5 -4.75528 0 0.5 -5 -1.54509 0.5 -4.75528 -2.93893 0.5 -4.04509 -4.04509 0.5 -2.93893 -4.75528 0.5 -1.54508 -5 0.5 0 -4.75528 0.5 1.54508 -4.04509 0.5 2.93893 -2.93893 0.5 4.04508 -1.54508 0.5 4.75528 0 0.5 5 1.54508 0.5 4.75528 2.93893 0.5 4.04508 4.04508 0.5 2.93893 4.75528 0.5 1.54508 5 0.5 0 0 -0.5 0 0 0.5 0</float_array>
+                    <technique_common>
+                        <accessor count="42" source="#pCylinderShape19-positions-array" stride="3">
+                            <param name="X" type="float"/>
+                            <param name="Y" type="float"/>
+                            <param name="Z" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+                <vertices id="pCylinderShape19-vertices">
+                    <input semantic="POSITION" source="#pCylinderShape19-positions"/>
+                </vertices>
+                <polylist count="60" material="lambert4SG">
+                    <input offset="0" semantic="VERTEX" source="#pCylinderShape19-vertices"/>
+                    <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3</vcount>
+                    <p>0 1 21 20 1 2 22 21 2 3 23 22 3 4 24 23 4 5 25 24 5 6 26 25 6 7 27 26 7 8 28 27 8 9 29 28 9 10 30 29 10 11 31 30 11 12 32 31 12 13 33 32 13 14 34 33 14 15 35 34 15 16 36 35 16 17 37 36 17 18 38 37 18 19 39 38 19 0 20 39 1 0 40 2 1 40 3 2 40 4 3 40 5 4 40 6 5 40 7 6 40 8 7 40 9 8 40 10 9 40 11 10 40 12 11 40 13 12 40 14 13 40 15 14 40 16 15 40 17 16 40 18 17 40 19 18 40 0 19 40 20 21 41 21 22 41 22 23 41 23 24 41 24 25 41 25 26 41 26 27 41 27 28 41 28 29 41 29 30 41 30 31 41 31 32 41 32 33 41 33 34 41 34 35 41 35 36 41 36 37 41 37 38 41 38 39 41 39 20 41</p>
+                </polylist>
+            </mesh>
+        </geometry>
+    </library_geometries>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="CTF_template">
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#mainCamera"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <translate sid="translate">50 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_light url="#directionalLightShape1-lib"/>
+            </node>
+            <node id="pCylinder1" name="pCylinder1">
+                <translate sid="translate">-67.4947 -21.7173 67.6712</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 15.6917</rotate>
+                <scale sid="scale">3 3 3</scale>
+                <instance_geometry url="#pCylinderShape1">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert5SG" target="#lambert5"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+                <node id="pCylinder2" name="pCylinder2">
+                    <translate sid="translate">0 4 0</translate>
+                    <rotate sid="rotateZ">0 0 1 10</rotate>
+                    <rotate sid="rotateY">0 1 0 0</rotate>
+                    <rotate sid="rotateX">1 0 0 0</rotate>
+                    <scale sid="scale">0.9 0.9 0.9</scale>
+                    <instance_geometry url="#pCylinderShape1">
+                        <bind_material>
+                            <technique_common>
+                                <instance_material symbol="lambert5SG" target="#lambert5"/>
+                            </technique_common>
+                        </bind_material>
+                    </instance_geometry>
+                    <node id="pCylinder3" name="pCylinder3">
+                        <translate sid="translate">0 4 0</translate>
+                        <rotate sid="rotateZ">0 0 1 10</rotate>
+                        <rotate sid="rotateY">0 1 0 0</rotate>
+                        <rotate sid="rotateX">1 0 0 0</rotate>
+                        <scale sid="scale">0.9 0.9 0.9</scale>
+                        <instance_geometry url="#pCylinderShape1">
+                            <bind_material>
+                                <technique_common>
+                                    <instance_material symbol="lambert5SG" target="#lambert5"/>
+                                </technique_common>
+                            </bind_material>
+                        </instance_geometry>
+                        <node id="pCylinder4" name="pCylinder4">
+                            <translate sid="translate">0 4 0</translate>
+                            <rotate sid="rotateZ">0 0 1 10</rotate>
+                            <rotate sid="rotateY">0 1 0 0</rotate>
+                            <rotate sid="rotateX">1 0 0 0</rotate>
+                            <scale sid="scale">0.9 0.9 0.9</scale>
+                            <instance_geometry url="#pCylinderShape1">
+                                <bind_material>
+                                    <technique_common>
+                                        <instance_material symbol="lambert5SG" target="#lambert5"/>
+                                    </technique_common>
+                                </bind_material>
+                            </instance_geometry>
+                            <node id="pCylinder5" name="pCylinder5">
+                                <translate sid="translate">0 4 0</translate>
+                                <rotate sid="rotateZ">0 0 1 10</rotate>
+                                <rotate sid="rotateY">0 1 0 0</rotate>
+                                <rotate sid="rotateX">1 0 0 0</rotate>
+                                <scale sid="scale">0.9 0.9 0.9</scale>
+                                <instance_geometry url="#pCylinderShape1">
+                                    <bind_material>
+                                        <technique_common>
+                                            <instance_material symbol="lambert5SG" target="#lambert5"/>
+                                        </technique_common>
+                                    </bind_material>
+                                </instance_geometry>
+                                <node id="pCylinder6" name="pCylinder6">
+                                    <translate sid="translate">0 4 0</translate>
+                                    <rotate sid="rotateZ">0 0 1 10</rotate>
+                                    <rotate sid="rotateY">0 1 0 0</rotate>
+                                    <rotate sid="rotateX">1 0 0 0</rotate>
+                                    <scale sid="scale">0.9 0.9 0.9</scale>
+                                    <instance_geometry url="#pCylinderShape1">
+                                        <bind_material>
+                                            <technique_common>
+                                                <instance_material symbol="lambert5SG" target="#lambert5"/>
+                                            </technique_common>
+                                        </bind_material>
+                                    </instance_geometry>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+            <node id="pCylinder7" name="pCylinder7">
+                <translate sid="translate">-22.4947 -21.7173 67.6712</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 15.6917</rotate>
+                <scale sid="scale">3 3 3</scale>
+                <instance_geometry url="#pCylinderShape7">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert2SG" target="#lambert2"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+                <node id="pCylinder8" name="pCylinder8">
+                    <translate sid="translate">0 4 0</translate>
+                    <rotate sid="rotateZ">0 0 1 0</rotate>
+                    <rotate sid="rotateY">0 1 0 0</rotate>
+                    <rotate sid="rotateX">1 0 0 0</rotate>
+                    <instance_geometry url="#pCylinderShape7">
+                        <bind_material>
+                            <technique_common>
+                                <instance_material symbol="lambert2SG" target="#lambert2"/>
+                            </technique_common>
+                        </bind_material>
+                    </instance_geometry>
+                    <node id="pCylinder9" name="pCylinder9">
+                        <translate sid="translate">0 4 0</translate>
+                        <rotate sid="rotateZ">0 0 1 0</rotate>
+                        <rotate sid="rotateY">0 1 0 0</rotate>
+                        <rotate sid="rotateX">1 0 0 0</rotate>
+                        <instance_geometry url="#pCylinderShape7">
+                            <bind_material>
+                                <technique_common>
+                                    <instance_material symbol="lambert2SG" target="#lambert2"/>
+                                </technique_common>
+                            </bind_material>
+                        </instance_geometry>
+                        <node id="pCylinder10" name="pCylinder10">
+                            <translate sid="translate">0 4 0</translate>
+                            <rotate sid="rotateZ">0 0 1 0</rotate>
+                            <rotate sid="rotateY">0 1 0 0</rotate>
+                            <rotate sid="rotateX">1 0 0 0</rotate>
+                            <instance_geometry url="#pCylinderShape7">
+                                <bind_material>
+                                    <technique_common>
+                                        <instance_material symbol="lambert2SG" target="#lambert2"/>
+                                    </technique_common>
+                                </bind_material>
+                            </instance_geometry>
+                            <node id="pCylinder11" name="pCylinder11">
+                                <translate sid="translate">0 4 0</translate>
+                                <rotate sid="rotateZ">0 0 1 0</rotate>
+                                <rotate sid="rotateY">0 1 0 0</rotate>
+                                <rotate sid="rotateX">1 0 0 0</rotate>
+                                <instance_geometry url="#pCylinderShape7">
+                                    <bind_material>
+                                        <technique_common>
+                                            <instance_material symbol="lambert2SG" target="#lambert2"/>
+                                        </technique_common>
+                                    </bind_material>
+                                </instance_geometry>
+                                <node id="pCylinder12" name="pCylinder12">
+                                    <translate sid="translate">0 4 0</translate>
+                                    <rotate sid="rotateZ">0 0 1 0</rotate>
+                                    <rotate sid="rotateY">0 1 0 0</rotate>
+                                    <rotate sid="rotateX">1 0 0 0</rotate>
+                                    <instance_geometry url="#pCylinderShape7">
+                                        <bind_material>
+                                            <technique_common>
+                                                <instance_material symbol="lambert2SG" target="#lambert2"/>
+                                            </technique_common>
+                                        </bind_material>
+                                    </instance_geometry>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+            <node id="pCylinder13" name="pCylinder13">
+                <translate sid="translate">13.5053 -21.7173 67.6712</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 15.6917</rotate>
+                <scale sid="scale">3 3 3</scale>
+                <instance_geometry url="#pCylinderShape13">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert3SG" target="#lambert3"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+                <node id="pCylinder14" name="pCylinder14">
+                    <translate sid="translate">0 4 0</translate>
+                    <rotate sid="rotateZ">0 0 1 0</rotate>
+                    <rotate sid="rotateY">0 1 0 0</rotate>
+                    <rotate sid="rotateX">1 0 0 0</rotate>
+                    <scale sid="scale">0.8 0.8 0.8</scale>
+                    <instance_geometry url="#pCylinderShape13">
+                        <bind_material>
+                            <technique_common>
+                                <instance_material symbol="lambert3SG" target="#lambert3"/>
+                            </technique_common>
+                        </bind_material>
+                    </instance_geometry>
+                    <node id="pCylinder15" name="pCylinder15">
+                        <translate sid="translate">0 4 0</translate>
+                        <rotate sid="rotateZ">0 0 1 0</rotate>
+                        <rotate sid="rotateY">0 1 0 0</rotate>
+                        <rotate sid="rotateX">1 0 0 0</rotate>
+                        <scale sid="scale">0.8 0.8 0.8</scale>
+                        <instance_geometry url="#pCylinderShape13">
+                            <bind_material>
+                                <technique_common>
+                                    <instance_material symbol="lambert3SG" target="#lambert3"/>
+                                </technique_common>
+                            </bind_material>
+                        </instance_geometry>
+                        <node id="pCylinder16" name="pCylinder16">
+                            <translate sid="translate">0 4 0</translate>
+                            <rotate sid="rotateZ">0 0 1 0</rotate>
+                            <rotate sid="rotateY">0 1 0 0</rotate>
+                            <rotate sid="rotateX">1 0 0 0</rotate>
+                            <scale sid="scale">0.8 0.8 0.8</scale>
+                            <instance_geometry url="#pCylinderShape13">
+                                <bind_material>
+                                    <technique_common>
+                                        <instance_material symbol="lambert3SG" target="#lambert3"/>
+                                    </technique_common>
+                                </bind_material>
+                            </instance_geometry>
+                            <node id="pCylinder17" name="pCylinder17">
+                                <translate sid="translate">0 4 0</translate>
+                                <rotate sid="rotateZ">0 0 1 0</rotate>
+                                <rotate sid="rotateY">0 1 0 0</rotate>
+                                <rotate sid="rotateX">1 0 0 0</rotate>
+                                <scale sid="scale">0.8 0.8 0.8</scale>
+                                <instance_geometry url="#pCylinderShape13">
+                                    <bind_material>
+                                        <technique_common>
+                                            <instance_material symbol="lambert3SG" target="#lambert3"/>
+                                        </technique_common>
+                                    </bind_material>
+                                </instance_geometry>
+                                <node id="pCylinder18" name="pCylinder18">
+                                    <translate sid="translate">0 4 0</translate>
+                                    <rotate sid="rotateZ">0 0 1 0</rotate>
+                                    <rotate sid="rotateY">0 1 0 0</rotate>
+                                    <rotate sid="rotateX">1 0 0 0</rotate>
+                                    <scale sid="scale">0.8 0.8 0.8</scale>
+                                    <instance_geometry url="#pCylinderShape13">
+                                        <bind_material>
+                                            <technique_common>
+                                                <instance_material symbol="lambert3SG" target="#lambert3"/>
+                                            </technique_common>
+                                        </bind_material>
+                                    </instance_geometry>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+            <node id="pCylinder19" name="pCylinder19">
+                <translate sid="translate">52.5053 -21.7173 67.6712</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 15.6917</rotate>
+                <scale sid="scale">3 3 3</scale>
+                <instance_geometry url="#pCylinderShape19">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="lambert4SG" target="#lambert4"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+                <node id="pCylinder20" name="pCylinder20">
+                    <translate sid="translate">0 4 0</translate>
+                    <rotate sid="rotateZ">0 0 1 -20</rotate>
+                    <rotate sid="rotateY">0 1 0 0</rotate>
+                    <rotate sid="rotateX">1 0 0 0</rotate>
+                    <instance_geometry url="#pCylinderShape19">
+                        <bind_material>
+                            <technique_common>
+                                <instance_material symbol="lambert4SG" target="#lambert4"/>
+                            </technique_common>
+                        </bind_material>
+                    </instance_geometry>
+                    <node id="pCylinder21" name="pCylinder21">
+                        <translate sid="translate">0 4 0</translate>
+                        <rotate sid="rotateZ">0 0 1 -20</rotate>
+                        <rotate sid="rotateY">0 1 0 0</rotate>
+                        <rotate sid="rotateX">1 0 0 0</rotate>
+                        <instance_geometry url="#pCylinderShape19">
+                            <bind_material>
+                                <technique_common>
+                                    <instance_material symbol="lambert4SG" target="#lambert4"/>
+                                </technique_common>
+                            </bind_material>
+                        </instance_geometry>
+                        <node id="pCylinder22" name="pCylinder22">
+                            <translate sid="translate">0 4 0</translate>
+                            <rotate sid="rotateZ">0 0 1 -20</rotate>
+                            <rotate sid="rotateY">0 1 0 0</rotate>
+                            <rotate sid="rotateX">1 0 0 0</rotate>
+                            <instance_geometry url="#pCylinderShape19">
+                                <bind_material>
+                                    <technique_common>
+                                        <instance_material symbol="lambert4SG" target="#lambert4"/>
+                                    </technique_common>
+                                </bind_material>
+                            </instance_geometry>
+                            <node id="pCylinder23" name="pCylinder23">
+                                <translate sid="translate">0 4 0</translate>
+                                <rotate sid="rotateZ">0 0 1 -20</rotate>
+                                <rotate sid="rotateY">0 1 0 0</rotate>
+                                <rotate sid="rotateX">1 0 0 0</rotate>
+                                <instance_geometry url="#pCylinderShape19">
+                                    <bind_material>
+                                        <technique_common>
+                                            <instance_material symbol="lambert4SG" target="#lambert4"/>
+                                        </technique_common>
+                                    </bind_material>
+                                </instance_geometry>
+                                <node id="pCylinder24" name="pCylinder24">
+                                    <translate sid="translate">0 4 0</translate>
+                                    <rotate sid="rotateZ">0 0 1 -20</rotate>
+                                    <rotate sid="rotateY">0 1 0 0</rotate>
+                                    <rotate sid="rotateX">1 0 0 0</rotate>
+                                    <instance_geometry url="#pCylinderShape19">
+                                        <bind_material>
+                                            <technique_common>
+                                                <instance_material symbol="lambert4SG" target="#lambert4"/>
+                                            </technique_common>
+                                        </bind_material>
+                                    </instance_geometry>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>

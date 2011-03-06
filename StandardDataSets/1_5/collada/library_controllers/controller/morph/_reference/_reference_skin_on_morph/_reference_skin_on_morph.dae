@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+	<asset>
+		<contributor>
+			<authoring_tool>Autodesk Softimage version 8.0.200.0 - Crosswalk 4.1</authoring_tool>
+		        <copyright>
+		        # Copyright (C) 2007 - 2009 Khronos Group
+		        # Available only to Khronos members and adopters.
+		        # Distribution of this file or its content is strictly prohibited.
+		        </copyright>
+		</contributor>
+		<created>2010-02-18T21:46:19Z</created>
+		<keywords>Exemplary controller morph</keywords>
+		<modified>2010-02-18T21:46:19Z</modified>
+		<revision>1.4.1</revision>
+		<subject>Reference where geometry is baked to be equivalent to test case skin_on_morph</subject>
+        <title>0137</title>
+		<unit meter="0.01" name="centimeter"/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_cameras>
+		<camera id="mainCamera" name="mainCamera">
+			<optics>
+				<technique_common>
+					<perspective>
+						<yfov>36.9999</yfov>
+						<aspect_ratio>1</aspect_ratio>
+						<znear>1</znear>
+						<zfar>1000</zfar>
+					</perspective>
+				</technique_common>
+			</optics>
+		</camera>
+	</library_cameras>
+	<library_lights>
+		<light id="directionalLightShape1-lib" name="lights_0">
+			<technique_common>
+				<directional>
+					<color>1 1 1</color>
+				</directional>
+			</technique_common>
+		</light>
+	</library_lights>
+	<library_effects>
+		<effect id="Scene_Material_fx" name="Scene_Material_fx">
+			<profile_COMMON>
+				<technique sid="default">
+					<constant>
+						<emission>
+							<color sid="diffuse">0 0 1 0</color>
+						</emission>
+					</constant>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+	<library_materials>
+		<material id="Scene_Material" name="Scene_Material">
+			<instance_effect url="#Scene_Material_fx"/>
+		</material>
+	</library_materials>
+	<library_geometries>
+		<geometry id="geometries_0" name="geometries_0">
+			<mesh>
+				<source id="geometries_0-Pos">
+					<float_array count="18" id="geometries_0-Pos-array">
+						-1.986207 0.000000 -4.000000 
+						-2.000000 0.000000 0.000000 
+						0.565469 -0.000000 4.071474 
+						2.013793 0.000000 -4.000000 
+						2.000000 0.000000 0.000000 
+						7.666680 -0.048596 4.013997
+
+					</float_array>
+					<technique_common>
+						<accessor count="6" source="#geometries_0-Pos-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_0-Vtx">
+					<input semantic="POSITION" source="#geometries_0-Pos"/>
+				</vertices>
+				<polylist count="2" material="Scene_Material">
+					<input offset="0" semantic="VERTEX" source="#geometries_0-Vtx"/>
+					<vcount>4 4</vcount>
+					<p>
+						0 1 4 3
+						1 2 5 4
+					</p>
+				</polylist>
+			</mesh>
+		</geometry>
+	</library_geometries>
+	<library_visual_scenes>
+		<visual_scene id="visual_scenes_0" name="visual_scenes_0">
+			<node id="Camera" name="Camera">
+				<translate sid="translate">0 0 400</translate>
+				<rotate sid="rotateZ">0 0 1 0</rotate>
+				<rotate sid="rotateY">0 1 0 0</rotate>
+				<rotate sid="rotateX">1 0 0 0</rotate>
+				<instance_camera url="#mainCamera"/>
+			</node>
+			<node id="light" name="light">
+				<translate sid="translate">50 0 400</translate>
+				<rotate sid="rotateZ">0 0 1 0</rotate>
+				<rotate sid="rotateY">0 1 0 15</rotate>
+				<rotate sid="rotateX">1 0 0 0</rotate>
+				<instance_light url="#directionalLightShape1-lib"/>
+			</node>
+			<node id="grid" name="grid">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 90.000000</rotate>
+				<scale sid="scale">15 15 15</scale>
+				<instance_geometry url="#geometries_0">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="Scene_Material" target="#Scene_Material"/>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#visual_scenes_0"/>
+	</scene>
+</COLLADA>

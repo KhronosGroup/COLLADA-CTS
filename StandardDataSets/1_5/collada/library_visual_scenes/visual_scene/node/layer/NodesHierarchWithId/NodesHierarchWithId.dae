@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author>wguo6</author>
+      <authoring_tool>3dsMax 10 - Feeling ColladaMax v3.05B.</authoring_tool>
+      <comments>ColladaMax Export Options: ExportNormals=1;ExportEPolyAsTriangles=1;ExportXRefs=1;ExportSelected=0;ExportTangents=0;ExportAnimations=1;SampleAnim=0;ExportAnimClip=0;BakeMatrices=0;ExportRelativePaths=1;AnimStart=0;AnimEnd=3.33333;</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2008-07-31T18:53:06Z</created>
+    <keywords>Superior node</keywords>
+    <modified>2008-07-31T18:53:17Z</modified>
+    <subject>Test the preservation of the layer attribute of a node</subject>
+        <title>0504</title>
+    <unit meter="0.0254" name="inch"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov>36.9999</xfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>0.393701</znear>
+            <zfar>393.701</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert1-fx">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx" name="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+            <specular>
+              <color>0.9 0.9 0.9 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="cube" name="cube_node">
+      <mesh>
+        <source id="cube-positions">
+          <float_array count="24" id="cube-positions-array">-19.685 -19.685 -19.685 19.685 -19.685 -19.685 -19.685 -19.685 19.685 19.685 -19.685 19.685 -19.685 19.685 19.685 19.685 19.685 19.685 -19.685 19.685 -19.685 19.685 19.685 -19.685</float_array>
+          <technique_common>
+            <accessor count="8" source="#cube-positions-array" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cube-map-channel1">
+          <float_array count="42" id="cube-map-channel1-array">0.375 0 0 0.625 0 0 0.375 0.25 0 0.625 0.25 0 0.375 0.5 0 0.625 0.5 0 0.375 0.75 0 0.625 0.75 0 0.375 1 0 0.625 1 0 0.875 0 0 0.875 0.25 0 0.125 0 0 0.125 0.25 0</float_array>
+          <technique_common>
+            <accessor count="14" source="#cube-map-channel1-array" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cube-vertices">
+          <input semantic="POSITION" source="#cube-positions"/>
+        </vertices>
+        <triangles count="12" material="lambert1">
+          <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
+          <input offset="1" semantic="TEXCOORD" set="1" source="#cube-map-channel1"/>
+          <p>0 0 1 1 2 2 2 2 1 1 3 3 2 2 3 3 4 4 4 4 3 3 5 5 4 4 5 5 6 6 6 6 5 5 7 7 6 6 7 7 0 8 0 8 7 7 1 9 1 1 7 10 3 3 3 3 7 10 5 11 6 12 0 0 4 13 4 13 0 0 2 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="unnamed_scene" name="unnamed_scene">
+      <node id="testCamera" layer="First" name="testCamera" type="NODE">
+        <translate>0 0 400</translate>
+        <instance_camera url="#mainCamera"/>
+      </node>
+      <node id="directionalLight1" layer="Second" name="directionalLight1" type="NODE">
+        <translate>19.685 -157.48 0</translate>
+        <rotate>-0.983106 -0.129428 -0.129428 -90.9762</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>
+      <node id="cube_node" layer="Third" name="cube_node" type="NODE">
+        <node id="transCoord" layer="Fourth" name="transCoord" type="NODE">
+          <translate>0 0 0</translate>
+          <node id="rotCoord" layer="Third" name="rotCoord" type="NODE">
+            <rotate>-0.357407 0.357407 -0.862856 -64.7368</rotate>
+            <instance_geometry url="#cube">
+              <bind_material>
+                <technique_common>
+                  <instance_material symbol="lambert1" target="#lambert1"/>
+                </technique_common>
+              </bind_material>
+            </instance_geometry>
+          </node>
+        </node>
+      </node>      
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#unnamed_scene"/>
+  </scene>
+</COLLADA>

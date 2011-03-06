@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+    <asset>
+        <contributor>
+            <author>Hlaw</author>
+            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
+            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=1;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=0;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+            <source_data>file:///C:/Documents%20and%20Settings/Hlaw/My%20Documents/maya/projects/default/untitled</source_data>
+        </contributor>
+        <created>2007-05-22T23:31:57Z</created>
+        <keywords>Baseline node lookat</keywords>
+        <modified>2007-05-22T23:31:57Z</modified>
+        <subject>Test the lookat element of a node to position and orient a geometry (50 0 0 0 0 -1000 0 1 0)</subject>
+        <title>0508</title>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="mainCamera" name="mainCamera">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9999</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1-lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_materials>
+        <material id="lambert1" name="lambert1">
+            <instance_effect url="#lambert1-fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert1-fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <constant>
+                        <emission>
+                            <color>0 0 1 1</color>
+                        </emission>
+                    </constant>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+  <library_geometries>
+    <geometry id="pyramid-mesh" name="pyramid">
+      <mesh>
+        <source id="pyramid-mesh-positions">
+          <float_array count="15" id="pyramid-mesh-positions-array">-50 0 75 0 -50 75 50 0 75 0 50 75 0 0 -125</float_array>
+          <technique_common>
+            <accessor count="5" source="#pyramid-mesh-positions-array" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pyramid-mesh-vertices">
+          <input semantic="POSITION" source="#pyramid-mesh-positions"/>
+        </vertices>
+        <triangles count="6" material="initialShadingGroup">
+          <input offset="0" semantic="VERTEX" source="#pyramid-mesh-vertices"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="untitled">
+            <node id="cube_node" name="cube_node">
+                <lookat sid="lookat">50 0 0 50 0 -1000 0 1 0</lookat>
+                <instance_geometry url="#pyramid-mesh">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 0 400</translate> 
+                <instance_camera url="#mainCamera"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <translate sid="translate">50 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_light url="#directionalLightShape1-lib"/>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>

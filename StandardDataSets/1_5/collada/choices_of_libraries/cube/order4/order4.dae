@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author>gcorson</author>
+      <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;
+exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+      <source_data>file:///C:/Documents%20and%20Settings/gcorson/Desktop/Physics%20Tests/New_Project/scenes/CTF%20template.mb</source_data>
+    </contributor>
+    <contributor>
+      <author>wguo6</author>
+      <authoring_tool>Maya2008 | ColladaMaya v3.05B</authoring_tool>
+      <comments>
+        Move visual scene to secondary place ColladaMaya export options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+        curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
+        exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+        exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+        exportNormals=1;exportTexCoords=1;
+        exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
+        exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=0;
+        dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
+      <source_data>file:///C:/Documents%20and%20Settings/wguo6/My%20Documents/maya/projects/default/untitled</source_data>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline choice of libraries</keywords>
+    <modified>2008-07-07T19:02:33Z</modified>
+    <subject>Test moving library_visual_scene to secondary place on top</subject>
+        <title>0013</title>
+    <unit meter="0.01" name="centimeter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_visual_scenes> <!-- Move visual scene to secondary place -->
+    <visual_scene id="VisualSceneNode" name="untitled">
+      <node id="cube" name="cube" type="NODE">
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_geometry url="#cubeShape">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="lambert2SG" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="testCamera" name="testCamera" type="NODE">
+        <translate sid="translate">0 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_camera url="#mainCamera"/>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="lambert1" name="lambert2">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="cubeShape" name="cubeShape">
+      <mesh>
+        <source id="cubeShape-positions" name="position">
+          <float_array count="24" id="cubeShape-positions-array">-100 -100 100 100 -100 100 -100 100 100 100 100 100 -100 100 -100 100 100 -100 -100 -100 -100 100 -100 -100</float_array>
+          <technique_common>
+            <accessor count="8" source="#cubeShape-positions-array" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cubeShape-map1" name="map1">
+          <float_array count="28" id="cubeShape-map1-array">0.375 0 0.625 0 0.375 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0 0.875 0.25 0.125 0 0.125 0.25</float_array>
+          <technique_common>
+            <accessor count="14" source="#cubeShape-map1-array" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cubeShape-vertices">
+          <input semantic="POSITION" source="#cubeShape-positions"/>
+        </vertices>
+        <polylist count="6" material="lambert2SG">
+          <input offset="0" semantic="VERTEX" source="#cubeShape-vertices"/>
+          <input offset="1" semantic="TEXCOORD" set="0" source="#cubeShape-map1"/>
+          <vcount>4 4 4 4 4 4</vcount>
+          <p>0 0 1 1 3 3 2 2 2 2 3 3 5 5 4 4 4 4 5 5 7 7 6 6 6 6 7 7 1 9 0 8 1 1 7 10 5 11 3 3 6 12 0 0 2 2 4 13</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

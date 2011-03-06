@@ -1,0 +1,1 @@
+png\init_as_null.png

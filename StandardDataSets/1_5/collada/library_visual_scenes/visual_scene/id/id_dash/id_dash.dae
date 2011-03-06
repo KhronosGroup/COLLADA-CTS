@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author>wguo6</author>
+      <authoring_tool>Handwritten</authoring_tool>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2008-06-12T12:30:18Z</created>
+    <keywords>Baseline visual_scene</keywords>
+    <modified>2008-06-12T12:30:18Z</modified>
+    <subject>Test the use and preservation of a dash in the id of a visual_scene element</subject>
+    <title>0702</title>
+  </asset>
+  <library_visual_scenes>
+    <visual_scene id="This-is-a-test-id">
+      <node id="Scene_Root" name="Scene_Root">
+        <node id="Trans" name="Trans">
+          <translate>100 0 0</translate>
+          <rotate>0.0 0.0 1.0 -211.4</rotate>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#This-is-a-test-id"/>
+  </scene>
+</COLLADA>

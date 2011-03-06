@@ -1,0 +1,1 @@
+png\cube_incorrect_input_set.png

@@ -1,0 +1,1 @@
+png\ambient_white_light1.png

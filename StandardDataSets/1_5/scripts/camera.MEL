@@ -1,0 +1,9 @@
+// This line creating a camera similar to COLLADA template and set related matrix.
+string $cameraName[] = `camera -sc 1 -ar 1.0 -vfv 36.9998 -ncp 1.0 -fcp 1000.0 -wci 0 0 0 -wup 0 1 0 -p 0 0 10`;
+// This line is for getting name of camera
+string $cameraNodeName = $cameraName[0];
+string $cameraShape = $cameraName[1];
+string $testCameraNodeName = "testCamera";
+// rename node camera
+rename $cameraNodeName $testCameraNodeName;
+// 

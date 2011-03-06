@@ -1,0 +1,52 @@
+int $descriptor;
+catch(`file -f -new`);
+
+proc fixNewlines(string $filename) {
+    $tempFilename = $filename + ".temp";
+
+    $file=`fopen $filename "r"`;
+    $tempFile=`fopen $tempFilename "w"`;
+
+    string $nextLine = `fgetline $file`;
+    while (size($nextLine) > 0) { 
+        fprint $tempFile `substitute "\n" $nextLine "\r\n"`;
+        $nextLine = `fgetline $file`;
+    }
+    fclose $tempFile;
+    fclose $file;
+
+    sysFile -delete $filename;
+    sysFile -rename $filename $tempFilename;
+}
+
+$logname = "C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/scripts/unitTest/step0/step0.log";
+$descriptor = `cmdFileOutput -o $logname`;
+
+catch(`loadPlugin "COLLADA"`);
+catch(`file -f -new`);
+// Open Scene with Camera
+// This line creating a camera similar to COLLADA template and set related matrix.
+string $cameraName[] = `camera -ar 1.0 -vfv 36.9998 -ncp 1.0 -fcp 1000.0 -wci 0 0 0 -wup 0 1 0 -p 0 0 10`;
+// This line is for getting name of camera
+string $cameraNodeName = $cameraName[0];
+string $cameraShape = $cameraName[1];
+string $testCameraNodeName = "testCamera";
+// rename node camera
+rename $cameraNodeName $testCameraNodeName;
+
+// Open DAE
+catch(`file -type "COLLADA importer" -i "C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/scripts/unitTest/up_axis/up_axis.dae"`);
+catch(`file -rename "C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/scripts/unitTest/step0/up_axis"`);
+catch(`file -save -type "mayaBinary"`);
+
+cmdFileOutput -c $descriptor;
+fixNewlines $logname;
+
+$logname = "C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/scripts/unitTest/step2/step2.log";
+$descriptor = `cmdFileOutput -o $logname`;
+catch(`unloadPlugin -force "COLLADA"`);
+catch(`loadPlugin "COLLADAMaya"`);
+catch(`file -op "bakeTransforms=0;relativePaths=0;bakeLighting=0;exportCameraAsLookat=0;exportTriangles=0;isSampling=0;curveConstrainSampling=0;samplingFunction=;exportPolygonMeshes=1;exportLights=1;exportCameras=1;exportJointsAndSkin=1;exportAnimations=1;exportInvisibleNodes=0;exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;exportTexTangents=1;exportConstraints=1;exportPhysics=1;exclusionSetMode=0;exclusionSets=;exportXRefs=1;dereferenceXRefs=0;cameraXFov=0;cameraYFov=1;" -typ "COLLADA nextgen exporter" -pr -ea "C:/Projects/COLLADA_CTF/trunk/conform/ctf/StandardDataSets/scripts/unitTest/step2/up_axis"`);
+cmdFileOutput -c $descriptor;
+fixNewlines $logname;
+catch(`unloadPlugin -force "COLLADAMaya"`);

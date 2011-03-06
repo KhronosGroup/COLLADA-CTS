@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+    <asset>
+        <contributor>
+            <author>gcorson</author>
+            <authoring_tool>Maya 8.5 | ColladaMaya v3.02 | FCollada v3.2</authoring_tool>
+            <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;exportVertexColors=1;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+        </contributor>
+        <created>2007-04-17T21:35:54Z</created>
+	<keywords>Baseline URI</keywords>
+        <modified>2007-04-17T21:35:54Z</modified>
+	<subject>Test element ids with an underscore.</subject>
+        <title>0673</title>
+        <unit meter="0.01" name="centimeter"/>
+        <up_axis>Y_UP</up_axis>
+    </asset>
+    <library_cameras>
+        <camera id="mainCamera" name="mainCamera">
+            <optics>
+                <technique_common>
+                    <perspective>
+                        <yfov>36.9999</yfov>
+                        <aspect_ratio>1</aspect_ratio>
+                        <znear>1</znear>
+                        <zfar>1000</zfar>
+                    </perspective>
+                </technique_common>
+            </optics>
+        </camera>
+    </library_cameras>
+    <library_lights>
+        <light id="directionalLightShape1_lib" name="directionalLightShape1">
+            <technique_common>
+                <directional>
+                    <color>1 1 1</color>
+                </directional>
+            </technique_common>
+        </light>
+    </library_lights>
+    <library_materials>
+        <material id="lambert_1" name="lambert1">
+            <instance_effect url="#lambert1_fx"/>
+        </material>
+    </library_materials>
+    <library_effects>
+        <effect id="lambert1_fx">
+            <profile_COMMON>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <color>0.5 0 0 1</color>
+                        </diffuse>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
+    </library_effects>
+    <library_geometries>
+    <geometry id="triangle_Shape" name="triangleShape">
+      <mesh>
+        <source id="triangle_Shape_positions" name="position">
+          <float_array count="9" id="triangle_Shapepositions_array">-50 -50 50 50 -50 50 0 50 50</float_array>
+          <technique_common>
+            <accessor count="3" source="#triangle_Shapepositions_array" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="triangle_Shape_vertices">
+          <input semantic="POSITION" source="#triangle_Shape_positions"/>
+        </vertices>
+        <polylist count="1" material="initialShadingGroup">
+          <input offset="0" semantic="VERTEX" source="#triangle_Shape_vertices"/>
+          <vcount>3</vcount>
+          <p>0 1 2</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    </library_geometries>
+    <library_visual_scenes>
+        <visual_scene id="VisualSceneNode" name="CTF_template">
+            <node id="testCamera" name="testCamera">
+                <translate sid="translate">0 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 0</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_camera url="#mainCamera"/>
+            </node>
+            <node id="directionalLight1" name="directionalLight1">
+                <translate sid="translate">50 0 400</translate>
+                <rotate sid="rotateZ">0 0 1 0</rotate>
+                <rotate sid="rotateY">0 1 0 15</rotate>
+                <rotate sid="rotateX">1 0 0 0</rotate>
+                <instance_light url="#directionalLightShape1_lib"/>
+            </node>
+            <node id="cube_node" name="cube_node">
+                <instance_geometry url="#triangle_Shape">
+                    <bind_material>
+                        <technique_common>
+                            <instance_material symbol="initialShadingGroup" target="#lambert_1"/>
+                        </technique_common>
+                    </bind_material>
+                </instance_geometry>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#VisualSceneNode"/>
+    </scene>
+</COLLADA>

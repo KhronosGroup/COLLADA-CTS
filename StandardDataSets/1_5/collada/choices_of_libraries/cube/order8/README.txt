@@ -1,0 +1,1 @@
+This test performs image comparison with the test case order1. You must run order1 first.

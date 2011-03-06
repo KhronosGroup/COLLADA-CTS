@@ -1,0 +1,1 @@
+png\node_rotate_y_cube.png

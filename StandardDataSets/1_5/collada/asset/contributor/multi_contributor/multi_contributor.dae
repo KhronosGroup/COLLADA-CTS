@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author>Wei Guo Engineer</author>
+      <authoring_tool>HandWritten</authoring_tool>
+      <comments>This is a test file</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <contributor>
+      <author>Some Author</author>
+      <authoring_tool>HandWritten Tool</authoring_tool>
+      <comments>Comments go here</comments>
+      <copyright>
+      # This is the copyright
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline asset contributor</keywords>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test multiple contributor elements.</subject>
+    <title>0711</title>                            
+  </asset>
+</COLLADA>

@@ -1,0 +1,1 @@
+png\_ref_phong_transparent_rgbzero_alpha11.png

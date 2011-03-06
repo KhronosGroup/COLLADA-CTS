@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+	<asset>
+		<contributor>
+			<authoring_tool>Autodesk Softimage version 8.0.200.0 - Crosswalk 4.1</authoring_tool>
+		        <copyright>
+		        # Copyright (C) 2007 - 2009 Khronos Group
+		        # Available only to Khronos members and adopters.
+		        # Distribution of this file or its content is strictly prohibited.
+		        </copyright>
+		</contributor>
+		<created>2010-02-18T21:43:51Z</created>
+		<keywords>Exemplary controller morph</keywords>
+		<modified>2010-02-18T21:43:51Z</modified>
+		<revision>1.4.1</revision>
+		<subject>Test a morph controller with a skin as its source</subject>
+        <title>0119</title>
+		<unit meter="0.01" name="centimeter"/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_cameras>
+		<camera id="mainCamera" name="mainCamera">
+			<optics>
+				<technique_common>
+					<perspective>
+						<yfov>36.9999</yfov>
+						<aspect_ratio>1</aspect_ratio>
+						<znear>1</znear>
+						<zfar>1000</zfar>
+					</perspective>
+				</technique_common>
+			</optics>
+		</camera>
+	</library_cameras>
+	<library_lights>
+		<light id="directionalLightShape1-lib" name="directionalLightShape1">
+			<technique_common>
+				<directional>
+					<color>1 1 1</color>
+				</directional>
+			</technique_common>
+		</light>
+	</library_lights>
+	<library_effects>
+		<effect id="Scene_Material_fx" name="Scene_Material_fx">
+			<profile_COMMON>
+				<technique sid="default">
+					<constant>
+						<emission>
+							<color sid="diffuse">0 0 1 0</color>
+						</emission>
+					</constant>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+	<library_materials>
+		<material id="Scene_Material" name="Scene_Material">
+			<instance_effect url="#Scene_Material_fx"/>
+		</material>
+	</library_materials>
+	<library_geometries>
+		<geometry id="geometries_0" name="geometries_0">
+			<mesh>
+				<source id="geometries_0-Pos">
+					<float_array count="18" id="geometries_0-Pos-array">
+						-2.000000 0.000000 -4.000000 
+						-2.000000 0.000000 0.000000 
+						-2.000000 0.000000 4.000000 
+						2.000000 0.000000 -4.000000 
+						2.000000 0.000000 0.000000 
+						2.000000 0.000000 4.000000
+					</float_array>
+					<technique_common>
+						<accessor count="6" source="#geometries_0-Pos-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_0-Vtx">
+					<input semantic="POSITION" source="#geometries_0-Pos"/>
+				</vertices>
+				<polylist count="2" material="Scene_Material">
+					<input offset="0" semantic="VERTEX" source="#geometries_0-Vtx"/>
+					<vcount>4 4</vcount>
+					<p>
+						0 1 4 3
+						1 2 5 4
+					</p>
+				</polylist>
+			</mesh>
+		</geometry>
+		<geometry id="geometries_1" name="Shape1">
+			<mesh>
+				<source id="geometries_1-Pos">
+					<float_array count="18" id="geometries_1-Pos-array">
+						-2.000000 0.000000 -4.000000 
+						-2.000000 0.000000 0.000000 
+						-4.841475 -0.000000 4.142949 
+						2.000000 0.000000 -4.000000 
+						2.000000 0.000000 0.000000 
+						5.360947 -0.097192 4.027993
+					</float_array>
+					<technique_common>
+						<accessor count="6" source="#geometries_1-Pos-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_1-Vtx">
+					<input semantic="POSITION" source="#geometries_1-Pos"/>
+				</vertices>
+			</mesh>
+		</geometry>
+	</library_geometries>
+	<library_controllers>
+		<controller id="controllers_0">
+			<skin source="#geometries_0">
+				<bind_shape_matrix>
+					1.000000 0.000000 0.000000 0.000000 
+					0.000000 1.000000 0.000000 0.000000 
+					0.000000 0.000000 1.000000 0.000000 
+					0.000000 0.000000 0.000000 1.000000
+				</bind_shape_matrix>
+				<source id="controllers_1-Joints">
+					<IDREF_array count="2" id="controllers_1-Joints-array">null null1</IDREF_array>
+					<technique_common>
+						<accessor count="2" source="#controllers_1-Joints-array" stride="1">
+							<param type="IDREF"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="controllers_1-Matrices">
+					<float_array count="32" id="controllers_1-Matrices-array">
+						1.000000 0.000000 0.000000 0.000000 
+						0.000000 1.000000 0.000000 0.000000 
+						0.000000 0.000000 1.000000 4.000000 
+						0.000000 0.000000 0.000000 1.000000 
+						1.000000 0.000000 0.000000 0.000000 
+						0.000000 1.000000 0.000000 0.000000 
+						0.000000 0.000000 1.000000 -4.000000 
+						0.000000 0.000000 0.000000 1.000000
+					</float_array>
+					<technique_common>
+						<accessor count="2" source="#controllers_1-Matrices-array" stride="16">
+							<param type="float4x4"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="controllers_1-Weights">
+					<float_array count="4" id="controllers_1-Weights-array">0.996552 1.000000 0.003448 0.000000
+					</float_array>
+					<technique_common>
+						<accessor count="4" source="#controllers_1-Weights-array" stride="1">
+							<param type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<joints>
+					<input semantic="JOINT" source="#controllers_1-Joints"/>
+					<input semantic="INV_BIND_MATRIX" source="#controllers_1-Matrices"/>
+				</joints>
+				<vertex_weights count="6">
+					<input offset="0" semantic="JOINT" source="#controllers_1-Joints"/>
+					<input offset="1" semantic="WEIGHT" source="#controllers_1-Weights"/>
+					<vcount>2 2 2 2 2 2</vcount>
+					<v>
+						0 0 1 2 
+						0 1 1 3 
+						0 2 1 0 
+						0 0 1 2 
+						0 1 1 3 
+						0 2 1 0
+					</v>
+				</vertex_weights>
+			</skin>
+		</controller>
+		<controller id="controllers_1">
+			<morph method="NORMALIZED" source="#controllers_0">
+				<source id="controllers_0-MORPH_TARGET">
+					<IDREF_array count="1" id="controllers_0-MORPH_TARGET-array">geometries_1</IDREF_array>
+					<technique_common>
+						<accessor count="1" source="#controllers_0-MORPH_TARGET-array" stride="1">
+							<param type="IDREF"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="controllers_0-MORPH_WEIGHT">
+					<float_array count="1" id="controllers_0-MORPH_WEIGHT-array">0.500000
+					</float_array>
+					<technique_common>
+						<accessor count="1" source="#controllers_0-MORPH_WEIGHT-array" stride="1">
+							<param type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<targets>
+					<input semantic="MORPH_TARGET" source="#controllers_0-MORPH_TARGET"/>
+					<input semantic="MORPH_WEIGHT" source="#controllers_0-MORPH_WEIGHT"/>
+				</targets>
+			</morph>
+		</controller>
+	</library_controllers>
+	<library_visual_scenes>
+		<visual_scene id="visual_scenes_0" name="visual_scenes_0">
+			<node id="Camera" name="Camera">
+				<translate sid="translate">0 0 400</translate>
+				<rotate sid="rotateZ">0 0 1 0</rotate>
+				<rotate sid="rotateY">0 1 0 0</rotate>
+				<rotate sid="rotateX">1 0 0 0</rotate>
+				<instance_camera url="#mainCamera"/>
+			</node>
+			<node id="light" name="light">
+				<translate sid="translate">50 0 400</translate>
+				<rotate sid="rotateZ">0 0 1 0</rotate>
+				<rotate sid="rotateY">0 1 0 15</rotate>
+				<rotate sid="rotateX">1 0 0 0</rotate>
+				<instance_light url="#directionalLightShape1-lib"/>
+			</node>
+			<node id="grid" name="grid">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 90.000000</rotate>
+				<scale sid="scale">15 15 15</scale>
+				<instance_controller url="#controllers_1">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="Scene_Material" target="#Scene_Material"/>
+						</technique_common>
+					</bind_material>
+				</instance_controller>
+			</node>
+			<node id="null" name="null" type="JOINT">
+				<translate sid="translation">0.000000 0.000000 -4.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<node id="null1" name="null1" type="JOINT">
+					<translate sid="translation">4.000000 0.000000 8.000000</translate>
+					<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+					<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+					<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+					<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				</node>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#visual_scenes_0"/>
+	</scene>
+</COLLADA>

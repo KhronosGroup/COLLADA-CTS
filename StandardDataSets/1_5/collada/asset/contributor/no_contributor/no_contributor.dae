@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline asset contributor</keywords>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test the preservation of a contributor element with all possible child elements.</subject>
+    <title>0710</title>                        
+  </asset>
+</COLLADA>

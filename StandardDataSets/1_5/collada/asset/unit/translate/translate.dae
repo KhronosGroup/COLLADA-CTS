@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author> Wei Guo </author>
+    </contributor>
+    <contributor>
+    <author>gcorson</author>
+      <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
+      <comments>Collada Maya Export Options: bakeTransforms=0;exportPolygonMeshes=1;bakeLighting=0;isSampling=0;
+curveConstrainSampling=0;removeStaticCurves=1;exportCameraAsLookat=0;
+exportLights=1;exportCameras=1;exportJointsAndSkin=1;
+exportAnimations=1;exportTriangles=0;exportInvisibleNodes=0;
+exportNormals=1;exportTexCoords=1;
+exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
+exportTexTangents=1;exportConstraints=1;exportPhysics=0;exportXRefs=1;
+dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
+      <copyright>
+      # Copyright (C) 2007 - 2009 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+    </contributor>
+    <created>2007-05-07T19:42:16Z</created>
+    <keywords>Baseline asset unit</keywords>
+    <modified>2007-05-07T19:42:16Z</modified>
+    <subject>Test that the unit of distance is interpreted correctly if the meter attribute is valid, but the name is not</subject>
+        <title>0005</title>
+    <unit meter="0.01" name="centons"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="lambert1" name="lambert1">
+      <instance_effect url="#lambert1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert1-fx">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.5 0.5 0.5 1</color>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>          
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="cube1Shape" name="cube1Shape">
+      <mesh>
+        <source id="cube1Shape-positions" name="position">
+          <float_array count="12" id="cube1Shape-positions-array">-100 -100 100 100 -100 100 -100 100 100 100 100 100</float_array>
+	  <technique_common>
+	    <accessor count="4" source="#cube1Shape-positions-array" stride="3">
+	      <param name="X" type="float"/>
+	      <param name="Y" type="float"/>
+	      <param name="Z" type="float"/>
+	    </accessor>
+	  </technique_common>
+        </source>
+        <vertices id="cube1Shape-vertices">
+          <input semantic="POSITION" source="#cube1Shape-positions"/>
+        </vertices>
+        <polylist count="1" material="initialShadingGroup">
+          <input offset="0" semantic="VERTEX" source="#cube1Shape-vertices"/>
+          <vcount>4</vcount>
+          <p>0 1 3 2</p>
+        </polylist>
+      </mesh>      
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="CTF_template">
+      <node id="cube1" name="cube1" type="NODE">
+        <scale>0.75 0.75 0.75</scale>
+        <instance_geometry url="#cube1Shape">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="initialShadingGroup" target="#lambert1"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

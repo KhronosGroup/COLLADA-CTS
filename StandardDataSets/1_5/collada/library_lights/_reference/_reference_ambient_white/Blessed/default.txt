@@ -1,0 +1,1 @@
+png\_reference_ambient_white.png

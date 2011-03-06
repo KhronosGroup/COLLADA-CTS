@@ -1,0 +1,1 @@
+png\effect_lambert_ambient_param.png
