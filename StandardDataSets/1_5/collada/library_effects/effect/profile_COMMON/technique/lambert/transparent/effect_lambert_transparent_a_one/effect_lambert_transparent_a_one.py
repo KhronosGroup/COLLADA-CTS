@@ -21,7 +21,7 @@ tagLst = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert'
 tagLst2 = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert', 'transparent', 'color'], ['library_effects', 'effect', 'profile_COMMON', 'technique', 'lambert', 'transparency', 'float']]
 attrName = ''
 attrVal = ''
-dataToCheck = ['1 1 1 1', '0.5']
+dataToCheck = ['1 1 1 1', '0.3']
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data, _tagLst2):
