@@ -9,10 +9,9 @@
 	    </copyright>
         </contributor>
         <created>2007-05-18T23:37:06Z</created>
-        <keywords>Superior library_effects effect profile_COMMON technique blinn</keywords>
+        <keywords>Superior library_effects effect profile_COMMON technique phong</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Test the RGB_ZERO opaque mode of a blinn transparent element</subject>
-        <title>0307</title>
+        <subject>Test the A_ZERO opaque mode of the phong transparent element referencing a texture</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -39,24 +38,36 @@
             </technique_common>
         </light>
     </library_lights>
+    <library_images>
+        <image id="image1" name="image1">
+            <init_from>
+                <ref>transparency_70percent.png</ref>
+            </init_from>
+        </image>
+    </library_images>
     <library_materials>
-        <material id="phong1" name="phong2">
+        <material id="phong1" name="phong1">
             <instance_effect url="#phong1-fx"/>
         </material>
-        <material id="phong2" name="phong1">
+        <material id="phong2" name="phong2">
             <instance_effect url="#phong2-fx"/>
         </material>
     </library_materials>
     <library_effects>
         <effect id="phong1-fx">
+            <newparam sid="image1-sampler">
+                <sampler2D>
+                    <instance_image url="#image1"/>
+                </sampler2D>
+            </newparam>
             <profile_COMMON>
                 <technique sid="common">
                     <phong>
                         <diffuse>
                             <color>0 1 1 1</color>
                         </diffuse>
-                        <transparent opaque="RGB_ZERO">
-                            <color>0.7 0.7 0.7 0</color>
+                        <transparent opaque="A_ZERO">
+                            <texture texture="image1-sampler" texcoord="TEX0"/>
                         </transparent>
                         <transparency>
                             <float>1</float>
@@ -198,7 +209,9 @@
                 <instance_geometry url="#pTorusShape1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="phong2SG" target="#phong1"/>
+                            <instance_material symbol="phong2SG" target="#phong1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>

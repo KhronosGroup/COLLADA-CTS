@@ -8,11 +8,10 @@
 	    # Distribution of this file or its content is strictly prohibited.
 	    </copyright>
         </contributor>
-        <created>2007-05-18T23:37:06Z</created>
-        <keywords>Superior library_effects effect profile_COMMON technique blinn</keywords>
+        <created>2011-02-04T18:31:55Z</created>
+        <keywords>Superior library_effects effect profile_COMMON technique phong</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Test the RGB_ZERO opaque mode of a blinn transparent element</subject>
-        <title>0307</title>
+        <subject>Test the RGB_ONE opaque mode of a phong transparent element</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -56,7 +55,7 @@
                             <color>0 1 1 1</color>
                         </diffuse>
                         <transparent opaque="RGB_ZERO">
-                            <color>0.7 0.7 0.7 0</color>
+                            <color>0.3 0.3 0.3 0</color>
                         </transparent>
                         <transparency>
                             <float>1</float>
