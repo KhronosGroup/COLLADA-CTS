@@ -8,11 +8,10 @@
 	    # Distribution of this file or its content is strictly prohibited.
 	    </copyright>
         </contributor>
-        <created>2007-05-18T23:37:06Z</created>
+        <created>2011-02-04T18:31:55Z</created>
         <keywords>Superior library_effects effect profile_COMMON technique blinn</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Test RGB_ZERO opaque mode of the blinn transparent element referencing a texture</subject>
-        <title>0235</title>
+        <subject>Test the RGB_ONE opaque mode of a blinn transparent element</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -39,13 +38,6 @@
             </technique_common>
         </light>
     </library_lights>
-    <library_images>
-        <image id="image1" name="image1">
-            <init_from>
-                <ref>white_70percent.png</ref>
-            </init_from>
-        </image>
-    </library_images>
     <library_materials>
         <material id="blinn1" name="blinn1">
             <instance_effect url="#blinn1-fx"/>
@@ -56,11 +48,6 @@
     </library_materials>
     <library_effects>
         <effect id="blinn1-fx">
-            <newparam sid="image1-sampler">
-                <sampler2D>
-                    <instance_image url="#image1"/>
-                </sampler2D>
-            </newparam>
             <profile_COMMON>
                 <technique sid="common">
                     <blinn>
@@ -68,7 +55,7 @@
                             <color>0 1 0 1</color>
                         </diffuse>
                         <transparent opaque="RGB_ZERO">
-                            <texture texture="image1-sampler" texcoord="TEX0"/>
+                            <color>0.3 0.3 0.3 0</color>
                         </transparent>
                         <transparency>
                             <float>1</float>
@@ -210,9 +197,7 @@
                 <instance_geometry url="#pTorusShape1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="blinn2SG" target="#blinn1">
-                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
-                            </instance_material>
+                            <instance_material symbol="blinn2SG" target="#blinn1"/>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>

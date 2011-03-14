@@ -21,7 +21,7 @@ originalLocation =['library_effects', 'effect', 'profile_COMMON', 'newparam', 'f
 bakedLocation = ['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparent', 'color']
 newparamLocations = [['library_effects', 'effect', 'newparam', 'float4'], ['library_effects', 'effect', 'profile_COMMON', 'newparam', 'float4']]
 tagLst = [['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparent', 'color'], ['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn', 'transparency', 'float']]
-dataToCheck = ['1 1 1 1', '0.5']
+dataToCheck = ['1 1 1 1', '0.3']
 
 class SimpleJudgingObject:
     def __init__(self, _originalLocation, _bakedLocation, _newparamLocations, _tagLst, _dataToCheck):

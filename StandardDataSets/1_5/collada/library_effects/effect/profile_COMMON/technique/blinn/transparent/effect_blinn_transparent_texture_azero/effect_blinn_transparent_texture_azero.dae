@@ -11,8 +11,7 @@
         <created>2007-05-18T23:37:06Z</created>
         <keywords>Superior library_effects effect profile_COMMON technique blinn</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Test RGB_ZERO opaque mode of the blinn transparent element referencing a texture</subject>
-        <title>0235</title>
+        <subject>Test the A_ZERO opaque mode of the blinn transparent element referencing a texture</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -42,7 +41,7 @@
     <library_images>
         <image id="image1" name="image1">
             <init_from>
-                <ref>white_70percent.png</ref>
+                <ref>transparency_70percent.png</ref>
             </init_from>
         </image>
     </library_images>
@@ -67,7 +66,7 @@
                         <diffuse>
                             <color>0 1 0 1</color>
                         </diffuse>
-                        <transparent opaque="RGB_ZERO">
+                        <transparent opaque="A_ZERO">
                             <texture texture="image1-sampler" texcoord="TEX0"/>
                         </transparent>
                         <transparency>

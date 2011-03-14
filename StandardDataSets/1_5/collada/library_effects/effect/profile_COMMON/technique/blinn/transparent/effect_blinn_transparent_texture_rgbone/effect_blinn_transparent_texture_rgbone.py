@@ -17,7 +17,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = []
+tagLst = ['library_effects', 'effect', 'profile_COMMON', 'technique', 'blinn']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
@@ -51,8 +51,12 @@ class SimpleJudgingObject:
             self.status_superior = self.status_baseline
             return self.status_superior
         
-        # Compare the rendered images
-        self.__assistant.CompareRenderedImages(context)
+        # Compare the rendered images between import and export
+        # Then compare images against reference test
+        # Last, check for preservation of element
+        if ( self.__assistant.CompareRenderedImages(context) ):
+            if ( self.__assistant.CompareImagesAgainst(context, "effect_blinn_transparent_rgb_one") ):
+                self.__assistant.ElementPreserved(context, self.tagList)
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
