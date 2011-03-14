@@ -1,1 +1,0 @@
-This is a non-controller test used as a reference for the test case skin_broken.
