@@ -11,8 +11,7 @@
         <created>2007-05-18T23:37:06Z</created>
         <keywords>Baseline library_effects effect profile_COMMON technique constant</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Reference test for the constant transparent element</subject>
-        <title>0253</title>
+        <subject>Test RGB_ONE opaque mode of the constant transparent element referencing a texture</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -39,6 +38,13 @@
             </technique_common>
         </light>
     </library_lights>
+    <library_images>
+        <image id="image1" name="image1">
+            <init_from>
+                <ref>white_30percent.png</ref>
+            </init_from>
+        </image>
+    </library_images>
     <library_materials>
         <material id="constant1" name="constant1">
             <instance_effect url="#constant1-fx"/>
@@ -49,14 +55,19 @@
     </library_materials>
     <library_effects>
         <effect id="constant1-fx">
+            <newparam sid="image1-sampler">
+                <sampler2D>
+                    <instance_image url="#image1"/>
+                </sampler2D>
+            </newparam>
             <profile_COMMON>
                 <technique sid="common">
                     <constant>
                         <emission>
                             <color>0 1 0 1</color>
                         </emission>
-                        <transparent opaque="A_ONE">
-                            <color>1 1 1 0</color>
+                        <transparent opaque="RGB_ONE">
+                            <texture texture="image1-sampler" texcoord="TEX0"/>
                         </transparent>
                         <transparency>
                             <float>1</float>
@@ -198,7 +209,9 @@
                 <instance_geometry url="#pTorusShape1">
                     <bind_material>
                         <technique_common>
-                            <instance_material symbol="constant2SG" target="#constant1"/>
+                            <instance_material symbol="constant2SG" target="#constant1">
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                            </instance_material>
                         </technique_common>
                     </bind_material>
                 </instance_geometry>

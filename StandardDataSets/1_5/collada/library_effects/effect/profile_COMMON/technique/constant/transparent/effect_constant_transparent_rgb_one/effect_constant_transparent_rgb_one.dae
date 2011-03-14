@@ -8,11 +8,10 @@
 	    # Distribution of this file or its content is strictly prohibited.
 	    </copyright>
         </contributor>
-        <created>2007-05-18T23:37:06Z</created>
+        <created>2011-02-04T18:31:55Z</created>
         <keywords>Baseline library_effects effect profile_COMMON technique constant</keywords>
         <modified>2011-02-04T18:31:55Z</modified>
-        <subject>Reference test for the constant transparent element</subject>
-        <title>0253</title>
+        <subject>Test the RGB_ONE opaque mode of a constant transparent element</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -40,10 +39,10 @@
         </light>
     </library_lights>
     <library_materials>
-        <material id="constant1" name="constant1">
+        <material id="constant1" name="constant2">
             <instance_effect url="#constant1-fx"/>
         </material>
-        <material id="constant2" name="constant2">
+        <material id="constant2" name="constant1">
             <instance_effect url="#constant2-fx"/>
         </material>
     </library_materials>
@@ -55,8 +54,8 @@
                         <emission>
                             <color>0 1 0 1</color>
                         </emission>
-                        <transparent opaque="A_ONE">
-                            <color>1 1 1 0</color>
+                        <transparent opaque="RGB_ONE">
+                            <color>0.3 0.3 0.3 0</color>
                         </transparent>
                         <transparency>
                             <float>1</float>
