@@ -2,9 +2,9 @@
 <COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
   <asset>
     <contributor>
-      <author>TWong</author>
-      <author_email>myemail@somemailserver.com</author_email>
-      <author_website>http://www.authorswebsite.com</author_website>
+      <author>Wei Guo Engineer</author>
+      <author_email>myemail@192.168.0.1</author_email>
+      <author_website>http://192.168.0.100</author_website>
       <authoring_tool>HandWritten</authoring_tool>
       <comments>This is a test file</comments>
       <copyright>
@@ -14,20 +14,10 @@
       </copyright>
       <source_data>http://www.collada.org</source_data>
     </contributor>
-    <contributor>
-      <author>Some Author</author>
-      <author_email>some_author@somemailserver.com</author_email>
-      <author_website>http://www.anotherauthorswebsite.com</author_website>
-      <authoring_tool>HandWritten Tool</authoring_tool>
-      <comments>Comments go here</comments>
-      <copyright>
-      # This is the copyright
-      </copyright>
-    </contributor>
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline asset contributor</keywords>
     <modified>2011-03-09T19:42:16Z</modified>
-    <subject>Test multiple contributor elements.</subject>
-    <title>0711</title>                            
+    <subject>Test the preservation of a contributor element with all possible child elements</subject>
+    <title>0709</title>                    
   </asset>
 </COLLADA>

@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
   <asset>
     <contributor>
       <author>Wei Guo Engineer</author>
+      <author_email>myemail@somemailserver.com</author_email>
+      <author_website>http://www.authorswebsite.com</author_website>
       <authoring_tool>HandWritten</authoring_tool>
       <comments>This is a test file</comments>
       <copyright>
-      # Copyright (C) 2007 - 2009 Khronos Group
+      # Copyright (C) 2011 Khronos Group
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
+      <source_data>http://www.collada.org</source_data>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
     <keywords>Baseline asset contributor</keywords>
-    <modified>2007-05-07T19:42:16Z</modified>
+    <modified>2011-03-09T19:42:16Z</modified>
     <subject>Test the preservation of a contributor element with all possible child elements</subject>
     <title>0709</title>                    
   </asset>

@@ -22,7 +22,7 @@ tagLst = ['asset', 'contributor', 'authoring_tool']
 attrName = ''
 attrVal = ''
 dataToCheck = ''
-childList = ['author', 'comments', 'copyright', 'source_data']
+childList = ['author', 'author_email', 'author_website', 'comments', 'copyright', 'source_data']
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data, _childList):
