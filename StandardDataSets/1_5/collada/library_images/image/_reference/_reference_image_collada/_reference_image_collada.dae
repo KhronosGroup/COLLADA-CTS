@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
     <asset>
-		<contributor>
-			<copyright>
-		    	# Copyright (C) 2007 - 2009 Khronos Group
-		        # Available only to Khronos members and adopters.
-		        # Distribution of this file or its content is strictly prohibited.
-			</copyright>
+	<contributor>
+	    <copyright>
+	    # Copyright (C) 2011 Khronos Group
+	    # Available only to Khronos members and adopters.
+	    # Distribution of this file or its content is strictly prohibited.
+	    </copyright>
         </contributor>
         <created>2007-05-22T23:31:57Z</created>
-        <keywords>Badge: Baseline</keywords>
-        <modified>2009-05-27T13:05:43Z</modified>
+        <keywords>Baseline library_images image</keywords>
+        <modified>2011-01-11T18:07:57Z</modified>
         <subject>Reference test of a collada logo image texture applied to the diffuse color</subject>
         <title>0402</title>
         <unit meter="0.01" name="centimeter"/>
@@ -42,15 +42,10 @@
     <library_images>
         <image id="file1" name="file1">
             <init_from>
-<ref>collada.png</ref>
-</init_from>
+                <ref>collada.png</ref>
+            </init_from>
         </image>
-    <image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="lambert1" name="lambert2">
             <instance_effect url="#lambert1-fx"/>
@@ -58,17 +53,16 @@
     </library_materials>
     <library_effects>
         <effect id="lambert1-fx">
+            <newparam sid="file1-sampler">
+                <sampler2D>
+                    <instance_image url="#file1"/>
+                </sampler2D>
+            </newparam>
             <profile_COMMON>
-                
-                <newparam sid="file1-sampler">
-                    <sampler2D>
-                        <instance_image url="#file1-surface"/>
-                    </sampler2D>
-                </newparam>
                 <technique sid="common">
                     <constant>
                         <emission>
-                            <texture texcoord="TEX0" texture="file1-sampler"/>
+                            <texture texture="file1-sampler" texcoord="TEX0"/>
                         </emission>
                     </constant>
                 </technique>
@@ -79,7 +73,7 @@
         <geometry id="cube" name="cube">
             <mesh>
                 <source id="pCubeShape1-positions" name="position">
-                    <float_array count="12" id="pCubeShape1-positions-array">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
+                    <float_array id="pCubeShape1-positions-array" count="12">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
                     <technique_common>
                         <accessor count="4" source="#pCubeShape1-positions-array" stride="3">
                             <param name="X" type="float"/>
@@ -89,7 +83,7 @@
                     </technique_common>
                 </source>
                 <source id="cube-map1" name="map1">
-                    <float_array count="8" id="cube-map1-array">0 0 1 0 1 1 0 1</float_array>
+                    <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2">
                             <param name="S" type="float"/>
@@ -102,7 +96,7 @@
                 </vertices>
                 <polylist count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <input offset="1" semantic="TEXCOORD" set="0" source="#cube-map1"/>
+                    <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
                     <vcount>4</vcount>
                     <p>0 0 1 1 3 2 2 3</p>
                 </polylist>
@@ -117,7 +111,7 @@
                     <bind_material>
                         <technique_common>
                             <instance_material symbol="lambert2SG" target="#lambert1">
-                                <bind_vertex_input input_semantic="TEXCOORD" input_set="0" semantic="TEX0"/>
+                                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
                             </instance_material>
                         </technique_common>
                     </bind_material>
