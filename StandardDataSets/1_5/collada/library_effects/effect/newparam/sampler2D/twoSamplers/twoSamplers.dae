@@ -8,11 +8,10 @@
 	    # Distribution of this file or its content is strictly prohibited.
 	    </copyright>
         </contributor>
-        <created>2007-05-22T23:31:57Z</created>
-        <keywords>Baseline effect newparam sampler2D</keywords>
+        <created>2009-05-04T12:00:00Z</created>
+	<keywords>Baseline effect newparam sampler2D</keywords>
         <modified>2011-01-17T16:01:57Z</modified>
-        <subject>Test the WRAP wrapping mode for a sampler2D under effect</subject>
-        <title>0172</title>
+	<subject>Test multiple newparam sampler2D</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -40,6 +39,11 @@
         </light>
     </library_lights>
     <library_images>
+        <image id="collada_png" name="collada_png">
+            <init_from>
+                <ref>collada.png</ref>
+            </init_from>
+        </image>
         <image id="checkerboard_png" name="checkerboard_png">
             <init_from>
                 <ref>checkerboard.png</ref>
@@ -47,7 +51,7 @@
         </image>
     </library_images>
     <library_materials>
-        <material id="lambert1" name="lambert2">
+        <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
         </material>
     </library_materials>
@@ -55,21 +59,30 @@
       <effect id="lambert1-fx">
         <newparam sid="file1-sampler">
             <sampler2D>
+                <instance_image url="#collada_png"/>
+            </sampler2D>
+        </newparam>
+        <newparam sid="file2-sampler">
+            <sampler2D>
                 <instance_image url="#checkerboard_png"/>
-                <wrap_s>WRAP</wrap_s>
-                <wrap_t>WRAP</wrap_t>
             </sampler2D>
         </newparam>
         <profile_COMMON>
-          <technique sid="common">
-            <lambert>
-                <diffuse>
-                    <texture texture="file1-sampler" texcoord="TEX0"/>
-                </diffuse>
-            </lambert>
-          </technique>
-        </profile_COMMON>
-      </effect>
+                <technique sid="common">
+                    <lambert>
+                        <diffuse>
+                            <texture texture="file1-sampler" texcoord="TEX0"/>
+                        </diffuse>
+                        <transparent opaque="RGB_ZERO">
+                            <texture texture="file2-sampler" texcoord="TEX1"/>
+                        </transparent>
+                        <transparency>
+                            <float>0.5</float>
+                        </transparency>
+                    </lambert>
+                </technique>
+            </profile_COMMON>
+        </effect>
     </library_effects>
     <library_geometries>
         <geometry id="cube" name="cube">
@@ -86,7 +99,7 @@
                 </source>
 
                 <source id="cube-map1" name="map1">
-                    <float_array id="cube-map1-array" count="8">0 0 2 0 2 2 0 2</float_array>
+                    <float_array id="cube-map1-array" count="8">0 0 1 0 1 1 0 1</float_array>
                     <technique_common>
                         <accessor count="4" source="#cube-map1-array" stride="2">
                             <param name="S" type="float"/>
@@ -94,12 +107,25 @@
                         </accessor>
                     </technique_common>
                 </source>
+
+                <source id="cube-map2" name="map2">
+                    <float_array id="cube-map2-array" count="8">0.25 0.25 0.75 0.25 0.75 0.75 0.25 0.75</float_array>
+                    <technique_common>
+                        <accessor count="4" source="#cube-map2-array" stride="2">
+                            <param name="S" type="float"/>
+                            <param name="T" type="float"/>
+                        </accessor>
+                    </technique_common>
+                </source>
+
                 <vertices id="cube-vertices">
                     <input semantic="POSITION" source="#pCubeShape1-positions"/>
                 </vertices>
+
                 <polylist count="1" material="lambert2SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
                     <input offset="1" semantic="TEXCOORD" source="#cube-map1" set="0"/>
+                    <input offset="1" semantic="TEXCOORD" source="#cube-map2" set="1"/>
                     <vcount>4</vcount>
                     <p>0 0 1 1 3 2 2 3</p>
                 </polylist>
@@ -107,7 +133,7 @@
         </geometry>
     </library_geometries>
     <library_visual_scenes>
-        <visual_scene id="VisualSceneNode" name="untitled">
+        <visual_scene id="visual_scene_node" name="untitled">
             <node id="cube_node" name="cube_node">
                 <scale sid="scale">3 3 3</scale>
                 <instance_geometry url="#cube">
@@ -137,6 +163,6 @@
         </visual_scene>
     </library_visual_scenes>
     <scene>
-        <instance_visual_scene url="#VisualSceneNode"/>
+        <instance_visual_scene url="#visual_scene_node"/>
     </scene>
 </COLLADA>

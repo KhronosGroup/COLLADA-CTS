@@ -1,4 +1,4 @@
-# Copyright (C) 2007 Khronos Group
+# Copyright (C) 2011 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
