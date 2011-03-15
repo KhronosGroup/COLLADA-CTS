@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+  <asset>
+    <contributor>
+      <author>wguo6</author>
+      <authoring_tool>3dsMax 10 - Feeling ColladaMax v3.05B.</authoring_tool>
+      <comments>ColladaMax Export Options: ExportNormals=1;ExportEPolyAsTriangles=1;ExportXRefs=1;ExportSelected=0;ExportTangents=0;ExportAnimations=1;SampleAnim=0;ExportAnimClip=0;BakeMatrices=0;ExportRelativePaths=1;AnimStart=0;AnimEnd=3.33333;</comments>
+      <copyright>
+      # Copyright (C) 2011 Khronos Group
+      # Available only to Khronos members and adopters.
+      # Distribution of this file or its content is strictly prohibited.
+      </copyright>
+      <source_data>file:///S:/Junk/Wei_Guo/CTF_Models/FromBryan/Cone.max</source_data>
+    </contributor>
+    <created>2008-09-25T00:49:34Z</created>
+    <keywords>Exemplary library_geometries geometry asset coverage</keywords>
+    <modified>2011-02-01T23:09:47Z</modified>
+    <subject>Test coverage element of an asset in a geometry.</subject>
+    <unit meter="0.0254" name="inch"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="mainCamera" name="mainCamera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <yfov>36.9998</yfov>
+            <aspect_ratio>1</aspect_ratio>
+            <znear>1</znear>
+            <zfar>1000</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="directionalLightShape1-lib" name="directionalLightShape1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_materials>
+    <material id="_1_-_Default" name="_1_-_Default">
+      <instance_effect url="#_1_-_Default-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="_1_-_Default-fx" name="_1_-_Default">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <ambient>
+              <color>0.588235 0.588235 0.588235 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.588235 0.588235 0.588235 1</color>
+            </diffuse>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Cone01-mesh" name="Cone01">
+      <asset>
+    	<coverage>
+	    <geographic_location>
+	        <longitude>-105.2830</longitude>
+	        <latitude>40.0170</latitude>
+	        <altitude mode="relativeToGround">100</altitude>
+	    </geographic_location>
+    	</coverage>
+        <created>2008-09-06T01:05:50Z</created>
+        <modified>2011-02-01T23:09:47Z</modified>
+        <unit meter="1" name="meter"/>
+      </asset>
+      <mesh>
+        <source id="Cone01-mesh-positions">
+          <float_array id="Cone01-mesh-positions-array" count="15">-1.27 -1.905 0 0 -1.905 1.27 1.27 -1.905 0 0 -1.905 -1.27 0 3.81 0</float_array>
+          <technique_common>
+            <accessor source="#Cone01-mesh-positions-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone01-mesh-vertices">
+          <input semantic="POSITION" source="#Cone01-mesh-positions"/>
+        </vertices>
+        <triangles material="_1_-_Default" count="6">
+          <input semantic="VERTEX" source="#Cone01-mesh-vertices" offset="0"/>
+          <p>0 1 4 1 2 4 2 3 4 3 0 4 0 2 1 0 3 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Cone" name="Cone_max">
+      <node id="Cone01-node" name="Cone01" type="NODE">   
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_geometry url="#Cone01-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="_1_-_Default" target="#_1_-_Default"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="directionalLight1" name="directionalLight1" type="NODE">
+        <translate sid="translate">50 0 400</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 15</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <instance_light url="#directionalLightShape1-lib"/>
+      </node>
+      <node id="testCamera" name="testCamera">
+	<translate sid="translate">0 0 400</translate>
+	<rotate sid="rotateZ">0 0 1 0</rotate>
+	<rotate sid="rotateY">0 1 0 0</rotate>
+	<rotate sid="rotateX">1 0 0 0</rotate>
+	<instance_camera url="#mainCamera"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Cone"/>
+  </scene>
+</COLLADA>
