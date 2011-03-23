@@ -1,1 +1,0 @@
-connectAttr -f lambert2.outColor lambert2SG.surfaceShader;
