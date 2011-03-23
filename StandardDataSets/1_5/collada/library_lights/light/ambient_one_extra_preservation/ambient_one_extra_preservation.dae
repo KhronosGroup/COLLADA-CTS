@@ -5,12 +5,16 @@
             <author>Wei, Guillaume Laforte</author>
             <authoring_tool>Hand-written</authoring_tool>
             <comments>Finish a complicated extra under this file</comments>
+	    <copyright>
+	      # Copyright (C) 2011 Khronos Group
+	      # Available only to Khronos members and adopters.
+	      # Distribution of this file or its content is strictly prohibited.
+	    </copyright>
         </contributor>
         <created>2007-06-24T13:00:00Z</created>
         <keywords>Exemplary library_lights light extra</keywords>
         <modified>2008-08-22T11:40:00Z</modified>
         <subject>Verifies that the application will export the unknown extra elements of an ambient light intact.</subject>
-        <title>30</title>
     </asset>
     <library_lights>
         <light id="directional-light">

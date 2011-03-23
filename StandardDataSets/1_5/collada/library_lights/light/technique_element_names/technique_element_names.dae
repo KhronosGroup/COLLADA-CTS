@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
+    <asset>
+        <contributor>
+            <author>Wei, Guillaume Laforte</author>
+            <authoring_tool>Hand-written</authoring_tool>
+            <comments>Finish a complicated extra under this file</comments>
+	    <copyright>
+	      # Copyright (C) 2011 Khronos Group
+	      # Available only to Khronos members and adopters.
+	      # Distribution of this file or its content is strictly prohibited.
+	    </copyright>
+        </contributor>
+        <created>2007-06-24T13:00:00Z</created>
+        <keywords>Exemplary library_lights light extra</keywords>
+        <modified>2011-03-23T11:40:00Z</modified>
+        <subject>Test that technique element names can now safely use any element names other than COLLADA without conflict.</subject>
+    </asset>
+    <library_lights>
+        <light id="directional-light">
+            <technique_common>
+                <ambient>
+                    <color>0.8 0.8 0.5</color>
+                </ambient>
+            </technique_common>
+            <extra>
+                <technique profile="UNKNOWN_APP">
+		    <library_visual_scenes>
+			<visual_scene id="Not-here" name="untitled">
+			    <node id="prop" name="prop">
+			        <translate sid="translate">0 0 0</translate>
+				<scale>50 50 50</scale>
+				<instance_geometry url="#propShape-lib"/>
+			    </node>
+			</visual_scene>
+		    </library_visual_scenes>
+                </technique>
+                <technique profile="AnotherApplication">
+		    <scene>
+			<instance_visual_scene url="#Not-here"/>
+		    </scene>
+                </technique>
+            </extra>
+        </light>
+    </library_lights>
+    <library_visual_scenes>
+        <visual_scene id="Visual-scene">
+            <node id="node1">
+                <instance_light url="#directional-light"/>
+            </node>
+        </visual_scene>
+    </library_visual_scenes>
+    <scene>
+        <instance_visual_scene url="#Visual-scene"/>
+    </scene>
+</COLLADA>
