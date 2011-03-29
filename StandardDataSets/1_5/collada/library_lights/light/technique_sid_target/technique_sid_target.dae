@@ -15,6 +15,64 @@
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
+    <library_animations>
+        <animation id="prop_translate">
+            <source id="prop_translate_prop_translate_translate-input">
+                <float_array id="prop_translate_prop_translate_translate-input-array" count="3">0 0.8 2.5</float_array>
+                <technique_common>
+                    <accessor count="3" source="#prop_translate_prop_translate_translate-input-array">
+                        <param name="TIME" type="float"/>
+                    </accessor>
+                </technique_common>
+            </source>
+            <source id="prop_translate_prop_translate_translate-output">
+                <float_array id="prop_translate_prop_translate_translate-output-array" count="9">-50 -50 0 0 50 0 50 -50 0</float_array>
+                <technique_common>
+                    <accessor count="3" source="#prop_translate_prop_translate_translate-output-array" stride="3">
+                        <param name="X" type="float"/>
+                        <param name="Y" type="float"/>
+                        <param name="Z" type="float"/>
+                    </accessor>
+                </technique_common>
+            </source>
+            <source id="prop_translate_prop_translate_translate-intangents">
+                <float_array id="prop_translate_prop_translate_translate-intangents-array" count="9">1 1 0 0 0 0 1 1 0</float_array>
+                <technique_common>
+                    <accessor count="3" source="#prop_translate_prop_translate_translate-intangents-array" stride="3">
+                        <param name="X" type="float"/>
+                        <param name="Y" type="float"/>
+                        <param name="Z" type="float"/>
+                    </accessor>
+                </technique_common>
+            </source>
+            <source id="prop_translate_prop_translate_translate-outtangents">
+                <float_array id="prop_translate_prop_translate_translate-outtangents-array" count="9">1 1 0 0 0 0 1 1 0</float_array>
+                <technique_common>
+                    <accessor count="3" source="#prop_translate_prop_translate_translate-outtangents-array" stride="3">
+                        <param name="X" type="float"/>
+                        <param name="Y" type="float"/>
+                        <param name="Z" type="float"/>
+                    </accessor>
+                </technique_common>
+            </source>
+            <source id="prop_translate_prop_translate_translate-interpolations">
+                <Name_array id="prop_translate_prop_translate_translate-interpolations-array" count="3">LINEAR LINEAR LINEAR</Name_array>
+                <technique_common>
+                    <accessor count="3" source="#prop_translate_prop_translate_translate-interpolations-array">
+                        <param name="INTERPOLATION" type="Name"/>
+                    </accessor>
+                </technique_common>
+            </source>
+            <sampler id="prop_translate_prop_translate_translate-sampler" pre_behavior="CONSTANT" post_behavior="CONSTANT">
+                <input semantic="INPUT" source="#prop_translate_prop_translate_translate-input"/>
+                <input semantic="OUTPUT" source="#prop_translate_prop_translate_translate-output"/>
+                <input semantic="IN_TANGENT" source="#prop_translate_prop_translate_translate-intangents"/>
+                <input semantic="OUT_TANGENT" source="#prop_translate_prop_translate_translate-outtangents"/>
+                <input semantic="INTERPOLATION" source="#prop_translate_prop_translate_translate-interpolations"/>
+            </sampler>
+            <channel source="#prop_translate_prop_translate_translate-sampler" target="testExtra/animated"/>
+        </animation>
+    </library_animations>
     <library_cameras>
         <camera id="mainCamera" name="mainCamera">
             <optics>
@@ -36,44 +94,11 @@
                     <color>1 1 1</color>
                 </directional>
             </technique_common>
-            <extra>
-                <technique profile="UNKNOWN_APP">
-		    <library_visual_scenes>
-			<visual_scene id="VisualSceneNode2" name="untitled">
-			    <node id="cube2_node" name="cube2_node">
-				<translate sid="translate">60 0 0</translate>
-				<scale sid="scale">2 2 2</scale>
-				<instance_geometry url="#cube2">
-				    <bind_material>
-					<technique_common>
-					    <instance_material symbol="lambert2SG" target="#lambert2"/>
-					</technique_common>
-				    </bind_material>
-				</instance_geometry>
-			    </node>
-			    <node id="testCamera2" name="testCamera2">
-				<translate sid="translate">0 0 400</translate>
-				<rotate sid="rotateZ">0 0 1 0</rotate>
-				<rotate sid="rotateY">0 1 0 0</rotate>
-				<rotate sid="rotateX">1 0 0 0</rotate>
-				<instance_camera url="#mainCamera"/>
-			    </node>
-			    <node id="directionalLight2" name="directionalLight2">
-				<translate sid="translate">50 0 400</translate>
-				<rotate sid="rotateZ">0 0 1 0</rotate>
-				<rotate sid="rotateY">0 1 0 15</rotate>
-				<rotate sid="rotateX">1 0 0 0</rotate>
-				<instance_light url="#directionalLightShape1-lib"/>
-			    </node>
-			</visual_scene>
-		    </library_visual_scenes>
-		    <scene>
-			<instance_visual_scene url="#VisualSceneNode2"/>
-		    </scene>
-                </technique>
+            <extra id="testExtra">
                 <technique profile="AnotherApplication">
-                    <dynamic>Yes</dynamic>
-                    <lighting_exponent attr1="attrval1" attr2="attrval2">1.2</lighting_exponent>
+		    <param name="wow" sid="animated" type="string">a validated string parameter from the COLLADA schema.</param>
+		    <someElement>defined in the Max schema and validated.</someElement>
+		    <uhoh>something well-formed and legal, but that can't be validated because there is no schema for it!</uhoh>
                 </technique>
             </extra>
         </light>

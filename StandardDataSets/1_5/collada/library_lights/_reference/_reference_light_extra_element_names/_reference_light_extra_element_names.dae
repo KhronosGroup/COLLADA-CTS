@@ -11,7 +11,7 @@
         <created>2011-03-23T11:00:00Z</created>
         <keywords>Exemplary library_lights light extra</keywords>
         <modified>2011-03-29T18:40:00Z</modified>
-        <subject>Test that technique element names can now safely use any element names other than COLLADA without conflict.</subject>
+        <subject>Reference test for technique_element_names test case.</subject>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -36,54 +36,11 @@
                     <color>1 1 1</color>
                 </directional>
             </technique_common>
-            <extra>
-                <technique profile="UNKNOWN_APP">
-		    <library_visual_scenes>
-			<visual_scene id="VisualSceneNode2" name="untitled">
-			    <node id="cube2_node" name="cube2_node">
-				<translate sid="translate">60 0 0</translate>
-				<scale sid="scale">2 2 2</scale>
-				<instance_geometry url="#cube2">
-				    <bind_material>
-					<technique_common>
-					    <instance_material symbol="lambert2SG" target="#lambert2"/>
-					</technique_common>
-				    </bind_material>
-				</instance_geometry>
-			    </node>
-			    <node id="testCamera2" name="testCamera2">
-				<translate sid="translate">0 0 400</translate>
-				<rotate sid="rotateZ">0 0 1 0</rotate>
-				<rotate sid="rotateY">0 1 0 0</rotate>
-				<rotate sid="rotateX">1 0 0 0</rotate>
-				<instance_camera url="#mainCamera"/>
-			    </node>
-			    <node id="directionalLight2" name="directionalLight2">
-				<translate sid="translate">50 0 400</translate>
-				<rotate sid="rotateZ">0 0 1 0</rotate>
-				<rotate sid="rotateY">0 1 0 15</rotate>
-				<rotate sid="rotateX">1 0 0 0</rotate>
-				<instance_light url="#directionalLightShape1-lib"/>
-			    </node>
-			</visual_scene>
-		    </library_visual_scenes>
-		    <scene>
-			<instance_visual_scene url="#VisualSceneNode2"/>
-		    </scene>
-                </technique>
-                <technique profile="AnotherApplication">
-                    <dynamic>Yes</dynamic>
-                    <lighting_exponent attr1="attrval1" attr2="attrval2">1.2</lighting_exponent>
-                </technique>
-            </extra>
         </light>
     </library_lights>
     <library_materials>
         <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
-        </material>
-        <material id="lambert2" name="lambert2">
-            <instance_effect url="#lambert2-fx"/>
         </material>
     </library_materials>
     <library_effects>
@@ -93,17 +50,6 @@
                     <constant>
                         <emission>
                             <color>0 0.5 0 1</color>
-                        </emission>
-                    </constant>
-                </technique>
-            </profile_COMMON>
-        </effect>
-        <effect id="lambert2-fx">
-            <profile_COMMON>
-                <technique sid="common">
-                    <constant>
-                        <emission>
-                            <color>0.5 0 0 1</color>
                         </emission>
                     </constant>
                 </technique>
@@ -128,28 +74,6 @@
                 </vertices>
                 <polylist count="1" material="lambert1SG">
                     <input offset="0" semantic="VERTEX" source="#cube-vertices"/>
-                    <vcount>4</vcount>
-                    <p>0 1 3 2</p>
-                </polylist>
-            </mesh>
-        </geometry>
-        <geometry id="cube2" name="cube2">
-            <mesh>
-                <source id="pCubeShape2-positions" name="position">
-                    <float_array id="pCubeShape2-positions-array" count="12">-25 -25 25 25 -25 25 -25 25 25 25 25 25</float_array>
-                    <technique_common>
-                        <accessor count="4" source="#pCubeShape2-positions-array" stride="3">
-                            <param name="X" type="float"/>
-                            <param name="Y" type="float"/>
-                            <param name="Z" type="float"/>
-                        </accessor>
-                    </technique_common>
-                </source>
-                <vertices id="cube2-vertices">
-                    <input semantic="POSITION" source="#pCubeShape2-positions"/>
-                </vertices>
-                <polylist count="1" material="lambert2SG">
-                    <input offset="0" semantic="VERTEX" source="#cube2-vertices"/>
                     <vcount>4</vcount>
                     <p>0 1 3 2</p>
                 </polylist>
