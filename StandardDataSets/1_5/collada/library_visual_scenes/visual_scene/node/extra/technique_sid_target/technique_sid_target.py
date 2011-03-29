@@ -65,7 +65,7 @@ class SimpleJudgingObject:
     def JudgeExemplary(self, context):
         self.status_exemplary = self.status_superior
         return self.status_exemplary 
-       
+
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
