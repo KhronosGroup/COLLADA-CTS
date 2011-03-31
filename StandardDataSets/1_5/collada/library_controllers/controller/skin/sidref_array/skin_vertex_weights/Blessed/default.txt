@@ -1,1 +1,0 @@
-png\skin_vertex_weights1.png
