@@ -13,7 +13,7 @@ exportVertexColors=1;exportVertexColorsAnimation=0;exportTangents=0;
 exportTexTangents=0;exportConstraints=1;exportPhysics=1;exportXRefs=0;
 dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
       <copyright>
-      # Copyright (C) 2007 - 2009 Khronos Group
+      # Copyright (C) 2011 Khronos Group
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
@@ -45,6 +45,8 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
       <asset>
 	<contributor>
 	    <author>Bugs Bunny</author>
+      	    <author_email>myemail@somemailserver.com</author_email>
+      	    <author_website>http://www.authorswebsite.com</author_website>
 	    <authoring_tool>HandWritten</authoring_tool>
 	    <comments>What up doc</comments>
 	    <copyright>

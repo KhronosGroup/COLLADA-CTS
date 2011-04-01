@@ -14,10 +14,9 @@
       </copyright>
     </contributor>
     <created>2007-05-07T19:42:16Z</created>
-    <keywords>Exemplary node asset</keywords>
+    <keywords>Exemplary visual_scene asset</keywords>
     <modified>2007-05-07T19:42:16Z</modified>
-    <subject>Test the preservation of the contributor element in the asset of a node</subject>
-        <title>0470</title>
+    <subject>Test the preservation of the contributor element in the asset of a visual scene</subject>
     <unit meter="0.01" name="centimeter"/>
   </asset>
   <library_cameras>
@@ -86,35 +85,23 @@
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="VisualSceneNode" name="CTF_template">
+      <asset>
+	<contributor>
+	    <author>Bugs Bunny</author>
+      	    <author_email>myemail@192.168.0.1</author_email>
+      	    <author_website>http://192.168.0.100</author_website>
+	    <authoring_tool>HandWritten</authoring_tool>
+	    <comments>What up doc</comments>
+	    <copyright>
+	    # Copyright date
+	    # Other info go here
+	    </copyright>
+	    <source_data>Source data go here</source_data>
+	</contributor>
+	<created>2007-05-07T19:42:16Z</created>
+	<modified>2007-05-07T19:42:16Z</modified>
+      </asset>
       <node id="cube1" name="cube1" type="NODE">
-	<asset>
-	    <contributor>
-		<author>Bugs Bunny</author>
-      	    	<author_email>myemail@somemailserver.com</author_email>
-      	    	<author_website>http://www.authorswebsite.com</author_website>
-		<authoring_tool>HandWritten</authoring_tool>
-		<comments>What up doc</comments>
-		<copyright>
-		# Copyright date
-		# Other info go here
-		</copyright>
-		<source_data>Source data go here</source_data>
-	    </contributor>
-            <contributor>
-                <author>Second Author</author>
-      	    	<author_email>some_author@somemailserver.com</author_email>
-      	    	<author_website>http://www.anotherauthorswebsite.com</author_website>
-                <authoring_tool>HandWritten Tool</authoring_tool>
-                <comments>Comments go here</comments>
-                <copyright>
-                # Second Copyright date
-                # Other info go here
-                </copyright>
-                <source_data>Second source data go here</source_data>
-            </contributor>
-	    <created>2007-05-07T19:42:16Z</created>
-	    <modified>2007-05-07T19:42:16Z</modified>
-	</asset>
         <translate>50 -20 -100</translate>
         <instance_geometry url="#Cone01-mesh">
           <bind_material>

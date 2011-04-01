@@ -21,7 +21,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 	<keywords>Exemplary geometry asset contributor</keywords>
         <modified>2007-05-04T00:23:06Z</modified>
         <subject>Test the preservation of the contributor element in the asset of an animation</subject>
-        <title>0324</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -71,8 +70,8 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             <asset>
                 <contributor>
                     <author>Bugs Bunny</author>
-      	    	    <author_email>myemail@somemailserver.com</author_email>
-      	    	    <author_website>http://www.authorswebsite.com</author_website>
+	      	    <author_email>myemail@192.168.0.1</author_email>
+	      	    <author_website>http://192.168.0.100</author_website>
                     <authoring_tool>HandWritten</authoring_tool>
                     <comments>What up doc</comments>
                     <copyright>

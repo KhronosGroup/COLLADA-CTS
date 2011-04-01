@@ -22,7 +22,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
     <keywords>Exemplary animation asset</keywords>
     <modified>2008-09-19T02:09:47Z</modified>
     <subject>Test the preservation of the asset contributor element in an animation</subject>
-        <title>0043</title>
     <unit meter="0.01" name="centimeter"/>
     <up_axis>Y_UP</up_axis>
   </asset>
@@ -45,8 +44,8 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
       <asset>
 	<contributor>
 	    <author>Bugs Bunny</author>
-      	    <author_email>myemail@somemailserver.com</author_email>
-      	    <author_website>http://www.authorswebsite.com</author_website>
+      	    <author_email>myemail@192.168.0.1</author_email>
+      	    <author_website>http://192.168.0.100</author_website>
 	    <authoring_tool>HandWritten</authoring_tool>
 	    <comments>What up doc</comments>
 	    <copyright>
@@ -54,18 +53,6 @@ dereferenceXRefs=1;cameraXFov=0;cameraYFov=1</comments>
 	    # Other info go here
 	    </copyright>
 	    <source_data>Source data go here</source_data>
-	</contributor>
-	<contributor>
-	    <author>Second Author</author>
-      	    <author_email>some_author@somemailserver.com</author_email>
-      	    <author_website>http://www.anotherauthorswebsite.com</author_website>
-	    <authoring_tool>HandWritten Tool</authoring_tool>
-	    <comments>Comments go here</comments>
-	    <copyright>
-	    # Second Copyright date
-	    # Other info go here
-	    </copyright>
-	    <source_data>Second source data go here</source_data>
 	</contributor>
 	<created>2007-05-07T19:42:16Z</created>
 	<modified>2007-05-07T19:42:16Z</modified>

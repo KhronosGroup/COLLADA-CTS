@@ -1,4 +1,4 @@
-# Copyright (C) 2007 Khronos Group
+# Copyright (C) 2011 Khronos Group
 # Available only to Khronos members.
 # Distribution of this file or its content is strictly prohibited.
 
@@ -22,7 +22,7 @@ tagLst = ['library_geometries', 'geometry', 'asset', 'contributor', 'authoring_t
 attrName = ''
 attrVal = ''
 dataToCheck = ''
-childList = ['author', 'comments', 'copyright', 'source_data']
+childList = ['author', 'author_email', 'author_website', 'comments', 'copyright', 'source_data']
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data, _childList):

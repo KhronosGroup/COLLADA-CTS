@@ -8,7 +8,7 @@
     <author>gcorson</author>
       <authoring_tool>Maya8.5 | ColladaMaya v3.03</authoring_tool>
       <copyright>
-      # Copyright (C) 2007 - 2009 Khronos Group
+      # Copyright (C) 2011 Khronos Group
       # Available only to Khronos members and adopters.
       # Distribution of this file or its content is strictly prohibited.
       </copyright>
@@ -90,6 +90,8 @@
 	<asset>
 	    <contributor>
 		<author>Bugs Bunny</author>
+      	    	<author_email>myemail@somemailserver.com</author_email>
+      	    	<author_website>http://www.authorswebsite.com</author_website>
 		<authoring_tool>HandWritten</authoring_tool>
 		<comments>What up doc</comments>
 		<copyright>
