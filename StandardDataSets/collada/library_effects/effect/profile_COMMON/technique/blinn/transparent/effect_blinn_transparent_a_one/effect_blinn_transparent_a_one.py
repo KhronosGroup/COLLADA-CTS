@@ -73,8 +73,8 @@ class SimpleJudgingObject:
         if ( self.__assistant.CompareRenderedImages(context) ):
             if ( self.__assistant.CompareImagesAgainst(context, "_ref_blinn_transparent_aone_black", None, None, 5, True, True) ):
                 if ( self.__assistant.CompareImagesAgainst(context, "_ref_blinn_transparent_aone_alpha0", None, None, 5, True, False) ):
-                    self.status_baseline = self.checkTransparent(context)
-                    return self.status_baseline
+                    self.status_superior = self.checkTransparent(context)
+                    return self.status_superior
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 

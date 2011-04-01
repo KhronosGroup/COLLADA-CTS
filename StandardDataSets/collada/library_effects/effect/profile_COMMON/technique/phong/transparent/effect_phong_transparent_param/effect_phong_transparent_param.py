@@ -71,8 +71,8 @@ class SimpleJudgingObject:
         # Last, check for preservation of element data
         if ( self.__assistant.CompareRenderedImages(context) ):
             if ( self.__assistant.CompareImagesAgainst(context, "effect_phong_transparent_default") ):
-                self.status_baseline = self.checkTransparent(context)
-                return self.status_baseline
+                self.status_superior = self.checkTransparent(context)
+                return self.status_superior
         
         self.status_superior = self.__assistant.DeferJudgement(context)
         return self.status_superior 
