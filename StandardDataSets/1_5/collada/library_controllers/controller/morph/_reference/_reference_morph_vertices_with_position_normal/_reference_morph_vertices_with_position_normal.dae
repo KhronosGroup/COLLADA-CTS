@@ -39,13 +39,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
             </optics>
         </camera>
     </library_cameras>
-    <library_images>
-        <image id="file1" name="file1">
-            <init_from>
-<ref>collada.png</ref>
-</init_from>
-        </image>
-    </library_images>
     <library_materials>
         <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
