@@ -410,9 +410,33 @@ class JudgeAssistant:
         self.__preservationResults = False
         self.__result = False
         return self.__preservationResults
+
+
+    # Return the attribute value of the know attribute name, and specified by the tag list
+    # Will only return the first element with the matching attribute name
+    def GetAttrValue(self, context, tagList, attributeName):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        # check for tag found in output file
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+	
+        for eachElement in elementList:
+            if (eachElement.hasAttribute(attributeName)):
+            	return GetAttriByEle(eachElement, attributeName)
+            
+        testIO.Delink()
+        return None
         
     # Checks an element's attribute value in the output file against a known attributeName and attributeValue
-    def AttributeCheck(self, context, tagList, attributeName, attributeValue):
+    def AttributeCheck(self, context, tagList, attributeName, attributeValue, defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -426,17 +450,23 @@ class JudgeAssistant:
         # check for tag found in output file
         elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
 
+	foundMatch = False
+	
         for eachElement in elementList:
             if (GetAttriByEle(eachElement, attributeName) == attributeValue):
-                context.Log("PASSED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is preserved.")
+                foundMatch = True
+                logMsg = "PASSED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is preserved."
                 self.__preservationResults = True
                 break
 
-        if (self.__preservationResults != True):
-            context.Log("FAILED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is not preserved.")
+        if (foundMatch == False):
+            logMsg = "FAILED: " + attributeName + "=\'" + attributeValue + "\' of <"+ tagList[len(tagList)-1] +"> is not preserved."
             self.__preservationResults = False
             self.__result = False
-        
+
+        if (defaultLogText):
+            context.Log(logMsg)
+            
         testIO.Delink()
         return self.__preservationResults
 
@@ -1036,35 +1066,38 @@ class JudgeAssistant:
     # Helper function to compare the data between two elements.
     # inputElement: the first element
     # outputElement: second element to compare with inputElement
-    def CompareData(self, inputElement, outputElement):
+    def CompareData(self, inputElement, outputELement, numberNodes):
         inputData = inputElement.childNodes[0].nodeValue
-        outputData = outputElement.childNodes[0].nodeValue
+        outputData = outputELement.childNodes[0].nodeValue
         
-        if (inputData != outputData):
-            return False
-            
-        return True
+        if (numberNodes == None):
+            return IsValueEqual(inputData, outputData, 'string')
+        else:
+            if (inputElement.nodeName in numberNodes):
+                return IsValueEqual(float(inputData), float(outputData), 'float')
+            else:
+                return IsValueEqual(inputData, outputData, 'string')
 
     # Helper function that recursively checks the preservation of elements, attributes, and data.
     # inputElement: the current element to check in the input file.
     # outputElement: the current element to check in the output file.
-    def CheckPreservation(self, context, inputElement, outputElement, ordered):
+    def CheckPreservation(self, context, inputElement, outputElement, ordered, numberNodeList):
     
         # Compare attributes
         if (self.CompareAttributes(inputElement, outputElement) == False):
             context.Log("FAILED: attributes do not match for <" + inputElement.nodeName + ">.")
             return False
-        else:
-            print "attributes match"
+#        else:
+#            print "attributes match"
     
         # If there is 1 child and it is of type TEXT_NODE, then the element contains data only
         if ( len(inputElement.childNodes) == 1 and inputElement.childNodes[0].nodeType == inputElement.TEXT_NODE):
             if ( len(outputElement.childNodes) == 1 and outputElement.childNodes[0].nodeType == outputElement.TEXT_NODE):
-                if (not self.CompareData(inputElement, outputElement)):
+                if (not self.CompareData(inputElement, outputElement, numberNodes)):
                     context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
                     return False
-                else:
-                    print "data of " + inputElement.nodeName + " match."
+#                else:
+#                    print "data of " + inputElement.nodeName + " match."
             else:
                 context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
                 return False
@@ -1080,15 +1113,14 @@ class JudgeAssistant:
                 found = False
                 for outputChild in outputElement.childNodes:
                     if (outputChild.nodeName == inputChild.nodeName):
-                        print "found child: " + outputChild.nodeName
-                        found = True
-                        if (self.CheckPreservation(context, inputChild, outputChild, ordered) == False):
-                            return False
-                        else:
-                            break
+#                        print "found child: " + outputChild.nodeName
+		    
+		        found = self.CheckPreservation(context, inputChild, outputChild, ordered, numberNodeList)
+		        if (found):
+		            break
                 
                 if (not found):
-                    context.Log("FAILED: <" + inputChild.nodeName + "> not found.")
+#                    context.Log("FAILED: <" + inputChild.nodeName + "> not found or does not match.")
                     return False
                     
         return True
@@ -1098,7 +1130,8 @@ class JudgeAssistant:
     # taglist: the path to the beginning of the preservation check.
     # identifier: attribute that identifies the element to check in case there are multiple
     #    elements in the same tagList path.
-    def FullPreservation(self, context, tagList, identifier, ordered="False"):
+    # numberNodeList:  list containing elements that contain number data
+    def FullPreservation(self, context, tagList, identifier, ordered=False, numberNodeList=None):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -1127,7 +1160,7 @@ class JudgeAssistant:
                 for eachOutputElement in outputElementList:
                     if (eachOutputElement.getAttribute(identifier) == profileName):
                         found = True
-                        if (self.CheckPreservation(context, eachInputElement, eachOutputElement, ordered) == False):
+                        if (self.CheckPreservation(context, eachInputElement, eachOutputElement, ordered, numberNodeList) == False):
                             preserved = False
                         
                         break
@@ -1143,6 +1176,7 @@ class JudgeAssistant:
             context.Log("PASSED: Extra information is preserved.")
             self.__preservationResults = True
         else:
+            context.Log("FAILED: Extra information is not preserved.")
             self.__preservationResults = False
             self.__result = False
             
