@@ -54,12 +54,7 @@
 <ref>fullRed.png</ref>
 </init_from>
         </image>
-    <image id="file1-surface">
-<init_from>
-<ref>fullRed.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
@@ -71,7 +66,7 @@
                 
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#file1"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">

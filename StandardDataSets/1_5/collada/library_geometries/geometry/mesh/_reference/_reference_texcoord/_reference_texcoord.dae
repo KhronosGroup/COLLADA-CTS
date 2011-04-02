@@ -20,7 +20,6 @@
 		<keywords>Baseline geometry mesh</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
         <subject>Reference test file of an image texture on a basic square</subject>
-        <title>0395</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -53,12 +52,7 @@
 <ref>collada.png</ref>
 </init_from>
         </image>
-    <image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
@@ -70,7 +64,7 @@
                 
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#file1"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">

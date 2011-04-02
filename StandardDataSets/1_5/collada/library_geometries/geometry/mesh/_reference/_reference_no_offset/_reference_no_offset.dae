@@ -21,7 +21,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 		<keywords>baseline_badge geometry mesh source technique_common param</keywords>
         <modified>2009-05-04T12:00:00Z</modified>
 		<subject>Test param for preservation</subject>
-        <title>0391</title>
         <unit meter="0.01" name="centimeter"/>
         <up_axis>Y_UP</up_axis>
     </asset>
@@ -62,7 +61,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#collada_jpg"/>
                     </sampler2D>
                 </newparam>
                 
@@ -174,11 +173,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 <ref>collada.png</ref>
 </init_from>
                 </image>
-<image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
 </library_images>
 <scene>
         <instance_visual_scene url="#visual_scene_node"/>

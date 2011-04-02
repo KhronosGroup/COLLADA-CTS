@@ -62,7 +62,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
                
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#collada_jpg"/>
                     </sampler2D>
                 </newparam>
                 
@@ -173,11 +173,6 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
 <ref>collada.png</ref>
 </init_from>
                 </image>
-<image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
 </library_images>
 <scene>
         <instance_visual_scene url="#visual_scene_node"/>

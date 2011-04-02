@@ -54,12 +54,7 @@
 <ref>./duckCM.png</ref>
 </init_from>
         </image>
-    <image id="file2-surface">
-<init_from>
-<ref>./duckCM.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="blinn3" name="blinn3">
             <instance_effect url="#blinn3-fx"/>
@@ -71,7 +66,7 @@
                 
                 <newparam sid="file2-sampler">
                     <sampler2D>
-                        <instance_image url="#file2-surface"/>
+                        <instance_image url="#file2"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
