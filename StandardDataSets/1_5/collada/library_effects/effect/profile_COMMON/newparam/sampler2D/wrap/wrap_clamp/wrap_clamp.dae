@@ -52,7 +52,7 @@
           <newparam sid="file1-sampler">
             <!-- Test for sampler2D: Basic Badge -->
             <sampler2D>
-              <instance_image url="#file1-surface"/>
+              <instance_image url="#checkerboard_jpg"/>
               <wrap_s>WRAP</wrap_s>
               <wrap_t>CLAMP</wrap_t>
             </sampler2D>
@@ -150,11 +150,6 @@
 <ref>checkerboard.png</ref>
 </init_from>
           </image>
-<image id="file1-surface">
-<init_from>
-<ref>checkerboard.png</ref>
-</init_from>
-</image>
 </library_images>
 <scene>
         <instance_visual_scene url="#VisualSceneNode"/>

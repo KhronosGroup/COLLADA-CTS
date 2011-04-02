@@ -52,12 +52,7 @@
 <ref>halfGreen.png</ref>
 </init_from>
         </image>
-    <image id="halfGreen-surface">
-<init_from>
-<ref>halfGreen.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="blinn1" name="blinn1">
             <instance_effect url="#blinn1-fx"/>
@@ -72,7 +67,7 @@
                 
                 <newparam sid="halfGreen-sampler">
                     <sampler2D>
-                        <instance_image url="#halfGreen-surface"/>
+                        <instance_image url="#halfGreen"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">

@@ -51,7 +51,7 @@
                 
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#collada_jpg"/>
                     </sampler2D>
                 </newparam>
 
@@ -145,18 +145,13 @@
         </visual_scene>
     </library_visual_scenes>
     <library_images>
-<image id="collada_jpg" name="collada_jpg">
-                   <init_from>
-<ref>collada.png</ref>
-</init_from>
-                </image>
-<image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
-</library_images>
-<scene>
+	<image id="collada_jpg" name="collada_jpg">
+            <init_from>
+		<ref>collada.png</ref>
+	    </init_from>
+        </image>
+    </library_images>
+    <scene>
         <instance_visual_scene url="#visual_scene_node"/>
     </scene>
 </COLLADA>

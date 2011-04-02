@@ -42,15 +42,10 @@
     <library_images>
         <image id="image1" name="image1">
             <init_from>
-<ref>fullRed.png</ref>
-</init_from>
+		<ref>fullRed.png</ref>
+	    </init_from>
         </image>
-    <image id="image1-surface">
-<init_from>
-<ref>fullRed.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="phong1" name="phong1">
             <instance_effect url="#phong1-fx"/>
@@ -65,7 +60,7 @@
                 
                 <newparam sid="image1-sampler">
                     <sampler2D>
-                        <instance_image url="#image1-surface"/>
+                        <instance_image url="#image1"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">

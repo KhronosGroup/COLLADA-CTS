@@ -53,12 +53,12 @@
                 
                 <newparam sid="file1-sampler">
                     <sampler2D>
-                        <instance_image url="#file1-surface"/>
+                        <instance_image url="#collada_jpg"/>
                     </sampler2D>
                 </newparam>
                 <newparam sid="file2-sampler">
                     <sampler2D>
-                        <instance_image url="#file2-surface"/>
+                        <instance_image url="#file2"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
@@ -162,27 +162,17 @@
         </visual_scene>
     </library_visual_scenes>
     <library_images>
-<image id="file2" name="file2">
-              		<init_from>
-<ref>checkerboard.png</ref>
-</init_from>
-            	</image>
-<image id="collada_jpg" name="collada_jpg">
-                   <init_from>
-<ref>collada.png</ref>
-</init_from>
-                </image>
-<image id="file2-surface">
-<init_from>
-<ref>checkerboard.png</ref>
-</init_from>
-</image>
-<image id="file1-surface">
-<init_from>
-<ref>collada.png</ref>
-</init_from>
-</image>
-</library_images>
+    	<image id="file2" name="file2">
+            <init_from>
+	        <ref>checkerboard.png</ref>
+	    </init_from>
+    	</image>
+        <image id="collada_jpg" name="collada_jpg">
+            <init_from>
+		<ref>collada.png</ref>
+	    </init_from>
+        </image>
+    </library_images>
 <scene>
         <instance_visual_scene url="#visual_scene_node"/>
     </scene>

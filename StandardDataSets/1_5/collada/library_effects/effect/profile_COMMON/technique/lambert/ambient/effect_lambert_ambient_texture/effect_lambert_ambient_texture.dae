@@ -49,15 +49,10 @@
     <library_images>
         <image id="halfBlue" name="halfBlue">
             <init_from>
-<ref>halfBlue.png</ref>
-</init_from>
+		<ref>halfBlue.png</ref>
+	    </init_from>
         </image>
-    <image id="halfBlue-surface">
-<init_from>
-<ref>halfBlue.png</ref>
-</init_from>
-</image>
-</library_images>
+    </library_images>
     <library_materials>
         <material id="lambert1" name="lambert1">
             <instance_effect url="#lambert1-fx"/>
@@ -72,7 +67,7 @@
                 
                 <newparam sid="halfBlue-sampler">
                     <sampler2D>
-                        <instance_image url="#halfBlue-surface"/>
+                        <instance_image url="#halfBlue"/>
                     </sampler2D>
                 </newparam>
                 <technique sid="common">
