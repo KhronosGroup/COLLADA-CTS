@@ -52,30 +52,10 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
   <library_images>
     <image id="file9" name="file9">
       <init_from>
-<ref>./boy_10.png</ref>
-</init_from>
+	<ref>./boy_10.png</ref>
+      </init_from>
     </image>
-  <image id="file9-surface">
-<init_from>
-<ref>./boy_10.png</ref>
-</init_from>
-</image>
-<image id="file9-surface">
-<init_from>
-<ref>./boy_10.png</ref>
-</init_from>
-</image>
-<image id="file9-surface">
-<init_from>
-<ref>./boy_10.png</ref>
-</init_from>
-</image>
-<image id="file9-surface">
-<init_from>
-<ref>./boy_10.png</ref>
-</init_from>
-</image>
-</library_images>
+  </library_images>
   <library_materials>
     <material id="matte" name="matte">
       <instance_effect url="#matte-fx"/>
@@ -105,7 +85,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         
         <newparam sid="file9-sampler">
           <sampler2D>
-            <instance_image url="#file9-surface"/>
+            <instance_image url="#file9"/>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -134,7 +114,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         
         <newparam sid="file9-sampler">
           <sampler2D>
-            <instance_image url="#file9-surface"/>
+            <instance_image url="#file9"/>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -163,7 +143,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         
         <newparam sid="file9-sampler">
           <sampler2D>
-            <instance_image url="#file9-surface"/>
+            <instance_image url="#file9"/>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -192,7 +172,7 @@ dereferenceXRefs=0;cameraXFov=0;cameraYFov=1</comments>
         
         <newparam sid="file9-sampler">
           <sampler2D>
-            <instance_image url="#file9-surface"/>
+            <instance_image url="#file9"/>
           </sampler2D>
         </newparam>
         <technique sid="common">
