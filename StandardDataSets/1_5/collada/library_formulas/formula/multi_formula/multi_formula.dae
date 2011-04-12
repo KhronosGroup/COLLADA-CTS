@@ -18,7 +18,7 @@
         <up_axis>Y_UP</up_axis>
     </asset>
     <library_formulas>
-        <formula id="formula1" sid="formula1_sid" name="formula1_name">
+        <formula id="pitch" sid="formula1_sid" name="formula1_name">
             <newparam sid="target1">
                 <float>0</float>
             </newparam>
@@ -45,40 +45,41 @@
                     </math:apply>
                 </math:math>
             </technique_common>
-            <technique profile="someProfile">
-                <param>some data</param>
-                <otherstuff type="someType">more data</otherstuff>
-            </technique>
         </formula>
-        <formula id="formula2" sid="formula2_sid" name="formula2_name">
-            <newparam sid="target2">
+        <formula id="pythagorean" name="pythagorean">
+            <newparam sid="hypotenuse">
                 <float>0</float>
             </newparam>
-            <newparam sid="value1">
+            <newparam sid="side1">
                 <float>0</float>
             </newparam>
-            <newparam sid="value2">
+            <newparam sid="side2">
                 <float>0</float>
             </newparam>
             <target>
-                <param>target</param>
+                <param>hypotenuse</param>
             </target>
             <technique_common>
                 <math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
                     <math:apply>
-                        <math:sin />
+                        <math:plus />
                         <math:apply>
-                            <math:plus />
-                            <math:apply>
-                                <math:power />
-                                <math:csymbol encoding="COLLADA">value1</math:csymbol>
-                                <math:cn>2</math:cn>
-                            </math:apply>
-                            <math:csymbol encoding="COLLADA">value2</math:csymbol>
+                            <math:power />
+                            <math:csymbol encoding="COLLADA">side1</math:csymbol>
+                            <math:cn>2</math:cn>
+                        </math:apply>
+                        <math:apply>
+                            <math:power />
+                            <math:csymbol encoding="COLLADA">side2</math:csymbol>
+                            <math:cn>2</math:cn>
                         </math:apply>
                     </math:apply>
                 </math:math>
             </technique_common>
+            <technique profile="someProfile">
+                <param>some data</param>
+                <otherstuff type="someType">more data</otherstuff>
+            </technique>
         </formula>
     </library_formulas>
 </COLLADA>

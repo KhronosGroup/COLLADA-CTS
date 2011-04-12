@@ -17,19 +17,32 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_formulas', 'formula']
-attrName = 'id'
-attrVal = ''
-dataToCheck = ''
-numberNodeList = ['float', 'math:cn']
+
+tagLstNewparam   = ['library_formulas', 'formula', 'newparam']
+newparamAtttName = 'sid'
+tagLstTarget = ['library_formulas', 'formula', 'target', 'param']
+
+# formula 1
+newparamAttrVal1  = ['target1', 'value', 'pitch']
+tagLstCsymbol1 = [['library_formulas', 'formula', 'technique_common', 'math:math', 'math:apply', 'math:apply', 'math:csymbol'], 
+		  ['library_formulas', 'formula', 'technique_common', 'math:math', 'math:apply', 'math:csymbol']]
+
+# formula 2
+newparamAttrVal2  = ['hypotenuse', 'side1', 'side2']
+tagLstCsymbol2 = ['library_formulas', 'formula', 'technique_common', 'math:math', 'math:apply', 'math:apply', 'math:csymbol']
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrName, _attrVal, _data, _numberNodeList):
-        self.tagList = _tagLst
-        self.attrName = _attrName
-        self.attrVal = _attrVal
-        self.dataToCheck = _data
-        self.numberNodeList = _numberNodeList
+    def __init__(self, _tagLstNewparam, _newparamAtttName, _tagLstTarget, _newparamAttrVal1, _tagLstCsymbol1, _newparamAttrVal2, _tagLstCsymbol2):
+        self.tagLstNewparam = _tagLstNewparam
+        self.newparamAtttName = _newparamAtttName
+        self.tagLstTarget = _tagLstTarget
+        
+        self.newparamAttrVal1 = _newparamAttrVal1
+        self.tagLstCsymbol1 = _tagLstCsymbol1
+        
+        self.newparamAttrVal2 = _newparamAttrVal2
+        self.tagLstCsymbol2 = _tagLstCsymbol2
+        
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -44,7 +57,33 @@ class SimpleJudgingObject:
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
-  
+
+    def CheckFormula1(self):
+        # check that the newparam attributes are preserved
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal1[0])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal1[1])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal1[2])
+        
+        # check that the target data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstTarget, self.newparamAttrVal1[0], "string")
+        
+        # check that the csymbol data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol1[0], self.newparamAttrVal1[1], "string")
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol1[1], self.newparamAttrVal1[2], "string")
+        
+    def CheckFormula2(self):
+        # check that the newparam attributes are preserved
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal2[0])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal2[1])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal2[2])
+        
+        # check that the target data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstTarget, self.newparamAttrVal2[0], "string")
+        
+        # check that the csymbol data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol2, self.newparamAttrVal2[1], "string")
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol2, self.newparamAttrVal2[2], "string")
+
     # To pass intermediate you need to pass basic, this object could also include additional 
     # tests that were specific to the intermediate badge.
     def JudgeSuperior(self, context):
@@ -59,12 +98,18 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
         
-        self.__assistant.FullPreservation(context, self.tagList, self.attrName, False, self.numberNodeList)
-
+        self.CheckFormula1()
+        
+        if (self.__assistant.GetResults() == False):
+	    self.status_exemplary = False
+            return self.status_exemplary 
+        
+        self.CheckFormula2()
+        
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck, numberNodeList);
+judgingObject = SimpleJudgingObject(tagLstNewparam, newparamAtttName, tagLstTarget, newparamAttrVal1, tagLstCsymbol1, newparamAttrVal2, tagLstCsymbol2);

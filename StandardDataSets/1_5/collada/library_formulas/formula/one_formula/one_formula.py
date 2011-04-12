@@ -17,19 +17,23 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = ['library_formulas', 'formula']
-attrName = 'id'
-attrVal = ''
-dataToCheck = ''
-numberNodeList = ['float', 'math:cn']
+tagLstNewparam   = ['library_formulas', 'formula', 'newparam']
+newparamAtttName = 'sid'
+newparamAttrVal  = ['hypotenuse', 'side1', 'side2']
+
+tagLstTarget = ['library_formulas', 'formula', 'target', 'param']
+
+tagLstCsymbol = ['library_formulas', 'formula', 'technique_common', 'math:math', 'math:apply', 'math:apply', 'math:csymbol']
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrName, _attrVal, _data, _numberNodeList):
-        self.tagList = _tagLst
-        self.attrName = _attrName
-        self.attrVal = _attrVal
-        self.dataToCheck = _data
-        self.numberNodeList = _numberNodeList
+    def __init__(self, _tagLstNewparam, _newparamAtttName, _newparamAttrVal, _tagLstTarget, _tagLstCsymbol):
+        self.tagLstNewparam = _tagLstNewparam
+        self.newparamAtttName = _newparamAtttName
+        self.newparamAttrVal = _newparamAttrVal
+        
+        self.tagLstTarget = _tagLstTarget
+        self.tagLstCsymbol = _tagLstCsymbol
+        
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -59,7 +63,17 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
         
-        self.__assistant.FullPreservation(context, self.tagList, self.attrName, False, self.numberNodeList)
+        # check that the newparam attributes are preserved
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal[0])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal[1])
+        self.__assistant.AttributeCheck(context, self.tagLstNewparam, self.newparamAtttName, self.newparamAttrVal[2])
+        
+        # check that the target data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstTarget, self.newparamAttrVal[0], "string")
+        
+        # check that the csymbol data is preserved
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol, self.newparamAttrVal[1], "string")
+        self.__assistant.ElementDataCheck(context, self.tagLstCsymbol, self.newparamAttrVal[2], "string")
 
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary 
@@ -67,4 +81,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck, numberNodeList);
+judgingObject = SimpleJudgingObject(tagLstNewparam, newparamAtttName, newparamAttrVal, tagLstTarget, tagLstCsymbol);
