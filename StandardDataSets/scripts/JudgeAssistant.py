@@ -254,16 +254,21 @@ class JudgeAssistant:
             return True
         
 
-    # Compare images between the input render and the first output render
+    """ Compare images between the input render and the first output render.
+        @param context The judgement context.
+        @return True if renders are equal, and False otherwise. """  
     def CompareRenderedImages(self, context):
         self.__compareRendersResults = True
         msg = "PASSED: Output images match input images."
     
         # Retrieve the image files for this test case.
         imageFilenames = context.GetStepImageFilenames()
-        if (len(imageFilenames) == 0):
+        
+        # imageFilenames[0] should contain the input renders
+        # imageFilenames[1] should contain the output renders
+        if (len(imageFilenames) < 2):
             self.__compareRendersResults = False
-            msg = "FAILED: Unable to retrieve image locations."
+            msg = "FAILED: Unable to retrieve image locations for input and/or output."
         else:
             inputImages = imageFilenames[0]
             outputImages = imageFilenames[1]
@@ -412,8 +417,12 @@ class JudgeAssistant:
         return self.__preservationResults
 
 
-    # Return the attribute value of the know attribute name, and specified by the tag list
-    # Will only return the first element with the matching attribute name
+    """ Get the attribute value of the known attribute name, and specified by the tag list.
+        Will only return the first element with the matching attribute name
+        @param context The judgement context.
+        @param tagList The list of tags to the element.
+        @param attributeName The name of the attribute.
+        @return The value of the attribute if found, or None. """   
     def GetAttrValue(self, context, tagList, attributeName):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
@@ -435,7 +444,16 @@ class JudgeAssistant:
         testIO.Delink()
         return None
         
-    # Checks an element's attribute value in the output file against a known attributeName and attributeValue
+
+    """ Checks an element's attribute value in the output file against a known 
+        attributeName and attributeValue.
+        Will only return the first element with the matching attribute name
+        @param context The judgement context.
+        @param tagList The list of tags to the element.
+        @param attributeName The name of the attribute.
+        @param attributeName The value of the attribute.
+        @param defaultLogText Boolean indicating whether to log the result message.
+        @return True if element attribute value matches, and False otherwise. """   
     def AttributeCheck(self, context, tagList, attributeName, attributeValue, defaultLogText = True):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
@@ -1047,9 +1065,11 @@ class JudgeAssistant:
         
 ################## Preservation checking (elements order not required to be equal) ##################
 
-    # Helper function to compare the attributes between two elements.
-    # inputElement: the first element
-    # outputElement: second element to compare with inputElement
+
+    """ Helper function to compare the attributes between two elements.
+        @inputElement the first element
+        @outputElement second element to compare with inputElement
+        @return True if all attributes are preserved, and False otherwise. """ 
     def CompareAttributes(self, inputElement, outputElement):
         inputAttributes = inputElement.attributes
         outputAttributes = outputElement.attributes
@@ -1063,29 +1083,56 @@ class JudgeAssistant:
             
         return True
         
-    # Helper function to compare the data between two elements.
-    # inputElement: the first element
-    # outputElement: second element to compare with inputElement
-    def CompareData(self, inputElement, outputELement, numberNodes):
+
+    """ Helper function to compare the data between two elements.
+        @inputElement the first element
+        @outputElement second element to compare with inputElement
+        @preserveDataAsText if True, data is compare as is. if False, data is compared as
+            tokens of float values
+        @numericNodes list of node names that whose data are to be compared as floats
+        @return True if equal, and False otherwise. """ 
+    def CompareData(self, inputElement, outputELement, preserveDataAsText=True, numericNodes=None):
         inputData = inputElement.childNodes[0].nodeValue
         outputData = outputELement.childNodes[0].nodeValue
         
-        if (numberNodes == None):
+        # When preserving element data simply as text (for example, <extra> node),
+        # simply compare the data as is
+        if (preserveDataAsText):
             return IsValueEqual(inputData, outputData, 'string')
+        
+        # When preserving element data as tokens, which can have multiple spaces between
+        # tokens, we need to tokenize the data and compare each value
         else:
-            if (inputElement.nodeName in numberNodes):
-                return IsValueEqual(float(inputData), float(outputData), 'float')
-            else:
-                return IsValueEqual(inputData, outputData, 'string')
+            inputDataList = inputData.split()
+            outputDataList = outputData.split()
+        
+            if ( len(outputDataList) != len(inputDataList) ):
+                return False
+        
+            if ( (numericNodes != None) and (inputElement.nodeName in numericNodes) ):
+                for i in range( len(inputDataList) ):
+                    if (not IsValueEqual(float(inputDataList[i]), float(outputDataList[i]), 'float')):
+                        return False
+	    else:
+                for i in range( len(inputDataList) ):
+                    if (not IsValueEqual(inputDataList[i], outputDataList[i], 'string')):
+                        return False
 
-    # Helper function that recursively checks the preservation of elements, attributes, and data.
-    # inputElement: the current element to check in the input file.
-    # outputElement: the current element to check in the output file.
-    def CheckPreservation(self, context, inputElement, outputElement, ordered, numberNodeList):
+            return True
+
+
+    """ Helper function that recursively checks the preservation of elements, attributes, and data.
+        @inputElement the current element to check in the input file
+        @outputElement the current element to check in the output file
+        @preserveDataAsText if True, data is compare as is. if False, data is compared as
+            tokens of float values
+        @numericNodes list of node names that whose data are to be compared as floats
+        @return True if element is preserved, and False otherwise. """ 
+    def CheckPreservation(self, context, inputElement, outputElement, preserveDataAsText=True, numericNodes=None):
     
         # Compare attributes
         if (self.CompareAttributes(inputElement, outputElement) == False):
-            context.Log("FAILED: attributes do not match for <" + inputElement.nodeName + ">.")
+#            context.Log("FAILED: attributes do not match for <" + inputElement.nodeName + ">.")
             return False
 #        else:
 #            print "attributes match"
@@ -1093,7 +1140,7 @@ class JudgeAssistant:
         # If there is 1 child and it is of type TEXT_NODE, then the element contains data only
         if ( len(inputElement.childNodes) == 1 and inputElement.childNodes[0].nodeType == inputElement.TEXT_NODE):
             if ( len(outputElement.childNodes) == 1 and outputElement.childNodes[0].nodeType == outputElement.TEXT_NODE):
-                if (not self.CompareData(inputElement, outputElement, numberNodes)):
+                if (not self.CompareData(inputElement, outputElement, preserveDataAsText, numericNodes)):
                     context.Log("FAILED: Data do not match for <" + inputElement.nodeName + ">.")
                     return False
 #                else:
@@ -1108,14 +1155,14 @@ class JudgeAssistant:
         
         for inputChild in inputElement.childNodes:
             if (inputChild.nodeType == inputChild.ELEMENT_NODE):
-                print "node type is element, named: " + inputChild.nodeName
+#                print "node type is element, named: " + inputChild.nodeName
                 
                 found = False
                 for outputChild in outputElement.childNodes:
                     if (outputChild.nodeName == inputChild.nodeName):
 #                        print "found child: " + outputChild.nodeName
 		    
-		        found = self.CheckPreservation(context, inputChild, outputChild, ordered, numberNodeList)
+		        found = self.CheckPreservation(context, inputChild, outputChild, preserveDataAsText, numericNodes)
 		        if (found):
 		            break
                 
@@ -1125,13 +1172,14 @@ class JudgeAssistant:
                     
         return True
             
-    # Checks that all elements, attributes, and data are preserved between input and
-    # files. Used for extra preservation.
-    # taglist: the path to the beginning of the preservation check.
-    # identifier: attribute that identifies the element to check in case there are multiple
-    #    elements in the same tagList path.
-    # numberNodeList:  list containing elements that contain number data
-    def FullPreservation(self, context, tagList, identifier, ordered=False, numberNodeList=None):
+
+    """ Checks that all elements, child elements, attributes, and data are preserved
+        between input and output files as is.
+        @tagList the path to the beginning of the preservation check
+        @identifier attribute that identifies the element to check in case there are multiple
+	 elements in the same tagList path
+        @return True if element is preserved, and False otherwise. """ 
+    def FullPreservation(self, context, tagList, identifier):
         if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
             if (self.SetInputOutputFiles(context) == False):
                 self.__preservationResults = False
@@ -1160,7 +1208,7 @@ class JudgeAssistant:
                 for eachOutputElement in outputElementList:
                     if (eachOutputElement.getAttribute(identifier) == profileName):
                         found = True
-                        if (self.CheckPreservation(context, eachInputElement, eachOutputElement, ordered, numberNodeList) == False):
+                        if (self.CheckPreservation(context, eachInputElement, eachOutputElement, True) == False):
                             preserved = False
                         
                         break
@@ -1183,6 +1231,78 @@ class JudgeAssistant:
         testIO.Delink()
         return self.__preservationResults
 
+    
+    """ Checks that all elements, child elements, attributes, and data are preserved between
+        input and output files. This function takes into account float type preservation.
+        @tagList the path to the beginning of the preservation check
+        @attrName attribute that identifies the element to check in case there are multiple
+         elements in the same tagList path
+        @attrVal attribute value of attrName to look for
+        @numericNodes list of elements that contain numeric data
+        @return True if element is preserved, and False otherwise. """ 
+    def SmartPreservation(self, context, tagList, attrName, attrVal, numericNodes=None):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+        
+        inputRootNode = None
+        outputRootNode = None
+        
+        rootNodeName = tagList[0][len(tagList[0]) - 1]
+        
+        # Find the starting root node with the attrName and attrVal in the input file
+        inputRootList = FindElement(testIO.GetRoot(self.__inputFileName), tagList[0])
+        if ( len(inputRootList) > 0 ):
+            for eachRoot in inputRootList:
+        	if (GetAttriByEle(eachRoot, attrName) == attrVal):
+        	    inputRootNode = eachRoot
+        	    break
+        	    
+        if (inputRootNode == None):
+            context.Log("FAILED: Unable to find " + rootNodeName + " with " + attrName + "=" + attrVal + " in input.")
+        
+        # Find the starting root node with the attrName and attrVal in the output file
+        for eachOutputTagList in tagList:
+            outputRootList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), eachOutputTagList)
+            
+            if ( len(outputRootList) > 0 ):
+                for eachRoot in outputRootList:
+        	    if (GetAttriByEle(eachRoot, attrName) == attrVal):
+        	        outputRootNode = eachRoot
+        	        break
+            
+            if (outputRootNode != None):
+                break
+                
+        if (outputRootNode == None):
+            context.Log("FAILED: Unable to find " + rootNodeName + " with " + attrName + "=" + attrVal + " in output.")
+        
+        
+        preserved = (inputRootNode != None and outputRootNode != None)
+        
+        # If the starting root node with attrName and attrVal has been found, check 
+        # preservation of children, attributes, and data
+        if (preserved):
+	    if (self.CheckPreservation(context, inputRootNode, outputRootNode, False, numericNodes) == False):
+	        preserved = False
+
+        if (preserved):
+            context.Log("PASSED: " + rootNodeName + " information is preserved.")
+            self.__preservationResults = True
+        else:
+            context.Log("FAILED: " + rootNodeName + " information is not preserved.")
+            self.__preservationResults = False
+            self.__result = False
+            
+        testIO.Delink()
+        return self.__preservationResults
+        
 ################## Transform stack preservation ##################
 
     # Checks for complete preservation of the transform stack.
@@ -1389,7 +1509,7 @@ class JudgeAssistant:
 	        if (attributeVal == attrVal):
 	            count = count + 1	    
 
-	print "count of " + tagName + ": " + str(count)
+#	print "count of " + tagName + ": " + str(count)
 	return count
     
     # Compares the count of an element in the path specified by a tag list path. If both 
@@ -1427,8 +1547,8 @@ class JudgeAssistant:
         else:
             outputCount = 0
         
-        print "input count: " + str(inputCount)
-        print "output count of " + tagName + ": " + str(outputCount)
+#        print "input count: " + str(inputCount)
+#        print "output count of " + tagName + ": " + str(outputCount)
                
         if (outputCount == inputCount):
             if (attrName == None):
@@ -1599,6 +1719,30 @@ class JudgeAssistant:
                 
         return False
         
+    # Checks for the existence of a path term in an attribute
+    # tagList: path to the element
+    # attrName: name of the attribute
+    # attrVal: the attribute term to match
+    def CheckForPathTermInAttr(self, context, tagList, attrName, attrTerm):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+        
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+        outputElementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+        
+        for eachNode in outputElementList:
+            pathNames = SplitPath( GetAttriByEle(eachNode, attrName) )
+            if (attrTerm in pathNames):
+                return True
+                
+        return False
+        
     # Checks for the existence of a url term in the data of an element
     # tagList: path to the element
     # urlMatch: the url term to match
@@ -1625,3 +1769,36 @@ class JudgeAssistant:
                 return True
                 
         return False
+
+######################################################
+
+    # Checks an element's attribute value in the output file against a known attributeName and attributeValue
+    def GetNameSpace(self, tagList):
+        if ( len(self.__inputFileName) == 0 or len(self.__outputFileNameList) == 0 ):
+            if (self.SetInputOutputFiles(context) == False):
+                self.__preservationResults = False
+                self.__result = False
+                return self.__preservationResults
+
+        testIO = DOMParserIO( self.__inputFileName, self.__outputFileNameList )
+        # load files and generate root
+        testIO.Init()
+
+	ns = None
+
+        # check for tag found in output file
+        elementList = FindElement(testIO.GetRoot(self.__outputFileNameList[0]), tagList)
+	
+	if (elementList != None):
+	    print len(elementList)
+	    childList = elementList[0].childNodes
+	    for eachChild in childList:
+                if (eachChild.nodeType == eachChild.ELEMENT_NODE):
+       	            tagNameTokens = eachChild.nodeName.split(":")
+       	            if (len(tagNameTokens) > 1):
+       	                ns = tagNameTokens[0]
+
+       		    break
+       		    
+       	testIO.Delink()
+       	return ns
