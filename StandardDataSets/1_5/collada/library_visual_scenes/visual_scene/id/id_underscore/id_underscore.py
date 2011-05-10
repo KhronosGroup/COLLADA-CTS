@@ -41,7 +41,7 @@ class SimpleJudgingObject:
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
         
         if (self.__assistant.GetResults() == False): 
-            self.status_superior = False
+            self.status_baseline = False
             return False
         
         # Check for preservation of element
