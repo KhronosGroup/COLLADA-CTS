@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.collada.org/2008/03/COLLADASchema http://www.khronos.org/files/collada_schema_1_5">
+	<asset>
+		<contributor>
+			<author>Steffen Lips</author>
+			<authoring_tool>handmade</authoring_tool>
+		        <copyright>
+		        # Copyright (C) 2011 Khronos Group
+		        # Available only to Khronos members and adopters.
+		        # Distribution of this file or its content is strictly prohibited.
+		        </copyright>
+		</contributor>
+		<created>2010-03-04T15:17:37Z</created>
+		<keywords>Kinematics_Baseline library_kinematics_scene kinematics_scene</keywords>
+		<modified>2010-03-04T15:17:37Z</modified>
+		<subject>Test the use and preservation of a period in the id of a kinematics_scene element</subject>
+		<unit meter="0.001" name="millimeter"/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_geometries>
+		<geometry id="ARM">
+			<mesh>
+				<source id="ARM.positions">
+					<float_array id="ARM.positions.array" count="24">
+						0 -25 -25
+						0 -25 25
+						0 25 25
+						0 25 -25
+						500 -25 -25
+						500 -25 25
+						500 25 25
+						500 25 -25
+					</float_array>
+					<technique_common>
+						<accessor count="8" source="#ARM.positions.array" stride="3">
+							<param type="float" name="X"/>
+							<param type="float" name="Y"/>
+							<param type="float" name="Z"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="ARM.normals">
+					<float_array id="ARM.normals.array" count="18">
+						-1 0 0
+						0 -1 0
+						0 0 1
+						0 1 0
+						0 0 -1
+						1 0 0
+					</float_array>
+					<technique_common>
+						<accessor count="6" source="#ARM.normals.array" stride="3">
+							<param type="float" name="X"/>
+							<param type="float" name="Y"/>
+							<param type="float" name="Z"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="ARM.vertices">
+					<input semantic="POSITION" source="#ARM.positions"/>
+				</vertices>
+				<polylist count="6" material="mat1">
+					<input semantic="VERTEX" source="#ARM.vertices" offset="0"/>
+					<input semantic="NORMAL" source="#ARM.normals" offset="1"/>
+					<vcount>4 4 4 4 4 4</vcount>
+					<p>
+						0 0 1 0 2 0 3 0
+						0 1 4 1 5 1 1 1
+						1 2 5 2 6 2 2 2
+						2 3 6 3 7 3 3 3
+						3 4 7 4 4 4 0 4
+						4 5 7 5 6 5 5 5
+					</p>
+				</polylist>
+			</mesh>
+		</geometry>
+		<geometry id="SCHWENKER">
+			<mesh>
+				<source id="SCHWENKER.positions">
+					<float_array id="SCHWENKER.positions.array" count="30">
+						0 0 -25
+						0 0 25
+						0 25 25
+						0 25 -25
+						150 25 25
+						150 25 -25
+						110 0 25 
+						110 0 -25
+						135 -75 25
+						135 -75 -25
+					</float_array>
+					<technique_common>
+						<accessor count="10" source="#SCHWENKER.positions.array" stride="3">
+							<param type="float" name="X"/>
+							<param type="float" name="Y"/>
+							<param type="float" name="Z"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="SCHWENKER.normals">
+					<float_array id="SCHWENKER.normals.array" count="21">
+						-1 0 0
+						0 1 0 
+						0.98 -0.15 0
+						0 -1 0
+						-0.95 -0.32 0
+						0 0 -1
+						0 0 1
+					</float_array>
+					<technique_common>
+						<accessor count="7" source="#SCHWENKER.normals.array" stride="3">
+							<param type="float" name="X"/>
+							<param type="float" name="Y"/>
+							<param type="float" name="Z"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="SCHWENKER.vertices">
+					<input semantic="POSITION" source="#SCHWENKER.positions"/>
+				</vertices>
+				<polylist count="9" material="mat1">
+					<input semantic="VERTEX" source="#SCHWENKER.vertices" offset="0"/>
+					<input semantic="NORMAL" source="#SCHWENKER.normals" offset="1"/>
+					<vcount>4 4 4 4 4 4 3 4 3</vcount>
+					<p>
+						0 0 1 0 2 0 3 0
+						3 1 2 1 4 1 5 1
+						5 2 4 2 8 2 9 2
+						1 3 0 3 7 3 6 3
+						6 4 7 4 9 4 8 4
+						0 5 3 5 5 5 7 5
+						5 5 9 5 7 5
+						1 6 6 6 4 6 2 6
+						6 6 8 6 4 6
+					</p>
+				</polylist>
+			</mesh>
+		</geometry>
+	</library_geometries>
+	<library_materials>
+		<material id="GRUEN">
+			<instance_effect url="#EFFECT_GRUEN"/>
+		</material>
+		<material id="GELB">
+			<instance_effect url="#EFFECT_GELB"/>
+		</material>
+		<material id="BLAU">
+			<instance_effect url="#EFFECT_BLAU"/>
+		</material>
+		<material id="ROT">
+			<instance_effect url="#EFFECT_ROT"/>
+		</material>
+	</library_materials>
+	<library_effects>
+		<effect id="EFFECT_GRUEN">
+			<profile_COMMON>
+				<technique sid="common">
+					<phong>
+						<diffuse>
+							<color>0 1 0 1</color>
+						</diffuse>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+		<effect id="EFFECT_GELB">
+			<profile_COMMON>
+				<technique sid="common">
+					<phong>
+						<diffuse>
+							<color>1 1 0 1</color>
+						</diffuse>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+		<effect id="EFFECT_BLAU">
+			<profile_COMMON>
+				<technique sid="common">
+					<phong>
+						<diffuse>
+							<color>0 0 1 1</color>
+						</diffuse>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+		<effect id="EFFECT_ROT">
+			<profile_COMMON>
+				<technique sid="common">
+					<phong>
+						<diffuse>
+							<color>1 0 0 1</color>
+						</diffuse>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+	<library_visual_scenes>
+		<visual_scene id="VISUAL_SCENE">
+			<node id="GREIFER">
+				<node id="OBERARM">
+					<instance_geometry url="#ARM">
+						<bind_material>
+							<technique_common>
+								<instance_material symbol="mat1" target="#GRUEN"/>
+							</technique_common>
+						</bind_material>
+					</instance_geometry>
+				</node>
+				<node id="UNTERARM">
+					<!-- Kinematics transformation begin -->
+					<translate>525 0 0</translate>
+					<translate sid="j1_axis">0 0 0</translate>
+					<translate>-525 0 0</translate>
+					<!-- Kinematics transformation end -->
+					<translate>550 0 0</translate>
+					<instance_geometry url="#ARM">
+						<bind_material>
+							<technique_common>
+								<instance_material symbol="mat1" target="#GELB"/>
+							</technique_common>
+						</bind_material>
+					</instance_geometry>
+				</node>
+				<node id="SCHWENKER1">
+					<!-- Kinematics transformation begin -->
+					<translate>525 0 0</translate>
+					<translate sid="j1_axis">0 0 0</translate>
+					<translate>525 0 0</translate>
+					<rotate sid="j2_axis">0 0 1 0</rotate>
+					<translate>-525 0 0</translate>
+					<translate>-525 0 0</translate>
+					<!-- Kinematics transformation end -->
+					<translate>1100 20 0</translate>
+					<rotate>0 0 1 45</rotate>
+					<instance_geometry url="#SCHWENKER">
+						<bind_material>
+							<technique_common>
+								<instance_material symbol="mat1" target="#ROT"/>
+							</technique_common>
+						</bind_material>
+					</instance_geometry>
+				</node>
+				<node id="SCHWENKER2">
+					<!-- Kinematics transformation begin -->
+					<translate>525 0 0</translate>
+					<translate sid="j1_axis">0 0 0</translate>
+					<translate>525 0 0</translate>
+					<rotate>1 0 0 180</rotate>
+					<rotate sid="j3_axis">0 0 1 0</rotate>
+					<rotate>1 0 0 -180</rotate>
+					<translate>-525 0 0</translate>
+					<translate>-525 0 0</translate>
+					<!-- Kinematics transformation end -->
+					<translate>1100 -20 0</translate>
+					<rotate>0 0 1 135</rotate>
+					<rotate>0 1 0 180</rotate>
+					<instance_geometry url="#SCHWENKER">
+						<bind_material>
+							<technique_common>
+								<instance_material symbol="mat1" target="#BLAU"/>
+							</technique_common>
+						</bind_material>
+					</instance_geometry>
+				</node>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<library_joints>
+		<joint id="revolute_joint">
+			<revolute sid="axis">
+				<axis>0 0 1</axis>
+				<limits>
+					<min>-15</min>
+					<max>15</max>
+				</limits>
+			</revolute>
+		</joint>
+		<joint id="prismatic_joint">
+			<prismatic sid="axis">
+				<axis>1 0 0</axis>
+				<limits>
+					<min>-500</min>
+					<max>0</max>
+				</limits>
+			</prismatic>
+		</joint>
+	</library_joints>
+	<library_kinematics_models>
+		<kinematics_model id="KIN.GREIFER">
+			<technique_common>
+				<instance_joint url="#prismatic_joint" sid="j1"/>
+				<instance_joint url="#revolute_joint" sid="j2"/>
+				<instance_joint url="#revolute_joint" sid="j3"/>
+				<link>
+					<attachment_full joint="KIN.GREIFER/j1">
+						<translate>525 0 0</translate>
+						<link>
+							<attachment_full joint="KIN.GREIFER/j2">
+								<translate>525 0 0</translate>
+								<link/>
+							</attachment_full>
+							<attachment_full joint="KIN.GREIFER/j3">
+								<translate>525 0 0</translate>
+								<rotate>1 0 0 180</rotate>
+								<link/>
+							</attachment_full>
+						</link>
+					</attachment_full>
+				</link>
+			</technique_common>
+		</kinematics_model>
+	</library_kinematics_models>
+	<library_kinematics_scenes>
+		<kinematics_scene id="KIN.SCENE">
+			<instance_kinematics_model url="#KIN.GREIFER" sid="inst_kin_greifer">
+				<newparam sid="param.model">
+					<SIDREF>KIN.SCENE/inst_kin_greifer</SIDREF>
+				</newparam>
+				<newparam sid="param.j1.axis">
+					<SIDREF>KIN.SCENE/inst_kin_greifer/j1/axis</SIDREF>
+				</newparam>
+				<newparam sid="param.j1.axis.value">
+					<float>0</float>
+				</newparam>
+				<newparam sid="param.j2.axis">
+					<SIDREF>KIN.SCENE/inst_kin_greifer/j2/axis</SIDREF>
+				</newparam>
+				<newparam sid="param.j2.axis.value">
+					<float>0</float>
+				</newparam>
+				<newparam sid="param.j3.axis">
+					<SIDREF>KIN.SCENE/inst_kin_greifer/j3/axis</SIDREF>
+				</newparam>
+				<newparam sid="param.j3.axis.value">
+					<float>0</float>
+				</newparam>
+			</instance_kinematics_model>
+		</kinematics_scene>
+	</library_kinematics_scenes>
+	<scene>
+		<instance_visual_scene url="#VISUAL_SCENE"/>
+		<instance_kinematics_scene url="#KIN.SCENE">
+			<bind_kinematics_model node="OBERARM">
+				<param>param.model</param>
+			</bind_kinematics_model>
+			<bind_joint_axis target="UNTERARM/j1_axis">
+				<axis>
+					<param>param.j1.axis</param>
+				</axis>
+				<value>
+					<param>param.j1.axis.value</param>
+				</value>
+			</bind_joint_axis>
+			<bind_joint_axis target="SCHWENKER1/j1_axis">
+				<axis>
+					<param>param.j1.axis</param>
+				</axis>
+				<value>
+					<param>param.j1.axis.value</param>
+				</value>
+			</bind_joint_axis>
+			<bind_joint_axis target="SCHWENKER1/j2_axis">
+				<axis>
+					<param>param.j2.axis</param>
+				</axis>
+				<value>
+					<param>param.j2.axis.value</param>
+				</value>
+			</bind_joint_axis>
+			<bind_joint_axis target="SCHWENKER2/j1_axis">
+				<axis>
+					<param>param.j1.axis</param>
+				</axis>
+				<value>
+					<param>param.j1.axis.value</param>
+				</value>
+			</bind_joint_axis>
+			<bind_joint_axis target="SCHWENKER2/j3_axis">
+				<axis>
+					<param>param.j3.axis</param>
+				</axis>
+				<value>
+					<param>param.j3.axis.value</param>
+				</value>
+			</bind_joint_axis>
+		</instance_kinematics_scene>
+	</scene>
+</COLLADA>

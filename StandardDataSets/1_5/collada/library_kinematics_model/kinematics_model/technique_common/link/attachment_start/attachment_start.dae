@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.collada.org/2008/03/COLLADASchema http://www.khronos.org/files/collada_schema_1_5">
+	<asset>
+		<contributor>
+			<author>Steffen Lips</author>
+			<authoring_tool>handmade</authoring_tool>
+		        <copyright>
+		        # Copyright (C) 2011 Khronos Group
+		        # Available only to Khronos members and adopters.
+		        # Distribution of this file or its content is strictly prohibited.
+		        </copyright>
+		</contributor>
+		<created>2010-03-04T15:17:37Z</created>
+		<keywords>Kinematics_Baseline library_kinematics_models kinematics_models technique_common link attachment_start</keywords>
+		<modified>2010-03-04T15:17:37Z</modified>
+		<subject>Test preservation of link/attachment_start</subject>
+		<unit meter="0.001" name="millimeter"/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_joints>
+		<joint id="revolute_joint">
+			<revolute sid="axis">
+				<axis>0 0 1</axis>
+				<limits>
+					<min>-15</min>
+					<max>15</max>
+				</limits>
+			</revolute>
+		</joint>
+		<joint id="prismatic_joint">
+			<prismatic sid="axis">
+				<axis>1 0 0</axis>
+				<limits>
+					<min>-500</min>
+					<max>0</max>
+				</limits>
+			</prismatic>
+		</joint>
+	</library_joints>
+	<library_kinematics_models>
+		<kinematics_model id="KIN_GREIFER">
+			<technique_common>
+				<instance_joint url="#prismatic_joint" sid="j1"/>
+				<instance_joint url="#revolute_joint" sid="j2"/>
+				<instance_joint url="#revolute_joint" sid="j3"/>
+				<instance_joint url="#prismatic_joint" sid="j4"/>
+				<link sid="A">
+					<attachment_full joint="KIN_GREIFER/j1">
+						<translate>0 5 0</translate>
+						<link sid="B">
+							<translate>-6 0 0</translate>
+							<attachment_start joint="KIN_GREIFER/j4">
+								<translate>-3 0 0</translate>
+								<rotate>0 1 0 45</rotate>
+							</attachment_start>
+						</link>
+					</attachment_full>
+					<attachment_full joint="KIN_GREIFER/j2">
+						<translate>0 2 0</translate>
+						<link sid="C">
+							<attachment_full joint="KIN_GREIFER/j3">
+								<translate>3 0 0</translate>
+								<link sid="D">
+									<attachment_end joint="KIN_GREIFER/j4">
+										<rotate>1 0 0 90</rotate>
+										<translate>0 3 0</translate>
+									</attachment_end>
+								</link>
+							</attachment_full>
+						</link>
+					</attachment_full>
+				</link>
+			</technique_common>
+		</kinematics_model>
+	</library_kinematics_models>
+</COLLADA>
