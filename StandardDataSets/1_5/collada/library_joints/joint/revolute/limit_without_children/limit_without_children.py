@@ -17,10 +17,11 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstRoot   = [['library_joints', 'joint'], ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint']]
-attrName = 'id'
-attrVal = 'revolute_joint'
-numericNodeList = ['axis', 'min', 'max']
+tagLstRoot = [['library_joints', 'joint', 'revolute', 'limits'], 
+	      ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint', 'revolute', 'limits']]
+attrName = ''
+attrVal = ''
+numericNodeList = []
 
 
 class SimpleJudgingObject:
@@ -46,10 +47,13 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
 
-        # check that the element and all children are preserved
-        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
-        
-        self.status_baseline = self.__assistant.GetResults()
+        # limits in export should not have child node
+        if (self.__assistant.HasChildElement(context, self.tagListRoot[0]) or
+            self.__assistant.HasChildElement(context, self.tagListRoot[1])):
+            self.status_baseline = False
+        else:
+            self.status_baseline = True
+
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -61,17 +65,8 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeKinematicsExemplary(self, context):
-	# if superior fails, no point in further checking
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-        
-        # for exemplary badge, element must be preserved in original location
-        originalTagList = [self.tagListRoot[0]]
-        self.__assistant.SmartPreservation(context, originalTagList, self.attrName, self.attrVal, self.numericNodeList)
-        
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary
+        self.status_exemplary = self.status_superior
+        return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".

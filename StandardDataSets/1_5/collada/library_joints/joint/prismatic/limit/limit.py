@@ -19,7 +19,7 @@ from StandardDataSets.scripts import JudgeAssistant
 # Please feed your node list here:
 tagLstRoot   = [['library_joints', 'joint'], ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint']]
 attrName = 'id'
-attrVal = 'revolute_joint'
+attrVal = 'prismatic_joint'
 numericNodeList = ['axis', 'min', 'max']
 
 

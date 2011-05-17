@@ -17,10 +17,11 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstRoot   = [['library_joints', 'joint'], ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint']]
-attrName = 'id'
-attrVal = 'revolute_joint'
-numericNodeList = ['axis', 'min', 'max']
+tagLstRoot = [['library_joints', 'joint', 'prismatic', 'limits'], 
+	      ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint', 'prismatic', 'limits']]
+attrName = ''
+attrVal = ''
+numericNodeList = []
 
 
 class SimpleJudgingObject:
@@ -40,16 +41,19 @@ class SimpleJudgingObject:
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
-        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], ["Render"])
+        self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
 
         if (self.__assistant.GetResults() == False): 
             self.status_baseline = False
             return False
 
-        # check that the joint element and all children are preserved
-        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
-        
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        # limits in export should not have child node
+        if (self.__assistant.HasChildElement(context, self.tagListRoot[0]) or
+            self.__assistant.HasChildElement(context, self.tagListRoot[1])):
+            self.status_baseline = False
+        else:
+            self.status_baseline = True
+
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 

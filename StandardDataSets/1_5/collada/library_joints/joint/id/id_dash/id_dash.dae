@@ -13,36 +13,28 @@
 		<created>2010-03-04T15:17:37Z</created>
 		<keywords>Kinematics_Baseline library_joints joint</keywords>
 		<modified>2010-03-04T15:17:37Z</modified>
-		<subject>Test preservation of a compound joint and all its children</subject>
+		<subject>Test the use and preservation of a dash in the id of a joint element</subject>
 		<unit meter="0.001" name="millimeter"/>
 		<up_axis>Y_UP</up_axis>
 	</asset>
 	<library_joints>
-		<joint id="revolute_joint">
-			<revolute sid="axis1">
-				<axis>0 0 1</axis>
-			</revolute>
-			<revolute sid="axis2">
-				<axis>0 1 0</axis>
-			</revolute>
-			<revolute sid="axis3">
+		<joint id="prismatic-joint">
+			<prismatic sid="axis">
 				<axis>1 0 0</axis>
-			</revolute>
+				<limits>
+					<min>-500</min>
+					<max>0</max>
+				</limits>
+			</prismatic>
 		</joint>
 	</library_joints>
 	<library_kinematics_models>
 		<kinematics_model id="KIN_GREIFER">
 			<technique_common>
-				<instance_joint url="#revolute_joint" sid="j2"/>
-				<instance_joint url="#revolute_joint" sid="j3"/>
+				<instance_joint url="#prismatic-joint" sid="j1"/>
 				<link>
-					<attachment_full joint="KIN_GREIFER/j2">
+					<attachment_full joint="KIN_GREIFER/j1">
 						<translate>525 0 0</translate>
-						<link/>
-					</attachment_full>
-					<attachment_full joint="KIN_GREIFER/j3">
-						<translate>525 0 0</translate>
-						<rotate>1 0 0 180</rotate>
 						<link/>
 					</attachment_full>
 				</link>

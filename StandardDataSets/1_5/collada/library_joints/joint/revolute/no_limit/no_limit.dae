@@ -11,22 +11,16 @@
 		        </copyright>
 		</contributor>
 		<created>2010-03-04T15:17:37Z</created>
-		<keywords>Kinematics_Baseline library_joints joint</keywords>
+		<keywords>Kinematics_Baseline library_joints joint revolute limits</keywords>
 		<modified>2010-03-04T15:17:37Z</modified>
-		<subject>Test preservation of a compound joint and all its children</subject>
+		<subject>Test that the export of a prismatic without the child limit does not add the limits/min or limits/max elements</subject>
 		<unit meter="0.001" name="millimeter"/>
 		<up_axis>Y_UP</up_axis>
 	</asset>
 	<library_joints>
 		<joint id="revolute_joint">
-			<revolute sid="axis1">
+			<revolute sid="axis">
 				<axis>0 0 1</axis>
-			</revolute>
-			<revolute sid="axis2">
-				<axis>0 1 0</axis>
-			</revolute>
-			<revolute sid="axis3">
-				<axis>1 0 0</axis>
 			</revolute>
 		</joint>
 	</library_joints>

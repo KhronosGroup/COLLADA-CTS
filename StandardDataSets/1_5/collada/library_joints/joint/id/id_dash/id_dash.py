@@ -17,19 +17,17 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstRoot   = [['library_joints', 'joint'], ['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint']]
+tagLst = ['library_joints', 'joint']
 attrName = 'id'
-attrVal = 'revolute_joint'
-numericNodeList = ['axis', 'min', 'max']
-
+attrVal = ''
+dataToCheck = ''
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLstRoot, _attrName, _attrVal, _numericNodeList):
-        self.tagListRoot = _tagLstRoot
+    def __init__(self, _tagLst, _attrName, _attrVal, _data):
+        self.tagList = _tagLst
         self.attrName = _attrName
         self.attrVal = _attrVal
-        self.numericNodeList = _numericNodeList
-        
+        self.dataToCheck = _data
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -41,15 +39,15 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-
+        
         if (self.__assistant.GetResults() == False): 
             self.status_baseline = False
             return False
-
-        # check that the element and all children are preserved
-        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
         
-        self.status_baseline = self.__assistant.GetResults()
+        # Check for preservation of element
+        self.__assistant.AttributePreserved(context, self.tagList, self.attrName)
+        
+        self.status_baseline = self.__assistant.DeferJudgement(context)
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -61,19 +59,10 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeKinematicsExemplary(self, context):
-	# if superior fails, no point in further checking
-        if (self.status_superior == False):
-            self.status_exemplary = self.status_superior
-            return self.status_exemplary
-        
-        # for exemplary badge, element must be preserved in original location
-        originalTagList = [self.tagListRoot[0]]
-        self.__assistant.SmartPreservation(context, originalTagList, self.attrName, self.attrVal, self.numericNodeList)
-        
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary
+        self.status_exemplary = self.status_superior
+        return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLstRoot, attrName, attrVal, numericNodeList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
