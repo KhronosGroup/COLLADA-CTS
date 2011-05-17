@@ -11,12 +11,42 @@
 		        </copyright>
 		</contributor>
 		<created>2010-03-04T15:17:37Z</created>
-		<keywords>Kinematics_Baseline library_kinematics_model kinematics_model</keywords>
+		<keywords>Kinematics_Baseline library_kinematics_models kinematics_models technique_common link attachment_full</keywords>
 		<modified>2010-03-04T15:17:37Z</modified>
-		<subject>Test the use and preservation of an underscore in the id of a kinematics_model element</subject>
+		<subject>Test preservation of an instance_formula referencing a joint in library_formulas</subject>
 		<unit meter="0.001" name="millimeter"/>
 		<up_axis>Y_UP</up_axis>
 	</asset>
+    <library_formulas>
+        <formula id="formula1" sid="formula1_sid" name="formula1_name">
+            <newparam sid="target">
+                <float>0</float>
+            </newparam>
+            <newparam sid="value">
+                <int>0</int>
+            </newparam>
+            <newparam sid="pitch">
+                <float>0</float>
+            </newparam>
+            <target>
+                <param>target</param>
+            </target>
+            <!-- target1 = (value/360) * pitch -->
+            <technique_common>
+                <math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
+                    <math:apply>
+                        <math:times />
+                        <math:apply>
+                            <math:divide />
+                            <math:csymbol encoding="COLLADA">value</math:csymbol>
+                            <math:cn>360</math:cn>
+                        </math:apply>
+                        <math:csymbol encoding="COLLADA">pitch</math:csymbol>
+                    </math:apply>
+                </math:math>
+            </technique_common>
+        </formula>
+    </library_formulas>
 	<library_joints>
 		<joint id="revolute_joint">
 			<revolute sid="axis">
@@ -46,19 +76,26 @@
 				<link>
 					<attachment_full joint="KIN_GREIFER/j1">
 						<translate>525 0 0</translate>
+						<rotate>0 1 0 45</rotate>
 						<link>
 							<attachment_full joint="KIN_GREIFER/j2">
 								<translate>525 0 0</translate>
 								<link/>
 							</attachment_full>
 							<attachment_full joint="KIN_GREIFER/j3">
-								<translate>525 0 0</translate>
-								<rotate>1 0 0 180</rotate>
 								<link/>
 							</attachment_full>
 						</link>
 					</attachment_full>
 				</link>
+				<instance_formula url="#formula1">
+					<setparam ref="value">
+						<int>120</int>
+					</setparam>
+					<setparam ref="pitch">
+						<float>55.123</float>
+					</setparam>
+				<instance_formula>
 			</technique_common>
 		</kinematics_model>
 	</library_kinematics_models>

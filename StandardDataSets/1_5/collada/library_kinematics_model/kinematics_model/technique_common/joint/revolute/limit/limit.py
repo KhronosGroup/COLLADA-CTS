@@ -46,7 +46,7 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
 
-        # check that the element and all children are preserved
+        # check that the joint element and all children are preserved
         self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
         
         self.status_baseline = self.__assistant.GetResults()

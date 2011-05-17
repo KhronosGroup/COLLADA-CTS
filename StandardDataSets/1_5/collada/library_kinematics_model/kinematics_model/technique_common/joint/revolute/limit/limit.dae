@@ -11,9 +11,9 @@
 		        </copyright>
 		</contributor>
 		<created>2010-03-04T15:17:37Z</created>
-		<keywords>Kinematics_Baseline library_joints joint prismatic</keywords>
+		<keywords>Kinematics_Baseline library_kinematics_model kinematics_model technique_common joint revolute limits</keywords>
 		<modified>2010-03-04T15:17:37Z</modified>
-		<subject>Test preservation of an instance_joint referencing a joint in kinematics_model</subject>
+		<subject>Test preservation of the limits element of a revolute joint in kinematics_model</subject>
 		<unit meter="0.001" name="millimeter"/>
 		<up_axis>Y_UP</up_axis>
 	</asset>
@@ -21,40 +21,37 @@
 		<kinematics_model id="KIN_GREIFER">
 			<technique_common>
 				<joint id="revolute_joint">
-					<revolute sid="axis">
+					<revolute sid="axis1">
 						<axis>0 0 1</axis>
 						<limits>
 							<min>-15</min>
 							<max>15</max>
 						</limits>
 					</revolute>
-				</joint>
-				<joint id="prismatic_joint">
-					<prismatic sid="axis">
+					<revolute sid="axis2">
+						<axis>0 1 0</axis>
+						<limits>
+							<min>-30</min>
+						</limits>
+					</revolute>
+					<revolute sid="axis3">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-500</min>
-							<max>0</max>
+							<max>30</max>
 						</limits>
-					</prismatic>
+					</revolute>
 				</joint>
-				<instance_joint url="#prismatic_joint" sid="j1"/>
 				<instance_joint url="#revolute_joint" sid="j2"/>
 				<instance_joint url="#revolute_joint" sid="j3"/>
 				<link>
-					<attachment_full joint="KIN_GREIFER/j1">
+					<attachment_full joint="KIN_GREIFER/j2">
 						<translate>525 0 0</translate>
-						<link>
-							<attachment_full joint="KIN_GREIFER/j2">
-								<translate>525 0 0</translate>
-								<link/>
-							</attachment_full>
-							<attachment_full joint="KIN_GREIFER/j3">
-								<translate>525 0 0</translate>
-								<rotate>1 0 0 180</rotate>
-								<link/>
-							</attachment_full>
-						</link>
+						<link/>
+					</attachment_full>
+					<attachment_full joint="KIN_GREIFER/j3">
+						<translate>525 0 0</translate>
+						<rotate>1 0 0 180</rotate>
+						<link/>
 					</attachment_full>
 				</link>
 			</technique_common>

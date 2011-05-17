@@ -17,10 +17,10 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstRoot   = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint'], ['library_joints', 'joint']]
-attrName = 'id'
-attrVal = 'revolute_joint'
-numericNodeList = ['axis', 'min', 'max']
+tagLstRoot   = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'instance_formula']]
+attrName = 'url'
+attrVal = '#formula1'
+numericNodeList = ['int', 'float']
 
 
 class SimpleJudgingObject:
@@ -41,13 +41,6 @@ class SimpleJudgingObject:
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-
-        if (self.__assistant.GetResults() == False): 
-            self.status_baseline = False
-            return False
-
-        # check that the element and all children are preserved
-        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -67,8 +60,7 @@ class SimpleJudgingObject:
             return self.status_exemplary
         
         # for exemplary badge, element must be preserved in original location
-        originalTagList = [self.tagListRoot[0]]
-        self.__assistant.SmartPreservation(context, originalTagList, self.attrName, self.attrVal, self.numericNodeList)
+        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
         
         self.status_exemplary = self.__assistant.DeferJudgement(context)
         return self.status_exemplary

@@ -11,33 +11,40 @@
 		        </copyright>
 		</contributor>
 		<created>2010-03-04T15:17:37Z</created>
-		<keywords>Kinematics_Baseline library_joints joint prismatic</keywords>
+		<keywords>Kinematics_Exemplary library_kinematics_models kinematics_model asset unit</keywords>
 		<modified>2010-03-04T15:17:37Z</modified>
-		<subject>Test preservation of an instance_joint referencing a joint in kinematics_model</subject>
+        	<subject>Test the preservation of the unit of an asset in a kinematics_model</subject>
 		<unit meter="0.001" name="millimeter"/>
 		<up_axis>Y_UP</up_axis>
 	</asset>
+	<library_joints>
+		<joint id="revolute_joint">
+			<revolute sid="axis">
+				<axis>0 0 1</axis>
+				<limits>
+					<min>-15</min>
+					<max>15</max>
+				</limits>
+			</revolute>
+		</joint>
+		<joint id="prismatic_joint">
+			<prismatic sid="axis">
+				<axis>1 0 0</axis>
+				<limits>
+					<min>-500</min>
+					<max>0</max>
+				</limits>
+			</prismatic>
+		</joint>
+	</library_joints>
 	<library_kinematics_models>
-		<kinematics_model id="KIN_GREIFER">
+		<kinematics_model id="KIN-GREIFER">
+		        <asset>
+				<created>2008-09-06T01:05:50Z</created>
+				<modified>2011-05-16T23:09:47Z</modified>
+				<unit meter="1" name="meter"/>
+		        </asset>
 			<technique_common>
-				<joint id="revolute_joint">
-					<revolute sid="axis">
-						<axis>0 0 1</axis>
-						<limits>
-							<min>-15</min>
-							<max>15</max>
-						</limits>
-					</revolute>
-				</joint>
-				<joint id="prismatic_joint">
-					<prismatic sid="axis">
-						<axis>1 0 0</axis>
-						<limits>
-							<min>-500</min>
-							<max>0</max>
-						</limits>
-					</prismatic>
-				</joint>
 				<instance_joint url="#prismatic_joint" sid="j1"/>
 				<instance_joint url="#revolute_joint" sid="j2"/>
 				<instance_joint url="#revolute_joint" sid="j3"/>
@@ -45,11 +52,11 @@
 					<attachment_full joint="KIN_GREIFER/j1">
 						<translate>525 0 0</translate>
 						<link>
-							<attachment_full joint="KIN_GREIFER/j2">
+							<attachment_full joint="KIN-GREIFER/j2">
 								<translate>525 0 0</translate>
 								<link/>
 							</attachment_full>
-							<attachment_full joint="KIN_GREIFER/j3">
+							<attachment_full joint="KIN-GREIFER/j3">
 								<translate>525 0 0</translate>
 								<rotate>1 0 0 180</rotate>
 								<link/>

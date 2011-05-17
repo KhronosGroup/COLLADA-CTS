@@ -14,40 +14,34 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
+
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLstRoot   = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint'], ['library_joints', 'joint']]
-attrName = 'id'
-attrVal = 'revolute_joint'
-numericNodeList = ['axis', 'min', 'max']
-
+tagLst = ['library_kinematics_models', 'kinematics_model', 'asset', 'contributor', 'authoring_tool']
+attrName = ''
+attrVal = ''
+dataToCheck = ''
+childList = ['author', 'author_email', 'author_website', 'comments', 'copyright', 'source_data']
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLstRoot, _attrName, _attrVal, _numericNodeList):
-        self.tagListRoot = _tagLstRoot
+    def __init__(self, _tagLst, _attrName, _attrVal, _data, _childList):
+        self.tagList = _tagLst
         self.attrName = _attrName
         self.attrVal = _attrVal
-        self.numericNodeList = _numericNodeList
-        
+        self.dataToCheck = _data
+        self.childList = _childList
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
-        
+
     def JudgeKinematicsBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
         
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
-
-        if (self.__assistant.GetResults() == False): 
-            self.status_baseline = False
-            return False
-
-        # check that the element and all children are preserved
-        self.__assistant.SmartPreservation(context, self.tagListRoot, self.attrName, self.attrVal, self.numericNodeList)
         
         self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
@@ -66,14 +60,10 @@ class SimpleJudgingObject:
             self.status_exemplary = self.status_superior
             return self.status_exemplary
         
-        # for exemplary badge, element must be preserved in original location
-        originalTagList = [self.tagListRoot[0]]
-        self.__assistant.SmartPreservation(context, originalTagList, self.attrName, self.attrVal, self.numericNodeList)
-        
-        self.status_exemplary = self.__assistant.DeferJudgement(context)
-        return self.status_exemplary
+        self.status_exemplary = self.__assistant.checkShallowElePreservationByChild(context, self.tagList, self.childList)
+        return self.status_exemplary 
        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLstRoot, attrName, attrVal, numericNodeList);
+judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck, childList);

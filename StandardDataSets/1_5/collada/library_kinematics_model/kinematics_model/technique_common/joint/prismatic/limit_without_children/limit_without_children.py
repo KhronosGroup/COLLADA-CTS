@@ -17,24 +17,20 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'rotate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'translate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full', 'translate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full', 'link']]
-attrName = 'joint'
-attrVal = ['KIN_GREIFER/j1', 'KIN_GREIFER/j2', 'KIN_GREIFER/j3']
-#attrVal = ['j1', 'j2', 'j3']
-dataToCheck = ''
+tagLstRoot = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'joint', 'prismatic', 'limits'], 
+	      ['library_joints', 'joint', 'prismatic', 'limits']]
+attrName = ''
+attrVal = ''
+numericNodeList = []
 
 
 class SimpleJudgingObject:
-    def __init__(self, _tagLst, _attrName, _attrVal, _data):
-        self.tagList = _tagLst
+    def __init__(self, _tagLstRoot, _attrName, _attrVal, _numericNodeList):
+        self.tagListRoot = _tagLstRoot
         self.attrName = _attrName
         self.attrVal = _attrVal
-        self.dataToCheck = _data
+        self.numericNodeList = _numericNodeList
+        
         self.status_baseline = False
         self.status_superior = False
         self.status_exemplary = False
@@ -51,22 +47,13 @@ class SimpleJudgingObject:
             self.status_baseline = False
             return False
 
-        # check for preservation of joint reference
-        self.__assistant.AttributeCheck(context, self.tagList[0], self.attrName, self.attrVal[0])
-        self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal[1])
-        self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal[2])
-        
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[0], self.attrName, self.attrVal[0])
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[1], self.attrName, self.attrVal[1])
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[1], self.attrName, self.attrVal[2])
-        
-        # check that elements exist on export
-        self.__assistant.ElementPreserved(context, self.tagList[2])
-        self.__assistant.ElementPreserved(context, self.tagList[3])
-        self.__assistant.ElementPreserved(context, self.tagList[4])
-        self.__assistant.ElementPreserved(context, self.tagList[5])
-        
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        # limits in export should not have child node
+        if (self.__assistant.HasChildElement(context, self.tagListRoot[0]) or
+            self.__assistant.HasChildElement(context, self.tagListRoot[1])):
+            self.status_baseline = False
+        else:
+            self.status_baseline = True
+
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -84,4 +71,4 @@ class SimpleJudgingObject:
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
-judgingObject = SimpleJudgingObject(tagLst, attrName, attrVal, dataToCheck);
+judgingObject = SimpleJudgingObject(tagLstRoot, attrName, attrVal, numericNodeList);

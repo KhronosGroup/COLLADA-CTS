@@ -14,20 +14,18 @@
 # We import an assistant script that includes the common verifications
 # methods. The assistant buffers its checks, so that running them again
 # does not incurs an unnecessary performance hint.
+
+import sys, string, os
+from xml.dom import minidom, Node
+from datetime import datetime, timedelta
+from Core.Common.FUtils import FindXmlChild, GetXmlContent, ParseDate
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'rotate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'translate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full', 'translate'],
-          ['library_kinematics_models', 'kinematics_model', 'technique_common', 'link', 'attachment_full', 'link', 'attachment_full', 'link']]
-attrName = 'joint'
-attrVal = ['KIN_GREIFER/j1', 'KIN_GREIFER/j2', 'KIN_GREIFER/j3']
-#attrVal = ['j1', 'j2', 'j3']
+tagLst = ['library_kinematics_models', 'kinematics_model', 'asset', 'created']
+attrName = ''
+attrVal = ''
 dataToCheck = ''
-
 
 class SimpleJudgingObject:
     def __init__(self, _tagLst, _attrName, _attrVal, _data):
@@ -39,7 +37,37 @@ class SimpleJudgingObject:
         self.status_superior = False
         self.status_exemplary = False
         self.__assistant = JudgeAssistant.JudgeAssistant()
+
+    def CheckDate(self, context):
+        # Get the <created> time for the input file
+        root = minidom.parse(context.GetInputFilename()).documentElement
+        inputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_geometries", "geometry", "asset", "created")))
+        if inputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from test input file.")
+            return None
         
+        # Get the output file
+        outputFilenames = context.GetStepOutputFilenames("Export")
+        if len(outputFilenames) == 0:
+            context.Log("FAILED: There are no export steps.")
+            return None
+
+        # Get the <created> time for the output file
+        root = minidom.parse(outputFilenames[0]).documentElement
+        outputCreatedDate = ParseDate(GetXmlContent(FindXmlChild(root, "library_geometries", "geometry", "asset", "created")))
+        if outputCreatedDate == None:
+            context.Log("FAILED: Couldn't read <created> value from the exported file.")
+            return None
+
+        if (outputCreatedDate - inputCreatedDate) != timedelta(0):
+            context.Log("FAILED: <created> is not preserved.")
+            context.Log("The original <created> time is " + str(inputCreatedDate))
+            context.Log("The exported <created> time is " + str(outputCreatedDate))
+            return False
+            
+        context.Log("PASSED: <created> element is preserved.")
+        return True
+            
     def JudgeKinematicsBaseline(self, context):
         # No step should not crash
         self.__assistant.CheckCrashes(context)
@@ -47,26 +75,7 @@ class SimpleJudgingObject:
         # Import/export/validate must exist and pass, while Render must only exist.
         self.__assistant.CheckSteps(context, ["Import", "Export", "Validate"], [])
 
-        if (self.__assistant.GetResults() == False): 
-            self.status_baseline = False
-            return False
-
-        # check for preservation of joint reference
-        self.__assistant.AttributeCheck(context, self.tagList[0], self.attrName, self.attrVal[0])
-        self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal[1])
-        self.__assistant.AttributeCheck(context, self.tagList[1], self.attrName, self.attrVal[2])
-        
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[0], self.attrName, self.attrVal[0])
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[1], self.attrName, self.attrVal[1])
-#        self.__assistant.CheckForPathTermInAttr(context, self.tagList[1], self.attrName, self.attrVal[2])
-        
-        # check that elements exist on export
-        self.__assistant.ElementPreserved(context, self.tagList[2])
-        self.__assistant.ElementPreserved(context, self.tagList[3])
-        self.__assistant.ElementPreserved(context, self.tagList[4])
-        self.__assistant.ElementPreserved(context, self.tagList[5])
-        
-        self.status_baseline = self.__assistant.DeferJudgement(context)
+        self.status_baseline = self.__assistant.GetResults()
         return self.status_baseline
   
     # To pass intermediate you need to pass basic, this object could also include additional 
@@ -78,9 +87,14 @@ class SimpleJudgingObject:
     # To pass advanced you need to pass intermediate, this object could also include additional
     # tests that were specific to the advanced badge
     def JudgeKinematicsExemplary(self, context):
-        self.status_exemplary = self.status_superior
-        return self.status_exemplary 
-       
+	# if superior fails, no point in further checking
+        if (self.status_superior == False):
+            self.status_exemplary = self.status_superior
+            return self.status_exemplary
+
+        self.status_exemplary = self.CheckDate(context)
+        return self.status_exemplary
+        
 # This is where all the work occurs: "judgingObject" is an absolutely necessary token.
 # The dynamic loader looks very specifically for a class instance named "judgingObject".
 #
