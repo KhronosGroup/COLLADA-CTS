@@ -19,7 +19,7 @@
 from StandardDataSets.scripts import JudgeAssistant
 
 # Please feed your node list here:
-tagLst = [['library_geometries', 'geometry', 'brep', 'curves', 'curve', 'line'], ['library_geometries', 'geometry', 'brep', 'curves', 'curve', 'nurbs']]
+tagLst = [['library_geometries', 'geometry', 'brep', 'surfaces', 'surface', 'plane']]
 attrName = ''
 attrVal = ''
 dataToCheck = ''

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.collada.org/2008/03/COLLADASchema http://www.khronos.org/files/collada_schema_1_5">
+	<asset>
+		<created>2010-03-04T15:17:37Z</created>
+		<modified>2010-03-04T15:17:37Z</modified>
+	</asset>
+	<library_geometries>
+		<geometry id="cone">
+			<brep>
+				<curves>
+					<curve sid="c1">
+						<line>
+							<origin>0 1 0</origin>
+							<direction>0 -1 1</direction>
+						</line>
+					</curve>
+					<curve sid="c2">
+						<line>
+							<origin>0 -1 0</origin>
+							<direction>0 1 1</direction>
+						</line>
+					</curve>
+					<curve sid="c3">
+						<circle>
+							<radius>1</radius>
+						</circle>
+					</curve>
+					<curve sid="c4">
+						<circle>
+							<radius>0</radius>
+						</circle>
+						<origin>0 0 1</origin>
+					</curve>
+				</curves>
+				<surface_curves>
+					<curve sid="sc1">
+						<line>
+							<origin>0 0 0</origin>
+							<direction>0 1 0</direction>
+						</line>
+					</curve>
+					<curve sid="sc2">
+						<line>
+							<origin>0 0 0</origin>
+							<direction>1 0 0</direction>
+						</line>
+					</curve>
+					<curve sid="sc3">
+						<line>
+							<origin>0 1 0</origin>
+							<direction>1 0 0</direction>
+						</line>
+					</curve>
+					<curve sid="sc4">
+						<line>
+							<origin>3.14 0 0</origin>
+							<direction>0 1 0</direction>
+						</line>
+					</curve>
+				</surface_curves>
+				<surfaces>
+					<surface sid="s1">
+						<cone>
+							<radius>1</radius>
+							<angle>45</angle>
+						</cone>
+					</surface>
+				</surfaces>
+				<!-- The source for the positions -->
+				<source id="cone.positions">
+					<float_array id="cone.positions-array" count="9">
+						0 -1 0
+						0  1 0
+						0  0 1
+					</float_array>
+					<technique_common>
+						<accessor count="4" offset="0" source="#cone.positions-array" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="cone.curves">
+					<SIDREF_array count="4">cone/c1 cone/c2 cone/c3 cone/c4</SIDREF_array>
+				</source>
+				<source id="cone.curves2d">
+					<SIDREF_array count="4">cone/sc1 cone/sc2 cone/sc3 cone/sc4</SIDREF_array>
+				</source>
+				<source id="cone.surfaces">
+					<SIDREF_array count="1">cone/s1</SIDREF_array>
+				</source>
+				<!-- The source for the possible orientations -->
+				<source id="cone.orientations">
+					<Name_array id="cone.orientations-array" count="2">
+						REVERSED FORWARD
+					</Name_array>
+					<technique_common>
+						<accessor count="2" offset="0" source="#cone.orientations-array" stride="1">
+							<param name="ORIENTATION" type="Name"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<!-- This source contains the parameters of the curves for the edges -->
+				<source id="cone.curve-params">
+					<float_array id="cone.curve-params-array" count="8">
+						0 1.41
+						0 1.41
+						-1.57 1.57
+						-1.57 1.57
+					</float_array>
+					<technique_common>
+						<accessor count="4" offset="0" source="#cone.curve-params-array" stride="2">
+							<param name="START" type="float"/>
+							<param name="END" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="cone.vertices">
+					<input semantic="POSITION" source="#cone.positions"/>
+				</vertices>
+				<edges id="cone.edges" count="4">
+					<input semantic="CURVE" source="#cone.curves" offset="0"/>
+					<input semantic="VERTEX" source="#cone.vertices" offset="1"/>
+					<input semantic="VERTEX" source="#cone.vertices" offset="2"/>
+					<input semantic="PARAM" source="#cone.curve-params" offset="3"/>
+					<p>
+						0 1 2 0
+						1 0 2 1
+						2 2 1 2
+						3 2 2 3
+					</p>
+				</edges>
+				<wires id="cone.wires" count="1">
+					<input semantic="EGDE" source="#cone.edges" offset="0"/>
+					<input semantic="ORIENTATION" source="#cone.orientations" offset="1"/>
+					<vcount>4</vcount>
+					<p>0 1 3 0 1 0 2 1</p>
+				</wires>
+				<faces id="cone.faces" count="1">
+					<input semantic="SURFACE" source="#cone.surfaces" offset="0"/>
+					<input semantic="WIRE" source="#cone.wires" offset="1"/>
+					<input semantic="ORIENTATION" source="#cone.orientations" offset="2"/>
+					<vcount>1</vcount>
+					<p>0 0 1</p>
+				</faces>
+				<pcurves id="cone.pcurves" count="4">
+					<input semantic="EGDE" source="#cone.edges" offset="0"/>
+					<input semantic="FACE" source="#cone.faces" offset="1"/>
+					<input semantic="CURVE2D" source="#cone.curves2d" offset="2"/>
+					<vcount>1 1 1 1</vcount>
+					<p>
+						0 0 3
+						1 0 1
+						2 0 0 
+						3 0 2
+					</p>
+				</pcurves>
+			</brep>
+		</geometry>
+	</library_geometries>
+</COLLADA>

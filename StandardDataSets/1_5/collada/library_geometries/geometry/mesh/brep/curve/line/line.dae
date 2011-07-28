@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
   <asset>
-	<contributor>
+     <contributor>
   
-     <author>TWong</author>
+     <author>Alan Hudson</author>
      <authoring_tool>Handwritten</authoring_tool>
      <copyright>
         # Copyright (C) 2011 Khronos Group
@@ -13,6 +13,7 @@
     </contributor>  
     <created>2007-09-12T12:00:00</created>
     <modified>2007-09-12T12:00:00</modified>
+    <subject>Test of line curve support</subject>    
     <title>0712</title>    
   </asset>
   <library_geometries id="ring.BREP.lib">
@@ -28,143 +29,18 @@
               <direction>0 0 1</direction>
             </line>
           </curve>
-          <curve sid="curve-2">
-            <circle>
-              <radius>5</radius>
-            </circle>
-            <origin>0 0 10</origin>
-          </curve>
-          <curve sid="curve-3">
-            <circle>
-              <radius>5</radius>
-            </circle>
-          </curve>
-          <curve sid="curve-4">
-            <circle>
-              <radius>3</radius>
-            </circle>
-          </curve>
-          <curve sid="curve-5">
-            <circle>
-              <radius>3</radius>
-            </circle>
-            <origin>0 0 10</origin>
-          </curve>
-          <curve sid="curve-6">
-            <line>
-              <origin>3 -7.34764e-016 0</origin>
-              <direction>0 0 1</direction>
-            </line>
-          </curve>
         </curves>
 
 <!-- Defining all the curves on surfaces -->
 
-        <surface_curves>
-          <curve sid="curve2d-1">
-            <line>
-              <origin>6.28319 0 0</origin>
-              <direction>0 1 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-2">
-            <line>
-              <origin>0 10 0</origin>
-              <direction>1 0 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-3">
-            <line>
-              <origin>4.13891e-013 0 0</origin>
-              <direction>0 1 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-4">
-            <line>
-              <origin>0 0 0</origin>
-              <direction>1 0 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-5">
-            <circle>
-              <radius>3</radius>
-            </circle>
-          </curve>
-          <curve sid="curve2d-6">
-            <circle>
-              <radius>5</radius>
-            </circle>
-          </curve>
-          <curve sid="curve2d-7">
-            <circle>
-              <radius>3</radius>
-            </circle>
-          </curve>
-          <curve sid="curve2d-8">
-            <circle>
-              <radius>5</radius>
-            </circle>
-          </curve>
-          <curve sid="curve2d-9">
-            <line>
-              <origin>6.28319 0 0</origin>
-              <direction>0 1 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-10">
-            <line>
-              <origin>0 10 0</origin>
-              <direction>1 0 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-11">
-            <line>
-              <origin>4.13891e-013 0 0</origin>
-              <direction>0 1 0</direction>
-            </line>
-          </curve>
-          <curve sid="curve2d-12">
-            <line>
-              <origin>0 0 0</origin>
-              <direction>1 0 0</direction>
-            </line>
-          </curve>
-        </surface_curves>
-
 <!-- Defining all the surfaces -->
-
-        <surfaces>
-          <surface sid="surface-1">
-            <cylinder>
-              <radius>5</radius>
-            </cylinder>
-          </surface>
-          <surface sid="surface-2">
-            <plane>
-              <equation>0 0 1 0</equation>
-            </plane>
-          </surface>
-          <surface sid="surface-3">
-            <plane>
-              <equation>0 0 1 0</equation>
-            </plane>
-            <origin>0 0 10</origin>
-          </surface>
-          <surface sid="surface-4">
-            <cylinder>
-              <radius>3</radius>
-            </cylinder>
-          </surface>
-        </surfaces>
 
 <!-- The source for the positions -->
 
         <source id="ring.brep.lib.geo.brep.geom-points">
-          <float_array count="12" id="ring.brep.lib.geo.brep.geom-points-array">
-5 -1.22461e-015 0
-5 -1.22461e-015 10
-3 -7.34764e-016 0
-3 -7.34764e-016 10
+          <float_array count="6" id="ring.brep.lib.geo.brep.geom-points-array">
+7 -1.22461e-015 0
+7 -1.22461e-015 10
 </float_array>
           <technique_common>
             <accessor source="#ring.brep.lib.geo.brep.geompoints- array" stride="3" count="4" offset="0">
@@ -175,26 +51,10 @@
           </technique_common>
         </source>
 
-<!-- The source for referencing the 2D curves -->
-
-        <source id="ring.brep.lib.geo.brep.geom-curves2d">
-          <SIDREF_array count="12" id="ring.brep.lib.geo.brep.geom-curves2earray">
-curve2d-1 curve2d-2 curve2d-3 curve2d-4
-curve2d-5 curve2d-6 curve2d-7 curve2d-8
-curve2d-9 curve2d-10 curve2d-11 curve2d-12
-</SIDREF_array>
-        </source>
-
 <!-- The source for referencing the curves -->
 
         <source id="ring.brep.lib.geo.brep.geom-curves">
-          <SIDREF_array count="6" id="ring.brep.lib.geo.brep.geom-curves-array">curve-1 curve-2 curve-3 curve-4 curve-5 curve-6</SIDREF_array>
-        </source>
-
-<!-- The source for referencing the surfaces -->
-
-        <source id="ring.brep.lib.geo.brep.geom-surfaces">
-          <SIDREF_array count="4" id="ring.brep.lib.geo.brep.geom-surfacesarray">surface-1 surface-2 surface-3 surface-4</SIDREF_array>
+          <SIDREF_array count="6" id="ring.brep.lib.geo.brep.geom-curves-array">ring.BREP.lib.geo/curve-1</SIDREF_array>
         </source>
 
 <!-- The source for the possible orientations -->
@@ -211,29 +71,13 @@ curve2d-9 curve2d-10 curve2d-11 curve2d-12
 <!-- This source contains the parameters of the curves for the edges -->
 
         <source id="ring.brep.lib.geo.brep.curve-params">
-          <float_array count="12" id="ring.brep.lib.geo.brep.curve-params-array">
-0 10
-0 6.28319
-0 6.28319
-0 6.28319
-0 6.28319
+          <float_array count="2" id="ring.brep.lib.geo.brep.curve-params-array">
 0 10
 </float_array>
           <technique_common>
-            <accessor source="#ring.brep.lib.geo.brep.curve-params-array" stride="2" count="6" offset="0">
+            <accessor source="#ring.brep.lib.geo.brep.curve-params-array" stride="2" count="1" offset="0">
               <param name="START" type="float"/>
               <param name="END" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-
-<!-- This source contains the material symbols for the faces -->
-
-        <source id="ring.brep.lib.geo.brep.materials">
-          <Name_array count="1" id="ring.brep.lib.geo.brep.materials-array">WHITE</Name_array>
-          <technique_common>
-            <accessor source="#ring.brep.lib.geo.brep.materials-array" stride="1" count="1" offset="0">
-              <param name="MATERIAL" type="Name"/>
             </accessor>
           </technique_common>
         </source>
@@ -246,69 +90,16 @@ curve2d-9 curve2d-10 curve2d-11 curve2d-12
 
 <!-- The edges -->
 
-        <edges count="6" id="ring.brep.lib.geo.brep.edges">
+        <edges count="1" id="ring.brep.lib.geo.brep.edges">
           <input source="#ring.brep.lib.geo.brep.geom-curves" semantic="CURVE" offset="0"/>
           <input source="#ring.brep.lib.geo.brep.vertices" semantic="VERTEX" offset="1"/>
           <input source="#ring.brep.lib.geo.brep.vertices" semantic="VERTEX" offset="2"/>
           <input source="#ring.brep.lib.geo.brep.curve-params" semantic="PARAM" offset="3"/>
           <p>
 0 0 1 0
-1 1 1 1
-2 0 0 2
-3 2 2 3
-4 3 3 4
-5 2 3 5
 </p>
         </edges>
 
-<!-- The wires -->
-
-        <wires count="6" id="ring.brep.lib.geo.brep.wires">
-          <input source="#ring.brep.lib.geo.brep.edges" semantic="EDGE" offset="0"/>
-          <input source="#ring.brep.lib.geo.brep.orientations" semantic="ORIENTATION" offset="1"/>
-          <vcount>4 1 1 1 1 4</vcount>
-          <p>0 1 1 0 0 0 2 1 3 0 2 1 4 0 1 1 5 1 4 0 5 0 3 1</p>
-        </wires>
-
-<!-- The faces -->
-
-        <faces count="4" id="ring.brep.lib.geo.brep.faces">
-          <input source="#ring.brep.lib.geo.brep.geomsurfaces" semantic="SURFACE" offset="0"/>
-          <input source="#ring.brep.lib.geo.brep.wires" semantic="WIRE" offset="1"/>
-          <input source="#ring.brep.lib.geo.brep.orientations" semantic="ORIENTATION" offset="2"/>
-          <input source="#ring.brep.lib.geo.brep.materials" semantic="MATERIAL" offset="3"/>
-          <vcount>1 2 2 1</vcount>
-          <p>0 0 1 0 1 1 1 0 1 2 1 0 2 3 1 0 2 4 1 0 3 5 1 0</p>
-        </faces>
-
-<!-- The pcurves -->
-
-        <pcurves count="12" id="ring.brep.lib.geo.brep.pcurves">
-          <input source="#ring.brep.lib.geo.brep.edges" semantic="EDGE" offset="0"/>
-          <input source="#ring.brep.lib.geo.brep.faces" semantic="FACE" offset="1"/>
-          <input source="#ring.brep.lib.geo.brep.geom-curves2d" semantic="CURVE2D" offset="2"/>
-          <vcount>2 1 1 1 1 1 1 1 1 2</vcount>
-          <p>0 0 0 0 0 2 1 0 1 1 2 7 2 0 3 2 1 5 3 1 4 3 3 11 4 2 6 4 3 9 5 3 8
-5 3 10</p>
-        </pcurves>
-
-<!-- The shells -->
-
-        <shells count="1" id="ring.brep.lib.geo.brep.shells">
-          <input source="#ring.brep.lib.geo.brep.faces" semantic="FACE" offset="0"/>
-          <input source="#ring.brep.lib.geo.brep.orientations" semantic="ORIENTATION" offset="1"/>
-          <vcount>4</vcount>
-          <p>0 1 1 0 2 1 3 0</p>
-        </shells>
-
-<!-- The solids -->
-
-        <solids count="1" id="ring.brep.lib.geo.brep.solids">
-          <input source="#ring.brep.lib.geo.brep.shells" semantic="SHELL" offset="0"/>
-          <input source="#ring.brep.lib.geo.brep.orientations" semantic="ORIENTATION" offset="1"/>
-          <vcount>1</vcount>
-          <p>0 1</p>
-        </solids>
       </brep>
     </geometry>
   </library_geometries>
