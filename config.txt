@@ -1,4 +1,4 @@
-feelingViewerGUI		..\FeelingViewer\FViewerApplications\Output\FeelingViewer.exe
+feelingViewerGUI		None
 feelingViewerCLI		..\FeelingViewer\FViewerApplications\Output\FViewerCLI.exe
 mayaPath			C:\Program Files\Autodesk\Maya8.5\bin\maya.exe
 maxPath				C:\Program Files\Autodesk\3dsMax8\3dsmax.exe
@@ -15,4 +15,4 @@ pyramidDiffPath			..\PyramidDiff\Output\PyramidDiff.exe
 coherencyPath			..\Core\CoherencyTest\coherencytest.exe
 schemaValidatePath		..\Core\SchemaValidate.exe
 badgeLevels			Baseline, Superior, Exemplary, Fx, Physics
-adoptersPackage			True
+adoptersPackage			False
