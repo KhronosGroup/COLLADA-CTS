@@ -3,6 +3,8 @@ started using the test suite.
 
 The following documents will help you understand how to use the test suite:
 
+Tutorial: https://www.khronos.org/files/collada/COLLADA-CTS-Tutorial.pdf
+
 Documentation/README.doc
    The document describes how to use the test suite and submit results..  Start here
    to get familiar with running the test suite.
@@ -19,3 +21,5 @@ Documentation/submission_details_template.txt
    
 Documentation/build_information_template.txt
    Template for describing the build and integration changes necessary for your software.
+   
+Note: FX Composer 2.0 that is compliant with the test suite is provided on this page.
