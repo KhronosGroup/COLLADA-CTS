@@ -391,10 +391,10 @@ class FSelectDataSetDialog(wx.wizard.WizardPageSimple, FDataSetParser):
         """
         item, where = e.GetEventObject().HitTest(e.GetPosition())
         
-        if (where == wx.TREE_HITTEST_ONITEMICON):
+        if (where & wx.TREE_HITTEST_ONITEMICON):
             if (self.__mode == FSelectDataSetDialog.__TREE):
                 self.__Check(e.GetEventObject(), item)
-        elif (where == wx.TREE_HITTEST_ONITEMLABEL):
+        elif (where & wx.TREE_HITTEST_ONITEMLABEL):
             directory, checked = self.__treeCtrl.GetItemPyData(item)
             if (directory != FSelectDataSetDialog.__FILE): return
             
