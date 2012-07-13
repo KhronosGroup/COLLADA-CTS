@@ -9,9 +9,11 @@ import os.path
 import wx
 import string
 import sha as SHA1
+import os
 import sys
 import string
 import xml
+import subprocess
 from datetime import datetime, timedelta
 
 from stat import *
@@ -580,3 +582,21 @@ def ParseDate(s):
 #        if (newList.count(element) == 0):
 #            newList.append(element)
 #    return newList
+
+def StartFile(path):
+    """StartFile(path) -> None
+    
+    Opens the given file path in default application handler. Similar to
+    os.startfile on Windows, but works on Mac and some Linux systems as
+    well.
+    
+    arguments:
+        path
+            a path to a file on disk
+    """
+    if sys.platform == 'win32':
+        return os.startfile(path)
+    elif sys.platform == 'darwin':
+        subprocess.Popen(['open', path])
+    else:
+        subprocess.Popen(['xdg-open', path])
