@@ -24,6 +24,9 @@ from Core.Logic.FJudgement import *
 from Core.Logic.FJudgementContext import *
 from Core.Logic.FResult import *
 
+GL_VENDOR = None
+GL_RENDERER = None
+
 class FExecution(FSerializable, FSerializer):
     def __init__(self, executionDir = None):
         """Creates the FExecution."""
@@ -48,6 +51,23 @@ class FExecution(FSerializable, FSerializer):
         self.__judgingResults = {}
         self.__judgingLogs = {}
         self.__checksum = ""
+        
+        global GL_VENDOR, GL_RENDERER
+        if GL_VENDOR is None:
+            OpenGL.GLUT.glutInit(sys.argv)
+            # need to create a window before glGetString will return something
+            OpenGL.GLUT.glutInitWindowSize(640,480)
+            winId = OpenGL.GLUT.glutCreateWindow("dummy")
+            OpenGL.GLUT.glutDisplayFunc(self.__DummyDisplayFunc)
+            GL_VENDOR = OpenGL.GL.glGetString(OpenGL.GL.GL_VENDOR)
+            GL_RENDERER = OpenGL.GL.glGetString(OpenGL.GL.GL_RENDERER)
+            OpenGL.GLUT.glutDestroyWindow(winId)
+        
+        self.__environment["GL_VENDOR: "] = GL_VENDOR
+        self.__environment["GL_RENDERER: "] = GL_RENDERER
+
+    def __DummyDisplayFunc(self):
+        pass
 
     # executionDir must be absolute path and it should be empty!
     def Clone(self, executionDir):
@@ -270,7 +290,7 @@ class FExecution(FSerializable, FSerializer):
         if (self.__validationList.count(step) == 0):
             self.__validationList.append(step)
             self.__AddOutputLocation(step, None, None)
-                
+    
     def __InitializeRun(self, appPython, step, op, inStep, filename, settings, 
                         isAnimated, cameraRig, lightingRig, markerCallBack):
         stepName = STEP_PREFIX + str(step)
@@ -287,17 +307,6 @@ class FExecution(FSerializable, FSerializer):
 #        open(logAbsFilename, "w").close() # create the file
         
         self.__timeRan = time.localtime()
-        
-        # need to do this before glGetString will return something
-        if (OpenGL.GLUT.glutGet(OpenGL.GLUT.GLUT_ELAPSED_TIME) == 0):
-            OpenGL.GLUT.glutInit(sys.argv)
-        
-        winId = OpenGL.GLUT.glutCreateWindow("")
-        self.__environment["GL_VENDOR: "] = OpenGL.GL.glGetString(
-                                                        OpenGL.GL.GL_VENDOR)
-        self.__environment["GL_RENDERER: "] = OpenGL.GL.glGetString(
-                                                        OpenGL.GL.GL_RENDERER)
-        OpenGL.GLUT.glutDestroyWindow(winId)
         
         if ((inStep == 0) or (self.__outputLocations[inStep] == None)):
             curInputFile = os.path.abspath(filename)
