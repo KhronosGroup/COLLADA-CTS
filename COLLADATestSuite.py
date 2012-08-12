@@ -14,7 +14,7 @@ from Core.FTestSuiteCommand import FTestSuiteCommand
 os.chdir("Core");
 
 if (len(sys.argv) == 1):
-    app = wx.PySimpleApp()
+    app = wx.App()
     frame = MainFrame(None, wx.ID_ANY, "COLLADA 1.4 Conformance Test Suite")
     frame.Show()
     app.MainLoop()
