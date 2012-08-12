@@ -5,8 +5,6 @@
 # in all copies or substantial portions of the Materials. 
 # THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-import OpenGL.GL
-import OpenGL.GLUT
 import os
 import os.path
 import shutil
@@ -17,15 +15,13 @@ import types
 
 import Core.Common.FUtils as FUtils
 import Core.Common.FGlobals as FGlobals
+import Core.gl
 from Core.Common.FConstants import *
 from Core.Common.FSerializable import *
 from Core.Common.FSerializer import *
 from Core.Logic.FJudgement import *
 from Core.Logic.FJudgementContext import *
 from Core.Logic.FResult import *
-
-GL_VENDOR = None
-GL_RENDERER = None
 
 class FExecution(FSerializable, FSerializer):
     def __init__(self, executionDir = None):
@@ -52,22 +48,8 @@ class FExecution(FSerializable, FSerializer):
         self.__judgingLogs = {}
         self.__checksum = ""
         
-        global GL_VENDOR, GL_RENDERER
-        if GL_VENDOR is None:
-            OpenGL.GLUT.glutInit(sys.argv)
-            # need to create a window before glGetString will return something
-            OpenGL.GLUT.glutInitWindowSize(640,480)
-            winId = OpenGL.GLUT.glutCreateWindow("dummy")
-            OpenGL.GLUT.glutDisplayFunc(self.__DummyDisplayFunc)
-            GL_VENDOR = OpenGL.GL.glGetString(OpenGL.GL.GL_VENDOR)
-            GL_RENDERER = OpenGL.GL.glGetString(OpenGL.GL.GL_RENDERER)
-            OpenGL.GLUT.glutDestroyWindow(winId)
-        
-        self.__environment["GL_VENDOR: "] = GL_VENDOR
-        self.__environment["GL_RENDERER: "] = GL_RENDERER
-
-    def __DummyDisplayFunc(self):
-        pass
+        self.__environment["GL_VENDOR: "] = Core.gl.GL_VENDOR
+        self.__environment["GL_RENDERER: "] = Core.gl.GL_RENDERER
 
     # executionDir must be absolute path and it should be empty!
     def Clone(self, executionDir):
