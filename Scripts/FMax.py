@@ -141,6 +141,7 @@ class FMax (FApplication):
         
         """Calls 3DS MAX to run the script."""
         print ("start running " + os.path.basename(self.__script.name))
+        # print "XXXX"
         
         returnValue = self.RunApplication(self.configDict["maxPath"] + 
                 " -U MAXScript \"" + self.__script.name + "\"", 
@@ -179,7 +180,7 @@ class FMax (FApplication):
         if (FUtils.GetExtension(filename) == FMax.__EXTENSION[1:]):
             command = "    loadMaxFile my_importfilename useFileUnits:true quiet:true\n"
         else:
-            command = "    importFile my_importfilename #noprompt\n"
+            command = "    importFile my_importfilename #noprompt using:OpenCOLLADAImporter\n"
             
         cfgFilename = os.path.normpath(
                 self.configDict["maxColladaExporterFilename"])
@@ -216,6 +217,7 @@ class FMax (FApplication):
         Implements FApplication.WriteRender()
         
         """
+        # print ("cameraRig:  " + str(cameraRig))
         command = "try (\n    render "
         for setting in settings:
             prettyName = setting.GetPrettyName()
@@ -266,6 +268,8 @@ class FMax (FApplication):
             if (value == ""):
                 value = self.FindDefault(FMax.__RENDER_OPTIONS, 
                                          setting.GetPrettyName())
+
+            # print ("prettyName: " + prettyName +" value: " + value)
             
             command = (command + setting.GetCommand() + ":" + value + " ")
         
@@ -321,7 +325,7 @@ class FMax (FApplication):
                 "try (\n" + 
                 options +
                 "    outfile_name  = \"" + output + "\"\n" +
-                "    exportFile outfile_name #noprompt\n" +
+                "    exportFile outfile_name #noprompt using:OpenCOLLADAExporter\n" +
                 "    print \"Export succeeded with " + output + "\"\n" +
                 ") catch (\n" +
                 "    print \"Export error     with " + output + "\"\n" +

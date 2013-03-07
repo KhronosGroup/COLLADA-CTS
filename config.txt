@@ -1,6 +1,7 @@
 feelingViewerGUI		None
 feelingViewerCLI		..\FeelingViewer\FViewerApplications\Output\FViewerCLI.exe
 mayaPath			C:\Program Files\Autodesk\Maya8.5\bin\maya.exe
+mayaBasePath			C:\Program Files\Autodesk\Maya8.5\bin
 maxPath				C:\Program Files\Autodesk\3dsMax8\3dsmax.exe
 maxColladaExporterFilename	C:\Program Files\Autodesk\3dsMax8\plugcfg\ColladaMax.ini
 xsiPath				C:\Softimage\Softimage_7.5\Application\bin\XSIBATCH.bat
