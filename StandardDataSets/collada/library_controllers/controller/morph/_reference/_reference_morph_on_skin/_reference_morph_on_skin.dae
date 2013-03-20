@@ -100,7 +100,7 @@
 	</library_geometries>
 	<library_visual_scenes>
 		<visual_scene id="visual_scenes_0" name="visual_scenes_0">
-			<node id="Camera" name="Camera">
+			<node id="testCamera" name="testCamera">
 				<translate sid="translate">0 0 400</translate>
 				<rotate sid="rotateZ">0 0 1 0</rotate>
 				<rotate sid="rotateY">0 1 0 0</rotate>

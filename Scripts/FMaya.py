@@ -19,7 +19,7 @@ class FMaya (FApplication):
     
     """
     
-    __PLUGIN = ("COLLADA")
+    __PLUGIN = ("OpenCOLLADA")
     
     __MEL_SCRIPT_EXTENSION = ".mel"
     __SCRIPT_EXTENSION = ".py"
@@ -225,7 +225,7 @@ class FMaya (FApplication):
             command = ("catch(`file -type \"mayaAscii\" -o \"" + filename + 
                        "\"`);\n")
         else: 
-            command = ("catch(`file -type \"COLLADA importer\" -o \"" + 
+            command = ("catch(`file -type \"OpenCOLLADA importer\" -o \"" + 
                        filename + "\"`);\n")
         
         self.__melScript.write(
@@ -251,8 +251,10 @@ class FMaya (FApplication):
         baseName = self.__currentImportProperName
         output = os.path.normpath(os.path.join(outputDir, baseName))
         outputDir = os.path.dirname(output)
-        
-        command = "Render -rd \"" + outputDir + "\" "
+        renderexe = os.path.normpath(os.path.join(self.configDict["mayaBasePath"], "Render"))
+
+        command = "" + self.configDict["mayaBasePath"] + "/Render -rd \"" + outputDir + "\" "
+        # print "XXXX command" + command;
         for setting in settings:
             prettyName = setting.GetPrettyName()
             if (prettyName == FMaya.__RENDER_ANIMATION_START):
@@ -346,7 +348,7 @@ class FMaya (FApplication):
         basename = self.__currentImportProperName + ".dae"
         output = os.path.join(outputDir, self.__currentImportProperName)
         output = output.replace("\\", "/")
-        
+
         options = ""
         for setting in settings:
             value = setting.GetValue().strip()
@@ -361,7 +363,7 @@ class FMaya (FApplication):
                 "$logname = \"" + logname.replace("\\", "/") + "\";\n" +
                 "$descriptor = `cmdFileOutput -o $logname`;\n" +
                 "catch(`file -op \"" + options + 
-                "\" -typ \"COLLADA exporter\" -pr -ea \"" + output + 
+                "\" -type \"OpenCOLLADA exporter\" -pr -ea \"" + output + 
                 "\"`);\n" +
                 "cmdFileOutput -c $descriptor;\n" + 
                 "fixNewlines $logname;\n\n")  
