@@ -9,6 +9,9 @@ FXComposerPath			C:\Program Files\NVIDIA Corporation\FX Composer 2\FXComposer2.e
 mimicPath			..\Documentation\HowToAddSoftware\TestIntegration\mimic.bat
 mimicRenderPath			..\Documentation\HowToAddSoftware\TestIntegration\mimic_render.bat
 pythonExecutable		C:\Python24\python.exe
+blenderPath			d:\blenderdev\install\graphicall_64b\blender.exe
+blenderEmpty			..\empty.blend
+blenderDefaultDae		..\Documentation\CTF_Template.dae
 ioTimeoutMilli			60000
 detectCrash			True
 imageComparator			FPyramidDiff
