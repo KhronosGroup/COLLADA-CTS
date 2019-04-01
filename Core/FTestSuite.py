@@ -21,19 +21,17 @@ class FTestSuite(FSerializer):
         # Read in and parse the configuration file.
         configDict = {}
         if (os.path.isfile(CONFIGURATION_FILE)):
-            f = open(CONFIGURATION_FILE)
-            line = f.readline()
-            while (line):
-                while (line.count("\t\t") > 0):
-                    line = line.replace("\t\t", "\t")
-                key, value = line.split("\t",1)
-                if (configDict.has_key(key)):
-                    print ("Warning: Ignoring redefinition of configuration " +
-                           "key: " + key + ".")
-                    continue
-                configDict[key] = value.strip() # remove \n
-                line = f.readline()
-            f.close
+            with open(CONFIGURATION_FILE) as f:
+                for line_num, line in enumerate(f):
+                    tokens = line.strip().split("\t")
+                    tokens = [t.strip() for t in tokens if len(t.strip()) > 0]
+                    if len(tokens) != 2:
+                        print 'Warning: ignoring configuration line %d: "%s"' % (line_num, line.strip())
+                        continue
+                    if tokens[0] in configDict:
+                        print 'Warning: ignoring redefinition of configuration key "%s" on line %d' % (tokens[0], line_num)
+                        continue
+                    configDict[tokens[0]] = tokens[1]
             
         # Further parse the badge levels configuration.
         FGlobals.badgeLevels = []
@@ -49,7 +47,6 @@ class FTestSuite(FSerializer):
         FGlobals.adoptersPackage = False
         if configDict.has_key("adoptersPackage"):
             FGlobals.adoptersPackage = configDict["adoptersPackage"]
-            print "IsAdopters %s" % (FGlobals.adoptersPackage)
         
         # import the application specific scripts
         self.applicationMap = {}

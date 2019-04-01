@@ -199,8 +199,7 @@ class FSFrame(FTestSuite):
         self.__MDIparent.Destroy()
         
     def __OnHelp(self, e):
-        # XXX: this is windows only
-        os.startfile(DOCUMENTATION)
+        FUtils.StartFile(DOCUMENTATION)
     
     def __OnAbout(self, e):
         message = ("COLLADA Conformance Test Suite v" + str(VERSION) +"\n\n" +
